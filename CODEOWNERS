@@ -1,0 +1,11 @@
+# Default owners of the repository
+* @kazydek @klaudiagrz @tomekpapiernik @dpolitesap
+
+# Owners of the manifesto-app folder
+/manifesto-app/ @akucharska @michal-hudy @pkosiec @mjasinski5 @derberg @magicmatatjahu
+
+# Owners of all .md files in the repository
+*.md @kazydek @klaudiagrz @tomekpapiernik @dpolitesap
+
+# Owners of governance file
+governance.Jenkinsfile @suleymanakbas91 @clebs @a-thaler @lilitgh @akucharska @michal-hudy @pkosiec @mjasinski5 @derberg @magicmatatjahu
