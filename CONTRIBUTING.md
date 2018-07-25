@@ -72,7 +72,7 @@ To contribute code or content to a given Kyma repository, follow these steps:
 
 > **NOTE:** Since CI is temporarily not publicly available, the reviewer must check if the related CI job has completed successfully before approving the pull request.
 
-11. When the maintainers approve your change, merge the pull request. If you are an external contributor, contact the repository maintainers specified in the `CODEOWNERS` file to do the merge.
+12. When the maintainers approve your change, merge the pull request. If you are an external contributor, contact the repository maintainers specified in the `CODEOWNERS` file to do the merge.
 
 Read the [git-workflow](git-workflow.md) document. It describes the Kyma contribution workflow that relies on forks, branches, rebasing, and squashing. The document also contains guidelines for writing commit messages.
 
