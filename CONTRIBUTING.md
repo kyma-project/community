@@ -55,16 +55,20 @@ This section explains how you can contribute code or content to any Kyma reposit
 
 To contribute code or content to a given Kyma repository, follow these steps:
 
-1. Make sure that the change is valid, approved, and there is an open GitHub issue for it.
+1. Make sure that the change is valid and approved.
+
+> **NOTE:** If you are an external contributor, open a GitHub issue before you make a contribution.
+
 2. Fork the Kyma repository that you want to contribute to.
 3. Clone it locally, add a remote upstream repository for the original repository, and set up the `master` branch to track the remote `master` branch from the upstream repository. See the [git-workflow](git-workflow.md) document for details on fork configuration.
 4. Create a new branch out of the local `master` branch of the forked repository.
 5. Commit and push changes on your new branch. Create a clear and descriptive final commit message in which you specify what you have changed.
-6. Create a pull request from your branch on the forked repository to the `master` branch of the original, upstream repository.
-7. If there are merge conflicts on your pull request, squash your commits and rebase the `master` branch.
-8. On the pull request, select the [**Allow edits from maintainers**](https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) option to allow upstream repository maintainers and those with the push access to the upstream repository, to commit to your forked branch.
-9. Link the pull request with the number of the GitHub issue created initially for the change.
-10. Wait for the Kyma maintainers to review and approve your pull request. The maintainers can approve it, request enhancements to your change, or reject it.
+6. Create a pull request from your branch on the forked repository to the `master` branch of the original, upstream repository. Fill in the pull request template according to instructions.
+7. Read and accept the Contributor Licence Agreement (CLA).
+8. If there are merge conflicts on your pull request, squash your commits and rebase the `master` branch.
+9. On the pull request, select the [**Allow edits from maintainers**](https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) option to allow upstream repository maintainers and those with the push access to the upstream repository, to commit to your forked branch.
+10. If your change relates to any existing GitHub issue, provide a link to it in your pull request.
+11. Wait for the Kyma maintainers to review and approve your pull request. The maintainers can approve it, request enhancements to your change, or reject it.
 
 > **NOTE:** Since CI is temporarily not publicly available, the reviewer must check if the related CI job has completed successfully before approving the pull request.
 
