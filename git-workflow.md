@@ -28,9 +28,9 @@ The unified Kyma contribution workflow that bases on forks allows both the membe
 
 Fork a Kyma repository, clone it locally and configure the remote before you start to contribute.
 
-Follow these steps:
+>**NOTE:** When you use two-factor authentication, generate an [SSH key](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/) and add it to your GitHub account. Use the SSH address to clone the forked repository.
 
-> **NOTE:** Perform these steps only once, when you configure the fork for the first time.
+Perform these steps when you configure the fork for the first time:
 
 1. Fork a repository.
 
@@ -38,7 +38,7 @@ In GitHub, locate the Kyma repository you want to work on and click the **Fork**
 
 2. Clone the fork to your local machine.
 
-To introduce changes locally, clone the forked repository on your local machine. On GitHub repository's main page, select the **Clone and download** option to copy the fork's address. Use either the terminal and the `git clone https://github.com/{your-username}/{your-fork-name}.git` command or the Git GUI to clone the forked repository.  
+To introduce changes locally, clone the forked repository on your local machine. On GitHub repository's main page, select the **Clone and download** option to copy the fork's HTTPS address. Use either the terminal and the `git clone https://github.com/{your-username}/{your-fork-name}.git` command or the Git GUI to clone the forked repository.  
 
 3. Add a Git remote for the original repository.
 
