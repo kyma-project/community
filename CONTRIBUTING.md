@@ -70,7 +70,7 @@ To contribute code or content to a given Kyma repository, follow these steps:
 10. If your change relates to any existing GitHub issue, provide a link to it in your pull request.
 11. Wait for the Kyma maintainers to review and approve your pull request. The maintainers can approve it, request enhancements to your change, or reject it.
 
-> **NOTE:** Since CI is temporarily not publicly available, the reviewer must check if the related CI job has completed successfully before approving the pull request.
+> **NOTE:** The reviewer must check if the related CI job and tests have completed successfully before approving the pull request.
 
 12. When the maintainers approve your change, merge the pull request. If you are an external contributor, contact the repository maintainers specified in the `CODEOWNERS` file to do the merge.
 
