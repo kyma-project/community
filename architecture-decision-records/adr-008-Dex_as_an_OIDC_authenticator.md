@@ -1,5 +1,7 @@
 # ADR 008: DEX as an OIDC authenticator
 
+Created on 2018-03-01 by Damian Pacierpnik (@damianpacierpnikatsap).
+
 ## Context
 
 Although Kubernetes manages service accounts, the solution leaves the management of regular users to an independent, outside service.
@@ -23,7 +25,7 @@ The decision is to use [Dex](https://github.com/coreos/dex) as an authentication
 
 ## Status
 
-Accepted
+Accepted on 2018-03-01.
 
 ## Consequences
 

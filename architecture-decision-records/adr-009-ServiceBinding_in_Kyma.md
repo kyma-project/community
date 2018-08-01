@@ -1,5 +1,7 @@
 # ADR 009: ServiceBinding in Kyma
 
+Created on 2018-03-07 by Adam Szecówka (@aszecowka).
+
 ## Context
 
 The Service Catalog in Kubernetes implements the Open Service Broker API. The main goal of the Service Catalog is to provide a way for Kubernetes users to consume services managed by the brokers, and to easily configure their applications with no need for the detailed knowledge of how those services are created or managed. To learn more about the Service Catalog, see [this](https://github.com/kubernetes-incubator/service-catalog) documentation.
@@ -22,7 +24,7 @@ It is recommended to use the synchronous binding, as the specification for the a
 
 ## Status
 
-Accepted
+Accepted on 2018-03-07.
 
 ## Consequences
 

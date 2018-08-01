@@ -1,5 +1,7 @@
 # ADR 007: GraphQL as API facade for UI
 
+Created on 2018-01-18 by Łukasz Górnicki (@derberg).
+
 ## Context
 
 The Console UI allows to access different functionalities from different APIs. As a consequence, displaying a single UI view might require performing several API calls to different endpoints on the client side. To simplify the solution, it is desirable to keep the calls on the server side. Such approach improves resiliency and performance as the browser makes a single call to the API, which is less prone to errors. The API facade receives these internal calls and calls other APIs internally with a much higher speed. Thanks to the Istio integration, with simple configuration, the mashup implementation is much easier than an implementation that involves the client side.
@@ -14,7 +16,7 @@ The decision is to use GraphQL as API facade for the Console UI.
 
 ## Status
 
-Accepted
+Accepted on 2018-01-18.
 
 ## Consequences
 

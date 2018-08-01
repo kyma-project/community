@@ -1,5 +1,7 @@
 # ADR 010: JWT-based authentication in Kyma
 
+Created on 2018-03-07 by Jakub Dziechciewicz (@kubadz).
+
 ## Context
 
 As described in [ADR 005](adr-005-Istio_as_the_API_Gateway.md), all of the APIs in Kyma must be accessible using ID tokens issued by the Kyma Dex component. This means that Kyma must allow services secured with JWT-based authentication.
@@ -27,7 +29,7 @@ The decision is to keep using the custom Mixer Adapter to allow the users to sec
 
 ## Status
 
-Accepted
+Accepted on 2018-03-07.
 
 ## Consequences
 

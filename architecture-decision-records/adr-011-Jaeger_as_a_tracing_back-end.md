@@ -1,5 +1,7 @@
 # ADR 011: Jaeger as a tracing back-end
 
+Created on 2018-03-09 by Gaurav Abbi (@abbi-gaurav).
+
 ## Context
 
 By default, Istio uses Zipkin for distributed tracing. Zipkin is not the best solution for Kyma as it is a heavy-weight Spring-based Java application.
@@ -14,7 +16,7 @@ The decision is to use Jaeger with the in-memory storage as, similarly to Zipkin
 
 ## Status
 
-Accepted
+Accepted on 2018-03-09.
 
 ## Consequences
 
