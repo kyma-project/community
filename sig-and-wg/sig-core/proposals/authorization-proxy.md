@@ -1,5 +1,10 @@
-# Authorization proxy
+# Installation on managed cluster
 
+> Created on 2018-08-02 by Piotr Bochyński (@pbochynski).
+
+## Status
+
+Proposed
 
 ## Abstract
 
@@ -9,10 +14,13 @@ It is not possible to install kyma project on managed clusters like Google Kuber
 ## Problems to solve
 
 1. The kube-apiserver component must be configured to verify tokens coming from an external OIDC provider (coming with Kyma). Usually, it is done during the installation by providing additional parameters such as **oidc-issuer-url**, **oidc-client-id**, **oidc-username-claim**, to name a few. These parameters cannot be set in GKE or AKS.
-2. Kyma depends on some alpha features of Kubernetes that are not supported by the managed clusters, for example PodPreset from `settings.k8s.io/v1alpha1`.
-
-
+2. Kyma depends on some alpha features of Kubernetes that are not supported by the managed clusters, for example PodPreset from `settings.k8s.io/v1alpha1`. Other apiserver configuration entries required by kyma, that might be missing in managed clusters:
+    - admission plugins: Initializers, NamespaceLifecycle, LimitRanger, ServiceAccount, MutatingAdmissionWebhook, ValidatingAdmissionWebhook, DefaultStorageClass, ResourceQuota, PodPreset
+    - alfa APIs : batch/v2alpha1, settings.k8s.io/v1alpha1, admissionregistration.k8s.io/v1alpha1
+    
 ## Proposal
+
+### OIDC configuration
 
 > Read [this](https://github.com/kyma-project/kyma/blob/master/docs/authorization-and-authentication/docs/003-architecture.md) document first to understand the current authorization concept.
 
@@ -26,3 +34,7 @@ The idea is to move the responsibility for authorization from kube-apiserver to 
 
 
 The proxy implementation can be based on [this](https://github.com/brancz/kube-rbac-proxy) project.
+
+### Alpha features
+
+The list of alpha APIs has to be verified and replaced by beta/stable versions if applicable. If there is no replacement, usage of alpha API should be reconsidered.
