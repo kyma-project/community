@@ -13,7 +13,7 @@ It is not possible to install kyma project on managed clusters like Google Kuber
 
 ## Problems to solve
 
-1. The kube-apiserver component must be configured to verify tokens coming from an external OIDC provider (coming with Kyma). Usually, it is done during the installation by providing additional parameters such as **oidc-issuer-url**, **oidc-client-id**, **oidc-username-claim**, to name a few. These parameters cannot be set in GKE or AKS.
+1. The kube-apiserver component must be configured to verify tokens coming from an external OIDC provider (coming with Kyma). Usually, it is done during the installation by providing additional parameters such as **oidc-issuer-url**, **oidc-client-id**, **oidc-username-claim**, to name a few. These parameters **cannot** be set in GKE or AKS.
 2. Kyma depends on some alpha features of Kubernetes that are not supported by the managed clusters, for example PodPreset from `settings.k8s.io/v1alpha1`. Other apiserver configuration entries required by kyma, that might be missing in managed clusters:
     - admission plugins: Initializers, NamespaceLifecycle, LimitRanger, ServiceAccount, MutatingAdmissionWebhook, ValidatingAdmissionWebhook, DefaultStorageClass, ResourceQuota, PodPreset
     - alfa APIs : batch/v2alpha1, settings.k8s.io/v1alpha1, admissionregistration.k8s.io/v1alpha1
