@@ -1,5 +1,7 @@
 # ADR 003: Init Containers for dependency management
 
+Created on 2017-11-28 by Adam Szpakowski (@szpakas).
+
 ## Context
 
 Certain dependencies between the Kyma components impact the order in which components should be created. The controller pattern in Kubernetes allows you to disregard many dependencies and rely on the Kubernetes reconciliation process. However, there are still a few cases in which strict dependency management is necessary. The most significant example is when Kubernetes **Kind** should be defined before it is used, as in the CustomResourceDefinitions.
@@ -15,7 +17,7 @@ The decision is to use Kubernetes Init Containers together with the readiness pr
 
 ## Status
 
-Accepted
+Accepted on 2017-11-28.
 
 ## Consequences
 

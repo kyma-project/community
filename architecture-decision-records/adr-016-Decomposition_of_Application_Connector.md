@@ -1,5 +1,7 @@
 # ADR 016: Decomposition of the Application Connector
 
+Created on 2018-06-27 by Łukasz Szymik (@lszymik).
+
 ## Context
 
 The Application Connector has three main areas of responsibility:
@@ -38,7 +40,7 @@ The Proxy service will be extracted to a separate service which will be integrat
 
 ## Status
 
-Proposed
+Proposed on 2018-06-27.
 
 ## Consequences
 

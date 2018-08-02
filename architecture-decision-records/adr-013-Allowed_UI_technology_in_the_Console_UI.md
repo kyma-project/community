@@ -1,5 +1,7 @@
 # ADR 013: Allowed UI technology in the Console UI
 
+Created on 2018-03-28 by Peter Kurajsky (@pekura).
+
 ## Context
 
 The Console UI is the administration view of Kyma and is a core part of the product.
@@ -15,7 +17,7 @@ The decision is to allow the [React](https://reactjs.org) and [Angular](https://
 
 ## Status
 
-Accepted
+Accepted 2018-03-28.
 
 ## Consequences
 

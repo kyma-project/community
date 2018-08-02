@@ -1,5 +1,7 @@
 # ADR 001: Technology stack
 
+Created on 2017-11-20 by Łukasz Górnicki (@derberg).
+
 ## Context
 
 The Kyma developers need to select specific technologies. Their purpose is to:
@@ -22,7 +24,7 @@ The recommended technologies fulfill the Kyma principles.
 
 ## Status
 
-Accepted
+Accepted on 2017-11-20.
 
 ## Consequences
 

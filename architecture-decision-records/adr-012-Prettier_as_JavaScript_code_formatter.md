@@ -1,5 +1,7 @@
 # ADR 012: Prettier as a JavaScript code formatter
 
+Created on 2018-03-15 by Kamil Kupczyński (@y-kkamil).
+
 ## Context
 
 The Code Style Guide is a set of conventions on how to write the source code. It covers many areas, including the use of `camelCase` vs `PascalCase` for variable identifiers, whether or not to use a semicolon as a statement terminator, or the use of tabs or spaces for indentation.
@@ -16,7 +18,7 @@ The decision is to use Prettier as the only code formatter for JavaScript-based 
 
 ## Status
 
-Accepted
+Accepted on 2018-03-15.
 
 ## Consequences
 

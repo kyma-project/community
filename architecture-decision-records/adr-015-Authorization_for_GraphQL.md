@@ -1,5 +1,7 @@
 # ADR 015: Authorization for GraphQL
 
+Created on 2018-06-15 by Damian Pacierpnik (@damianpacierpnikatsap).
+
 ## Context
 
 The GraphQL facade caches resources and does not forward every request to the API Server. So, the user token is not validated against RBAC.
@@ -42,7 +44,7 @@ will be implemented.
 
 ## Status
 
-Proposed
+Proposed on 2018-06-15.
 
 ## Consequences
 

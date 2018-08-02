@@ -1,5 +1,7 @@
 # ADR 006: Kubeless as a FaaS solution
 
+Created on 2017-12-20 by Ahmed Abdalla (@Abd4llA).
+
 ## Context
 
 Function as a Service (FaaS) is the main capability inside Kyma. This ADR presents a market research and a detailed analysis of both Kubeless and fission.
@@ -10,7 +12,7 @@ The decision is to use Kubeless as the FaaS solution.
 
 ## Status
 
-Accepted
+Accepted on 2017-12-20.
 
 ## Consequences
 

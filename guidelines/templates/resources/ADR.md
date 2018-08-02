@@ -1,5 +1,7 @@
 # ADR number and title
 
+Created on YYYY-MM-DD by {name of the author (@Github username)}.
+
 ## Context
 
 Briefly describe what the ADR is about. Explain the factors for the decision, what are the forces at play, and the reasons why the discussed solution is needed. Remember that this document should be relatively short and concise. If necessary, provide relevant links for more details.
@@ -14,7 +16,11 @@ If it is necessary to indicate the subject, use `the Kyma developers` instead of
 
 ## Status
 
-The status of the document can be `Accepted`, `Proposed`, or `Declined`. This section should contain one of these three words only. Do **not** follow the status word by a period.
+The status of the document can be `Accepted`, `Proposed`, or `Declined`. This section should contain one of these three words followed by the date on which the status of the document is agreed on. Follow the YYYY-MM-DD format for date. For example:
+
+```
+Accepted on 2018-03-23.
+```
 
 ## Consequences
 
