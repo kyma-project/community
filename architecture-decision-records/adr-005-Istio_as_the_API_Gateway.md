@@ -1,6 +1,6 @@
 # ADR 005: Istio as the Gateway in Kyma
 
-Created on 2017-11-23 by Paweł Soltysek.
+Created on 2017-12-11 by Damian Pacierpnik (@damianpacierpnikatsap).
 
 ## Context
 
@@ -24,7 +24,7 @@ all of the network communication between the configured and managed microservice
 
 ## Status
 
-Accepted on 2017-11-23.
+Accepted on 2017-12-11.
 
 ## Consequences
 

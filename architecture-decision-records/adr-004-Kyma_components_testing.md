@@ -1,5 +1,7 @@
 # ADR 004: Kyma components testing
 
+Created on 2017-12-11 by Piotr Kopczyński (@PK85).
+
 ## Context
 
 Testing is a vital part of any production-ready solution. Kyma components, both core elements and extensions, require a simple and intuitive mechanism to check if they work as expected. The flow for running tests must be the same both for APIs and UI. As per the [Kyma Manifesto](https://kyma-project.github.io/community/), native Kubernetes has priority.
@@ -12,7 +14,7 @@ Additionally, one of the principles of the [Kyma Manifesto](https://kyma-project
 
 ## Status
 
-Accepted
+Accepted on 2017-12-11.
 
 ## Consequences
 
