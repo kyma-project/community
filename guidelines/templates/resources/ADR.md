@@ -1,6 +1,6 @@
 # ADR number and title
 
-Created on YYYY-MM-DD by {username}.
+Created on YYYY-MM-DD by {name of the author (@Github username)}.
 
 ## Context
 
