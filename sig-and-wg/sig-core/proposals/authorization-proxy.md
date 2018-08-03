@@ -4,7 +4,7 @@ Created on 2018-08-02 by Piotr Bochyński (@pbochynski).
 
 ## Status
 
-Proposed on 2018-08-02
+Proposed on 2018-08-02.
 
 ## Abstract
 
@@ -21,7 +21,7 @@ It is not possible to install the Kyma project on the managed clusters such as G
 
 ### OIDC configuration
 
-> Read [this](https://github.com/kyma-project/kyma/blob/master/docs/authorization-and-authentication/docs/003-architecture.md) document first to understand the current authorization concept.
+>**NOTE:** Read [this](https://github.com/kyma-project/kyma/blob/master/docs/authorization-and-authentication/docs/003-architecture.md) document first to understand the current authorization concept.
 
 The idea is to move the responsibility for authorization from the kube-apiserver to the apiserver-proxy. If the apiserver-proxy verifies user permissions, it is not required to configure OpenID Connect tokens in the kube-apiserver. The proxy can use a service account to communicate with the apiserver. The request flow would be as follows:
 - The proxy validates JWT passed in the Authorization Bearer header.
