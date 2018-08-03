@@ -22,6 +22,8 @@ The unified workflow has the following benefits:
 A fork is a copy of the repository from which you raise pull requests to propose changes to the original repository.
 The unified Kyma contribution workflow that bases on forks allows both the members of the Kyma organization and the external contributors to contribute code and content through the same process. This keeps the main repositories clean as contributors create branches only on the forked repositories.
 
+>**NOTE:** This guide aims to explain how to work with forks on your local copy of the repository. In case you are a contributor who suggests minor changes using GitHub UI, it is recommended to use a [Pull bot](https://probot.github.io/apps/pull/). This bot keeps your fork up to date by creating and merging a pull request with latest changes into the master branch of your fork.
+
 ### Steps
 
 >**NOTE:** The document refers to the original repository as the upstream repository and to the forked repository as the origin repository.
