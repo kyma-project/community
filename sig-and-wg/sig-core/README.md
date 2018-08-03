@@ -1,8 +1,8 @@
 # Core Special Interest Group
 
 The purpose of this group is to:
-* publicly represent Kyma
-* facilitate the collaboration with external contributors
+* Publicly represent Kyma
+* Facilitate the collaboration with external contributors
 
 ## Responsibilities
 
