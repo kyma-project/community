@@ -4,6 +4,9 @@
 # Owners of the manifesto-app folder
 /manifesto-app/ @akucharska @michal-hudy @pkosiec @mjasinski5 @derberg @magicmatatjahu
 
+# Owners of the sig-core folder
+/sig-and-wg/sig-core/ @PK85 @mszostok @Abd4llA @derberg
+
 # Owners of all .md files in the repository
 *.md @kazydek @klaudiagrz @tomekpapiernik @dpolitesap
 

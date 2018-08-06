@@ -48,16 +48,14 @@ SIG Core members nominate leaders who organize, coordinate, and moderate the SIG
 
 ## Leaders
 
-> **NOTE:** This information is not yet available.
-
-* [{First name Last name}](https://github.com/{github id}})
-* [{First name Last name}](https://github.com/{github id}})
+* Piotr Kopczynski (**[@PK85](https://github.com/PK85)**)
+* Mateusz Szostok (**[@mszostok](https://github.com/mszostok)**)
+* Ahmed Abdalla (**[@Abd4llA](https://github.com/Abd4llA)**)
+* Lukasz Gornicki (**[@derberg](https://github.com/derberg)**)
 
 ## Members
 
-> **NOTE:** This information is not yet available.
-
-* [Team {GitHub team name}](https://github.com/orgs/kyma-project/teams/{team-name}/members)
+* sig-core (**[@sig-core](https://github.com/orgs/kyma-project/teams/sig-core/members)**)
 
 ## Owned repositories
 
