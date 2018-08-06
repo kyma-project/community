@@ -8,8 +8,10 @@ Before you proceed, review the [Code of Conduct](CODE_OF_CONDUCT.md) and contact
 
 Go directly to the section that you are most interested in:
 - [Product information](#product-information)
-- [Communication](#communication)
 - [Contribution](#contribution)
+  - [Process](#process)
+  - [Issues](#issues)
+  - [Collaboration](#collaboration)
 - [Guidelines and templates](#guidelines-and-templates)
 - [Security](#security)
 
@@ -36,7 +38,7 @@ All contributors follow the recommended [Git workflow](git-workflow.md) that rel
 To request a feature or report a bug, go to the given repository's issue tracker and raise an issue using one of the available templates.
 The owners of the repository will review your issue and provide you with their feedback. If you are not certain which repository your issue refers to, open it in the `kyma` repository.
 
-## Collaboration
+### Collaboration
 
 Feel invited to join the public [SIG Core meetings](https://kyma-community.slack.com/messages/CBP7LKRPS/) where you can contribute to the Kyma development and help us drive it forward. Contact the Kyma team directly on [Slack](https://kyma-community.slack.com/messages/CBLBESMST/) to exchange ideas, ask questions, receive hints and tips, and extend your experience with Kyma.
 
