@@ -37,6 +37,6 @@ podTemplate(label: label) {
 
 def validateLinks(command) {
     workDir = pwd()
-    whiteList = "github.com,localhost,pdf"
+    whiteList = "github.com,localhost,pdf,linkedin.com"
     sh "docker run --rm -v $workDir:/mnt:ro dkhamsing/awesome_bot --allow-dupe --allow-redirect --skip-save-results --allow-ssl --white-list $whiteList `$command`"
 }
