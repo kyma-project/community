@@ -132,9 +132,9 @@ Create a pull request from the branch of your forked repository to the `master` 
 
 > **NOTE:** On the pull request, select the [**Allow edits from maintainers**](https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) option to allow upstream repository maintainers and users with push access to the upstream repository to commit to your forked branch.
 
-In each pull request, include a description or a reference to a detailed description of the steps that the maintainer goes through to check if the pull request works and does not break any other functionality.
+Following the pull request template, include a description about the changes you implemented, reference related issues (for example, `Resolves #123`, `Fixes #43`, or `See also #33`), add special notes for your reviewer. If the changes are user-facing, please also add appropriate [release notes](https://github.com/kyma-project/community/release-notes.md).
 
-Subject line:
+In the subject line for the pull request:
 - Include a short description of changes made.
 - Limit the line to 50 characters.
 - Capitalize it.
@@ -142,14 +142,13 @@ Subject line:
 - Use the imperative mood.
 - Separate it from the body with a blank line.
 
-Pull request body:
+For the description, please pay attention to these hints:
 - If you made multiple changes and the changes refer to different files, provide more details in the commit body.
 - Wrap each body line at 72 characters.
 - Use the body to explain what and why, rather than how.
 - List any side effects or other unintuitive consequences of this change.
 - Separate paragraphs with blank lines.
 - Use bullet points for a list of items.
-- Put references to any related issues at the end. For example, `Resolves #123`, `Fixes #43`, or `See also #33`.
 
 > **NOTE:** Steps 5 and 6 are optional. Follow them if you have merge conflicts on your pull request.
 
