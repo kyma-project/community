@@ -26,7 +26,7 @@ As a Kyma contributor, you must accept the Kyma project's licenses and submit th
 Employees of a company who contribute code need to submit one company agreement in addition to the individual agreement above. This is mainly for the protection of the contributing employees.
 
 An authorized company representative needs to download, fill in, and print
-the [Corporate Contributor License Agreement](https://github.com/gardener/documentation/blob/master/doc/cla/SAP%20Corporate%20Contributor%20License%20Agreement%20(5-26-15).pdf) form. Scan it and send it to [info@kyma-project.io](mailto:info@kyma-project.io). The form contains a list of employees who are authorized to contribute on behalf of your company. To report any changes on the list, contact [info@kyma-project.io](mailto:info@kyma-project.io).
+the [Corporate Contributor License Agreement](https://github.com/kyma-project/community/blob/master/docs/cla/SAP%20Corporate%20Contributor%20License%20Agreement%20(5-26-15).pdf) form. Scan it and send it to [info@kyma-project.io](mailto:info@kyma-project.io). The form contains a list of employees who are authorized to contribute on behalf of your company. To report any changes on the list, contact [info@kyma-project.io](mailto:info@kyma-project.io).
 
 ## Contribution rules
 
