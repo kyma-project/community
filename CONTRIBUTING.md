@@ -55,10 +55,7 @@ This section explains how you can contribute code or content to any Kyma reposit
 
 To contribute code or content to a given Kyma repository, follow these steps:
 
-1. Make sure that the change is valid and approved.
-
-> **NOTE:** If you are an external contributor, open a GitHub issue before you make a contribution.
-
+1. Make sure that the change is valid and approved. If you are an external contributor, **open a GitHub issue** before you make a contribution.
 2. Fork the Kyma repository that you want to contribute to.
 3. Clone it locally, add a remote upstream repository for the original repository, and set up the `master` branch to track the remote `master` branch from the upstream repository. See the [git-workflow](git-workflow.md) document for details on fork configuration.
 4. Create a new branch out of the local `master` branch of the forked repository.
