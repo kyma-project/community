@@ -1,0 +1,6 @@
+white-list-internal: ["mailto:security@kyma-project.io"]
+black-list: ["/templates/","-template.md"]
+files:
+  - path: "./community/guidelines/content-guidelines/formatting-and-style.md"
+    config:
+      white-list-internal: ["./deployment.yaml"]
