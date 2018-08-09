@@ -41,7 +41,6 @@ SIG Core members nominate leaders who organize, coordinate, and moderate the SIG
 
 > **NOTE:**  Time and frequency is not yet available.
 
-* [{day name} at {hour}:{minutes} {time zone}]({Put a link to your calendar meeting ICS file. Attach it to the Slack channel and pin it to the channel.})
 * [Slack](https://kyma-community.slack.com/messages/CBP7LKRPS)
 * Frequency: {daily | weekly | bi-weekly | monthly}
 * [Meeting notes and agenda](meeting-notes.md)
