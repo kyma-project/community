@@ -1,12 +1,12 @@
 #!/usr/bin/env groovy
 def label = "kyma-${UUID.randomUUID().toString()}"
-def isMaster = env.GIT_BRANCH == 'master'
+def isMaster = env.BRANCH_NAME == 'master'
 def repositoryName = "community"
 
 echo """
 ********************************
 Job started with the following parameters:
-GIT_BRANCH=${env.BRANCH_NAME}
+BRANCH_NAME=${env.BRANCH_NAME}
 TRIGGER_FULL_VALIDATION=${params.TRIGGER_FULL_VALIDATION}
 ********************************
 """
