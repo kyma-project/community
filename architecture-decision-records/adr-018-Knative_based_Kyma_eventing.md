@@ -23,37 +23,6 @@ The architecture is as follows:
 
 ![Architecture](../assets/event-bus.png)
 
-                                +------------------+     +-----------------+
-                                |                  |     |                 |
-                                |  EventActivation |     |  Subscription   <---------+
-                                |                  |     |                 |         |
-                                +---------+--------+     +-----------+-----+         |
-                                          |                          |               |
-                                          |                          |               |
-                +---------------+         |    +---------------+     |               |
-                |               |     Read|    |               |     |Read/Update    |
-                |               |         |    |               |     |               |
-                |               |         |    |               |     |               |
-                |    Publish    |         +---->  Events Bus   <-----+               |
-                |               |              |  Controller   |                     |Create/Delete
-                |               |              |               |                     |
-                +--------+------+              +--+-------+----+                     |
-                         |                        |       |Create/Delete             |
-                         |Publish   Create/Delete |       |                          |
-                         |                        |       +-----+                    |
-                     +---v------------------------v----+        |             +------+-----+
-                     |                                 |        |             |            |
-                     |                                 +--------v-------------+  Subscriber|
-                     |         KN-Channel              |    KN-Subscription   |            |
-                     |                                 +----------------------+            |
-                     |                                 |                      +------------+
-              +------+---------------------------------+--------+
-              |                                                 |
-              |                                                 |
-              |                 Knative Bus                     |
-              |                                                 |
-              +-------------------------------------------------+
-
 ### NATS Streaming
 
 Knative provides an abstraction of **The Bus** which is a pluggable component of Knative Eventing that have different implementations backed up by a certain messaging store, for example Kafka Bus, or GCP PubSub Bus.
