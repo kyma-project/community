@@ -1,6 +1,6 @@
 # ADR 018: Knative-based Kyma Eventing 
 
-Created on 2018-08-19 10 Ahmed Abdalla (Abd4llA).
+Created on 2018-08-19 by Ahmed Abdalla (@Abd4llA).
 
 ## Context
 
