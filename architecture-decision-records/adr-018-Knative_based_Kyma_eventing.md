@@ -21,6 +21,7 @@ The decisions is to provide a solution that abstracts the Knative Eventing conce
 
 The architecture is as follows: 
 
+![Architecture](../assets/event-bus.png)
 
                                 +------------------+     +-----------------+
                                 |                  |     |                 |
