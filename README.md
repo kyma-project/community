@@ -40,7 +40,7 @@ The owners of the repository will review your issue and provide you with their f
 
 ### Collaboration
 
-Feel invited to join the public [SIG Core meetings](https://kyma-community.slack.com/messages/CBP7LKRPS/) where you can contribute to the Kyma development and help us drive it forward. Contact the Kyma team directly on [Slack](https://kyma-community.slack.com/messages/CBLBESMST/) to exchange ideas, ask questions, receive hints and tips, and extend your experience with Kyma.
+Feel invited to join the public [SIG Core meetings](https://kyma-community.slack.com/messages/CBP7LKRPS/) where you can contribute to the Kyma development and help us drive it forward. Contact the Kyma team directly on [Slack](https://join.slack.com/t/kyma-community/shared_invite/enQtNDAwNzE4Mjk2NDE3LTJhOTlmZjM5YzkwNmEzNmY3ZjE2MTU2OTMxOGE4ZDM0MmU4ZWRkZGJiODgzNmRmMTYxMDYwNjZiMDAwMTA2OWM) to exchange ideas, ask questions, receive hints and tips, and extend your experience with Kyma.
 
 ## Guidelines and templates
 
