@@ -4,7 +4,7 @@ Created on 2018-08-19 by Ahmed Abdalla (@Abd4llA).
 
 ## Context
 
-Based on the decision of building Kyma on top of Knative and along the effort to reuse as much of knative functionality as possible, the eventing area shines as a good area for alignment. That is why a decision was made to have Kyma leverage as much of knative eventing as possible.This is a an architecture decision on how to achieve that target.
+Based on the decision of building Kyma on top of Knative, and along the effort to reuse as much of Knative functionality as possible, the eventing area shines as a good area for alignment. That is why a decision was made to have Kyma leverage as much of Knative Eventing as possible. This is a an architecture decision on how to achieve that target.
 
 The assumptions are as follows:
 1. Base Kyma on Knative.
@@ -36,7 +36,7 @@ The decisions are to:
 
 ## Status
 
-Proposed
+Proposed (10.08.2018)
 
 ## Consequences
 
