@@ -36,7 +36,7 @@ The decisions are to:
 
 ## Status
 
-Proposed (10.08.2018)
+Proposed on 2018.08.10
 
 ## Consequences
 
