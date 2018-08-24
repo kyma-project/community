@@ -31,12 +31,12 @@ The decisions are to:
 
 1. Implement a production-ready Knative Bus `NATS Streaming`.
 2. Provide `NATS Streaming` operator that provides `NATS Streaming` clusters which satisfy all production needs.
-3. Implement Knative Bus `Azure Service Bus Messaging` as a plan B.
-4. Contribute both implementations to `Knative Eventing`.
+3. Contribute both implementations to `Knative Eventing`.
+4. `Google Cloud Pub Sub` knative bus implementation is plan B bus implementation.
 
 ## Status
 
-Proposed on 2018-08-10.
+Proposed on 2018-08-19.
 
 ## Consequences
 
