@@ -81,7 +81,7 @@ The assumption is that the audience is familiar with the following terms and doe
 
 ## The main purpose of instructions
 
-One of the main Kyma principles is that CLI is, metaphorically speaking, the first-level citizen. Therefore, the documentation's main focus is to explain concepts and provide step-by-step instructions using CLI commands instead of UI screenshots. The only exception from the rule applies to components that cannot be managed through the CLI and screenshots are necessary to explain specific functionalities.
+One of the main Kyma principles is that CLI is, metaphorically speaking, the first-level citizen. Therefore, the documentation's main focus is to explain concepts and provide step-by-step instructions using CLI commands instead of Console UI screenshots. The only exception from the rule applies to components that cannot be managed through the CLI and screenshots are necessary to explain specific functionalities.
 
 ## Quality
 
