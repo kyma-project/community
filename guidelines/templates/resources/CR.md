@@ -8,11 +8,10 @@ type: Custom Resource
 > **NOTE:** Blockquotes in this document provide instructions. Remove them from the final document.
 
 
-
-The {CRD name} Custom Resource Definition (CRD) is a detailed description of the kind of data and the format used to {rest of the CRD description}. To get the up-to-date CRD and show the output in the yaml format, run this command:
+The {CRD full name with the domain} Custom Resource Definition (CRD) is a detailed description of the kind of data and the format used to {rest of the CRD description}. To get the up-to-date CRD and show the output in the yaml format, run this command:
 
 ```
-kubectl get crd {rest of the command}
+kubectl get crd {CRD full name with the domain} -o yaml
 ```
 
 ## Sample Custom Resource
@@ -29,9 +28,9 @@ metadata:
 
 This table analyses the elements of the sample CR and the information it contains:
 
+> In the table, describe CR's fields starting with the **metadata.name**.
+
 | Field   |      Mandatory?      |  Description |
 |:----------:|:-------------:|:------|
-| **apiVersion** |  **YES** | Defined basing on the **group** and **version** fields of the CRD **spec** section. |
-| **kind** |    **YES**   | Defined basing on the **names: kind** field of the CRD **spec** section. |
 | **metadata.name** |    **YES**   | Specifies the name of the CR. |
 | **{another_field}** |    **{YES/NO}**   | {Field description} |
