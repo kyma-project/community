@@ -79,7 +79,7 @@ If you find a bug to report or you want to propose a new feature, go to the GitH
 
 > **NOTE:** The repository maintainers handle only well-documented, valid issues that have not been reported yet. Before you create one, check if there are no duplicates. Provide all details and include examples. When you report a bug, list the exact steps necessary to reproduce it.
 
-After you report an issue, the maintainers of a given repository either ask for more details required to work with the issue you reported or close the issue if it is not valid or cannot be fixed at the moment.
+See the [issues-workflow](issues-workflow.md) document for details on issues triage and processing workflow.
 
 ## Maintenance rules
 
