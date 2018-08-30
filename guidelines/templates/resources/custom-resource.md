@@ -1,5 +1,5 @@
 ---
-title: {CRD name}
+title: CRD name
 type: Custom Resource
 ---
 
