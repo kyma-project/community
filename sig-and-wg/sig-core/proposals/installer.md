@@ -32,7 +32,7 @@ All things considered, the installation process lacks coherence and leaves littl
 ## Suggested solution
 
 - Installer is a component that handles installation, update, and deletion of Helm charts.
-- Installer no longer supports Bash scripts.
+- Installer no longer allows Bash scripts as a method of installing Kyma components. Bash scripts used to trigger the installation and prepare the cluster remain unaffected.
 - In order to increase security, Docker container used to run Installer does not feature Bash at all.
 - Installer is provided with a descriptive and comprehensible list of Kyma components, specified in the `kyma-installation` custom resource.
 - The list is declarative. It is for the user to decide which components will be installed.
