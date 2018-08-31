@@ -1,5 +1,5 @@
 ---
-title: {CRD kind}
+title: {CR kind}
 type: Custom Resource
 ---
 
