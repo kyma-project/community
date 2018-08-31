@@ -1,5 +1,5 @@
 ---
-title: {CRD singular spec name}
+title: {CRD kind}
 type: Custom Resource
 ---
 
