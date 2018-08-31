@@ -34,7 +34,7 @@ metadata:
 This table lists all the possible parameters of a given resource together with their description:
 
 
-| Parameter   |      Mandatory?      | Description |
+| Parameter   |      Mandatory?      |  Description |
 |:----------:|:-------------:|:------|
 | **metadata.name** |    **YES**   | Specifies the name of the CR. |
 | **{another_parameter}** |    **{YES/NO}**   | {Parameter description} |
