@@ -1,9 +1,9 @@
 ---
-title: {CR kind}
+title: {CRD kind}
 type: Custom Resource
 ---
 
-> This document is a ready-to-use template for a Custom Resource (CR) document that provides a sample Custom Resource and description of its elements. Additionally, the document points to the Custom Resource Definition (CRD) used to create CRs of the given kind. For reference, see the existing documents for the [Installation](https://github.com/kyma-project/kyma/blob/master/docs/kyma/docs/040-installation-custom-resource.md) and the [Api](https://github.com/kyma-project/kyma/blob/master/docs/api-gateway/docs/011-api-custom-resource.md) CRs.
+> This document is a ready-to-use template for a custom resource (CR) document that provides a sample custom resource and description of its elements. Additionally, the document points to the Custom Resource Definition (CRD) used to create CRs of the given kind. For reference, see the existing documents for the [Installation](https://github.com/kyma-project/kyma/blob/master/docs/kyma/docs/040-installation-custom-resource.md) and the [Api](https://github.com/kyma-project/kyma/blob/master/docs/api-gateway/docs/011-api-custom-resource.md) CRs.
 
 > **NOTE:** Blockquotes in this document provide instructions. Remove them from the final document.
 
@@ -14,10 +14,12 @@ The {CRD name} Custom Resource Definition (CRD) is a detailed description of the
 kubectl get crd {CRD name} -o yaml
 ```
 
-## Sample Custom Resource
+## Sample custom resource
 
-> In this section, provide an example Custom Resource created based on the CRD described in the introductory section. Describe the functionality of the CR and highlight all of the optional elements and the way they are utilized.
-Provide the Custom Resource code sample in the ready-to-use format.
+> In this section, provide an example custom resource created based on the CRD described in the introductory section. Describe the functionality of the CR and highlight all of the optional elements and the way they are utilized.
+Provide the custom resource code sample in the ready-to-use format.
+
+This is a sample resource that {description of what the example presents}.
 
 ```
 apiVersion:
@@ -27,11 +29,12 @@ metadata:
 {another_field}:
 ```
 
-This table analyses the elements of the sample CR and the information it contains:
+## Custom resource parameters
 
-> In the table, describe CR's fields starting with the **metadata.name**.
+This table lists all the possible parameters of a given resource together with their description:
 
-| Field   |      Mandatory?      |  Description |
+
+| Parameter   |      Mandatory?      | Description |
 |:----------:|:-------------:|:------|
 | **metadata.name** |    **YES**   | Specifies the name of the CR. |
-| **{another_field}** |    **{YES/NO}**   | {Field description} |
+| **{another_parameter}** |    **{YES/NO}**   | {Parameter description} |
