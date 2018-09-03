@@ -1,6 +1,23 @@
+white-list-external: ["localhost", "kyma.local"]
 white-list-internal: ["mailto:security@kyma-project.io"]
 black-list: ["/templates/","-template.md"]
+timeout: 60
+request-repeats: 5
 files:
   - path: "./community/guidelines/content-guidelines/formatting-and-style.md"
     config:
       white-list-internal: ["./deployment.yaml"]
+  - path: "./community/architecture-decision-records/adr-010-JWT_authentication.md"
+    config:
+      #milv treat !topic/istio-security/guJV0J9A2VQ like a anchor
+      white-list-external: ["https://groups.google.com/forum/#!topic/istio-security/guJV0J9A2VQ"]
+  - path: "./community/guidelines/releases/release-process.md"
+    config:
+      white-list-external: ["https://github.com/kyma-project/{repositoryname}/releases"]
+  - path: "./community/git-workflow.md"
+    config:
+      white-list-external: ["https://github.com/{your-username}/{your-fork-name}.git"]
+  - path: "./community/CONTRIBUTING.md"
+    config:
+      #milv doesn't support parenthesis in parenthesis in .md links yet
+      white-list-external: ["https://github.com/kyma-project/community/blob/master/docs/cla/SAP%20Corporate%20Contributor%20License%20Agreement%20(5-26-15"]
