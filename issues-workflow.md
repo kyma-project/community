@@ -1,59 +1,64 @@
 ## Overview
 
-In Kyma project we use GitHub Issues for tracking development process and [ZenHub](https://zenhub.com) to manage them on a team and sprint level and to have a clear overview of the work across all Kyma repositories. 
+In the Kyma project, we use GitHub Issues for tracking development process, and [ZenHub](https://zenhub.com) to manage the issues on a team and sprint level and to have a clear overview of the work across all Kyma repositories.
 
-This document explains how the issues/pull requests workflow is organized in Kyma project:
-- How issues triage is organized
-- What tools are used in the workflow on what stage
+This document explains:
+- how the issues and pull requests workflows are organized in the Kyma project
+- how issues triage is organized
+- which tools are used on every stage of the workflow
 
 ## Used labels
 
 Our statement is to:
-* Use default labels provided by GitHub
-* Introduce new labels only if it is really needed
+* use default labels provided by GitHub
+* introduce new labels only if necessary
 
 ### Default labels
+
+The default labels provided by GitHub are as follows:
 
 ![](assets/default_labels.png)
 
 ### Custom labels
 
-* `WIP` - to indicate that issue is already in progress,
-* `critical` - to indicate the priority,
-* `area/{CAPABILITY_NAME}` - to indicate what capabilities are related to a given issue. More then one `area` label can be assigned to a single issue
+Here are the custom labels introduced by the Kyma team:
+
+* `WIP` indicates that an issue is already in progress.
+* `critical` indicates the top-priority of a given issue.
+* `area/{CAPABILITY_NAME}` indicates which capabilities are related to a given issue. You can assign more than one `area` label an issue.
 
 ## Issues triage
 
-Below flow diagram explains how issues triage is performed. 
+Here is the flow diagram explaining how issues triage is performed:
 
 ![](assets/kyma-triage.svg)
 
-There are different stages of the triage:
+There are five different stages of the triage:
 
 | Stage | Description | Labels |
 |--------- |----------|---------|
-| Validity | Asses the validity of the issue, if it can be taken for further triage and proper classification. | invalid, duplicate, wontfix, question |
-| Kind | We need to know related issue is a new feature or maybe a bug.| enhancement, bug |
-| Help | During triage we might identify issues that do not have high priority and could be taken by the community | help wanted, good first issue|
-| Priority | Before issue is taken into backlog of a specific team and properly prioritized in a sprint, it must be clear in the general Kyma backlog which issues are most critical and should be taken as first | critical |
-| Area | This labels clarify which capabilities are involved in a given issue. | area/{CAPABILITY_NAME} |
+| Validity | Asses the validity of the issue (whether it is taken for the further triage and proper classification). | invalid, duplicate, wontfix, question |
+| Kind | Differentiate whether the related issue is a new feature or a bug. | enhancement, bug |
+| Help | Identify issues that do not have high priority and can be taken by the community. | help wanted, good first issue|
+| Priority | Prioritize issues in the general Kyma backlog to select those which are the most critical and should be taken as first. | critical |
+| Area | Clarify which capabilities are involved in a given issue. | area/{CAPABILITY_NAME} |
 
 ## Backlog
 
-Kyma backlog contains issues that went through the triage, are not closed, and have labels added (except of labels `question`). Backlog prioritization is realized by assigning issues to Kyma milestones (ZenHub Release) and assigning critical label. Critical issues assigned to the current milestone have the highest priority.
+The Kyma backlog contains issues that went through the triage, are not closed, and have labels added (except from the issues with `question` label). Backlog prioritization is realized by assigning issues to Kyma milestones (ZenHub Release) and assigning the `critical` label. Critical issues assigned to the current milestone have the highest priority.
 
->**NOTE** From the main Kyma backlog issues are taken by different teams that are responsible for specific areas of the Kyma. This is how we work on Kyma at the moment and this is why we started using GitHub milestone as an attribute to distinguish which team works on a specific issue. Thanks to this approach we can easily work in team sprints using ZenHub board. We are aware that our teams names are criptic for ya but unfortunately at the moment we were not able to come up with any better solution. If you have better ideas, please give us feedback. Sorry for the inconvenience. 
+>**NOTE** Issues are taken from the main Kyma backlog by different teams that are responsible for specific areas of Kyma. This is the actual workflow in Kyma which allows distinguishing which team works on a specific issue. This approach allows easy work in team sprints using ZenHub board. We are aware that our teams names are criptic for ya but unfortunately at the moment we were not able to come up with any better solution. If you have better ideas, please give us feedback. Sorry for the inconvenience. 
 
 ### Team sprints
-Team Sprint is modeled as a GitHub milestone named with the following pattern: `{TEAM_NAME} Sprint {NUMBER}`. During the planing team selects issues from the backlog considering:
+Team Sprint is modeled as a GitHub milestone named with the following pattern: `{TEAM_NAME} Sprint {NUMBER}`. During the planing a team selects issues from the backlog considering:
 - priority (high priority first)
 - area (default capability of the team first)
 - dependencies (unblock others)
 
-Developers mark issues with WIP label when they start work on it. When the work is done issue is closed.
+Contributors mark issues with WIP with the `WIP` label when they start working on it. When the work is done, the issue is closed.
 
 ### Team backlog (optional)
-If the team wants to keep team backlog (assign issues they want to work on later) they can assign it to the Github milestone with no due date named with following pattern `{TEAM_NAME} backlog`
+If any team wants to keep team backlog (assign issues they want to work on later) they can assign it to the Github milestone with no due date named with following pattern `{TEAM_NAME} backlog`.
 
 ## ZenHub links
 
