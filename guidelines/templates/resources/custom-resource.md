@@ -8,7 +8,7 @@ type: Custom Resource
 > **NOTE:** Blockquotes in this document provide instructions. Remove them from the final document.
 
 
-The {CRD name} Custom Resource Definition (CRD) is a detailed description of the kind of data and the format used to {rest of the CRD description}. To get the up-to-date CRD and show the output in the yaml format, run this command:
+The {CRD name} Custom Resource Definition (CRD) is a detailed description of the kind of data and the format used to {provide the CRD description}. To get the up-to-date CRD and show the output in the yaml format, run this command:
 
 ```
 kubectl get crd {CRD name} -o yaml
@@ -19,7 +19,7 @@ kubectl get crd {CRD name} -o yaml
 > In this section, provide an example custom resource created based on the CRD described in the introductory section. Describe the functionality of the CR and highlight all of the optional elements and the way they are utilized.
 Provide the custom resource code sample in a ready-to-use format.
 
-This is a sample resource that {description of what the example presents}.
+This is a sample resource that {provide a description of what the example presents}.
 
 ```
 apiVersion:
@@ -31,7 +31,7 @@ metadata:
 
 ## Custom resource parameters
 
-This table lists all the possible parameters of a given resource together with their description:
+This table lists all the possible parameters of a given resource together with their descriptions:
 
 
 | Parameter   |      Mandatory?      |  Description |
