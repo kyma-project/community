@@ -17,7 +17,7 @@ kubectl get crd {CRD name} -o yaml
 ## Sample custom resource
 
 > In this section, provide an example custom resource created based on the CRD described in the introductory section. Describe the functionality of the CR and highlight all of the optional elements and the way they are utilized.
-Provide the custom resource code sample in the ready-to-use format.
+Provide the custom resource code sample in a ready-to-use format.
 
 This is a sample resource that {description of what the example presents}.
 
