@@ -26,10 +26,8 @@ Example API calls with a OData API or a Rest API.
 ...
 "api": {
         "targetUrl": "https://example/odata",
-        "type" : "odata"
-        "spec": {
-            "swagger": "2.0",
-            ...
+        "type" : "odata",
+        "specUrl: : "https://example/odata/$metadata"
 ```
 
 ```json
