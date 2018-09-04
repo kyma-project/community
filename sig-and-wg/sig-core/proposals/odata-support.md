@@ -15,7 +15,7 @@ The Metadata service will be extended with possibility to register OData API:
 - Current registration of API will be the same with inlined API specification (inline version has higher priority).
 - Registration of API with `specUrl` will be added. If spec is not given, the API definition will be downloaded from specUrl.
 - API registration will have a additional optional field type, where user will be able to mark API as OData one. Type can be stored in tags field which are already part of the RE CRD.
-- If the type is not provided and there is no `spec` or `specUrl` given, the Metadata service will do a lookup to the API URL/$metadata and automatically set the API type to OData one.
+- If the type is not provided and there is no `spec` or `specUrl` given, the Metadata service will do a lookup to the API URL/$metadata and automatically set the API type to OData one. OData registration will not have specification fields.
 - OData specification will be stored in Minio.
 
 ### API snippet
@@ -27,7 +27,6 @@ Example API calls with a OData API or a Rest API.
 "api": {
         "targetUrl": "https://example/odata",
         "type" : "odata",
-        "specUrl: : "https://example/odata/$metadata"
 ```
 
 ```json
@@ -87,7 +86,7 @@ The client certificate as PEM will be registered as base64 encoded string.
 "api": {
         "targetUrl": "https://electronics.playground.cluster.kyma.cx/rest/v2",
         "credentials": {
-            "pkcs": "PEM certificate base64 encoded"
+            "pem": "PEM certificate base64 encoded"
         },
         ...
 ```
