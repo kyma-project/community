@@ -1,5 +1,17 @@
 # Application Connector support for OData services
 
+Created on 2018-09-03 by Lukasz Szymik (@lszymik)
+
+## Status
+
+Proposed on 2018-09-03
+
+## Motivation
+
+The Application Connector is supporting only Rest API with OAuth tokens. The other authentication and support for OData must be added.
+
+## Goal
+
 The Application Connector must support registration and proxying to the OData APIs.
 That is description how we would like to integrate OData with Application Connector.
 
@@ -8,7 +20,9 @@ The following items must be added:
 - Registration of OData API in the Metadata API
 - Proxying to OData API with different authentication mechanisms
 
-## API Registration
+## Suggested solution
+
+### API Registration
 
 The Metadata service will be extended with the possibility to register OData API. Therefore, the following changes will be introduced:
 
@@ -20,7 +34,7 @@ The Metadata service will be extended with the possibility to register OData API
 - OData specification will be stored in Minio.
 - Implementation must not introduce any breaking changes for already implemented integrations.
 
-### API snippet
+#### API snippet
 
 Example API calls with a OData API or a Rest API.
 
@@ -39,18 +53,18 @@ Example API calls with a OData API or a Rest API.
         ...
 ```
 
-## OData Specification in Service Catalog
+### OData Specification in Service Catalog
 
 The Service Catalog UI must be extended with possibility to display OData API specification.
 
-## Additional authentication
+### Additional authentication
 
 The additional support for a different authentication will be added to the Application Connector:
 
 - Client certificates (pkcs#12 (PFX), PEM)
 - Basic auth (for a development mode only, not production)
 
-### OAuth token
+#### OAuth token
 
 The OAuth authentication configuration will be the same.
 
@@ -66,7 +80,7 @@ The OAuth authentication configuration will be the same.
         },
 ```
 
-### Client certificate as PKCS
+#### Client certificate as PKCS
 
 The client certificate as PKCS will be registered as base64 encoded string.
 
@@ -79,7 +93,7 @@ The client certificate as PKCS will be registered as base64 encoded string.
         ...
 ```
 
-### Client certificate as PEM file
+#### Client certificate as PEM file
 
 The client certificate as PEM will be registered as base64 encoded string.
 
@@ -92,7 +106,7 @@ The client certificate as PEM will be registered as base64 encoded string.
         ...
 ```
 
-### Basic auth
+#### Basic auth
 
 The basic auth credentials will be provided as `username` and `password` fields. Pretty similar to the OAuth case.
 
