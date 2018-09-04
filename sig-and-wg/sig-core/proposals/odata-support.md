@@ -1,7 +1,7 @@
 # Application Connector support for OData services
 
 The Application Connector must support registration and proxying to the OData APIs.
-This is description how we would like to integrate OData with Application Connector.
+That is description how we would like to integrate OData with Application Connector.
 
 The following items must be added:
 
@@ -10,13 +10,15 @@ The following items must be added:
 
 ## API Registration
 
-The Metadata service will be extended with possibility to register OData API:
+The Metadata service will be extended with the possibility to register OData API. Therefore, the following changes will be introduced:
 
-- Current registration of API will be the same with inlined API specification (inline version has higher priority).
-- Registration of API with `specUrl` will be added. If spec is not given, the API definition will be downloaded from specUrl.
-- API registration will have a additional optional field type, where user will be able to mark API as OData one. Type can be stored in tags field which are already part of the RE CRD.
+- Current registration of API will be the same with inlined API specification (an in-line version has higher priority).
+- Registration of API with `specUrl` will be added. If `spec` fields is not given, the API definition will be downloaded from `specUrl`.
+- API registration will have an additional optional field type, where a user will be able to mark API as OData one or classic REST API. Type can be stored in tags field which is already part of the RE CRD.
+- if the type is provided then the API specification will be fetched from `specUrl` or an in-line version will be used for REST and fetching the $metadata will be used for OData API
 - If the type is not provided and there is no `spec` or `specUrl` given, the Metadata service will do a lookup to the API URL/$metadata and automatically set the API type to OData one. OData registration will not have specification fields.
 - OData specification will be stored in Minio.
+- Implementation must not introduce any breaking changes for already implemented integrations.
 
 ### API snippet
 
@@ -33,7 +35,6 @@ Example API calls with a OData API or a Rest API.
 ...
 "api": {
         "targetUrl": "https://example.com/rest/v2",
-        "type" : "rest"
         "specUrl": "https://example.com/rest/v2/apiSpec.json"
         ...
 ```
