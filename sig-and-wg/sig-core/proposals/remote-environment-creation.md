@@ -40,16 +40,14 @@ The approach is very limited and might not be sufficient for some users and diff
 
 ## Suggested solution
 
-The suggested solution is to make it possible to manipulate Remote Environments for Kyma UI as well as command line and also replace `source` fields with cutom labels provided by the user.
+The suggested solution is to make it possible to manipulate Remote Environments for Kyma UI as well as command line and also replace `source` fields with custom labels provided by the user. The deployment will be handled by the Remote Environment Controller so the user will not need to use Helm directly.
 
 The following fields would be present in Remote Environment:
 - name
 - desription
 - labels
-    - environment
-    - type
-    - customLabel
-    - anotherCustomLabel
+    - Key1:Value1
+    - Key2:Value2
     - ...
 
 Users could provide any number of custom labels which would make it easier to distinguish between connected solutions and possibly allow easier browsing and searching through them.
