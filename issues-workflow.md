@@ -26,7 +26,7 @@ Here are the custom labels introduced by the Kyma team:
 * `WIP` indicates that an issue is already in progress.
 * `priority/critical` indicates the top-priority of a given issue.
 * `area/{CAPABILITY_NAME}` indicates which capabilities are related to a given issue. You can assign more than one `area` label an issue.
-* `security/{SCORE}` indicates security issue basing on [CVSSv3](https://www.first.org/cvss/calculator/3.0) security rating
+* `security/{SCORE}` indicates security issue basing on [CVSSv3](https://www.first.org/cvss/calculator/3.0) security rating.
 
 ## Issues triage
 
