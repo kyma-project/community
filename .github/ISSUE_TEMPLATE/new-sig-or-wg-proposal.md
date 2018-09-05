@@ -3,12 +3,11 @@ name: SIG or WG proposal
 about: Propose a new SIG or WG
 ---
 
-Confirm these statements before you submit the issue:
-
-- [ ] I have searched other groups for relevance of my topics.
-- [ ] I know the governance model.
-- [ ] I already have at least five candidates for this group.
----
+<!-- Thank you for your contribution. Before you submit the issue:
+1. Search other groups for relevance of your topics.
+2. Read the governance model (https://github.com/kyma-project/community/blob/master/governance.md).
+3. Collect at least five candidates for this group.
+-->
 
 **Proposal type**
 <!-- Remove the type that does not fit. -->
@@ -65,10 +64,10 @@ Describe the methods of performing and documenting the regular self-assessment b
 
 **Assessment frequency**
 <!-- Define how often the group evaluates its work. Remove the type that does not fit. -->
-* monthly
-* quarterly
-* biannually
-* annually
+* Monthly
+* Quarterly
+* Biannually
+* Annually
 
 **Exit criteria**
 <!-- List the conditions and risks that can lead to dissolving the group. Be specific and do not make general statements. -->
