@@ -3,29 +3,25 @@
 The purpose of this group is to:
 * Publicly represent Kyma
 * Facilitate the collaboration with external contributors
-
-Responsibilities
-
-The SIG Core:
-* Communicates the Kyma project vision and roadmap to the community
-* Represents the Kyma contributors and is the main contribution contact for Kyma
-* Gauges interest, requests the community feedback, and ensures it is addressed
-* Owns all code repositories in the Kyma organization except for the `community` repository
-* Showcases proposals to the community and collects the feedback to those proposals to assist the
+* Communicate the Kyma project vision and roadmap to the community
+* Represent the Kyma contributors
+* Be the main contribution contact for Kyma
+* Gauge interest, request the community feedback, and ensures it is addressed
+* Own all code repositories in the Kyma organization except for the `community` repository
+* Showcase proposals to the community and collects the feedback to those proposals to assist the
 decision-making process
-* Represents its members and the Kyma community in the Council meetings
+* Represent its members and the Kyma community in the Council meetings
 
 ## Contact
 
 * [Slack](https://kyma-community.slack.com/messages/CBP7LKRPS)
+* [Google groups](https://groups.google.com/forum/#!forum/kyma-project)
 * [Open community issues and pull requests](https://github.com/kyma-project/community/labels/sig%2Fcore)
 
 ## Meetings
 
-> **NOTE:**  Time and frequency is not yet available.
-
 * [Zoom](https://zoom.us/j/346707320)
-* Frequency: {daily | weekly | bi-weekly | monthly}
+* Frequency: `To be decided on first meeting`
 * [Meeting notes and agenda](https://docs.google.com/document/d/1vWleTon7sJIk0teee4SoVezS4mR3K8TlkvXkgLJwRD8)
 
 ## Leaders
