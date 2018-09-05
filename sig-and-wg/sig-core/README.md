@@ -15,7 +15,7 @@ decision-making process
 ## Contact
 
 * [Slack](https://kyma-community.slack.com/messages/CBP7LKRPS)
-* [Google groups](https://groups.google.com/forum/#!forum/kyma-project)
+* [Google group](https://groups.google.com/forum/#!forum/kyma-sig-core)
 * [Open community issues and pull requests](https://github.com/kyma-project/community/labels/sig%2Fcore)
 
 ## Meetings
