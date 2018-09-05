@@ -24,7 +24,7 @@ decision-making process
 
 > **NOTE:**  Time and frequency is not yet available.
 
-* [Zoom]()
+* [Zoom](https://zoom.us/j/346707320)
 * Frequency: {daily | weekly | bi-weekly | monthly}
 * [Meeting notes and agenda](https://docs.google.com/document/d/1vWleTon7sJIk0teee4SoVezS4mR3K8TlkvXkgLJwRD8)
 
