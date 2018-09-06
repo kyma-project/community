@@ -4,7 +4,7 @@
 
 This directory contains templates for various document types in different Kyma repositories.
 
->**NOTE:** If a template does not specify otherwise, all sections in the templates are optional.
+>**NOTE:** If a template does not specify otherwise, all sections are optional.
 
 The table provides an overview of the template names, the repository they refer to, and their usage:
 
@@ -16,6 +16,7 @@ The table provides an overview of the template names, the repository they refer 
 | All | [`README.md`](../../guidelines/internal-guidelines/repository-template/template/README.md) | Use the template for the main README.md document in any repository within the Kyma organization. |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`cli-reference.md`](./resources/cli-reference.md) | Use the template to describe the syntax and the use of CLI commands for a given component. |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`custom-resource.md`](./resources/custom-resource.md) | Use the template to describe a custom resource (CR) and its elements. |
+| No specific repository | [`Kyma-branded presentation template`](./resources/Kyma_presentation_template.pptx) | Use the official Kyma-branded presentation to talk about the project and present it to new audiences. |
 
 >**NOTE:** Update the table each time you add a new template to the `resources` folder.
 
