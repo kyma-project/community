@@ -5,7 +5,7 @@ type: Overview
 
 >**NOTE:** Blockquotes in this document provide instructions. Remove them from the final document.
 >
-> This is as a template for the **Overview** document type that introduces a given Kyma component.
+> This is a template for the **Overview** document type that introduces a given Kyma component.
 >
 >  In the document:
 > * Describe the component in general.
