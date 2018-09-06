@@ -3,47 +3,26 @@
 The purpose of this group is to:
 * Publicly represent Kyma
 * Facilitate the collaboration with external contributors
-
-## Responsibilities
-
-The SIG Core:
-* Communicates the Kyma project vision and roadmap to the community
-* Represents the Kyma contributors and is the main contribution contact for Kyma
-* Gauges interest, requests the community feedback, and ensures it is addressed
-* Owns all code repositories in the Kyma organization except for the `community` repository
-* Showcases proposals to the community and collects the feedback to those proposals to assist the
+* Communicate the Kyma project vision and roadmap to the community
+* Represent the Kyma contributors
+* Be the main contribution contact for Kyma
+* Gauge interest, request the community feedback, and ensures it is addressed
+* Own all code repositories in the Kyma organization except for the `community` repository
+* Showcase proposals to the community and collects the feedback to those proposals to assist the
 decision-making process
-* Represents its members and the Kyma community in the Council meetings
-
-## Attendees
-
-These are the mandatory and optional attendees of the SIG Core meetings:
-*	Any member of the Kyma organization (optional)
-*	Any person from outside of the organization (optional)
-* Kyma Product Owners (at least one representative is mandatory)
-* Kyma Scrum Masters (at least one representative is mandatory)
-* SIG Community representative (leader)
-* SDMs (optional)
-* Release manager (optional)
-* Program manager (optional)
-
-SIG Core members nominate leaders who organize, coordinate, and moderate the SIG meetings and discussions. They are also the first point of contact for the Kyma SIG Core members. In its initial stage, the SIG Core leaders are the members of the Kyma organization.
+* Represent its members and the Kyma community in the Council meetings
 
 ## Contact
 
 * [Slack](https://kyma-community.slack.com/messages/CBP7LKRPS)
-
-> **NOTE:** This information is not yet available.
-
-* [Open community issues and pull requests](https://github.com/kyma-project/community/labels/{label-name})
+* [Google group](https://groups.google.com/forum/#!forum/kyma-sig-core)
+* [Open community issues and pull requests](https://github.com/kyma-project/community/labels/sig%2Fcore)
 
 ## Meetings
 
-> **NOTE:**  Time and frequency is not yet available.
-
-* [Slack](https://kyma-community.slack.com/messages/CBP7LKRPS)
-* Frequency: {daily | weekly | bi-weekly | monthly}
-* [Meeting notes and agenda](meeting-notes.md)
+* [Zoom](https://zoom.us/j/346707320)
+* Frequency: `To be decided on first meeting`
+* [Meeting notes and agenda](https://docs.google.com/document/d/1vWleTon7sJIk0teee4SoVezS4mR3K8TlkvXkgLJwRD8)
 
 ## Leaders
 
@@ -58,7 +37,7 @@ SIG Core members nominate leaders who organize, coordinate, and moderate the SIG
 
 ## Owned repositories
 
-The SIG Core owns all code repositories in the Kyma organization except for the `community` repository.
+The SIG Core owns all code repositories in the Kyma organization.
 
 ## Reference
 
