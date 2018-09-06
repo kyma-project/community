@@ -65,11 +65,12 @@ To contribute code or content to a given Kyma repository, follow these steps:
 8. If there are merge conflicts on your pull request, squash your commits and rebase the `master` branch.
 9. On the pull request, select the [**Allow edits from maintainers**](https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) option to allow upstream repository maintainers and those with the push access to the upstream repository, to commit to your forked branch.
 10. If your change relates to any existing GitHub issue, provide a link to it in your pull request.
-11. Wait for the Kyma maintainers to review and approve your pull request. The maintainers can approve it, request enhancements to your change, or reject it.
+11. Run the relevant CI job manually. If you are an external contributor, contact the repository maintainers specified in the `CODEOWNERS` file to do it for you.
+12. Wait for the Kyma maintainers to review and approve your pull request. The maintainers can approve it, request enhancements to your change, or reject it.
 
 > **NOTE:** The reviewer must check if the related CI job and tests have completed successfully before approving the pull request.
 
-12. When the maintainers approve your change, merge the pull request. If you are an external contributor, contact the repository maintainers specified in the `CODEOWNERS` file to do the merge.
+13. When the maintainers approve your change, merge the pull request. If you are an external contributor, contact the repository maintainers specified in the `CODEOWNERS` file to do the merge.
 
 Read the [git-workflow](git-workflow.md) document. It describes the Kyma contribution workflow that relies on forks, branches, rebasing, and squashing. The document also contains guidelines for writing commit messages.
 
