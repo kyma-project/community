@@ -8,8 +8,6 @@ For details, see the existing CLI reference document for the [Service Catalog](h
 
 > **NOTE:** Blockquotes in this document provide instructions. Remove them from the final document.
 
-## Overview
-
 Management of the {Component Name} is based on the custom resources specifically defined for Kyma. Manage all of these resources through `[{CLI tool name}](link)`.
 
 > Provide a link to [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), [kubeless](https://kubeless.io/docs/quick-start/), or [svcat](https://github.com/kubernetes-incubator/service-catalog/blob/master/docs/cli.md), respectively.
