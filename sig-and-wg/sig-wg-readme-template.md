@@ -10,6 +10,7 @@ The purpose of this group is to:
 > **NOTE:** Update the links with proper values.
 
 * [Slack](https://kyma-community.slack.com/messages/{slack-channel-name})
+* [Google group](https://groups.google.com/forum/#!forum/{group_name})
 * [Open community issues and pull requests](https://github.com/kyma-project/community/labels/{label-name})
 
 ## Meetings
