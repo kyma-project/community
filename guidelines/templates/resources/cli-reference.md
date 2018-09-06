@@ -3,15 +3,14 @@ title: CLI reference
 type: CLI reference
 ---
 
-> This document is a ready-to-use template for a Command Line Interface (CLI) reference document that describes the syntax and the use of CLI commands for a given Kyma component. Put the name of a reference resource and a component in place of {resourcename} and {Component Name}, respectively. Do the same for {CLI tool name} and replace it with `kubectl`, `kubeless`, or `svcat`, depending on the tool you use.
-For details, see the existing CLI reference document for the [Service Catalog](https://github.com/kyma-project/kyma/blob/master/docs/service-catalog/docs/030-cli-reference.md).
-
-> **NOTE:** Blockquotes in this document provide instructions. Remove them from the final document.
+>**NOTE:** Blockquotes in this document provide instructions. Remove them from the final document.
+>
+> This document is a ready-to-use template for a Command Line Interface (CLI) reference document type that describes the syntax and the use of CLI commands for a given Kyma component. Put the name of a reference resource and a component in place of {resourcename} and {Component Name}, respectively. Do the same for {CLI tool name} and replace it with `kubectl`, `kubeless`, or `svcat`, depending on the tool you use. Follow the `{000}-cli-reference.md` convention to name the document.
+For reference, see the existing document for the [Service Catalog](https://github.com/kyma-project/kyma/blob/master/docs/service-catalog/docs/030-cli-reference.md).
 
 Management of the {Component Name} is based on the custom resources specifically defined for Kyma. Manage all of these resources through `[{CLI tool name}](link)`.
 
 > Provide a link to [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), [kubeless](https://kubeless.io/docs/quick-start/), or [svcat](https://github.com/kubernetes-incubator/service-catalog/blob/master/docs/cli.md), respectively.
-
 
 ## Details
 
