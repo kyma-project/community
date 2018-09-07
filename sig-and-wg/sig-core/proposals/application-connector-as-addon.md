@@ -26,17 +26,17 @@ The Application Connector must be removed as a separate addon which can be appli
 
 ### Helm chart with the Application Connector
 
-There will be a separate Helm chart which will install all necesarry items:
+There will be a separate Helm chart which will install all necessary items:
 
 - Remote Environment CRD
-- Nging-Ingress controller
+- Nginx-Ingress controller
 - Connector service
 - Metadata service
 - Remote Environment broker
 - A Remote Environment operator
 - UI for Application Connector need to be added as well. It must be discussed with Swinka team.
 
-The helm chart can be used manually and can be integrated with Kyma addons, Kyma bundles for service catalog or kyma core as gardener addon, [Bouquet](https://github.com/gardener/bouquet).
+The helm chart can be used manually and can be integrated with Kyma addons, Kyma bundles for service catalog or Kyma core as Gardener addon, [Bouquet](https://github.com/gardener/bouquet).
 
 ### Remote Environment Operator
 
