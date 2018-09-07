@@ -1,4 +1,4 @@
-# ADR 008: DEX as an OIDC authenticator
+# DR 008: DEX as an OIDC authenticator
 
 Created on 2018-03-01 by Damian Pacierpnik (@damianpacierpnikatsap).
 

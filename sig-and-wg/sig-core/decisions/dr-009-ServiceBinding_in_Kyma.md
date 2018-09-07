@@ -1,4 +1,4 @@
-# ADR 009: ServiceBinding in Kyma
+# DR 009: ServiceBinding in Kyma
 
 Created on 2018-03-07 by Adam Szecówka (@aszecowka).
 

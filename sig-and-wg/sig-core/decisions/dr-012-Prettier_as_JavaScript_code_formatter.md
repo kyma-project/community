@@ -1,4 +1,4 @@
-# ADR 012: Prettier as a JavaScript code formatter
+# DR 012: Prettier as a JavaScript code formatter
 
 Created on 2018-03-15 by Kamil Kupczyński (@y-kkamil).
 
