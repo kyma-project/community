@@ -41,9 +41,9 @@ Every independent Kyma component is a separate documentation topic. The only exc
 
 Each technical topic must have the following document types:
 
-**NOTE:** The Kyma content developers create templates for a given document type once there are at least two documents to use as a base for such a template.
+>**NOTE:** The Kyma content developers create templates for a given document type once there are at least two documents to use as a base for such a template.
 
-* **Overview** - Use it to describe the component in general. It serves as an entry point for the topic. Make sure it is short and descriptive.
+* [Overview](../templates/resources/overview.md) - Use it to describe the component in general. It serves as an entry point for the topic. Make sure it is short but descriptive.
 * **Architecture** - Use it to describe in detail the architecture of the component. Include a diagram in this document.
 * **Getting Started** - Use it to provide a clear step-by-step instruction that helps the user to understand a given concept better. The user must be able to go through all the steps of the document and complete them. There is no separate tutorial type. The document does not have to explicitly point out the example used as, at the end, the explicit reference to the example will be in the main content of the guide.
 * **Details** - Use it to describe more technical details of the component that do not fit into any other document type. Among other things, include a detailed explanation of the application lifecycle that describes how the resource is created and what other resources are created, how it is updated, how it is removed, and what each operation means from the technical point of view.
