@@ -1,8 +1,8 @@
 ## Overview
 
-This document defines the maintenance policy for the [Kyma](../../../) organization. All repositories in this organization must follow all the rules and guideliness to assure quality and consistency.
+This document defines the maintenance policy for the [Kyma](../../../) organization. All repositories in this organization must follow all the rules and guidelines to assure quality and consistency.
 
-Kyma project has also the [Kyma Incubator](https://github.com/kyma-incubator) organization. It is a place where all new projects should start in more relaxed environment, where they do not have to comply to all the rules but rapidly grow. Once incubating project is ready to be moved to main Kyma organization it must be adjusted to all the standards.
+The Kyma project also includes the [Kyma Incubator](https://github.com/kyma-incubator) organization. It is a place where all new projects start in a more relaxed environment that facilitates their rapid growth. At that stage, they do not have to comply with all the rules that govern the Kyma organization. Once the incubating project is ready to become a part of the main Kyma organization, you must adjust it to all the standards.
 
 ## Maintenance policy
 
