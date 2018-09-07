@@ -31,12 +31,12 @@ The Metadata service will be extended with the possibility to register OData API
 - API registration will have an additional optional field type, where a user will be able to mark API as OData one or classic REST API. Type can be stored in tags field which is already part of the RE CRD.
 - if the type is provided then the API specification will be fetched from `specUrl` or an in-line version will be used for REST and fetching the $metadata will be used for OData API
 - If the type is not provided and there is no `spec` or `specUrl` given, the Metadata service will do a lookup to the API URL/$metadata and automatically set the API type to OData one. OData registration will not have specification fields.
-- OData specification will be stored in Minio and need to have the FQ'ed URLs ammended to the Gateway specific ones.
+- OData specification will be stored in Minio and need to have the FQ'ed URLs amended to the Gateway specific ones.
 - Implementation must not introduce any breaking changes for already implemented integrations.
 
 #### API snippet
 
-Example API calls with a OData API or a Rest API.
+Example API calls with an OData API or a Rest API.
 
 ```json
 ...
