@@ -27,7 +27,8 @@ Here are the custom labels introduced by the Kyma team:
 * `priority/critical` indicates the top-priority of a given issue.
 * `area/{CAPABILITY_NAME}` indicates which capabilities are related to a given issue. You can assign more than one `area` label an issue.
 * `security/{SCORE}` indicates the security issue based on the [CVSSv3](https://www.first.org/cvss/calculator/3.0) security rating.
-* `{SIG-WG-LABEL}` indicates which SIG or WG identified the issue and is responsible for further follow-up of the issue.
+* `sig/{SIG_NAME}` indicates [which Special interest group (SIG)](./sig-and-wg/README.md#special-interest-groups-and-working-groups) identified the issue and is responsible for further follow-up of the issue.
+* `wg/{WG_NAME}` indicates [which Working group (WG)](./sig-and-wg/README.md#special-interest-groups-and-working-groups) identified the issue and is responsible for further follow-up of the issue.
 
 ## Issues triage
 
