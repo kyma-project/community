@@ -1,4 +1,4 @@
-# ADR 013: Allowed UI technology in the Console UI
+# DR 013: Allowed UI technology in the Console UI
 
 Created on 2018-03-28 by Peter Kurajsky (@pekura).
 

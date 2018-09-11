@@ -1,4 +1,4 @@
-# ADR 004: Kyma components testing
+# DR 004: Kyma components testing
 
 Created on 2017-12-11 by Piotr Kopczyński (@PK85).
 

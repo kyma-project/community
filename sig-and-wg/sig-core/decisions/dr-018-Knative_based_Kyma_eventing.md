@@ -1,4 +1,4 @@
-# ADR 018: Knative-based Kyma Eventing 
+# DR 018: Knative-based Kyma Eventing
 
 Created on 2018-08-19 by Ahmed Abdalla (@Abd4llA).
 
@@ -15,13 +15,13 @@ The assumptions are as follows:
 
 ## Decision
 
-### Kyma Event Bus 
+### Kyma Event Bus
 
 The decisions is to provide a solution that abstracts the Knative Eventing concepts for the rest of Kyma as a short- or medium-term solution. In that way, the transition to Knative Eventing is transparent to the rest of the Kyma components.
 
-The architecture is as follows: 
+The architecture is as follows:
 
-![Architecture](../assets/event-bus.png)
+![Architecture](../../../assets/event-bus.png)
 
 ### NATS Streaming
 

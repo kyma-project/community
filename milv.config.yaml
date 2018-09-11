@@ -7,7 +7,7 @@ files:
   - path: "./community/guidelines/content-guidelines/formatting-and-style.md"
     config:
       white-list-internal: ["./deployment.yaml"]
-  - path: "./community/architecture-decision-records/adr-010-JWT_authentication.md"
+  - path: "./sig-and-wg/sig-core/decisions/dr-010-JWT_authentication.md"
     config:
       #milv treat !topic/istio-security/guJV0J9A2VQ like a anchor
       white-list-external: ["https://groups.google.com/forum/#!topic/istio-security/guJV0J9A2VQ"]
