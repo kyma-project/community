@@ -91,10 +91,12 @@ Here is the preferred terminology to use in the Kyma documentation:
 * "email", not "e-mail"
 * "fill in", not "complete"
 * "ID", not "id"
-* "for example", not "i.e."   
-✅ There are many animals in the zoo. For example: lions, elephants, and zebras.     
-⛔️ There are many animals in the zoo, for example: lions, elephants, and zebras.  
-⛔️ There are many animals in the zoo. i.e.: lions, elephants, and zebras.
+* "for example", not "e.g."   
+Don't use "e.g." in documentation. Use the words "for example" or "such as" instead. Don't use "for example" in the middle of the sentence.
+
+✅ There are many variables in the file. For example, you can configure the host ID.
+✅ There are some variables that are inherited from the parent process, such as user ID, date, and permissions.
+⛔️ There are many variables in the file, for example, user ID, that can be configured.
 
 * "key-value", not "key/value" nor "key:value"
 * "can", not "it is possible"
@@ -131,6 +133,5 @@ All of the Kyma components, such as the Service Catalog or Service Brokers, are 
   ✅ Kubernetes  
   ⛔️ kubernetes   
   ⛔️ k8s
-
 
 In case of any further doubts concerning the style and standards of writing, see [Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/style-guide/welcome/).
