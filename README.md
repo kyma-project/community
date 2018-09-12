@@ -56,4 +56,4 @@ There are also [internal guidelines](/guidelines/internal-guidelines) for the Ky
 
 ## Security
 
-The community is relentless about Kyma security. To report a security issue, send an email with details directly to [security@kyma-project.io](mailto:security@kyma-project.io) instead of using a public issue tracker.
+The community is relentless about Kyma security. To report a security issue, send an email with details directly to [kyma-security@googlegroups.com](mailto:kyma-security@googlegroups.com) instead of using a public issue tracker.
