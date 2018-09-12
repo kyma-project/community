@@ -95,9 +95,9 @@ Here is the preferred terminology to use in the Kyma documentation:
 
 Don't use "e.g." in documentation. Use the words "for example" or "such as" instead. Don't use "for example" in the middle of the sentence.
 
-✅ There are many variables in the file. For example, you can configure the host ID.
-✅ There are some variables that are inherited from the parent process, such as user ID, date, and permissions. 
-⛔️ There are many variables in the file, for example, user ID, that can be configured.
+ ✅ There are many variables in the file. For example, you can configure the host ID.
+ ✅ There are some variables that are inherited from the parent process, such as user ID, date, and permissions.
+ ⛔️ There are many variables in the file, for example, user ID, that can be configured.
 
 * "key-value", not "key/value" nor "key:value"
 * "can", not "it is possible"
