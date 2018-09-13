@@ -12,7 +12,6 @@ Proposed on 2018-08-06.
 - Changelog should be easy to read
 - Changelog should be available for developers with offline access, if they have cloned repository
 - Defining changes by contributors should be as easy as possible.
-- We want to highlight customer-facing changes in order to have them included in release notes.
 
 ## Proposed solution
 
@@ -75,7 +74,7 @@ In future we can introduce nested grouping for changelog (first level: change ty
 ## Pros
 
 - One place to define general changes in pull request: pull request title, which is usually prefilled with commit message, if there is just only one commit
-- Selecting type of change is a no-brainer: contributor expands the list of available PR labels and chooses right category from labels with `pr-` prefix.
+- Selecting type of change is a no-brainer: contributor expands the list of available PR labels and chooses right category.
 - We can filter unlabeled pull requests ([link](https://github.com/kyma-project/kyma/issues?q=is%3Aopen+is%3Apr+no%3Alabel)) and easily add labels to them to generate complete changelog. Also, it's easy to see the full list of PRs to check if they are named correctly (and adjust titles - we can do that even for closed pull requests)
 - It enforces user to make a single type of change in a pull request
 - There are many tools available for generating changelog from pull requests labels.
