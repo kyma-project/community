@@ -16,16 +16,16 @@ Created on 2018-09-13 by Paweł Kosiec (@pkosiec).
 
 ## Context
 
-Maintaining changelog is an essential part of developing an open source project. The community wants maximum transparency. As changelog should be easy to read, there is a need to group changes. In the same time, creating changelog should require as little manual work as possible.
+Maintaining changelog is an essential part of developing an open source project. It is essential as the community wants to keep the maximum transparency. As changelog should be easy to read, there is a need to group changes. At the same time, creating changelog should require as little manual work as possible.
 
-There were two different proposals for creating changelog. In both of them the changelog would be generated automatically in CI pipeline. The only difference was the way to describe changes and categorize them. In first one, there was a special `release` block in pull request description. The second proposal was about using pull request titles written in imperative mood and grouping changes with pull request labels.
+There were two different proposals for creating changelog. In both of them the changelog is be generated automatically in the CI pipeline. The only difference is the way to describe changes and categorize them. In the first one, there is a special `release` block in the pull request description. The second proposal is about using the imperative mood in pull request titles and grouping changes with the pull request labels.
 
-The main advantage of second approach is having single place to define changes in pull request: the pull request title, which is usually prefilled with commit message, if there is just only one commit. Selecting type of change is easy - contributor expands the list of available PR labels and chooses right category. Another advantage is that the approach enforces user to make a single type of change in a pull request. There are also many tools available for generating changelog from pull requests labels.
+The main advantage of the second approach is having one place to define changes in a pull request. This place is the pull request title, usually prefilled with the commit message, in case there is only one commit. Selecting type of change is easy - contributor expands the list of available PR labels and chooses right category. Another advantage is that the approach enforces user to make a single type of change in a pull request. There are also many tools available for generating changelog from pull requests labels.
 
 ## Decision
 
-The decision is to use pull request titles for describing changes and reuse existing **`area/`** labels for pull request categorization. Changes will be grouped in changelog by area.
-Changelog will be generated as a part of CI pipeline using tool [**Lerna Changelog**](https://github.com/lerna/lerna-changelog) in the form of `CHANGELOG.md` file and GitHub release description.
+The decision is to use pull request titles to describe changes, and to reuse the existing **`area/`** labels for pull request categorization. Changes will be grouped in the changelog by the area.
+The changelog will be generated as a part of the CI pipeline using the [**Lerna Changelog**](https://github.com/lerna/lerna-changelog) tool, in the form of `CHANGELOG.md` file and the GitHub release description.
 
 ## Status
 
@@ -33,7 +33,7 @@ Accepted on 2018-08-17.
 
 ## Consequences
 
-When creating a new pull request, every team member has to:
-- write pull request title in imperative mood
-- use **`area/`** labels to categorize change made in the pull request
+When creating a new pull request, every team member must:
+- use the imperative mood for the pull request title
+- use the **`area/`** labels to categorize changes
 All pull requests without the labels should be rejected during the review process.
