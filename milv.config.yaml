@@ -1,5 +1,5 @@
 white-list-external: ["localhost", "kyma.local"]
-white-list-internal: ["mailto:security@kyma-project.io"]
+white-list-internal: ["mailto:kyma-security@googlegroups.com"]
 black-list: ["/templates/","-template.md"]
 timeout: 60
 request-repeats: 5
