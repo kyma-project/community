@@ -12,11 +12,11 @@ Created on 2018-09-13 by Paweł Kosiec (@pkosiec).
 | Input provider(s) | Jose Cortina, Łukasz Górnicki, Piotr Bochyński, Marek Nawa, Rakesh Garimella, Paweł Kosiec |
 | Group(s) affected by the decision | All Kyma members |
 | Decision type | Choice |
-| Earliest date to revisit the decision | 01.12.2018 |
+| Earliest date to revisit the decision | 2018-12-01 |
 
 ## Context
 
-Maintaining changelog is an essential part of developing an open source project. The community wants maximum transparency. As changelog should be easy to read, there is a need to group changes. In the same time, creating changelog should require as little manual work as possible. In addition of changelog
+Maintaining changelog is an essential part of developing an open source project. The community wants maximum transparency. As changelog should be easy to read, there is a need to group changes. In the same time, creating changelog should require as little manual work as possible.
 
 There were two different proposals for creating changelog. In both of them the changelog would be generated automatically in CI pipeline. The only difference was the way to describe changes and categorize them. In first one, there was a special `release` block in pull request description. The second proposal was about using pull request titles written in imperative mood and grouping changes with pull request labels.
 
@@ -36,4 +36,4 @@ Accepted on 2018-08-17.
 When creating a new pull request, every team member has to:
 - write pull request title in imperative mood
 - use **`area/`** labels to categorize change made in the pull request
-
+All pull requests without the labels should be rejected during the review process.

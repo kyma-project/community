@@ -35,8 +35,6 @@ Desired output would look like this:
 
 ### Labels
 
-Every label listed below is taken into account during changelog generation process.
-
 For now we don't introduce any new labels. We reuse `area/` labels from [the accepted proposal](https://github.wdf.sap.corp/SAP-CP-Extension-Factory/community/blob/master/sig-and-wg/wg-github-issues-migration/proposals/github-issues-labels-proposal.md). This means that all changes are grouped by area (e.g. `installation`, `security`...).
 
 **Example:**
@@ -82,7 +80,7 @@ In future we can introduce nested grouping for changelog (first level: change ty
 ## Cons
 
 - More detailed changes in changelog. For example, when there is a bigger feature, which needs multiple PRs, it will be visible as multiple bullet points.
-- Pull request authors and reviewers can forgot about adding a label to categorize the change. Anyway, even closed pull requests can be edited before generating the changelog. 
+- Pull request authors and reviewers can forget about adding a label to categorize the change. Anyway, even closed pull requests can be edited before generating the changelog. 
 
 ## Tools
 
@@ -93,7 +91,7 @@ The changelog can be generated during CI build job. There are a lot of tools for
 - Very simple tool
 - Generates changelog with PR links and authors to standard output ([example](https://github.com/lerna/lerna-changelog/releases)) - we can easily pipe it to a CHANGELOG.md file and as GitHub release
 - Allows to define custom labels
-- Can be run with parameters to for example generate a full changelog
+- Can be run with parameters to generate a full changelog or partial one (for one specific app version)
 - Uses GitHub API
 
 #### [GitHub Changelog Generator](https://github.com/github-changelog-generator/github-changelog-generator)
