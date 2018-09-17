@@ -35,7 +35,7 @@ Desired output looks as follows:
 
 ### Labels
 
-For now, no new labels are introduced. Instead, the Kyma members reuse the **`area/`** labels from [the accepted proposal](https://github.wdf.sap.corp/SAP-CP-Extension-Factory/community/blob/master/sig-and-wg/wg-github-issues-migration/proposals/github-issues-labels-proposal.md). This means that all changes are grouped by the area. For example: `installation`, `security`.
+For now, no new labels are introduced. Instead, the Kyma members reuse the **`area/`** labels from the accepted proposal. This means that all changes are grouped by the area. For example: `installation`, `security`.
 
 **Example:**
 
