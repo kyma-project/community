@@ -1,34 +1,61 @@
 ## Overview
 
-This document defines the maintenance policy for the [Kyma](../../../) organization. All repositories in this organization must follow all the rules and guidelines to assure quality and consistency.
+This document defines the ownership policy and the decision-making process within the [Kyma](../../../) organization.
 
-The Kyma project also includes the [Kyma Incubator](https://github.com/kyma-incubator) organization. It is a place where all new projects start in a more relaxed environment that facilitates their rapid growth. At that stage, they do not have to comply with all the rules that govern the Kyma organization. Once the incubating project is ready to become a part of the main Kyma organization, you must adjust it to all the standards.
+## Scope
 
-## Maintenance policy
+All repositories in the Kyma organization must follow the official guidelines, contributing rules, and the governance process to assure quality and consistency.
 
-The Kyma maintainers are a group of people that have special privileges in the repositories of the [GitHub](../../../) organization. The maintainers have the ability to approve pull requests after a detailed review of the code and its functionality. The rules for contributing to Kyma are available in the [`CONTRIBUTING.md`](CONTRIBUTING.md) document.
+The Kyma project also includes the [Kyma Incubator](https://github.com/kyma-incubator) organization. It is a place where all new projects start in a more relaxed environment that facilitates their rapid growth. At that stage, they do not have to comply with all the rules that govern the Kyma organization. Once the incubating project is ready to become a part of the main Kyma organization, adjust it to all the standards.
 
-## Maintainers' responsibilities
+## Ownership policy
 
-With great power comes great responsibility. Maintainers not only make changes and approve pull requests but also truly care about their projects.
+Kyma repositories are owned by code owners who are a group of people with special privileges in the repositories of the [GitHub](../../../) organization. Each repository has a separate `CODEOWNERS` file located at its root. The file specifies persons who have the ability to approve contribution to the part of the repository they own. after a detailed review of the related pull requests. Although the name suggests only the code ownership, the `CODEOWNERS` file is not only about the code but the content in general. Apart from the developers, you can define any relevant parties as code owners. For example, technical writers are set up as the owners of all `.md` documents in the Kyma repositories and SIG/WG members are the owners of their SIG/WG's folders' content.
 
-Every maintainer is expected to:
+### Code owners' responsibilities
 
-* contribute high-quality code and content
-* communicate and collaborate with other maintainers to improve the maintenance process
-* perform a thorough review of incoming pull requests
-* approve only those pull requests in which the contributor made the requested improvements
-* check if the related CI job has completed successfully before approving the pull request
-* make sure that the pull request approval flow runs smoothly
-* prioritize issues and manage their processing
-* proactively fix bugs
-* perform maintenance tasks for their projects
+With great power comes great responsibility. Code owners not only review and approve pull requests but also truly care about their projects.
 
-## Become a maintainer
+Every code owner is expected to:
 
-To become a maintainer, contact one of the existing maintainers of the given project and agree to fulfill the requirements listed above.
-The existing maintainer can also propose a new member by creating a pull request adding the candidate to the `CODEOWNERS` file in the project's repository. The change requires the two-third majority of all maintainers' votes.
+* Contribute high-quality code and content
+* Communicate and collaborate with other code owners to improve the ownership process
+* Perform a thorough review of incoming pull requests and make sure it follows the contributing rules from the [`CONTRIBUTING.md`](CONTRIBUTING.md) document.
+* Approve only those pull requests in which the contributor made the requested improvements
+* Check if the related CI job has completed successfully before approving the pull request
+* Make sure that the pull request approval flow runs smoothly
+* Prioritize issues and manage their processing
+* Proactively fix bugs
+* Perform maintenance tasks for their projects
 
-## Remove a maintainer
+### Add or remove a code owner
 
-The maintainer's role requires commitment and ongoing contribution to a project. If a maintainer is no longer able to fulfill these requirements or does not contribute to the project for half a year, remove them from the list. The change requires the two-third majority of all maintainers' votes.
+To suggest a change in the ownership of a given repository part, create a pull request with the required changes in the `CODEOWNERS` file in the project's repository. The required number of code owners needs to approve the pull request for the changes to take place. Read [here](https://github.com/kyma-project/community/blob/master/guidelines/internal-guidelines/repository-template/template/CODEOWNERS) how to set up and modify owners of the given repository folders and files.
+
+## The decisions-making process
+
+In general, the decisions that affect the project, including its structure, functionalities, components, or work of the project teams are made by the relevant Special Interest Groups (SIGs) and Working Groups (WGs). However, the organizational decisions and those that relate to the product strategy belong to the Kyma Council.
+
+SIGs and WGs follow the "lazy consensus" decision-making process which assumes that:
+
+* All SIG/WG members have an equal voice in the decision-making process.
+* Silence is consent. By default, lack of objections to a proposed decision is interpreted as a silent approval.
+* Any objections are good opportunities for the discussion and healthy, constructive conflicts.
+
+> **NOTE:** The described approach only concerns the decisions taken during SIG and WG meetings. It does not affect any Kyma decisions taken during daily team activities.
+
+### Process
+
+The SIG/WG decison-making process looks as follows:
+
+![Decision-making process](assets/decision-making-process.png)
+
+1. Every decision starts with creating a pull request (PR) with the [**Decision Record**](./guidelines/templates/resources/DR.md) (DR) document that provides the decision details, timelines, status, the related context, and associated consequences. The DR can reference a proposal or any other related document.
+2. The PR creator sends the table with the decision log details to the related SIG/WG distribution list. If the decision input providers are not part of the mailing list, add them to the email communication.
+3. The discussion on the proposed decision can happen through the mailing list, on the related Slack channel, or directly on the pull request. You can also add the topic to the agenda of the upcoming SIG/WG meeting and discuss it with the SIG/WG members. Encourage the discussion and bring up any objections early in the process. A person with a different approach to the topic can create a Counter Proposal.
+4. The discussions on the proposed decision can lead to the change in the actual decision log or the proposal, or end up with no changes required. Update the pull request with the DR with the outcome of the discussion. Otherwise, take actions required to reach a consensus. Those who created a proposal work with those who had the objections to prepare an improved solution or reach a consensus to decline the proposal.
+5. If you reach the "lazy consensus" by the decision-making date, update the status of the decision record with either `Accepted` or `Declined`, and merge the PR.
+6. If there are still unresolved objections by the decision due date, merge the PR with the `Proposed` status. The ultimate decision makers defined in the decision log table take the final decision.
+7. After the final decision, update the the decision log to either `Accepted` or `Declined`.
+
+>**NOTE:** There is a possibility to revisit the decision before the revision date specified in the decision log. To request it, provide details and the reason why you want to discuss the decision earlier, and raise an issue in the `community` repository.
