@@ -10,7 +10,7 @@ Proposed on 2018-08-06.
 
 - Open source community wants as much transparency as possible.
 - Changelog should be easy to read.
-- Changelog should be available for developers with offline access, if they have cloned repository.
+- Changelog should be available for developers with offline access, if they have cloned the repository.
 - Defining changes by contributors should be as easy as possible.
 
 ## Proposed solution
@@ -19,14 +19,14 @@ The proposed solution is to categorize changes using the pull request labels.
 
 ### Workflow
 
-- All developers should categorize their changes with PR labels.
+- All developers should categorize their changes with the PR labels.
 - All changes with the specific changelog-related labels are included in the changelog.
 - Pull requests should have a title written in the imperative mood, just like commit messages. The title will be included in the changelog, along with the author and a link to the particular PR.
 - No label on a pull request means that the change will not be included in the changelog.
 
 ### Result
 
-- The changelog is written in a form of a `CHANGELOG.md` file and put into the GitHub release description via [GitHub API](https://developer.github.com/v3/repos/releases/#create-a-release) for the specific Git tags.
+- The changelog is written in the form of a `CHANGELOG.md` file and put into the GitHub release description via [GitHub API](https://developer.github.com/v3/repos/releases/#create-a-release) for the specific Git tags.
 - All changes are grouped by the selected labels.
 
 Desired output looks as follows:
@@ -35,7 +35,7 @@ Desired output looks as follows:
 
 ### Labels
 
-For now, no new labels are introduced. Instead, the Kyma members reuse the `area/` labels from [the accepted proposal](https://github.wdf.sap.corp/SAP-CP-Extension-Factory/community/blob/master/sig-and-wg/wg-github-issues-migration/proposals/github-issues-labels-proposal.md). This means that all changes are grouped by the area. For example: `installation`, `security`.
+For now, no new labels are introduced. Instead, the Kyma members reuse the **`area/`** labels from [the accepted proposal](https://github.wdf.sap.corp/SAP-CP-Extension-Factory/community/blob/master/sig-and-wg/wg-github-issues-migration/proposals/github-issues-labels-proposal.md). This means that all changes are grouped by the area. For example: `installation`, `security`.
 
 **Example:**
 
@@ -73,7 +73,7 @@ In the future, nested grouping for the changelog can be introduced. The first le
 
 - One place to define the general changes in a pull request. This place is the pull request title, usually prefilled with commit message, if there is just only one commit.
 - Selecting the type of change is a no-brainer. The contributor expands the list of the available PR labels and chooses the right category.
-- The [unlabeled pull requests](https://github.com/kyma-project/kyma/issues?q=is%3Aopen+is%3Apr+no%3Alabel)) can be filtered and labelled to generate a complete changelog. It is easy to view the full list of PRs and check if they are named correctly. You can also adjust the titles, which is applicable also for the closed pull requests.
+- The [unlabeled pull requests](https://github.com/kyma-project/kyma/issues?q=is%3Aopen+is%3Apr+no%3Alabel) can be filtered and labelled to generate a complete changelog. It is easy to view the full list of PRs and check if they are named correctly. You can also adjust the titles, which is applicable also for the closed pull requests.
 - It enforces the user to make a single type of change in a pull request.
 - There are many tools available to generate the changelog from the pull requests labels.
 
@@ -98,6 +98,6 @@ The changelog can be generated during the CI build job. There are many tools for
 
 - Generates a changelog based on GitHub issues and PRs.
 - Many configuration options.
-- No custom labels for PRs are supported. There are only three sections in the generated changelog: `bug`, `enhancement` and all other changes.
+- No custom labels for PRs are supported. There are only three sections in the generated changelog: `bug`, `enhancement`, and all other changes.
 - Uses GitHub API.
 - Written in Ruby, which can cause difficulty with the contribution.
