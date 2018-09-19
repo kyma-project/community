@@ -58,4 +58,4 @@ The SIG/WG decison-making process looks as follows:
 6. If there are still unresolved objections by the decision due date, merge the PR with the `Proposed` status. The ultimate decision makers defined in the decision log table make the final decision.
 7. After the final decision, update the decision log to either `Accepted` or `Declined`.
 
->**NOTE:** Only the ultimate decision makers can request to revisit the decision before the revision date. To request it, raise an issue in the `community` repository with all details and the reason why you want to discuss the decision earlier than agreed. 
+>**NOTE:** Only the ultimate decision makers can request to revisit the decision before the revision date. To do it, raise an issue in the `community` repository with all details and the reason why you want to discuss the decision earlier than agreed. 
