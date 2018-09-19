@@ -42,7 +42,7 @@ SIGs and WGs follow the "lazy consensus" decision-making process which assumes t
 * Silence is consent. By default, lack of objections to a proposed decision means a silent approval.
 * Any objections are good opportunities for healthy and constructive discussions.
 
-> **NOTE:** The described approach only concerns the decisions taken during SIG and WG meetings. It does not affect any Kyma decisions taken during daily team activities.
+> **NOTE:** The described approach only concerns the decisions made by SIGs and WGs. It does not affect any Kyma decisions made during daily team activities.
 
 ### Process
 
@@ -51,11 +51,11 @@ The SIG/WG decison-making process looks as follows:
 ![Decision-making process](assets/decision-making-process.png)
 
 1. Every decision starts with creating a PR with the [**Decision Record**](./guidelines/templates/resources/DR.md) (DR) document that provides the decision details, timelines, status, the related context, and associated consequences. The DR can reference a proposal or any other related document.
-2. The PR creator sends the table with the decision log details to the related SIG/WG distribution list. If the decision input providers are not part of the mailing list, add them to the email communication.
-3. The discussion on the proposed decision can happen through the mailing list, on the related Slack channel, or directly on the PR. You can also add the topic to the agenda of the upcoming SIG/WG meeting and discuss it with the SIG/WG members. Encourage the discussion and bring up any objections early in the process. A person with a different approach to the topic can create a Counter Proposal.
+2. The PR creator sends the table with the decision log details to the related SIG/WG mailing list. If the decision input providers are not part of the mailing list, add them to the email communication.
+3. The discussion on the proposed decision can happen through the mailing list, on the related Slack channel, or directly on the PR. You can also add the topic to the agenda of the upcoming SIG/WG meeting and discuss it with the SIG/WG members. Encourage the discussion and bring up any objections early in the process. A person with a different approach to the topic can create a counter proposal.
 4. The discussions on the proposed decision can lead to a change in the actual decision log or the proposal, or end up with no changes required. Update the PR with the outcome of the discussion. Otherwise, take actions required to reach a consensus. Those who created the proposal work with those who had the objections to prepare an improved solution or reach a consensus to decline the proposal.
 5. If you reach the "lazy consensus" by the decision-making date, update the status of the decision record with either `Accepted` or `Declined`, and merge the PR.
-6. If there are still unresolved objections by the decision due date, merge the PR with the `Proposed` status. The ultimate decision makers defined in the decision log table take the final decision.
+6. If there are still unresolved objections by the decision due date, merge the PR with the `Proposed` status. The ultimate decision makers defined in the decision log table make the final decision.
 7. After the final decision, update the decision log to either `Accepted` or `Declined`.
 
->**NOTE:** There is a possibility to revisit the decision before the revision date specified in the decision log. To request it, provide details and the reason why you want to discuss the decision earlier, and raise an issue in the `community` repository.
+>**NOTE:** Only the ultimate decision makers can request to revisit the decision before the revision date. To request it, raise an issue in the `community` repository with all details and the reason why you want to discuss the decision earlier than agreed. 
