@@ -11,7 +11,7 @@ type: Details
 > * Provide an introductory sentence that explains what the document is about.
 > * Divide the document into sections to make it more reader-friendly.
 > * Use headings to name sections. Use H2 (##) for the main sections and H3 (###) for the sub-sections. Do not use headings smaller than H3 as they do not display well.
-> * Provide any relevant links to the further documentation.
+> * Provide any relevant links to the related external documentation. However, do not use cross-references between documents in the `kyma/docs` folder. Mention the related document title instead and put the document name in bold.
 > * Do not mix different concepts in one document. Instead, describe them in separate documents.
 > * Follow the `{000}-details-{document-title}.md` convention to name the document. The title must summarize the general concept of what the document is about.
 >
