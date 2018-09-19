@@ -1,5 +1,7 @@
 # DR {number}: {DR title}
 
+> **NOTE:** Use the number and the title to name the document. Follow the `dr-{000}-{DR title}.md` naming convention. See the [`dr-002-Traefik_as_an_API_Gateway.md`](../../../sig-and-wg/sig-core/decisions/dr-002-Traefik_as_an_API_Gateway.md) as na example.
+
 Created on {YYYY-MM-DD} by {name and surname (@Github username)}.
 
 ## Decision log
