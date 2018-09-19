@@ -27,6 +27,8 @@ Here are the custom labels introduced by the Kyma team:
 * `priority/critical` indicates the top-priority of a given issue.
 * `area/{CAPABILITY_NAME}` indicates which capabilities are related to a given issue. You can assign more than one `area` label an issue.
 * `security/{SCORE}` indicates the security issue based on the [CVSSv3](https://www.first.org/cvss/calculator/3.0) security rating.
+* `sig/{SIG_NAME}` indicates which [Special interest group (SIG)](./sig-and-wg/README.md) identified the issue and is responsible for further follow-up on the issue.
+* `wg/{WG_NAME}` indicates which [Working group (WG)](./sig-and-wg/README.md) identified the issue and is responsible for further follow-up on the issue.
 
 ## Issues triage
 
@@ -41,6 +43,7 @@ There are five different stages of the triage:
 | Validity | Asses the validity of the issue (whether it is taken for the further triage and proper classification). | invalid, duplicate, wontfix, question |
 | Kind | Differentiate whether the related issue is a new feature or a bug. | enhancement, bug |
 | Help | Identify issues that do not have high priority and can be taken by the community. | help wanted, good first issue|
+| SIG/WG | Clarify which SIG or WG is involved in this issue and is responsible for the further follow-up on the issue. | sig/{SIG_NAME}, wg/{WG_NAME}|
 | Security | Specify the [CVSSv3](https://www.first.org/cvss/calculator/3.0) security rating with the support of the security team. | security/{SCORE} |
 | Priority | Prioritize issues in the general Kyma backlog to select those which are the most critical and should be taken as first. | priority/critical |
 | Area | Clarify which capabilities are involved in a given issue. | area/{CAPABILITY_NAME} |
