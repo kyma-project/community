@@ -18,6 +18,7 @@ The table provides an overview of the template names, the repository they refer 
 | No specific repository | [`Kyma-branded presentation template`](./resources/Kyma_presentation_template.pptx) | Use the official Kyma-branded presentation to talk about the project and present it to new audiences. |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`overview.md`](./resources/overview.md) | Use the template to introduce a Kyma component. |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`details.md`](./resources/details.md) | Use the template to provide more details about a Kyma component. |
+| [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`architecture.md`](./resources/architecture.md) | Use the template to describe an architecture of a Kyma component. |
 | [`community/sig-and-wg`](https://github.com/kyma-project/community/sig-and-wg) | [`DR.md`](./resources/DR.md) | Use the template to document decisions made by SIGs and WGs.
 | [`community/sig-and-wg`](https://github.com/kyma-project/community/sig-and-wg) | [`sig-wg-readme-template.md`](./resources/sig-wg-readme-template.md) | Use the template for the main `README.md` document in a given SIG or WG folder.
 | [`community/sig-and-wg`](https://github.com/kyma-project/community/sig-and-wg) | [`sig-wg-meeting-notes-template.md`](./resources/sig-wg-meeting-notes-template.md) | Use the template to document meeting notes of a given SIG or WG.
