@@ -15,7 +15,9 @@ Current installation process involves downloading kyma charts from cloud storage
 
 ## Proposal
 
-Installer will contain kyma charts and scripts in the docker image. Installer deployment will also contain tiller container that will be used to install helm charts. Additionally, build process has to be adapted to produce installer image for every kyma snapshot/release.
+Installer will contain kyma charts and scripts in the docker image. The build process has to be adapted to produce installer image for every kyma snapshot/release. It is important to include also version.env file in the image as it is essential part of kyma charts.
+
+Installer deployment will also contain tiller container that will be used to install helm charts. This change should be applied also in helm-broker. When it is done tiller is no longer required as a prerequisite.
 
 The solution should also support kyma modifications and local development. The minimal requirement is to provide manual how to build own kyma installer image based on modified charts.
 
