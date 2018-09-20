@@ -26,7 +26,7 @@ Here are the custom labels introduced by the Kyma team:
 * `WIP` indicates that an issue is already in progress.
 * `priority/critical` indicates the top-priority of a given issue.
 * `area/{CAPABILITY_NAME}` indicates which capabilities are related to a given issue. You can assign more than one `area` label an issue.
-* `security/{SCORE}` indicates the security issue based on the [CVSSv3](https://www.first.org/cvss/calculator/3.0) security rating.
+* `security/{SEVERITY}` indicates a security issue based on its [CVSSv3](https://www.first.org/cvss/calculator/3.0) severity, either `low`, `medium`, `high`, or `critical`.
 
 ## Issues triage
 
@@ -41,7 +41,7 @@ There are five different stages of the triage:
 | Validity | Asses the validity of the issue (whether it is taken for the further triage and proper classification). | invalid, duplicate, wontfix, question |
 | Kind | Differentiate whether the related issue is a new feature or a bug. | enhancement, bug |
 | Help | Identify issues that do not have high priority and can be taken by the community. | help wanted, good first issue|
-| Security | Specify the [CVSSv3](https://www.first.org/cvss/calculator/3.0) security rating with the support of the security team. | security/{SCORE} |
+| Security | Specify the [CVSSv3](https://www.first.org/cvss/calculator/3.0) severity with the support of the security team. | security/{SEVERITY} |
 | Priority | Prioritize issues in the general Kyma backlog to select those which are the most critical and should be taken as first. | priority/critical |
 | Area | Clarify which capabilities are involved in a given issue. | area/{CAPABILITY_NAME} |
 
