@@ -1,4 +1,4 @@
-# ADR 015: Authorization for GraphQL
+# DR 015: Authorization for GraphQL
 
 Created on 2018-06-15 by Damian Pacierpnik (@damianpacierpnikatsap).
 

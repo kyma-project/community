@@ -1,4 +1,4 @@
-# ADR 003: Init Containers for dependency management
+# DR 003: Init Containers for dependency management
 
 Created on 2017-11-28 by Adam Szpakowski (@szpakas).
 

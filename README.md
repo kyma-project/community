@@ -49,11 +49,11 @@ You can also find these guidelines and templates in the `community` repository:
 - [Naming](/guidelines/naming.md) conventions
 - Document [templates](/guidelines/templates)
 - Overview of the [content strategy](guidelines/content-guidelines/content-strategy.md) and [content guidelines](/guidelines/content-guidelines)
-- [Architecture decision records](/architecture-decision-records)
 - [Release process](/guidelines/releases) details
+- [Decisions](/sig-and-wg/sig-core/decisions) made by Kyma team members and the SIG Core.
 
 There are also [internal guidelines](/guidelines/internal-guidelines) for the Kyma team members. They contain a folder, file, and document structure required for a [skeleton Kyma repository](/guidelines/internal-guidelines/repository-template).
 
 ## Security
 
-The community is relentless about Kyma security. To report a security issue, send an email with details directly to [security@kyma-project.io](mailto:security@kyma-project.io) instead of using a public issue tracker.
+The community is relentless about Kyma security. To report a security issue, send an email with details directly to [kyma-security@googlegroups.com](mailto:kyma-security@googlegroups.com) instead of using a public issue tracker.

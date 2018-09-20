@@ -1,4 +1,4 @@
-# ADR 017: Application Integration without the Wormhole Connector
+# DR 017: Application Integration without the Wormhole Connector
 
 Created on 2018-06-19 by Bartłomiej Szwej (@bszwej).
 

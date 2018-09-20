@@ -1,4 +1,4 @@
-# ADR 014: Certificate validation against remote environment
+# DR 014: Certificate validation against remote environment
 
 Created on 2018-06-07 by Szymon Gibała (@Szymongib).
 

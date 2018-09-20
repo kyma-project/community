@@ -1,10 +1,10 @@
-# ADR 002: Træfik as a candidate for an API Gateway
+# DR 002: Træfik as a candidate for an API Gateway
 
 Created on 2017-11-23 by Paweł Soltysek (@pssap).
 
 ## Context
 
-One of the core components in Kyma is the API Gateway. This ADR focuses on [Træfik](https://traefik.io), one of the candidates for an API Gateway.
+One of the core components in Kyma is the API Gateway. This DR focuses on [Træfik](https://traefik.io), one of the candidates for an API Gateway.
 
 Træfik is an HTTP reverse proxy shipped with load-balancing, rate-limiting, monitoring, and several other useful features. In comparison to the other reverse proxies, Traefik stands out with its dynamic configuration abilities.
 Træfik supports the most common orchestration backends (for example: Docker, Kubernetes, Mesos, or Consul). It is written in Go. The evaluated version of Traefik is 1.4.0 [rc4].

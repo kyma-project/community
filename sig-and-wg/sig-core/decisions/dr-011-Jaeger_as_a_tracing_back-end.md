@@ -1,4 +1,4 @@
-# ADR 011: Jaeger as a tracing back-end
+# DR 011: Jaeger as a tracing back-end
 
 Created on 2018-03-09 by Gaurav Abbi (@abbi-gaurav).
 

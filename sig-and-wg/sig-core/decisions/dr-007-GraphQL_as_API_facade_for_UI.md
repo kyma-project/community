@@ -1,4 +1,4 @@
-# ADR 007: GraphQL as API facade for UI
+# DR 007: GraphQL as API facade for UI
 
 Created on 2018-01-18 by Łukasz Górnicki (@derberg).
 

@@ -1,4 +1,4 @@
-# ADR 001: Technology stack
+# DR 001: Technology stack
 
 Created on 2017-11-20 by Łukasz Górnicki (@derberg).
 
@@ -20,7 +20,6 @@ Use the following front-end technologies within Kyma:
 - React
 
 The recommended technologies fulfill the Kyma principles.
-
 
 ## Status
 

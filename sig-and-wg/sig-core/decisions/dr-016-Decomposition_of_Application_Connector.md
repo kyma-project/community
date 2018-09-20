@@ -1,4 +1,4 @@
-# ADR 016: Decomposition of the Application Connector
+# DR 016: Decomposition of the Application Connector
 
 Created on 2018-06-27 by Łukasz Szymik (@lszymik).
 
@@ -20,7 +20,7 @@ The decision is to split the Gateway service into three independent services:
 - Metadata service
 - Proxy service
 
-![Architecture](../assets/wormhole-architecture.png)
+![Architecture](../../../assets/wormhole-architecture.png)
 
 ### Event service
 

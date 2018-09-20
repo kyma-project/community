@@ -1,4 +1,4 @@
-# ADR 005: Istio as the Gateway in Kyma
+# DR 005: Istio as the Gateway in Kyma
 
 Created on 2017-12-11 by Damian Pacierpnik (@damianpacierpnikatsap).
 
