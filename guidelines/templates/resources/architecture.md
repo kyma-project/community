@@ -1,7 +1,9 @@
 ---
-title: {Component} architecture
+title: Architecture
 type: Architecture
 ---
+
+>**NOTE:** In case there are more than one Architecture documents in a repository, follow this convention for a title: `{Component name} architecture`.
 
 >**NOTE:** Blockquotes in this document provide instructions. Remove them from the final document.
 >
