@@ -6,7 +6,7 @@ type: Custom Resource
 > **NOTE:** Blockquotes in this document provide instructions. Remove them from the final document.
 >
 > This document is a ready-to-use template for a custom resource (CR) document type that provides a sample custom resource and description of its elements. Additionally, the document points to the Custom Resource Definition (CRD) used to create CRs of the given kind. Follow the `{000}-{CRD-kind}-custom-resource.md` convention to name the document.
-For reference, see the existing documents for the [Installation](https://github.com/kyma-project/kyma/blob/master/docs/kyma/docs/040-installation-custom-resource.md) and the [Api](https://github.com/kyma-project/kyma/blob/master/docs/api-gateway/docs/011-api-custom-resource.md) CRs.
+For reference, see the existing documents for the [Installation](https://github.com/kyma-project/kyma/blob/master/docs/kyma/docs/040-cr-installation.md) and the [Api](https://github.com/kyma-project/kyma/blob/master/docs/api-gateway/docs/011-cr-api.md) CRs.
 
 The {CRD name} Custom Resource Definition (CRD) is a detailed description of the kind of data and the format used to {provide the CRD description}. To get the up-to-date CRD and show the output in the yaml format, run this command:
 
