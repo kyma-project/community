@@ -51,6 +51,9 @@ The SIG/WG decison-making process looks as follows:
 ![Decision-making process](assets/decision-making-process.png)
 
 1. Every decision starts with creating a PR with the [**Decision Record**](./guidelines/templates/resources/DR.md) (DR) document that provides the decision details, timelines, status, the related context, and associated consequences. The DR can reference a proposal or any other related document.
+
+> **NOTE:** The Decision Record does not need to be created in the case when few proposals need a single decison. In that case add link of a new proposal to the existing Decision Record. 
+
 2. The PR creator sends the table with the decision log details to the related SIG/WG mailing list. If the decision input providers are not part of the mailing list, add them to the email communication.
 3. The discussion on the proposed decision can happen through the mailing list, on the related Slack channel, or directly on the PR. You can also add the topic to the agenda of the upcoming SIG/WG meeting and discuss it with the SIG/WG members. Encourage the discussion and bring up any objections early in the process. A person with a different approach to the topic can create a counter proposal.
 4. The discussions on the proposed decision can lead to a change in the actual decision log or the proposal, or end up with no changes required. Update the PR with the outcome of the discussion. Otherwise, take actions required to reach a consensus. Those who created the proposal work with those who had the objections to prepare an improved solution or reach a consensus to decline the proposal.

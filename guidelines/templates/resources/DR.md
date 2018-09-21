@@ -28,7 +28,7 @@ Avoid using personal constructions such as "we." Use impersonal forms instead. F
 
 ## Status
 
-The status of the document can be `Accepted` or `Declined`. This section should contain one of these two words followed by the date on which the status of the document is agreed on. Follow the `YYYY-MM-DD` format for the date. For example:
+The status of the document can be `Accepted`, `Declined` or `Proposed`(when it is waiting for decision of ultimate decision maker). This section should contain one of these two words followed by the date on which the status of the document is agreed on. Follow the `YYYY-MM-DD` format for the date. For example:
 
 ```
 Accepted on 2018-03-23.
