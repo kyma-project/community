@@ -1,6 +1,5 @@
 ---
 title: CLI reference
-type: CLI reference
 ---
 
 >**NOTE:** Blockquotes in this document provide instructions. Remove them from the final document.
