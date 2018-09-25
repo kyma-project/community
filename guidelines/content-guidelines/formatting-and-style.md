@@ -61,7 +61,9 @@ Ideally, headings fit into one line in the generated output. Be concise, but als
 ### Links
 Linking is a great tool to use to incorporate a lot of content into your document with fewer words. That being said, overuse of linking can cause "link rot" when links break, and if a page has more links than content, it is not very pleasing to read. Choose carefully when and how to link by using these best practices.
 
-- Use absolute links to link to repositories.
+- Use absolute links to link to other repositories and external sources.
 - Use relative links to link to documents or files located in the same repository.
 - Every link has the potential to go bad over time and the more links you include, the higher the chance that one will break. If something is not central to the subject at hand, is well-known by your audience, or can be found with a simple search, there is no point in linking.
 - Choose the link text carefully. Do not link entire phrases which become overemphatic. Instead, choose the noun, such as an article or specification within the phrase that helps the reader understand where the navigation leads them. You can also use the title of the article or book as the link, but do not include the author and publisher.
+
+>**NOTE:** If you want to make any cross-reference between the documents in the `kyma/docs` folder, point to the given document by providing its title **in bold**, since the relative links do not work on the UI. For example: `For more details, see the **Troubleshooting** document.`
