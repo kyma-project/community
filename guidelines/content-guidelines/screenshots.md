@@ -6,7 +6,7 @@ Follow these basic principles when placing a screenshot in your content:
 - Do not overuse screenshots and limit  visual noise.
 - Do not use directional indicators such as "above" and "below" to refer to screenshots. Instead, include a brief introduction before each screenshot that describes its purpose and any necessary details.
 - Do not include the mouse pointer in your screenshots, unless it shows a function related to the content.
-- Do not include unnecessary elements, such as the browser toolbar, in your screenshots. Include only elements that are relevant in a matter of a given content.
+- Do not include unnecessary elements, such as the browser toolbar. Include only elements that are relevant in a matter of a given content.
 
 For details on how to format screenshots and their elements in the Kyma documents, see the particular document sections.
 
@@ -18,7 +18,7 @@ If you want to control the size of the image relative to the screen size, use on
 
 > **NOTE:** Name the file as a {screenshot-name} and save it in the `assets` folder in the same location.
 
-## Outlines
+## Borders
 
 Use **grey** (HEX: #D2D5D9) 1pt border for the screenshot.
 
