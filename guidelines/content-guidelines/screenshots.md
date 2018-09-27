@@ -16,7 +16,7 @@ Adjust or capture your screenshots using any tool that outputs high quality imag
 Use an online tool such as [TinyPNG](https://tinypng.com/) to compress images and limit the size of each image to 1MB, or smaller.
 If you want to control the size of the image relative to the screen size, use one of these standard percentages: 100%, 75%, 50%, or 25%.
 
-> **NOTE:** Name the file as {screenshot-name} and save it in the `assets` folder in the same location.
+> **NOTE:** Name the file as `{screenshot-name}` and save it under the corresponding `assets` directory.
 
 ## Borders
 
