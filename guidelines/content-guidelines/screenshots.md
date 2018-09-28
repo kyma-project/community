@@ -1,14 +1,14 @@
 # Screenshots
 
-As someone once said, a picture is worth a thousand words. Therefore, whenever you need to illustrate operations performed on the UI, feel free to use a screenshot to convey a lot of information visually.
+As someone once said, a picture is worth a thousand words. Therefore, whenever you need to illustrate operations performed on the UI, use a screenshot to convey the information visually.
 
-Follow these basic principles when placing a screenshot in your content:
-- Do not overuse screenshots and limit  visual noise.
+Follow these basic principles when you place screenshots in your content:
+- Do not overuse screenshots and limit visual noise.
 - Do not use directional indicators such as "above" and "below" to refer to screenshots. Instead, include a brief introduction before each screenshot that describes its purpose and any necessary details.
 - Do not include the mouse pointer in your screenshots, unless it shows a function related to the content.
-- Do not include unnecessary elements, such as the browser toolbar. Include only elements that are relevant in a matter of a given content.
+- Do not include unnecessary elements, such as the browser toolbar. Include only elements that are relevant for the given content.
 
-For details on how to format screenshots and their elements in the Kyma documents, see the particular document sections.
+For details on how to format screenshots and their elements in Kyma documents, see the particular document sections.
 
 ## Tool
 
@@ -29,7 +29,7 @@ Explain the steps under the screenshot with the ordered list.
 
 ## Indicators
 
-To highlight a certain area of your screenshot, use **red** (HEX: #EF27270) 10pt arrow or box.
+To highlight a certain area of your screenshot, use **red** (HEX: #EF27270) 10pt for arrows or boxes.
 
 > **NOTE:** Use arrows and boxes sparingly, only to point to an exceptionally important area of the screenshot. Do not use more than one indicator in one screenshot to avoid visual noise.
 

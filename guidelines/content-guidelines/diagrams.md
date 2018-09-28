@@ -7,7 +7,7 @@ To convey the intended message effectively in a diagram, follow these basic prin
 - Limit visual noise.
 - Keep it simple but descriptive.
 
-For details on how to format diagrams and their elements in the Kyma documents, see the particular document sections.
+For details on how to format diagrams and their elements in Kyma documents, see the particular document sections.
 
 ## Tool
 
