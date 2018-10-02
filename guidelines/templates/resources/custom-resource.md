@@ -40,7 +40,9 @@ This table lists all the possible parameters of a given resource together with t
 | **{another_parameter}** |    **{YES/NO}**   | {Parameter description} |
 
 
->  You can add more sections here, if you need to explain a given custom resource in more details.
+>## {Another section}
+>
+> You can add more sections here, if you need to explain a given custom resource in more details.
 
 
 ## Related resources
