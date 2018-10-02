@@ -8,7 +8,7 @@ type: Custom Resource
 > This document is a ready-to-use template for a custom resource (CR) document type that provides a sample custom resource and description of its elements. Additionally, the document points to the Custom Resource Definition (CRD) used to create CRs of the given kind. Follow the `{000}-cr-{CRD-kind}.md` convention to name the document. If there is only one document of a certain type, remove the `type` metadata completely so that the document displays well on the UI.
 For reference, see the existing documents for the [Installation](https://github.com/kyma-project/kyma/blob/master/docs/kyma/docs/040-cr-installation.md) and the [Api](https://github.com/kyma-project/kyma/blob/master/docs/api-gateway/docs/011-cr-api.md) CRs.
 
-The {CRD name} Custom Resource Definition (CRD) is a detailed description of the kind of data and the format used to {provide the CRD description}. To get the up-to-date CRD and show the output in the yaml format, run this command:
+The {CRD name} Custom Resource Definition (CRD) is a detailed description of the kind of data and the format used to {provide the CRD description}. To get the up-to-date CRD and show the output in the `yaml` format, run this command:
 
 ```
 kubectl get crd {CRD name} -o yaml
@@ -34,7 +34,17 @@ metadata:
 This table lists all the possible parameters of a given resource together with their descriptions:
 
 
-| Parameter   |      Mandatory?      |  Description |
+| Parameter   |      Mandatory      |  Description |
 |:----------:|:-------------:|:------|
 | **metadata.name** |    **YES**   | Specifies the name of the CR. |
 | **{another_parameter}** |    **{YES/NO}**   | {Parameter description} |
+
+
+>  You can add more sections here, if you need to explain a given custom resource in more details.
+
+
+## Related resources
+
+These are the resources related to this CR:
+* [{Resource 1}](link)
+* [{Resource 2}](link)
