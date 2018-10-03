@@ -57,7 +57,7 @@ The list of public SIGs in Kyma includes:
 
 ### List of WGs
 
-There are no public working groups in the Kyma organization.
+* [Prow migration](wg-prow/README.md)
 
 ## Organize new SIGs and WGs
 
