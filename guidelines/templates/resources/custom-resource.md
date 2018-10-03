@@ -40,10 +40,18 @@ This table lists all the possible parameters of a given resource together with t
 | **{another_parameter}** |    **{YES/NO}**   | {Parameter description} |
 
 
-## Related resources
+## Related resources and components
 
 These are the resources related to this CR:
-* {Resource 1}
-* {Resource 2}
+
+| Name   |   Description |
+|:----------:|:------|
+| {Related CR name} |  {Briefly describe the relation between the resources}. |
+
+These components use this CR:
+
+| Name   |   Description |
+|:----------:|:------|
+| {Component name} |  {Briefly describe the relation between the CR and the given component}. |
 
 > **NOTE:** Add more sections if you need to explain a given custom resource in more details. Use H2 (##) to introduce a new section.
