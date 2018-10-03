@@ -3,7 +3,7 @@ title: {CRD kind}
 type: Custom Resource
 ---
 
-> **NOTE:** Blockquotes in this document provide instructions. Remove them from the final document. Add more sections if you need to explain a given custom resource in more details. Use H2 (##) to introduce a new section.
+> **NOTE:** Blockquotes in this document provide instructions. Remove them from the final document. Add more sections to the CR document if you need to explain a given custom resource in more details. Use H2 (##) to introduce a new section.
 >
 > This document is a ready-to-use template for a custom resource (CR) document type that provides a sample custom resource and description of its elements. Additionally, the document points to the Custom Resource Definition (CRD) used to create CRs of the given kind. Follow the `{000}-cr-{CRD-kind}.md` convention to name the document. If there is only one document of a certain type, remove the `type` metadata completely so that the document displays well on the UI.
 For reference, see the existing documents for the [Installation](https://github.com/kyma-project/kyma/blob/master/docs/kyma/docs/040-cr-installation.md) and the [Api](https://github.com/kyma-project/kyma/blob/master/docs/api-gateway/docs/011-cr-api.md) CRs.
