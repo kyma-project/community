@@ -57,6 +57,8 @@ The list of public SIGs in Kyma includes:
 
 ### List of WGs
 
+The list of public WGs in Kyma includes:
+
 * [Prow migration](wg-prow/README.md)
 
 ## Organize new SIGs and WGs

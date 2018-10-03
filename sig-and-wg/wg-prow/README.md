@@ -29,7 +29,7 @@ Regular WG Meeting: Friday at 13:00 CEST, weekly. [Convert to your timezone](htt
 
 ## Owned repositories
 
-* [{repository name}](https://github.com/kyma-project/kyma)
+* [{kyma}](https://github.com/kyma-project/kyma)
 
 ## Reference
 
