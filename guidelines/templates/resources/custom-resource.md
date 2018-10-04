@@ -44,12 +44,12 @@ This table lists all the possible parameters of a given resource together with t
 
 These are the resources related to this CR:
 
-| Name   |   Description |
+| Custom resource |   Description |
 |:----------:|:------|
-| {Related CR name} |  {Briefly describe the relation between the resources}. |
+| {Related CRD kind} |  {Briefly describe the relation between the resources}. |
 
 These components use this CR:
 
-| Name   |   Description |
+| Component   |   Description |
 |:----------:|:------|
 | {Component name} |  {Briefly describe the relation between the CR and the given component}. |
