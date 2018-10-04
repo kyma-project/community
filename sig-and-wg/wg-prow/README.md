@@ -1,7 +1,7 @@
 # Prow Migration Working Group
 
 The purpose of this group is to:
-* achieve the migration to the new CI tool (Prow) in order to enable external contributors and be able to have a CI solution which serves our needs.
+* Achieve the migration to the new CI tool (Prow) in order to allow external contributors to use it and to have a CI solution which serves our needs.
 
 ## Contact
 
@@ -20,8 +20,8 @@ Regular WG Meeting: Friday at 13:00 CEST, weekly. [Convert to your timezone](htt
 
 ## Leaders
 
-* [{First name Last name}](https://github.com/{github id}})
-* [{First name Last name}](https://github.com/{github id}})
+* TBA
+* TBA
 
 ## Members
 
