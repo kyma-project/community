@@ -15,7 +15,7 @@ Regular WG Meeting: Friday at 13:00 CEST, weekly. [Convert to your timezone](htt
 
 * [Zoom](https://zoom.us/j/4794339038)
 * [Meeting notes and agenda](https://docs.google.com/document/d/1ljEAoCBJXlxx_ATPyvKZ1KoyFOSIBzEAOkN-2H-HhUY)
-* [Meeting recordings](TBD)
+* Meeting recordings - TBA
 
 
 ## Leaders
