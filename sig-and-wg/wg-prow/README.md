@@ -25,11 +25,10 @@ Regular WG Meeting: Friday at 13:00 CEST, weekly. [Convert to your timezone](htt
 
 ## Members
 
-* wg-prow (**[@wg-prow](https://github.com/orgs/kyma-project/teams/wg-prow/members)**)
-
+* [Team WG Prow](https://github.com/orgs/kyma-project/teams/wg-prow/members)
 ## Owned repositories
 
-* [{kyma/test-infra}](https://github.com/kyma-project/test-infra)
+* [kyma/test-infra](https://github.com/kyma-project/test-infra)
 
 ## Reference
 
