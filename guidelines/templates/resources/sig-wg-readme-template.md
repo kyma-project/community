@@ -11,6 +11,7 @@ The purpose of this group is to:
 
 * [Slack](https://kyma-community.slack.com/messages/{slack-channel-name})
 * [Google group](https://groups.google.com/forum/#!forum/{group_name})
+* [Mailing list]({group-name}@googlegroups.com)
 * [Open community issues and pull requests](https://github.com/kyma-project/community/labels/{label-name})
 
 ## Meetings
@@ -19,6 +20,7 @@ The purpose of this group is to:
 * [Slack](https://kyma-community.slack.com/messages/{slack-channel-name})
 * Frequency: {daily | weekly | bi-weekly | monthly}
 * [Meeting notes and agenda](meeting-notes.md)
+* [Meeting recordings](https://www.youtube.com/{channel-address})
 
 ## Leaders
 
