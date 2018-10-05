@@ -23,6 +23,6 @@ These are the benefits of the solution:
 - A simpler installation and update processes which will require only deploying a given version of the installer.
 - The installer will always work with Kyma charts tested with a given installer version.
 
-As a result of this proposal the kyma release artifact should contain only a yaml file to deploy and configure a given version of the installer :
+As a result of this proposal, the Kyma release artifact should contain only a yaml file to deploy and configure a given version of the installer :
 
 ![](assets/kyma-installer.svg)

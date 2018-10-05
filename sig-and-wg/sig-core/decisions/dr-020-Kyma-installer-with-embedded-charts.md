@@ -4,7 +4,7 @@ Created on 2018-09-19 by Piotr Bochyński (@pbochynski).
 
 ## Context
 
-[Proposal](../proposals/kyma-installer-with-charts.md)
+Find the context of this decision record in [this](../proposals/kyma-installer-with-charts.md) proposal.
 
 ## Decision
 
