@@ -43,7 +43,7 @@ There are five different stages of the triage:
 |--------- |----------|---------|
 | Validity | Assess the validity of the issue (whether it is taken for the further triage and proper classification). | invalid, duplicate, wontfix, question |
 | Kind | Differentiate whether the related issue is a new feature or a bug. | enhancement, bug |
-| Decision | Check if the issue is related to decision | decision |
+| Decision | Check if the issue is related to [decision](governance.md#the-decisions-making-process) | decision |
 | Help | Identify issues that do not have high priority and can be taken by the community. | help wanted, good first issue|
 | SIG/WG | Clarify which SIG or WG is involved in this issue and is responsible for the further follow-up on the issue. | sig/{SIG_NAME}, wg/{WG_NAME}|
 | Security | Specify the [CVSSv3](https://www.first.org/cvss/calculator/3.0) security rating with the support of the security team. | security/{SCORE} |
