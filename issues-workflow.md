@@ -41,7 +41,7 @@ There are five different stages of the triage:
 
 | Stage | Description | Labels |
 |--------- |----------|---------|
-| Validity | Asses the validity of the issue (whether it is taken for the further triage and proper classification). | invalid, duplicate, wontfix, question |
+| Validity | Assess the validity of the issue (whether it is taken for the further triage and proper classification). | invalid, duplicate, wontfix, question |
 | Kind | Differentiate whether the related issue is a new feature or a bug. | enhancement, bug |
 | Decision | Check if the issue is related to decision | decision |
 | Help | Identify issues that do not have high priority and can be taken by the community. | help wanted, good first issue|
