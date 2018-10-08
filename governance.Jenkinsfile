@@ -25,6 +25,13 @@ podTemplate(label: label) {
                             validateLinks('--ignore-external', repositoryName)
                         }
 
+                        if (!isMaster) {
+                            stage("validate external links in changed markdown files") {
+                                def changes = changedMarkdownFiles(repositoryName).join(" ")
+                                validateLinks("--ignore-internal ${changes}", repositoryName)
+                            }
+                        }
+
                         if(isMaster || params.TRIGGER_FULL_VALIDATION) {
                             stage("validate external links") {
                                 validateLinks('--ignore-internal', repositoryName)
@@ -62,4 +69,39 @@ def sendSlackNotification(text) {
                 https://sap-cx.slack.com/services/hooks/jenkins-ci?token=${token}
         """
     }
+}
+
+/* -------- Helper Functions -------- */
+
+/**
+ * Provides a list with the .md files that have changed
+ */
+String[] changedMarkdownFiles(String repositoryName) {
+    res = []
+    echo "Looking for changes in the markdown files"
+
+    // get all changes
+    allChanges = changeset().split("\n")
+
+    // if no changes
+    if (allChanges.size() == 0) {
+        echo "No changes found or could not be fetched"
+        return res
+    }
+
+    // add ${repositoryName} suffix to markdown path
+    for (int i=0; i < allChanges.size(); i++) {
+        res.add("./${repositoryName}/${allChanges[i]}")
+    }
+    return res
+}
+
+/**
+ * Gets the changes on the Project based on the branch
+ */
+@NonCPS
+String changeset() {
+    // get changeset comparing branch with master
+    echo "Fetching changes between remotes/origin/${env.BRANCH_NAME} and remotes/origin/master."
+    return sh (script: "git --no-pager diff --name-only remotes/origin/master...remotes/origin/${env.BRANCH_NAME} | grep '.md' || echo ''", returnStdout: true)
 }
