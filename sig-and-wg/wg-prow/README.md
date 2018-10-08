@@ -15,13 +15,14 @@ Regular WG Meeting: Friday at 13:00 CEST, weekly. [Convert to your timezone](htt
 
 * [Zoom](https://zoom.us/j/4794339038)
 * [Meeting notes and agenda](https://docs.google.com/document/d/1ljEAoCBJXlxx_ATPyvKZ1KoyFOSIBzEAOkN-2H-HhUY)
-* Meeting recordings - TBA
+* [Meeting recordings](https://www.youtube.com/playlist?list=PL7PGl--iaIH9SXFdB4DrraqI7oEer7S3Q)
 
 
 ## Leaders
 
-* TBA
-* TBA
+* Suleyman Akbas (**[@suleymanakbas91](https://github.com/suleymanakbas91)**)
+* Magdalena Stręk (**[@strekm](https://github.com/strekm)**)
+* Adam Szecówka (**[@aszecowka](https://github.com/aszecowka)**)
 
 ## Members
 
