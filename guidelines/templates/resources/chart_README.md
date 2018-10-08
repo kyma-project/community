@@ -12,7 +12,7 @@
 
 ## Details
 
-> Provide detailed information about the chart's functionality. Add subsections for better readability.
+> Provide detailed information about the chart's functionality. Add subsections (H3) for better readability.
 
 ## Troubleshooting
 
