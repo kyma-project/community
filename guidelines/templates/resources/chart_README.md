@@ -12,7 +12,7 @@
 
 ## Details
 
-> Provide detailed information about the chart's functionality. For example, a further description, an installation or configuration guide, operating instructions, or examples. Add subsections for better readability.
+> Provide detailed information about the chart's functionality. Add subsections for better readability.
 
 ## Troubleshooting
 
