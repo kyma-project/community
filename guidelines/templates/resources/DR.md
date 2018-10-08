@@ -14,7 +14,7 @@ Created on {YYYY-MM-DD} by {name and surname (@Github username)}.
 | Input provider(s) | {Include those who influence the decision and, if possible, those whom the decision affects.} |
 | Group(s) affected by the decision | {Specify whom the decision affects.} |
 | Decision type | {Type in `Binary`, `Choice`, or `Prioritization`. The `Binary` type refers to the  yes/no decisions, the `Choice` type means that the decision involves choosing between many possibilities, such as a name for a new product, and the `Prioritization` type involves ranking a number of options, such as choosing the next five features to build out of one hundred possible options.} |
-| Earliest date to revisit the decision | {Specify the date from which the SIG/WG members can revisit the decision. Use the `YYYY-MM-DD` date format. Only the ultimate decision makers can request to revisit the decision before that date. In both cases, revisiting the decision starts with raising an issue.} |
+| Earliest date to revisit the decision | {Specify the date from which the SIG/WG members can raise an issue to revisit the decision. Use the `YYYY-MM-DD` date format. The date does not apply to ultimate decision makers who can raise an issue to revisit the decision anytime.} |
 
 ## Context
 
