@@ -27,10 +27,10 @@ apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
   # the name must match the spec fields below, and be in the format: <plural>.<group>
-  name: crontabs.batch.kyma.cx
+  name: crontabs.batch.kyma-project.io
 spec:
   # the group name to use for REST API: /apis/<group>/<version>
-  group: batch.kyma.cx
+  group: batch.kyma-project.io
   # the version name to use for REST API: /apis/<group>/<version>
   version: v1
   # either Namespaced or Cluster
@@ -59,7 +59,7 @@ To define a CRD for Kyma, refer to the example and follow these guidelines:
 
 - **metadata:name**: Use as a name for the custom resource definition. It must use the `{plural-name}.{group}` format and use the values from the **group** and **plural** fields. If you do not follow these rules, you receive a validation error when installing the CRD.
 
-- **spec:group**: The API group should reflect the collection of logically related objects. For example, all batch objects, such as Job or ScheduledJob, can belong to the batch API Group, such as `batch.kyma.cx`. As best practice, use the fully-qualified domain name of the organization (`kyma.cx`) preceded by a subgroup if necessary, for example `crontab.kyma.cx`. The group name should reflect a capability-related and not an implementation-related name. For example, for eventing use `eventing.kyma.cx` and not `nats.kyma.cx`. Avoid prefixing the name with more than a subgroup, like in this example: `user.crontab.kyma.cx`. If the subgroup consists of multiple words, do not use spaces, hyphens, or CamelCase.
+- **spec:group**: The API group should reflect the collection of logically related objects. For example, all batch objects, such as Job or ScheduledJob, can belong to the batch API Group, such as `batch.kyma-project.io`. As best practice, use the fully-qualified domain name of the organization (`kyma-project.io`) preceded by a subgroup if necessary, for example `crontab.kyma-project.io`. The group name should reflect a capability-related and not an implementation-related name. For example, for eventing use `eventing.kyma-project.io` and not `nats.kyma-project.io`. Avoid prefixing the name with more than a subgroup, like in this example: `user.crontab.kyma-project.io`. If the subgroup consists of multiple words, do not use spaces, hyphens, or CamelCase.
 
 - **spec:version**: Each API Group can exist in multiple versions. Use the version name in the URL, for example `v1alpha1`, `v1beta1`, or `v1`. For more details, see the [Consideration](#consideration) section. For more information on versioning CRDs, see the [Versioning](#versioning) section.
 
