@@ -1,6 +1,6 @@
 # DR 020: Kyma Installer with embedded Kyma charts
 
-Created on 2018-09-19 by Piotr Bochyński (@pbochynski)}.
+Created on 2018-09-19 by Piotr Bochyński (@pbochynski).
 
 ## Decision log
 
@@ -28,4 +28,4 @@ Accepted on 2018-09-26.
 
 ## Consequences
 
-A simpler installation and update processes which will require only deploying a given version of the installer.
+Simpler installation and update processes which will require only deploying a given version of the installer.
