@@ -1,3 +1,5 @@
+> **NOTE:** The chart's `README.md` document should be concise and focus on the chart's structure and configuration. If you want to add any extensive component description, consider moving it to the official [Kyma documentation](https://github.com/kyma-project/kyma/tree/master/docs) as one of the approved [Document types](https://github.com/kyma-project/community/blob/master/guidelines/content-guidelines/content-strategy.md#documentation-types).
+
 # {Chart Name}
 
 > Provide the name of your chart. Use Heading 1 (H1).
@@ -12,8 +14,7 @@
 
 ## Details
 
-> Provide detailed information about the chart's functionality. For example, add
-a further description, an installation or configuration guide, operating instructions, or examples. Add subsections (H3) for better readability.
+> Provide detailed information about the chart's functionality, such as its configuration details. Add subsections (H3) for better readability.
 
 ## Troubleshooting
 
