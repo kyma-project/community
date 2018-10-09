@@ -24,6 +24,7 @@ The default labels provided by GitHub are as follows:
 Here are the custom labels introduced by the Kyma team:
 
 * `WIP` indicates that an issue is already in progress.
+* `decision` indicates that an issue is related to a decision.
 * `priority/critical` indicates the top-priority of a given issue.
 * `area/{CAPABILITY_NAME}` indicates which capabilities are related to a given issue. You can assign more than one `area` label an issue.
 * `security/{SCORE}` indicates the security issue based on the [CVSSv3](https://www.first.org/cvss/calculator/3.0) security rating.
@@ -40,8 +41,9 @@ There are five different stages of the triage:
 
 | Stage | Description | Labels |
 |--------- |----------|---------|
-| Validity | Asses the validity of the issue (whether it is taken for the further triage and proper classification). | invalid, duplicate, wontfix, question |
+| Validity | Assess the validity of the issue (whether it is taken for the further triage and proper classification). | invalid, duplicate, wontfix, question |
 | Kind | Differentiate whether the related issue is a new feature or a bug. | enhancement, bug |
+| Decision | Check if the issue is related to a [decision](governance.md#the-decisions-making-process) | decision |
 | Help | Identify issues that do not have high priority and can be taken by the community. | help wanted, good first issue|
 | SIG/WG | Clarify which SIG or WG is involved in this issue and is responsible for the further follow-up on the issue. | sig/{SIG_NAME}, wg/{WG_NAME}|
 | Security | Specify the [CVSSv3](https://www.first.org/cvss/calculator/3.0) security rating with the support of the security team. | security/{SCORE} |
