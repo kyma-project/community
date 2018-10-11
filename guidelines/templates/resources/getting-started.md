@@ -18,7 +18,7 @@ This Getting Started guide shows {describe the purpose of the Getting Started gu
 
 ## Prerequisites
 
-> List the requirements to go through the Getting Started guide.
+> List the requirements to complete an action described in the Getting Started guide.
 
 ## Steps
 
