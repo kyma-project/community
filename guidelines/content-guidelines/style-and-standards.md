@@ -103,7 +103,9 @@ Don't use "e.g." in documentation. Use the words "for example" or "such as" inst
 * "single sign on (SSO)", not "single sign-on"
 * "typically", not "usually"
 * "using", not "via"
-* "run", not "execute"  
+* "run", not "execute"
+* "API Micro Gateway", not "API Gateway"
+* "connect/connection", not "integrate/integration"  
 
 > **NOTE:** Do not use words such as "currently" or "now" to indicate that something is in the transitional phase of development. Avoid promising anything and mention only those components and functionalities that are already in use.
 
