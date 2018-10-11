@@ -66,7 +66,7 @@ To contribute code or content to a given Kyma repository, follow these steps:
 9. In your pull request:
 
 - Provide a reference to any related GitHub issue.
-- Select the [**Allow edits from maintainers**](https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) option to allow upstream repository maintainers and those with the push access to the upstream repository, to commit to your forked branch.
+- Make sure that the [**Allow edits from maintainers**](https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) option is selected to allow upstream repository maintainers, and those with the push access to the upstream repository, to commit to your forked branch.
 - Choose at least one `area/{capability}` label from the available list and add it to your pull request to categorize changes you made. Labels are required to include your pull request in the `CHANGELOG.md` file and group it accordingly.
 
 10. Run the relevant CI job manually. If you are an external contributor, contact the repository maintainers specified in the `CODEOWNERS` file to do it for you.
