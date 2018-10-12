@@ -1,1 +1,1 @@
-!()[assets/main-arch.svg]
+![](assets/main-arch.svg)
