@@ -18,64 +18,79 @@ spec:
       properties:
         spec:
           properties:
-            accessLabel:
+            required:
+              - source
+            description:
               type: string
-              maxLength: 63
-              pattern: '^([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$'
-            services:
+            order:
+              type: integer
+            displayName:
+              type: string
+            group:
+              type: string
+            contexts:
               type: array
               items:
-                type: object
-                required:
-                - "id"
-                - "name"
-                - "displayName"
-                - "providerDisplayName"
-                - "description"
-                - "entries"
-                properties:
-                  id:
-                    type: string
-                  name:
-                    type: string
-                  identifier:
-                    type: string
-                  displayName:
-                    type: string
-                  description:
-                    type: string
-                  longDescription:
-                    type: string
-                  providerDisplayName:
-                    type: string
-                  entries:
-                    type: array
-                    items:
-                      type: object
-                      required:
-                      - "type"
-                      properties:
-                        type:
-                          type: string
-                          enum:
-                          - "API"
-                          - "Events"
-                        gatewayUrl:
-                          type: string
-                        accessLabel:
-                          type: string
-                          maxLength: 63
-                          pattern: '^([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$'
-                        targetUrl:
-                          type: string
-                        oauthUrl:
-                          type: string
-                        credentialsSecretName:
-                          type: string
-                  tags:
-                    type: array
-                    items:
+                type: string 
+            source:
+              type: object
+              required:
+                - type
+                - url
+              properties:
+                type:
+                  type: string
+                  enum:
+                     - tar.gz
+                     - zip
+                url:
+                  type: string
+                content:
+                  type: object
+                  properties:
+                    docs:
                       type: string
+                    assets:
+                      type: string
+                    specs:
+                      type: object
+                      properties:
+                        swagger:
+                          type: object
+                          required:
+                              - location
+                              - version
+                          properties:
+                            version:
+                              type: string
+                              enum:
+                                - 2.0
+                            location:
+                              type: string
+                        asyncapi:
+                          type: object
+                          required:
+                              - location
+                              - version
+                          properties:
+                            version:
+                              type: string
+                              enum:
+                                - 1.0
+                            location:
+                              type: string
+                        odata:
+                          type: object
+                          required:
+                              - location
+                              - version
+                          properties:
+                            version:
+                              type: string
+                              enum:
+                                - 3.0
+                            location:
+                              type: string
 ---
 apiVersion: documentation.kyma-project.io/v1alpha1
 kind: DocsTopic
@@ -83,10 +98,10 @@ metadata:
   name: service-catalog #example based on current documentation topic https://github.com/kyma-project/kyma/tree/master/docs/service-catalog
 spec:
   description: Overal documentation for Service Catalog
-  order: 1
+  order: 1 # helps with ordering of the list in navigation
   displayName: Service Catalog
   group: Components #I think that because of the plural nature of the name it is much more intuitive to expect here plural then in an attribute called "type"
-  context: 
+  contexts: 
      - docs-view #specify in what context such documentation topic should be available, so on client side you can query to get only docs for a given context
   source:
     type: zip # and tar gz
@@ -94,15 +109,16 @@ spec:
     content: #specify what is in the zip and where it can be found. If not we apply our convention
       docs: ./docs
       assets: ./assets
-      spec:
-        - type:
-            name: swagger
+      specs:
+        - swagger:
             version: v1
-          location: ./spec/swagger.json
-        - type:
-            name: asyncapi
+            location: ./spec/swagger.json
+        - asyncapi:
             version: 1.2
-          location: ./spec/asyncapi.json
+            location: ./spec/asyncapi.json
+        - odata:
+            version: 1.2
+            location: ./spec/asyncapi.json
 status:
   ready: False
   reason: ValidationFailed # or UploadFailed or SourceFetchFailure
