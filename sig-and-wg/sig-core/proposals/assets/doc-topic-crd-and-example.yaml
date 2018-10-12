@@ -1,0 +1,118 @@
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: docstopic.documentation.kyma-project.io
+spec:
+  group: documentation.kyma-project.io
+  version: v1alpha1
+  scope: Namespace
+  names:
+    plural: docstopics
+    singular: docstopic
+    kind: DocsTopic
+    shortNames:
+    - dt
+  validation:
+    openAPIV3Schema:
+      properties:
+        spec:
+          properties:
+            accessLabel:
+              type: string
+              maxLength: 63
+              pattern: '^([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$'
+            services:
+              type: array
+              items:
+                type: object
+                required:
+                - "id"
+                - "name"
+                - "displayName"
+                - "providerDisplayName"
+                - "description"
+                - "entries"
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  identifier:
+                    type: string
+                  displayName:
+                    type: string
+                  description:
+                    type: string
+                  longDescription:
+                    type: string
+                  providerDisplayName:
+                    type: string
+                  entries:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                      - "type"
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - "API"
+                          - "Events"
+                        gatewayUrl:
+                          type: string
+                        accessLabel:
+                          type: string
+                          maxLength: 63
+                          pattern: '^([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$'
+                        targetUrl:
+                          type: string
+                        oauthUrl:
+                          type: string
+                        credentialsSecretName:
+                          type: string
+                  tags:
+                    type: array
+                    items:
+                      type: string
+---
+apiVersion: documentation.kyma-project.io/v1alpha1
+kind: DocsTopic
+metadata:
+  name: service-catalog #example based on current documentation topic https://github.com/kyma-project/kyma/tree/master/docs/service-catalog
+spec:
+  description: Overal documentation for Service Catalog
+  order: 1
+  displayName: Service Catalog
+  group: Components #I think that because of the plural nature of the name it is much more intuitive to expect here plural then in an attribute called "type"
+  context: 
+     - docs-view #specify in what context such documentation topic should be available, so on client side you can query to get only docs for a given context
+  source:
+    type: zip # and tar gz
+    url: https://some.domain.com/docs.zip
+    content: #specify what is in the zip and where it can be found. If not we apply our convention
+      docs: ./docs
+      assets: ./assets
+      spec:
+        - type:
+            name: swagger
+            version: v1
+          location: ./spec/swagger.json
+        - type:
+            name: asyncapi
+            version: 1.2
+          location: ./spec/asyncapi.json
+status:
+  ready: False
+  reason: ValidationFailed # or UploadFailed or SourceFetchFailure
+  message: "swagger file is not a valid json"
+#status:
+#  ready: True
+#  resource:
+#    docsUrl: $LINK-TO-STORAGE
+#    spec:
+#      - type:
+#          name: swagger
+#          version: v1
+#        url: $LINK-TO-STORAGE
