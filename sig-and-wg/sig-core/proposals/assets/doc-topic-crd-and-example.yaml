@@ -126,9 +126,10 @@ status:
 #status:
 #  ready: True
 #  resource:
-#    docsUrl: $LINK-TO-STORAGE
+#    docsUrl: $LINK-TO-INDEX
+# .  assets: $LINK-TO-INDEX
 #    spec:
 #      - type:
 #          name: swagger
 #          version: v1
-#        url: $LINK-TO-STORAGE
+#        url: $LINK-TO-FILE
