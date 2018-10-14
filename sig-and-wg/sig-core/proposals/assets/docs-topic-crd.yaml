@@ -47,8 +47,6 @@ spec:
                       properties:
                         docs:
                           type: string
-                        assets:
-                          type: string
                         specs:
                           type: object
                           properties:
@@ -59,8 +57,6 @@ spec:
                             odata:
                               type: string
                 docs:
-                  type: string
-                assets:
                   type: string
                 specs:
                   type: object 
