@@ -24,17 +24,87 @@ Proposed on 2018-10-16
 ![](assets/main-arch.svg)
 
 ### DocsTopic and ClusterDocsTopic
-- Documentation should be provided in a zip/tar.gz format and its location with additional spec info should go into the Custom Resource (DocsTopic and Cluster Docs Topic)
-- Such a zip package with documentation contains everything. There is a default convention applied if nothing is specified
-  - markdown sources
-  - assets
-  - all kind of supported specs
-  
-  
+- All details of a given documentation topic, including doc soureces are specified with [Custom Resource](/assets/doc-topic-crd-and-example.yaml) (DocsTopic and ClusterDocsTopic)
+- Supported formats, markdown + assets, swagger, asyncapi, odata
+- Documentation can be provided in different formats:
+  - in a zip/tar.gz format with info what can be found in a package, docs and specs. There is a default convention applied if nothing is specified
+  - different location of docs or specs can be provided, in case of docs and assets you point to an index with names of the files available under given link
+  - mixcure of above is possible
+- By specifying different `contexts` you can gain flexibility on where later render the content
+
+```
+---
+apiVersion: documentation.kyma-project.io/v1alpha1
+kind: Cluster
+metadata:
+  name: service-catalog #example based on current documentation topic https://github.com/kyma-project/kyma/tree/master/docs/service-catalog
+spec:
+  description: Overal documentation for Service Catalog
+  order: 1 # helps with ordering of the list in navigation
+  displayName: Service Catalog
+  group: Components #I think that because of the plural nature of the name it is much more intuitive to expect here plural then in an attribute called "type"
+  contexts: 
+     - docs-view #specify in what context such documentation topic should be available, so on client side you can query to get only docs for a given context
+  source:
+    package:
+      url: https://some.domain.com/docs.zip
+      content: #specify what is in the zip and where it can be found. Otherwise we apply convention
+        docs: ./docs
+        specs:
+          swagger: ./spec/swagger.json
+          asyncapi: ./spec/asyncapi.json
+          odata: ./spec/asyncapi.json
+    docs: $LINK-TO-INDEX
+    specs:
+      swagger: $LINK-TO-FILE
+      asyncapi: $LINK-TO-FILE
+      odata: $LINK-TO-FILE
+status:
+  ready: False
+  reason: ValidationFailed # or UploadFailed or SourceFetchFailure
+  message: "swagger file is not a valid json"
+#status:
+#  ready: True
+#  resource:
+#    docsUrl: $LINK-TO-INDEX
+#    spec:
+#      swagger: $LINK-TO-FILE
+```
+
 ### Documentation Controller
-- The package is refered in the CR and fetched by a Documentation Controller
-- Package is unziped and validated
+
+The package or specific files and indexes are refered in the CR and fetched by a Documentation Controller
+
+Package
+- Package is unziped and fetched content validated
 - Index of all docs and assets is generated and stored in respective folders as `index.yaml` file
   - for assets it contains a name of all the assets. The order is based on filename
   - for docs it contains a name and related markdown metadata. The order is based on filename
+- Together with index files content is uploaded to storage
 
+Direct links
+- Content is fetched and validated
+- Together with index files content is uploaded to storage
+
+```
+#sample of index file with markdown and assets files
+apiVersion: v1
+files:
+  - name: 01-overview.md
+    metadata:
+      title: MyOverview
+      type: Overview
+  - name: 02-details.md
+    metadata:
+      title: MyDetails
+      type: Details
+  - name: 03-installation.md
+    metadata:
+      title: MyInstallation
+      type: Tutorial
+  - name: assets/diagram.svg
+```
+
+## Website running outside Kyma cluster
+
+To avoid duplication, `topics.yaml` is basically a list of CRs that point to available locations of documentation for a given Kyma version. Website pipeline acts as a controller, generating indexes if needed and puts files in storage (in this case it is website github page)
