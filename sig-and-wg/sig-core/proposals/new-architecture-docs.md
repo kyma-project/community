@@ -105,6 +105,17 @@ files:
   - name: assets/diagram.svg
 ```
 
+Controller sets status of the CR:
+- in case of successful creation of the CR, controller adds to the CR information about location of the fetched resources
+- in case of failure, error message is specified
+
+### Storage/Minio
+
+- Minio can be replaced with S3 if needed.
+- Bucket with documentation is called `docstopics/VERSION`
+- In case of Cluster CR path to sample swagger would be `docstopics/v1alpha1/CR_NAME/swagger.yaml`
+- In case of Namespaced CR path to sample swagger would be `docstopics/v1alpha1/namespace/NAMESPACE_NAME/CR_NAME/swagger.yaml`
+
 ## Website running outside Kyma cluster
 
 To avoid duplication, `topics.yaml` is basically a list of CRs that point to available locations of documentation for a given Kyma version. Website pipeline acts as a controller, generating indexes if needed and puts files in storage (in this case it is website github page)
