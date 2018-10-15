@@ -66,7 +66,23 @@ status:
 #status:
 #  ready: True
 #  resource:
-#    docsUrl: $LINK-TO-INDEX
+#    docsUrl: 
+#      index: $LINK-TO-INDEX
+#       apiVersion: v1
+#         files:
+#         - name: 01-overview.md
+#           metadata:
+#             title: MyOverview
+#             type: Overview
+#         - name: 02-details.md
+#           metadata:
+#             title: MyDetails
+#             type: Details
+#         - name: 03-installation.md
+#           metadata:
+#             title: MyInstallation
+#             type: Tutorial
+#         - name: assets/diagram.svg
 #    spec:
 #      swagger: $LINK-TO-FILE
 ```
@@ -106,7 +122,7 @@ files:
 ```
 
 Controller sets status of the CR:
-- in case of successful creation of the CR, controller adds to the CR information about location of the fetched resources
+- in case of successful creation of the CR, controller adds to the CR information about location of the fetched resources and details if index, if such exists
 - in case of failure, error message is specified
 
 ### Storage/Minio
