@@ -48,9 +48,14 @@ spec:
     package: https://some.domain.com/kyma.zip #zip or tar of package with docs and speci, structure must follow accepted convention
     docs: $LINK-TO-INDEX
     specs:
-      swagger: $LINK-TO-FILE
-      asyncapi: $LINK-TO-FILE
-      odata: $LINK-TO-FILE
+      swagger: 
+        url: $LINK-TO-FILE
+        rewrites: 
+          basePath: /test/v2
+      asyncapi: 
+        url: $LINK-TO-FILE
+      odata: 
+        url: $LINK-TO-FILE
 status:
   ready: False
   reason: ValidationFailed # or UploadFailed or SourceFetchFailure
