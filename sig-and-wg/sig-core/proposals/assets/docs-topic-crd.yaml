@@ -36,26 +36,8 @@ spec:
               type: object
               properties:
                 package:
-                  type: object
-                  required:
-                    - url
-                  properties
-                    url:
+                  type: string
                       type: string
-                    content:
-                      type: object
-                      properties:
-                        docs:
-                          type: string
-                        specs:
-                          type: object
-                          properties:
-                            swagger:
-                              type: string
-                            asyncapi:
-                              type: string
-                            odata:
-                              type: string
                 docs:
                   type: string
                 specs:
