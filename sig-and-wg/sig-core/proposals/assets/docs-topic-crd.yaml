@@ -28,10 +28,6 @@ spec:
               type: string
             group:
               type: string
-            contexts:
-              type: array
-              items:
-                type: string 
             source:
               type: object
               properties:
