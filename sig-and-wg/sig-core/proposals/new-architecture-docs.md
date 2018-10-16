@@ -18,6 +18,8 @@ Proposed on 2018-10-16
      - navigation manifesto where you define topic name and id
 
 2. To enable single solution for any type of docs and make it possible for users to easily reuse our solution for their needs
+3. Enable modularization for minio, so it can be easily replaced by s3 and not maintain a special cache for docs in ui-api-layer
+4. Enable modularization of documentation, so you can load documentation only for modules that are installed in Kyma
 
 ## Solution
   
