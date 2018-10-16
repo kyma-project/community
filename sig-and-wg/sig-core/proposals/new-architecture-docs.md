@@ -84,7 +84,7 @@ status:
 The package or specific files and indexes are refered in the CR and fetched by a Documentation Controller
 
 Package
-- Package is unziped and fetched content validated
+- Package is unziped and fetched content validated and rewritten if needed (for example baseUrl rewrite in swagger.json)
 - Index of all docs and assets is generated and stored in respective folders as `index.yaml` file
   - for assets it contains a name of all the assets. The order is based on filename
   - for docs it contains a name and related markdown metadata. The order is based on filename
