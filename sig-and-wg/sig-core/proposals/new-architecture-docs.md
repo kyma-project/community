@@ -46,14 +46,7 @@ spec:
   contexts: 
      - docs-view #specify in what context such documentation topic should be available, so on client side you can query to get only docs for a given context
   source:
-    package:
-      url: https://some.domain.com/docs.zip
-      content: #specify what is in the zip and where it can be found. Otherwise we apply convention
-        docs: ./docs
-        specs:
-          swagger: ./spec/swagger.json
-          asyncapi: ./spec/asyncapi.json
-          odata: ./spec/asyncapi.json
+    package: https://some.domain.com/kyma.zip #zip or tar of package with docs and speci, structure must follow accepted convention
     docs: $LINK-TO-INDEX
     specs:
       swagger: $LINK-TO-FILE
