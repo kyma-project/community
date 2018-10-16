@@ -34,7 +34,7 @@ Proposed on 2018-10-16
 ```
 ---
 apiVersion: documentation.kyma-project.io/v1alpha1
-kind: Cluster
+kind: ClusterDocsTopic
 metadata:
   name: service-catalog #example based on current documentation topic https://github.com/kyma-project/kyma/tree/master/docs/service-catalog
   labels:
@@ -46,16 +46,16 @@ spec:
   group: Components #I think that because of the plural nature of the name it is much more intuitive to expect here plural then in an attribute called "type"
   source:
     package: https://some.domain.com/kyma.zip #zip or tar of package with docs and speci, structure must follow accepted convention
-    docs: $LINK-TO-INDEX
+    docs: https://some.domain.com/index.yaml
     specs:
       swagger: 
-        url: $LINK-TO-FILE
+        url: https://some.domain.com/swagger.yaml
         rewrites: 
           basePath: /test/v2
       asyncapi: 
-        url: $LINK-TO-FILE
+        url: https://some.domain.com/asyncapi.yaml
       odata: 
-        url: $LINK-TO-FILE
+        url: https://some.domain.com/odata.xml
 status:
   ready: False
   reason: ValidationFailed # or UploadFailed or SourceFetchFailure
