@@ -30,7 +30,6 @@ Proposed on 2018-10-16
   - in a zip/tar.gz format with info what can be found in a package, docs and specs. There is a default convention applied if nothing is specified
   - different location of docs or specs can be provided, in case of docs and assets you point to an index with names of the files available under given link
   - mixcure of above is possible
-- By specifying different `contexts` you can gain flexibility on where later render the content
 
 ```
 ---
@@ -38,13 +37,13 @@ apiVersion: documentation.kyma-project.io/v1alpha1
 kind: Cluster
 metadata:
   name: service-catalog #example based on current documentation topic https://github.com/kyma-project/kyma/tree/master/docs/service-catalog
+  labels:
+    viewContext: docs-view
 spec:
   description: Overal documentation for Service Catalog
   order: 1 # helps with ordering of the list in navigation
   displayName: Service Catalog
   group: Components #I think that because of the plural nature of the name it is much more intuitive to expect here plural then in an attribute called "type"
-  contexts: 
-     - docs-view #specify in what context such documentation topic should be available, so on client side you can query to get only docs for a given context
   source:
     package: https://some.domain.com/kyma.zip #zip or tar of package with docs and speci, structure must follow accepted convention
     docs: $LINK-TO-INDEX
