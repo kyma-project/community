@@ -40,8 +40,29 @@ spec:
                   type: object 
                   properties:
                     swagger:
-                      type: string
+                      type: object
+                      properties:
+                        required:
+                          - url
+                        url: 
+                          type: string
+                        rewrites: 
+                          type: object
                     asyncapi:
-                      type: string
+                      type: object
+                      properties:
+                        required:
+                          - url
+                        url: 
+                          type: string
+                        rewrites: 
+                          type: object
                     odata:
-                      type: string
+                      type: object
+                      properties:
+                        required:
+                          - url
+                        url: 
+                          type: string
+                        rewrites: 
+                          type: object
