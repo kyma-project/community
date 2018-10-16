@@ -130,26 +130,26 @@ Use the `git push` command to push any further commits made on your local branch
 
 Create a pull request from the branch of your forked repository to the `master` branch of the upstream repository and wait for the maintainers' review.
 
-> **NOTE:** On the pull request, select the [**Allow edits from maintainers**](https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) option to allow upstream repository maintainers and users with push access to the upstream repository to commit to your forked branch.
+In each pull request:
 
-In each pull request, include a description or a reference to a detailed description of the steps that the maintainer goes through to check if the pull request works and does not break any other functionality.
+- Include a description or a reference to a detailed description of the steps that the maintainer goes through to check if the pull request works and does not break any other functionality.
 
-Subject line:
-- Include a short description of changes made.
-- Limit the line to 50 characters.
-- Capitalize it.
-- Do not end the subject line with a period.
-- Use the imperative mood.
-- Separate it from the body with a blank line.
+  Subject line:
+  - Include a short description of changes made.
+  - Use the imperative mood.
+  - Limit the line to 50 characters.
+  - Capitalize it.
+  - Do not end the subject line with a period.
 
-Pull request body:
-- If you made multiple changes and the changes refer to different files, provide more details in the commit body.
-- Wrap each body line at 72 characters.
-- Use the body to explain what and why, rather than how.
-- List any side effects or other unintuitive consequences of this change.
-- Separate paragraphs with blank lines.
-- Use bullet points for a list of items.
-- Put references to any related issues at the end. For example, `Resolves #123`, `Fixes #43`, or `See also #33`.
+  Pull request body:
+  - If you made multiple changes and the changes refer to different files, provide details in the pull request body.
+  - Use the body to explain what and why, rather than how.
+  - Use bullet points for a list of items.
+  - List any side effects or other unintuitive consequences of this change.
+
+- Put references to any related issues at the end of the pull request body. For example, write `Resolves #123`, `Fixes #43`, or `See also #33`.
+- Make sure that the [**Allow edits from maintainers**](https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) option is selected to allow upstream repository maintainers, and users with push access to the upstream repository, to commit to your forked branch.
+- Choose at least one `area/{capability}` label from the available list and add it to your pull request to categorize changes you made. Labels are required to include your pull request in the `CHANGELOG.md` file, and classify it accordingly.
 
 > **NOTE:** Steps 5 and 6 are optional. Follow them if you have merge conflicts on your pull request.
 

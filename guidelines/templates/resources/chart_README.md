@@ -1,30 +1,21 @@
-```
+> **NOTE:** The chart's `README.md` document should be concise and focus on the chart's structure and configuration. If you want to add any extensive component description, consider moving it to the official [Kyma documentation](https://github.com/kyma-project/kyma/tree/master/docs) as one of the approved [Document types](../../content-guidelines/content-strategy.md#documentation-types).
 
-   _____ _                _     _______ _ _   _      
-  / ____| |              | |   |__   __(_) | | |     
- | |    | |__   __ _ _ __| |_     | |   _| |_| | ___
- | |    | '_ \ / _` | '__| __|    | |  | | __| |/ _ \
- | |____| | | | (_| | |  | |_     | |  | | |_| |  __/
-  \_____|_| |_|\__,_|_|   \__|    |_|  |_|\__|_|\___|
+# {Chart Name}
 
-
-
-```
-
-> **NOTE:** In order to convert the directory or chart's title to ASCII art, use the [ASCII Art Generator](http://patorjk.com/software/taag/#p=display&f=Big&t=Project%20Title%0A). Select the **Big** font type.
+> Provide the name of your chart. Use Heading 1 (H1).
 
 ## Overview
 
-Provide a short description of the directory or chart's functionality.
+> Provide a short description of the chart's functionality.
 
 ## Prerequisites
 
-List the requirements to run the chart.
+> List the requirements to run the chart.
 
 ## Details
 
-Provide detailed information about the directory or chart's functionality. For example, a further description, an installation or configuration guide, operating instructions, or examples. Add subsections for better readability.
+> Provide detailed information about the chart's functionality, such as its configuration details. Add subsections (H3) for better readability.
 
 ## Troubleshooting
 
-List potential issues and tips on how to avoid or solve these issues.
+> List potential issues and tips on how to avoid or solve these issues.

@@ -27,7 +27,7 @@ Here are the custom labels introduced by the Kyma team:
 * `decision` indicates that an issue is related to a decision.
 * `priority/critical` indicates the top-priority of a given issue.
 * `area/{CAPABILITY_NAME}` indicates which capabilities are related to a given issue. You can assign more than one `area` label an issue.
-* `security/{SCORE}` indicates the security issue based on the [CVSSv3](https://www.first.org/cvss/calculator/3.0) security rating.
+* `security/{SEVERITY}` indicates a security issue based on its [CVSSv3](https://www.first.org/cvss/calculator/3.0) severity, either `low`, `medium`, `high`, or `critical`.
 * `sig/{SIG_NAME}` indicates which [Special interest group (SIG)](./sig-and-wg/README.md) identified the issue and is responsible for further follow-up on the issue.
 * `wg/{WG_NAME}` indicates which [Working group (WG)](./sig-and-wg/README.md) identified the issue and is responsible for further follow-up on the issue.
 
@@ -45,8 +45,8 @@ There are five different stages of the triage:
 | Kind | Differentiate whether the related issue is a new feature or a bug. | enhancement, bug |
 | Decision | Check if the issue is related to a [decision](governance.md#the-decisions-making-process) | decision |
 | Help | Identify issues that do not have high priority and can be taken by the community. | help wanted, good first issue|
+| Security | Specify the [CVSSv3](https://www.first.org/cvss/calculator/3.0) severity with the support of the security team. | security/{SEVERITY} |
 | SIG/WG | Clarify which SIG or WG is involved in this issue and is responsible for the further follow-up on the issue. | sig/{SIG_NAME}, wg/{WG_NAME}|
-| Security | Specify the [CVSSv3](https://www.first.org/cvss/calculator/3.0) security rating with the support of the security team. | security/{SCORE} |
 | Priority | Prioritize issues in the general Kyma backlog to select those which are the most critical and should be taken as first. | priority/critical |
 | Area | Clarify which capabilities are involved in a given issue. | area/{CAPABILITY_NAME} |
 

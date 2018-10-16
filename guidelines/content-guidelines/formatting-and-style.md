@@ -9,11 +9,12 @@ It is important to consistently format items such as code or filenames to quickl
 
 Items       | Examples
 ----------- | ----------------------------------------------------------------------
-Parameters  | The **env** attribute is optional.
-Events      | The service publishes an **order.created** event.
-Roles       | Only the users with the **kyma_admin** role can list Pods in the Kyma system Namespaces.
-UI elements | Click **Subscribe**.
-Variables   | Click **Project** > **{Your Project Name}**.
+Parameters   | The **env** attribute is optional.
+HTTP headers | The Authorization Proxy validates the JWT token passed in the **Authorization Bearer** request header.
+Events       | The service publishes an **order.created** event.
+Roles        | Only the users with the **kyma_admin** role can list Pods in the Kyma system Namespaces.
+UI elements  | Click **Subscribe**.
+Variables    | Click **Project** > **{Your Project Name}**.
 
 ### Use code font for these items:
 

@@ -4,6 +4,9 @@ black-list: ["/templates/","-template.md"]
 timeout: 60
 request-repeats: 5
 files:
+  - path: "./community/.github/ISSUE_TEMPLATE/security-vulnerability.md"
+    config:
+      white-list-internal: ["{CVSS"]
   - path: "./community/guidelines/content-guidelines/formatting-and-style.md"
     config:
       white-list-internal: ["./deployment.yaml"]

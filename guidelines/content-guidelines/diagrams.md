@@ -11,9 +11,7 @@ For details on how to format diagrams and their elements in Kyma documents, see 
 
 ## Tool
 
-Use [draw.io](https://www.draw.io) as a recommended tool. Export the diagram as PNG or SVG format and save it under the corresponding `assets` directory. Save the source file as `{diagram-name}.xml` or `{diagram-name}.html` in the same location.
-
-> **NOTE:** Update the `{diagram-name}.html` source file each time you edit the diagram.
+Use [draw.io](https://www.draw.io) as a recommended tool. Export the diagram as an SVG and save it under the corresponding `assets` directory.
 
 ## Background
 

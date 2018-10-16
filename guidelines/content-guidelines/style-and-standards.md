@@ -17,7 +17,7 @@ Use active voice whenever possible. Active voice is clear, concise, and it avoid
 
 There are different tones for different types of technical documentation. The documentation can range from instructional to somewhat conversational, but always with the goal of helping users understand how to use the product for practical purposes and, in blogs and release notes, also helping business users understand changes. While writing Kyma documentation, use semi-formal style and imperative mood. The imperative mood tells the reader directly to do something. Use the imperative mood to write instructional documentation such as procedures and tutorials. Other moods can imply optional behavior.
 
-> **NOTE:** Avoid using unnecessary words such as "please" or "remember".
+> **NOTE:** Avoid using unnecessary words such as "please" or "remember."
 
 ✅ Click **Add**.  
 ✅ Click the **Add** button.  
@@ -43,10 +43,10 @@ Use the second person and the pronouns "you," "your," and "yours" to speak direc
 
 Do not use contractions in the documentation. They may be difficult for non-native English speakers to understand. Specifically, do not use the following:
 
-⛔️ Any "will" contractions, such as "you’ll" or "we’ll".  
-⛔️ Any "would" contractions, such as "we’d" or "you’d".   
+⛔️ Any "will" contractions, such as "you’ll" or "we’ll."  
+⛔️ Any "would" contractions, such as "we’d" or "you’d."   
 ⛔️ Any contractions that sound like other words, such as "they’re" (there), "it’s" (its), or "you’re" (your).   
-⛔️ Avoid using contractions for negative imperatives such as "don’t". Instead, use "do not", which has more power.
+⛔️ Avoid using contractions for negative imperatives such as "don’t." Instead, use "do not," which has more power.
 
 ### Articles
 
@@ -78,32 +78,34 @@ Here is the preferred terminology to use in the Kyma documentation:
   ✅ The **color** of the message changes from blue to red if there are errors.  
   ⛔️ The **colour** of the message changes from blue to red if there are errors.
 
-* "application", not "app"
-* "repository", not "repo"
-* "document", not "doc"
-* "as shown in the example", not "below" nor "above"  
+* "application," not "app"
+* "repository," not "repo"
+* "document," not "doc"
+* "as shown in the example," not "below," nor "above"  
 ✅ In your request, supply the values as shown in the example:   
 ✅ In your request, supply the values for the following parameters:    
 ⛔️ In your request, supply the values as shown below:
 
-* "back end" or "back-end", not "backend"
-* "front end" or "front-end", not "frontend"
-* "email", not "e-mail"
-* "fill in", not "complete"
-* "ID", not "id"
-* "for example", not "e.g."    
+* "back end" or "back-end," not "backend"
+* "front end" or "front-end," not "frontend"
+* "email," not "e-mail"
+* "fill in," not "complete"
+* "ID," not "id"
+* "for example," not "e.g."    
 Don't use "e.g." in documentation. Use the words "for example" or "such as" instead. Don't use "for example" in the middle of the sentence.   
 ✅ There are many variables in the file. For example, you can configure the host ID.   
 ✅ There are some variables that are inherited from the parent process, such as user ID, date, and permissions.   
 ⛔️ There are many variables in the file, for example, user ID, that can be configured.  
 
-* "key-value", not "key/value" nor "key:value"
-* "can", not "it is possible"
-* "must", not "should"
-* "single sign on (SSO)", not "single sign-on"
-* "typically", not "usually"
-* "using", not "via"
-* "run", not "execute"  
+* "key-value," not "key/value," nor "key:value"
+* "can," not "it is possible"
+* "must," not "should"
+* "single sign on (SSO)," not "single sign-on"
+* "typically," not "usually"
+* "using," not "via"
+* "run," not "execute"
+* "API Micro Gateway," not "API Gateway"
+* "connect/connection," not "integrate/integration"
 
 > **NOTE:** Do not use words such as "currently" or "now" to indicate that something is in the transitional phase of development. Avoid promising anything and mention only those components and functionalities that are already in use.
 
@@ -117,7 +119,7 @@ This is the list of the Kubernetes resources capitalized in Kyma documentation. 
 - Deployment
 - Event
 - Ingress
-- Namespace
+- Namespace (and "Environment," its Kyma representation)
 - Node
 - PodPreset
 - Pod
