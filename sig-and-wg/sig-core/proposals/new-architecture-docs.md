@@ -88,7 +88,7 @@ status:
 
 ### Documentation Controller
 
-The package or specific files and indexes are refered in the CR and fetched by a Documentation Controller
+The package or specific files and indexes are refered in the CR and fetched by a Documentation Controller:
 
 Package
 - Package is unziped and fetched content validated and rewritten if needed (for example baseUrl rewrite in swagger.json)
@@ -123,6 +123,8 @@ files:
 Controller sets status of the CR:
 - in case of successful creation of the CR, controller adds to the CR information about location of the fetched resources and details if index, if such exists
 - in case of failure, error message is specified
+
+Controller cleans up storage in case of CR is deleted. Once DocsTopic CR is created for example for a ServiceClass and you want to be sure that once you delete a ServiceClass (unregister broker) DocsTopic CR and referenced content is removed. For such use case while DocsTopic CR creation you need to specify an `ownerReference` pointing to the ServiceClass. Documentation controller will make sure that for such use case it will add a finalizer to the DocsTopic CR and not allow its deletion until storage is really cleaned up.
 
 ### Storage/Minio
 
