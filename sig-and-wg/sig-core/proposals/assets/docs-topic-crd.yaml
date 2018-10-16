@@ -1,8 +1,7 @@
----
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
-  name: clusterdocstopic.documentation.kyma-project.io
+  name: clusterdocstopics.documentation.kyma-project.io
 spec:
   group: documentation.kyma-project.io
   version: v1alpha1
@@ -12,14 +11,14 @@ spec:
     singular: clusterdocstopic
     kind: ClusterDocsTopic
     shortNames:
-    - dt
+    - cdt
   validation:
     openAPIV3Schema:
       properties:
         spec:
+          required:
+            - source
           properties:
-            required:
-              - source
             description:
               type: string
             order:
@@ -33,7 +32,6 @@ spec:
               properties:
                 package:
                   type: string
-                      type: string
                 docs:
                   type: string
                 specs:
@@ -41,27 +39,27 @@ spec:
                   properties:
                     swagger:
                       type: object
+                      required:
+                        - url
                       properties:
-                        required:
-                          - url
                         url: 
                           type: string
                         rewrites: 
                           type: object
                     asyncapi:
                       type: object
+                      required:
+                        - url
                       properties:
-                        required:
-                          - url
                         url: 
                           type: string
                         rewrites: 
                           type: object
                     odata:
                       type: object
+                      required:
+                        - url
                       properties:
-                        required:
-                          - url
                         url: 
                           type: string
                         rewrites: 
