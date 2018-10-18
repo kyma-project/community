@@ -50,15 +50,13 @@ The SIG/WG decison-making process looks as follows:
 
 ![Decision-making process](assets/decision-making-process.png)
 
-1. Every decision starts with creating a PR with the [**Decision Record**](./guidelines/templates/resources/DR.md) (DR) document that provides the decision details, timelines, status, the related context, and associated consequences. The DR can reference a proposal or any other related document.
-
-> **NOTE:** If a few proposals need a single decision, create only one Decision Record and update it with links to all related proposals. 
-
-2. The PR creator sends the table with the decision log details to the related SIG/WG mailing list. If the decision input providers are not part of the mailing list, add them to the email communication.
+1. [**Create a ticket**](https://github.com/kyma-project/community/issues/new/choose) and choose the `Decision record` type. Populate the decision details, timelines, status, related context, and associated consequences. The issue can reference any related document, one or more opened pull requests with related proposals. **Make sure to set the ticket label to "decision". **
+> **NOTE:** If there are few proposals only one Decision Record ticket is needed. Update it with links to all related proposals (or pull requests containing the proposals). 
+2. The `Decision record` creator sends the link to the ticket to the related SIG/WG mailing list. If the decision input providers are not part of the mailing list, add them to the email communication.
 3. The discussion on the proposed decision can happen through the mailing list, on the related Slack channel, or directly on the PR. You can also add the topic to the agenda of the upcoming SIG/WG meeting and discuss it with the SIG/WG members. Encourage the discussion and bring up any objections early in the process. A person with a different approach to the topic can create a counter proposal.
-4. The discussions on the proposed decision can lead to a change in the actual decision log or the proposal, or end up with no changes required. Update the PR with the outcome of the discussion. Otherwise, take actions required to reach a consensus. Those who created the proposal work with those who had the objections to prepare an improved solution or reach a consensus to decline the proposal.
-5. If you reach the "lazy consensus" by the decision-making date, update the status of the decision record with either `Accepted` or `Declined`, and merge the PR.
-6. If there are still unresolved objections by the decision due date, merge the PR with the `Proposed` status. The ultimate decision makers defined in the decision log table make the final decision.
-7. After the final decision, update the decision log to either `Accepted` or `Declined`.
+4. The discussions on the proposed decision can lead to a change in the actual decision log or the proposal, or end up with no changes required. Update the `Decision record` ticket with the outcome of the discussion. Otherwise, take actions required to reach a consensus. Those who created the proposal work with those who had the objections to prepare an improved solution or reach a consensus to decline the proposal.
+5. If you reach the "lazy consensus" by the decision-making date, update the status in the `Decision record` ticket with either `Accepted` or `Declined`, and merge the PR.
+6. If there are still unresolved objections by the decision due date, contact the ultimate decision makers for final decision.
+7. After the final decision, add the decision log status to either `Accepted` or `Declined` and close the ticket.
 
 >**NOTE:** Only the ultimate decision makers can request to revisit the decision before the revision date. To do it, raise an issue in the `community` repository with all details and the reason why you want to discuss the decision earlier than agreed.
