@@ -1,3 +1,8 @@
+---
+name: Decision record
+about: Decision record
+---
+
 Created on {YYYY-MM-DD} by {name and surname (@Github username)}.
 
 ## Decision log
