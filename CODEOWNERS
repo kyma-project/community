@@ -2,7 +2,7 @@
 * @kazydek @klaudiagrz @tomekpapiernik @bszwarc
 
 # Owners of the manifesto-app folder
-/manifesto-app/ @akucharska @michal-hudy @pkosiec @mjasinski5 @aerfio @derberg @magicmatatjahu
+/manifesto-app/ @akucharska @michal-hudy @pkosiec @mjasinski5 @aerfio @derberg @aerfio @magicmatatjahu
 
 # Owners of the sig-core folder
 /sig-and-wg/sig-core/ @PK85 @mszostok @Abd4llA @derberg
@@ -14,4 +14,7 @@
 milv.config.yaml @akucharska @michal-hudy @pkosiec @mjasinski5 @aerfio @magicmatatjahu
 
 # Owners of governance file
-governance.Jenkinsfile @suleymanakbas91 @clebs @a-thaler @lilitgh @akucharska @michal-hudy @pkosiec @mjasinski5 @derberg @magicmatatjahu
+orchestrator.Jenkinsfile @suleymanakbas91 @clebs @a-thaler @lilitgh @akucharska @michal-hudy @pkosiec @mjasinski5 @derberg @aerfio @magicmatatjahu
+
+# Owners of governance file
+governance.Jenkinsfile @suleymanakbas91 @clebs @a-thaler @lilitgh @akucharska @michal-hudy @pkosiec @mjasinski5 @derberg @aerfio @magicmatatjahu
