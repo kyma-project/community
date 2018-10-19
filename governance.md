@@ -44,19 +44,35 @@ SIGs and WGs follow the "lazy consensus" decision-making process which assumes t
 
 > **NOTE:** The described approach only concerns the decisions made by SIGs and WGs. It does not affect any Kyma decisions made during daily team activities.
 
-### Process
+### The Lazy consensus approach
 
 The SIG/WG decison-making process looks as follows:
 
 ![Decision-making process](assets/decision-making-process.png)
 
-1. [**Create a ticket**](https://github.com/kyma-project/community/issues/new/choose) and choose the `Decision record` type. Provide clear information as requested in the template. The issue may reference any document or a number of opened pull requests with more detailed proposals. **Make sure to set the ticket label to "decision". **
-> **NOTE:** If there are few proposals only one Decision Record ticket is needed. Update it with links to all related proposals (or pull requests containing the proposals). 
-2. The creator sends link to the `Decision record` ticket to the related SIG/WG mailing list. If the decision input providers are not part of the mailing list, add them to the email communication.
-3. The discussion on the proposed decision can happen through the mailing list, on the related Slack channel, or directly on the PR. You can also add the topic to the agenda of the upcoming SIG/WG meeting and discuss it with the SIG/WG members. Encourage the discussion and bring up any objections early in the process. A person with a different approach to the topic can create a counter proposal.
-4. The discussions on the proposed decision can lead to a change in the actual decision log or the proposal, or end up with no changes required. Update the `Decision record` ticket with the outcome of the discussion. Otherwise, take actions required to reach a consensus. Those who created the proposal work with those who had the objections to prepare an improved solution or reach a consensus to decline the proposal.
-5. If you reach the "lazy consensus" by the decision-making date, update the status in the `Decision record` ticket with either `Accepted` or `Declined`, and merge the PR.
-6. If there are still unresolved objections by the decision due date, contact the ultimate decision makers for final decision.
-7. After the final decision, add the decision log status to either `Accepted` or `Declined` and close the ticket.
+#### Create a decision record
 
->**NOTE:** Only the ultimate decision makers can request to revisit the decision before the revision date. To do it, raise an issue in the `community` repository with all details and the reason why you want to discuss the decision earlier than agreed.
+[**Create an issue**](https://github.com/kyma-project/community/issues/new/choose) and choose the `Decision record` type. Provide the information as requested in the template and set the issue label to  `decision`. The issue may contain all necessary information or, reference a document or an opened pull request with more detailed proposal. 
+
+#### Get the consensus
+
+**Post a link** of the `Decision record` issue to the related SIG/WG mailing list and to the relevant Slack channels. If people relevant for the decision are not part of the mailing list, add them explicitly to the email communication. Communicate the decision to be made clearly to the groups affected by it and invite them to check the proposal. 
+
+Clarify and discuss the decision content and the proposal as needed through the mailing list, relevant Slack channels, on the related pull request or, directly in the comments of the `Decision record` issue. Feel free to communicate it during the upcoming SIG/WG meeting and ask its members for feedback. Encourage the discussion and bring up any objections early in the process. Those who created the proposal work with those who had objections to either prepare an improved solution or decline the proposal. Take all necessary actions  to reach a consensus *latest by the decision due date*.  
+> **NOTE:** In most cases, discussions may lead to changes in the `Decision record` or the proposal, or end up with no changes required. If a substantially different approach is suggested, invite it's supporters to write a counter proposal and to submit it in a separate pull request. 
+
+
+#### Close the decision
+
+Once you reach the consensus, add the status change in the `Decision record` ticket with either `Accepted` or `Declined`. The pull request with the accepted proposal should be closed and merged. Make sure that the merge comment contains one of the [keywords](https://help.github.com/articles/closing-issues-using-keywords/) to automatically close the `Decision record` ticket. Otherwise, close the `Decision record` ticket manually.
+> **NOTE:** If the `Decision record` had related one or more counter proposals in separate pull requests, close the related pull requests with rejected proposals without merging and state the reasons for the rejection in the closing comments.
+
+### Consensus is not reached
+
+If there are still unresolved objections by the decision due date, engage the ultimate decision makers. The ultimate decision makers are stated in the decision log of the `Decision record` issue. Depending on the urgency, work with them on reaching final decision as soon as possible. After that, close the decision.
+
+### Revisit a decision (lazy)
+
+A decision will not be automatically revisited or actively reviewed unless there is an explicit request for it. To request it, create a new `Decision record` in the respective repository and populate  the `Affected decisions` parameter. The  `Due date` parameter needs to be populated accordingly to the earliest revisit date of the affected decision. Populate the context and consequences section with information about why another approach is proposed and a new decision should be made. 
+
+The new `Decision record` will regularly be addressed after the original `Decision record` earliest revisit date has been reached, unless explicitly supported and requested by the ultimate decision makers due to major impact to the project, substantial improvement or community interest. In this case the new due date value should be 
