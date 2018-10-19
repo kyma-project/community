@@ -31,11 +31,6 @@ properties([
     buildDiscarder(logRotator(numToKeepStr: '30')),
 ])
 
-/*
-    if email of commiter will be "kyma.bot@sap.com", then build will aborted
-*/
-def autoCancelled = false
-
 podTemplate(label: label) {
     node(label) {
         try {
@@ -58,7 +53,7 @@ podTemplate(label: label) {
                         for (int i=0; i < buildableProjects.size(); i++) {
                             def index = i
                                 jobs["${buildableProjects[index]}"] = { ->
-                                    build job: "website/"+buildableProjects[index],
+                                    build job: "community/"+buildableProjects[index],
                                         wait: true,
                                         parameters: [
                                             string(name:'GIT_REVISION', value: "$commitID"),
@@ -112,8 +107,8 @@ String[] changedProjects() {
                 res.add(allProjects[i])
                 break // already found a change in the current project, no need to continue iterating the changeset
             }
-            if (projects[i] == "governance" && allChanges[j].endsWith(".md") && !res.contains(projects[i])) {
-                res.add(projects[i])
+            if (env.BRANCH_NAME != 'master' && allProjects[i] == "governance" && allChanges[j].endsWith(".md") && !res.contains(allProjects[i])) {
+                res.add(allProjects[i])
                 break // already found a change in one of the .md files, no need to continue iterating the changeset
             }
         }
@@ -132,7 +127,7 @@ boolean changeIsValidFileType(String change, String project){
 @NonCPS
 String changeset() {
     // on branch get changeset comparing with master
-    if (env.BRANCH_NAME != "master") {
+    if (env.BRANCH_NAME != 'master') {
         echo "Fetching changes between origin/${env.BRANCH_NAME} and origin/master."
         return sh (script: "git --no-pager diff --name-only origin/master...origin/${env.BRANCH_NAME} | grep -v 'vendor\\|node_modules' || echo ''", returnStdout: true)
     }
