@@ -36,7 +36,7 @@ To suggest a change in the ownership of a given repository part, create a PR wit
 
 In general, the Special Interest Groups (SIGs) and Working Groups (WGs) make decisions that affect the project, including its structure, functionalities, components, or work of the project teams. However, the organizational decisions and those that relate to the product strategy are made by the Kyma Council.
 
-SIGs and WGs follow the "lazy consensus" decision-making process which assumes that:
+SIGs and WGs follow the **lazy consensus** approach to decision making which assumes that:
 
 * All SIG/WG members have an equal voice in the decision-making process.
 * Silence is consent. By default, lack of objections to a proposed decision means a silent approval.
@@ -46,17 +46,15 @@ SIGs and WGs follow the "lazy consensus" decision-making process which assumes t
 
 At the [Kyma project decisions board](https://github.com/kyma-project/community/issues/106#boards?labels=decision&activeFilters=labels&repos=139590666,151691065,139590577,139590641,139590616,139590701,147495537,139847219) you may see the current state of processed decisions in the Kyma project.
 
-### Lazy consensus approach
-
 The SIG/WG decison-making process is depicted as follows:
 
 ![Decision-making process](assets/decision-making-process.png)
 
-#### Create a decision record
+### Create a decision record
 
 [Create an issue](https://github.com/kyma-project/community/issues/new/choose) and choose the `Decision record` type. Provide the information as requested in the template and set the issue label to  `decision`. The issue may contain all necessary information or, reference a document or an opened pull request with more detailed proposal. 
 
-#### Discuss and get to consensus
+### Discuss and get to consensus
 
 Take all necessary actions to reach a consensus *latest by the decision due date*:
 
@@ -71,7 +69,7 @@ Take all necessary actions to reach a consensus *latest by the decision due date
 > **NOTE:** In most cases, discussions may lead to changes in the `Decision record` or the proposal, or end up with no changes required. If a substantially different approach is suggested, invite it's supporters to write a counter proposal and to submit it in a separate pull request. 
 
 
-#### Close the decision
+### Close the decision
 
 Once you reach the consensus:
 
@@ -80,7 +78,7 @@ Once you reach the consensus:
 
 > **NOTE:** If the `Decision record` had related one or more counter proposals in separate pull requests, close the related pull requests with rejected proposals without merging and state the reasons for the rejection in the closing comments.
 
-### Consensus is not reached
+### If consensus is not reached
 
 If there are still unresolved objections by the decision due date, engage the ultimate decision makers. The ultimate decision makers are stated in the decision log of the `Decision record` issue. Depending on the urgency, work with them on reaching final decision as soon as possible. After that, close the decision.
 
