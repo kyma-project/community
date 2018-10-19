@@ -55,7 +55,7 @@ The SIG/WG decison-making process is depicted as follows:
 [Create an issue](https://github.com/kyma-project/community/issues/new/choose) and choose the `Decision record` type. Provide the information as requested in the template and set the issue label to  `decision`. The issue may contain all necessary information or, reference a document or an opened pull request with more detailed proposal. Set the corresponding WG or SIG label in addition too (e.g.  `sig/core`). 
 
 #### Mark existing issue as decision
-In some cases, during the [triage](./issues-workflow.md), a decision  label is set for an existing issue, indicating that a decision is needed. In this case, use the [decision record template](./../.github/ISSUE_TEMPLATE/decision-record.md) and copy it in the issue description accordingly. 
+In some cases, during the [triage](./issues-workflow.md), a decision  label is set for an existing issue, indicating that a decision is needed. In this case, use the [decision record template](./.github/ISSUE_TEMPLATE/decision-record.md) and copy it in the issue description accordingly. 
 
 ### Discuss and get to consensus
 
