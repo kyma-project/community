@@ -16,7 +16,6 @@ Proposed on 2018-10-16
    - To get content in the UI we have 2 different places to define details, 
      - config located in docs sources
      - navigation manifesto where you define topic name and id
-
 2. To enable single solution for any type of docs and make it possible for users to easily reuse our solution for their needs
 3. Enable modularization for minio, so it can be easily replaced by s3 and not maintain a special cache for docs in ui-api-layer
 4. Enable modularization of documentation, so you can load documentation only for modules that are installed in Kyma
@@ -124,7 +123,27 @@ Controller sets status of the CR:
 - in case of successful creation of the CR, controller adds to the CR information about location of the fetched resources and details if index, if such exists
 - in case of failure, error message is specified
 
-Controller cleans up storage in case of CR is deleted. Once DocsTopic CR is created for example for a ServiceClass and you want to be sure that once you delete a ServiceClass (unregister broker) DocsTopic CR and referenced content is removed. For such use case while DocsTopic CR creation you need to specify an `ownerReference` pointing to the ServiceClass. Documentation controller will make sure that for such use case it will add a finalizer to the DocsTopic CR and not allow its deletion until storage is really cleaned up.
+Controller cleans up storage in case of CR is deleted. 
+
+### Catalog Docs Controller
+
+When you register a ServiceBroker, this controller listens to all newly addedded ServiceClasses to the Catalog and creates for them DocsTopic or ClusterDocsTopic CR. Such ServiceClass on which controller reacts must contain `external.metadata.content` object.
+
+```
+package: https://some.domain.com/kyma.zip #zip or tar of package with docs and speci, structure must follow accepted convention
+    docs: https://some.domain.com/index.yaml
+    specs:
+      swagger: 
+        url: https://some.domain.com/swagger.yaml
+        rewrites: 
+          basePath: /test/v2
+      asyncapi: 
+        url: https://some.domain.com/asyncapi.yaml
+      odata: 
+        url: https://some.domain.com/odata.xml
+```
+
+For docs cleanup reasons (unregister broker case), controller during CR creation specifies an `ownerReference` pointing to the ServiceClass. The controller will make sure that for such use case it will add a finalizer to the DocsTopic CR and not allow its deletion until storage is really cleaned up.
 
 ### Storage/Minio
 
