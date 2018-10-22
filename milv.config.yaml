@@ -20,3 +20,7 @@ files:
     config:
       #milv doesn't support parenthesis in parenthesis in .md links yet
       white-list-external: ["https://github.com/kyma-project/community/blob/master/docs/cla/SAP%20Corporate%20Contributor%20License%20Agreement%20(5-26-15"]
+  - path: “./community/governance.md”
+    config:
+      #milv doesn't support query parameters in .md links yet
+      white-list-external: [“https://github.com/kyma-project/community/issues/106#boards?labels=decision&activeFilters=labels&repos=139590666,151691065,139590577,139590641,139590616,139590701,147495537,139847219“]
