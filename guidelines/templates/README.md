@@ -16,6 +16,7 @@ The table provides an overview of the template names, the repository they refer 
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`cli-reference.md`](./resources/cli-reference.md) | Use the template to describe the syntax and the use of CLI commands for a given component. |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`custom-resource.md`](./resources/custom-resource.md) | Use the template to describe a custom resource (CR) and its elements. |
 | No specific repository | [`Kyma-branded presentation template`](./resources/Kyma_presentation_template.pptx) | Use the official Kyma-branded presentation to talk about the project and present it to new audiences. |
+| No specific repository | [`Official Kyma graphics and logo`](./resources/assets) | Use these graphics for any Kyma-related communication. |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`overview.md`](./resources/overview.md) | Use the template to introduce a Kyma component. |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`details.md`](./resources/details.md) | Use the template to provide more details about a Kyma component. |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`architecture.md`](./resources/architecture.md) | Use the template to describe the architecture of a Kyma component. |
