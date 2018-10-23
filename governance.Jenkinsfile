@@ -1,12 +1,14 @@
 #!/usr/bin/env groovy
 def label = "kyma-${UUID.randomUUID().toString()}"
-def isMaster = env.BRANCH_NAME == 'master'
+def isMaster = params.GIT_BRANCH == 'master'
 def repositoryName = "community"
 
 echo """
 ********************************
 Job started with the following parameters:
-BRANCH_NAME=${env.BRANCH_NAME}
+GIT_REVISION=${params.GIT_REVISION}
+GIT_BRANCH=${params.GIT_BRANCH}
+APP_VERSION=${params.APP_VERSION}
 TRIGGER_FULL_VALIDATION=${params.TRIGGER_FULL_VALIDATION}
 ********************************
 """
@@ -25,16 +27,14 @@ podTemplate(label: label) {
                             validateLinks('--ignore-external', repositoryName)
                         }
 
-                        if (!isMaster) {
+                        if (isMaster) {
+                            stage("validate external links") {
+                                validateLinks('--ignore-internal', repositoryName)
+                            }
+                        } else {
                             stage("validate external links in changed markdown files") {
                                 def changes = changedMarkdownFiles(repositoryName).join(" ")
                                 validateLinks("--ignore-internal ${changes}", repositoryName)
-                            }
-                        }
-
-                        if(isMaster || params.TRIGGER_FULL_VALIDATION) {
-                            stage("validate external links") {
-                                validateLinks('--ignore-internal', repositoryName)
                             }
                         }
                     }
@@ -43,9 +43,9 @@ podTemplate(label: label) {
         } catch (ex) {
             echo "Got exception: ${ex}"
             currentBuild.result = "FAILURE"
-            def body = "${currentBuild.currentResult} ${env.JOB_NAME}${env.BUILD_DISPLAY_NAME}: on branch: ${env.BRANCH_NAME}. See details: ${env.BUILD_URL}"
+            def body = "${currentBuild.currentResult} ${env.JOB_NAME}${env.BUILD_DISPLAY_NAME}: on branch: ${params.GIT_BRANCH}. See details: ${env.BUILD_URL}"
             emailext body: body, recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'CulpritsRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: "${currentBuild.currentResult}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
-                        
+
             if(isMaster) {
                 sendSlackNotification(":hankey-fire:Governance validation failed on `${repositoryName}` repository!\nSee details: ${env.BUILD_URL}console")
             }
@@ -101,7 +101,10 @@ String[] changedMarkdownFiles(String repositoryName) {
  */
 @NonCPS
 String changeset() {
+    prPrefix = 'PR-';
+    branch = params.GIT_BRANCH.substring(prPrefix.size())
+
     // get changeset comparing branch with master
-    echo "Fetching changes between remotes/origin/${env.BRANCH_NAME} and remotes/origin/master."
-    return sh (script: "git --no-pager diff --name-only remotes/origin/master...remotes/origin/${env.BRANCH_NAME} | grep '.md' || echo ''", returnStdout: true)
+    echo "Fetching changes between remotes/origin/${branch}/head and remotes/origin/master."
+    return sh (script: "git --no-pager diff --name-only remotes/origin/master...remotes/origin/${branch}/head | grep '.md' || echo ''", returnStdout: true)
 }
