@@ -56,7 +56,7 @@ The SIG/WG decison-making process is as follows:
 
 > **NOTE:** In some cases, a `decision` label is set for an existing issue during the [triage](./issues-workflow.md), which indicates the need for a decision. In this case, use the [**Decision record** template](./.github/ISSUE_TEMPLATE/decision-record.md) and copy it to the issue description accordingly. 
 
-### Discuss and get to consensus
+### Reach a consensus
 
 Take all necessary actions to reach a consensus no later than the decision due date:
 
@@ -82,7 +82,7 @@ Once you reach the consensus:
 
 ### Lack of consensus
 
-If there are still unresolved objections by the decision due date, engage the ultimate decision makers. The ultimate decision makers are stated in the decision log of the **Decision record** issue. Work with them to reach the final decision as soon as possible and close the issue.
+Engage the ultimate decision makers if there are still unresolved objections by the decision due date. The ultimate decision makers are stated in the decision log of the **Decision record** issue. Work with them to reach the final decision as soon as possible and close the issue.
 
 ### Revisit a decision
 
