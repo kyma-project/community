@@ -32,11 +32,11 @@ Every code owner is expected to:
 
 To suggest a change in the ownership of a given repository part, create a PR with the required changes in the `CODEOWNERS` file in the project's repository. The required number of code owners needs to approve the PR for the changes to take place. Read [here](https://github.com/kyma-project/community/blob/master/guidelines/internal-guidelines/repository-template/template/CODEOWNERS) how to set up and modify owners of the given repository folders and files.
 
-## The decisions-making process
+## Decision-making
 
-In general, the relevant Special Interest Groups (SIGs) and Working Groups (WGs) make the decisions that affect the project, including its structure, functionalities, components, or work of the project teams. However, the organizational decisions and those that relate to the product strategy belong to the Kyma Council.
+In general, the Special Interest Groups (SIGs) and Working Groups (WGs) make decisions that affect the project, including its structure, functionalities, components, or work of the project teams. However, the organizational decisions and those that relate to the product strategy are made by the Kyma Council.
 
-SIGs and WGs follow the "lazy consensus" decision-making process which assumes that:
+SIGs and WGs follow the **lazy consensus** approach to decision-making which assumes that:
 
 * All SIG/WG members have an equal voice in the decision-making process.
 * Silence is consent. By default, lack of objections to a proposed decision means a silent approval.
@@ -44,21 +44,52 @@ SIGs and WGs follow the "lazy consensus" decision-making process which assumes t
 
 > **NOTE:** The described approach only concerns the decisions made by SIGs and WGs. It does not affect any Kyma decisions made during daily team activities.
 
-### Process
+To see the current state of processed decisions in the Kyma project, go to the project's [decision board](https://github.com/kyma-project/community/issues/106#boards?labels=decision&activeFilters=labels&repos=139590666,151691065,139590577,139590641,139590616,139590701,147495537,139847219).
 
-The SIG/WG decison-making process looks as follows:
+The SIG/WG decison-making process is as follows:
 
 ![Decision-making process](assets/decision-making-process.png)
 
-1. Every decision starts with creating a PR with the [**Decision Record**](./guidelines/templates/resources/DR.md) (DR) document that provides the decision details, timelines, status, the related context, and associated consequences. The DR can reference a proposal or any other related document.
+### Create a decision record
 
-> **NOTE:** If a few proposals need a single decision, create only one Decision Record and update it with links to all related proposals. 
+[Create an issue](https://github.com/kyma-project/community/issues/new/choose) and choose the **Decision record** template. Provide the information as requested in the template and set the issue label to  `decision`. The issue can contain all necessary information, reference a document, or an open pull request with a more detailed proposal. Additionally, set the corresponding WG or SIG label such as  `sig/core`. 
 
-2. The PR creator sends the table with the decision log details to the related SIG/WG mailing list. If the decision input providers are not part of the mailing list, add them to the email communication.
-3. The discussion on the proposed decision can happen through the mailing list, on the related Slack channel, or directly on the PR. You can also add the topic to the agenda of the upcoming SIG/WG meeting and discuss it with the SIG/WG members. Encourage the discussion and bring up any objections early in the process. A person with a different approach to the topic can create a counter proposal.
-4. The discussions on the proposed decision can lead to a change in the actual decision log or the proposal, or end up with no changes required. Update the PR with the outcome of the discussion. Otherwise, take actions required to reach a consensus. Those who created the proposal work with those who had the objections to prepare an improved solution or reach a consensus to decline the proposal.
-5. If you reach the "lazy consensus" by the decision-making date, update the status of the decision record with either `Accepted` or `Declined`, and merge the PR.
-6. If there are still unresolved objections by the decision due date, merge the PR with the `Proposed` status. The ultimate decision makers defined in the decision log table make the final decision.
-7. After the final decision, update the decision log to either `Accepted` or `Declined`.
+> **NOTE:** In some cases, a `decision` label is set for an existing issue during the [triage](./issues-workflow.md), which indicates the need for a decision. In this case, use the [**Decision record** template](./.github/ISSUE_TEMPLATE/decision-record.md) and copy it to the issue description accordingly. 
 
->**NOTE:** Only the ultimate decision makers can request to revisit the decision before the revision date. To do it, raise an issue in the `community` repository with all details and the reason why you want to discuss the decision earlier than agreed.
+### Reach a consensus
+
+Take all necessary actions to reach a consensus no later than the decision due date:
+
+- Send a link to the **Decision record** issue to the related SIG or WG mailing list and post it in the relevant Slack channels. If people relevant for the decision are not part of the mailing list, add them explicitly to the email communication. Communicate the decision to be made clearly to the groups affected by it and invite them to check the proposal. 
+
+- Clarify and discuss the decision content and the proposal as needed. Use the mailing list, relevant Slack channels, the related pull request, or comment directly on the **Decision record** issue. 
+
+- Feel free to communicate the decision proposal during the upcoming SIG or WG meeting and ask its members for feedback. Encourage the discussion and bring up any objections early in the process. 
+
+- Those who created the proposal work with those who had objections to either prepare an improved solution or decline the proposal. 
+
+> **NOTE:** Discussions  lead to changes in the decision record or the proposal, or end up with no changes required. If someone suggests a substantially different approach, ask its supporters to write a counter proposal and to submit it in a separate pull request. 
+
+
+### Close the decision
+
+Once you reach the consensus:
+
+- Add the status change in the **Decision record** issue with either `Accepted` or `Declined`. 
+- Close and merge the pull request with the accepted proposal. Make sure that the merge comment contains one of the [keywords](https://help.github.com/articles/closing-issues-using-keywords/) to automatically close the **Decision record** issue. Otherwise, close the **Decision record** issue manually.
+
+> **NOTE:** If there are any pull requests with counter proposals to the decision record, close the related pull requests with rejected proposals without merging. State the reasons for the rejection in the closing comments.
+
+### Lack of consensus
+
+Engage the ultimate decision makers if there are still unresolved objections by the decision due date. The ultimate decision makers are stated in the decision log of the **Decision record** issue. Work with them to reach the final decision as soon as possible and close the issue.
+
+### Revisit a decision
+
+Raise an explicit request to revisit a decision or to review it. To request revision:
+
+- Create a new  decision record in the respective repository and populate the `Affected decisions` parameter. 
+- Specify the `Due date` parameter and set a revision date that cannot be earlier than the revision date of the original decision
+- Explain in the **Context** and **Consequences** sections why you propose another approach and a new decision. 
+
+The SIG or WG addresses the request for revision after the original decision record reaches its revision date. Exceptionally, you can suggest to revisit a decision earlier if the ultimate decision makers support and request it. They can trigger the process if they identify a major positive impact on the project, substantial improvement, or the community interest. 

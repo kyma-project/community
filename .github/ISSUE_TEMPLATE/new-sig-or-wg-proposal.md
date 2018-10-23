@@ -20,6 +20,10 @@ about: Propose a new SIG or WG
 The abbreviate name must be no longer than six characters. -->
 * Abbreviated name:
 
+**Earliest start date**
+<!-- Specify the earliest date for this group to start their work. This is required to make a timely decision on the group creation. -->
+* {YYYY-MM-DD}
+
 **Visibility**
 <!-- Remove the type that does not fit. -->
 * Internal
