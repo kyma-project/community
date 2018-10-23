@@ -52,7 +52,7 @@ The SIG/WG decison-making process is as follows:
 
 ### Create a decision record
 
-[Create an issue](https://github.com/kyma-project/community/issues/new/choose) and choose the `Decision record` template. Provide the information as requested in the template and set the issue label to  `decision`. The issue can contain all necessary information, reference a document, or an open pull request with a more detailed proposal. Additionally, set the corresponding WG or SIG label such as  `sig/core`. 
+[Create an issue](https://github.com/kyma-project/community/issues/new/choose) and choose the **Decision record** template. Provide the information as requested in the template and set the issue label to  `decision`. The issue can contain all necessary information, reference a document, or an open pull request with a more detailed proposal. Additionally, set the corresponding WG or SIG label such as  `sig/core`. 
 
 > **NOTE:** In some cases, a `decision` label is set for an existing issue during the [triage](./issues-workflow.md), which indicates the need for a decision. In this case, use the [**Decision record** template](./.github/ISSUE_TEMPLATE/decision-record.md) and copy it to the issue description accordingly. 
 
@@ -76,7 +76,7 @@ Take all necessary actions to reach a consensus no later than the decision due d
 Once you reach the consensus:
 
 - Add the status change in the **Decision record** issue with either `Accepted` or `Declined`. 
-- Close and merge the pull request with the accepted proposal. Make sure that the merge comment contains one of the [keywords](https://help.github.com/articles/closing-issues-using-keywords/) to automatically close the `Decision record` ticket. Otherwise, close the **Decision record** issue manually.
+- Close and merge the pull request with the accepted proposal. Make sure that the merge comment contains one of the [keywords](https://help.github.com/articles/closing-issues-using-keywords/) to automatically close the **Decision record** issue. Otherwise, close the **Decision record** issue manually.
 
 > **NOTE:** If there are any pull requests with counter proposals to the decision record, close the related pull requests with rejected proposals without merging. State the reasons for the rejection in the closing comments.
 
@@ -92,6 +92,5 @@ Raise an explicit request to revisit a decision or to review it. To request revi
 - Add the  `Due date` parameter accordingly to the earliest revisit date of the affected decision. 
 - Explain in the **Context** and **Consequences** section why you propose another approach and a new decision. 
 
-The SIG or WG will address the requests for decision revision after the original decision record reaches its earliest revisit date. The due date value in the new (revision) decision record should reflect this.
-
-Exceptionally, you can suggest the revision of the decisoin before the revision date if the ultimate decision makers support and request it. They can trigger the process if they identify a major positive impact on the project, substantial improvement, or the community interest. 
+The SIG or WG will address the request for revision after the original decision record reaches its earliest revisit date. 
+Exceptionally, you can suggest the revision of the decision before the revision date if the ultimate decision makers support and request it. They can trigger the process if they identify a major positive impact on the project, substantial improvement, or the community interest. 
