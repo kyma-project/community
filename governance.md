@@ -89,7 +89,7 @@ Engage the ultimate decision makers if there are still unresolved objections by 
 Raise an explicit request to revisit a decision or to review it. To request revision:
 
 - Create a new  decision record in the respective repository and populate the `Affected decisions` parameter. 
-- Add the  `Due date` parameter accordingly to the earliest revisit date of the affected decision. 
+- Specify the `Due date` parameter and set a revision date that cannot be earlier than the revision date of the original decision
 - Explain in the **Context** and **Consequences** sections why you propose another approach and a new decision. 
 
 The SIG or WG addresses the request for revision after the original decision record reaches its revision date. Exceptionally, you can suggest to revisit a decision earlier if the ultimate decision makers support and request it. They can trigger the process if they identify a major positive impact on the project, substantial improvement, or the community interest. 
