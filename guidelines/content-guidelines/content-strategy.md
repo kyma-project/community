@@ -39,21 +39,30 @@ Every independent Kyma component is a separate documentation topic. The only exc
 
 ## Documentation types
 
+There is a set of documents that a given technical topic must include. You can also add additional document types to expose a specific topic better. However, before you create an additional document type, consult it with other Kyma content developers.  
+
+### Obligatory
+
 Each technical topic must have the following document types:
 
 >**NOTE:** The Kyma content developers create templates for a given document type once there are at least two documents to use as a base for such a template.
 
-* [Overview](../templates/resources/overview.md) - Use it to describe the component in general. It serves as an entry point for the topic. Make sure it is short but descriptive.
-* [Architecture](../templates/resources/architecture.md) - Use it to describe in detail the architecture of the component. Include a diagram in this document.
-* [Getting Started](../templates/resources/getting-started.md) - Use it to provide a clear step-by-step instruction that helps the user to understand a given concept better. The user must be able to go through all the steps of the document and complete them. There is no separate tutorial type. The document does not have to explicitly point out the example used as, at the end, the explicit reference to the example will be in the main content of the guide.
-* [Details](../templates/resources/details.md) - Use it to describe more technical details of the component that do not fit into any other document type. Among other things, include a detailed explanation of the application lifecycle that describes how the resource is created and what other resources are created, how it is updated, how it is removed, and what each operation means from the technical point of view.
-* **Configuration** - Use it to describe configuration options for a given component. Define the settings that a user can change and the expected outcome of such changes. Include the table structure with the settings in the document.
-* [CLI Reference](../templates/resources/cli-reference.md) - Use it to describe the syntax and the use of CLI commands for a given component.
-* [Custom Resource](../templates/resources/custom-resource.md) - Use it to document details of Custom Resource Definitions (CRDs) that are part of a given component.
-* **API** - Use it to document the exposed external API of components that the Kyma administrators use to integrate them with Kyma.
-* **Operational Guide** - Use it to describe how to operate the component. Explain all details needed for the component troubleshooting.
+- [Overview](../templates/resources/overview.md) - Use it to describe the component in general. It serves as an entry point for the topic. Make sure it is short but descriptive.
+- [Architecture](../templates/resources/architecture.md) - Use it to describe in detail the architecture of the component. Include a diagram in this document.
+- [Getting Started](../templates/resources/getting-started.md) - Use it to provide a clear step-by-step instruction that helps the user to understand a given concept better. The user must be able to go through all the steps of the document and complete them. There is no separate tutorial type. The document does not have to explicitly point out the example used as, at the end, the explicit reference to the example will be in the main content of the guide.
+- [Details](../templates/resources/details.md) - Use it to describe more technical details of the component that do not fit into any other document type. Among other things, include a detailed explanation of the application lifecycle that describes how the resource is created and what other resources are created, how it is updated, how it is removed, and what each operation means from the technical point of view.
+- **Configuration** - Use it to describe configuration options for a given component. Define the settings that a user can change and the expected outcome of such changes. Include the table structure with the settings in the document.
+- [CLI Reference](../templates/resources/cli-reference.md) - Use it to describe the syntax and the use of CLI commands for a given component.
+- [Custom Resource](../templates/resources/custom-resource.md) - Use it to document details of Custom Resource Definitions (CRDs) that are part of a given component.
+- **API** - Use it to document the exposed external API of components that the Kyma administrators use to integrate them with Kyma.
+- **Operational Guide** - Use it to describe how to operate the component. Explain all details needed for the component troubleshooting.
 
 >**NOTE:** The examples are exceptions from the above types. The plan is to expose a table-like view as a reference to all examples and to enhance it with examples that the external Kyma users provide. Another plan is to implement an automated way of filling in the content in such documents.
+
+### Optional
+
+You can add the following document type to the Kyma documentation:
+- **Installation** - Use it to describe the installation process. This includes guides for local, cluster, or component installation, as well as documents describing installation scripts.
 
 ## The content source
 
