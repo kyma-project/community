@@ -1,0 +1,36 @@
+# About
+Here the results of the first threat modelling are documented.
+
+The treat modelling was done in October 2018 in three sessions with Suleyman Akbas, Andreas Thaler and a representive of the kyma security team.
+
+# What was done:
+Bringing the different systems into one picture
+Discussed every communication channel
+Identified the assets being worth to protect
+Identified the secrets in the game
+
+# Assumptions
+There is one prow cluster only. If there are more installations they need to be protected in a similar way.
+
+# Working picture
+![Working Picture](assets/landscape.JPG)
+
+# Findings
+- No blockers identified
+- Dedicated cluster for job execution is recommended but not required for first setup
+- Any external communication must be secured from the beginning, mainly the ingress for deck access and webhook call
+- Secured internal communication is recommend but nor required for first setup
+- Secret management is fine using KMS
+- hmac token needs to be increased to 32 bytes
+- tokens should be rotated at least at offboarding of people -> offboarding checklist
+- Do not use a single technical service account for google cloud access, but introduce dedicated service accounts for the different scenarios
+- There should be only few admin users mainly for operations, and no other roles or kind of access
+-- Requires that all configuration is done in source code triggering a provisioning
+-- No backup of configuration required by that and no access for developers needed
+-- Anyone not being admin is treated as anonymous
+-- If google project owner have access to the cluster by default, then a dedicated google project should be created
+
+# Next steps:
+- Investigate how google roles are mapped to kubernetes roles in the cluster technically
+- Clarifying requirements for dynamic cluster/vm provisioning for integration tests
+- Clarifying requirements for job execution itself
