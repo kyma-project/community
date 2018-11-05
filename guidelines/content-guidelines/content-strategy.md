@@ -39,7 +39,7 @@ Every independent Kyma component is a separate documentation topic. The only exc
 
 ## Documentation types
 
-There is a set of documents that a given technical topic must include. You can also add additional document types to expose a specific topic better. However, before you create an additional document type, consult it with other Kyma content developers.  
+There is a set of documents that a given technical topic must include. You can also add additional document types to expose a specific topic better. To propose a new document type, create an [issue](https://github.com/kyma-project/community/issues) in the `community` repository and mark it with the `area/documentation` label.  
 
 ### Obligatory
 
