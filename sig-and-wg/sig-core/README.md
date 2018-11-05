@@ -20,7 +20,7 @@ decision-making process
 
 ## Meetings
 
-Regular SIG Meeting: Wednesdays at 15:00 CEST, biweekly. [Convert to your timezone](http://www.thetimezoneconverter.com/?t=15:00&tz=CEST%20%28Central%20European%20Summer%20Time%29).
+Regular SIG Meeting: Wednesdays at 15:00 CET, biweekly. [Convert to your timezone](http://www.thetimezoneconverter.com/?t=15:00&tz=CET%20%28Central%20European%20Time%29).
 
 * [Zoom](https://zoom.us/j/4794339038)
 * [Meeting notes and agenda](https://docs.google.com/document/d/1vWleTon7sJIk0teee4SoVezS4mR3K8TlkvXkgLJwRD8)
