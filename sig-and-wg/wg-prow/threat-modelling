@@ -28,9 +28,14 @@ There is one prow cluster only. If there are more installations they need to be 
 -- Requires that all configuration is done in source code triggering a provisioning
 -- No backup of configuration required by that and no access for developers needed
 -- Anyone not being admin is treated as anonymous
--- If google project owner have access to the cluster by default, then a dedicated google project should be created
-
-# Next steps:
-- Investigate how google roles are mapped to kubernetes roles in the cluster technically
-- Clarifying requirements for dynamic cluster/vm provisioning for integration tests
-- Clarifying requirements for job execution itself
+- Use dedicated google project to avoid access to prow resources for project owners not being in relation to the prow topic
+-- By default project owners have access to the prow cluster itself (can be avoided by proper RBAC setup)
+-- Project owners will have access to the secrets in cloud storage
+-- Project owners will have access to the build logs
+-- Project owners will have access to the dynamicly created K8s clusters and VMs
+-- VMs might have network access to other VMs not related to the prow setup
+- Enable audit logs on prow cluster with storage on google cloud storage
+- Assure that jobs have no access to API server
+- Try to not inject any secrets to the jobs for example to avoid having them in logs. Use at least dedicated logic (plugin, script library of buildpack...) to process secrets so that risk of exposure gets lowered
+- Dynamic cluster and VMs must be of temporary nature, assure cleanup of them even if related job gets killed unexpected for example by having periodic job running for cleanup
+- As Docker-in-docker gets used for the jobs, a cleanup is required for images/containers, assure cleanup of them even if related job gets killed unexpected for example by having periodic job running for cleanup
