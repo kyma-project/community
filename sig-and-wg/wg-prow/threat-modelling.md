@@ -33,9 +33,11 @@ There is one prow cluster only. If there are more installations they need to be 
 -- Project owners will have access to the secrets in cloud storage
 -- Project owners will have access to the build logs
 -- Project owners will have access to the dynamicly created K8s clusters and VMs
--- VMs might have network access to other VMs not related to the prow setup
+-- VMs might have network access to other VMs not related to the prow setup (if we are not using own project, we need to create VMs in dedicated network)
 - Enable audit logs on prow cluster with storage on google cloud storage
 - Assure that jobs have no access to API server
-- Try to not inject any secrets to the jobs for example to avoid having them in logs. Use at least dedicated logic (plugin, script library of buildpack...) to process secrets so that risk of exposure gets lowered
+- Try to not inject any secrets to the jobs for example to avoid having them in logs. Use at least dedicated logic (plugin, script library of buildpack...) to process secrets so that risk of exposure gets lowered. Alternatively you could find a way to post-process the logs like it is done in jenkins.
 - Dynamic cluster and VMs must be of temporary nature, assure cleanup of them even if related job gets killed unexpected for example by having periodic job running for cleanup
 - As Docker-in-docker gets used for the jobs, a cleanup is required for images/containers, assure cleanup of them even if related job gets killed unexpected for example by having periodic job running for cleanup
+- Assure that port exposure for a job pod is not supported to reduce attack vector
+- Assure that used google service account have minimal privilieges
