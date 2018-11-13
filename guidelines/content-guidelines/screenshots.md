@@ -29,7 +29,7 @@ Explain the steps under the screenshot with the ordered list.
 
 ## Indicators
 
-To highlight a certain area of your screenshot, use **red** (HEX: #EF27270) 10pt for arrows or boxes.
+To highlight a certain area of your screenshot, use **red** (HEX: #EF2727) 10pt for arrows or boxes.
 
 > **NOTE:** Use arrows and boxes sparingly, only to point to an exceptionally important area of the screenshot. Do not use more than one indicator in one screenshot to avoid visual noise.
 

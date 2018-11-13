@@ -11,7 +11,7 @@ type: Getting Started
 > * Start with the introductory sentence presented in this template.
 > * Follow the `{000}-gs-{document-title}.md` convention to name the document. The title must summarize what it is about.
 >
-> For reference, see the existing **Getting Started** document concerning the [Sample service deployment on the Kyma cluster](https://github.com/kyma-project/kyma/blob/master/docs/kyma/docs/034-gs-sample-service-deployment-to-cluster.md).
+> For reference, see the existing **Getting Started** document concerning the [Sample service deployment on the Kyma cluster](https://github.com/kyma-project/kyma/blob/master/docs/kyma/docs/040-gs-sample-service-deployment-to-local.md).
 
 
 This Getting Started guide shows {describe the purpose of the Getting Started guide}.
