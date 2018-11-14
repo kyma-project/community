@@ -96,7 +96,7 @@ Before the first GA release of Kyma, use the **alpha** versions to handle the un
 
 Because Kyma aims to use Kubernetes version V1.9 or higher, the system can validate custom objects. However, validation is a beta feature which can be disabled. Therefore, always check if the validation takes place and is reliable.
 
-Use the available validation of custom objects with OpenAPI v3 schema. For more details, see the [OpenAPI specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#schemaObject).
+Use the available validation of custom objects with OpenAPI v3 schema. For more details, see the [OpenAPI specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#schema-object).
 
 Additionally, these restrictions apply to the schema:
 
