@@ -8,7 +8,7 @@ epicsLabels:
 
 ## Goal
 
-This is one paragraph that explain what is the goal of the capability. Short paragraph explanation what is the purpose of the capability.
+This is one paragraph that explains what is the goal of the capability. Short paragraph explanation what is the purpose of the capability.
 
 ## Vision
 
