@@ -53,7 +53,7 @@ Each technical topic must have the following document types:
 - [Details](../templates/resources/details.md) - Use it to describe more technical details of the component that do not fit into any other document type. Among other things, include a detailed explanation of the application lifecycle that describes how the resource is created and what other resources are created, how it is updated, how it is removed, and what each operation means from the technical point of view.
 - **Configuration** - Use it to describe configuration options for a given component. Define the settings that a user can change and the expected outcome of such changes. Include the table structure with the settings in the document.
 - [CLI Reference](../templates/resources/cli-reference.md) - Use it to describe the syntax and the use of CLI commands for a given component.
-- [Custom Resource](../templates/resources/custom-resource.md) - Use it to document details of Custom Resource Definitions (CRDs) that are part of a given component.
+- [Custom Resource](../templates/resources/custom-resource.md) - Use it to document details of CustomResourceDefinitions (CRDs) that are part of a given component.
 - **API** - Use it to document the exposed external API of components that the Kyma administrators use to integrate them with Kyma.
 - **Operational Guide** - Use it to describe how to operate the component. Explain all details needed for the component troubleshooting.
 

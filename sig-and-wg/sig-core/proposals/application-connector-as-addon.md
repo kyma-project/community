@@ -40,15 +40,15 @@ The helm chart can be used manually and can be integrated with Kyma addons, Kyma
 
 ### Remote Environment Operator
 
-There will be a new Remote Environment operator which will replace Helm charts for RE. The operator will react to modification of the RE Custom Resource and will add all required items, like Event service, Proxy service.
+There will be a new Remote Environment operator which will replace Helm charts for RE. The operator will react to modification of the RE custom resource and will add all required items, like Event service, Proxy service.
 
 ### Use cases
 
-- An administrator is creating a new RE Custom Resource, like EC-Prod. The operator will discover that new RE was created and will deploy Event service, Proxy service, all required Ingresses, etc.
+- An administrator is creating a new RE custom resource, like EC-Prod. The operator will discover that new RE was created and will deploy Event service, Proxy service, all required Ingresses, etc.
 
-- Administrator deletes the RE Custom Resource. The operator will deinstall all components.
+- Administrator deletes the RE custom resource. The operator will deinstall all components.
 
-- An operator will also react to changes in RE Custom Resource and propagate them to the components. That requires further discussion.
+- An operator will also react to changes in RE custom resource and propagate them to the components. That requires further discussion.
 
 ## What needs to be considered
 
