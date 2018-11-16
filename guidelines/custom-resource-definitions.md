@@ -1,6 +1,6 @@
 ## Overview
 
-This document provides guidelines on writing Custom Resource Definition (CRD) files. The document explains where to place the CRD files and what content to include in them, and specifies the naming conventions to use.
+This document provides guidelines on writing CustomResourceDefinition (CRD) files. The document explains where to place the CRD files and what content to include in them, and specifies the naming conventions to use.
 
 ## Third party CRDs
 
@@ -57,7 +57,7 @@ When you deploy a CRD to the cluster, the Kubernetes API server delivers the spe
 
 To define a CRD for Kyma, refer to the example and follow these guidelines:
 
-- **metadata:name**: Use as a name for the custom resource definition. It must use the `{plural-name}.{group}` format and use the values from the **group** and **plural** fields. If you do not follow these rules, you receive a validation error when installing the CRD.
+- **metadata:name**: Use as a name for the CustomResourceDefinition. It must use the `{plural-name}.{group}` format and use the values from the **group** and **plural** fields. If you do not follow these rules, you receive a validation error when installing the CRD.
 
 - **spec:group**: The API group should reflect the collection of logically related objects. For example, all batch objects, such as Job or ScheduledJob, can belong to the batch API Group, such as `batch.kyma-project.io`. As best practice, use the fully-qualified domain name of the organization (`kyma-project.io`) preceded by a subgroup if necessary, for example `crontab.kyma-project.io`. The group name should reflect a capability-related and not an implementation-related name. For example, for eventing use `eventing.kyma-project.io` and not `nats.kyma-project.io`. Avoid prefixing the name with more than a subgroup, like in this example: `user.crontab.kyma-project.io`. If the subgroup consists of multiple words, do not use spaces, hyphens, or CamelCase.
 
@@ -73,7 +73,7 @@ To define a CRD for Kyma, refer to the example and follow these guidelines:
 
 Guidelines for other terms:
 
-- **spec:scope**: Scope must be either `namespaced` or `cluster`. By default, a custom resource definition is cluster-scoped and available in all projects. The scope defined here is meant for the resources created using this CRD.
+- **spec:scope**: Scope must be either `namespaced` or `cluster`. By default, a CustomResourceDefinition is cluster-scoped and available in all projects. The scope defined here is meant for the resources created using this CRD.
 
 ## Versioning
 
