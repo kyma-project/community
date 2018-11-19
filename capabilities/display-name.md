@@ -6,9 +6,9 @@ epicsLabels:
 ---
 <!-- above metadata will be used on kyma.project.io page to display nice name of capability and have a reference to label that should be used while fetching from ZenHub/GitHub the information about related Epics and their delivery plan   -->
 
-## Goal
+## Scope
 
-This is one paragraph that explains what is the goal of the capability. Short paragraph explanation what is the purpose of the capability.
+This is one paragraph that explains what is the scope of the capability. Short paragraph explanation what is the purpose of the capability.
 
 ## Vision
 
