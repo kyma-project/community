@@ -27,7 +27,7 @@ There is only one Prow cluster. If there are to be more installations, they need
 - There should be only a few admin users mainly for operations, and no other roles or any kind of other access.
      - It requires that all configuration is done in the source code triggering the provisioning.
        - No backup of configuration is required by that and no access for developers is needed.
--- Anyone not being admin is treated as anonymous
+       - Anyone who is not an admin is treated as an anonymous user.
 - Use a dedicated Google project to avoid access to Prow resources for project owners that are not related to the Prow topic.
       - By default, the project owners have access to the Prow cluster itself. That can be avoided by the proper RBAC setup.
    - Project owners will have access to the Secrets in Google Cloud Storage.
