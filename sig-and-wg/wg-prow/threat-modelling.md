@@ -13,6 +13,7 @@ The threat modeling was done in October 2018 in three sessions with Suleyman Akb
 There is only one Prow cluster. If there are to be more installations, they need to be protected in a similar way.
 
 # Working picture
+The diagram presents an overview of the Prow architecture derived in the session:
 ![Working Picture](assets/landscape.JPG)
 
 # Findings
