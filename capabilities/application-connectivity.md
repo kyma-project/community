@@ -37,3 +37,7 @@ The selection of enterprise integration patterns represented by the documentatio
 * Connectors
     * The set of connectors ensures that plumbing between an external application and SAP CP XF is possible in all cases where the use of standard functionality is not feasible. 
     * The palette of provided connectors should be kept to the required minimum and wherever possible the industry standards must be used.
+
+* Security
+    * The security of the integration is one of the top priority. The trusted relationship between connected application must be ensured, including the authentication and authorization.
+    * Various standard security mechanisms are provided to ensure the identity of the application, access to the secure resources, in both communication directions, no matter if it is asynchronous communication using events or synchronous communication using REST calls. The support for OAuth, Basic auth, client certificates, CSRF tokes and more must be provided.
