@@ -1,4 +1,4 @@
-<!-- https://kyma-project.io/blog/capabilities doesn't exist yet, its vision is to render all the capabilities descriptions and basing on provided metadata reference to ZenHub, display roadmaps basing on Epics  -->
+<!-- https://kyma-project.io/ and capabilities sub page doesn't exist yet, its vision is to render all the capabilities descriptions and basing on provided metadata reference to ZenHub, display roadmaps basing on Epics  -->
 
 Kyma consists of a number of different features that enable Kyma to be a ready to extend enterprise applications in a cloud-native world.
 These features are grouped in different areas called **Capabilities**.
