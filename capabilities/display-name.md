@@ -4,11 +4,11 @@ epicsLabels:
   - area/displayName1
   - area/displayName2
 ---
-<!-- above metadata will be used on kyma.project.io page to display nice name of capability and have a reference to label that should be used while fetching from ZenHub/GitHub the information about related Epics and their delivery plan   -->
+<!-- The metadata is used on the "https://kyma-project.io/ " page to display a descriptive name of the capability and have a reference to the label that should be used while fetching information about related Epics and their delivery plan from ZenHub and GitHub.   -->
 
 ## Scope
 
-This is one paragraph that explains what is the scope of the capability. Short paragraph explanation what is the purpose of the capability.
+Include a one-paragraph explanation of the capability's purpose and scope.
 
 ## Vision
 
@@ -16,4 +16,4 @@ This is one paragraph that explains what is the scope of the capability. Short p
 * It is a bulleted list of elements
 * That create a vision
 
-But it can also be a text if bullet points do not make sense. It can also be a combination of both. Just keep in mind to limit yourself to vision only. This is not a place for specific proposals explanations of features descriptions. This is what Epics are for. Epic if based on proposal, should have proper proposal references.
+It can also be a text if bullet points do not make sense. It can also be a combination of both. Just keep in mind that you should limit yourself to the vision. This is not a place for specific proposals explanations or features descriptions. This is what Epics are for. An Epic is based on a proposal and should have proper proposal references.
