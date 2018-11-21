@@ -2,7 +2,7 @@
 
 Kyma consists of a number of different features that enable Kyma to be a ready to extend enterprise applications in a cloud-native world.
 These features are grouped in different areas called **Capabilities**.
-This directory contains a description of each capability, its vision and goal. These are source files rendered on https://kyma-project.io/blog/capabilities
+This directory contains a description of each capability, its vision and goal. These are source files rendered on https://kyma-project.io/ and **Capabilities** subpage.
 
 Below table lists all capabilities and links to their descriptions.
 
