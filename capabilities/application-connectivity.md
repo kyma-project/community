@@ -14,35 +14,35 @@ The unification of the connected system enables the fast development which unloc
 
 The new way of scalability of the system is possible. The event mechanism and simple access to exposed API is a foundation for moving the workload from the legacy system to the Kubernetes.
 
-An additional benefit is that you can mesh different systems using the language of your choice. 
+An additional benefit is that you can mesh different systems using the language of your choice.
+
+The integration must be as simple as possible.
 
 ## Vision
 
 * API Registry and Discoverability
 
-    * Integrated application can register its APIs and Event catalog. 
+    * Connected application can register its APIs and Event catalogs. 
     * The registration contains the configuration of the endpoints together with required security credentials, documentation of the API and Event catalog based on open standards like OpenAPI and AsyncAPI, and additional documentation.
-    * Registered entities are integrated with Service Catalog
+    * Registered APIs and Event catalogs will be exposed as virtual services in Service Catalog.
+    * The registration of the application contains the required metadata, like health endpoints, localization, version.
      
 * Orchestration
 
     * The orchestration functionality allows automatic binding between Kyma runtime and application registered by the customer.
     * The orchestration is tightly coupled with the API registry and discovery.
+    *It's built the trusted relationship between all connected applications.
     
 * Events integration
     * The event integration functionality provides required middleware for delivery of the business events to Kyma.
     * The support for the delivery guarantee, monitoring, and tracing is added.
     
 * Access to the registered APIs
-    * The access to API exposed by an integrated application is provided, and all requests are proxied by the delivered proxy service.
-    * The proxy service is handling the authentication and authorization, integration with monitoring and tracing. 
+    * The access to API exposed by a connected application is provided, and all requests are proxied by the delivered proxy service.
+    * The proxy service is handling the authentication and authorization, integration with monitoring and tracing. Various standard security mechanisms are provided to ensure the identity of the application. The support for OAuth, Basic auth, client certificates, CSRF tokes and more must be delivered.
     * The Service Catalog binding controls the access to the proxy service and therefore to the API. The development effort is reduced to the required minimum, and all the boiler-plate code is packed into connectors.
     
 * Connectors
     * In the case of integration with the legacy system, which is not exposed using open standards, like REST, or if it is hidden behind a network firewall, the connectors will be provided.
     * The connector ensures that a legacy system will be exposed in the same way as other systems, and the required translation of the API calls or events will be done. 
-    * The palette of provided connectors should be kept to the required minimum and wherever possible the industry standards must be used.
-
-* Security
-    * The security of the integration is one of the top priority. The trusted relationship between connected application must be ensured, including the authentication and authorization.
-    * Various standard security mechanisms are provided to ensure the identity of the application, access to the secure resources, in both communication directions, no matter if it is asynchronous communication using events or synchronous communication using REST calls. The support for OAuth, Basic auth, client certificates, CSRF tokes and more must be provided.
+    * The palette of provided connectors should be kept to the necessary minimum and wherever possible, the industry standards must be used.
