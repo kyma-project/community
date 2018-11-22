@@ -18,7 +18,7 @@ In other words, if some content must be displayed in a given UI, the capability 
   - Kubernetes native way of content delivery and support for distributed content sourcing.
   - Generic UI components for rendering documentation and specification that are reusable in any context, for example Service Catalog view to display documentation for ServiceClasses and their instances or in Applications view to display the documentation of connected applications
   - Provide UI support for rendering specifications like for example Swagger for REST API, EDM for OData or AsyncApi for any kind of asynchronous communication.
-  - GraphQL backend that enables reuse of content and specifications` details in any UI context
+  - Backend that enables reuse of content and specifications` details in any UI context
 - Support for easy content development like a preview before publishing or templates integration
 - Support automated content validation, like links, grammar, consistency and accordance with specification
 - Assure content is not only available for existing Kyma users but also for new users and the contributors
