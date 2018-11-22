@@ -9,3 +9,4 @@ This table lists all capabilities and links to their descriptions.
 | Capability | Owner |
 | ----------- | -------------|
 | [displayName](display-name.md) | [@derberg](https://github.com/derberg) |
+| [Serverless Runtime](runtime.md) | [@joek](https://github.com/joek) |
