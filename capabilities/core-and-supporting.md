@@ -1,0 +1,27 @@
+---
+displayName: Core and Supporting
+epicsLabels:
+  - area/core-and-supporting
+  - area/community
+---
+
+## Scope
+
+The Core and Supporting capability provides functionality for delivery of the content and its visual representation. For us, the content is not only regular documentation but also specifications and contextual help.
+Due to the nature of the content and the number of different areas, it sits in, the Core and Supporting capability provides also many generic tools that do not only support content but also other aspects of the product.
+
+In other words, if some content must be displayed in a given UI, the capability cares also about the rest of the UI of a given business functionality and its backend.
+
+## Vision
+
+- Content is written once and reusable in different contexts: documentation portal, inline help or UI applications. This is possible because of:
+  - Kubernetes native way of content delivery and support for distributed content sourcing.
+  - Generic UI components for rendering documentation and specification that are reusable in any context, for example Service Catalog view to display documentation for ServiceClasses and their instances or in Applications view to display the documentation of connected applications
+  - Provide UI support for rendering specifications like for example Swagger for REST API, EDM for OData or AsyncApi for any kind of asynchronous communication.
+  - GraphQL backend that enables reuse of content and specifications` details in any UI context
+- Support for easy content development like a preview before publishing or templates integration
+- Support automated content validation, like links, grammar, consistency and accordance with specification
+- Assure content is not only available for existing Kyma users but also for new users and the contributors
+
+
+
