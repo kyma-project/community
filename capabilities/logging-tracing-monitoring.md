@@ -18,8 +18,11 @@ To support that aspects of observability and following the *batteries-included* 
 
 This includes:
 * Setup and maintain optional, lightweight and cloud-native solutions for logging, tracing and monitoring
+* As much as possible data derived out-of-the-box from Kubernetes and the Service Mesh
 * Support for local development (minikube)
-* Integration of all 3 aspects into solutions of the supported cloud providers
+* Integration of all 3 aspects into solutions of the supported cloud providers, especially DynaTrace for monitoring
 * Easy accessible and secure API and UI/CLI to query logs
 * Namespace separation support
 * (Logging) Support of transactional event logs (like audit logs)
+* (Monitoring) Support for auto-scaling on base of application metrics
+* (Monitoring) Pre-integration with typical notification systems like VictorOps and Slack
