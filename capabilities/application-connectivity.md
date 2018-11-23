@@ -7,12 +7,12 @@ epicsLabels:
 ## Scope
 
 The Application Connectivity capability supports the extensibility and integration between applications in a cloud-native way using the best available solutions.
-It provides the integration patterns and necessary tooling for establishing the trusted connection between Kyma and third-party applications.
+It provides integration patterns and necessary tooling for establishing a trusted connection between Kyma and third-party applications.
 
-The goal is to enable the integration of various systems in a coherent way, where the management and usage of APIs and Events are standardized and allows natural extension of such systems in the cloud-native fashion.
-The unification of the connected system enables the fast development which unlocks the brand new possibilities of extending and customizing the existing solution in the modern, cloud-based, way.
+The goal is to enable the integration of various systems in a coherent way, where the management and usage of APIs and Events are standardized and allow to extend such systems in a natural, cloud-native way.
+The unification of the connected system enables fast development which unlocks brand new possibilities for extending and customizing the existing solution in a modern, cloud-based, way.
 
-The new way of scalability of the system is possible. The event mechanism and simple access to exposed API is a foundation for moving the workload from the legacy system to the Kubernetes.
+A new way of system scalability is available. The event mechanism and simple access to the exposed API is a foundation for moving the workload from a legacy system to Kubernetes.
 
 An additional benefit is that you can mesh different systems using the language of your choice.
 
@@ -29,13 +29,13 @@ The integration must be as simple as possible.
      
 * Orchestration
 
-    * The orchestration functionality allows automatic binding between Kyma runtime and application registered by the customer.
-    * The orchestration is tightly coupled with the API registry and discovery.
+    * The orchestration functionality allows for an automatic binding between the Kyma runtime and the application registered by the customer.
+    * The orchestration is tightly coupled with the API registry and service discovery.
     *It's built the trusted relationship between all connected applications.
     
 * Events integration
     * The event integration functionality provides required middleware for delivery of the business events to Kyma.
-    * The support for the delivery guarantee, monitoring, and tracing is added.
+    * The support for delivery guarantee, monitoring, and tracing is added.
     
 * Access to the registered APIs
     * The access to API exposed by a connected application is provided, and all requests are proxied by the delivered proxy service.
@@ -44,5 +44,5 @@ The integration must be as simple as possible.
     
 * Connectors
     * In the case of integration with the legacy system, which is not exposed using open standards, like REST, or if it is hidden behind a network firewall, the connectors will be provided.
-    * The connector ensures that a legacy system will be exposed in the same way as other systems, and the required translation of the API calls or events will be done. 
+    * The connector ensures that a legacy system will be exposed in the same way as other systems, and the required translation of the API calls or events will be handled. 
     * The palette of provided connectors should be kept to the necessary minimum and wherever possible, the industry standards must be used.
