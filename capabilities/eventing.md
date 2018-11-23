@@ -90,14 +90,6 @@ For events generated inside Kyma, the following open questions or desing details
 * How the event schema will be made available to the developers?
 * Do we need concepts such as event activation for internal events?
 
-### Configurable durability
-* The event producer should have possiblity to decide about the durability while sending an event to Kyma.
-* When sending an event to Kyma event-bus, a developer can specify the durability level.
-
-**Value Addition**
-* Improved flexibility.
-* Enable customers to choose performance vs durability based on the business requirements.
-
 ### Batching
 * Enable support to send multiple events in a single request.
 
@@ -119,6 +111,14 @@ For events generated inside Kyma, the following open questions or desing details
 **Value Addition**
 * Ensure business processing recovery in case of mismatches.
 * Unblock delivery of events in case of processing errors. 
+
+### Configurable durability
+* The event producer should have possiblity to decide about the durability while sending an event to Kyma.
+* When sending an event to Kyma event-bus, a developer can specify the durability level.
+
+**Value Addition**
+* Improved flexibility.
+* Enable customers to choose performance vs durability based on the business requirements.
 
 ### Event attributes + Selective filtering
 
