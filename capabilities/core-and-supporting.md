@@ -15,7 +15,7 @@ In other words, if some content must be displayed in a given UI, the capability 
 ## Vision
 
 - Content is written once and reusable in different contexts: documentation portal, inline help or UI applications. This is possible because of:
-  - Kubernetes native way of content delivery and support for distributed content sourcing.
+  - Kubernetes native way of content delivery with support for distributed content sourcing and modularity (content is delivered only if documented component is enabled)
   - Generic UI components for rendering documentation and specification that are reusable in any context, for example Service Catalog view to display documentation for ServiceClasses and their instances or in Applications view to display the documentation of connected applications
   - Provide UI support for rendering specifications like for example Swagger for REST API, EDM for OData or AsyncApi for any kind of asynchronous communication.
   - Backend that enables reuse of content and specifications` details in any UI context
