@@ -43,6 +43,6 @@ The integration must be as simple as possible.
     * The Service Catalog binding controls the access to the proxy service and therefore to the API. The development effort is reduced to the required minimum, and all the boiler-plate code is packed into connectors.
     
 * Connectors
-    * In the case of integration with the legacy system, which is not exposed using open standards, like REST, or if it is hidden behind a network firewall, the connectors will be provided.
+    * In the case of integration with the legacy system, which is not exposed using open standards such as REST, or if it is hidden behind a network firewall, the connectors will be provided.
     * The connector ensures that a legacy system will be exposed in the same way as other systems, and the required translation of the API calls or events will be handled. 
     * The palette of provided connectors should be kept to the necessary minimum and wherever possible, the industry standards must be used.
