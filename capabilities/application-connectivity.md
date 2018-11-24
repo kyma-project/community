@@ -31,7 +31,7 @@ The integration must be as simple as possible.
 
     * The orchestration functionality allows for an automatic binding between the Kyma runtime and the application registered by the customer.
     * The orchestration is tightly coupled with the API registry and service discovery.
-    *It's built the trusted relationship between all connected applications.
+    * It's built the trusted relationship between all connected applications.
     
 * Events integration
     * The event integration functionality provides required middleware for delivery of the business events to Kyma.
