@@ -19,7 +19,7 @@ In other words, if some content must be displayed in a given UI, the capability 
   - Generic UI components for rendering documentation and specification that are reusable in any context, for example Service Catalog view to display documentation for ServiceClasses and their instances or in Applications view to display the documentation of connected applications.
   - Provide UI support for rendering specifications like for example Swagger for REST API, EDM for OData or AsyncApi for any kind of asynchronous communication.
   - Backend that enables reuse of content and specifications` details in any UI context
-- Enable support not only for out-of-the-box rendering or content in the Console UI. Make it easy for Kyma user to generate a standalone documentation portal for their services.
+- Enable support not only for out-of-the-box rendering or content in the Console UI but also make it easy for Kyma user to generate a standalone documentation portal for their services.
 - Support for easy content development like a preview before publishing or templates integration
 - Support automated content validation, like links, grammar, consistency and accordance with specification
 - Assure content is not only available for existing Kyma users but also for new users and the contributors
