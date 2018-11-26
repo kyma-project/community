@@ -7,7 +7,7 @@ epicsLabels:
 ---
 
  ## Scope
-Enable operator and developer to easily observe the state of a kyma cluster and the state of distributed applications running on kyma; The data is made accessible by pre-bundled infrastructure for collecting application logs and application metrics as well as transaction traces.
+Enable operator and developer to easily observe the state of a kyma cluster and the state of distributed applications running on kyma; The data is made accessible and collectable by pre-bundled infrastructure for collecting application logs and application metrics as well as transaction traces. That infrastructure integrates with cloud provider specific tooling.
 
 The assurance that kyma components are creating application logs and metrics as well as trace data in a consistent way and in a sufficent detail level is not in scope of the capability.
 
