@@ -7,126 +7,89 @@ epicsLabels:
 
 ## Scope
 
-* Enable asynchronous processing
+* Enable asynchronous processing.
 * Integrate external solutions with Kyma using an event-driven architecture.
-* Enable loose coupling of applications deployed on Kyma.
+* Enable loose coupling of applications deployed using Kyma.
 
 
 ## Vision
 
 ### Pluggability
-* Enable customers to use a underlying messaging implementation that best fit their requirements.
+* Enable customers to use a messaging middleware that fits their requirements best.
+* Enable customers to run multiple messaging implementations in parallel.
 
-![](assets/pluggable.png)
-
-**Value Addition**
-* Decouple workload from the management plane
+_Value added_
+* Decouple the workload from the management plane.
 * Flexiblity
-  * Enable customers to choose the solution when it comes to volume, latency, scalability needs
-  * Allows a customer to use the solution already existing in her ecosystem.
+  * Allow the customers to choose the solution when it comes to volume, latency, scalability needs.
+  * Allows the customers to use the solution already existing in her ecosystem.
 
 ### System metrics
+* Provide observability for the event-bus to enable smooth operations and proactive actions.
+* This includes _Health metrics_ and _Performance metrics_.
 
-**Health metrics**
-
-* Availability of event bus components
-* Connectivity to the messaging solution
-* Active / Inactive subscriptions
-
-**Performance metrics**
-
-* Request Latency
-* Request Rate
-* Failure Rate
-* Delivery failure rate
-* Throughput
-* End-to-end latency
-
-**Value Addition**
+_Value added_
 * Improved operations.
 
 ### Benchmarking
-* Implement a mechanism to benchmark eventing
-* Factors such as number of event types, fan-out, payload size configurable
+* Provide tooling to enable customers to benchmark event-bus for their volume, fanout needs.
 
-**Value Addition**
-* Transparency
-* Increased trust in the solution
+_Value added_
+* Transparency.
+* Increased trust in the solution.
+* Enable operators to take corrective actions such as scaling some subcomponents.
 
-### Event Trigger for Services
-* Provide a user interface for creating event triggers for sevices deployed in Kyma.
+### Event trigger for services
+* Provide a user interface for creating Event triggers for sevices deployed using Kyma.
 
-**Value Addition**
+_Value added_
 * Improved developer experience.
 
-### Event Filtering
-* Filter out events for which there are no subscribers
-* Filter out close to the source
+### Event filtering
+* Allow only those events that will trigger some business workflows. (Only use what you need).
 
-**Value Addition**
-* Cost reduction
-* Reduce unnecessary network overhead
+_Value added_
+* Reduce costs.
+* Reduce unnecessary network overhead.
 
-### Model for internal events
+### Model for internal Events
+* You can generate Events inside a Kyma cluster and use them to trigger business workflows. 
 
-* As a developer, I should be able to define and generate internal events to trigger business workflows.
-
-**Value Addition**
-
-* Enable asynchronous processing and workflows for:
-  * Exposed APIs
-  * Scheduled activities
-
-**Dependencies**
-
-It is possible to generate events inside a Kyma cluster and use them to trigger business workflows. 
-
-The eventing in Kyma is tightly coupled with the aspect of events being sent by an external solution. e.g. `source-id` which identifies the external solution is used as a part of publishing an event in Kyma.
-
-For events generated inside Kyma, the following open questions or desing details needs to be answered:
-
-* How the orign of the internal event is identified? (events originated from the Kyma environments)
-* How the event schema will be published?
-* How the event schema will be made available to the developers?
-* Do we need concepts such as event activation for internal events?
+_Value added_
+* Enable asynchronous processing and workflows for exposed APIs and scheduled activities.
 
 ### Batching
-* Enable support to send multiple events in a single request.
+* Support sending multiple Events in a single request.
 
-**Value Addition**
+_Value added_
 * Performance optimization.
 
 ### Retry back-off
-* Enable the subscriber to configure the back-off that should be applied when retrying delivery of events.
-* The backoff strategies could evolve from a constant pause to a exponential backoff.
+* Enable the subscriber to configure the backoff to be applied when retrying the delivery of Events.
 
-**Value Addition**
+_Value added_
 * Efficient resource usage.
 * Improved stability.
 
 ### Dead letter
-* Support semantics where a message is moved to dead letter queue after failure to being processed by a lambda or a service.
-* The decision parameters to move an event to a dead letter are configurable. e.g. After x number of event delivery attempts.
+* Support semantics allowing to move the message to a dead letter queue if it was not processed by a lambda or a service.
 
-**Value Addition**
-* Ensure business processing recovery in case of mismatches.
-* Unblock delivery of events in case of processing errors. 
+_Value added_
+* Ensure business processes recovery in case of mismatches.
+* Unblock delivery of Events in case of processing errors.
 
 ### Configurable durability
-* The event producer should have possiblity to decide about the durability while sending an event to Kyma.
-* When sending an event to Kyma event-bus, a developer can specify the durability level.
+* The Event producer can decide about the durability while sending an Event to Kyma.
 
-**Value Addition**
+_Value added_
 * Improved flexibility.
-* Enable customers to choose performance vs durability based on the business requirements.
+* Customers can choose either performance or durability based on business requirements.
 
-### Event attributes + Selective filtering
+### Event attributes and selective filtering
 
-* It should be possible to assign attributes to a event published to Kyma event-bus.
-* Event attributes are `key:value` pairs of metatdata that the event publisher can set while publishing the events.
+* Possibility of assigning attributes to an Event published to Kyma Event Bus.
 
-**Value Addition**
-
-* Increased flexbility for event consumption.
+_Value added_
+* Increased flexibility of Event consumption.
 * Enable intelligent filtering.
 * Enable efficient resource usage.
