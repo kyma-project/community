@@ -39,6 +39,13 @@ _Value added_
 * Increased trust in the solution.
 * Enable operators to take corrective actions such as scaling some subcomponents.
 
+### Align with CloudEvents specification
+* Event bus can consume events alinged with CloudEvents specification](https://github.com/cloudevents/spec)
+
+_Value added_
+* Enable interoperability.
+* Enable developers to leverage cloudevents sdks for various languages.
+
 ### Event trigger for services
 * Provide a user interface for creating Event triggers for sevices deployed using Kyma.
 
