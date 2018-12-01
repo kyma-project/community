@@ -20,7 +20,7 @@ The integration must be as simple as possible.
 
 ## Vision
 
-* API Registry and Discoverability
+* Application Registry and Discoverability
 
     * Connected application can register its APIs and Event catalogs. 
     * The registration contains the configuration of the endpoints together with required security credentials, documentation of the API and Event catalog based on open standards like OpenAPI and AsyncAPI, and additional documentation.
@@ -29,9 +29,9 @@ The integration must be as simple as possible.
      
 * Orchestration
 
-    * The orchestration functionality allows for an automatic binding between the Kyma runtime and the application registered by the customer.
-    * The orchestration is tightly coupled with the API registry and service discovery.
-    * It's built the trusted relationship between all connected applications.
+    * All components which are part of the Application Connectivity will expose secured API. 
+    * These APIs can be used for building orchestration layer which will control the whole ecosystem with multiple Kuma clusters and connected applications.
+    * It will allow building solution which will provide the managed version of Kyma.
     
 * Events integration
     * The event integration functionality provides required middleware for delivery of the business events to Kyma.
