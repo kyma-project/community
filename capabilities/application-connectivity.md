@@ -26,12 +26,6 @@ The integration must be as simple as possible.
     * The registration contains the configuration of the endpoints together with required security credentials, documentation of the API and Event catalog based on open standards like OpenAPI and AsyncAPI, and additional documentation.
     * Registered APIs and Event catalogs will be exposed as virtual services in Service Catalog.
     * The registration of the application contains the required metadata, like health endpoints, localization, version.
-     
-* Orchestration
-
-    * All components which are part of the Application Connectivity will expose secured API. 
-    * These APIs can be used for building orchestration layer which will control the whole ecosystem with multiple Kuma clusters and connected applications.
-    * It will allow building solution which will provide the managed version of Kyma.
     
 * Events integration
     * The event integration functionality provides required middleware for delivery of the business events to Kyma.
