@@ -12,7 +12,7 @@ Enable the operator and developer to easily observe the state of the Kyma cluste
 Ensuring that Kyma components create application logs. metrics, and trace data in a consistent way and on a sufficient detail level is not in scope of this capability.
 
  ## Vision
-In a cloud-native microservice architecture, a user request often flows through dozens of different microservices. Tools such as logging and monitoring provide insights on the health and state of a particular component. Based on the results, you can act proactively and reactively to keep or recover the health of a component. Tracing enriches observability by distinguishing transaction traces across the different components.
+In a cloud-native microservice architecture, a user request often flows through dozens of different microservices. Tools such as logging and monitoring provide insights on the health and state of a particular component. Based on the results, you can act proactively and reactively to keep or recover the health of a component. Tracing enriches observability by identifying transaction traces across the different components.
 
 To support application observability and follow the batteries included philosophy, Kyma would provide lightweight and cloud-native solutions for logging, tracing and monitoring. Such solutions enable developers and operators to easily query all application health data across the different workloads in development and production environments.
 
@@ -30,9 +30,7 @@ This includes:
 This enables the following:
 * Tracing the distributed transaction as it propagates across components and microservices.
 * Tracing end-to-end Event flows including external applications.
-* Identification of culprit components for a failed distributed transaction.
-* Identification of latency and performance bottlenecks in the request flow.
 * Improved debugging in local and remote development.
-* Proactive notification for unhealthy states.
-* Reactive warning about culprit components.
+* Proactive notification for potential unhealthy states.
+* Reactive warning about unhealthy components.
 
