@@ -20,7 +20,8 @@ This includes:
 * Set up and maintain optional, lightweight and cloud-native solutions for logging, tracing and monitoring.
 * As much as possible data derived out of the box from Kubernetes and the Service Mesh.
 * Support for local development (Minikube).
-* Integration of all 3 aspects into solutions of the supported cloud providers, especially DynaTrace for monitoring.
+* Pluggability of all pre-bundled tooling by having well defined interfaces in place
+* Ready-to use adapters to integrate easily with the tooling provided by the cloud providers, especially DynaTrace for monitoring.
 * Easily accessible and secure API and UI/CLI to query logs.
 * Namespace separation support.
 * (Logging) Support of transactional event logs such as audit logs.
