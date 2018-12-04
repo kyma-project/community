@@ -10,3 +10,4 @@ This table lists all capabilities and links to their descriptions.
 | ----------- | -------------|
 | [displayName](display-name.md) | [@derberg](https://github.com/derberg) |
 | [Application Connectivity](application-connectivity.md) | [@lszymik](https://github.com/lszymik) |
+| [Microfrontends/Console/CLI](microfrontend-console-cli.md) | [@hardl](https://github.com/hardl) |
