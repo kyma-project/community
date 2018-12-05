@@ -19,8 +19,8 @@ The purpose of this group is to:
 
 ## Leaders
 
-* [{First name Last name}](https://github.wdf.sap.corp/{github id}})
-* [{First name Last name}](https://github.wdf.sap.corp/{github id}})
+* {First name Last name} - github userid link
+* {First name Last name} - github userid link
 
 ## Members
 
