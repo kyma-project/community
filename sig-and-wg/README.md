@@ -60,6 +60,7 @@ The list of public SIGs in Kyma includes:
 The list of public WGs in Kyma includes:
 
 * [Prow migration](wg-prow/README.md)
+* [Knative integration](wg-knative/README.md)
 
 ## Organize new SIGs and WGs
 
