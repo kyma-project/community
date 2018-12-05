@@ -1,7 +1,7 @@
 # Kyma Knative Working Group
 
 The purpose of this group is to:
-* Enable Knative serving in the Kyma.
+* Enable Knative serving in Kyma.
 * Integrate Knative eventing in Kyma.
 
 ## Contact
@@ -11,11 +11,11 @@ The purpose of this group is to:
 
 ## Meetings
 
-* [{day name} at {hour}:{minutes} {time zone}]({Put a link to your calendar meeting ICS file. Attach it to the Slack channel and pin it to the channel.})
+* {day name} at {hour}:{minutes} {time zone}
 * [Slack](https://kyma-community.slack.com/messages/CEC6R4T6U)
 * Frequency: {daily | weekly | bi-weekly | monthly}
 * [Meeting notes and agenda](https://docs.google.com/document/d/1BZoJQ5qsSudlix8PXjykQfsJtfwC7EgUy0BP3oORDsA/edit?usp=sharing)
-* [Meeting recordings](TBD)
+* Meeting recordings - TBD
 
 ## Leaders
 
