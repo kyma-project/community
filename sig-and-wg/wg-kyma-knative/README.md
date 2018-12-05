@@ -1,7 +1,7 @@
 # Kyma Knative Working Group
 
 The purpose of this group is to:
-* Knative serving enablement in the Kyma.
+* Enable Knative serving in the Kyma.
 * Integrate Knative eventing in Kyma.
 
 ## Contact
