@@ -14,9 +14,9 @@ In other words, if some content must be displayed in a given UI, the capability 
 
 ## Vision
 
-- Content is written once and reusable in different contexts: documentation portal, inline help or UI applications. In other words, we provide headless CMS. This is possible because of :
+- Content is written once and reusable in different contexts in an efficient way: documentation portal, inline help or UI applications. In other words, we provide a headless CMS that is an abstraction on top or more generic ObjectStore solution that allows you to store any static content like for example client side applications or any other objects. This is possible because of :
   - Kubernetes native way of content delivery with support for distributed content sourcing and modularity (content is delivered only if documented component is enabled)
-  - Generic UI components for rendering documentation and specification that are reusable in any context, for example Service Catalog view to display documentation for ServiceClasses and their instances or in Applications view to display the documentation of connected applications.
+  - Generic reusable UI components for rendering documentation and specification that are reusable in any context, for example Service Catalog view to display documentation for ServiceClasses and their instances or in Applications view to display the documentation of connected applications.
   - Provide UI support for rendering specifications like for example Swagger for REST API, EDM for OData or AsyncApi for any kind of asynchronous communication.
   - Backend that enables reuse of content and specifications` details in any UI context
 - Enable support not only for out-of-the-box rendering or content in the Console UI but also make it easy for Kyma user to generate a standalone documentation portal for their services.
