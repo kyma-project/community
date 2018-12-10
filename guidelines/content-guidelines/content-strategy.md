@@ -64,6 +64,7 @@ Each technical topic must have the following document types:
 You can add the following document type to the Kyma documentation:
 - **Installation** - Use it to describe the installation process. This includes guides for local, cluster, or component installation, as well as documents describing installation scripts.
 - **UI Contracts** - Use it to describe the mapping of OSBA service objects, plan objects, and conventions in the Kyma Console view.
+- **Examples** - Use it to demonstrate a given Kyma feature or concept. It refers to a small demo that shows the ready-to-use application development. 
 
 ## The content source
 
