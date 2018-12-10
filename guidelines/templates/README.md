@@ -12,7 +12,7 @@ The table provides an overview of the template names, the repository they refer 
 |---|---|---|
 | [`kyma`](https://github.com/kyma-project/kyma)| [`README.md`](./resources/chart_README.md), [`NOTES.txt`](./resources/NOTES.txt) | Use the template for charts. |
 | [`examples`](https://github.com/kyma-project/examples) | [`README.md`](./resources/example_README.md) | Use the template for examples. |
-| All | [`README.md`](../../guidelines/internal-guidelines/repository-template/template/README.md) | Use the template for the main `README.md` document in any repository within the Kyma organization. |
+| All | [`README.md`](../../guidelines/internal-guidelines/repository-template/template/README.md) | Use the template for the `README.md` document in any repository, directory, or subdirectory within the Kyma organization. |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`cli-reference.md`](./resources/cli-reference.md) | Use the template to describe the syntax and the use of CLI commands for a given component. |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`custom-resource.md`](./resources/custom-resource.md) | Use the template to describe a custom resource (CR) and its elements. |
 | No specific repository | [`Kyma-branded presentation template`](./resources/Kyma_presentation_template.pptx) | Use the official Kyma-branded presentation to talk about the project and present it to new audiences. |
