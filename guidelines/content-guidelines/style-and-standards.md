@@ -116,10 +116,10 @@ Use short command line arguments whenever possible.
 
 * `-n` not `--namespace`
 
- Short command line arguments may differ between the tools as shown in the following example:
+ Short command line arguments can differ between the tools as shown in the following example:
 
-* Helm: `helm -n` equals `helm --name` but not `helm --namespace`
 * Kubernetes: `kubectl -n` equals `kubectl --namespace`
+* Helm: `helm -n` equals `helm --name` but not `helm --namespace`
 
 In such a case, explain the context in the document. 
 
