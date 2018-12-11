@@ -110,6 +110,19 @@ Don't use "e.g." in documentation. Use the words "for example" or "such as" inst
 
 > **NOTE:** Do not use words such as "currently" or "now" to indicate that something is in the transitional phase of development. Avoid promising anything and mention only those components and functionalities that are already in use.
 
+### Command line arguments
+
+Use short command line arguments whenever possible.
+
+* `-n` not `--namespace`
+
+ Short command line arguments may differ between the tools as shown in the following example:
+
+* Helm: `helm -n` equals `helm --name` but not `helm --namespace`
+* Kubernetes: `kubectl -n` equals `kubectl --namespace`
+
+In such a case, explain the context in the document. 
+
 ## Capitalized terms
 
 This is the list of the Kubernetes resources capitalized in Kyma documentation. However, if these words are not used in relation to Kubernetes resources, do not capitalize them.
