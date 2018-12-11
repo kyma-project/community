@@ -114,7 +114,7 @@ Don't use "e.g." in documentation. Use the words "for example" or "such as" inst
 
 Use short command line arguments whenever possible.
 
-* `-n` not `--namespace`
+* `-n`, not `--namespace`
 
  Short command line arguments can differ between the tools as shown in the following example:
 
