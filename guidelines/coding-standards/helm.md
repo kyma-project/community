@@ -1,3 +1,3 @@
 # Helm Charts Best Practices
 
-This guide covers the Kyma Team's considered best practices for creating charts.
+This guide covers the best practices for creating Helm charts every Kyma team should employ. 
