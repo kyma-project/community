@@ -121,7 +121,7 @@ Use short command line arguments whenever possible.
 * Kubernetes: `kubectl -n` equals `kubectl --namespace`
 * Helm: `helm -n` equals `helm --name`, not `helm --namespace`
 
-In such a case, explain the context in the document. 
+In such a case, explain the context in the document.
 
 ## Capitalized terms
 
@@ -131,9 +131,10 @@ This is the list of the Kubernetes resources capitalized in Kyma documentation. 
 - CronJob
 - CustomResourceDefinition
 - Deployment
+- Function
 - Event
 - Ingress
-- Namespace (and "Environment," its Kyma representation)
+- Namespace
 - Node
 - PodPreset
 - Pod
