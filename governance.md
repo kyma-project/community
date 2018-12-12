@@ -80,7 +80,7 @@ Once you reach the consensus:
 
 > **NOTE:** If there are any pull requests with counter proposals to the decision record, close the related pull requests with rejected proposals without merging. State the reasons for the rejection in the closing comments.
 
-### Lack of consensus
+### Lack of consensusgf
 
 Engage the ultimate decision makers if there are still unresolved objections by the decision due date. The ultimate decision makers are stated in the decision log of the **Decision record** issue. Work with them to reach the final decision as soon as possible and close the issue.
 
