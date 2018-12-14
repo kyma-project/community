@@ -9,7 +9,7 @@ When you add a new component to the `kyma/docs` folder, you must ensure that the
 
 The `docs-job.yaml` file defines Docker images with documentation which are run to upload this documentation to Minio.
 
-The `docs/manifest.yaml` file specifies the order in which the documentation topics display on the website. If the component is not included in this file, it will not display on the UI.
+The `docs/manifest.yaml` file specifies the order of documentation topics on the website. If you do not include the component in this file, it doesn't show on the UI.
 
 The `docs/Jenkinsfile` file defines document topics for which Docker images are built on the Jenkins CI. This solution will be outdated as soon as the migration to Prow is complete.
 
