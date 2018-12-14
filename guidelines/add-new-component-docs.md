@@ -1,0 +1,29 @@
+# Add new component to the official Kyma documentation
+
+When you add a new component to the `kyma/docs` folder, you must ensure that the content displays also on the official Kyma documentation website under `https://kyma-project.io/`. To do so, update the following files:
+
+- [`resources/core/charts/docs/charts/documentation/templates/docs-job.yaml`](https://github.com/kyma-project/kyma/blob/master/resources/core/charts/docs/charts/documentation/templates/docs-job.yaml)
+- [`docs/manifest.yaml`](https://github.com/kyma-project/kyma/blob/master/docs/manifest.yaml)
+- [`docs/Jenkinsfile`](https://github.com/kyma-project/kyma/blob/master/docs/Jenkinsfile)
+- [`kyma/docs/docs-build.yaml`](https://github.com/kyma-project/kyma/blob/master/docs/docs-build.yaml)
+
+The `docs-build.yaml` file is prepared for the Prow migration and aims to replace `docs/Jenkinsfile` after Kyma migrates from Jenkins to the new CI tool.
+This file specifies all document topics needed for building Docker images. Every item must have the `name` field specified, which represents the name of the Docker image for a topic. The final image name is followed by a `-docs` suffix.
+
+If the new component directory is equal to the image name, you don’t have to specify it. Otherwise, add an additional `directory` property.
+
+Example 1:
+```
+- name: test
+```
+
+This example builds the `test-docs` image from the `kyma/docs/test` directory.
+
+
+Example 2:
+```
+- name: example-two
+  directory: test/example
+```
+
+This example builds the `example-two-docs` image from the `kyma/docs/test/example` directory.
