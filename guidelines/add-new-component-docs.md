@@ -1,4 +1,4 @@
-# Add new component to the official Kyma documentation
+# Add a new component to the Kyma documentation
 
 When you add a new component to the `kyma/docs` folder, you must ensure that the content displays also on the official Kyma documentation website under `https://kyma-project.io/`. To do so, update the following files:
 
