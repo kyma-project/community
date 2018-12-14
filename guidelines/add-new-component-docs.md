@@ -1,6 +1,6 @@
 # Add a new component to the Kyma documentation
 
-When you add a new component to the `kyma/docs` folder, you must ensure that the content displays also on the official Kyma documentation website under `https://kyma-project.io/`. To do so, update the following files:
+When you add a new component to the `kyma/docs` folder, you must ensure that the content also shows on the `https://kyma-project.io/` website and in the Console UI. To do so, update the following files:
 
 - [`resources/core/charts/docs/charts/documentation/templates/docs-job.yaml`](https://github.com/kyma-project/kyma/blob/master/resources/core/charts/docs/charts/documentation/templates/docs-job.yaml)
 - [`docs/manifest.yaml`](https://github.com/kyma-project/kyma/blob/master/docs/manifest.yaml)
