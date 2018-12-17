@@ -13,6 +13,12 @@ For details on how to format diagrams and their elements in Kyma documents, see 
 
 Use [draw.io](https://www.draw.io) as a recommended tool. Export the diagram as an SVG and save it under the corresponding `assets` directory.
 
+## Size
+
+Keep your diagram reasonable in size. Preview the image at full size to see how it fits into the whole document. The diagram should be large enough to be legible and convey the intended message, but should not overthrow the whole document. To demonstrate large concepts, simplify the diagram or divide it into a few smaller ones.
+
+>**NOTE:** The `kyma-project.io` website has the maximum width of the image set to 860px.
+
 ## Background
 
 Keep the background of the diagram **white** as it renders well both on Github and in the UI.
