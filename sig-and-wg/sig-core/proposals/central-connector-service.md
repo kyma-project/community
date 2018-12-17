@@ -71,3 +71,49 @@ The Connector service (CS) is deployed as a central component:
    
 ## Proof of Concept
 
+
+### Prerequsits:
+- Private key (`rootCA.key`) and certificate (`rootCA.crt`) generated as a root CA
+- Kyma cluster provisioned with `rootCA.key` and `rootCA.crt` as a CA
+- Application `test-application` created
+
+### Steps
+
+1. Generate client (`client.crt`) certificate for `test-application` using Connector Service.
+1. Access the cluster using the generated `client.crt`
+    ```
+    curl  https://gateway.{CLUSTER_DOMAIN}/test-application/v1/metadata/services --cert client.crt --key client.key
+    ```
+1. Generate intermediate CA singed with the root CA
+    ```
+    openssl genrsa -out intermediate.key 4096
+    openssl req -new -out intermediate.csr -key intermediate.key -subj /CN="intermediate"
+    openssl x509 -req -sha256 -in intermediate.csr -out intermediate.crt -CAkey rootCA.key -CA rootCA.crt -days 1800 -CAcreateserial -CAserial serial
+    ```
+1.  Create certificate chain containing `rootCA.crt` and `intermediate.crt`.
+    ```
+    cat rootCA.crt intermediate.crt > intermediate-chain.crt
+    ```
+1. Edit secret containing CA `nginx-auth-ca` to use `intermediate-chain.crt` as `ca.crt` and `intermediate.key` as `ca.key`.
+    ```
+    export CERT=$(cat intermediate-chain.crt | base64)
+    export KEY=$(cat intermediate.key | base64)
+
+    cat <<EOF | kubectl apply -f -
+    apiVersion: v1
+    data:
+      ca.crt: $CERT
+      ca.key: $KEY
+    kind: Secret
+    metadata:
+      name: nginx-auth-ca
+      namespace: kyma-integration
+    type: Opaque
+    EOF
+
+    kubectl -n kyma-system delete po -l "app=nginx-ingress"
+    ```
+1. Wait for pod to restart and then access the cluster using previously generated `client.crt`
+    ```
+    curl  https://gateway.{CLUSTER_DOMAIN}/test-application/v1/metadata/services --cert client.crt --key client.key
+    ```
