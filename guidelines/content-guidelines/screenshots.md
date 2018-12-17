@@ -16,7 +16,7 @@ Adjust or capture your screenshots using any tool that outputs high quality imag
 Use an online tool such as [TinyPNG](https://tinypng.com/) to compress images and limit the size of each image to 1MB, or smaller.
 If you want to control the size of the image relative to the screen size, use one of these standard percentages: 100%, 75%, 50%, or 25%.
 
->**NOTE:** The `kyma-project.io` website has the maximum width of the image set to 860px.
+>**NOTE:** The image keep its original aspect ratio both on the Console UI and on the `kyma-project.io` website. The only resizing is done on the website with the maximum width of the diagram set to 860px.
 
 Name the file as `{screenshot-name}` and save it under the corresponding `assets` directory.
 
