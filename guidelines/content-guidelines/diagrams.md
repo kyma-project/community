@@ -17,7 +17,7 @@ Use [draw.io](https://www.draw.io) as a recommended tool. Export the diagram as 
 
 Keep your diagram reasonable in size. Preview the image at full size to see how it fits into the whole document. The diagram should be large enough to be legible and convey the intended message, but should not overthrow the whole document. To demonstrate large concepts, simplify the diagram or divide it into a few smaller ones.
 
->**NOTE:** The diagrams keep its original aspect ratio both on the Console UI and on the `kyma-project.io` website. The only resizing is done on the website with the maximum width of the diagram set to 860px.
+>**NOTE:** The diagrams keep their original aspect ratio both on the Console UI and on the `kyma-project.io` website. The only resizing is done on the website with the maximum width of the diagram set to 860px.
 
 ## Background
 
