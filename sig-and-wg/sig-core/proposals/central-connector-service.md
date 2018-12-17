@@ -8,26 +8,35 @@ Proposed on 2018-12-17.
 
 ## Motivation
 
-The Connector service is responsible for establishing a secure connection between a connected application and Kyma runtime. It is achieved by providing the client certificate which is later validated by the Application Connector.
-A client certificate is used for registering application metadata, like APIs, and sending events to Kyma. The registration of application metadata and sending events are separated functionalities. They can be realized using different components deployed on different Kyma clusters.
-Therefore, the connection flow must be extended to support cases where the Application Registry can be separated from the Kyma runtime. 
+The Connector service is responsible for establishing a secure connection between connected applications and Kyma runtime. It is achieved by providing the client certificate which is later validated by the Application Connector.
+A client certificate is used for registering application metadata, like APIs, and sending events to Kyma.
+
+
+Currently, it is always a point to point connection. Customers have multiple Kyma clusters. The provisioning of Kyma client certificates can be extended. The central Connector Service might manage provisioning of certificates for multiple Kyma clusters and connected clients.
+Users will have a single point giving control over the whole Kyma ecosystem.
+
+The central Connector service will also allow developing of the central Application Registry. The central App Registry can be used in similar manner, overarching multiple Kyma clusters and its connected applications.
+
 
 ## Goal
 
 1. The Connector service handles client certificate provisioning for an App Registry connection.
-1. An endpoint for getting metadata information with App Registry URL, Event service URL is exposed and accessible with the use of the client certificate. Metadata can be extended to support automated communication between Kyma and connected applications. Example, the Event service endpoint can be changed, and application configuration must be updated.
-1. The Connector service handles client certificate provisioning for a Kyma runtime using the first client certificate.
-1. The new client certificate can be requested using the previous one (certificate rotation)
-1. The Connector service can trigger the creation of the application custom resource if it doesn't exist yet.
+1. The Connector service handles client certificate provisioning for an Event service connection.
+1. The Connector service handles provisioning certificates for Kyma runtime.
+1. The Connector service handles certificate rotation.
+
 
 ## Suggested solution
 
-Connector service is extended to work with two phases:
+The Connector service (CS) is deployed as a central components:
 
-  - In the first phase, the Connector service is returning cluster metadata for CSR signing and information about App Registry URL.
-  - In the second phase, the Connector service is returning metadata of the Kyma runtime cluster for which a second client certificate can be obtained.
+  - CS is deployed as a global component in case someone is using multiple Kuma clusters and one of them is kind of central one.
+  - CS is exposing a secured connection for requesting client certificates which are signed with root CA.
+  - CS is exposing a secured connection for requesting server certificates which are signed with root CA and deployed into Kyma runtime.
+  - The client certificate allows trusted connection to the central Kyma cluster where App Registry is stored.
+  - The client certificate allows trusted connection to the Kyma runtime where server certificate is delivered.
+  - The server certificate allows trusted connection to central Kyma cluster.
 
-Both phases can be realized using the same Connector Service, or there could be two separated Connector Service (central one handling App Registry for multiple Kyma runtimes and seconds one in each Kyma runtime)
 
 
 ### Component Diagram
