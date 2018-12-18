@@ -68,8 +68,13 @@ The Connector service (CS) is deployed as a central component:
 
 ### Certificate revocation 
 
+The client certificates and intermediate server certificates must be revoked as soon as those are compromised.
 
-  
+The revocation list will be stored in central Connector Service and synchronized to all the Kyma clusters and will contain both client certificate and server intermediate ones.
+
+The fingerprint of the compromised certificate will be added to the Application Connector. It will ensure that the connector application or Kyma cluster will no longer be able to perform any calls.
+
+**Note:** The current version of Istio and Nginx-controller are not supporting the revocation list. The further plan to add support for it will be provided later.
    
    
 ## Proof of Concept
