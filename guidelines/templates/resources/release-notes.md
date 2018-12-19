@@ -19,7 +19,7 @@ title: "{Release notes title}"
 <a class=“btn-blog” href=“{path}“><span>{content}</span></a>
 ```
 
-> Write a staring paragraph and introduce the most important release highlights from all components. List the highlights as bullet points and provide absolute links to given sections.
+> Write an introductory paragraph and present the most important release highlights from all components. List the highlights as bullet points and provide absolute links to their corresponding sections.
 
 - [{Feature or fix name}](#absolute-link-to-subsection) - {One-sentence description}
 - [{Feature or fix name}](#absolute-link-to-subsection) - {One-sentence description}

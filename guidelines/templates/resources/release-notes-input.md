@@ -15,4 +15,4 @@
 
 ### {Feature or fix name}
 
-> Write a short paragraph that describes the feature or fix in details and explains what are its benefits for the Kyma users. Include screenshots to illustrate the change better.
+> Write a short paragraph that describes the feature or fix in details and explains its benefits to the Kyma users. Include screenshots to illustrate the change better.
