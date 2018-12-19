@@ -2,7 +2,7 @@
 
 ## Overview
 
-Content guidelines provide rules and tips for all who contribute content to the Kyma repositories.
+These guidelines provide rules and tips to all who contribute content to the Kyma repositories.
 
 Read about:
 
