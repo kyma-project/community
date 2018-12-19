@@ -21,25 +21,25 @@ title: "{Release notes title}"
 
 > Write a staring paragraph and introduce the most important release highlights from all components. List the highlights as bullet points and provide absolute links to given sections.
 
-- [{Feature or fix name}](#section-link) - {One-sentence description}
-- [{Feature or fix name}](#section-link) - {One-sentence description}
-- [{Feature or fix name}](#section-link) - {One-sentence description}
+- [{Feature or fix name}](#absolute-link-to-subsection) - {One-sentence description}
+- [{Feature or fix name}](#absolute-link-to-subsection) - {One-sentence description}
+- [{Feature or fix name}](#absolute-link-to-subsection) - {One-sentence description}
 
 > For example, write:
 > [Application Connector modularization](#section-link) - Components have been moved to separate Helm charts.
 
 > Introduce other component features or fixes that are included in the release notes. They should reflect the names of subsections under each component. Add absolute links to component sections.
 
-- [Application Connector](#section-link) - {List of other features and fixes}
-- [Console](#section-link) - {List of other features and fixes}
-- [Eventing](#section-link) - {List of other features and fixes}
-- [Logging](#section-link) - {List of other features and fixes}
-- [Monitoring](#section-link) - {List of other features and fixes}
-- [Security](#section-link) - {List of other features and fixes}
-- [Serverless](#section-link) - {List of other features and fixes}
-- [Service Catalog](#section-link) - {List of other features and fixes}
-- [Service Mesh](#section-link) - {List of other features and fixes}
-- [Tracing](#section-link) - {List of other features and fixes}
+- [Application Connector](#absolute-link-to-subsection) - {List of other features and fixes}
+- [Console](#absolute-link-to-subsection) - {List of other features and fixes}
+- [Eventing](#absolute-link-to-subsection) - {List of other features and fixes}
+- [Logging](#absolute-link-to-subsection) - {List of other features and fixes}
+- [Monitoring](#absolute-link-to-subsection) - {List of other features and fixes}
+- [Security](#absolute-link-to-subsection) - {List of other features and fixes}
+- [Serverless](#absolute-link-to-subsection) - {List of other features and fixes}
+- [Service Catalog](#absolute-link-to-subsection) - {List of other features and fixes}
+- [Service Mesh](#absolute-link-to-subsection) - {List of other features and fixes}
+- [Tracing](#absolute-link-to-subsection) - {List of other features and fixes}
 
 > For example, write:
 > [Application Connector](https://kyma-project.io/blog/release-notes-05#application-connector) - Extended tests, client certificate verification

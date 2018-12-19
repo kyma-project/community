@@ -9,7 +9,7 @@
 - {Feature or fix name} - {One-sentence description}
 
 > For example, write:
-> [Application Connector modularization](#section-link) - Components have been moved to separate Helm charts.
+> Application Connector modularization - Components have been moved to separate Helm charts.
 
 > List other component features or fixes that you want to include in the release notes. List them as headings and describe them as short paragraphs.
 
