@@ -1,4 +1,4 @@
-# Connector service with two phase pairing
+# Central Connector service
 
 Created on 2018-12-17 by Lukasz Szymik (@lszymik).
 
