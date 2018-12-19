@@ -24,13 +24,14 @@ The central Connector service will also allow developing of the central Applicat
 1. The Connector service handles client certificate provisioning for an Event service connection.
 1. The Connector service handles provisioning certificates for Kyma runtime.
 1. The Connector service handles certificate rotation.
+1. The Connector service returns information about cluster endpoints.
 
 
 ## Suggested solution
 
 The Connector service (CS) is deployed as a central component:
 
-  - CS is deployed as a global component in case someone is using multiple Kuma clusters and one of them is kind of central one.
+  - CS is deployed as a global component in case someone is using multiple Kyma clusters and one of them is kind of central one.
   - CS is exposing a secured connection for requesting client certificates which are signed with root CA.
   - CS is exposing a secured connection for requesting server certificates which are signed with root CA and deployed into Kyma runtime.
   - The client certificate allows a trusted connection to the central Kyma cluster where App Registry is stored.
@@ -65,6 +66,10 @@ The Connector service (CS) is deployed as a central component:
    
 3. An application can access the Central Kyma and the Kyma Runtime using the single certificate. The Application and Kyma clusters identity are encoded in the certificate subject. It allows verification of the calling parties.
    
+### Cluster information
+
+The Connector service is exposing `info` endpoint which returns information about clusters including URL to App Registry, URL to Event service in runtime, etc.
+A connected application is calling that endpoint periodically and checking cluster status. 
 
 ### Certificate revocation 
 
