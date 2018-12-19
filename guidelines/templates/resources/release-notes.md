@@ -2,6 +2,7 @@
 
 <!-- Fill in the required metadata for the blog post to render properly on the "kyma-project.io" website. -->
 
+```
 ---
 path: "/blog/{link}"
 date: "{YYY-MM-DD}"
@@ -10,10 +11,13 @@ tags:
   - release-notes
 title: "{Release notes title}"
 ---
+```
 
-<!-- Fill in the path to the release on GitHub in place of the {path} placeholder and put "Download {version number}" in place of the {content} placeholder". -->
+<!-- This line adds a button that allows you to download the latest release. Provide the path to the release on GitHub in place of the {path} placeholder and put "Download {version number}" in place of the {content} placeholder. -->
 
+```
 <a class=“btn-blog” href=“{path}“><span>{content}</span></a>
+```
 
 > Write a staring paragraph and introduce the most important release highlights from all components. List the highlights as bullet points and provide absolute links to given sections.
 
