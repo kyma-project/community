@@ -15,4 +15,4 @@
 
 ### {Feature or fix name}
 
-> Write a short paragraph that describes the feature or the fix in details. Include screenshots to illustrate the change better.
+> Write a short paragraph that describes the feature or fix in details. Include screenshots to illustrate the change better.
