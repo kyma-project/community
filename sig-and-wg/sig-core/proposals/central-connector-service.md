@@ -8,7 +8,7 @@ Proposed on 2018-12-17.
 
 ## Motivation
 
-The Connector service is responsible for establishing a secure connection between the connected external solutions and Kyma runtime. Such a connection is achieved by providing the client certificate to the connected solution. This certificate is later validated by the Application Connector. The client certificate is used for registering application metadata, such as APIs, and sending events to Kyma.
+The Connector service is responsible for establishing a secure connection between the connected external solutions and Kyma cluster. Such a connection is achieved by providing the client certificate to the connected solution. This certificate is later validated by the Application Connector. The client certificate is used for registering application metadata, such as APIs, and sending events to Kyma.
 Currently, the connection between an external solution and Kyma is always point-to-point. 
 
 As the customers work with multiple Kyma clusters, they will benefit from extending the provisioning of Kyma client certificates. A central Connector Service would manage the provisioning of certificates for multiple Kyma clusters and connected clients. Such approach allows the users to control their entire Kyma ecosystem from a single, central point.
@@ -18,7 +18,7 @@ As the customers work with multiple Kyma clusters, they will benefit from extend
 
 1. The Connector service handles client certificate provisioning for the connection with the Application Registry.
 2. The Connector service handles client certificate provisioning for the connection with the Event Service.
-3. The Connector service handles certificate provisioning for Kyma runtime.
+3. The Connector service handles certificate provisioning for Kyma cluster.
 4. The Connector service handles certificate rotation.
 5. The Connector service returns information about the available cluster endpoints.
 
@@ -29,9 +29,9 @@ The Connector Service (CS) is deployed as a central component.
 
   - The CS is deployed as a global component in implementations with multiple Kyma clusters where one cluster takes the role of a master.
   - The CS exposes a secured connection for requesting client certificates signed with root CA.
-  - The CS exposes a secured connection for requesting server certificates signed with root CA and deployed to Kyma runtime.
+  - The CS exposes a secured connection for requesting server certificates signed with root CA and deployed to Kyma cluster.
   - The client certificate enables a trusted connection with the central Kyma cluster where the App Registry is stored.
-  - The client certificate enables a trusted connection with the Kyma runtime where the server certificate is delivered.
+  - The client certificate enables a trusted connection with the Kyma cluster where the server certificate is delivered.
   - The server certificate enables a trusted connection with central Kyma cluster.
   - For standalone Kyma clusters, the Connector Service is deployed locally and works in the same manner.
 
@@ -53,16 +53,16 @@ The Connector Service (CS) is deployed as a central component.
    - Is signed by the root CA
    - The subject of the client certificate contains the unique ID of the Application and information about the group to which the Application is assigned
 
-2. After the runtime is provisioned, it requests for the intermediate certificate. As a response, it receives a certificate chain consisting of the generated intermediate certificate and the root CA certificate. The intermediate certificate has the following properties:
+2. After the cluster is provisioned, it requests for the intermediate certificate. As a response, it receives a certificate chain consisting of the generated intermediate certificate and the root CA certificate. The intermediate certificate has the following properties:
 
    - Is signed by the root CA.
-   - Contains the information about the runtime name for which it is generated.
+   - Contains the information about the cluster name for which it is generated.
 
-3. The Application can access the master Kyma cluster and the Kyma runtime using the single certificate. The identity of the Application and the Kyma clusters is encoded in the certificate subject. It allows the verification of the calling parties.
+3. The Application can access the master Kyma cluster and the Kyma cluster using the single certificate. The identity of the Application and the Kyma clusters is encoded in the certificate subject. It allows the verification of the calling parties.
 
 ### Cluster information
 
-The Connector Service exposes the `info` endpoint which returns information about the connected clusters, including the App Registry URL, URL to the Event Service working in the runtime, etc.
+The Connector Service exposes the `info` endpoint which returns information about the connected clusters, including the App Registry URL, URL to the Event Service working in the cluster, etc.
 A connected Application calls this endpoint periodically and checks the cluster status. 
 
 ### Certificate revocation 
