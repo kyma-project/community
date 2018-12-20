@@ -11,11 +11,10 @@ The purpose of this group is to:
 
 ## Meetings
 
-* Thursday at 13:00 CET
-* [Slack](https://kyma-community.slack.com/messages/CEC6R4T6U)
-* Frequency: weekly
-* [Meeting notes and agenda](https://docs.google.com/document/d/1BZoJQ5qsSudlix8PXjykQfsJtfwC7EgUy0BP3oORDsA/edit?usp=sharing)
-* Meeting recordings - TBD
+* Every Thursday at 13:00 CET
+* [Zoom](https://zoom.us/j/201488120)
+* [Meeting notes and agenda](https://docs.google.com/document/d/1BZoJQ5qsSudlix8PXjykQfsJtfwC7EgUy0BP3oORDsA/edit)
+* [Meeting recordings](https://www.youtube.com/playlist?list=PL7PGl--iaIH9wbr0o0UJXi-Pb6SCjjW8c)
 
 ## Leaders
 
