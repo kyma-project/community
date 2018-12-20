@@ -12,7 +12,6 @@ The Connector service is responsible for establishing a secure connection betwee
 Currently, the connection between an external solution and Kyma is always point-to-point. 
 
 As the customers work with multiple Kyma clusters, they will benefit from extending the provisioning of Kyma client certificates. A central Connector Service would manage the provisioning of certificates for multiple Kyma clusters and connected clients. Such approach allows the users to control their entire Kyma ecosystem from a single, central point.
-Additionally, creating a central Connector Service enables the development of a central Application Registry. The central Application Registry can be used in a similar manner, serving multiple Kyma clusters and their connected external solutions.
 
 
 ## Goal
