@@ -1,100 +1,95 @@
 # Linking in docs
 
-These are the guidelines for making cross-reference between the documents in the [kyma/docs](https://github.com/kyma-project/kyma/tree/master/docs) folder.
+These are the guidelines for making cross-references between the documents in the [kyma/docs](https://github.com/kyma-project/kyma/tree/master/docs) folder.
 
->**NOTE:** Remeber that linking between documents in [github.com/kyma-project/kyma/docs](https://github.com/kyma-project/kyma/tree/master/docs) doesn't work. At the moment it only work on [kyma-project.io/docs](https://kyma-project.io/docs).
+>**NOTE:** The linking works only on the [Kyma website](https://kyma-project.io/docs). Currently, the cross-references between [GitHub documentation](ttps://github.com/kyma-project/kyma/tree/master/docs) is not available.
 
 ## Linking between the same topic
 
-If you want to linking to another document in the same topic, you must create reference by this pattern `#{type}-#{title}`, where:
-- `{type}` is a type of the document, that you want to reference.
-- `{title}` is a title from document that you want to reference.
+If you want to link to another document in the same topic, create a reference using the `#{type}-#{title}` pattern, where:
+- `{type}` is a type of the document that you want to reference.
+- `{title}` is a title of the document that you want to reference.
 
-`{type}` and `{title}` are a metadata of relevant document. They are at the beginning of each document.
+>**NOTE:** All variables must consist of lowercase characters separated with dashes (-).
 
->**NOTE:** All of vars in reference must be [tokenized](#tokenization).
+`{type}` and `{title}` are placed in a metadata section of each document. If the `{type}` doesn't exist, the pattern has the form of `#{title}-#{title}`. If you want to create a reference to the whole `{type}`, the pattern has the form of `#{type}-#{type}`.
 
->**NOTE 2:** If `{type}` doesn't exist, the pattern has a form `#{title}-#{title}`.
-
->**NOTE 3:** If you want create reference only to `{type}`, the pattern has a form `#{type}-#{type}`.
-
-### Example
-
-For the existing topic with files and theirs content:
-- `001-overview-of-some-content.md`
+For example, there are two documents named `001-overview-service-brokers.md` and `002-details-azure-broker.md`. Their metadata fields look as follows:
+- `001-overview-service-brokers.md`
   ```
   ---
-  title: Some content
+  title: Service Brokers
   type: Overview
   ---
-
-  ...
   ```
-- `002-details-of-some-content.md`
+- `002-details-azure-broker.md`
   ```
   ---
-  title: Some content
+  title: Azure Broker
   type: Details
   ---
-    
-  ...
   ```
 
-a reference from `001-overview-of-some-content.md` to `002-details-of-some-content.md` must be: `#details-some-content`.
+In this case, a reference from `001-overview-service-brokers.md` to `002-details-azure-broker.md` is  `#details-azure-broker`.
 
 ## Linking between different topics
 
-If you want to linking to another document in the different topic, you must create reference by this pattern `/docs/{type-of-topic}/{id}#{type-of-document}-#{title}`, where:
-- `{type-of-topic}` is a type of the topic, that you want to reference.
-- `{id}` is a id from topic, that you want to reference.
-- `{type-of-document}` is a type of the document, that you want to reference.
-- `{title}` is a title from document that you want to reference.
+If you want to link to a document in the different topic, create a reference by using this pattern `/docs/{type-of-topic}/{id}#{type-of-document}-#{title}`, where:
+- `{type-of-topic}` is a type of the topic that you want to reference.
+- `{id}` is an ID of the topic that you want to reference.
+- `{type-of-document}` is a type of the document that you want to reference.
+- `{title}` is a title of the document that you want to reference.
 
-`{type-of-topic}` and `{id}` are a metadata of relevant topic. They are in `docs.config.json` file, which is in the root directory of each topic.
+>**NOTE:** All variables must consist of lowercase characters separated with dashes (-).
 
-`{type-of-document}` and `{title}` are a metadata of relevant document. They are at the beginning of each document.
+`{type-of-topic}` and `{id}` are metadata fields of the given topic. They are placed in the `docs.config.json` file, in the root directory of each topic. `{type-of-document}` and `{title}` are placed in a metadata section of each document. If the `{type-of-document}` doesn't exist, the pattern has the form of `/docs/{type-of-topic}/{id}#{title}-#{title}`. If you want to create a reference to the whole `{type-of-document}`, the pattern has the form of `/docs/{type-of-topic}/{id}#{type-of-document}-#{type-of-document}`.
 
->**NOTE:** All of vars in reference must be [tokenized](#tokenization).
-
->**NOTE 2:** If `{type-of-document}` doesn't exist, the pattern has a form `/docs/{type-of-topic}/{id}#{title}-#{title}`.
-
->**NOTE 3:** If you want create reference only to `{type-of-document}`, the pattern has a form `/docs/{type-of-topic}/{id}#{type}-#{type}`.
-
-### Example
-
-For the following architecture with files and theirs content:
-- `service-catalog/docs/001-overview-of-some-content.md`
+For example, there are two documents with the following metadata sections:
+- `service-catalog/docs/001-overview-service-catalog.md`
   ```
   ---
-  title: Some content
+  title: Service Catalog
   type: Overview
   ---
-
-  ...
   ```
-  where `service-catalog` has a:
-  - `type`: `service-catalog`.
-  - `id`: `components`.
-- `service-brokers/docs/001-overview-of-some-content.md`
+- `service-brokers/docs/001-overview-service-brokers.md`
   ```
   ---
-  title: Some content
+  title: Service Brokers
   type: Overview
   ---
-    
-  ...
   ```
-  where `service-brokers` has a:
-  - `type`: `service-brokers`.
-  - `id`: `components`.
 
-a reference from `service-catalog/...` to `service-brokers/...` must be: `/docs/service-brokers#overview-some-content`.
+The `{type}` of the documents are `service-catalog` and `service-brokers` respectively, and their `{id}` is `components`.
 
-## Tokenization
+In this case, a reference from `service-catalog/...` to `service-brokers/...` is `/docs/service-brokers#overview-service-brokers`.
 
-Tokenization is a operation of changing data to lowercasing form with a dash sign (`-`) instead of space.
+## Linking to assets
 
-### Example
+If you want to link to a asset, create a reference by using this pattern `/docs/{type-of-topic}/{id}#{type-of-document}-#{title}`, where:
+- `{type-of-topic}` is a type of the topic that you want to reference.
+- `{id}` is an ID of the topic that you want to reference.
+- `{type-of-document}` is a type of the document that you want to reference.
+- `{title}` is a title of the document that you want to reference.
 
-- Before tokenization:  `Document with some content`.
-- After tokenization:   `document-with-some-content`.
+`{type-of-topic}` and `{id}` are metadata fields of the given topic. They are placed in the `docs.config.json` file, in the root directory of each topic. `{type-of-document}` and `{title}` are placed in a metadata section of each document. If the `{type-of-document}` doesn't exist, the pattern has the form of `/docs/{type-of-topic}/{id}#{title}-#{title}`. If you want to create a reference to the whole `{type-of-document}`, the pattern has the form of `/docs/{type-of-topic}/{id}#{type-of-document}-#{type-of-document}`.
+
+For example, there are two documents with the following metadata sections:
+- `service-catalog/docs/001-overview-service-catalog.md`
+  ```
+  ---
+  title: Service Catalog
+  type: Overview
+  ---
+  ```
+- `service-brokers/docs/001-overview-service-brokers.md`
+  ```
+  ---
+  title: Service Brokers
+  type: Overview
+  ---
+  ```
+
+The `{type}` of the documents are `service-catalog` and `service-brokers` respectively, and their `{id}` is `components`.
+
+In this case, a reference from `service-catalog/...` to `service-brokers/...` is `/docs/service-brokers#overview-service-brokers`.
