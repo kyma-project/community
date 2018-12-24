@@ -22,6 +22,10 @@ files:
     config:
       #milv doesn't support parenthesis in parenthesis in .md links yet
       white-list-external: ["https://github.com/kyma-project/community/blob/master/docs/cla/SAP%20Corporate%20Contributor%20License%20Agreement%20(5-26-15"]
+  - path: "./community/sig-and-wg/sig-core/proposals/common-libraries.md"
+    config:
+      #milv doesn't support anchors in links https://github.com/magicmatatjahu/milv/issues/9
+      white-list-external: ["https://github.com/kyma-project/kyma/blob/09b945ec0a897822b40666e518f2f258ae66e7e8/tests/acceptance/servicecatalog/wait/wait.go#L8-L24"]
   - path: "./community/governance.md"
     config:
       #milv doesn't support query parameters in .md links yet
