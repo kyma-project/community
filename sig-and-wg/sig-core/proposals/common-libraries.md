@@ -34,8 +34,8 @@ In Go ecosystem, there is a pretty popular `pkg` layout pattern. Many well-known
 However, the `pkg` directory is used mainly for public libraries. They can be used internally by your application but also by external projects. 
 This is an informal contract between you and the external users of your code. 
 
-In Go, there is an ability to hide code using internal directories. If you put your code in an `internal` directory, no external project will be able to import that code. 
-Initially, the idea was to put our private libraries in `kyma/internal/pkg/{private_libs}` but we consolidated all project to one repository, so there is no option to vendor such libraries in our project. In this case, when we execute the `dep ensure` command, we receive such error:  
+In Go, there is a possibility to hide code using internal directories. If you put your code in an `internal` directory, no external project will be able to import that code. 
+Initially, the idea was to put our private libraries in `kyma/internal/pkg/{private_libs}` but we consolidated all the project to one repository, so there is no option to vendor such libraries in our project. In this case, when we execute the `dep ensure` command, we receive such error:  
 ```
 use of internal package  kyma/internal/pkg/http not allowed
 ```
@@ -126,7 +126,7 @@ Once approved, these are the consequences:
 - new package for common libraries must be created and maintained
 - new expert CODEOWNERS must be defined for reviewing libraries added for common package
 - new package must be announced and other projects should switch to use the official libraries instead of custom implementation
-- developers always need to check our libraries not to reimplement the business logic
+- developers must always check our libraries not to reimplement the business logic
 - if some business logic is used in more than two projects, it is highly recommended to extract it to common libraries. Remember that the added source code must follow all rules of the common package. Announce a new library which solves a given problem so that other developers can simply use it.
 
 >**NOTE:** Because this proposal affects all Kyma developers, the requirement is that minimum one person from each team should take a look at this proposal and approve it or request changes.
