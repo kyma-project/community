@@ -62,6 +62,6 @@ For example, there are two documents with the following metadata sections:
   ---
   ```
 
-The `{type}` of the documents are `service-catalog` and `service-brokers` respectively, and their `{id}` is `components`.
+The `{id}` variables of the documents are `service-catalog` and `service-brokers` respectively, and their `{type-of-topic}` is `components`.
 
 In this case, a reference from `service-catalog/...` to `service-brokers/...` is `/docs/service-brokers#overview-service-brokers`.
