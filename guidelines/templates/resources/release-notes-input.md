@@ -11,8 +11,6 @@
 > For example, write:
 > Application Connector modularization - Components have been moved to separate Helm charts.
 
-> List other component features or fixes that you want to include in the release notes. List them as headings and describe them as short paragraphs.
-
 ### {Feature or fix name}
 
-> Write a short paragraph that describes the feature or fix in details and explains its benefits to the Kyma users. Include screenshots to illustrate the change better.
+> List other component features or fixes that you want to include in the release notes. Add each feature or fix as a separate heading and describe it in a short paragraph. The paragraph should not only provide details of the feature or fix but also explain its benefits to the Kyma users. Include screenshots to illustrate the changes better.
