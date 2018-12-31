@@ -16,7 +16,7 @@ title: "{Release notes title}"
 <!-- This line adds a button that allows you to download the latest release. Provide the path to the release on GitHub in place of the {path} placeholder and put "Download {version number}" in place of the {content} placeholder. Remember to remove the code block. -->
 
 ```
-<a class=“btn-blog” href=“{path}“><span>{content}</span></a>
+<a class="btn-blog" href="{path}"><span>{content}</span></a>
 ```
 
 > Write an introductory paragraph and present the most important release highlights from all components. List the highlights as bullet points and provide absolute links to their corresponding sections.
