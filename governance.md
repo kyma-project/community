@@ -48,34 +48,34 @@ To see the current state of processed decisions in the Kyma project, go to the p
 
 The SIG/WG decison-making process is as follows:
 
-![Decision-making process](assets/decision-making-process.png)
+![Decision-making process](assets/decision-making-process.svg)
 
 ### Create a decision record
 
-[Create an issue](https://github.com/kyma-project/community/issues/new/choose) and choose the **Decision record** template. Provide the information as requested in the template and set the issue label to  `decision`. The issue can contain all necessary information, reference a document, or an open pull request with a more detailed proposal. Additionally, set the corresponding WG or SIG label such as  `sig/core`. 
+[Create an issue](https://github.com/kyma-project/community/issues/new/choose) and choose the **Decision record** template. Provide the information as requested in the template and set the issue label to  `decision`. The issue can contain all necessary information, reference a document, or an open pull request with a more detailed proposal. Additionally, set the corresponding WG or SIG label such as  `sig/core`.
 
-> **NOTE:** In some cases, a `decision` label is set for an existing issue during the [triage](./issues-workflow.md), which indicates the need for a decision. In this case, use the [**Decision record** template](./.github/ISSUE_TEMPLATE/decision-record.md) and copy it to the issue description accordingly. 
+> **NOTE:** In some cases, a `decision` label is set for an existing issue during the [triage](./issues-workflow.md), which indicates the need for a decision. In this case, use the [**Decision record** template](./.github/ISSUE_TEMPLATE/decision-record.md) and copy it to the issue description accordingly.
 
 ### Reach a consensus
 
 Take all necessary actions to reach a consensus no later than the decision due date:
 
-- Send a link to the **Decision record** issue to the related SIG or WG mailing list and post it in the relevant Slack channels. If people relevant for the decision are not part of the mailing list, add them explicitly to the email communication. Communicate the decision to be made clearly to the groups affected by it and invite them to check the proposal. 
+- Send a link to the **Decision record** issue to the related SIG or WG mailing list and post it in the relevant Slack channels. If people relevant for the decision are not part of the mailing list, add them explicitly to the email communication. Communicate the decision to be made clearly to the groups affected by it and invite them to check the proposal.
 
-- Clarify and discuss the decision content and the proposal as needed. Use the mailing list, relevant Slack channels, the related pull request, or comment directly on the **Decision record** issue. 
+- Clarify and discuss the decision content and the proposal as needed. Use the mailing list, relevant Slack channels, the related pull request, or comment directly on the **Decision record** issue.
 
-- Feel free to communicate the decision proposal during the upcoming SIG or WG meeting and ask its members for feedback. Encourage the discussion and bring up any objections early in the process. 
+- Feel free to communicate the decision proposal during the upcoming SIG or WG meeting and ask its members for feedback. Encourage the discussion and bring up any objections early in the process.
 
-- Those who created the proposal work with those who had objections to either prepare an improved solution or decline the proposal. 
+- Those who created the proposal work with those who had objections to either prepare an improved solution or decline the proposal.
 
-> **NOTE:** Discussions  lead to changes in the decision record or the proposal, or end up with no changes required. If someone suggests a substantially different approach, ask its supporters to write a counter proposal and to submit it in a separate pull request. 
+> **NOTE:** Discussions  lead to changes in the decision record or the proposal, or end up with no changes required. If someone suggests a substantially different approach, ask its supporters to write a counter proposal and to submit it in a separate pull request.
 
 
 ### Close the decision
 
 Once you reach the consensus:
 
-- Add the status change in the **Decision record** issue with either `Accepted` or `Declined`. 
+- Add the status change in the **Decision record** issue with either `Accepted` or `Declined`.
 - Close and merge the pull request with the accepted proposal. Make sure that the merge comment contains one of the [keywords](https://help.github.com/articles/closing-issues-using-keywords/) to automatically close the **Decision record** issue. Otherwise, close the **Decision record** issue manually.
 
 > **NOTE:** If there are any pull requests with counter proposals to the decision record, close the related pull requests with rejected proposals without merging. State the reasons for the rejection in the closing comments.
@@ -88,8 +88,8 @@ Engage the ultimate decision makers if there are still unresolved objections by 
 
 Raise an explicit request to revisit a decision or to review it. To request revision:
 
-- Create a new  decision record in the respective repository and populate the `Affected decisions` parameter. 
+- Create a new  decision record in the respective repository and populate the `Affected decisions` parameter.
 - Specify the `Due date` parameter and set a revision date that cannot be earlier than the revision date of the original decision
-- Explain in the **Context** and **Consequences** sections why you propose another approach and a new decision. 
+- Explain in the **Context** and **Consequences** sections why you propose another approach and a new decision.
 
-The SIG or WG addresses the request for revision after the original decision record reaches its revision date. Exceptionally, you can suggest to revisit a decision earlier if the ultimate decision makers support and request it. They can trigger the process if they identify a major positive impact on the project, substantial improvement, or the community interest. 
+The SIG or WG addresses the request for revision after the original decision record reaches its revision date. Exceptionally, you can suggest to revisit a decision earlier if the ultimate decision makers support and request it. They can trigger the process if they identify a major positive impact on the project, substantial improvement, or the community interest.
