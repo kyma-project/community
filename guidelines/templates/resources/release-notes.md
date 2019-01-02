@@ -16,7 +16,7 @@ title: "{Release notes title}"
 <!-- This line adds a button that allows you to download the latest release. Provide the path to the release on GitHub in place of the {path} placeholder and put "Download {version number}" in place of the {content} placeholder. Remember to remove the code block. -->
 
 ```
-<a class="btn-blog" href="{path}"><span>{content}</span></a>
+<a class="btn-blog" href="{path}" alt="{content}"/a>
 ```
 
 > Write an introductory paragraph and present the most important release highlights from all components. List the highlights as bullet points and provide absolute links to their corresponding sections.
@@ -27,6 +27,8 @@ title: "{Release notes title}"
 
 > For example, write:
 > [Application Connector modularization](#section-link) - Components have been moved to separate Helm charts.
+
+> Remember to add the <!-- overview --> comment after this introductory paragraph to separate the excerpt rendered on the main page from the rest of the document. For more details, see [this](https://github.com/kyma-project/website/blob/master/docs/write-blog-posts.md) document.
 
 > Introduce other component features or fixes that are included in the release notes. They should reflect the names of subsections under each component. Add absolute links to component sections.
 

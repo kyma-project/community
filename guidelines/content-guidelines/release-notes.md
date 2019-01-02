@@ -8,7 +8,6 @@ Information in release notes must provide readers with everything they need to k
 * Does an error message appear?
 * Was the enhancement based upon customer feedback?
 
-## Guidelines
 Because the release notes contain critical information and act as an important communication tool, follow these guidelines so that the documentation is informative and consistent. When authoring release notes, follow the [Style and Standards](./style-and-standards.md) for many agreed-upon standards.
 
 ## Headlines
