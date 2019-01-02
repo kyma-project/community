@@ -28,7 +28,7 @@ title: "{Release notes title}"
 > For example, write:
 > [Application Connector modularization](#section-link) - Components have been moved to separate Helm charts.
 
-> Remember to add the <!-- overview --> comment after this introductory paragraph to separate the excerpt rendered on the main page from the rest of the document. For more details, see [this](https://github.com/kyma-project/website/blob/master/docs/write-blog-posts.md) document.
+> Add the <!-- overview --> comment after this introductory paragraph to separate the excerpt rendered on the main page from the rest of the document. For more details, see [this](https://github.com/kyma-project/website/blob/master/docs/write-blog-posts.md) document.
 
 > Introduce other component features or fixes that are included in the release notes. They should reflect the names of subsections under each component. Add absolute links to component sections.
 
