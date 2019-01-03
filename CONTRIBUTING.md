@@ -71,7 +71,7 @@ To contribute code or content to a given Kyma repository, follow these steps:
 - If you are a Kyma organization member, Prow runs all related tests automatically after you create a PR.
 - If you are an external contributor, contact the repository maintainers specified in the `CODEOWNERS` file to review your PR and add the `/test all` comment to your PR to trigger all tests.
 
-If a test fails, check the reason for the failure by clicking the **Details** button next to the given job on your PR. Make the required changes and add the `/test {failed-test-name}` comment to your PR to rerun the test. If you want to rerun all failed tests, add the `/retest` comment.
+If a test fails, check the reason by clicking the **Details** button next to the given job on your PR. Make the required changes and add the `/test {failed-test-name}` comment to your PR to rerun the test. If you want to rerun all failed tests, add the `/retest` comment.
 
 > **NOTE:** The test comments trigger tests only when a Kyma organization member adds them to a PR.  
 
