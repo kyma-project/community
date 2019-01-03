@@ -73,7 +73,7 @@ To contribute code or content to a given Kyma repository, follow these steps:
 
 If a test fails, check the reason by clicking the **Details** button next to the given job on your PR. Make the required changes and add the `/test {failed-test-name}` comment to your PR to rerun the test. If you want to rerun all failed tests, add the `/retest` comment.
 
-> **NOTE:** The test comments trigger tests only when a Kyma organization member adds them to a PR.  
+> **NOTE:** All test comments trigger tests only when a Kyma organization member adds them to a PR.  
 
 11. Wait for the Kyma maintainers to review and approve your PR. The maintainers can approve it, request enhancements to your change, or reject it.
 
