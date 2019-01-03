@@ -68,7 +68,7 @@ To contribute code or content to a given Kyma repository, follow these steps:
 - Make sure that the [**Allow edits from maintainers**](https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) option is selected to allow upstream repository maintainers, and those with the push access to the upstream repository, to commit to your forked branch.
 - Choose at least one `area/{capability}` label from the available list and add it to your PR to categorize changes you made. Labels are required to include your PR in the `CHANGELOG.md` file, and classify it accordingly.
 10. After you create a PR, relevant Prow tests need to complete successfully.
-- If you are a Kyma organization member, Prow runs all related tests automatically after you create a PR.
+- If you are a Kyma organization member, all related Prow tests run automatically after you create a PR.
 - If you are an external contributor, contact the repository maintainers specified in the `CODEOWNERS` file to review your PR and add the `/test all` comment to your PR to trigger all tests.
 
 If a test fails, check the reason by clicking the **Details** button next to the given job on your PR. Make the required changes and add the `/test {failed-test-name}` comment to your PR to rerun the test. If you want to rerun all failed tests, add the `/retest` comment.
