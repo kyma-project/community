@@ -22,7 +22,7 @@ Every code owner is expected to:
 * Communicate and collaborate with other code owners to improve the ownership process
 * Perform a thorough review of incoming PRs and make sure they follow the [contributing rules](CONTRIBUTING.md)
 * Approve only those PRs in which the contributor made the requested improvements
-* Check if the related CI job has completed successfully before approving the PR
+* Check if the related Prow tests have completed successfully before approving the PR
 * Make sure that the PR approval flow runs smoothly
 * Prioritize issues and manage their processing
 * Proactively fix bugs

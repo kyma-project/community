@@ -1,10 +1,10 @@
-# Linking in docs
+# Links in docs
 
-These are the guidelines for making cross-references between the documents in the [kyma/docs](https://github.com/kyma-project/kyma/tree/master/docs) folder.
+These are the guidelines for making cross-references between the documents in the [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) folder.
 
 >**NOTE:** The linking works only on the [Kyma website](https://kyma-project.io/docs). Currently, the cross-references between [GitHub documentation](ttps://github.com/kyma-project/kyma/tree/master/docs) is not available.
 
-## Linking between the same topic
+## Links between documents in the same topic
 
 If you want to link to another document in the same topic, create a reference using the `#{type}-{title}-{header}` pattern, where:
 - `{type}` is a type of the document that you want to reference.
@@ -33,7 +33,11 @@ For example, there are two documents named `001-overview-service-brokers.md` and
 
 In this case, a reference from `001-overview-service-brokers.md` to `002-details-azure-broker.md` is  `#details-azure-broker`.
 
-## Linking between different topics
+### Links to the assets folder
+
+To add a reference to a YAML, JSON, SVG, PNG, or JPG file located in the `assets` folder in the same topic, use GitHub relative links. For example, write `[Here](./assets/mf-namespaced.yaml) you can find a sample micro front-end entity.` When you click such a link on the `kyma-project.io` website, it opens the file content in the same tab.
+
+## Links between documents in different topics
 
 If you want to link to a document in the different topic, create a reference by using this pattern `/docs/{type-of-topic}/{id}#{type-of-document}-{title}-{header}`, where:
 - `{type-of-topic}` is a type of the topic that you want to reference.
