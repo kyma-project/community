@@ -19,7 +19,7 @@ Read the subsections to learn the details of the agreements to submit and licenc
 ### Individual contributor license agreement
 
 As a Kyma contributor, you must accept the Kyma project's licenses and submit the
-[Individual Contributor License Agreement](https://gist.github.com/CLAassistant/bd1ea8ec8aa0357414e8) before you contribute code or content to any Kyma repository. Kyma maintainers will not accept contributions made without such consent. This applies to all contributors, including those contributing on behalf of a company. If you agree to the content of the Agreement, click on the link posted by the CLA assistant as a comment to the pull request (PR). The CLA assistant saves your decision for the upcoming contributions and notifies you if there is any change to the CLA in the meantime.
+[Individual Contributor License Agreement](https://gist.github.com/CLAassistant/bd1ea8ec8aa0357414e8) before you contribute code or content to any Kyma repository. Kyma maintainers will not accept contributions made without such consent. This applies to all contributors, including those contributing on behalf of a company. If you agree to the content of the Agreement, click the link posted by the CLA assistant as a comment to the pull request (PR). The CLA assistant saves your decision for future contributions and notifies you if there is any change to the CLA in the meantime.
 
 ### Corporate contributor license agreement
 
