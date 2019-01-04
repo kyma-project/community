@@ -19,7 +19,7 @@ Read the subsections to learn the details of the agreements to submit and licenc
 ### Individual contributor license agreement
 
 As a Kyma contributor, you must accept the Kyma project's licenses and submit the
-[Individual Contributor License Agreement](https://gist.github.com/CLAassistant/bd1ea8ec8aa0357414e8) before you contribute code or content to any Kyma repository. Kyma maintainers will not accept contributions made without such a consent. This applies to all contributors, including those contributing on behalf of a company. If you agree to the content of the Agreement, click on the link posted by the CLA assistant as a comment to the pull request (PR). Click it to review the CLA and accept it on the next screen if you agree to it. The CLA assistant saves your decision for the upcoming contributions and notifies you if there is any change to the CLA in the meantime.
+[Individual Contributor License Agreement](https://gist.github.com/CLAassistant/bd1ea8ec8aa0357414e8) before you contribute code or content to any Kyma repository. Kyma maintainers will not accept contributions made without such consent. This applies to all contributors, including those contributing on behalf of a company. If you agree to the content of the Agreement, click on the link posted by the CLA assistant as a comment to the pull request (PR). The CLA assistant saves your decision for the upcoming contributions and notifies you if there is any change to the CLA in the meantime.
 
 ### Corporate contributor license agreement
 
@@ -34,18 +34,15 @@ If you are a contributor, follow these basic rules:
 
 * The contribution workflow in all Kyma repositories bases on the principles of the [GitHub Flow](https://guides.github.com/introduction/flow/). Thus, the `master` branch is the most important one. Avoid working directly on it. When you work on new features or bug fixes, work on separate branches.
 * Work on forks of Kyma repositories.
-* Squash and rebase every PR before merging.
 * You can merge a PR if you receive an approval from at least one code owner from each part of the repository to which you contribute in your PR.
 
 Every contributor commits to the following agreement:
 
-* In each PR, include a description or a reference to a detailed description of the steps that the maintainer goes through to check if a PR works and does not break any other functionality.
+* In every PR, include a description or a reference to a detailed description of the steps that the maintainer goes through to check if a PR works and does not break any other functionality.
 * Provide clear and descriptive commit messages.
-* Follow the squash and rebase process.
+* Label you PRs.
 * Follow the accepted documentation rules and use appropriate templates.
-* Choose the proper directory for the content of your PR, depending on the role of the component, and how it relates to the project structure.
 * As the creator of the PR, you are responsible for ensuring that the PR follows the correct review and approval flow.
-* Make sure that the person who owns the documentation, such as a technical writer, reviews the changes in the documentation before you merge the PR.
 
 ## Contribution process
 
@@ -66,7 +63,7 @@ To contribute code or content to a given Kyma repository, follow these steps:
 9. In your PR:
 - Provide a reference to any related GitHub issue.
 - Make sure that the [**Allow edits from maintainers**](https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) option is selected to allow upstream repository maintainers, and those with the push access to the upstream repository, to commit to your forked branch.
-- Choose at least one `area/{capability}` label from the available list and add it to your PR to categorize changes you made. Labels are required to include your PR in the `CHANGELOG.md` file, and classify it accordingly.
+- Choose at least one `area/{capability}` label from the available list and add it to your PR to categorize changes you made. Labels are required to include your PR in the `CHANGELOG.md` file and classify it accordingly.
 10. After you create a PR, relevant CI tests need to complete successfully.
 - If you are a Kyma organization member, all related CI tests run automatically after you create a PR. If a test fails, check the reason by clicking the **Details** button next to the given job on your PR. Make the required changes and the tests rerun. If you want to run a specific test, add the `/test {test-name}` or `/retest {test-name}` comment to your PR. To rerun all failed tests, add the `/retest` comment.
 - If you are an external contributor, contact the repository maintainers specified in the `CODEOWNERS` file to review your PR and add the `/test all` comment to your PR to trigger all tests. A Kyma organization member needs to rerun the tests manually each time you commit new changes to the PR.
@@ -75,7 +72,7 @@ To contribute code or content to a given Kyma repository, follow these steps:
 
 > **NOTE:** The reviewer must check if all related CI tests have completed successfully before approving the PR.
 
-13. When the maintainers approve your change, merge the PR. If you are an external contributor, contact the repository maintainers specified in the `CODEOWNERS` file to do the merge.
+13. When the maintainers approve your change, merge the PR. If you are an external contributor, contact the repository maintainers specified in the `CODEOWNERS` file to merge the PR for you.
 
 ### Report an issue
 

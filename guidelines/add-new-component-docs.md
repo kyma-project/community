@@ -10,7 +10,7 @@ The `docs-job.yaml` file defines Docker images with documentation which are run 
 
 The `docs/manifest.yaml` file specifies the order of documentation topics on the website. If you do not include the component in this file, it doesn't show on the UI.
 
-The `docs-build.yaml` file specifies all documentation topics needed for building Docker images. Every item must have the `name` field specified, which represents the name of the Docker image for a topic. The final image name is followed by a `-docs` suffix. If the new component directory is equal to the image name, you don’t have to specify it. Otherwise, add an additional `directory` property.
+The `docs-build.yaml` file specifies all documentation topics needed for building Docker images. Every item must have the `name` field specified, which represents the name of the Docker image for a topic. The final image name is followed by a `-docs` suffix. If the name of the new component directory matches the name of the image, you don’t have to specify it. Otherwise, add an additional `directory` property.
 
 Example 1:
 ```
