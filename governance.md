@@ -22,7 +22,7 @@ Every code owner is expected to:
 * Communicate and collaborate with other code owners to improve the ownership process
 * Perform a thorough review of incoming PRs and make sure they follow the [contributing rules](CONTRIBUTING.md)
 * Approve only those PRs in which the contributor made the requested improvements
-* Check if the related CI job has completed successfully before approving the PR
+* Check if the related CI tests have completed successfully before approving the PR
 * Make sure that the PR approval flow runs smoothly
 * Prioritize issues and manage their processing
 * Proactively fix bugs
@@ -52,9 +52,9 @@ The SIG/WG decison-making process is as follows:
 
 ### Create a decision record
 
-[Create an issue](https://github.com/kyma-project/community/issues/new/choose) and choose the **Decision record** template. Provide the information as requested in the template and set the issue label to  `decision`. The issue can contain all necessary information, reference a document, or an open pull request with a more detailed proposal. Additionally, set the corresponding WG or SIG label such as  `sig/core`.
+[Create an issue](https://github.com/kyma-project/community/issues/new/choose) and choose the **Decision record** template. Provide the information as requested in the template and set the issue label to `decision`. The issue can contain all necessary information, reference a document, or an open pull request with a more detailed proposal. Additionally, set the corresponding WG or SIG label such as `sig/core`.
 
-> **NOTE:** In some cases, a `decision` label is set for an existing issue during the [triage](./issues-workflow.md), which indicates the need for a decision. In this case, use the [**Decision record** template](./.github/ISSUE_TEMPLATE/decision-record.md) and copy it to the issue description accordingly.
+> **NOTE:** In some cases, the `decision` label is set for an existing issue during the [triage](./issues-workflow.md), which indicates the need for a decision. In this case, use the [**Decision record** template](./.github/ISSUE_TEMPLATE/decision-record.md) and copy it to the issue description accordingly.
 
 ### Reach a consensus
 

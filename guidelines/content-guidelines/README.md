@@ -10,4 +10,4 @@ Read about:
 - [Formatting](./formatting-and-style.md), [style, and standards](./style-and-standards.md) that apply to the content created throughout the Kyma organization.
 - Rules for creating [diagrams](./diagrams.md) and [screenshots](./screenshots.md).
 - Tips and hints on how to write [release notes](./release-notes.md).
-- Guidelines for making cross-references between the documents in the [kyma/docs](https://github.com/kyma-project/kyma/tree/master/docs) folder.
+- Guidelines for making [cross-references](./links-in-docs.md) between the documents in the [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) folder.
