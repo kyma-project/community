@@ -225,5 +225,5 @@ validationWebhookService:
 
 TODO: explain the Minio Gateway mode for production
 
-![](assets/minio-gateway.svg)
+![](assets/gateway.svg)
 
