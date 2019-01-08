@@ -34,6 +34,6 @@ Kyma can be used to integrate third-party messaging systems (including cloud sol
 
 ![](assets/integrate-3rd-party-publish.png)
 
-An event in the third party messaging system such as `Google PubSub` can be captured by Kyma to trigger a business action in the application.
+An Event in a third-party messaging system can be captured by Kyma to trigger a certain business logic in the application.
 
 ![](assets/integrate-3rd-party-consume.png)
