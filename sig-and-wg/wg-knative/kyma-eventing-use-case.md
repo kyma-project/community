@@ -18,7 +18,7 @@ Application developers can build serverless applications (lambdas and microservi
 * Events are stored centrally. Event Bus is a core component.
 * Event origin is defined using identifiers and the identifiers are used for the data partition. e.g. `customer.created` event from `Application X` is segregated from `customer.created` event from `Application Y`.
 
-**Integrating Applications**
+### Integrating applications
 
 Event-driven computations in Kyma can also be used to integrate two or more applications in the customer ecosystem.
 
