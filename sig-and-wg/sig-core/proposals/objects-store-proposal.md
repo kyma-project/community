@@ -28,6 +28,7 @@ Proposed on 2019-01-04
     - Mutation of the object by communicating with mutation webhook specified in the custom resource
     - Validation of the object by communicating with mutation webhook specified in the custom resource
     - New file creation, if such file was referenced in the resource definition as a ConfigMap
+    
    If any of above operations failed, controller updates the resource with `ready: False` status  
 4. Controller uploads the object to minio to a bucket that name is specified in the custom resource. You need a bucket to upload objects, you create it separately as a Bucket custom resource
 5. Controller updates the status of the Object custom resource with information about location of the file
