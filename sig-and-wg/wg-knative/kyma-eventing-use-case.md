@@ -1,6 +1,6 @@
 # Context
 
-Kyma allows you to extend, integrate and modernize your monoliths, legacy applications or third-party systems in a cloud-native fashion. Kyma uses event drive architecture to achieve it.
+Kyma allows you to extend, integrate and modernize your monoliths, legacy applications or third-party systems in a cloud-native fashion. Kyma uses Event-driven architecture to achieve it.
 
 # Use case 1: Extensibility & Integration
 Existing applications can capture the business happenings as events.  Some examples are `invoice.created`, `payment.received`, `order.changed` and so on.
