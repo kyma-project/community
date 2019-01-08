@@ -30,7 +30,7 @@ Application developers can build in Kyma serverless applications which produce i
 ![](assets/asynchronous-workflows.png)
 
 # Use case 3: Integrating third-party messaging systems
-Kyma can be used to integrate third-party messaging systems (including cloud solutions such as `Google PubSub`). A business happening in the application can be captured as an event in Kyma. This event can then be stored in the cloud eventing system such as `Google PubSub`. Based on the event, serverless computations can be triggered in GCP to achieve a business scenario.
+Kyma can be used to integrate third-party messaging systems, including cloud solutions such as `Google PubSub`. A business happening in the application can be captured as an Event in Kyma. This event can then be stored in a cloud eventing system such as `Google PubSub`. Based on the Event, serverless computations can be triggered in GCP to achieve a given business scenario.
 
 ![](assets/integrate-3rd-party-publish.png)
 
