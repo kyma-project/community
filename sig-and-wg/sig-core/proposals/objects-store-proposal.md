@@ -48,7 +48,7 @@ apiVersion: bucket.objectstore.kyma-project.io/v1alpha1
 kind: Bucket
 metadata:
   name: my-bucket
-  namespace: stage
+  namespace: default
 #ObjectStore 2.0  
 #spec:
 #  policy: public #or other policies
@@ -70,8 +70,9 @@ It must be provided because the Object controller checks the Bucket custom resou
 
 Object resource mandatory information is the:
 - reference info about the source file/object location that must be fetched by ObjectStore with 2 different modes:
-  - direct link fetch - the link points directly to file that need to be fetched
-  - index.yaml ref - the link to index file that contains reference to files that need to be separately fetch from a given relative location
+  - `single` - the link points directly to object that needs to be fetched
+  - `index` - the link to index.yaml file that contains reference to files that need to be separately fetch from a given relative location
+  - `package` - the link to the zip/tar file that must be unziped before it is uploaded
 ```
 #sample of index file with markdown and assets files
 apiVersion: v1
@@ -92,25 +93,48 @@ files:
 ```
 - reference to the bucket where the object should be stored
 
-
 ```
 apiVersion: object.objectstore.kyma-project.io/v1alpha1
 kind: Object
 metadata:
   name: my-package-objects
+  namespace: default
 spec:
   source:
-    package: https://some.domain.com/my.zip
+    mode: single # or index or package
+    url: https://some.domain.com/main.js
   bucketRef:
     name: my-bucket
----
+```
+
+The optional information is the:
+- ConfigMap reference, that points to the ConfigMap that introduces [a new file](https://github.com/kyma-project/kyma/blob/master/resources/core/charts/service-catalog-addons/charts/instances-ui/templates/configmap.yaml) that is also sent to the bucket along with other files
+- Rewrites information. Easy way of object modification before it is uploaded to the bucket, through `regex` operation or `keyvalue`
+```
+  #keyvalue example for use case of swagger file rewriting
+  rewrites:
+      - keyvalue: 
+          basePath: /test/v2
+  #regex example for documentation modification in the markdown       
+  rewrites:
+      - regex: 
+          find: \stitle="(.*)?"\s*(/>*)
+          replace: $2<title>$1</title>          
+```
+- ObjectValidationWebhook reference to a service that performs the validation of fetched objects before they are uploaded to the bucket. The use cases are:
+  - validation of specific file agains some specification
+  - security validation
+
+```
 apiVersion: objectstore.kyma-project.io/v1alpha1
 kind: Object
 metadata:
   name: my-indexbased-objects
+  namespace: default
 spec:
   source:
-    index: https://some.domain.com/index.yaml
+    mode: index
+    url: https://some.domain.com/index.yaml
     rewrites:
       - regex: 
           find: \stitle="(.*)?"\s*(/>*)
@@ -139,11 +163,13 @@ apiVersion: objectstore.kyma-project.io/v1alpha1
 kind: Object
 metadata:
   name: my-direct-objects
+  namespace: default
 spec:
   source:
     direct: https://some.domain.com/my.json
-    validate:
-      json: https://some.domain.com/my-schema.json # json/yaml/xsd
+    validationWebhookService:
+        name: swagger-validation-svc
+        namespace: kyma-system
     rewrites:
       - keyvalue: 
           basePath: /test/v2
@@ -151,6 +177,53 @@ spec:
     name: my-bucket
 status:
   ready: False
-  reason: ValidationFailed # or UploadFailed or SourceFetchFailure
+  reason: Validation failure
   message: "file is not valid against provided json schema"
 ```
+
+## ObjectValidationWebhook details
+
+ObjectStore must provide a flexible way of validating the objects before they are uploaded to the bucket. Different use cases bring different validation requirements. The best way is to do it by introducing a webhook that will receive an object for validation and reply to the controller with defined status schema
+
+1. Controller calls the `/validate` endpoint of the given service in a given namespace
+```
+validationWebhookService:
+  name: swagger-validation-svc
+  namespace: kyma-system
+```
+2. The service gets the following payload and be default must reply within 1sec:
+```
+{
+    name: my-direct-objects
+    namespace: default
+    objects: {
+      name1: "content",
+      name2: "content"
+    }
+}
+```
+3. The controller:
+   - times out after 1sec because of no response and updates the status of the Object to False
+   - gets response with successful or failing validation in the following for:
+```
+{
+   status: {
+     name1: {
+       status: Failure,
+       message: "much more details of the failure"
+     },
+     name2: {
+       status: Success,
+       message: "much more details"
+     }
+   }
+}
+```
+4. If at least one object failed the validation the status of the Object is set to False and proper message about a given object is added to the status. Otherwise the status is set to True and object uplodaded to the bucket
+
+## Minio local vs cluster modes
+
+TODO: explain the Minio Gateway mode for production
+
+![](assets/minio-gateway.svg)
+
