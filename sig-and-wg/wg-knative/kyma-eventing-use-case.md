@@ -9,7 +9,7 @@ These Events can then be transferred to Kyma through the Application Gateway.
 
 Application developers can build serverless applications (lambdas and microservices) in Kyma to act on these Events. This way they extend the existing applications.
 
-![](assets/extend-application.png)
+![](assets/extend-application.svg)
 
 * Application preregisters the Event schema for the Events it wishes to send to Kyma.
 * Event schema is defined in the [Async API format](https://github.com/asyncapi/asyncapi).
@@ -27,13 +27,13 @@ Events produced by `Application X` can be used to trigger workflows in `Applicat
 ## Use case 2: Asynchronous workflows
 Application developers can build in Kyma serverless applications which produce internal Events. These Events can be used to trigger serverless applications that consume the Events. This way, you create an asynchronous pipeline or workflow.
 
-![](assets/asynchronous-workflows.png)
+![](assets/asynchronous-workflows.svg)
 
 ## Use case 3: Integrating third-party messaging systems
 Kyma can be used to integrate third-party messaging systems, including cloud solutions such as `Google PubSub`. A business happening in the application can be captured as an Event in Kyma. This event can then be stored in a cloud eventing system such as `Google PubSub`. Based on the Event, serverless computations can be triggered in GCP to achieve a given business scenario.
 
-![](assets/integrate-3rd-party-publish.png)
+![](assets/integrate-3rd-party-publish.svg)
 
 An Event in a third-party messaging system can be captured by Kyma to trigger a certain business logic in the application.
 
-![](assets/integrate-3rd-party-consume.png)
+![](assets/integrate-3rd-party-consume.svg)
