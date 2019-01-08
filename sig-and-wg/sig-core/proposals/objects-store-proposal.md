@@ -19,11 +19,13 @@ Proposed on 2019-01-04
 3. Storage for static client-side applications
 
 ## Solution
-  
+
+A new custom solution called ObjectStore.
+
 ![](assets/storage.svg)
 
 1. Location of the object is specified in the Object custom resource.
-2. ObjectStore controller fetches the object basing on the information given in the custom resource.
+2. Object controller fetches the object basing on the information given in the custom resource.
 3. The controller performs:
     - Mutation of the object by communicating with mutation webhook specified in the custom resource
     - Validation of the object by communicating with mutation webhook specified in the custom resource
@@ -35,7 +37,7 @@ Proposed on 2019-01-04
 
 ### Bucket custom resource
 
-You might want to use different bucket per solution. This is why you need to be able to specify multiple buckets in the ObjectStore. For example one bucket for documentation and one bucket per Web application.
+You might want to use different bucket per solution. This is why you need to be able to specify multiple buckets for different Object. For example one bucket for documentation and one bucket per Web application.
 
 Another use cases for having multiple Buckets configuration:
 - Future extensibility by alowing bucket policy specification per solution
@@ -69,7 +71,7 @@ It must be provided because the Object controller checks the Bucket custom resou
 ## Object custom resource
 
 Object resource mandatory information is the:
-- reference info about the source file/object location that must be fetched by ObjectStore with 2 different modes:
+- reference info about the source file/object location that must be fetched by Object controller with 2 different modes:
   - `single` - the link points directly to object that needs to be fetched
   - `index` - the link to index.yaml file that contains reference to files that need to be separately fetch from a given relative location
   - `package` - the link to the zip/tar file that must be unziped before it is uploaded
@@ -223,7 +225,7 @@ validationWebhookService:
 
 ## Minio local vs cluster modes
 
-TODO: explain the Minio Gateway mode for production
+Mino as a storege supports Kyma's manifesto and the rule of `bateries included`. It makes development easier. Nevertheless for production usage Minio should be used in a [gateway mode](https://github.com/minio/minio/tree/master/docs/gateway). Gateway mode gives you a flexibility of using object storage from any major cloud provider like Google/Amazon/Microsoft without modifications in the Object controller as it talks to the Minio/Minio Gateway with the same S3 API
 
 ![](assets/gateway.svg)
 
