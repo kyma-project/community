@@ -25,7 +25,7 @@ Event-driven computations in Kyma can also be used to integrate two or more appl
 Events produced by `Application X` can be used to trigger workflows in `Application Y` via APIs and vice-versa.
 
 # Use case 2: Asynchronous workflows
-Application developers can build serverless applications in Kyma which produce internal events. These events can be used to trigger serverless applications that consume these events thereby creating an asynchronous pipeline or workflow.
+Application developers can build in Kyma serverless applications which produce internal Events. These Events can be used to trigger serverless applications that consume the Events. This way, you create an asynchronous pipeline or workflow.
 
 ![](assets/asynchronous-workflows.png)
 
