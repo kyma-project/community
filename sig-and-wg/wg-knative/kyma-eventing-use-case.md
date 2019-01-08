@@ -3,7 +3,7 @@
 Kyma allows you to extend, integrate and modernize your monoliths, legacy applications or third-party systems in a cloud-native fashion. Kyma uses Event-driven architecture to achieve it.
 
 ## Use case 1: Extensibility and integration
-Existing applications can capture the business happenings as events.  Some examples are `invoice.created`, `payment.received`, `order.changed` and so on.
+Existing applications can capture the business happenings as Events. Some examples include `invoice.created`, `payment.received`, and `order.changed`.
 
 These events can then be transferred to Kyma via the Application Gateway.
 
