@@ -16,7 +16,7 @@ Application developers can build serverless applications (lambdas and microservi
 * The Events registered by the external solutions can be updated. This implies that Event schemas can change, new Event schemas can be added or existing ones can be removed. Such changes need to be cascaded to the underlying layer which will be Knative eventing.
 * Application developers only deal with the Event domain. They have no knowledge of or coupling with the underlying messaging system.
 * Events are stored centrally. Event Bus is the core component.
-* Event origin is defined using identifiers and the identifiers are used for the data partition. e.g. `customer.created` event from `Application X` is segregated from `customer.created` event from `Application Y`.
+* The Event origin is defined using identifiers and the identifiers are used for the data partition. For example, the `customer.created` Event from `Application X` is segregated from the `customer.created` Event from `Application Y`.
 
 ### Integrating applications
 
