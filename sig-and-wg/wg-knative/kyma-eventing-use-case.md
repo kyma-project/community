@@ -12,7 +12,7 @@ Application developers can build serverless applications (lambdas and microservi
 ![](assets/extend-application.png)
 
 * Application preregisters the Event schema for the Events it wishes to send to Kyma.
-* Event schema is defined in [Async API format](https://github.com/asyncapi/asyncapi)
+* Event schema is defined in the [Async API format](https://github.com/asyncapi/asyncapi).
 * The events registered by the external solutions can be updated. This implies event schemas can change, new event schemas can be added or existing ones can be removed. Such changes need to be cascaded to the underlying layer which will be Knative eventing.
 * Application developers only deal with event types domain. They have no knowledge or coupling with the underlying messaging system.
 * Events are stored centrally. Event Bus is a core component.
