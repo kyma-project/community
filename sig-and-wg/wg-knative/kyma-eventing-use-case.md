@@ -7,7 +7,7 @@ Existing applications can capture the business happenings as Events. Some exampl
 
 These Events can then be transferred to Kyma through the Application Gateway.
 
-Application developers can build serverless applications (lambdas and microservices) in Kyma to act on these events thus extending the existing application.
+Application developers can build serverless applications (lambdas and microservices) in Kyma to act on these Events. This way they extend the existing applications.
 
 ![](assets/extend-application.png)
 
