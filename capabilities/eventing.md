@@ -73,7 +73,7 @@ _Value added_
 _Value added_
 * Performance optimization.
 
-### Retry back-off
+### Retry backoff
 * Enable the subscriber to configure the backoff to be applied when retrying the delivery of Events.
 
 _Value added_
