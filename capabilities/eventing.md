@@ -46,7 +46,7 @@ _Value added_
 
 _Value added_
 * Enable interoperability.
-* Enable developers to leverage cloudevents sdks for various languages.
+* Enable developers to leverage CloudEvents SDKs for various languages.
 
 ### Event trigger for services
 * Provide a user interface for creating Event triggers for sevices deployed using Kyma.
