@@ -42,7 +42,7 @@ _Value added_
 * Enable operators to take corrective actions such as scaling some subcomponents.
 
 ### Align with CloudEvents specification
-* Event bus can consume events alinged with CloudEvents specification](https://github.com/cloudevents/spec)
+* Event bus can consume Events aligned with CloudEvents specification](https://github.com/cloudevents/spec).
 
 _Value added_
 * Enable interoperability.
