@@ -55,7 +55,7 @@ _Value added_
 * Improved developer experience.
 
 ### Event filtering
-* Allow only those events that will trigger some business workflows. (Only use what you need).
+* Allow only the Events that trigger certain business workflows, to use only what you need.
 
 _Value added_
 * Reduce costs.
