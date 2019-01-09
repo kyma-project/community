@@ -7,10 +7,12 @@ epicsLabels:
 
 ## Scope
 
-* Enable asynchronous processing.
-* Integrate external solutions with Kyma using an event-driven architecture.
-* Enable loose coupling of applications deployed using Kyma.
+Eventing helps deliver the following business use cases:
 
+* Extend existing applications by capturing the business happenings as events and triggering business extensions developed in Kyma.
+* Integrate two or more applications via business events.
+* Enable application developers to define workflows to acheive a business scenario.
+* Enable integrating third party messgaing systems including Cloud PubSub solutions.
 
 ## Vision
 
