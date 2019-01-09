@@ -62,7 +62,7 @@ _Value added_
 * Reduce unnecessary network overhead.
 
 ### Model for internal Events
-* You can generate Events inside a Kyma cluster and use them to trigger business workflows. 
+* Generate Events inside a Kyma cluster and use them to trigger business workflows. 
 
 _Value added_
 * Enable asynchronous processing and workflows for exposed APIs and scheduled activities.
