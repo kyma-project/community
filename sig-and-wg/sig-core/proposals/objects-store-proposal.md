@@ -60,13 +60,21 @@ status:
   message: "service unavailable"
 ```
 
+Lifecycle of the Bucket CR is done with the Bucket controller:
+- Once CR is created the bucket with the CR name is created in the storage under `namespaces/{NAMESPACE_NAME}/{CR_NAME}` 
+- Once CR is deleted the bucket with all the content in it is removed
+
+#### Bucket reference
+
 You reference the Bucket in your Object CR with the following info in the spec:
 ```
   bucketRef:
     name: my-bucket
 ```
+It must be provided and the Object controller checks the Bucket custom resource status to make sure the bucket exists:
 
-It must be provided because the Object controller checks the Bucket custom resource status to make sure the bucket exists.
+- The deletion of the Bucket CR requires from the Object controller to actively monitor the status of the referenced bucket. In case bucket is deleted, the status of the Object CR is updated to `ready: False` and objects references are removed.
+- Update of the reference causes recreation of the objects in new location, removal from old location and update of the status and the references
 
 ## Object custom resource
 
@@ -94,7 +102,6 @@ files:
   - name: assets/diagram.svg
 ```
 - reference to the bucket where the object should be stored
-
 ```
 apiVersion: object.objectstore.kyma-project.io/v1alpha1
 kind: Object
