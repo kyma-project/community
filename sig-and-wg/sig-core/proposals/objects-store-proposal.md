@@ -40,7 +40,7 @@ A new custom solution called ObjectStore.
 You might want to use different bucket per solution. This is why you need to be able to specify multiple buckets for different Object. For example one bucket for documentation and one bucket per Web application.
 
 Another use cases for having multiple Buckets configuration:
-- Future extensibility by alowing bucket policy specification per solution
+- Future extensibility by allowing bucket policy specification per solution
 - Minio doesn't support setting a bucket to behave as a static website host. Future controller of the Bucket custom resource will have to handle this additional functionality
 - Minio doesn't support setting a CDN for your objects. Future controller of the Bucket custom resource will have to handle this additional functionality. For example controller will be reesponsible for configuring a CloudFront for your bucket on S3
 
