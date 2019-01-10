@@ -1,3 +1,5 @@
+![](https://img.shields.io/badge/slack-@oresoftware/npp-yellow.svg?logo=slack)
+
 # Objects Store
 
 Created on 2019-01-03 by Lukasz Gornicki (@derberg).
@@ -179,6 +181,8 @@ spec:
     validationWebhookService:
         name: swagger-validation-svc
         namespace: kyma-system
+        endpoint: "/validate"
+    
     rewrites:
       - keyvalue: 
           basePath: /test/v2
@@ -199,6 +203,7 @@ ObjectStore must provide a flexible way of validating the objects before they ar
 validationWebhookService:
   name: swagger-validation-svc
   namespace: kyma-system
+  endpoint: "/validate"
 ```
 2. The service gets the following payload and be default must reply within 1sec:
 ```
