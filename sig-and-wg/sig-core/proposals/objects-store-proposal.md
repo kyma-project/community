@@ -26,14 +26,15 @@ A new custom solution called ObjectStore.
 
 1. Location of the object is specified in the Object custom resource.
 2. Object controller fetches the object basing on the information given in the custom resource.
-3. The controller performs:
-    - Mutation of the object by communicating with mutation webhook specified in the custom resource
+3. The controller checks status of referenced bucket to make sure it is ready
+4. The controller performs:
     - Validation of the object by communicating with mutation webhook specified in the custom resource
+    - Mutation of the object by communicating with mutation webhook specified in the custom resource
     - New file creation, if such file was referenced in the resource definition as a ConfigMap
-    
+  
    If any of above operations failed, controller updates the resource with `ready: False` status  
-4. Controller uploads the object to minio to a bucket that name is specified in the custom resource. You need a bucket to upload objects, you create it separately as a Bucket custom resource
-5. Controller updates the status of the Object custom resource with information about location of the file
+5. Controller uploads the object to minio to a bucket that name is specified in the custom resource. You need a bucket to upload objects, you create it separately as a Bucket custom resource
+6. Controller updates the status of the Object custom resource with information about location of the file
 
 ### Bucket custom resource
 
@@ -61,7 +62,7 @@ status:
 ```
 
 Lifecycle of the Bucket CR is done with the Bucket controller:
-- Once CR is created the bucket with the CR name is created in the storage under `namespaces/{NAMESPACE_NAME}/{CR_NAME}` 
+- Once CR is created the bucket with the CR name is created in the storage under `namespaces/{NAMESPACE_NAME}/{CR_NAME}`. Status of the CR contains reference URL to the created bucket
 - Once CR is deleted the bucket with all the content in it is removed
 
 #### Bucket reference
@@ -118,56 +119,10 @@ spec:
 
 The optional information is the:
 - ConfigMap reference, that points to the ConfigMap that introduces [a new file](https://github.com/kyma-project/kyma/blob/master/resources/core/charts/service-catalog-addons/charts/instances-ui/templates/configmap.yaml) that is also sent to the bucket along with other files
-- Rewrites information. Easy way of object modification before it is uploaded to the bucket, through `regex` operation or `keyvalue`
-```
-  #keyvalue example for use case of swagger file rewriting
-  rewrites:
-      - keyvalue: 
-          basePath: /test/v2
-  #regex example for documentation modification in the markdown       
-  rewrites:
-      - regex: 
-          find: \stitle="(.*)?"\s*(/>*)
-          replace: $2<title>$1</title>          
-```
 - ObjectValidationWebhook reference to a service that performs the validation of fetched objects before they are uploaded to the bucket. The use cases are:
-  - validation of specific file agains some specification
+  - validation of specific file against some specification
   - security validation
-
 ```
-apiVersion: objectstore.kyma-project.io/v1alpha1
-kind: Object
-metadata:
-  name: my-indexbased-objects
-  namespace: default
-spec:
-  source:
-    mode: index
-    url: https://some.domain.com/index.yaml
-    rewrites:
-      - regex: 
-          find: \stitle="(.*)?"\s*(/>*)
-          replace: $2<title>$1</title>
-  filesFrom:
-    - configMapRef:
-        name: additional-object
-    - configMapRef:
-        name: one-more-object
-  bucketRef:
-    name: my-bucket
-status:
-  ready: True
-  objects:
-    - url: https://some.storage.domain/01-overview.md
-      metadata:
-        title: MyOverview
-        type: Overview
-    - url: https://some.storage.domain/02-details.md
-      metadata:
-        title: MyDetails
-        type: Details
-    - url: https://some.storage.domain/assets/diagram.svg
----
 apiVersion: objectstore.kyma-project.io/v1alpha1
 kind: Object
 metadata:
@@ -177,10 +132,9 @@ spec:
   source:
     direct: https://some.domain.com/my.json
     validationWebhookService:
-        name: swagger-validation-svc
-        namespace: kyma-system
+        name: swagger-operations-svc
+        namespace: default
         endpoint: "/validate"
-    
     rewrites:
       - keyvalue: 
           basePath: /test/v2
@@ -191,6 +145,8 @@ status:
   reason: Validation failure
   message: "file is not valid against provided json schema"
 ```
+- ObjectMutationWebhook reference to a service that acts similar to the validation service mentioned above, but mutates the object instead of just validating. The use case is for example the object rewriting through `regex` operation or `keyvalue` (like for example modification in json specification)
+
 
 ## ObjectValidationWebhook details
 
@@ -199,15 +155,19 @@ ObjectStore must provide a flexible way of validating the objects before they ar
 1. Controller calls the `/validate` endpoint of the given service in a given namespace
 ```
 validationWebhookService:
-  name: swagger-validation-svc
-  namespace: kyma-system
+  name: swagger-operations-svc
+  namespace: default
+  metadata:
+    pattern: \json|yaml
   endpoint: "/validate"
 ```
-2. The service gets the following payload and be default must reply within 1sec:
+2. The service gets the following payload and by default must reply within 1sec:
 ```
 {
     name: my-direct-objects
     namespace: default
+    metadata:
+      pattern: \json|yaml
     objects: {
       name1: "content",
       name2: "content"
@@ -232,6 +192,73 @@ validationWebhookService:
 }
 ```
 4. If at least one object failed the validation the status of the Object is set to False and proper message about a given object is added to the status. Otherwise the status is set to True and object uplodaded to the bucket
+
+
+## ObjectMutationWebhook details
+
+ObjectStore must provide a flexible way of mutating the objects before they are uploaded to the bucket. Different use cases bring different mutation requirements. Like in case of validation it can be solved by webhook solution.
+
+1. Controller calls the `/mutate` endpoint of the given service in a given namespace
+```
+mutationWebhookService:
+  name: swagger-operations-svc
+  namespace: default
+  metadata:
+    rewrite: keyvalue
+    pattern: \json|yaml
+    data: 
+      basePath: /test/v2
+  endpoint: "/mutate"
+```
+2. The service gets the following payload and by default must reply within 1sec:
+```
+{
+    name: my-direct-objects
+    namespace: default
+    metadata:
+      rewrite: keyvalue
+      pattern: \json|yaml
+      data: 
+        basePath: /test/v2
+    objects: {
+      name1: "content",
+      name2: "content"
+    }
+}
+```
+3. The controller:
+   - times out after 1sec because of no response and updates the status of the Object to False
+   - gets response with mutated content:
+```
+{
+   objects: {
+     name1: "content",
+     name2: "content"
+   }
+}
+```
+4. Controller updates the status that mutation is completed and uploads objects to the bucket
+
+#### Optional mutation service
+
+Object Store comes with one out-of-the box mutating service that enables easy way of object modification before it is uploaded to the bucket, through `regex` operation or `keyvalue`:
+```
+  name: objectstore-rewrite-svc
+  namespace: kyma-system
+  endpoint: /mutate
+  metadata:
+    #keyvalue example for use case of swagger file rewriting
+    - rewrites:
+        pattern: \json|yaml
+        keyvalue: 
+          basePath: /test/v2
+    #regex example for documentation modification in the markdown       
+    - rewrites:
+        - regex: 
+            find: \stitle="(.*)?"\s*(/>*)
+            replace: $2<title>$1</title>          
+```
+
 
 ## Minio local vs cluster modes
 
