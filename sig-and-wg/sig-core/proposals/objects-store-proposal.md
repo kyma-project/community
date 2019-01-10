@@ -1,5 +1,3 @@
-![](https://img.shields.io/badge/slack-@oresoftware/npp-yellow.svg?logo=slack)
-
 # Objects Store
 
 Created on 2019-01-03 by Lukasz Gornicki (@derberg).
