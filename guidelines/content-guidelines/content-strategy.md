@@ -43,7 +43,7 @@ There is a set of documents that a given technical topic must include. You can a
 
 ### Obligatory
 
-Each technical topic must have the following document types arranged in the fixed order listed below:
+Each technical topic must have the following document types arranged in this fixed order:
 
 >**NOTE:** The Kyma content developers create templates for a given document type once there are at least two documents to use as a base for such a template.
 
@@ -58,9 +58,10 @@ Each technical topic must have the following document types arranged in the fixe
 - **API** - Use it to document the exposed external API of components that the Kyma administrators use to integrate them with Kyma.
 - **Operational Guide** - Use it to describe how to operate the component. Explain all details needed for the component troubleshooting.
 
->**NOTE:** The examples are exceptions from the above types. The plan is to expose a table-like view as a reference to all examples and to enhance it with examples that the external Kyma users provide. Another plan is to implement an automated way of filling in the content in such documents.
 
 ### Optional
+
+>**NOTE:** Place the optional types of documents right after the obligatory types.
 
 You can add the following document type to the Kyma documentation:
 - **UI Contracts** - Use it to describe the mapping of OSBA service objects, plan objects, and conventions in the Kyma Console view.
