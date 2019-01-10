@@ -18,7 +18,8 @@ eu.gcr.io/kyma-project/helm-broker-initializer:0.1.0
 
 ## Base images
 
-Base all images on an image that is as small as possible in size and dependency. Base image must have specified version, do not use latest tag.
+Base all images on an image that is as small as possible in size and dependency. A base image must have a specified version, do not use `latest` tag.
+
 An application based on Golang should originate from a `scratch` image. If a `scratch` image does not have the specific tooling available, you can use an `alpine` base image having the package catalog updated.
 A JavaScript-based application should originate from an `nginx-alpine` base image with an updated package catalog.
 
