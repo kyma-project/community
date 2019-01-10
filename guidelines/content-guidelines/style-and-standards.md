@@ -86,8 +86,8 @@ Here is the preferred terminology to use in the Kyma documentation:
 ✅ In your request, supply the values for the following parameters:    
 ⛔️ In your request, supply the values as shown below:
 
-* "back end" or "back-end," not "backend"
-* "front end" or "front-end," not "frontend"
+* "backend,"  not "back end" or "back-end"
+* "frontend," not "front end" or "front-end"
 * "email," not "e-mail"
 * "fill in," not "complete"
 * "ID," not "id"
