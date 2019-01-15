@@ -1,5 +1,11 @@
 # Release process improvements
 
+Created on 2019-01-15 by Krystian Cieslik (@crabtree).
+
+## Status
+
+ Proposed on 2019-01-15
+
 ## Current situation:
 
 - Components as source code getting versioned independently from kyma resources folder.
