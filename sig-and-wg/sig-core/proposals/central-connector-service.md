@@ -144,7 +144,7 @@ Connector Service needs to support the following operations:
 
 ### Certificate generation
 
-There are the following requirements:
+Requirements:
 
 - Certificate generation flow must be backward compatible,however, resource names may change.
 - There should be separate endpoints for applications and XF Runtimes.
@@ -177,7 +177,7 @@ There are the following cases:
 
 Application and XF Runtime will implement cron job which periodically renews a certificate (previously issued and valid certificate will be used for authentication).
 
-There are the following requirements:
+Requirements:
 
 - There should be a separate endpoint for renewing Application and XF Runtime certificates.
 
@@ -187,7 +187,7 @@ The concept of rotating CA root certificates is not prepared yet and don't have 
 
 ### Certificate revocation
 
-There are the following requirements:
+Requirements:
 
 - There should be a separate endpoint for revoking Application and XF Runtime certificates.
 - For Q1 we don't need to propagate revocation information to XF Runtimes. In the first step we must not allow to renew a certificate which has been revoked.
