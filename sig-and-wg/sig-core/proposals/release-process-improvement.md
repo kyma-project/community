@@ -36,7 +36,7 @@ Having such assumptions in mind we can mitigate almost all identified problems. 
 
 #### Charts repository
 
-Following structure represents repository for charts. Under this repository, there will be two main directories: `modules` and `kyma`. In `modules` directory, there are all charts that make up the kyma. In the `kyma` directory, there is Dockerfile that is used to create the kyma-installer and two `*.yaml` files which provide deployment details for the kyma-installer.
+Following structure represents repository for charts. Under this repository, there will be two main directories: `modules` and `kyma`. In `modules` directory, there are all charts that make up the kyma. In the `kyma` directory, there is Dockerfile that is used to create the kyma-installer, two `*.yaml` files which provide deployment details for the kyma-installer and all installation related scripts.
 
 ```
 kyma
