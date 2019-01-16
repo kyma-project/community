@@ -130,3 +130,140 @@ The fingerprint of the compromised certificate will be added to the Application 
     ```
 
 7. Revert changes by setting the root CA-signed certificate as the original one and call the cluster using of the intermediate certificate as the client certificate.
+
+## API design
+
+### Use cases
+
+Connector Service needs to support the following operations:
+
+- Certificate generation.
+- Service discovery (getting urls of exposed Application Connector services).
+- Certificate renewal.
+- Certificate revokation.
+
+### Certificate generation
+
+There are the following requirements:
+
+- Certificate generation flow must be backward compatible,however, resource names may change.
+- There should be separate endpoints for applications and XF Runtimes.
+
+### Getting runtime info
+
+There are the following requirements:
+
+- Application should be able to get the following urls:
+  - API Registry Service URL.
+  - Events Service  URL.
+  - Certificate renewal URL.
+  - Certificate revocation URL.
+  - Runtime URL.
+- XF Runtime should be able to get the following urls:
+  - API Registry Service URL.
+  - Events Service  URL.
+  - Certificate renewal URL.
+  - Certificate revocation URL.
+
+### Certificate renewal
+
+There are the following cases:
+
+- Application certificate is about to expire.
+- XF runtime (intermediate) certificate is about to expire.
+- CA root certificate is about to expire.
+
+#### Application and XF runtime certificate renewal
+
+Application and XF Runtime will implement cron job which periodically renews a certificate (previously issued and valid certificate will be used for authentication).
+
+There are the following requirements:
+
+- There should be a separate endpoint for renewing Application and XF Runtime certificates.
+
+#### CA root rotation
+
+The concept of rotating CA root certificates is not prepared yet and don't have impact on API for Application and XF Runtime certificate renewal.
+
+### Certificate revocation
+
+There are the following requirements:
+
+- There should be a separate endpoint for revoking Application and XF Runtime certificates.
+- For Q1 we don't need to propagate revocation information to XF Runtimes. In the first step we must not allow to renew a certificate which has been revoked.
+
+## API proposal
+
+The following assumtions were taken:
+
+- API for Application and XF Runtime is symmetric.
+- Group and Tenant name is passed in headers.
+- Application ID is not needed in paths.
+- Resource names can be changed to ensure consistent naming.
+- Payloads returned in certificate generation flow cannot change.
+
+The connector service exposes the following groups of endpoits:
+
+- Health API.
+- Internal API for generating token for Application.
+- Internal API for generating token for XF Runtime.
+- External API for handling certificate generation, renewal, revocation and service discovery for Applications.
+- External API for handling certificate generation, renewal, revocation and service discovery for Runtimes.
+
+The full api definition is [here](./assets/connector-service-api.yaml).
+
+### APIs for Applications
+
+The following API has been defined:
+
+![](./assets/connector-service-applications-api.png)
+
+Certificate generation flow is handled by `v1/applications/token`, `v1/applications/info/csr` and `v1/applications/certificates` endpoints. The operation flow and payloads have not been changed so backward compatibility is assured.
+
+Service discovery is handled by `v1/applications/info/urls`. The exemplary output:
+
+```json
+{
+  "metadataUrl": "gateway.wormhole.kyma.cluster.cx/{APP_NAME}/v1/metadata/services",
+  "eventsUrl": "gateway.wormhole.kyma.cluster.cx/{APP_NAME}/v1/events",
+  "renewCertUrl": "certificate-service.kyma.cluster.cx/v1/applications/certificates/renew",
+  "revokeCertUrl": "certificate-service.kyma.cluster.cx/v1/applications/certificates/revoke",
+  "runtimeUrl": "gateway.wormhole.kyma.cluster.cx/"
+}
+```
+
+Certificate renewal and revocation is handled by `v1/applications/certificates/renew` and `v1/applications/certificates/revoke` respectively. It was assumed that Application ID will be obtained from the certificate used for accessing the endpoints, however, it needs to by confirmed if it is technically feaseable with Nginx Ingress and Golang.
+
+### APIs for Runtimes
+
+The following API has been defined:
+
+![](./assets/connector-service-runtimes-api.png)
+
+It is symmetrical to the API for Applications. The only difference is the structure of the output returned from `v1/runtimes/info/urls`. The examplary output:
+
+```json
+{
+  "metadataUrl": "gateway.wormhole.kyma.cluster.cx/{APP_NAME}/v1/metadata/services",
+  "eventsUrl": "gateway.wormhole.kyma.cluster.cx/{APP_NAME}/v1/events",
+  "renewCertUrl": "certificate-service.kyma.cluster.cx/v1/applications/certificates/renew",
+  "revokeCertUrl": "certificate-service.kyma.cluster.cx/v1/applications/certificates/revoke"
+}
+```
+
+### Health API
+
+The following API has been defined:
+
+![](./assets/connector-service-health-api.png)
+
+### Returning API spec from the service
+
+The user should be able to get specification from the service. There should be `v1/api.yaml` endpoint for this purpose.
+
+### Open questions
+
+The following questions should be answered:
+
+- Should we expose full API in case Connector Service is deployed on standalone Kyma instance? In the other words  should Runtimes API be available in such a case?
+- Is it possible to extract Application ID from certificate used for accessing `v1/applications/certificates/renew` endpoint?
