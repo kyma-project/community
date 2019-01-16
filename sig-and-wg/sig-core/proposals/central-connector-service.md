@@ -151,7 +151,7 @@ Requirements:
 
 ### Getting runtime info
 
-There are the following requirements:
+Requirements:
 
 - Application should be able to get the following urls:
   - API Registry Service URL.
