@@ -224,11 +224,11 @@ Service discovery is handled by `v1/applications/info/urls`. The exemplary outpu
 
 ```json
 {
-  "metadataUrl": "gateway.wormhole.kyma.cluster.cx/{APP_NAME}/v1/metadata/services",
-  "eventsUrl": "gateway.wormhole.kyma.cluster.cx/{APP_NAME}/v1/events",
-  "renewCertUrl": "certificate-service.kyma.cluster.cx/v1/applications/certificates/renew",
-  "revokeCertUrl": "certificate-service.kyma.cluster.cx/v1/applications/certificates/revoke",
-  "runtimeUrl": "gateway.wormhole.kyma.cluster.cx/"
+  "metadataUrl": "gateway.test.cluster.kyma.cx/{APP_NAME}/v1/metadata/services",
+  "eventsUrl": "gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events",
+  "renewCertUrl": "connector-service.test.cluster.kyma.cx/v1/applications/certificates/renew",
+  "revokeCertUrl": "connector-service.test.cluster.kyma.cx/v1/applications/certificates/revoke",
+  "runtimeUrl": "test.cluster.kyma.cx/"
 }
 ```
 
@@ -244,10 +244,10 @@ It is symmetrical to the API for Applications. The only difference is the struct
 
 ```json
 {
-  "metadataUrl": "gateway.wormhole.kyma.cluster.cx/{APP_NAME}/v1/metadata/services",
-  "eventsUrl": "gateway.wormhole.kyma.cluster.cx/{APP_NAME}/v1/events",
-  "renewCertUrl": "certificate-service.kyma.cluster.cx/v1/applications/certificates/renew",
-  "revokeCertUrl": "certificate-service.kyma.cluster.cx/v1/applications/certificates/revoke"
+  "metadataUrl": "gateway.test.cluster.kyma.cx/{APP_NAME}/v1/metadata/services",
+  "eventsUrl": "gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events",
+  "renewCertUrl": "connector-service.central.cluster.kyma.cx/v1/applications/certificates/renew",
+  "revokeCertUrl": "connector-service.central.cluster.kyma.cx/v1/applications/certificates/revoke"
 }
 ```
 

@@ -1,14 +1,13 @@
 openapi: '3.0.0'
 info:
   version: '1.0.0'
-  title: 'Kyma Connector API'
+  title: 'Kyma Connector Service API'
 paths:
   /v1/health:
     get:
       summary: 'Returns health status'
-      operationId: 'getHealth'
       tags:
-        - 'health'
+        - health API
       responses:
         '200':
           description: 'The service is up.'
@@ -36,6 +35,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/tokenResponse'
+        '400':
+          description: 'Required headers not specified.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/appError'
         '500':
           description: 'Server error.'
           content:
@@ -53,7 +58,7 @@ paths:
           type: string
       tags:
       - applications external API
-      summary: 'Allows for fetching proper information for future CSR.'
+      summary: 'Allows for fetching information for CSR.'
       responses:
         '200':
           description: 'Successful operation.'
@@ -91,13 +96,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/runtimeInfoResponse'
+                $ref: '#/components/schemas/applicationInfoResponse'
         '500':
           description: 'Server error.'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/appError'              
+                $ref: '#/components/schemas/appError'
   /v1/applications/certificates:
     post:
       parameters:
@@ -175,7 +180,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/csrResponse'
         '400':
-          description: 'Improper subject values or lack of values in CSR.'
+          description: 'Improper subject values, lack of values in CSR or Group header not specified.'
           content:
             application/json:
               schema:
@@ -199,12 +204,8 @@ paths:
       - applications external API
       summary: 'Marks certificate as revoked.'
       responses:
-        '200':
+        '204':
           description: 'Successful operation.'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/csrResponse'
         '500':
           description: 'Server error.'
           content:
@@ -252,7 +253,7 @@ paths:
             type: string
         tags:
         - runtimes external API
-        summary: 'Allows for fetching proper information for future CSR.'
+        summary: 'Allows for fetching information for CSR.'
         responses:
           '200':
             description: 'Successful operation.'
@@ -324,7 +325,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/csrResponse'
         '400':
-          description: 'Improper subject values or lack of values in CSR.'
+          description: 'Improper subject values, lack of values in CSR or Group header not specified.'
           content:
             application/json:
               schema:
@@ -398,18 +399,14 @@ paths:
       - runtimes external API
       summary: 'Marks certificate as revoked.'
       responses:
-        '200':
+        '204':
           description: 'Successful operation.'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/csrResponse'
         '500':
           description: 'Server error.'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/appError'                         
+                $ref: '#/components/schemas/appError'
 components:
   schemas:
     tokenResponse:
@@ -417,7 +414,7 @@ components:
       properties:
         url:
           type: 'string'
-          example: 'https://cert-service.kyma.cluster.cx/v1/applications/info?token=1edfc34g'
+          example: 'https://connector-service.test.cluster.kyma.cx/v1/applications/info?token=1edfc34g'
         token:
           type: 'string'
           example: '1edfc34g'
@@ -437,38 +434,53 @@ components:
       properties:
         metadataUrl:
           type: 'string'
-          example: 'gateway.wormhole.kyma.cluster.cx/{APP_NAME}/v1/metadata/services'
+          example: 'gateway.test.cluster.kyma.cx/{APP_NAME}/v1/metadata/services'
         eventsUrl:
           type: 'string'
-          example: 'gateway.wormhole.kyma.cluster.cx/{APP_NAME}/v1/events'
+          example: 'gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events'
         certificatesUrl:
           type: 'string'
-          example: 'certificate-service.kyma.cluster.cx/v1/applications/{APP_NAME}'
+          example: 'connector-service.test.cluster.kyma.cx/v1/applications'
+    applicationInfoResponse:
+      type: 'object'
+      properties:
+        metadataUrl:
+          type: 'string'
+          example: 'gateway.test.cluster.kyma.cx/{APP_NAME}/v1/metadata/services'
+        eventsUrl:
+          type: 'string'
+          example: 'gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events'
+        renewCertUrl:
+          type: 'string'
+          example: 'connector-service.test.cluster.kyma.cx/v1/applications/certificates/renew'
+        revokeCertUrl:
+          type: 'string'
+          example: 'connector-service.test.cluster.kyma.cx/v1/applications/certificates/revoke'
+        runtimeUrl:
+          type: 'string'
+          example: 'test.cluster.kyma.cx/'
     runtimeInfoResponse:
       type: 'object'
       properties:
         metadataUrl:
           type: 'string'
-          example: 'gateway.wormhole.kyma.cluster.cx/{APP_NAME}/v1/metadata/services'
+          example: 'gateway.test.cluster.kyma.cx/{APP_NAME}/v1/metadata/services'
         eventsUrl:
           type: 'string'
-          example: 'gateway.wormhole.kyma.cluster.cx/{APP_NAME}/v1/events'
-        renewUrl:
+          example: 'gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events'
+        renewCertUrl:
           type: 'string'
-          example: 'certificate-service.kyma.cluster.cx/v1/applications/certificates/renew'
-        revokeUrl:
+          example: 'connector-service.central.cluster.kyma.cx/v1/applications/certificates/renew'
+        revokeCertUrl:
           type: 'string'
-          example: 'certificate-service.kyma.cluster.cx/v1/applications/certificates/revoke'
-        runtimeUrl:
-          type: 'string'
-          example: 'gateway.wormhole.kyma.cluster.cx/'
-          
+          example: 'connector-service.central.cluster.kyma.cx/v1/applications/certificates/revoke'
+
     csrInfoResponse:
       type: 'object'
       properties:
         url:
           type: 'string'
-          example: 'https://cert-service.kyma.cluster.cx/v1/applications/{APP_NAME}/client-certs?token=1edfc34g'
+          example: 'https://connector-service.test.cluster.kyma.cx/v1/applications/certificates?token=1edfc34g'
         api:
           $ref: '#/components/schemas/csrApiURLs'
         certificate:
