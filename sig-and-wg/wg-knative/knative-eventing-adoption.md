@@ -162,7 +162,7 @@ Refer [examples](./kyma-knative-eventing-examples.md)
 ### Evolving the API
 
 As per the current API, the event metadata and payload are part of the HTTP body. This was in sync with the initial cloud event specification.
-The CE specification has evolved and now supports HTTP transport binding with event metadata being passed in headers. See [example](https://github.com/cloudevents/spec/blob/v0.2/http-transport-binding.md#314-examples).
+The CE specification has expanded and now supports HTTP transport binding with event metadata being passed in headers. See [example](https://github.com/cloudevents/spec/blob/v0.2/http-transport-binding.md#314-examples).
 
 The publish API will be evolved to support cloud events specification.
 This could enable us in future to remove the translation being done and directly call the Knative API to publish an event.
