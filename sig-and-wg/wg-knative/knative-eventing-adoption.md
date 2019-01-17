@@ -28,7 +28,7 @@ The provisioning of various messaging solutions such as NATS Streaming, Google P
 You can provision the messaging solutions during installation or while Kyma is running.
 
 
-The operator can provision messaging system using:
+You can provision messaging system using:
 
 * Helm Charts
 * Service Catalog
