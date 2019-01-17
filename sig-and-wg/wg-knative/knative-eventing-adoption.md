@@ -147,7 +147,7 @@ Knative eventing interfaces need to be abstracted to:
    | A consistent experience for external and internal events.        | Even if we do the tranlation at the gateway for events from external, the internal events would still need to deal with Knative APIs |
    | API ensures that the event paylaod is a valid json               | No validation of event payload being a json. This can lead to difficult to troubleshoot errors especially during consumption.        |
 
-   - Eventually Publish should evolve into a meagre proxy that is only mapping some headers or performing an http rewrite. The first step in this direction is to evolve the API to align with CE specification. 
+   - Eventually, publishing should evolve into a merge proxy that is only mapping some headers or performing an `http` rewrite. The first step in this direction is to evolve the API to align with CE specification. 
 
   * Consume
 
