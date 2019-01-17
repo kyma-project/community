@@ -19,7 +19,7 @@ The above setup demonstrates the following aspects:
 * Some events such as `order.created` and `payment.received` are configured to use Cloud PubSUb.
 * Other events, such as `item.viewed` and `item.compared` are configured to use NATS Streaming.
 * Each event type has a channel linked in the Knative eventing which is backed by the PubSub implementation.
-* The flow of two events `order.created` and `payment.received` are sent by the external solution and how they are delivered to respective serverless compute.
+* The flow of the `order.created` and `payment.received` events an external solution sends, and their delivery to a respective serverless compute.
 
 
 # Provisioning a messaging solution
