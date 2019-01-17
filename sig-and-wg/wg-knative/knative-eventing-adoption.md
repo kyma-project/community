@@ -74,7 +74,7 @@ With Knative adoption, this model can no longer be applied due to the following:
 
 **Pros**
 
-* Create minimal knative channels thus creating less cascading resources.
+* Create a minimal number of Knative channels thus creating less cascading resources.
 
 **Cons**
 
