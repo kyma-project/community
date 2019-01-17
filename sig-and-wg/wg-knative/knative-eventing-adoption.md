@@ -66,7 +66,7 @@ With Knative adoption, this model can no longer be applied due to the following:
 
 **Cons**
 
-* A Knative channel is a heavy object with many cascading resources. Having many channels can increase load on istio service mesh. 
+* A Knative channel is a heavy object with many cascading resources. Having many channels can increase the load on Istio Service Mesh. 
 
 ## Option 2
 
