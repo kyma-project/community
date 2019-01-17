@@ -47,7 +47,7 @@ Before Knative adoption, there was no need to create any metadata such as topics
 
 With Knative adoption, this model can no longer be applied due to the following:
 
-* Knative eventing requires to create Channels as a pre-step to publish. The channels are heavy objects with cascading resources. 
+* Knative eventing requires to create channels as a pre-step to publish. The channels are heavy objects with cascading resources. 
 * The model is Kyma needs to be generic and in-sync with Knative eventing to enable plugging in various messaging solutions.
 
 ## Option 1
