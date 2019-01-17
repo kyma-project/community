@@ -58,7 +58,7 @@ With Knative adoption, this model can no longer be applied due to the following:
 * Simple approach.
 * Aligned with Knative eventing concepts and underlying bus implementations.
   ![](assets/mapping-refer.svg)
-* Some reference implementations such as `Kafka` are mapping one `Topic` to a `Knative Channel`
+* Some reference implementations such as Kafka are mapping one `Topic` to a `Knative Channel`
 * **This enables us to build a thin abstraction on top of knative**.
   * Kyma does not want to run heavy workloads on the cluster when the customer is using a `Cloud PubSub`.
 * The Knative subscription object is mapped to channel where a single channel can have many subscriptions.
