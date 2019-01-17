@@ -43,7 +43,7 @@ A typical provisioner looks as follows:
 > **TBD** The deprovisioning flow. The impact on the existing event types needs to be understood first.
 
 # Kyma event types
-Before Knative adoption, there was no need to create any metadata such as topics or channels in the Kyma event bus as the event types were mapped to NATS Streaming subjects while publishing an event.
+Before Knative adoption, there was no need to create any metadata such as topics or channels in the Kyma Event-Bus as the event types were mapped to NATS Streaming subjects while publishing an event.
 
 With Knative adoption, this model can no longer be applied:
 
