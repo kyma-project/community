@@ -149,7 +149,7 @@ Knative eventing interfaces need to be abstracted to:
 
    - Eventually, publishing should evolve into a merge proxy that is only mapping some headers or performing an `http` rewrite. The first step in this direction is to evolve the API to align with CE specification. 
 
-  * Consume
+  * Consumption
 
 	- There is not much difference for consume apart from the extra knowledge of channels and translating them to Kyma concpets of `event types` and `application identifier`.
 	- Consume needs to implement `Event Activation` as Knative eventing has no such or similiar concept. Post discussion with Knative community, they do not want to introduce such constraints and expect applications to build them.
