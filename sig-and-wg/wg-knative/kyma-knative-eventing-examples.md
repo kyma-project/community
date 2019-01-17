@@ -1,6 +1,6 @@
 # Examples
 
-These examples demonstrate publish and consuming events with Kyma and Knative
+These examples demonstrate publishing and consuming events using Kyma and Knative.
 
 
 ## Publish
