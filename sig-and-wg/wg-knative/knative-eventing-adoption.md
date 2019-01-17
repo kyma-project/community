@@ -83,7 +83,7 @@ With Knative adoption, this model can no longer be applied due to the following:
 * The subscription management will become complex.
   * A single Knative channel will have subscriptions for multiple event types, which will generate unnecessary network traffic and workload.
 
-  * The `dispatcher` will receive events for all event-types belonging to a channel. Then it has to discard and only deliver those for which the Kyma Subscription has been created.
+  * The `dispatcher` will receive events for all event types belonging to a channel. Then it has to discard and only deliver those for which the Kyma Subscription has been created.
   * This will lead to fat topics in the underlying PubSub.
 
 ## Option 3 (Future alternative)
