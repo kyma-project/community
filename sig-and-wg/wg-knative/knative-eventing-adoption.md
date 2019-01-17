@@ -79,7 +79,7 @@ With Knative adoption, this model can no longer be applied due to the following:
 **Cons**
 
 * The extra complexity of maintaining the mapping.
-* **The Kyma eventing will be a thick layer with potential heavy workloads** running on cluster despite customer using a `Cloud PubSub`.
+* **Kyma eventing will be a thick layer with potential heavy workloads** running on cluster despite customer using the `Cloud PubSub`.
 * The subscription management will become complex.
   * A single knative channel will have subscriptions for multiple event-types.
   * This will generate unnecessary network traffic and workload.
