@@ -102,7 +102,7 @@ To make the dispatcher aware of the multiple diverse event types, use the **URI*
 
 The event types in Kyma will map to Channels in Knative eventing. (Option 1).
 
-A detailed mapping would look like below:
+A detailed mapping would be as follows:
 
 ![](assets/event-types.svg)
 
