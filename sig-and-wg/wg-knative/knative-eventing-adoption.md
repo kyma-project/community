@@ -25,7 +25,7 @@ The above setup demonstrates the following aspects:
 # Provisioning a messaging solution
 The provisioning of various messaging solutions such as NATS Streaming, Google PubSub, Kafka etc. is abstracted from the production and consumption of events in Kyma.
 
-Messaging solutions can be provisioned at:
+You can provision the messaging solutions during installation or while Kyma is running.
 
 * During installation
 * While Kyma is running
