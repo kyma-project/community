@@ -13,7 +13,7 @@ A typical setup with Kyma eventing post-Knative adoption is as follows:
 
 ![](assets/overview.svg)
 
-The above setup demonstrates:
+The above setup demonstrates the following aspects:
 
 * Kyma running with 2 cluster channel provisioners backed by 2 implementations (NATS Streaming and a Cloud PubSub of customer choice)
 * Some events such as `order.created` and `payment.received` are configured to use Cloud PubSUb.
