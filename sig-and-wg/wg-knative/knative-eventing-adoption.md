@@ -132,7 +132,7 @@ This can be achieved either:
 * K8S and Istio service explosion. Imagine having 1000 event types thus creating 1000 services. This will put the load on the service discovery.
   >**Note**: This has been discussed with Knative community and they are aware of this issue.
 
-# Publish & Consumption
+# Publishing and consumption
 
 Knative eventing interfaces need to be abstracted to:
 
