@@ -34,7 +34,7 @@ You can provision messaging system using:
 * Service Catalog
 * Plain K8S deployments
 
-In the long run, we can build utils that automate the provisioning process. For now we can start simple
+In the long run, we can build utils that automate the provisioning process. For now, we can start with a simple solution.
 
 A typical provisioner looks like:
 
