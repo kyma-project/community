@@ -3,7 +3,7 @@
 These examples demonstrate publishing and consuming events using Kyma and Knative.
 
 
-## Publish
+## Publish events
 
 ### Kyma API v1
 
