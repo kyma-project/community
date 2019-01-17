@@ -18,7 +18,7 @@ The above setup demonstrates the following aspects:
 * Kyma running with 2 cluster channel provisioners backed by 2 implementations (NATS Streaming and a Cloud PubSub of customer choice)
 * Some events such as `order.created` and `payment.received` are configured to use Cloud PubSUb.
 * Other events, such as `item.viewed` and `item.compared` are configured to use NATS Streaming.
-* For each event-type a channel is linked in the Knative eventing that is backed by the PubSub implementation.
+* Each event type has a channel linked in the Knative eventing which is backed by the PubSub implementation.
 * The flow of two events `order.created` and `payment.received` are sent by the external solution and how they are delivered to respective serverless compute.
 
 
