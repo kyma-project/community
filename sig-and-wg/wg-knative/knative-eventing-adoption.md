@@ -4,7 +4,7 @@ This document aims to capture details about how Kyma eventing can adopt Knative 
 
 It attempts to answer:
 
-1. How a typical Kyma installation with multiple messaging solutions being used could look like?
+1. How can a typical Kyma installation with multiple messaging solutions look like?
 1. How Knative eventing objects can be mapped to Kyma eventing model?
 1. What will be the flow for publish and consume?
 
