@@ -177,4 +177,4 @@ For example, a Lambda configured with the trigger for the `order.created` event.
 ![](assets/consume.svg)
 
 
-> **TBD** How Knative sources can be applied to Kyma eventing model?
+> **TBD** How can Knative sources be applied to Kyma eventing model?
