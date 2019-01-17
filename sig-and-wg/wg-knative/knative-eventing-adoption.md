@@ -51,14 +51,14 @@ With Knative adoption, this model can no longer be applied due to the following:
 * Kyma eventing needs to be generic and in-sync with Knative eventing to enable plugging in various messaging solutions.
 
 ## Option 1
-* `1 Kyma event-type` is mapped to a `1 Knative channel`.
+`1 Kyma event-type` is mapped to a `1 Knative channel`.
 
 **Pros**
 
 * Simple approach.
 * Aligned with Knative eventing concepts and underlying bus implementations.
   ![](assets/mapping-refer.svg)
-* Some reference implementations such as Kafka are mapping one `Topic` to a `Knative Channel`
+* Some reference implementations such as Kafka are mapping one `Topic` to a `Knative Channel`.
 * **This enables us to build a thin abstraction layer on top of Knative**.
   * Kyma does not want to run heavy workloads on the cluster when the customer is using `Cloud PubSub`.
 * The Knative subscription object is mapped to channel where a single channel can have many subscriptions.
@@ -70,7 +70,7 @@ With Knative adoption, this model can no longer be applied due to the following:
 
 ## Option 2
 
-* Map multiple `Kyma event-types` to a `single channel` or do some kind of grouping.
+Map multiple `Kyma event-types` to a `single channel` or do some kind of grouping.
 
 **Pros**
 
@@ -78,7 +78,7 @@ With Knative adoption, this model can no longer be applied due to the following:
 
 **Cons**
 
-* The extra complexity of maintaining the mapping.
+* Extra complexity of maintaining the mapping.
 * **Kyma eventing will be a thick layer with potential heavy workloads** running on cluster despite customer using the `Cloud PubSub`.
 * The subscription management will become complex.
   * A single Knative channel will have subscriptions for multiple event types, which will generate unnecessary network traffic and workload.
@@ -100,7 +100,7 @@ To make the dispatcher aware of the multiple diverse event types, use the **URI*
 
 ## Decision
 
-The event types in Kyma will map to Channels in Knative eventing. (Option 1).
+The event types in Kyma will map to Channels in Knative eventing (Option 1).
 
 A detailed mapping would be as follows:
 
@@ -118,16 +118,16 @@ This can be achieved either:
 
 ## When to create a channel
 
-* Create or get a channel when a subscription is created
+* Create or get a channel when a subscription is created.
   * Only create the channel when someone actually wants to consume events.
   * This can be extended in a way that we discard the events at an early stage when there is no consumer configured.
   * The **missing piece of puzzle** is:
-	* how/when to enable the user to specify which PubSub to use?
-	* How to handle the use case when the event needs to trigger a compute in the cloud such as GCP via publishing events. In this case, there will not be any Kyma subscription. *Perhaps a operator action to manually create a channel could be applied*
+	* How/when to enable the user to specify which PubSub to use?
+	* How to handle the use case when the event needs to trigger a compute in the cloud such as GCP via publishing events. In this case, there will not be any Kyma subscription. *Perhaps an operator action to manually create a channel could be applied*
 
 **Known Challenges**
 
-* K8S and Istio Service overload. For example, having 1000 event types creating 1000 services. This will put the load on the service discovery.
+* K8S and Istio Service overload. For example, having 1000 event types creating 1000 services will put the load on the service discovery.
   >**Note**: This has been discussed with Knative community and they are aware of this issue.
 
 # Publishing and consumption

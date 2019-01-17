@@ -33,7 +33,7 @@ These examples demonstrate publishing and consuming events using Kyma and Knativ
      -d '{"customer":{"customerID": "1234", "uid": "rick.sanchez@mail.com"}}'
 ```
 
-## Consume
+## Consume events
 
 ### Kyma
 
