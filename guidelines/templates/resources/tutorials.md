@@ -9,7 +9,7 @@ type: Tutorials
 
 >  In the document:
 > * Start with the introductory sentence presented in this template.
-> * Follow the `{000}-tutorials-{document-title}.md` convention to name the document. The title must summarize what it is about.
+> * Follow the `08-{00}-{document-title}.md` convention to name the document. The title must summarize what it is about.
 >
 > For reference, see the existing **Tutorials** document concerning the [Sample service deployment on local machine](https://github.com/kyma-project/kyma/blob/master/docs/kyma/docs/040-gs-sample-service-deployment-to-local.md).
 
