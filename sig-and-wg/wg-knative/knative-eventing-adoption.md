@@ -45,7 +45,7 @@ A typical provisioner looks as follows:
 # Kyma event types
 Before Knative adoption, there was no need to create any metadata such as topics or channels in the Kyma Event-Bus as the event types were mapped to NATS Streaming subjects while publishing an event.
 
-With Knative adoption, this model can no longer be applied:
+With Knative adoption, this model can no longer be applied due to the following:
 
 * Knative eventing requires to create Channels as a pre-step to publish. The channels are heavy objects with cascading resources. 
 * The model is Kyma needs to be generic and in-sync with Knative eventing to enable plugging in various messaging solutions.
