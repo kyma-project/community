@@ -25,6 +25,11 @@ paths:
         schema:
           type: string
         required: true
+      - in: header
+        name: Application
+        schema:
+          type: string
+        required: true
       tags:
       - applications internal API
       summary: 'Creates a token used for certificate signing flow.'
@@ -41,6 +46,39 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/appError'
+        '500':
+          description: 'Server error.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/appError'
+  /v1/applications/certificates/revoke:
+    post:
+      parameters:
+        - in: header
+          name: Group
+          schema:
+            type: string
+            format: uuid
+          required: false
+        - in: header
+          name: Tenant
+          schema:
+            type: string
+            format: uuid
+          required: false
+        - in: header
+          name: Application
+          schema:
+            type: string
+            format: uuid
+          required: false
+      tags:
+        - applications internal API
+      summary: 'Marks certificate as revoked.'
+      responses:
+        '204':
+          description: 'Successful operation.'
         '500':
           description: 'Server error.'
           content:
@@ -155,13 +193,6 @@ paths:
                 $ref: '#/components/schemas/appError'
   /v1/applications/certificates/renew:
     post:
-      parameters:
-      - in: header
-        name: Group
-        schema:
-          type: string
-          format: uuid
-        required: true
       tags:
       - applications external API
       summary: 'Renews certificate using CSR.'
@@ -191,27 +222,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/appError'
-  /v1/applications/certificates/revoke:
-    post:
-      parameters:
-      - in: header
-        name: Group
-        schema:
-          type: string
-          format: uuid
-        required: true
-      tags:
-      - applications external API
-      summary: 'Marks certificate as revoked.'
-      responses:
-        '204':
-          description: 'Successful operation.'
-        '500':
-          description: 'Server error.'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/appError'
   /v1/runtimes/tokens:
     post:
       parameters:
@@ -235,7 +245,34 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tokenResponse'
+                $ref: '#/components/schemas/runtimeTokenResponse'
+        '500':
+          description: 'Server error.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/appError'
+  /v1/runtimes/certificates/revoke:
+    post:
+      parameters:
+        - in: header
+          name: Group
+          schema:
+            type: string
+            format: uuid
+          required: false
+        - in: header
+          name: Tenant
+          schema:
+            type: string
+            format: uuid
+          required: false
+      tags:
+        - runtimes internal API
+      summary: 'Marks certificate as revoked.'
+      responses:
+        '204':
+          description: 'Successful operation.'
         '500':
           description: 'Server error.'
           content:
@@ -260,7 +297,7 @@ paths:
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/csrInfoResponse'
+                  $ref: '#/components/schemas/csrServerInfoResponse'
           '403':
             description: 'Invalid token'
             content:
@@ -350,13 +387,6 @@ paths:
                 $ref: '#/components/schemas/appError'
   /v1/runtimes/certificates/renew:
     post:
-      parameters:
-      - in: header
-        name: Group
-        schema:
-          type: string
-          format: uuid
-        required: true
       tags:
       - runtimes external API
       summary: 'Renews certificate using CSR.'
@@ -386,29 +416,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/appError'
-  /v1/runtimes/certificates/revoke:
-    post:
-      parameters:
-      - in: header
-        name: Group
-        schema:
-          type: string
-          format: uuid
-        required: true
-      tags:
-      - runtimes external API
-      summary: 'Marks certificate as revoked.'
-      responses:
-        '204':
-          description: 'Successful operation.'
-        '500':
-          description: 'Server error.'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/appError'
 components:
   schemas:
+    runtimeTokenResponse:
+      type: 'object'
+      properties:
+        url:
+          type: 'string'
+          example: 'https://connector-service.test.cluster.kyma.cx/v1/runtimes/info?token=1edfc34g'
+        token:
+          type: 'string'
+          example: '1edfc34g'
     tokenResponse:
       type: 'object'
       properties:
@@ -423,7 +441,18 @@ components:
       properties:
         subject:
           type: 'string'
-          example: 'OU=Test,O=Test,L=Blacksburg,ST=Virginia,C=US,CN={APP_NAME}'
+          example: 'OU=Test,O=Test,L=Blacksburg,ST=Virginia,C=US,CN={TENANT}{GROUP}{APP_NAME}'
+        extensions:
+          type: 'string'
+        key-algorithm:
+          type: 'string'
+          example: 'rsa2048'
+    serverCert:
+      type: 'object'
+      properties:
+        subject:
+          type: 'string'
+          example: 'OU=Test,O=Test,L=Blacksburg,ST=Virginia,C=US,CN={TENANT}{GROUP}'
         extensions:
           type: 'string'
         key-algorithm:
@@ -441,6 +470,18 @@ components:
         certificatesUrl:
           type: 'string'
           example: 'connector-service.test.cluster.kyma.cx/v1/applications'
+        infoUrl:
+          type: 'string'
+          example: 'connector-service.test.cluster.kyma.cx/v1/applications/info/urls'
+    csrServerApiURLs:
+      type: 'object'
+      properties:
+        certificatesUrl:
+          type: 'string'
+          example: 'connector-service.test.cluster.kyma.cx/v1/runtimes'
+        infoUrl:
+          type: 'string'
+          example: 'connector-service.test.cluster.kyma.cx/v1/runtimes/info/urls'
     applicationInfoResponse:
       type: 'object'
       properties:
@@ -474,7 +515,6 @@ components:
         revokeCertUrl:
           type: 'string'
           example: 'connector-service.central.cluster.kyma.cx/v1/applications/certificates/revoke'
-
     csrInfoResponse:
       type: 'object'
       properties:
@@ -485,6 +525,16 @@ components:
           $ref: '#/components/schemas/csrApiURLs'
         certificate:
           $ref: '#/components/schemas/cert'
+    csrServerInfoResponse:
+      type: 'object'
+      properties:
+        url:
+          type: 'string'
+          example: 'https://connector-service.test.cluster.kyma.cx/v1/runtimes/certificates?token=1edfc34g'
+        api:
+          $ref: '#/components/schemas/csrServerApiURLs'
+        certificate:
+          $ref: '#/components/schemas/serverCert'
     appError:
       type: 'object'
       properties:

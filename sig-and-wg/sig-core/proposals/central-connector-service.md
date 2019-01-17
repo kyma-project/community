@@ -53,7 +53,7 @@ The Connector Service (CS) is deployed as a central component.
    - Is signed by the root CA
    - The subject of the client certificate contains the unique ID of the Application and information about the group to which the Application is assigned
 
-2. After the cluster is provisioned, it requests for the intermediate certificate. As a response, it receives a certificate chain consisting of the generated intermediate certificate and the root CA certificate. The intermediate certificate has the following properties:
+2. After the cluster is provisioned, it requests for the Kyma cluster client certificate. As a response, it receives a certificate chain consisting of the generated Kyma cluster client certificate and the root CA certificate. The client certificate has the following properties:
 
    - Is signed by the root CA.
    - Contains the information about the cluster name for which it is generated.
@@ -67,7 +67,7 @@ A connected Application calls this endpoint periodically and checks the cluster 
 
 ### Certificate revocation 
 
-The client certificates and intermediate server certificates must be revoked as soon as they are compromised. The list of revoked certificates will be stored in the central Connector Service and synchronized with all Kyma clusters. The list will contain both the client certificates and the server intermediate certificates.
+The client certificates and Kyma cluster client certificates must be revoked as soon as they are compromised. The list of revoked certificates will be stored in the central Connector Service and synchronized with all Kyma clusters. The list will contain both the client certificates and the certificates in Kyma cluster.
 
 The fingerprint of the compromised certificate will be added to the Application Connector. It will ensure that the connected Application which uses the compromised certificates can no longer perform any calls.
 
@@ -90,25 +90,25 @@ The fingerprint of the compromised certificate will be added to the Application 
     curl  https://gateway.{CLUSTER_DOMAIN}/test-application/v1/metadata/services --cert client.crt --key client.key
     ```
 
-3. Generate the intermediate CA signed with the root CA
+3. Generate the Kyma cluster client CA signed with the root CA
 
     ```
-    openssl genrsa -out intermediate.key 4096
-    openssl req -new -out intermediate.csr -key intermediate.key -subj /CN="intermediate"
-    openssl x509 -req -sha256 -in intermediate.csr -out intermediate.crt -CAkey rootCA.key -CA rootCA.crt -days 1800 -CAcreateserial -CAserial serial
+    openssl genrsa -out client.key 4096
+    openssl req -new -out client.csr -key client.key -subj /CN="name"
+    openssl x509 -req -sha256 -in client.csr -out client.crt -CAkey rootCA.key -CA rootCA.crt -days 1800 -CAcreateserial -CAserial serial
     ```
 
-4.  Create the certificate chain containing `rootCA.crt` and `intermediate.crt`.
+4.  Create the certificate chain containing `rootCA.crt` and `client.crt`.
 
     ```
-    cat rootCA.crt intermediate.crt > intermediate-chain.crt
+    cat rootCA.crt client.crt > client-chain.crt
     ```
 
-5. Edit the secret containing CA `nginx-auth-ca` to use `intermediate-chain.crt` as `ca.crt` and `intermediate.key` as `ca.key`.
+5. Edit the secret containing CA `nginx-auth-ca` to use `client-chain.crt` as `ca.crt` and `client.key` as `ca.key`.
 
     ```
-    export CERT=$(cat intermediate-chain.crt | base64)
-    export KEY=$(cat intermediate.key | base64)
+    export CERT=$(cat client-chain.crt | base64)
+    export KEY=$(cat client.key | base64)
     cat <<EOF | kubectl apply -f -
     apiVersion: v1
     data:
@@ -129,7 +129,7 @@ The fingerprint of the compromised certificate will be added to the Application 
     curl  https://gateway.{CLUSTER_DOMAIN}/test-application/v1/metadata/services --cert client.crt --key client.key
     ```
 
-7. Revert changes by setting the root CA-signed certificate as the original one and call the cluster using of the intermediate certificate as the client certificate.
+7. Revert changes by setting the root CA-signed certificate as the original one and call the cluster using of the Kyma cluster client certificate as the client certificate.
 
 ## API design
 
@@ -170,7 +170,7 @@ Requirements:
 There are the following cases:
 
 - Application certificate is about to expire.
-- XF runtime (intermediate) certificate is about to expire.
+- XF runtime client certificate is about to expire.
 - CA root certificate is about to expire.
 
 #### Application and XF runtime certificate renewal
