@@ -135,7 +135,7 @@ This can be achieved either:
 Knative eventing interfaces need to be abstracted to:
 
 * Accommodate the flux in the Knative eventing APIs.
-* Provide an event publish and subscribe model that is consistent with Kyma concepts.
+* Provide an event publishing and subscribe model that is consistent with Kyma concepts.
   * Publish
   
    | Kyma                                                             | Knative                                                                                                                              |
