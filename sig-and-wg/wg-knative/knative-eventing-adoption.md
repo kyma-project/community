@@ -36,7 +36,7 @@ You can provision messaging system using:
 
 In the long run, we can build utils that automate the provisioning process. For now, we can start with a simple solution.
 
-A typical provisioner looks like:
+A typical provisioner looks as follows:
 
 ![](assets/provisiner.svg)
 
