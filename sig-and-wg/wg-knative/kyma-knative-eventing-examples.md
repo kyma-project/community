@@ -1,5 +1,8 @@
 # Examples
 
+These examples demonstrate publish and consuming events with Kyma and Knative
+
+
 ## Publish
 
 ### Kyma API v1
