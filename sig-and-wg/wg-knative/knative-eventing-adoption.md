@@ -155,7 +155,7 @@ Knative eventing interfaces need to be abstracted to:
 	- Consumption needs to implement `Event Activation` as Knative eventing has no such or a similar concept. After the discussion with Knative community, they do not want to introduce such constraints and expect applications to build them.
 Refer [examples](./kyma-knative-eventing-examples.md)
 
-## Publish
+## Publishing
 
 ### Evolving the API
 
