@@ -172,7 +172,7 @@ This could enable us in future to remove the translation being done and directly
 ### Consumption
 
 A serverless deployed and running in Kyma should be configure events as triggers. 
-e.g. A Lambda configured with trigger for `order.created` event.
+For example, a Lambda configured with the trigger for the `order.created` event.
 
 ![](assets/consume.svg)
 
