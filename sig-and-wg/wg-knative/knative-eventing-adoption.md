@@ -127,7 +127,7 @@ This can be achieved either:
 
 **Known Challenges**
 
-* K8S and Istio service explosion. Imagine having 1000 event types thus creating 1000 services. This will put the load on the service discovery.
+* K8S and Istio Service overload. For example, having 1000 event types creating 1000 services. This will put the load on the service discovery.
   >**Note**: This has been discussed with Knative community and they are aware of this issue.
 
 # Publishing and consumption
