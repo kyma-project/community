@@ -9,7 +9,7 @@ It attempts to answer:
 3. What will be the flow of publishing and consuming events?
 
 
-A typical set up with Kyma eventing post Knative adoption would look like:
+A typical setup with Kyma eventing post-Knative adoption is as follows:
 
 ![](assets/overview.svg)
 
