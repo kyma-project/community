@@ -212,9 +212,9 @@ include $(REPOSITORY_PATH)/scripts/template.go.mk
 $(eval $(call TARGETS,main.go,Dockerfile))
 ```
 
-Thanks to `template.mk` we will have one place in repository with targets definitions and it will be much easier to maintain it.
+Thanks to `template.go.mk` we will have one place in repository with targets definitions and it will be much easier to maintain it.
 
->**NOTE**: All components needs to be build by CI system in case of changes in `template.mk`.
+>**NOTE**: All components needs to be build by CI system in case of changes in `template.go.mk`.
 
 ### Sandbox Validation
 
