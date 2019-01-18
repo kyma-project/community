@@ -74,9 +74,9 @@ To keep Kyma backlog clean, all repositories in the organization are monitored b
 Although the bot helps us to keep the backlog clean, we regularly monitor its activities to make sure it is not closing issues that are still valid and important for Kyma. The Kyma team reviews [this](https://app.zenhub.com/workspaces/kyma---all-repositories-5b6d5985084045741e744dea/boards?labels=stale&showPRs=false) ZenHub board and acts on them as follows:
 - Closed issues:
   - If the issue is still valid, reopen it and remove the `stale` label from it.
-  - `stale` label is changed to more relevant one with proper comment with more background that explains why ticket remains closed
-- Open issues: `stale` label is removed if issues is still valid
-
+  -  If the issue is invalid, change the `stale` label to a more relevant one and add a comment that provides background and explains why the issue remains closed.
+- Open issues:
+  -  If the issue is valid, remove the `stale` label from it.
 
 ## ZenHub links
 
