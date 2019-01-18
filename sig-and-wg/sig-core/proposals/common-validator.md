@@ -354,7 +354,7 @@ $(eval $(call SANDBOX,lint))
 
 And `Makefile` in component:
 ```makefile
-APP_NAMES = name_1 name_2 name_3
+APP_NAMES = name1 name2 name3 name4
 BUILDPACK_VERSION = v20181119-afd3fbd
 REPOSITORY_PATH = $(realpath $(shell pwd)/../..)
 
@@ -367,7 +367,7 @@ $(foreach appName,$(APP_NAMES),$(eval $(call TARGETS,$(appName))))
 
 To unify our validation and `Makefile` targets we should define a template that will be included in all components `Makefiles`. Thanks to that we will be able to have one place per repository with targets definitions and it will be easier to introduce new validations.
 
-Such proposal also introduces the possibility to validate source code against CI environment, what can speed up creating Pull Requests. It is possible to support multiple artifacts per components, but we should consider if we will still want it.
+Such proposal also introduces the possibility to validate source code against CI environment, what can speed up creating Pull Requests. It is possible to support multiple artifacts per components, but we should consider if we still want it.
 
 Examples:
  - [One artifact per component](#sandbox-validation)
