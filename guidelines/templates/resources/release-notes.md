@@ -9,7 +9,7 @@ date: "{YYY-MM-DD}"
 author: "{Name and surname}, {Role} @Kyma"
 tags:
   - release-notes
-title: "{Release notes title}"
+title: "Kyma {release-number} {code-name}"
 ---
 ```
 
