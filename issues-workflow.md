@@ -69,7 +69,7 @@ If any team wants to keep team backlog (assign issues they want to work on later
 
 ### Stale issues
 
-To keep Kyma backlog clean, all repositories in the organization are monitored by a bot. The bot marks old unactive issues with `stale` label and after a given period of time closes them. For detailed configuration check [this](https://github.com/kyma-project/kyma/blob/master/.github/stale.yml) sample configuration.
+To keep the Kyma backlog clean, the bot monitors all repositories in the organization. It marks old, inactive issues with the `stale` label and closes them after a given period of time. For configuration details, check [this](https://github.com/kyma-project/kyma/blob/master/.github/stale.yml) sample file.
 
 Although the bot helps us to keep the backlog clean, we regularly monitor its activities to make sure it is not closing issues that are still valid and important for Kyma. The Kyma team reviews [this](https://app.zenhub.com/workspaces/kyma---all-repositories-5b6d5985084045741e744dea/boards?labels=stale&showPRs=false) ZenHub board and acts on them as follows:
 - Closed issues:
