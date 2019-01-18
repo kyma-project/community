@@ -67,6 +67,17 @@ Contributors mark issues with the `WIP` label when they start working on it. Whe
 ### Team backlog (optional)
 If any team wants to keep team backlog (assign issues they want to work on later), they can assign it to the Github milestone with no due date named with following pattern: `{TEAM_NAME} backlog`.
 
+### Stale issues
+
+To keep Kyma backlog clean, all repositories in the organization are monitored by a bot. The bot marks old unactive issues with `stale` label and after a given period of time closes them. For detailed configuration check [this](https://github.com/kyma-project/kyma/blob/master/.github/stale.yml) sample configuration.
+
+Although the bot helps us to keep the backlog clean, we regularly monitor its activity to make sure it is not closing issues that are still valid and important for Kyma. Kyma team reviews [this](https://app.zenhub.com/workspaces/kyma---all-repositories-5b6d5985084045741e744dea/boards?labels=stale&showPRs=false) ZenHub board and in case of:
+- Closed issues:
+  - `stale` label is removed and issues reopened if it is still valid
+  - `stale` label is changed to more relevant one with proper comment with more background that explains why ticket remains closed
+- Open issues: `stale` label is removed if issues is still valid
+
+
 ## ZenHub links
 
 * Install the [ZenHub Chrome plugin](https://chrome.google.com/webstore/detail/zenhub-for-github/ogcgkffhplmphkaahpmffcafajaocjbd)
