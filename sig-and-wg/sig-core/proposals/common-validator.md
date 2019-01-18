@@ -354,7 +354,7 @@ $(eval $(call SANDBOX,lint))
 
 And `Makefile` in component:
 ```makefile
-APP_NAMES = ui-api-layer
+APP_NAMES = name_1 name_2 name_3
 BUILDPACK_VERSION = v20181119-afd3fbd
 REPOSITORY_PATH = $(realpath $(shell pwd)/../..)
 
