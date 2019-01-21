@@ -149,7 +149,7 @@ Requirements:
 - Certificate generation flow must be backward compatible,however, resource names may change.
 - There should be separate endpoints for applications and XF Runtimes.
 
-### Getting runtime info
+### Getting urls
 
 Requirements:
 
@@ -160,8 +160,7 @@ Requirements:
   - Certificate revocation URL.
   - Runtime URL.
 - XF Runtime should be able to get the following urls:
-  - API Registry Service URL.
-  - Events Service  URL.
+  - API Registry Service URL.  
   - Certificate renewal URL.
   - Certificate revocation URL.
 
@@ -194,7 +193,7 @@ Requirements:
 
 ## API proposal
 
-The following assumtions were taken:
+The following assumptions were taken:
 
 - API for Application and XF Runtime is symmetric.
 - Group and Tenant name is passed in headers.
@@ -205,7 +204,7 @@ The following assumtions were taken:
 The connector service exposes the following groups of endpoits:
 
 - Health API.
-- Internal API0 for Application (token generation and certificate revocation).
+- Internal API for Application (token generation and certificate revocation).
 - Internal API for XF Runtime (token generation and certificate revocation).
 - External API for handling certificate generation, renewal and service discovery for Applications.
 - External API for handling certificate generation, renewal and service discovery for Runtimes.
@@ -218,21 +217,23 @@ The following API has been defined:
 
 ![](./assets/connector-service-applications-api.png)
 
-Certificate generation flow is handled by `v1/applications/token`, `v1/applications/info/csr` and `v1/applications/certificates` endpoints. The operation flow and payloads have not been changed so backward compatibility is assured.
+Certificate generation flow is handled by `v1/applications/token`, `v1/applications/signingRequests/info` and `v1/applications/certificates` endpoints. The operation flow and payloads have not been changed so backward compatibility is assured.
 
-Service discovery is handled by `v1/applications/info/urls`. The exemplary output:
+Service discovery is handled by `v1/applications/management/info`. The exemplary output:
 
 ```json
 {
-  "metadataUrl": "gateway.test.cluster.kyma.cx/{APP_NAME}/v1/metadata/services",
-  "eventsUrl": "gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events",
-  "renewCertUrl": "connector-service.test.cluster.kyma.cx/v1/applications/certificates/renew",
-  "revokeCertUrl": "connector-service.test.cluster.kyma.cx/v1/applications/certificates/revoke",
-  "runtimeUrl": "test.cluster.kyma.cx/"
+  "urls": {
+  	"metadataUrl": "gateway.test.cluster.kyma.cx/{APP_NAME}/v1/metadata/services",
+  	"eventsUrl": "gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events",
+  	"renewCertUrl": "connector-service.test.cluster.kyma.cx/v1/applications/certificates/renewals",
+  	"revokeCertUrl": "connector-service.test.cluster.kyma.cx/v1/applications/certificates/revocations",
+  	"runtimeUrl": "test.cluster.kyma.cx/"
+  }
 }
 ```
 
-Certificate renewal and revocation is handled by `v1/applications/certificates/renew` and `v1/applications/certificates/revoke` respectively. It was assumed that Application ID will be obtained from the certificate used for accessing the endpoints, however, it needs to by confirmed if it is technically feaseable with Nginx Ingress and Golang.
+Certificate renewal and revocation is handled by `v1/applications/certificates/renewals` and `v1/applications/certificates/revocations` respectively. It was assumed that Application ID will be obtained from the certificate used for accessing the endpoints, however, it needs to by confirmed if it is technically feaseable with Nginx Ingress and Golang.
 
 ### APIs for Runtimes
 
@@ -240,14 +241,15 @@ The following API has been defined:
 
 ![](./assets/connector-service-runtimes-api.png)
 
-It is symmetrical to the API for Applications. The only difference is the structure of the output returned from `v1/runtimes/info/urls`. The examplary output:
+It is symmetrical to the API for Applications. The only difference is the structure of the output returned from `v1/runtimes/management/info`. The examplary output:
 
 ```json
 {
-  "metadataUrl": "gateway.test.cluster.kyma.cx/{APP_NAME}/v1/metadata/services",
-  "eventsUrl": "gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events",
-  "renewCertUrl": "connector-service.central.cluster.kyma.cx/v1/applications/certificates/renew",
-  "revokeCertUrl": "connector-service.central.cluster.kyma.cx/v1/applications/certificates/revoke"
+  "urls":{
+  	"metadataUrl": "gateway.test.cluster.kyma.cx/{APP_NAME}/v1/metadata/services",
+  	"renewCertUrl": "connector-service.central.cluster.kyma.cx/v1/applications/certificates/renewals",
+  	"revokeCertUrl": "connector-service.central.cluster.kyma.cx/v1/applications/certificates/revocations"
+  }
 }
 ```
 
