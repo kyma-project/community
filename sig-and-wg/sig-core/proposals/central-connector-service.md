@@ -205,10 +205,10 @@ The following assumtions were taken:
 The connector service exposes the following groups of endpoits:
 
 - Health API.
-- Internal API for generating token for Application.
-- Internal API for generating token for XF Runtime.
-- External API for handling certificate generation, renewal, revocation and service discovery for Applications.
-- External API for handling certificate generation, renewal, revocation and service discovery for Runtimes.
+- Internal API0 for Application (token generation and certificate revocation).
+- Internal API for XF Runtime (token generation and certificate revocation).
+- External API for handling certificate generation, renewal and service discovery for Applications.
+- External API for handling certificate generation, renewal and service discovery for Runtimes.
 
 The full api definition is [here](./assets/connector-service-api.yaml).
 

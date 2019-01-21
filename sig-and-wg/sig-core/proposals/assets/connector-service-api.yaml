@@ -125,6 +125,18 @@ paths:
           type: string
           format: uuid
         required: true
+      - in: header
+        name: Tenant
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - in: header
+        name: Application
+        schema:
+          type: string
+          format: uuid
+        required: true
       tags:
       - applications external API
       summary: 'Returns information on available services.'
@@ -297,7 +309,7 @@ paths:
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/csrServerInfoResponse'
+                  $ref: '#/components/schemas/csrRuntimeInfoResponse'
           '403':
             description: 'Invalid token'
             content:
@@ -315,6 +327,12 @@ paths:
       parameters:
       - in: header
         name: Group
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - in: header
+        name: Tenant
         schema:
           type: string
           format: uuid
@@ -447,7 +465,7 @@ components:
         key-algorithm:
           type: 'string'
           example: 'rsa2048'
-    serverCert:
+    runtimeCert:
       type: 'object'
       properties:
         subject:
@@ -467,22 +485,10 @@ components:
         eventsUrl:
           type: 'string'
           example: 'gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events'
-        certificatesUrl:
-          type: 'string'
-          example: 'connector-service.test.cluster.kyma.cx/v1/applications'
         infoUrl:
           type: 'string'
           example: 'connector-service.test.cluster.kyma.cx/v1/applications/management/info'
-    csrServerApiURLs:
-      type: 'object'
-      properties:
-        certificatesUrl:
-          type: 'string'
-          example: 'connector-service.test.cluster.kyma.cx/v1/runtimes'
-        infoUrl:
-          type: 'string'
-          example: 'connector-service.test.cluster.kyma.cx/v1/runtimes/management/info'
-    applicationInfoResponse:
+    applicationInfoResponseUrls:
       type: 'object'
       properties:
         metadataUrl:
@@ -500,7 +506,22 @@ components:
         runtimeUrl:
           type: 'string'
           example: 'test.cluster.kyma.cx/'
-    runtimeInfoResponse:
+    applicationInfoResponse:
+      type: 'object'
+      properties:
+        urls:
+          $ref: '#/components/schemas/applicationInfoResponseUrls'
+    csrInfoResponse:
+      type: 'object'
+      properties:
+        url:
+          type: 'string'
+          example: 'https://connector-service.test.cluster.kyma.cx/v1/applications/certificates?token=1edfc34g'
+        api:
+          $ref: '#/components/schemas/csrApiURLs'
+        certificate:
+          $ref: '#/components/schemas/cert'
+    runtimeInfoResponseUrls:
       type: 'object'
       properties:
         metadataUrl:
@@ -515,26 +536,27 @@ components:
         revokeCertUrl:
           type: 'string'
           example: 'connector-service.central.cluster.kyma.cx/v1/applications/certificates/revocations'
-    csrInfoResponse:
+    runtimeInfoResponse:
       type: 'object'
       properties:
-        url:
+        urls:
+          $ref: '#/components/schemas/runtimeInfoResponseUrls'
+    csrRuntimeApiURLs:
+      type: 'object'
+      properties:
+        infoUrl:
           type: 'string'
-          example: 'https://connector-service.test.cluster.kyma.cx/v1/applications/certificates?token=1edfc34g'
-        api:
-          $ref: '#/components/schemas/csrApiURLs'
-        certificate:
-          $ref: '#/components/schemas/cert'
-    csrServerInfoResponse:
+          example: 'connector-service.test.cluster.kyma.cx/v1/runtimes/management/info'
+    csrRuntimeInfoResponse:
       type: 'object'
       properties:
         url:
           type: 'string'
           example: 'https://connector-service.test.cluster.kyma.cx/v1/runtimes/certificates?token=1edfc34g'
         api:
-          $ref: '#/components/schemas/csrServerApiURLs'
+          $ref: '#/components/schemas/csrRuntimeApiURLs'
         certificate:
-          $ref: '#/components/schemas/serverCert'
+          $ref: '#/components/schemas/runtimeCert'
     appError:
       type: 'object'
       properties:
