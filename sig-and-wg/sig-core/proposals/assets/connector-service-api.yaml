@@ -52,7 +52,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/appError'
-  /v1/applications/certificates/revoke:
+  /v1/applications/certificates/revocations:
     post:
       parameters:
         - in: header
@@ -85,7 +85,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/appError'
-  /v1/applications/info/csr:
+  /v1/applications/signingRequests/info:
     get:
       parameters:
       - in: query
@@ -116,7 +116,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/appError'
-  /v1/applications/info/urls:
+  /v1/applications/management/info:
     get:
       parameters:
       - in: header
@@ -191,7 +191,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/appError'
-  /v1/applications/certificates/renew:
+  /v1/applications/certificates/renewals:
     post:
       tags:
       - applications external API
@@ -252,7 +252,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/appError'
-  /v1/runtimes/certificates/revoke:
+  /v1/runtimes/certificates/revocations:
     post:
       parameters:
         - in: header
@@ -279,7 +279,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/appError'
-  /v1/runtimes/info/csr:
+  /v1/runtimes/signingRequests/info:
       get:
         parameters:
         - in: query
@@ -310,7 +310,7 @@ paths:
               application/json:
                 schema:
                   $ref: '#/components/schemas/appError'
-  /v1/runtimes/info/urls:
+  /v1/runtimes/management/info:
     get:
       parameters:
       - in: header
@@ -385,7 +385,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/appError'
-  /v1/runtimes/certificates/renew:
+  /v1/runtimes/certificates/renewals:
     post:
       tags:
       - runtimes external API
@@ -472,7 +472,7 @@ components:
           example: 'connector-service.test.cluster.kyma.cx/v1/applications'
         infoUrl:
           type: 'string'
-          example: 'connector-service.test.cluster.kyma.cx/v1/applications/info/urls'
+          example: 'connector-service.test.cluster.kyma.cx/v1/applications/management/info'
     csrServerApiURLs:
       type: 'object'
       properties:
@@ -481,7 +481,7 @@ components:
           example: 'connector-service.test.cluster.kyma.cx/v1/runtimes'
         infoUrl:
           type: 'string'
-          example: 'connector-service.test.cluster.kyma.cx/v1/runtimes/info/urls'
+          example: 'connector-service.test.cluster.kyma.cx/v1/runtimes/management/info'
     applicationInfoResponse:
       type: 'object'
       properties:
@@ -493,10 +493,10 @@ components:
           example: 'gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events'
         renewCertUrl:
           type: 'string'
-          example: 'connector-service.test.cluster.kyma.cx/v1/applications/certificates/renew'
+          example: 'connector-service.test.cluster.kyma.cx/v1/applications/certificates/renewals'
         revokeCertUrl:
           type: 'string'
-          example: 'connector-service.test.cluster.kyma.cx/v1/applications/certificates/revoke'
+          example: 'connector-service.test.cluster.kyma.cx/v1/applications/certificates/revocations'
         runtimeUrl:
           type: 'string'
           example: 'test.cluster.kyma.cx/'
@@ -511,10 +511,10 @@ components:
           example: 'gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events'
         renewCertUrl:
           type: 'string'
-          example: 'connector-service.central.cluster.kyma.cx/v1/applications/certificates/renew'
+          example: 'connector-service.central.cluster.kyma.cx/v1/applications/certificates/renewal'
         revokeCertUrl:
           type: 'string'
-          example: 'connector-service.central.cluster.kyma.cx/v1/applications/certificates/revoke'
+          example: 'connector-service.central.cluster.kyma.cx/v1/applications/certificates/revocations'
     csrInfoResponse:
       type: 'object'
       properties:
