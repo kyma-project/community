@@ -160,7 +160,6 @@ Requirements:
   - Certificate revocation URL.
   - Runtime URL.
 - XF Runtime should be able to get the following urls:
-  - API Registry Service URL.  
   - Certificate renewal URL.
   - Certificate revocation URL.
 
@@ -196,18 +195,18 @@ Requirements:
 The following assumptions were taken:
 
 - API for Application and XF Runtime is symmetric.
-- Group and Tenant name is passed in headers.
 - Application ID is not needed in paths.
 - Resource names can be changed to ensure consistent naming.
 - Payloads returned in certificate generation flow cannot change.
+- Application ID may be obtained from the certificate used for accessing the endpoints, however, it needs to be confirmed if it is technically feaseable with Nginx Ingress and Golang.
 
 The connector service exposes the following groups of endpoits:
 
-- Health API.
 - Internal API for Application (token generation and certificate revocation).
 - Internal API for XF Runtime (token generation and certificate revocation).
 - External API for handling certificate generation, renewal and service discovery for Applications.
 - External API for handling certificate generation, renewal and service discovery for Runtimes.
+- Health API.
 
 The full api definition is [here](./assets/connector-service-api.yaml).
 
@@ -217,9 +216,11 @@ The following API has been defined:
 
 ![](./assets/connector-service-applications-api.png)
 
-Certificate generation flow is handled by `v1/applications/token`, `v1/applications/signingRequests/info` and `v1/applications/certificates` endpoints. The operation flow and payloads have not been changed so backward compatibility is assured.
+Certificate generation flow is handled by `v1/applications/tokens`, `v1/applications/signingRequests/info` and `v1/applications/certificates` endpoints. The operation flow and payloads have not been changed so backward compatibility is assured.
 
-Service discovery is handled by `v1/applications/management/info`. The exemplary output:
+Service discovery is handled by `v1/applications/management/info`. Note: Base paths for returning service info will be passed in headers. 
+
+The exemplary output:
 
 ```json
 {
@@ -233,7 +234,7 @@ Service discovery is handled by `v1/applications/management/info`. The exemplary
 }
 ```
 
-Certificate renewal and revocation is handled by `v1/applications/certificates/renewals` and `v1/applications/certificates/revocations` respectively. It was assumed that Application ID will be obtained from the certificate used for accessing the endpoints, however, it needs to by confirmed if it is technically feaseable with Nginx Ingress and Golang.
+Certificate renewal and revocation is handled by `v1/applications/certificates/renewals` and `v1/applications/certificates/revocations` respectively.
 
 ### APIs for Runtimes
 
@@ -241,12 +242,13 @@ The following API has been defined:
 
 ![](./assets/connector-service-runtimes-api.png)
 
-It is symmetrical to the API for Applications. The only difference is the structure of the output returned from `v1/runtimes/management/info`. The examplary output:
+It is symmetrical to the API for Applications. The only difference is the structure of the output returned from `v1/runtimes/management/info`.  Note: Base paths for returning service info will be passed in headers.
+
+The examplary output:
 
 ```json
 {
   "urls":{
-  	"metadataUrl": "gateway.test.cluster.kyma.cx/{APP_NAME}/v1/metadata/services",
   	"renewCertUrl": "connector-service.central.cluster.kyma.cx/v1/applications/certificates/renewals",
   	"revokeCertUrl": "connector-service.central.cluster.kyma.cx/v1/applications/certificates/revocations"
   }
