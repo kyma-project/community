@@ -72,7 +72,7 @@ The proposal revision process is as follows:
 * All involved parties decide whether the topic requires a SIG or a WG collaboration or if you can address the topic by creating one or more issues in GitHub and pairing the sprints of several teams for several iterations.
 * The SIG Community can suggest a public discussion of the proposal to make sure it meets the community needs and raises enough interest.
 * The SIG Community can decide to recommend the creation of a new SIG or WG and inform the Council. The SIG Community can also suggest the revision of the SIG and the WG topics or object to a given group creation and provide the authors of the proposal with the reason for the objection. The SIG Community can also advise on other ways to address the topics suggested in the proposal.  
-* When informed by the SIG Community, the Council agrees during the weekly meeting to the creation of the new SIG or WG, suggests the revision of the group's topics, or objects to the group creation stating the reason for the objection.
+* When informed by the SIG Community, the Council agrees, during the weekly meeting, to the creation of the new SIG or WG, suggests the revision of the group's topics, or objects to the group creation stating the reason for the objection.
 
 Once the SIG or the WG receives an approval for the group creation, the authors of the proposal arrange the appropriate communication channels. The process is as follows:
  * Create a new folder in this directory following the `[sig|wg]-{shortname}` naming pattern.
