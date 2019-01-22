@@ -62,7 +62,7 @@ status:
 ```
 
 Lifecycle of the Bucket CR is done with the Bucket controller:
-- Once CR is created the bucket with the CR name is created in the storage under `namespaces/{NAMESPACE_NAME}/{CR_NAME}`. Status of the CR contains reference URL to the created bucket
+- Once CR is created the bucket with the CR name is created in the storage under `namespaces-{NAMESPACE_NAME}-{CR_NAME}`. Status of the CR contains reference URL to the created bucket
 - Once CR is deleted the bucket with all the content in it is removed
 
 #### Bucket reference
