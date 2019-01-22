@@ -120,23 +120,29 @@ paths:
     get:
       parameters:
       - in: header
-        name: Group
+        name: Base-Events-Path
         schema:
           type: string
           format: uuid
-        required: true
+        required: false
       - in: header
-        name: Tenant
+        name: Base-Metadata-Path
         schema:
           type: string
-          format: uuid
-        required: true
+          format: url
+        required: false
       - in: header
-        name: Application
+        name: Base-Renewal-Path
         schema:
           type: string
-          format: uuid
-        required: true
+          format: url
+        required: false
+      - in: header
+        name: Base-Revocation-Path
+        schema:
+          type: string
+          format: url
+        required: false
       tags:
       - applications external API
       summary: 'Returns information on available services.'
@@ -326,16 +332,16 @@ paths:
     get:
       parameters:
       - in: header
-        name: Group
+        name: Base-Renewal-Path
         schema:
           type: string
-          format: uuid
+          format: url
         required: true
       - in: header
-        name: Tenant
+        name: Base-Revocation-Path
         schema:
           type: string
-          format: uuid
+          format: url
         required: true
       tags:
       - runtimes external API
@@ -493,16 +499,16 @@ components:
       properties:
         metadataUrl:
           type: 'string'
-          example: 'gateway.test.cluster.kyma.cx/{APP_NAME}/v1/metadata/services'
+          example: '{BASE_METADATA_PATH}/{APP_NAME}/v1/metadata/services'
         eventsUrl:
           type: 'string'
-          example: 'gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events'
+          example: '{BASE_EVENTS_PATH}/{APP_NAME}/v1/events'
         renewCertUrl:
           type: 'string'
-          example: 'connector-service.test.cluster.kyma.cx/v1/applications/certificates/renewals'
+          example: '{BASE_RENEWAL_PATH}/v1/applications/certificates/renewals'
         revokeCertUrl:
           type: 'string'
-          example: 'connector-service.test.cluster.kyma.cx/v1/applications/certificates/revocations'
+          example: '{BASE_REVOCATION_PATH}/v1/applications/certificates/revocations'
         runtimeUrl:
           type: 'string'
           example: 'test.cluster.kyma.cx/'
@@ -521,21 +527,16 @@ components:
           $ref: '#/components/schemas/csrApiURLs'
         certificate:
           $ref: '#/components/schemas/cert'
+
     runtimeInfoResponseUrls:
       type: 'object'
       properties:
-        metadataUrl:
-          type: 'string'
-          example: 'gateway.test.cluster.kyma.cx/{APP_NAME}/v1/metadata/services'
-        eventsUrl:
-          type: 'string'
-          example: 'gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events'
         renewCertUrl:
           type: 'string'
-          example: 'connector-service.central.cluster.kyma.cx/v1/applications/certificates/renewal'
+          example: '{BASE_RENEWAL_PATH}/v1/applications/certificates/renewal'
         revokeCertUrl:
           type: 'string'
-          example: 'connector-service.central.cluster.kyma.cx/v1/applications/certificates/revocations'
+          example: '{BASE_REVOCATION_PATH}/v1/applications/certificates/revocations'
     runtimeInfoResponse:
       type: 'object'
       properties:
