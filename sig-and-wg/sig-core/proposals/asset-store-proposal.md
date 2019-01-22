@@ -15,7 +15,7 @@ Proposed on 2019-01-04.
 ## Use cases
 
 1. The storage for documentation and related images.
-2. Storage for API specifications
+2. The storage for API specifications.
 3. The storage for static client-side applications.
 
 ## Solution
