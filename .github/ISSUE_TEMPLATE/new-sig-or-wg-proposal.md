@@ -29,7 +29,7 @@ The abbreviate name must be no longer than six characters. -->
 * Internal
 * Public
 
-**Keywords**
+**Keywords** (optional)
 <!-- List several keywords or labels that relate to the working domain of this group. -->
 * ...
 * ...
@@ -56,10 +56,10 @@ The abbreviate name must be no longer than six characters. -->
 * Membership: <!-- Provide the approximate number of initial members. -->
 * Duration: <!-- This field is mandatory for a WG. -->
 
-**Previous approach**
+**Previous approach** (optional)
 <!-- Describe if and how these topics were previously addressed and why you think this group can improve them.-->
 
-**Measures of success**
+**Measures of success** (optional for SIG)
 <!-- List the criteria to assess if the group's work is successful and adds value.
 Describe the methods of performing and documenting the regular self-assessment by the group. -->
 * ...
