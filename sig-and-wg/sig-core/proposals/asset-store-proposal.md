@@ -15,7 +15,7 @@ Proposed on 2019-01-04
 ## Use case
 
 1. Storage for documentation and related images
-2. Storege for API specifications
+2. Storage for API specifications
 3. Storage for static client-side applications
 
 ## Solution
@@ -56,7 +56,7 @@ metadata:
 spec:
   policy: public #or other policies
 status:
-  ready: False
+  phase: Ready # Failed/Pending
   reason: BucketCreationFailure
   message: "service unavailable"
 ```
@@ -147,7 +147,7 @@ spec:
   bucketRef:
     name: my-bucket
 status:
-  ready: False
+  phase: Ready # Failed/Pending
   reason: Validation failure
   message: "file is not valid against provided json schema"
 ```
