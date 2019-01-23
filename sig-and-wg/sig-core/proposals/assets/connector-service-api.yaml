@@ -60,19 +60,19 @@ paths:
           schema:
             type: string
             format: uuid
-          required: false
+          required: true
         - in: header
           name: Tenant
           schema:
             type: string
             format: uuid
-          required: false
+          required: true
         - in: header
           name: Application
           schema:
             type: string
             format: uuid
-          required: false
+          required: true
       tags:
         - applications internal API
       summary: 'Marks certificate as revoked.'
@@ -103,7 +103,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/csrInfoResponse'
+                $ref: '#/components/schemas/csrApplicationInfoResponse'
         '403':
           description: 'Invalid token'
           content:
@@ -127,18 +127,6 @@ paths:
         required: false
       - in: header
         name: Base-Metadata-Path
-        schema:
-          type: string
-          format: url
-        required: false
-      - in: header
-        name: Base-Renewal-Path
-        schema:
-          type: string
-          format: url
-        required: false
-      - in: header
-        name: Base-Revocation-Path
         schema:
           type: string
           format: url
@@ -278,13 +266,13 @@ paths:
           schema:
             type: string
             format: uuid
-          required: false
+          required: true
         - in: header
           name: Tenant
           schema:
             type: string
             format: uuid
-          required: false
+          required: true
       tags:
         - runtimes internal API
       summary: 'Marks certificate as revoked.'
@@ -330,19 +318,6 @@ paths:
                   $ref: '#/components/schemas/appError'
   /v1/runtimes/management/info:
     get:
-      parameters:
-      - in: header
-        name: Base-Renewal-Path
-        schema:
-          type: string
-          format: url
-        required: true
-      - in: header
-        name: Base-Revocation-Path
-        schema:
-          type: string
-          format: url
-        required: true
       tags:
       - runtimes external API
       summary: 'Returns information on available services.'
@@ -442,21 +417,21 @@ paths:
                 $ref: '#/components/schemas/appError'
 components:
   schemas:
-    runtimeTokenResponse:
-      type: 'object'
-      properties:
-        url:
-          type: 'string'
-          example: 'https://connector-service.test.cluster.kyma.cx/v1/runtimes/info?token=1edfc34g'
-        token:
-          type: 'string'
-          example: '1edfc34g'
     tokenResponse:
       type: 'object'
       properties:
         url:
           type: 'string'
           example: 'https://connector-service.test.cluster.kyma.cx/v1/applications/info?token=1edfc34g'
+        token:
+          type: 'string'
+          example: '1edfc34g'
+    runtimeTokenResponse:
+      type: 'object'
+      properties:
+        url:
+          type: 'string'
+          example: 'https://connector-service.test.cluster.kyma.cx/v1/runtimes/info?token=1edfc34g'
         token:
           type: 'string'
           example: '1edfc34g'
@@ -482,7 +457,7 @@ components:
         key-algorithm:
           type: 'string'
           example: 'rsa2048'
-    csrApiURLs:
+    csrAplicationApiURLs:
       type: 'object'
       properties:
         metadataUrl:
@@ -491,9 +466,22 @@ components:
         eventsUrl:
           type: 'string'
           example: 'gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events'
+        certificatesUrl:
+          type: 'string'
+          example: 'certificate-service.kyma.cluster.cx/v1/applications'
         infoUrl:
           type: 'string'
           example: 'connector-service.test.cluster.kyma.cx/v1/applications/management/info'
+    csrApplicationInfoResponse:
+      type: 'object'
+      properties:
+        signUrl:
+          type: 'string'
+          example: 'https://connector-service.test.cluster.kyma.cx/v1/applications/certificates?token=1edfc34g'
+        api:
+          $ref: '#/components/schemas/csrAplicationApiURLs'
+        certificate:
+          $ref: '#/components/schemas/cert'
     applicationInfoResponseUrls:
       type: 'object'
       properties:
@@ -506,37 +494,17 @@ components:
         renewCertUrl:
           type: 'string'
           example: '{BASE_RENEWAL_PATH}/v1/applications/certificates/renewals'
-        revokeCertUrl:
-          type: 'string'
-          example: '{BASE_REVOCATION_PATH}/v1/applications/certificates/revocations'
-        runtimeUrl:
-          type: 'string'
-          example: 'test.cluster.kyma.cx/'
     applicationInfoResponse:
       type: 'object'
       properties:
         urls:
           $ref: '#/components/schemas/applicationInfoResponseUrls'
-    csrInfoResponse:
-      type: 'object'
-      properties:
-        url:
-          type: 'string'
-          example: 'https://connector-service.test.cluster.kyma.cx/v1/applications/certificates?token=1edfc34g'
-        api:
-          $ref: '#/components/schemas/csrApiURLs'
-        certificate:
-          $ref: '#/components/schemas/cert'
-
     runtimeInfoResponseUrls:
       type: 'object'
       properties:
         renewCertUrl:
           type: 'string'
-          example: '{BASE_RENEWAL_PATH}/v1/applications/certificates/renewal'
-        revokeCertUrl:
-          type: 'string'
-          example: '{BASE_REVOCATION_PATH}/v1/applications/certificates/revocations'
+          example: 'https://connector-service.test.cluster.kyma.cx/v1/applications/certificates/renewal'
     runtimeInfoResponse:
       type: 'object'
       properties:
@@ -551,7 +519,7 @@ components:
     csrRuntimeInfoResponse:
       type: 'object'
       properties:
-        url:
+        signUrl:
           type: 'string'
           example: 'https://connector-service.test.cluster.kyma.cx/v1/runtimes/certificates?token=1edfc34g'
         api:
