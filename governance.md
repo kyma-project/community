@@ -44,7 +44,7 @@ SIGs and WGs follow the **lazy consensus** approach to decision-making which ass
 
 > **NOTE:** The described approach only concerns the decisions made by SIGs and WGs. It does not affect any Kyma decisions made during daily team activities.
 
-To see the current state of processed decisions in the Kyma project, go to the project's [decision board](https://app.zenhub.com/workspaces/kyma---all-repositories-5b6d5985084045741e744dea/boards?labels=decision&repos=139590666&showPRs=false).
+To see the current state of processed decisions in the Kyma project, go to the project's [decision board](https://app.zenhub.com/workspaces/kyma---all-repositories-5b6d5985084045741e744dea/boards?labels=decision&repos=139590666).
 
 The SIG/WG decison-making process is as follows:
 
