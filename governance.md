@@ -44,7 +44,7 @@ SIGs and WGs follow the **lazy consensus** approach to decision-making which ass
 
 > **NOTE:** The described approach only concerns the decisions made by SIGs and WGs. It does not affect any Kyma decisions made during daily team activities.
 
-To see the current state of processed decisions in the Kyma project, go to the project's [decision board](https://github.com/kyma-project/community/issues/106#boards?labels=decision&activeFilters=labels&repos=139590666,151691065,139590577,139590641,139590616,139590701,147495537,139847219).
+To see the current state of processed decisions in the Kyma project, go to the project's [decision board](https://app.zenhub.com/workspaces/kyma---all-repositories-5b6d5985084045741e744dea/boards?labels=decision&repos=139590666).
 
 The SIG/WG decison-making process is as follows:
 
@@ -60,7 +60,7 @@ The SIG/WG decison-making process is as follows:
 
 Take all necessary actions to reach a consensus no later than the decision due date:
 
-- Send a link to the **Decision record** issue to the related SIG or WG mailing list and post it in the relevant Slack channels. If people relevant for the decision are not part of the mailing list, add them explicitly to the email communication. Communicate the decision to be made clearly to the groups affected by it and invite them to check the proposal.
+- Send a link to the **Decision record** issue to the related SIG or WG mailing list (For Core SIG the easiest way to do it is to add new Topic in [google group](https://groups.google.com/forum/#!forum/kyma-sig-core) as then it is automatically emailed to the mailing list) and post it in the relevant Slack channels. If people relevant for the decision are not part of the mailing list, add them explicitly to the email communication. Communicate the decision to be made clearly to the groups affected by it and invite them to check the proposal.
 
 - Clarify and discuss the decision content and the proposal as needed. Use the mailing list, relevant Slack channels, the related pull request, or comment directly on the **Decision record** issue.
 
