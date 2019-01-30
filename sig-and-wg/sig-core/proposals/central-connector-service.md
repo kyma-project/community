@@ -4,7 +4,7 @@ Created on 2018-12-17 by Lukasz Szymik (@lszymik).
 
 ## Status
 
-Proposed on 2018-12-17.
+Proposed on 2019-01-29
 
 ## Motivation
 
@@ -14,20 +14,23 @@ Currently, the connection between an external solution and Kyma is always point-
 As the customers work with multiple Kyma clusters, they will benefit from extending the provisioning of Kyma client certificates. A central Connector Service would manage the provisioning of certificates for multiple Kyma clusters and connected clients. Such approach allows the users to control their entire Kyma ecosystem from a single, central point.
 
 
+
 ## Goal
 
+1. The Connector service can be deployed outside of Kyma cluster
 1. The Connector service handles client certificate provisioning for the connection with the Application Registry.
-2. The Connector service handles client certificate provisioning for the connection with the Event Service.
-3. The Connector service handles certificate provisioning for Kyma cluster.
-4. The Connector service handles certificate rotation.
-5. The Connector service returns information about the available cluster endpoints.
+1. The Connector service handles client certificate provisioning for the connection with the Event Service.
+1. The Connector service handles certificate provisioning for Kyma cluster.
+1. The Connector service handles certificate rotation.
+1. The Connector service handles certificate revocation.
+1. The Connector service returns information about the available cluster endpoints.
 
 
 ## Suggested solution
 
 The Connector Service (CS) is deployed as a central component.
 
-  - The CS is deployed as a global component in implementations with multiple Kyma clusters where one cluster takes the role of a master.
+  - The CS is deployed as a independent component inside Kyma cluster or Kubernetes.
   - The CS exposes a secured connection for requesting client certificates signed with root CA.
   - The CS exposes a secured connection for requesting server certificates signed with root CA and deployed to Kyma cluster.
   - The client certificate enables a trusted connection with the central Kyma cluster where the App Registry is stored.
@@ -51,27 +54,49 @@ The Connector Service (CS) is deployed as a central component.
    The client certificate has the following properties:
 
    - Is signed by the root CA
-   - The subject of the client certificate contains the unique ID of the Application and information about the group to which the Application is assigned
+   - The subject of the client certificate contains the unique ID of the Application and additional information about the group and/or the tenant to which the Application is assigned
 
 2. After the cluster is provisioned, it requests for the Kyma cluster client certificate. As a response, it receives a certificate chain consisting of the generated Kyma cluster client certificate and the root CA certificate. The client certificate has the following properties:
 
    - Is signed by the root CA.
-   - Contains the information about the cluster name for which it is generated.
+   - Contains the information about the cluster name for which it is generated and additional information like group and tenant. 
+   - That certificate is independent of the certificate provided to the Application in the first point.
 
-3. The Application can access the master Kyma cluster and the Kyma cluster using the single certificate. The identity of the Application and the Kyma clusters is encoded in the certificate subject. It allows the verification of the calling parties.
+3. The Application can access the central Connector service and the Kyma cluster which acquired corresponding certificate. The identity of the Application and the Kyma clusters is encoded in the certificate subject. It allows the verification of the calling parties.
+The certificate verification mechanism stays unchanged.
 
 ### Cluster information
 
 The Connector Service exposes the `info` endpoint which returns information about the connected clusters, including the App Registry URL, URL to the Event Service working in the cluster, etc.
-A connected Application calls this endpoint periodically and checks the cluster status. 
+A connected Application calls this endpoint periodically and checks the cluster status.
+
+### Certificate renewal
+
+The Connector service exposed the API endpoint for renewing provisioned certificates. A client is sending the new certificate signing request and service returns a new certificate.
+The assumption is that certificates are short-living - 24 hours.
+
+The endpoint for renewal is protected with a certificate. If a certificate expires then the whole pairing process need to be started again. 
+
 
 ### Certificate revocation 
 
-The client certificates and Kyma cluster client certificates must be revoked as soon as they are compromised. The list of revoked certificates will be stored in the central Connector Service and synchronized with all Kyma clusters. The list will contain both the client certificates and the certificates in Kyma cluster.
+The client certificates and Kyma cluster client certificates must be revoked as soon as they are compromised. Due to the fact that certificates are short-living that is enough to block the certificate renewal.
+The application itself or the system administrator can use endpoint for certificate revocation. The payload is SHA-256 fingerprint of the certificate.
 
-The fingerprint of the compromised certificate will be added to the Application Connector. It will ensure that the connected Application which uses the compromised certificates can no longer perform any calls.
+The revoked certificate cannot be further used for renewal.
 
->**NOTE:** The current versions of Istio and the Nginx-controller do not support the revocation list. The further plan to add support for this feature will be provided later.
+Further increasing of security can be achieved by propagating the information about the expired certificate to the Kyma clusters. Thanks to this, the compromised certificate will be unusable immediately.
+
+### Get Info endpoint
+
+The Connector service exposes endpoint which returns important information to the connected application. The information contains such details like the App Registry URL, Event service URL.
+The information about real endpoints will be passed to the Connector service in the headers.
+
+### Certificates rotation
+
+1. The application certificates and Kyma cluster certificates will be renewed frequently.
+1. The Root CA certificate, used for signing client certificates, will be rotated in a special way. 
+
 
 ## Proof of Concept
 
@@ -264,10 +289,3 @@ The following API has been defined:
 ### Returning API spec from the service
 
 The user should be able to get specification from the service. There should be `v1/api.yaml` endpoint for this purpose.
-
-### Open questions
-
-The following questions should be answered:
-
-- Should we expose full API in case Connector Service is deployed on standalone Kyma instance? In the other words  should Runtimes API be available in such a case?
-- Is it possible to extract Application ID from certificate used for accessing `v1/applications/certificates/renew` endpoint?

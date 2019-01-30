@@ -14,24 +14,24 @@ paths:
   /v1/applications/tokens:
     post:
       parameters:
-      - in: header
-        name: Group
-        schema:
-          type: string
-          format: uuid
-        required: true
-      - in: header
-        name: Tenant
-        schema:
-          type: string
-        required: true
-      - in: header
-        name: Application
-        schema:
-          type: string
-        required: true
+        - in: header
+          name: Group
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: header
+          name: Tenant
+          schema:
+            type: string
+          required: true
+        - in: header
+          name: Application
+          schema:
+            type: string
+          required: true
       tags:
-      - applications internal API
+        - applications internal API
       summary: 'Creates a token used for certificate signing flow.'
       responses:
         '201':
@@ -88,14 +88,28 @@ paths:
   /v1/applications/signingRequests/info:
     get:
       parameters:
-      - in: query
-        name: token
-        description: 'Access Token fetched from /tokens endpoint.'
-        required: true
-        schema:
-          type: string
+        - in: query
+          name: token
+          description: 'Access Token fetched from /tokens endpoint.'
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: EventsURL
+          description: 'Value of the URL to Event service which must be returned to the caller'
+          schema:
+            type: string
+            format: url
+          required: false
+        - in: header
+          name: MetadataURL
+          description: 'Value of the URL to Application Registry which must be returned to the caller'
+          schema:
+            type: string
+            format: url
+          required: false
       tags:
-      - applications external API
+        - applications external API
       summary: 'Allows for fetching information for CSR.'
       responses:
         '200':
@@ -119,20 +133,22 @@ paths:
   /v1/applications/management/info:
     get:
       parameters:
-      - in: header
-        name: Base-Events-Path
-        schema:
-          type: string
-          format: uuid
-        required: false
-      - in: header
-        name: Base-Metadata-Path
-        schema:
-          type: string
-          format: url
-        required: false
+        - in: header
+          name: EventsURL
+          description: 'Value of the URL to Event service which must be returned to the caller'
+          schema:
+            type: string
+            format: url
+          required: false
+        - in: header
+          name: MetadataURL
+          description: 'Value of the URL to Application Registry which must be returned to the caller'
+          schema:
+            type: string
+            format: url
+          required: false
       tags:
-      - applications external API
+        - applications external API
       summary: 'Returns information on available services.'
       responses:
         '200':
@@ -150,14 +166,14 @@ paths:
   /v1/applications/certificates:
     post:
       parameters:
-      - in: query
-        name: token
-        description: 'Access Token fetched from /tokens endpoint.'
-        required: true
-        schema:
-          type: string
+        - in: query
+          name: token
+          description: 'Access Token fetched from /tokens endpoint.'
+          required: true
+          schema:
+            type: string
       tags:
-      - applications external API
+        - applications external API
       summary: 'Signs CSR.'
       requestBody:
         description: 'The CSR to be signed'
@@ -200,7 +216,7 @@ paths:
   /v1/applications/certificates/renewals:
     post:
       tags:
-      - applications external API
+        - applications external API
       summary: 'Renews certificate using CSR.'
       requestBody:
         description: 'The CSR to be signed'
@@ -231,19 +247,19 @@ paths:
   /v1/runtimes/tokens:
     post:
       parameters:
-      - in: header
-        name: Group
-        schema:
-          type: string
-          format: uuid
-        required: true
-      - in: header
-        name: Tenant
-        schema:
-          type: string
-        required: true
+        - in: header
+          name: Group
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: header
+          name: Tenant
+          schema:
+            type: string
+          required: true
       tags:
-      - runtimes internal API
+        - runtimes internal API
       summary: 'Creates a token used for certificate signing flow.'
       responses:
         '201':
@@ -286,40 +302,40 @@ paths:
               schema:
                 $ref: '#/components/schemas/appError'
   /v1/runtimes/signingRequests/info:
-      get:
-        parameters:
+    get:
+      parameters:
         - in: query
           name: token
           description: 'Access Token fetched from /tokens endpoint.'
           required: true
           schema:
             type: string
-        tags:
+      tags:
         - runtimes external API
-        summary: 'Allows for fetching information for CSR.'
-        responses:
-          '200':
-            description: 'Successful operation.'
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/csrRuntimeInfoResponse'
-          '403':
-            description: 'Invalid token'
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/appError'
-          '500':
-            description: 'Server error.'
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/appError'
+      summary: 'Allows for fetching information for CSR.'
+      responses:
+        '200':
+          description: 'Successful operation.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/csrRuntimeInfoResponse'
+        '403':
+          description: 'Invalid token'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/appError'
+        '500':
+          description: 'Server error.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/appError'
   /v1/runtimes/management/info:
     get:
       tags:
-      - runtimes external API
+        - runtimes external API
       summary: 'Returns information on available services.'
       responses:
         '200':
@@ -337,14 +353,14 @@ paths:
   /v1/runtimes/certificates:
     post:
       parameters:
-      - in: query
-        name: token
-        description: 'Access Token fetched from /tokens endpoint.'
-        required: true
-        schema:
-          type: string
+        - in: query
+          name: token
+          description: 'Access Token fetched from /tokens endpoint.'
+          required: true
+          schema:
+            type: string
       tags:
-      - runtimes external API
+        - runtimes external API
       summary: 'Signs CSR.'
       requestBody:
         description: 'The CSR to be signed'
@@ -387,7 +403,7 @@ paths:
   /v1/runtimes/certificates/renewals:
     post:
       tags:
-      - runtimes external API
+        - runtimes external API
       summary: 'Renews certificate using CSR.'
       requestBody:
         description: 'The CSR to be signed'
