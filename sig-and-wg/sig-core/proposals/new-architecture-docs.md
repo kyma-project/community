@@ -21,14 +21,16 @@ Proposed on 2018-10-16
 4. Enable modularization of documentation, so you can load documentation only for modules that are installed in Kyma
 
 ## Solution
-  
+
+Implement below proposal on top of new [Assets Store](https://github.com/kyma-project/community/blob/master/sig-and-wg/sig-core/proposals/asset-store-proposal.md)
+
 ![](assets/main-arch.svg)
 
 ### DocsTopic and ClusterDocsTopic
 - All details of a given documentation topic, including doc soureces are specified with [Custom Resource](/assets/doc-topic-crd-and-example.yaml) (DocsTopic and ClusterDocsTopic)
-- Supported formats, markdown + assets, swagger, asyncapi, odata
+- Supported formats: markdown + assets, swagger, asyncapi, odata
 - Documentation can be provided in different formats:
-  - in a zip/tar.gz format with info what can be found in a package, docs and specs. There is a default convention applied if nothing is specified
+  - in a zip/tar.gz format
   - different location of docs or specs can be provided, in case of docs and assets you point to an index with names of the files available under given link
   - mixcure of above is possible
 
@@ -87,43 +89,10 @@ status:
 
 ### Documentation Controller
 
-The package or specific files and indexes are refered in the CR and fetched by a Documentation Controller:
+This controller is responsible for creating Asset custom resource (CR) from AssetStore. In case DocsTopic CR contains information about different formats, like docs in zip and also direct link to some spec, then Documentation Controller is then responsible for creating 2 different Asset CRs.
 
-Package
-- Package is unziped and fetched content validated and rewritten if needed (for example baseUrl rewrite in swagger.json)
-- Index of all docs and assets is generated and stored in respective folders as `index.yaml` file
-  - for assets it contains a name of all the assets. The order is based on filename
-  - for docs it contains a name and related markdown metadata. The order is based on filename
-- Together with index files content is uploaded to storage
-
-Direct links
-- Content is fetched and validated
-- Together with index files content is uploaded to storage
-
-```
-#sample of index file with markdown and assets files
-apiVersion: v1
-files:
-  - name: 01-overview.md
-    metadata:
-      title: MyOverview
-      type: Overview
-  - name: 02-details.md
-    metadata:
-      title: MyDetails
-      type: Details
-  - name: 03-installation.md
-    metadata:
-      title: MyInstallation
-      type: Tutorial
-  - name: assets/diagram.svg
-```
-
-Controller sets status of the CR:
-- in case of successful creation of the CR, controller adds to the CR information about location of the fetched resources and details if index, if such exists
-- in case of failure, error message is specified
-
-Controller cleans up storage in case of CR is deleted. 
+Documentation Controller monitors the status of Asset CR and updates the status of DocsTopic CR. 
+Asset CRs created by Documentation controller should not be removable while related DocsTopic CR exists. They can only be removed by Documentation controller if DocsTopic CR is deleted
 
 ### Catalog Docs Controller
 
