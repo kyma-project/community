@@ -27,7 +27,7 @@ Implement below proposal on top of new [Assets Store](https://github.com/kyma-pr
 ![](assets/main-arch.svg)
 
 ### DocsTopic and ClusterDocsTopic
-- All details of a given documentation topic, including doc soureces are specified with [Custom Resource](/assets/doc-topic-crd-and-example.yaml) (DocsTopic and ClusterDocsTopic)
+- All details of a given documentation topic, including doc soureces are specified with custom resource (DocsTopic or ClusterDocsTopic)
 - Supported formats: markdown + assets, swagger, asyncapi, odata
 - Documentation can be provided in different formats:
   - in a zip/tar.gz format
@@ -44,12 +44,11 @@ metadata:
     viewContext: docs-view
 spec:
   description: Overal documentation for Service Catalog
-  order: 1 # helps with ordering of the list in navigation
   displayName: Service Catalog
-  group: Components #I think that because of the plural nature of the name it is much more intuitive to expect here plural then in an attribute called "type"
   source:
-    package: https://some.domain.com/kyma.zip #zip or tar of package with docs and speci, structure must follow accepted convention
-    docs: https://some.domain.com/index.yaml
+    docs: 
+       index: https://some.domain.com/index.yaml
+       package: https://some.domain.com/kyma.zip
     specs:
       swagger: 
         url: https://some.domain.com/swagger.yaml
