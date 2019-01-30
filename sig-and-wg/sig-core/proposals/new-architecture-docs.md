@@ -49,6 +49,7 @@ spec:
     docs: 
        index: https://some.domain.com/index.yaml
        package: https://some.domain.com/kyma.zip
+       path: "/only/this/dir"
     specs:
       swagger: 
         url: https://some.domain.com/swagger.yaml
