@@ -106,30 +106,30 @@ A detailed mapping would be as follows:
 
 ![](assets/event-types.svg)
 
-**Known Challenges**
+**Known challenges**
 
 * K8S and Istio Service overload. For example, having 1000 event types creating 1000 services will put the load on the service discovery.
   >**Note**: This has been discussed with Knative community and they are aware of this issue.
 
-## Choosing a PubSub for event type
+## Choosing a PubSub for an event type
 
-With Knative, it will be possible to enable multiple PubSub in a single Kyma instance. e.g. local (NATS Streaming) and Google Cloud PubSub. 
-There should be a provision for the operator to decide which PubSub to use for particular event type. The decision can be based on various factors such as costs, desired Quality of Service.
+With Knative, it will be possible to enable multiple PubSub services in a single Kyma instance, for example local (NATS Streaming) and Google Cloud PubSub. 
+There should be a provision for the operator to decide which PubSub to use for a particular event type. The decision can be based on various factors such as costs or the desired Quality of Service.
 
 To enable ease of use and better UX, it should be possible to have:
 
-* Default PubSub.   `Lowest Priority`
-* PubSub per application
-* PubSub specified for the event type during registration. `Highest Priority`
+* A default PubSub.   `Lowest Priority`
+* A PubSub per application
+* A PubSub specified for an event type during registration. `Highest Priority`
 
 **Requirements:**
 
 * API to expose available PubSub in Kyma.
 
-**Open Questions**
+**Open questions**
 
-* How to handle updates? Changing from one PubSub to another for an event type.
-* How to handle cleanup? When an application is deprovisioned, all the channels should also be deleted.
+* How to handle the updates? Changing from one PubSub to another for an event type.
+* How to handle the cleanup? When an application is deprovisioned, all channels should also be deleted.
 
 ## When to create a channel (PubSub resources)
 
@@ -137,9 +137,9 @@ To enable ease of use and better UX, it should be possible to have:
   * Only create the channel when someone actually wants to consume events.
   * This can be extended in a way that we discard the events at an early stage when there is no consumer configured.
   * There is **one exception**
-	* When the event needs to trigger a compute in the cloud such as GCP via publishing events.
+	* When the event needs to trigger a compute in the cloud, such as GCP via publishing events.
 	* In such a case, while registering an event type, it can be specified if the backing resources should be created or not.
-	* This way the customer is explicitly making a concious choice to create PubSub resources while registering events.
+	* This way the customer is explicitly making a conscious choice to create PubSub resources while registering events.
 
 # Publishing and consumption
 
