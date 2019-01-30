@@ -7,27 +7,27 @@ Created on 2019-01-28 by Andreas Thaler (@a-thaler).
 Proposed on 2019-01-28
 
 ## Motivation
-With Kyma a "batteries-included" like solution for logging should be provided. Such a solution must be very lightweight as it must run in-cluster and should work even for local development. Current approach is to use [OKLog](https://github.com/oklog/oklog), which is fullfilling that main criteria but unfortunately is discontinued and lacks a lot of user experience features.
+Kyma should provide a "batteries-included"-like solution for logging. Such a solution must be very lightweight as it must run in-cluster and should work for local development. The current approach is to use [OK Log](https://github.com/oklog/oklog), which is fulfilling the main criteria, but unfortunately its development has been discontinued and it also lacks a lot of user experience features.
 
 ## Goal
-Replace OKLog by a solution which is:
-- leightweight in resource consumption (in-cluster local development support)
+Replace OK Log with a solution which is:
+- lightweight in resource consumption (in-cluster local development support)
 - easy to operate even when scaling up the cluster
-- allow to query recent logs for a pod in a user-friendly way
+- able to query recent logs for a Pod in a user-friendly way
 - maintained and further developed by a community
 
 ## Proposal
-Replace OKLog with [Loki](https://github.com/grafana/loki) by:
-- Adjust the logging helm chart to deploy the Loki service and the promtail daemonSet instead of OKLog service and logspout daemonSetpromtail
-- Enable the experimental feature of grafana to enable the new exporer and integration with Loki as data source
+Replace OK Log with [Loki](https://github.com/grafana/loki) by:
+- Adjusting the logging Helm chart to deploy the Loki service and the promtail DaemonSet instead of OK Log service and the Logspout promtail DaemonSet.
+- Enabling Grafana's experimental feature to enable the new exporter and integration with Loki as the data source.
 
 ## Details
-Loki is a new project by Grafana Labs and aims to provide a similar solution for logging, like Prometheus is providing for monitoring.
-It uses a similar approach like OKLog by explicitly not doing a full text indexing, but just an indexing on metadata level. Here, it is leveraging the existing labels of Prometheus and Kubernetes and it integrates with Grafana out-of-the-box (experimental feature for now).
+Loki is a new project by Grafana Labs and aims to provide a similar solution for logging as Prometheus does for monitoring.
+It uses a similar approach as the OK Log by indexing on the metadata level instead of performing full-text indexing. Additionally, it is leveraging the existing labels of Prometheus and Kubernetes and it integrates with Grafana out-of-the-box (experimental feature for now).
 
-Besides OKLog and Loki there was no other alternative covering the described requirements.
-OKLog should be replaced with Loki as
-- it has an active development community
-- is leveraging the existing labels and with that provides a much better search experience
-- it provides the better Graphical user interface by being integrated to Grafana
+Apart from the OK Log and Loki there was no other alternative covering the described requirements.
+OK Log should be replaced with Loki because:
+- It has an active development community.
+- It is leveraging the existing labels, thus providing a much better search experience.
+- It provides an improved graphical user interface as a result of integration with Grafana. 
 
