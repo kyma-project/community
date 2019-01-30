@@ -94,12 +94,16 @@ This controller is responsible for creating Asset custom resource (CR) from Asse
 Documentation Controller monitors the status of Asset CR and updates the status of DocsTopic CR. 
 Asset CRs created by Documentation controller should not be removable while related DocsTopic CR exists. They can only be removed by Documentation controller if DocsTopic CR is deleted
 
-### Catalog Docs Controller
+## Possible extensions -> Service Catalog case
 
-When you register a ServiceBroker, this controller listens to all newly addedded ServiceClasses to the Catalog and creates for them DocsTopic or ClusterDocsTopic CR. Such ServiceClass on which controller reacts must contain `external.metadata.content` object.
+When you register a ServiceBroker, Catalog Docs controller listens to all newly addedded ServiceClasses to the Catalog and creates for them DocsTopic or ClusterDocsTopic CR. 
+
+![](assets/main-arch-catalog.svg)
+
+Such ServiceClass on which controller reacts must contain `external.metadata.content` object as shown below:
 
 ```
-package: https://some.domain.com/kyma.zip #zip or tar of package with docs and speci, structure must follow accepted convention
+package: https://some.domain.com/kyma.zip
     docs: https://some.domain.com/index.yaml
     specs:
       swagger: 
@@ -113,14 +117,3 @@ package: https://some.domain.com/kyma.zip #zip or tar of package with docs and s
 ```
 
 For docs cleanup reasons (unregister broker case), controller during CR creation specifies an `ownerReference` pointing to the ServiceClass. The controller will make sure that for such use case it will add a finalizer to the DocsTopic CR and not allow its deletion until storage is really cleaned up.
-
-### Storage/Minio
-
-- Minio can be replaced with S3 if needed.
-- Bucket with documentation is called `docstopics/VERSION`
-- In case of Cluster CR path to sample swagger would be `docstopics/v1alpha1/CR_NAME/swagger.yaml`
-- In case of Namespaced CR path to sample swagger would be `docstopics/v1alpha1/namespace/NAMESPACE_NAME/CR_NAME/swagger.yaml`
-
-## Website running outside Kyma cluster
-
-To avoid duplication, `topics.yaml` is basically a list of CRs that point to available locations of documentation for a given Kyma version. Website pipeline acts as a controller, generating indexes if needed and puts files in storage (in this case it is website github page)
