@@ -18,8 +18,8 @@ Replace OK Log with a solution which is:
 
 ## Proposal
 Replace OK Log with [Loki](https://github.com/grafana/loki) by:
-- Adjusting the logging Helm chart to deploy the Loki service and the promtail DaemonSet instead of OK Log service and the Logspout promtail DaemonSet.
-- Enabling Grafana's experimental feature to enable the new exporter and integration with Loki as the data source.
+- Adjusting the logging Helm chart to deploy the Loki service and the promtail DaemonSet instead of OK Log service and the Logspout DaemonSet.
+- Enabling Grafana's experimental feature to enable the new explorer and integration with Loki as the data source.
 
 ## Details
 Loki is a new project by Grafana Labs and aims to provide a similar solution for logging as Prometheus does for monitoring.
