@@ -46,6 +46,7 @@ spec:
   description: Overal documentation for Service Catalog
   displayName: Service Catalog
   source:
+    access: private #can be also public, you not always want to have publicly accessible files
     docs: 
        index: https://some.domain.com/index.yaml
        package: https://some.domain.com/kyma.zip
