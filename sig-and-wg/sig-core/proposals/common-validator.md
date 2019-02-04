@@ -8,26 +8,26 @@ Proposed on 2019-01-15.
 
 ## Motivation
 
-The Kyma project is a one big mono repository with multiple separate projects. That projects are validated in a different ways. Current situation causes following issues:
+The Kyma project is one big monorepository with multiple separate projects. Those projects are validated in different ways. The current situation results in the following issues:
 
-- Script that validates repositories is duplicated across components.
-- Multiple versions of scripts that validates components.
+- The script that validates repositories is duplicated across components.
+- There are multiple versions of the script that validates components.
 - It is not possible to maintain it.
-- Contributors don't know what they should execute to validate component.
-- Different formatting and coding standards in Kyma components.
-- CI validates code in a different environment.
+- Contributors don't know what they should execute to validate a component.
+- There are different formatting and coding standards for Kyma components.
+- The CI validates the code in a different environment than the one in which it is validated locally.
 
 ## Solution
 
-Github `kyma-project` organization already contains `makefiles` in every repository and CI pipeline is based on it. In such case, we should unify `makefiles` targets across components/repositories and drop support for any other solution like before-commit, custom validators etc. Thanks to that, whenever contributor will work on `console`, `kyma component` or some other `tool` in our organization, she/he will know how to execute build, test, or format code. It is crucial for development experience.
+The `kyma-project` organization on GitHub already contains makefiles in every repository and the CI pipeline is based on them. That is why, we should unify makefile targets across components and repositories, and resign from other solutions, such as before-commit, or custom validators. Thanks to that, whenever contributors work on a Kyma component or any other tool in our organization, they will know how to execute builds, tests, or how to format the code. It is crucial for the development experience.
 
-I will base my proposal on `ui-api-layer` component and targets may not work as it is only an example.
+This proposal is based on the `ui-api-layer` component. Since it is only an example, the presented targets may not be fully functional.
 
-### Makefile Targets
+### Makefile targets
 
-Makefile targets should be simple and should allow contributors to execute all required validations as one command. It should be unified across all `kyma-project` repositories regardless language or type.
+The makefile targets should be simple and allow contributors to execute all required validations as one command. It should be unified across all `kyma-project` repositories regardless of language or type.
 
-Currently, `makefile` in components looks like that:
+Currently, the makefiles in components look as follows:
 
 ```makefile
 APP_NAME = ui-api-layer
@@ -51,22 +51,22 @@ push-image:
 	docker push $(IMG):$(TAG)
 ```
 
-Only the `ci-*` targets are unified in `kyma-project` organization, because they are required by CI system. Other targets may have different names, because they are not unified and not required by any system. For example `ui-api-layer` has `build-and-test` target, `binding-usage-controller` has `build` - both targets executes `before-commit.sh` script. In such case contributor doesn't know how to work with components in one repository.
+Only the `ci-*` targets are unified in the `kyma-project` organization because they are required by the CI system. Other targets can have different names because they are not unified and not required by any system. For example, `ui-api-layer` has the `build-and-test` target, while `binding-usage-controller` has `build`. Both targets execute the `before-commit.sh` script. In such a case, the contributor doesn't know how to work with components in one repository.
 
-As a solution for that I would like to unify targets:
- - `ci-pr`, `ci-master`, `ci-release` - targets required by CI system
- - `validate` - execute all validation
- - `resolve` - download dependencies
- - `build` - execute build of component
- - `clean` - remove artifacts
- - `test` - execute tests for component
- - `lint` - execute linters for component
- - `format` - execute code formating for component
- - `validate-format` - validates if files are formated correctly
- - `docker-build` - build docker image with component
- - `docker-push` - push docker image to repository
+As a solution to that, I would like to unify these targets:
+ - `ci-pr`, `ci-master`, `ci-release` which are required by the CI system
+ - `validate` that executes the whole validation
+ - `resolve` that downloads dependencies
+ - `build` that executes component builds
+ - `clean` that removes artifacts
+ - `test` that executes tests for a component
+ - `lint` that executes linters for a component
+ - `format` that executes code formatting for a component
+ - `validate-format` that validates if files are formatted correctly
+ - `docker-build` that builds the Docker image with a component
+ - `docker-push` that pushes the Docker image to a repository
 
- After unification, `makefile` for `ui-api-layer` component will look like that:
+After unification, the makefile for the `ui-api-layer` component will look as follows:
 
  ```makefile
 APP_NAME = ui-api-layer
@@ -105,13 +105,15 @@ docker-push:
 	docker push $(IMG):$(TAG)
  ```
 
-### Common Makefile
+### Common makefile
 
-As in previous point unified targets were introduced it would be fine to not duplicate all that `makefile` content in other components. Fortunately it is possible to include `makefiles`. Thanks to that we can create one common `makefile` that will be included in components `makefiles`.
+If we introduce unified targets, it would be best not to duplicate the makefiles content in other components. Fortunately, it is possible to reference makefiles. Thanks to that, we can create one common makefile that will be included in the components' makefiles.
 
-Lets name this common `makefile` `template.go.mk` - files with `*.mk` are treated as `makefiles` - and put it in `kyma/scripts` directory. In `kyma/scripts` we can also store other common scripts.
+Let's name this common makefile a `template.go.mk` file and put it in the `kyma/scripts` directory. We can also store other common scripts in `kyma/scripts`.
 
-The content of `template.go.mk` file will look like that:
+>**NOTE:** All files in the `.mk` format are treated as makefiles.
+
+The content of the `template.go.mk` file will look as follows:
 
 ```makefile
 IMG = $(DOCKER_PUSH_REPOSITORY)$(DOCKER_PUSH_DIRECTORY)/$(APP_NAME)
@@ -158,11 +160,11 @@ REPOSITORY_PATH = $(realpath $(shell pwd)/../..)
 include $(REPOSITORY_PATH)/scripts/template.go.mk
 ```
 
-Thanks to that all targets from `template.go.mk` are available in `makefile` for `ui-api-layer`.
+Thanks to that change, all targets from `template.go.mk` are available in the makefile for `ui-api-layer`.
 
-Unfortunately the structure of components may vary and they may be built in different way. For example `ui-api-layer` has `main.go` file on the root of the component, `binding-usage-controller` has it in `cmd/controller` directory. The template should handle such situation and it is also possible thanks to `template definition` and `eval` function.
+Unfortunately, the structure of components can vary and they can be built in different ways. For example, `ui-api-layer` has a `main.go` file at the root of the component, while `binding-usage-controller` has it in the `cmd/controller` directory. The template should handle such a situation, and it is possible thanks to `template definition` and `eval` functions.
 
-After introducing `template definition` the `makefiles` will look like that:
+After introducing `template definition`, the makefiles will look as follows:
 
 `template.go.mk`:
 ```makefile
@@ -212,19 +214,19 @@ include $(REPOSITORY_PATH)/scripts/template.go.mk
 $(eval $(call TARGETS,main.go,Dockerfile))
 ```
 
-Thanks to `template.go.mk` we will have one place in repository with targets definitions and it will be much easier to maintain it.
+Thanks to `template.go.mk`, we will have one place in a repository with target definitions, and it will be much easier to maintain them.
 
->**NOTE**: All components needs to be build by CI system in case of changes in `template.go.mk`.
+>**NOTE**: If you make any changes to `template.go.mk`, the CI system needs to validate if all components build successfully.
 
-### Sandbox Validation
+### Sandbox validation
 
-Developers often have different environment than CI system. For example different version of Golang. It is important to provide a way for verifying code against CI environment. For that lets create targets with `-sandbox` suffix, that will executes targets in same `buildpack` Docker image as CI system is using.
+Developers often work in a different environment than the one used by the CI system. For example, they use different versions of Golang. It is important to provide a way of verifying the code against the CI environment. This can be enabled by creating targets with the `-sandbox` suffix that will execute targets in the same `buildpack` Docker image as the one the CI system uses.
 
-To achieve that we need to update `template.go.mk` and `Makefile` in component
+To achieve that, we need to update `template.go.mk` and the makefile for a given component.
 
 `template.go.mk`:
 ```makefile
-DOCKER_REPOSITORY = $(DOCKER_PUSH_REPOSITORY)$(DOCKER_PUSH_DIRECTORY) # provided by CI system
+DOCKER_REPOSITORY = $(DOCKER_PUSH_REPOSITORY)$(DOCKER_PUSH_DIRECTORY) # provided by the CI system
 COMPONENT_REL_PATH=$(shell echo $(shell pwd) | sed 's,$(REPOSITORY_PATH)/,,g')
 
 .PHONY: ci-pr ci-master ci-release resolve validate build clean test format validate-format lint docker-build docker-push
@@ -277,6 +279,7 @@ $(eval $(call SANDBOX,lint))
 ```
 
 To component `Makefile` we need to add `buildpack` version:
+
 ```makefile
 APP_NAME = ui-api-layer
 BUILDPACK_VERSION = v20181119-afd3fbd
@@ -289,11 +292,12 @@ $(eval $(call TARGETS,main.go,Dockerfile))
 
 ### Support for multiple artifacts from one component
 
-Some components like `event-bus` generates multiple artifacts during build. Handling such situation is also possible, but it will requires unification of components structure. All `main.go` files will need to be located in `cmd/{name}/main.go` and names of `Dockerfiles` will need to be changed to `{name}.Dockerfile` or be in separated directories.
+Some components, like `event-bus`, generate multiple artifacts during the build. Handling such a situation is also possible, but it will require unification of the component structure. All `main.go` files will need to be located in `cmd/{name}/main.go` and names of Dockerfiles will need to be changed to `{name}.Dockerfile`, or be located in separated directories.
 
-We should investigate what will be easier to achieve - one artifact per component or unification structure of components.
+We should investigate if it is easier to introduce one artifact per component or a unified structure of components.
 
-`template.go.mk` that supports multiple artifacts:
+See `template.go.mk` that supports multiple artifacts:
+
 ```makefile
 DOCKER_REPOSITORY = $(DOCKER_PUSH_REPOSITORY)$(DOCKER_PUSH_DIRECTORY) # provided by CI system
 COMPONENT_REL_PATH=$(shell echo $(shell pwd) | sed 's,$(REPOSITORY_PATH)/,,g')
@@ -352,7 +356,7 @@ $(eval $(call SANDBOX,format))
 $(eval $(call SANDBOX,lint))
 ```
 
-And `Makefile` in component:
+See a makefile for a component:
 ```makefile
 APP_NAMES = name1 name2 name3 name4
 BUILDPACK_VERSION = v20181119-afd3fbd
@@ -365,15 +369,15 @@ $(foreach appName,$(APP_NAMES),$(eval $(call TARGETS,$(appName))))
 
 ## Summary
 
-To unify our validation and `Makefile` targets we should define a template that will be included in all components `Makefiles`. Thanks to that we will be able to have one place per repository with targets definitions and it will be easier to introduce new validations.
+To unify our validation and makefile targets, we should define a template that will be included in all component makefiles. This way, we will be able to have one place per repository with target definitions, and it will be easier to introduce new validations.
 
-Such proposal also introduces the possibility to validate source code against CI environment, what can speed up creating Pull Requests. It is possible to support multiple artifacts per components, but we should consider if we still want it.
+Such a proposal also introduces a possibility of validating the source code against the CI environment, which can speed up the pull requests creation process. It is possible to support multiple artifacts per components, but we should consider if we still want it.
 
-Examples:
+See these sections for examples:
  - [One artifact per component](#sandbox-validation)
  - [Multiple artifacts per component](#support-for-multiple-artifacts-from-one-component)
 
-The disadvantages of this solution:
- - Template is defined per repository, not per organization.
- - `buildpack` version is defined per component and is duplicated with CI definition.
- - It is not visible what targets are available in component `makefile`, because they are generated during execution.
+The disadvantages of this solution are as follows:
+ - The template is defined per repository, not per organization.
+ - The `buildpack` version is defined per component and is duplicated in the CI job definition.
+ - It is not visible what targets are available in the component makefile because they are generated during execution.
