@@ -106,29 +106,40 @@ A detailed mapping would be as follows:
 
 ![](assets/event-types.svg)
 
-## Choosing an implementation for event type
+**Known challenges**
 
-For each event type, there needs to be a pre-configuration to decide which implementation should be used. 
-For events which are not critical, one can decide `local PubSub` based on NATS Streaming, while for critical events, one can decide to use battle-tested services such as `Google PubSub`.
+* K8S and Istio Service overload. For example, having 1000 event types creating 1000 services will put the load on the service discovery.
+  >**Note**: This has been discussed with Knative community and they are aware of this issue.
 
-This can be achieved either:
+## Choosing a PubSub for an event type
 
-* during event registration,
-* as separate action from the user in the Event catalog.
+With Knative, it will be possible to enable multiple PubSub services in a single Kyma instance, for example local (NATS Streaming) and Google Cloud PubSub. 
+There should be a provision for the operator to decide which PubSub to use for a particular event type. The decision can be based on various factors such as costs or the desired Quality of Service.
 
-## When to create a channel
+To enable ease of use and better UX, it should be possible to have:
+
+* A default PubSub.   `Lowest Priority`
+* A PubSub per application
+* A PubSub specified for an event type during registration. `Highest Priority`
+
+**Requirements:**
+
+* API to expose available PubSub in Kyma.
+
+**Open questions**
+
+* How to handle the updates? Changing from one PubSub to another for an event type.
+* How to handle the cleanup? When an application is deprovisioned, all channels should also be deleted.
+
+## When to create a channel (PubSub resources)
 
 * Create or get a channel when a subscription is created.
   * Only create the channel when someone actually wants to consume events.
   * This can be extended in a way that we discard the events at an early stage when there is no consumer configured.
-  * The **missing piece of puzzle** is:
-	* How/when to enable the user to specify which PubSub to use?
-	* How to handle the use case when the event needs to trigger a compute in the cloud such as GCP via publishing events. In this case, there will not be any Kyma subscription. *Perhaps an operator action to manually create a channel could be applied*
-
-**Known Challenges**
-
-* K8S and Istio Service overload. For example, having 1000 event types creating 1000 services will put the load on the service discovery.
-  >**Note**: This has been discussed with Knative community and they are aware of this issue.
+  * There is **one exception**
+	* When the event needs to trigger a compute in the cloud, such as GCP via publishing events.
+	* In such a case, while registering an event type, it can be specified if the backing resources should be created or not.
+	* This way the customer is explicitly making a conscious choice to create PubSub resources while registering events.
 
 # Publishing and consumption
 
