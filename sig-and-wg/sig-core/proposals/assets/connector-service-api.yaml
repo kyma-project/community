@@ -502,16 +502,16 @@ components:
       properties:
         metadataUrl:
           type: 'string'
-          example: 'gateway.test.cluster.kyma.cx/{APP_NAME}/v1/metadata/services'
+          example: 'https://gateway.test.cluster.kyma.cx/{APP_NAME}/v1/metadata/services'
         eventsUrl:
           type: 'string'
-          example: 'gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events'
+          example: 'https://gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events'
         certificatesUrl:
           type: 'string'
-          example: 'certificate-service.kyma.cluster.cx/v1/applications'
+          example: 'https://certificate-service.kyma.cluster.cx/v1/applications'
         infoUrl:
           type: 'string'
-          example: 'connector-service.test.cluster.kyma.cx/v1/applications/management/info'
+          example: 'https://connector-service.test.cluster.kyma.cx/v1/applications/management/info'
     csrApplicationInfoResponse:
       type: 'object'
       properties:
@@ -527,13 +527,13 @@ components:
       properties:
         metadataUrl:
           type: 'string'
-          example: '{BASE_METADATA_PATH}/{APP_NAME}/v1/metadata/services'
+          example: 'https://gateway.test.cluster.kyma.cx/{APP_NAME}/v1/metadata/services'
         eventsUrl:
           type: 'string'
-          example: '{BASE_EVENTS_PATH}/{APP_NAME}/v1/events'
+          example: 'https://gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events'
         renewCertUrl:
           type: 'string'
-          example: '{BASE_RENEWAL_PATH}/v1/applications/certificates/renewals'
+          example: 'https://connector-service.test.cluster.kyma.cx/v1/applications/certificates/renewal'
     applicationInfoResponse:
       type: 'object'
       properties:
@@ -558,7 +558,7 @@ components:
           example: 'connector-service.test.cluster.kyma.cx/v1/runtimes/management/info'
         certificatesUrl:
           type: 'string'
-          example: 'certificate-service.kyma.cluster.cx/v1/applications'
+          example: 'https://certificate-service.kyma.cluster.cx/v1/applications'
     csrRuntimeInfoResponse:
       type: 'object'
       properties:
