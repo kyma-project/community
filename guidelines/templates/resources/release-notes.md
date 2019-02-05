@@ -1,4 +1,4 @@
-> This template is dedicated to technical writers. Use it to write release notes for Kyma releases. Add them as a blog post under [`website/src/blog-posts/`](https://github.com/kyma-project/website/tree/master/src/blog-posts). Place any related screenshots under the [`assets`](https://github.com/kyma-project/website/tree/master/src/blog-posts/assets) folder. Follow the content-related guidelines and tips for writing [release notes](../../release-notes.md).
+> This template is dedicated to technical writers. Use it to write release notes for Kyma releases. Add them as a blog post under [`website/src/blog-posts/`](https://github.com/kyma-project/website/tree/master/src/blog-posts). Place any related screenshots under the [`assets`](https://github.com/kyma-project/website/tree/master/src/blog-posts/assets) folder. Follow the content-related guidelines and tips for writing [release notes](https://github.com/kyma-project/community/blob/master/guidelines/content-guidelines/release-notes.md).
 
 <!-- Fill in the required metadata for the blog post to render properly on the "kyma-project.io" website. Remember to remove the code block. -->
 
