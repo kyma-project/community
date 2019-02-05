@@ -27,3 +27,5 @@ Example 2:
 ```
 
 This example builds the `example-two-docs` image from the `kyma/docs/test/example` directory.
+
+>**NOTE:** You must update the `docs-job.yaml` file in a separate pull request after you update two other files and merge your changes to the `master` branch. After the update, `docs-job.yaml` pushes the existing docs images to Minio and the documentation appears on the Console UI.
