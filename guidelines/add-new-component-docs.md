@@ -3,7 +3,7 @@
 When you add a new component to the `kyma/docs` folder, you must ensure that the content also shows on the `https://kyma-project.io/` website and in the Console UI. To do so, update the following files:
 
 - [`resources/core/charts/docs/charts/documentation/templates/docs-job.yaml`](https://github.com/kyma-project/kyma/blob/master/resources/core/charts/docs/charts/documentation/templates/docs-job.yaml)
-- [`docs/manifest.yaml`](https://github.com/kyma-project/kyma/blob/master/docs/manifest.yaml) (only when you add topics visible on the website)
+- [`docs/manifest.yaml`](https://github.com/kyma-project/kyma/blob/master/docs/manifest.yaml)
 - [`kyma/docs/docs-build.yaml`](https://github.com/kyma-project/kyma/blob/master/docs/docs-build.yaml)
 
 The `docs-job.yaml` file defines Docker images with documentation which are run to upload this documentation to Minio.
