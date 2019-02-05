@@ -19,12 +19,12 @@ paths:
           schema:
             type: string
             format: uuid
-          required: true
+          required: false
         - in: header
           name: Tenant
           schema:
             type: string
-          required: true
+          required: false
         - in: header
           name: Application
           schema:
@@ -60,13 +60,13 @@ paths:
           schema:
             type: string
             format: uuid
-          required: true
+          required: false
         - in: header
           name: Tenant
           schema:
             type: string
             format: uuid
-          required: true
+          required: false
         - in: header
           name: Application
           schema:
@@ -75,10 +75,20 @@ paths:
           required: true
       tags:
         - applications internal API
+        - applications external API
       summary: 'Marks certificate as revoked.'
+      requestBody:
+        description: 'SHA-256 hash of certificate that is to be revoked.'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/revokeRequest'
       responses:
-        '204':
+        '201':
           description: 'Successful operation.'
+        '400':
+          description: 'Invalid request payload.'
         '500':
           description: 'Server error.'
           content:
@@ -95,14 +105,14 @@ paths:
           schema:
             type: string
         - in: header
-          name: EventsURL
+          name: EventsHost
           description: 'Value of the URL to Event service which must be returned to the caller'
           schema:
             type: string
             format: url
           required: false
         - in: header
-          name: MetadataURL
+          name: MetadataHost
           description: 'Value of the URL to Application Registry which must be returned to the caller'
           schema:
             type: string
@@ -134,14 +144,14 @@ paths:
     get:
       parameters:
         - in: header
-          name: EventsURL
+          name: EventsHost
           description: 'Value of the URL to Event service which must be returned to the caller'
           schema:
             type: string
             format: url
           required: false
         - in: header
-          name: MetadataURL
+          name: MetadataHost
           description: 'Value of the URL to Application Registry which must be returned to the caller'
           schema:
             type: string
@@ -252,12 +262,12 @@ paths:
           schema:
             type: string
             format: uuid
-          required: true
+          required: false
         - in: header
           name: Tenant
           schema:
             type: string
-          required: true
+          required: false
       tags:
         - runtimes internal API
       summary: 'Creates a token used for certificate signing flow.'
@@ -282,19 +292,29 @@ paths:
           schema:
             type: string
             format: uuid
-          required: true
+          required: false
         - in: header
           name: Tenant
           schema:
             type: string
             format: uuid
-          required: true
+          required: false
       tags:
         - runtimes internal API
+        - runtimes external API
       summary: 'Marks certificate as revoked.'
+      requestBody:
+        description: 'SHA-256 hash of certificate that is to be revoked.'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/revokeRequest'
       responses:
-        '204':
+        '201':
           description: 'Successful operation.'
+        '400':
+          description: 'Invalid request payload.'
         '500':
           description: 'Server error.'
           content:
@@ -549,6 +569,13 @@ components:
           type: 'integer'
         error:
           type: 'string'
+    revokeRequest:
+      type: 'object'
+      properties:
+        hash:
+          type: 'string'
+          description: 'SHA-256 hash of a certificate.'
+          example: 'e1ead8be0635a83e249774d8d6d2d6879a81d91456e770915cbb5f774bb7fd93'
     csrRequest:
       type: 'object'
       properties:
