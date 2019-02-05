@@ -89,6 +89,10 @@ paths:
           description: 'Successful operation.'
         '400':
           description: 'Invalid request payload.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/appError'
         '500':
           description: 'Server error.'
           content:
@@ -511,7 +515,7 @@ components:
     csrApplicationInfoResponse:
       type: 'object'
       properties:
-        signUrl:
+        csrUrl:
           type: 'string'
           example: 'https://connector-service.test.cluster.kyma.cx/v1/applications/certificates?token=1edfc34g'
         api:
@@ -552,10 +556,13 @@ components:
         infoUrl:
           type: 'string'
           example: 'connector-service.test.cluster.kyma.cx/v1/runtimes/management/info'
+        certificatesUrl:
+          type: 'string'
+          example: 'certificate-service.kyma.cluster.cx/v1/applications'
     csrRuntimeInfoResponse:
       type: 'object'
       properties:
-        signUrl:
+        csrUrl:
           type: 'string'
           example: 'https://connector-service.test.cluster.kyma.cx/v1/runtimes/certificates?token=1edfc34g'
         api:
