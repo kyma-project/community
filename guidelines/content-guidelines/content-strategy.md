@@ -66,7 +66,7 @@ Each technical topic must have the following document types arranged in the fixe
 You can add the following document type to the Kyma documentation:
 - **UI Contracts** (`11`) - Use it to describe the mapping of OSBA service objects, plan objects, and conventions in the Kyma Console view.
 - **Examples** (`12`) - Use it to demonstrate a given Kyma feature or concept in a form of a short demo.
-- **Service Brokers** (`13`) - Use it to describe Service Brokers that Kyma provides
+- **Service Brokers** (`13`) - Use it to describe Service Brokers that Kyma provides.
 
 ## The content source
 
