@@ -1,14 +1,14 @@
 # Add monitoring to a Kyma component
 
 ## Enable dashboard in Grafana
-- Add label `kyma-grafana: enabled` along with label `app: <value>` to the **PodTemplate**. Make sure label `app: <value>` is added to either `Deployment` or `Statefulset` spec as well. Then a pre-packaged dashboard with [RED](https://www.weave.works/blog/the-red-method-key-metrics-for-microservices-architecture) and [USE](http://www.brendangregg.com/usemethod.html) metrics for the application gets enabled. The dashboard is defined [here](link).
-- The dashboard is available as `Services` where the application is visible with the value of it's **app** label in its concerned namespace.
+- Add the `kyma-grafana: enabled` and the `app: <value>` label to the **PodTemplate**. Make sure you add the `app: <value>` label either to `Deployment` or `Statefulset` specification as well. Performing this step enables the pre-packaged dashboard with [RED](https://www.weave.works/blog/the-red-method-key-metrics-for-microservices-architecture) and [USE](http://www.brendangregg.com/usemethod.html) metrics for the application. The dashboard is defined [here](link).
+- To see the dashboard, go to **General > Services** in Grafana. You find the application using the value of its `app` label and the Namespace you specified in your configuration.
 
 
 ## Enable alerts
-- Add label `kyma-alerts: enabled` along with label `app: <value>` to your Kyma component. Make sure label `app: <value>` is added to either `Deployment` or `Statefulset` spec as well. Then a pre-packaged sets of alert rules get enabled. The alert rules are defined [here](link).
+- Add the `kyma-alerts: enabled` and the `app: <value>` label to your Kyma component. Make sure you add the `app: <value>` label either to `Deployment` or `Statefulset` specification as well. Performing this step enables pre-packaged sets of alert rules. The alert rules are defined [here](link).
 
-## Sample application where monitoring is enabled
+## ## Sample application with enabled monitoring
 ```
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -62,4 +62,4 @@ spec:
   selector:
     app: demo-service
 ```
-- Dashboard for this application will be available in Grafana `Services` dashboard as `demo-service` in namespace `stage`.
+- The dashboard for this application is available in Grafana under **General > Services**. To display it, select `demo-service` in the `stage` Namespace.
