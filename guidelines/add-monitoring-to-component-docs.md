@@ -2,7 +2,7 @@
 
 ## Enable dashboard in Grafana
 - Add the `kyma-grafana: enabled` and the `app: <value>` label to the **PodTemplate**. Make sure you add the `app: <value>` label either to `Deployment` or `Statefulset` specification as well. Performing this step enables the pre-packaged dashboard with [RED](https://www.weave.works/blog/the-red-method-key-metrics-for-microservices-architecture) and [USE](http://www.brendangregg.com/usemethod.html) metrics for the application. The dashboard is defined [here](link).
-- To see the dashboard, go to **General > Services** in Grafana. You find the application using the value of its `app` label and the Namespace you specified in your configuration.
+- To see the dashboard, go to **General > Services** in Grafana. There, you can find your application using the values for the `app` label and the Namespace you specified in your configuration.
 
 
 ## Enable alerts
