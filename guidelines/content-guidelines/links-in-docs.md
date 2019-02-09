@@ -39,7 +39,7 @@ To add a reference to a YAML, JSON, SVG, PNG, or JPG file located in the `assets
 
 ## Links between documents in different topics
 
-If you want to link to a document in the different topic, create a reference by using this pattern `/docs/{type-of-topic}/{id}#{type-of-document}-{title}-{header}`, where:
+If you want to link to a document in the different topic, create a reference by using this pattern `/{type-of-topic}/{id}#{type-of-document}-{title}-{header}`, where:
 - `{type-of-topic}` is a type of the topic that you want to reference.
 - `{id}` is an ID of the topic that you want to reference.
 - `{type-of-document}` is a type of the document that you want to reference.
@@ -48,7 +48,7 @@ If you want to link to a document in the different topic, create a reference by 
 
 >**NOTE:** All variables must consist of lowercase characters separated with dashes (-).
 
-`{type-of-topic}` and `{id}` are metadata fields of the given topic. They are placed in the `docs.config.json` file, in the root directory of each topic. `{type-of-document}` and `{title}` are placed in a metadata section of each document. If the `{type-of-document}` doesn't exist, the pattern has the form of `/docs/{type-of-topic}/{id}#{title}-{title}-{header}`. If you don't want to create a reference to the `{header}`, the pattern has the form of `/docs/{type-of-topic}/{id}#{type-of-document}-{title}`. If you want to create a reference to the whole `{type-of-document}`, the pattern has the form of `/docs/{type-of-topic}/{id}#{type-of-document}-{type-of-document}-{header}`.
+`{type-of-topic}` and `{id}` are metadata fields of the given topic. They are placed in the `docs.config.json` file, in the root directory of each topic. `{type-of-document}` and `{title}` are placed in a metadata section of each document. If the `{type-of-document}` doesn't exist, the pattern has the form of `/{type-of-topic}/{id}#{title}-{title}-{header}`. If you don't want to create a reference to the `{header}`, the pattern has the form of `/{type-of-topic}/{id}#{type-of-document}-{title}`. If you want to create a reference to the whole `{type-of-document}`, the pattern has the form of `/{type-of-topic}/{id}#{type-of-document}-{type-of-document}-{header}`.
 
 For example, there are two documents with the following metadata sections:
 - `service-catalog/docs/001-overview-service-catalog.md`
@@ -68,4 +68,4 @@ For example, there are two documents with the following metadata sections:
 
 The `{id}` variables of the documents are `service-catalog` and `service-brokers` respectively, and their `{type-of-topic}` is `components`.
 
-In this case, a reference from `service-catalog/...` to `service-brokers/...` is `/docs/service-brokers#overview-service-brokers`.
+In this case, a reference from `service-catalog/...` to `service-brokers/...` is `/service-brokers#overview-service-brokers`.
