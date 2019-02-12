@@ -5,7 +5,7 @@
 - To see the dashboard, go to **General > Services** in Grafana. There, you can find your application using the values for the `app` label and the Namespace you specified in your configuration.
 
 ## Enable alerts
-- Add the `kyma-alerts: enabled` and the `app: <value>` label to your Kyma component. Make sure you add the `app: <value>` label either to `Deployment` or `Statefulset` specification as well. Performing this step enables pre-packaged sets of alert rules. The alert rules are defined [here](https://github.com/kyma-project/kyma/blob/master/resources/monitoring/charts/alert-rules/templates/rest-services-alert-rules.yaml).
+- Add the `kyma-alerts: enabled` and the `app: <value>` label to your Kyma component. Make sure you add the `app: <value>` label either to `Deployment` or `Statefulset` specification as well. Performing this step enables pre-packaged sets of alert rules. The alert rules are defined [here](https://github.com/kyma-project/kyma/blob/master/resources/monitoring/charts/alert-rules/templates/alert-rules-rest-services.yaml).
 
 ## Sample application with enabled monitoring
 ```
