@@ -83,6 +83,5 @@ data:
         annotations:
           description: "High memory usage"
           summary: "High memory usage"
-
 ```
 - The dashboard for this application is available in Grafana under **General > Services**. To display it, select `demo-service` in the `stage` Namespace.
