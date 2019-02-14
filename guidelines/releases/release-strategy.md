@@ -39,7 +39,7 @@ For release versioning, Kyma follows the approach similar to [Semantic Versionin
 
 ### Function freeze
 
-The function freeze refers to the point in time during which you cannot merge new features to the release branch.
+The function freeze refers to the point in time after which you cannot merge new features to the release branch.
 
 ### Roles
 
