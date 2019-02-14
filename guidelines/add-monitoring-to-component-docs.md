@@ -60,5 +60,29 @@ spec:
     targetPort: 5000
   selector:
     app: demo-service
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: Kyma
+    prometheus: monitoring
+    role: alert-rules
+  name: demo-service-alerts
+  namespace: kyma-system
+data:
+  alert.rules: |-
+    groups:
+    - name: demo-service-utilization-rule
+      rules:
+      - alert: demo-service-memory-usage-alert
+        expr: ((scalar(container_memory_usage_bytes{namespace="stage",container_name="demo-service"}) / max(kube_pod_container_resource_limits_memory_bytes{namespace="stage",container="demo-service"})) > bool 0.8) == 1
+        for: 15s
+        labels:
+          severity: high
+        annotations:
+          description: "High memory usage"
+          summary: "High memory usage"
+
 ```
 - The dashboard for this application is available in Grafana under **General > Services**. To display it, select `demo-service` in the `stage` Namespace.
