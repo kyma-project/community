@@ -1,6 +1,6 @@
 # Release Strategy
 
-The Kyma release strategy covers these topics:
+Read about the release strategy in Kyma:
 
 - [Terminology](#terminology)
   - [Release types](#release-types)
