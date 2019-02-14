@@ -159,7 +159,7 @@ A Technical Writer publishes the blog post on the public Kyma website to announc
 
 You can learn about the new release from additional notifications published on social media, Slack channels, or announcements made during the Core SIG meetings.
 
-Alternatively, you can subscribe to GitHub notifications and receive updates each time a new release is available.
+Alternatively, you can [subscribe](./release-subscription.md) to GitHub notifications and receive updates each time a new release is available.
 
 ## Release scope
 For each of the planning periods described in the release schedule, GitHub epics and issues define and document the release scope with regards to functionality, corrections, and even non-functional requirements. The collection of all documented issues within a release represents the expected scope of that release that the whole organization and all teams define and commit to. The corresponding release in ZenHub identifies all issues and epics that fall under the final release scope.
