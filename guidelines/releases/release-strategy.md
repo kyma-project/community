@@ -135,7 +135,7 @@ After completing the planning, the Head of Capabilities explicitly hands over th
 
 The Kyma developers add new release features to the `master` branch of the Kyma repositories.
 
-During the development phase, the Release Manager keeps track of the development with the help of the Scrum of Scrums (SoS) meetings held twice a week. This allows the Release Manager to take early actions required to keep the release on track. When closer to the release date, the Release Manager, the Head of Capabilities, and the Lead Product Engineer discuss the status of the release and decide if they are any additional checkpoints or actions to address.
+During the development phase, the Release Manager keeps track of the development with the help of the Scrum of Scrums (SoS) meetings held twice a week. This allows the Release Manager to take early actions required to keep the release on track. When closer to the release date, the Release Manager, the Head of Capabilities, and the Lead Product Engineer discuss the status of the release and decide if there are any additional checkpoints or actions to address.
 
 The Core SIG leaders include the external communication regarding the progress and status of each release to the agenda of the Core SIG bi-weekly meetings. The Release Manager, or a person appointed as a stand-in, presents the release status during those meetings.
 
@@ -146,7 +146,7 @@ This is the last day of the period planned for the release development.
 The Release Manager and the Product Leadership decide to publish the release, based on the status and readiness of the developed functionality. The Release Manager communicates this decision before the release execution starts.
 
 ### Release execution
-The Release Engineer executes the release at any time of producing the release artifact. This could result in a release candidate or a final release that is not an automated nightly or weekly build. The release execution starts when the process starts and finishes after publishing all artifacts and the related documentation.
+The Release Engineer executes the release at any time of producing the release artifact. This could result in a release candidate or a final release that is not an automated nightly or weekly build. The release execution begins when the process starts and finishes after publishing all artifacts and the related documentation.
 
 During the execution of a release, Kyma developers run all end-to-end test scenarios. If any single scenario fails, the Release Engineer cannot publish the release.
 
@@ -157,9 +157,7 @@ The final release is available in the GitHub releases, including the installatio
 
 A Technical Writer publishes the blog post on the public Kyma website to announce the release. The post includes release notes prepared based on the input from the Product Owners.
 
-You can learn about the new release from additional notifications published on social media, Slack channels, or announcements made during the Core SIG meetings.
-
-Alternatively, you can [subscribe](./release-subscription.md) to GitHub notifications and receive updates each time a new release is available.
+You can learn about the new release from additional notifications published on social media, Slack channels, or announcements made during the Core SIG meetings. Alternatively, you can [subscribe](./release-subscription.md) to GitHub notifications and receive updates each time a new release is available.
 
 ## Release scope
 For each of the planning periods described in the release schedule, GitHub epics and issues define and document the release scope with regards to functionality, corrections, and even non-functional requirements. The collection of all documented issues within a release represents the expected scope of that release that the whole organization and all teams define and commit to. The corresponding release in ZenHub identifies all issues and epics that fall under the final release scope.
