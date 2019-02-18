@@ -70,7 +70,7 @@ These persons actively participate in release preparation and execution:
 
 ### Epics and user stories
 
-The functional implementations that are included in the release are documented as GitHub issues. A contributor completes an issue bound by the license agreement and contributing guidelines. All proposed changes must pass the Continuous Integration (CI) tool validation and require the maintainers' review and approval.
+The functional implementations that are included in the release are documented as GitHub issues. A contributor completes an issue bound by the license agreement and contributing guidelines. All proposed changes must pass the obligatory Continuous Integration checks and require the maintainers' review and approval.
 
 You can close an epic or an issue if the new functionality implemented as part of it, meets the contributing rules. These include, but are not limited to, the following points:
 
