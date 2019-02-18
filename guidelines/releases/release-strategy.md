@@ -22,7 +22,7 @@ Read about the release strategy in Kyma:
   - [Release execution](#release-execution)
   - [Release publishing](#release-publishing)
 - [Release scope](#release-scope)
-  - [Version maintenance](#ersion-maintenance)
+  - [Version maintenance](#version-maintenance)
   - [Deprecation and backward-compatibility](#deprecation-and-backward-compatibility)
 
 ## Terminology
