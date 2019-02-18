@@ -45,7 +45,7 @@ The **function freeze** term refers to the point in time after which you cannot 
 
 ### Roles
 
-These persons actively participate in the release preparation and execution:
+These persons actively participate in release preparation and execution:
 
 - **Head of Capabilities** ensures that all capabilities provide a valuable and consistent product when it comes to its features and usability.
 
@@ -70,7 +70,7 @@ These persons actively participate in the release preparation and execution:
 
 ### Epics and user stories
 
-The functional implementations that are included in the release are documented as GitHub issues. A contributor completes an issue bound by the license agreement and contributing guidelines. All proposed changes  must pass the Continuous Integration (CI) tool validation and require codeowners review and approval.
+The functional implementations that are included in the release are documented as GitHub issues. A contributor completes an issue bound by the license agreement and contributing guidelines. All proposed changes must pass the Continuous Integration (CI) tool validation and require the maintainers' review and approval.
 
 You can close an epic or an issue if the new functionality implemented as part of it, meets the contributing rules. These include, but are not limited to, the following points:
 
@@ -107,7 +107,7 @@ All planned releases happen at the end of a planned development cycle. Only the 
 We do not schedule patches but rather provide them on-demand if there is a need to address high priority issues before the next planned release. In this context, we explicitly define high priority issues as those which either affect multiple Kyma installations or result in the financial loss for the users. The Release Manager is involved in the decision to execute a patch release. However, we do not expect to have patch releases before the official Kyma 1.0 version.
 
 ### Nightly and weekly builds
-It is our goal to have fully automated builds generated on a daily or nightly basis. Such build can be made available to the community to validate the newest functionality and corrections implemented in development or testing environments, but are not intended for production use.
+It is our goal to have fully automated builds generated on a daily or nightly basis. Such builds can be made available to the community to validate the newest functionality and corrections implemented in development or testing environments, but are not intended for production use.
 
 Once per week, we should update the installation with the newest, weekly build. During the following week, automated tests must run on the cluster to validate the stability and performance of the environment, and ensure that the results remain unchanged during a longer period of time. This also supports the whole release strategy by improving the quality of the product and increasing the public confidence in it.
 
@@ -125,7 +125,7 @@ The Head of Capabilities coordinates the product planning, following the plannin
 ### Planning end
 After completing the planning process, the theme and expected scope of the release is clear. All maintainers know what they have to work on for the release.
 
-At this time, the Release Manager publicly communicates the planned release schedule for Kyma. This communication should include key features or fixes expected to fall into the scope of the release. Possible communication channels include blog posts, social media, and the Core SIG meetings.
+At this time, the Release Manager publicly communicates the planned release schedule for Kyma. This communication should include key features or fixes expected to fall into the scope of the release. Possible communication channels include blog posts, social media, and Core SIG meetings.
 
 ### Development start
 After completing the planning, the Head of Capabilities explicitly hands over the release to the engineering teams during the handover meeting. At this point, the development phase of the new release officially starts.
