@@ -81,7 +81,7 @@ You can close an epic or an issue if the new functionality meets the contributin
 
 In Kyma, we follow the test strategy according to which you can verify all functionalities through automated testing that you execute either through the CI or the release pipeline.
 
-All Kyma community must provide the highest possible test coverage to minimize any potential risks and ensure the release is functional and stable.
+The Kyma community must provide the highest possible test coverage to minimize any potential risks and ensure the release is functional and stable.
 
 Whenever possible, consider implementing tests that go beyond verifying the functionality of the system. This includes integration, performance, and end-to-end tests.
 
