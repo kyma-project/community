@@ -8,32 +8,38 @@ You should never rely on `crd-install` helm hook. This is because Helm does not 
 
 There are several alternatives to `crd-install` hook. Here are some of them order by rising implementation effort:
 1. Make CRDs part of separate chart which must be installed before chart that requires them.
-    Cons:
+   
+   Cons:
     * It requires yet another chart.
     * CRDs are managed by Helm and have all the limitations tha come with it.
-    Pros:
+   
+   Pros:
     * There is no additional implementation effort needed.
     * CRD is separate file and may be used without other components (for tests for example).
   
 2. Register CRD via its controller (if there is one). 
-    Cons:
+   
+   Cons:
     * Requires controller.
     * CRDs are not listed as part of Helm release.
     * CRD is not available as file.
-    Pros:
+   
+   Pros:
     * CRD is managed by component that is logically responsible for it.
     * CRD is not subject ot Helm limitations.
     
 2. Create a job triggered on `pre-install` and `pre-upgrade` which registers new CRDs and removes old ones.
-    Cons:
+   
+   Cons:
     * Jobs are troublesome to debug.
     * CRDs are not listed as part of Helm release.
-    Pros:
+   
+   Pros:
     * CRD may still be available as separate file.
     * If there is any migration that needs to be run it can be easily implemented in job.
     * CRD is not subject ot Helm limitations.
     
-### Do not move resources between charts.
+### Do not move resources between charts
 
 Sometimes you might want to move a resource (ConfigMap, Deployment, CRD, etc.) from one chart to another. How simple it may sound it is very dangerous operation as it causes charts to loose backward compatibility: it won't be possible to upgrade existing installations to new version. 
 
@@ -47,5 +53,5 @@ CRDs are special in this case: all CRD implementations are removed when CRD is d
 1. Backup all existing implementations. 
 2. Remove old CRD.
 3. Run upgrade.
-4. Restore CRD implementations
+4. Restore CRD implementations.
 
