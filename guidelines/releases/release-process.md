@@ -7,15 +7,19 @@ This document describes how to execute a Kyma release using Prow.
 This section only applies to new major and minor versions. Follow the preparation steps at any point in time.
 
 1. Define these release jobs in the `test-infra` repository:
- - for every component
- - for every tool
- - for every test
  - `kyma-docs`
  - `kyma-integration`
  - `kyma-gke-integration`
  - `kyma-gke-upgrade`
  - `kyma-artifacts`
  - `kyma-installer`
+
+ Additionally, define release jobs for:
+ - every component
+ - every tool
+ - every test
+
+ >**NOTE:** [Read](https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md) how to define a release job for a component.
 
 To see all release jobs for the 0.6 release, look for job names with the `pre-rel06` prefix.
 Since every job name has to be unique, prefix it with `pre-rel{XY}`.
@@ -56,7 +60,7 @@ The name of this branch should follow the `release-x.y` pattern, such as `releas
 
 4. Create a PR for the `kyma` release branch.
 
-![](./assets/release-PR.png)
+![](../../assets/release-PR.png)
 This triggers all jobs for components.
 Update your PR with the version and the directory of components used in `values.yaml` files.
 
@@ -83,7 +87,7 @@ Every component image is published with a version defined in the `RELEASE_VERSIO
 `kyma-integration`, `kyma-gke-integration`, `kyma-gke-upgrade`, `kyma-artifacts`, and `kyma-installer` jobs need to be executed manually because there
 are dependencies between these jobs. See the diagram for details:
 
-![](./assets/kyma-rel-jobs.svg)
+![](../../assets/kyma-rel-jobs.svg)
 
 7. Execute `kyma-integration` by adding the `/test pre-rel06-kyma-integration` comment to the PR.
 
