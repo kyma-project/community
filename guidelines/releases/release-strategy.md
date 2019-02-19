@@ -37,7 +37,7 @@ For release versioning, Kyma uses the approach similar to [Semantic Versioning](
 | **MINOR** | Introduces a new functionality in a planned schedule |
 | **PATCH** <br> **hot.fix** | Introduces a backwards-compatible bug fix as an unscheduled release |
 
->**NOTE:** **Major version zero** refers to the rapid product development that is not production-ready yet but can include breaking changes.
+**NOTE:** **Major version zero** refers to software that is under constant, intensive development. Such software is not production-ready and can include breaking changes.
 
 ### Function freeze
 
@@ -141,7 +141,7 @@ This is the last day of the period planned for the release development.
 The Release Manager and the Product Leadership decide to publish the release, based on the status and readiness of the developed functionality. The Release Manager communicates this decision before the release execution starts.
 
 ### Release execution
-The release execution is a manual process and is not part of an automated nightly or weekly build. It begins when the Release Engineer creates a release branch with all release artifacts. The process finishes after publishing both the artifacts and the related documentation as a release candidate that can be promoted as a final release.
+The release execution is a manual process and is not part of an automated nightly or weekly build. It begins when the Release Engineer creates a release branch with all release artifacts. The process finishes after publishing both the artifacts and the related documentation as a release candidate that can be promoted to a final release.
 
 During the execution of a release, all automated end-to-end test scenarios are validated. If any scenario fails, the release process automatically stops and no release is possible.
 
@@ -162,7 +162,7 @@ When planning the release scope, all persons involved in the release must take t
 ### Version maintenance
 There is no guaranteed support for the bug fixes in the previous Kyma versions. The default strategy is to upgrade to the latest version.
 
-The Kyma project does not plan to provide any patch releases before the first 1.0 production release and encourages the community to always upgrade to the latest release.
+The Kyma project does not plan to provide any patch releases before the 1.0 production release and encourages the community to always upgrade to the latest release.
 
 ### Deprecation and backward-compatibility
 The 1.0 release and further release versions impose clear expectations regarding the depreciation and backward-compatibility of Kyma versions to ensure some level of stability for the users. This can denote a period of time in which you should not change the provided functionality. This is the practice that other open-source projects also follow.
