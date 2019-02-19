@@ -2,11 +2,14 @@
 
 This document describes how to execute a Kyma release using Prow.
 
-## Release preparation
+## Preparation
 
 This section only applies to new major and minor versions. Follow the preparation steps at any point in time.
 
 1. Define these release jobs in the `test-infra` repository:
+ - for every component
+ - for every tool
+ - for every test
  - `kyma-docs`
  - `kyma-integration`
  - `kyma-gke-integration`
@@ -14,12 +17,7 @@ This section only applies to new major and minor versions. Follow the preparatio
  - `kyma-artifacts`
  - `kyma-installer`
 
- Additionally, define release jobs for:
- - every component
- - every tool
- - every test
-
- >**NOTE:** [Read](https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md) how to define a release job for a component.
+>**NOTE:** Read [here](https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md) how to define a release job for a component.
 
 To see all release jobs for the 0.6 release, look for job names with the `pre-rel06` prefix.
 Since every job name has to be unique, prefix it with `pre-rel{XY}`.
@@ -83,18 +81,17 @@ Every component image is published with a version defined in the `RELEASE_VERSIO
 /test {job_name}
 ```
 
-6. Wait until all jobs for components and tools finish.
-`kyma-integration`, `kyma-gke-integration`, `kyma-gke-upgrade`, `kyma-artifacts`, and `kyma-installer` jobs need to be executed manually because there
-are dependencies between these jobs. See the diagram for details:
+6. Wait until all jobs for components and tools finish. You must execute the
+`kyma-integration`, `kyma-gke-integration`, `kyma-gke-upgrade`, `kyma-artifacts`, and `kyma-installer` jobs manually because there are dependencies between these jobs. See the diagram for details:
 
 ![](../../assets/kyma-rel-jobs.svg)
 
 7. Execute `kyma-integration` by adding the `/test pre-rel06-kyma-integration` comment to the PR.
 
-8. Execute `kyma-installer` and `kyma-artifacts` one after another.
+8. Execute `kyma-installer` and `kyma-artifacts` one after the other.
 You don't have to wait until the `pre-rel06-kyma-integration` job finishes.
 
-9. Execute `kyma-gke-integration` and `kyma-gke-upgrade`. Wait until the jobs from step 8 are finished.
+9. Execute `kyma-gke-integration` and `kyma-gke-upgrade`. Wait until the jobs from step 8 finish.
 
 10. If you detect any problems with the release, such as failing tests, wait for the fix that can be delivered either on a PR or cherry-picked to the PR from the `master` branch.  
 Prow triggers the jobs again. Return to point 6 to rerun manual jobs.
@@ -105,5 +102,5 @@ Prow triggers the jobs again. Return to point 6 to rerun manual jobs.
 Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
 Update the release content manually with the instruction on how to install the latest Kyma release.
 
-13. Update `RELEASE_VERSION` to the next version both on the `master` and release branch. Do it immediately after the release, otherwise any PR to a release branch done by
+13. Update `RELEASE_VERSION` to the next version both on the `master` and release branches. Do it immediately after the release, otherwise any PR to a release branch done by
 a Kyma developer overrides the previously published Docker images.  
