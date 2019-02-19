@@ -90,14 +90,14 @@ Whenever possible, consider implementing tests that go beyond verifying the func
 All Kyma organization members involved in the release process comply with contribution rules defined for Kyma and ensure that all checks built into the continuous integration process pass. These requirements represent the absolute minimal acceptance criteria needed for a release from a compliance perspective. These rules can change as Kyma approaches the 1.0 release.
 
 Additionally, manual pre-release verification must cover these areas:
-- the use of the third-party software and components that require prior approval
+- the use of the third-party software and components that require licensing
 - the use and storage of personal data subject to the GDPR requirements
 
 ### Security
 
 Open-source projects, like any other, must ensure secure development. You can provide it by constantly raising the awareness of everyone involved in the project. In Kyma, we strive to make all developers aware of the secure development requirement. For example, we conduct threat modeling workshops during which the participants proactively think about possible security threats in the architecture, infrastructure, and implementation.
 
-The Release Manager in Kyma takes care of formal security validation activities performed before major releases. The results of these activities influence the release decision. Lack of attention to security topics can result in the release delay.
+The Release Manager in Kyma takes care of formal security validation activities performed before major releases. The results of these activities influence the release decision. Lack of attention to security topics can result in release delay.
 
 ## Release schedule
 A scheduled release follows the planning cycles for the Kyma development that typically take four weeks. At the beginning of each planning cycle, the Head of Capabilities communicates the specific time plan for a release. After reaching the end of the development cycle, Kyma developers create a release candidate which in most cases is identical to the release published on GitHub.
