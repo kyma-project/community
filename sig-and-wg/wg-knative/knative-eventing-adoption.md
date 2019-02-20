@@ -50,6 +50,8 @@ With Knative adoption, this model can no longer be applied due to the following:
 * Knative eventing requires to create channels as a pre-step to publish. The channels are heavy objects with cascading resources. 
 * Kyma eventing needs to be generic and in-sync with Knative eventing to enable plugging in various messaging solutions.
 
+>Note: A Kyma Event type is just a logical concept. The actual Event type is a Fully Qualified Event Type composed of `application(source id) + event type + event type version`.
+
 ## Option 1
 `1 Kyma event-type` is mapped to a `1 Knative channel`.
 
