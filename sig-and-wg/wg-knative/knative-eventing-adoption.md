@@ -22,7 +22,7 @@ The above setup demonstrates the following aspects:
 * The flow of the `order.created` and `payment.received` events an external solution sends, and their delivery to a respective serverless compute.
 
 
-# Provisioning a messaging solution
+## Provisioning a messaging solution
 The provisioning of various messaging solutions such as NATS Streaming, Google PubSub, Kafka etc. is abstracted from the production and consumption of events in Kyma.
 
 You can provision the messaging solutions during installation or while Kyma is running.
@@ -42,7 +42,7 @@ A typical provisioner looks as follows:
 
 > **TBD** The deprovisioning flow. The impact on the existing event types needs to be understood first.
 
-# Kyma event types
+## Kyma event types
 Before Knative adoption, there was no need to create any metadata such as topics or channels in the Kyma Event-Bus as the event types were mapped to NATS Streaming subjects while publishing an event.
 
 With Knative adoption, this model can no longer be applied due to the following:
@@ -52,7 +52,7 @@ With Knative adoption, this model can no longer be applied due to the following:
 
 >Note: A Kyma Event type is just a logical concept. The actual Event type is a Fully Qualified Event Type composed of `application(source id) + event type + event type version`.
 
-## Option 1
+### Option 1
 `1 Kyma event-type` is mapped to a `1 Knative channel`.
 
 **Pros**
@@ -70,7 +70,7 @@ With Knative adoption, this model can no longer be applied due to the following:
 
 * A Knative channel is a heavy object with many cascading resources. Having many channels can increase the load on Istio Service Mesh. 
 
-## Option 2
+### Option 2
 
 Map multiple `Kyma event-types` to a `single channel` or do some kind of grouping.
 
@@ -88,7 +88,7 @@ Map multiple `Kyma event-types` to a `single channel` or do some kind of groupin
   * The `dispatcher` will receive events for all event types belonging to a channel. Then it has to discard and only deliver those for which the Kyma Subscription has been created, which leads to issues with the underlying PubSub.
   
 
-## Option 3 (Future alternative)
+### Option 3 (Future alternative)
 
 There have been some discussions in the Knative community about the challenges and how to map business event types to a channel.
 One idea is to create **one channel per PubSub**. This will create one `K8S Service` and `Istio Virtual Service`. 
@@ -100,7 +100,7 @@ To make the dispatcher aware of the multiple diverse event types, use the **URI*
 * The `Knative subscription <--> Knative Channel` model needs to evolve to support such semantics. Currently all subscriptions belong to a channel.
 * There might be impact on the `Knative source` model.
 
-## Decision
+### Decision
 
 The event types in Kyma will map to Channels in Knative eventing (Option 1).
 
@@ -122,11 +122,12 @@ To enable ease of use and better UX, it should be possible to have:
 
 * A default PubSub.   `Lowest Priority`
 * A PubSub per application
-* A PubSub specified for an event type during registration. `Highest Priority`
+* A PubSub specified for an Event type during registration. `Highest Priority`
 
 **Requirements:**
 
 * API to expose available PubSub in Kyma.
+* Implementation to fetch the information from Event, Application or default to decide which PubSub to use in the same order.
 
 **Open questions**
 
@@ -135,15 +136,30 @@ To enable ease of use and better UX, it should be possible to have:
 
 ## When to create a channel (PubSub resources)
 
-* Create or get a channel when a subscription is created.
-  * Only create the channel when someone actually wants to consume events.
-  * This can be extended in a way that we discard the events at an early stage when there is no consumer configured.
-  * There is **one exception**
-	* When the event needs to trigger a compute in the cloud, such as GCP via publishing events.
-	* In such a case, while registering an event type, it can be specified if the backing resources should be created or not.
-	* This way the customer is explicitly making a conscious choice to create PubSub resources while registering events.
+### Extensibility use case
 
-# Publishing and consumption
+A serverless is triggered by an event sent from  application.
+
+* Get a channel when a subscription is created. If channel does not exist, create the channel.
+* Only create the channel when someone actually wants to consume events.
+* This can be extended in a way that we discard the events at an early stage when there is no consumer configured.
+* This will be the default behavior.
+
+### Integration with external messaging systems
+
+The events sent from an application are published to a cloud PubSub. This could trigger an action (compute) in the cloud ecosystem.
+
+* In such a case, while registering an event type, it can be specified if the backing resources(e.g. Knative Channel) should be created or not.
+* This way the user is making a conscious choice to create PubSub resources while registering events.
+
+
+**Requirements**
+
+* Kyma eventing needs to listen for the event registeration.
+* Using the metatadata specified while registering the events, decide if the backing resources should be created or not.
+* Create the backing resources (e.g. Knative Channels).
+
+## Publishing and consumption
 
 Knative eventing interfaces need to be abstracted to:
 
@@ -160,17 +176,17 @@ Knative eventing interfaces need to be abstracted to:
    | A consistent experience for external and internal events.        | Even if we do the tranlation at the gateway for events from external, the internal events would still need to deal with Knative APIs |
    | API ensures that the event paylaod is a valid json               | No validation of event payload being a json. This can lead to difficult to troubleshoot errors especially during consumption.        |
 
-   - Eventually, publishing should evolve into a merge proxy that is only mapping some headers or performing an `http` rewrite. The first step in this direction is to evolve the API to align with CE specification. 
+   * Eventually, publishing should evolve into a merge proxy that is only mapping some headers or performing an `http` rewrite. The first step in this direction is to evolve the API to align with CE specification. 
 
   * Consumption
 
-	- There is not much difference for consumption apart from the extra knowledge of channels and translating them to Kyma concepts of `event types` and `application identifier`.
-	- Consumption needs to implement `Event Activation` as Knative eventing has no such or a similar concept. After the discussion with Knative community, they do not want to introduce such constraints and expect applications to build them.
+	* There is not much difference for consumption apart from the extra knowledge of channels and translating them to Kyma concepts of `event types` and `application identifier`.
+	* Consumption needs to implement `Event Activation` as Knative eventing has no such or a similar concept. After the discussion with Knative community, they do not want to introduce such constraints and expect applications to build them.
 For details, see [examples](./kyma-knative-eventing-examples.md)
 
-## Publishing
+### Publishing
 
-### Evolving the API
+**Evolving the API**
 
 As per the current API, the event metadata and payload are part of the HTTP body. This was in sync with the initial cloud event specification.
 The CE specification has expanded and now supports HTTP transport binding with event metadata being passed in headers. See [example](https://github.com/cloudevents/spec/blob/v0.2/http-transport-binding.md#314-examples).
@@ -180,12 +196,11 @@ This could enable us in future to remove the translation being done and directly
 
 ![](assets/publish-api.svg)
 
-### Consumption
+**Consumption**
 
 A serverless deployed and running in Kyma should be configure events as triggers. 
 For example, a Lambda configured with the trigger for the `order.created` event.
 
 ![](assets/consume.svg)
-
 
 > **TBD** How can Knative sources be applied to Kyma eventing model?
