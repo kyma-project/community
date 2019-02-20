@@ -35,7 +35,7 @@ For release versioning, Kyma uses the approach similar to [Semantic Versioning](
 |-----|---------|
 | **MAJOR** | Introduces breaking changes |
 | **MINOR** | Introduces a new functionality in a planned schedule |
-| **PATCH** <br> **hot.fix** | Introduces a backwards-compatible bug fix as an unscheduled release |
+| **PATCH** <br> **hot.fix** | Introduces a backward-compatible bug fix as an unscheduled release |
 
 **NOTE:** **Major version zero** refers to software that is under constant, intensive development. Such software is not production-ready and can include breaking changes.
 
@@ -109,7 +109,7 @@ We do not schedule patches but rather provide them on-demand if there is a need 
 ### Nightly and weekly builds
 It is our goal to have fully automated builds generated on a daily or nightly basis. Such builds can be made available to the community to validate the newest functionality and corrections implemented in development or testing environments, but are not intended for production use.
 
-Once per week, we should update the installation with the newest, weekly build. During the following week, automated tests must run on the cluster to validate the stability and performance of the environment, and ensure that the results remain unchanged during a longer period of time. This also supports the whole release strategy by improving the quality of the product and increasing the public confidence in it.
+Once per week, we should update the installation with the newest, weekly build. During the following week, automated tests must run on the cluster to validate the stability and performance of the environment, and ensure that the results remain unchanged for a longer period of time. This also supports the whole release strategy by improving the quality of the product and increasing the public confidence in it.
 
 ### Release candidates
 
@@ -125,7 +125,7 @@ The Head of Capabilities coordinates the product planning, following the plannin
 ### Planning end
 After completing the planning process, the theme and expected scope of the release is clear. All maintainers know what they have to work on for the release.
 
-At this time, the Release Manager publicly communicates the planned release schedule for Kyma. This communication should include key features or fixes expected to fall into the scope of the release. Possible communication channels include blog posts, social media, and Core SIG meetings.
+At this time, the Release Manager publicly communicates the planned release schedule for Kyma. This communication should include key features or fixes expected to fall within the scope of the release. Possible communication channels include blog posts, social media, and Core SIG meetings.
 
 ### Development start
 After completing the planning, the Head of Capabilities explicitly hands over the release to the engineering teams during the handover meeting. At this point, the development phase of the new release officially starts.
@@ -150,12 +150,12 @@ The Release Manager notifies the Kyma community on a public Slack channel that t
 ### Release publishing
 The final release is available in the GitHub releases, including the installation instructions. It also includes the complete changelog that lists all pull requests merged into this release.
 
-A Technical Writer publishes the blog post on the public Kyma website to announce the release. The post includes release notes prepared based on the input from the Product Owners. Apart from new features, release notes also describe resolved and known issues.
+A Technical Writer publishes the blog post on the public Kyma website to announce the release. The post includes release notes that describe new features, as well as resolved and known issues.
 
 You can learn about the new release from additional notifications published on social media, Slack channels, or announcements made during the Core SIG meetings. Alternatively, you can [subscribe](./release-subscription.md) to GitHub notifications and receive updates each time a new release is available.
 
 ## Release scope
-For each of the planning periods described in the release schedule, GitHub epics and issues define and document the release scope with regards to functionality, corrections, and even non-functional requirements. The collection of all documented issues within a release represents the expected scope of that release that the whole organization and all teams define and commit to. The corresponding release in ZenHub identifies all issues and epics that fall under the final release scope.
+For each of the planning periods described in the release schedule, GitHub epics and issues define and document the release scope with regards to functionality, corrections, and even non-functional requirements. The collection of all documented issues within a release represents the expected scope of that release that the whole organization and all teams define and commit to. The corresponding release in ZenHub identifies all issues and epics that fall within the final release scope.
 
 When planning the release scope, all persons involved in the release must take the GDPR requirements into consideration when processing or storing personal data.
 
@@ -165,4 +165,4 @@ There is no guaranteed support for the bug fixes in the previous Kyma versions. 
 The Kyma project does not plan to provide any patch releases before the 1.0 production release and encourages the community to always upgrade to the latest release.
 
 ### Deprecation and backward-compatibility
-The 1.0 release and further release versions impose clear expectations regarding the depreciation and backward-compatibility of Kyma versions to ensure some level of stability for the users. This can denote a period of time in which you should not change the provided functionality. This is the practice that other open-source projects also follow.
+The 1.0 release and further release versions impose clear expectations regarding the depreciation and backward-compatibility of Kyma versions to ensure some level of stability for the users. This can mean a period of time in which you should not change the provided functionality. This is the practice that other open-source projects also follow.
