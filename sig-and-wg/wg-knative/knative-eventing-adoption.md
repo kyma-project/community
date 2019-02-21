@@ -180,7 +180,7 @@ Knative eventing interfaces need to be abstracted to:
 
   * Consumption
 
-	* There is not much difference for consumption apart from the extra knowledge of channels and translating them to Kyma concepts of `event types` and `application identifier`.
+	* There is not much difference for consumption apart from the extra knowledge of channels and translating them to Kyma concepts of `Event types` and `application identifier`.
 	* Consumption needs to implement `Event Activation` as Knative eventing has no such or a similar concept. After the discussion with Knative community, they do not want to introduce such constraints and expect applications to build them.
 For details, see [examples](./kyma-knative-eventing-examples.md)
 
