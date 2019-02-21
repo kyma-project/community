@@ -55,7 +55,7 @@ With Knative adoption, this model can no longer be applied due to the following:
 ## Knative channel naming convention
  The Knative channel name follows this pattern: `{event-source-id}-{event-type}-{event-type-version}`. In order to avoid naming conflicts, use the following guidelines when creating the channel name: 
  1. If the event component's name already contains a hyphen, a second hyphen is added. For example, `external-application` becomes `external--application`.
- 2. In case any of the event components contains the period character, then it will be replaced by the **-dot-** character sequence (e.g. order.created will be order-dot-created).
+ 2. If the event component's name contains a period, the period is replaced with `-dot-`. For example, `order.created` becomes `order-dot-created`.
  3. After applying step 1 and 2 for each component of the three event components, the three components output will be joined by the hyphen character (e.g. the channel name **external--application-order-dot-created-v1** is construcled from the source-id **external-application**, event-type **order.created** and the event-type-version **v1**).
  
  Here are some example event components that can cause channel naming collisions:
