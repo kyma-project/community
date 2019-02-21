@@ -127,7 +127,7 @@ To enable ease of use and better UX, it should be possible to have:
 **Requirements:**
 
 * API to expose available PubSub in Kyma.
-* Implementation to fetch the information from Event, Application or default to decide which PubSub to use in the same order.
+* Implementation fetching the information from the Event, Application or default to decide which PubSub to use in the same order.
 
 **Open questions**
 
