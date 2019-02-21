@@ -138,7 +138,7 @@ To enable ease of use and better UX, it should be possible to have:
 
 ### Extensibility use case
 
-A serverless is triggered by an event sent from  application.
+The Event sent from the application triggers serverless.
 
 * Get a channel when a subscription is created. If channel does not exist, create the channel.
 * Only create the channel when someone actually wants to consume events.
