@@ -52,6 +52,21 @@ With Knative adoption, this model can no longer be applied due to the following:
 
 >Note: A Kyma Event type is just a logical concept. The actual Event type is a Fully Qualified Event Type composed of `application(source id) + event type + event type version`.
 
+## Knative channel naming convention
+ The Knative channel name is composed of three components: the event **source-id**, **event-type** and the **event-type-version** joined by the **hyphen** character. In order to avoid channel naming collisions, the Knative channel name is constructed in the following order:
+ 1. In case any of the event components contains the hyphen character, then it will be escaped by another hyphen character (e.g. external-application will be external--application).
+ 2. In case any of the event components contains the period character, then it will be replaced by the **-dot-** character sequence (e.g. order.created will be order-dot-created).
+ 3. After applying step 1 and 2 for each component of the three event components, the three components output will be joined by the hyphen character (e.g. the channel name **external--application-order-dot-created-v1** is construcled from the source-id **external-application**, event-type **order.created** and the event-type-version **v1**).
+ 
+ Here are some example event components that can cause channel naming collisions:
+ 
+| Source ID                  | Event Type    | Event Type Version | Channel Name                                  |
+| :---                       | :---          | :---               | :---                                          |
+| external.application       | order.created | v1                 | external-dot-application-order-dot-created-v1 |
+| external.application.order | created       | v1                 | external-dot-application-dot-order-created-v1 |
+| external-application       | order-created | v1                 | external--application-order--created-v1       |
+| external-application-order | created       | v1                 | external--application--order-created-v1       |
+
 ### Option 1
 `1 Kyma event-type` is mapped to a `1 Knative channel`.
 
