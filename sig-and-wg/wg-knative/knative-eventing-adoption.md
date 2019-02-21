@@ -57,7 +57,7 @@ With Knative adoption, this model can no longer be applied due to the following:
  1. If the event component's name already contains a hyphen, a second hyphen is added. For example, `external-application` becomes `external--application`.
  2. If the event component's name contains a period, the period is replaced with `-dot-`. For example, `order.created` becomes `order-dot-created`.
  
- Here are some example event components that can cause channel naming collisions:
+The table includes sample channel names created according to the naming pattern:
  
 | Source ID                  | Event Type    | Event Type Version | Channel Name                                  |
 | :---                       | :---          | :---               | :---                                          |
