@@ -129,6 +129,7 @@ To enable ease of use and better UX, it should be possible to have:
 * API to expose available PubSub in Kyma.
 
 **Flow**
+The diagram presents the process of deciding which PubSub to use.
 ![](assets/decide-which-pubsub.svg)
 
 **Open questions**
