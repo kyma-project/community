@@ -141,8 +141,8 @@ To enable ease of use and better UX, it should be possible to have:
 The Event sent from the application triggers serverless.
 
 * Get a channel when a subscription is created. If channel does not exist, create the channel.
-* Only create the channel when someone actually wants to consume events.
-* This can be extended in a way that we discard the events at an early stage when there is no consumer configured.
+* Create the channel only when someone actually wants to consume events.
+* This can be extended to allow discarding of the events at an early stage when there is no consumer configured.
 * This will be the default behavior.
 
 ### Integration with external messaging systems
@@ -150,12 +150,12 @@ The Event sent from the application triggers serverless.
 The events sent from an application are published to a cloud PubSub. This could trigger an action (compute) in the cloud ecosystem.
 
 * In such a case, while registering an event type, it can be specified if the backing resources(e.g. Knative Channel) should be created or not.
-* This way the user is making a conscious choice to create PubSub resources while registering events.
+* This way the user can make a conscious choice to create PubSub resources while registering events.
 
 
 **Requirements**
 
-* Kyma eventing needs to listen for the event registeration.
+* Kyma eventing needs to listen for the event registration.
 * Using the metatadata specified while registering the events, decide if the backing resources should be created or not.
 * Create the backing resources (e.g. Knative Channels).
 
@@ -181,7 +181,7 @@ Knative eventing interfaces need to be abstracted to:
   * Consumption
 
 	* There is not much difference for consumption apart from the extra knowledge of channels and translating them to Kyma concepts of `Event types` and `application identifier`.
-	* Consumption needs to implement `Event Activation` as Knative eventing has no such or a similar concept. After the discussion with Knative community, they do not want to introduce such constraints and expect applications to build them.
+	* Consumption needs to implement `Event Activation` as Knative eventing has no such or a similar concept. The Knative community is against introducing such constraints and expect applications to build them.
 For details, see [examples](./kyma-knative-eventing-examples.md)
 
 ### Publishing
