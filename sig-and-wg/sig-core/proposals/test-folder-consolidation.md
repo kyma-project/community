@@ -3,7 +3,7 @@
 ## Introduction
 The [tests](https://github.com/kyma-project/kyma/tree/master/tests) folder of the kyma-project contains tests executed against a running Kyma cluster to assure integrity and functional correctness of the cluster with all modules installed.
 These are acceptance tests.
-All subfolders in the _tests_ directory define one test suite, usually focussing on one component.
+All subfolders in the `tests` directory define one test suite, usually focusing on one component.
 
 ## Problem
 Each subfolder uses a different naming style. For example, `kubeless` or `ui-api-layer-acceptance-tests`.
@@ -15,7 +15,7 @@ As a result:
 
 ## Goal
 
-Propose a name pattern which places the valuable information, the differentiator of the folder, into the focus.
+Propose a name pattern using specific information to distinguish between the folders.
 
 ## Consideration
 
@@ -36,9 +36,9 @@ No prefix, no suffix, no `acceptance` no multi-components.
 
 The docker image for a subfolder should reside in the `tests` subfolder.
 
-**Example**: A component _event-bus_ has its acceptance tests in folder _tests/event-bus_ and produces a docker image _XX/tests/event-bus:0.5.1_
+**Example**: The Event-Bus component has its acceptance tests in the `tests/event-bus` folder and produces a docker image named like `XX/tests/event-bus:0.5.1`
 
-Real e2e scenarios (like kubeles--integration) should be bundled into one subfolder _e2e_. Here we should have one test project which will execute all e2e tests organized by scenarios in different packages.
++ Bundle the real e2e scenarios (like kubeless-integration) into one `e2e` subfolder. Here we should have one test project which executes all e2e tests divided by scenarios to different packages.
 
 ## Actions
 
