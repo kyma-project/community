@@ -53,7 +53,7 @@ With Knative adoption, this model can no longer be applied due to the following:
 >Note: A Kyma Event type is just a logical concept. The actual Event type is a Fully Qualified Event Type composed of `application(source id) + event type + event type version`.
 
 ## Knative channel naming convention
- The Knative channel name follows this pattern: `{event-source-id}-{event-type}-{event-type-version}`. In order to avoid naming conflicts, use the following guidelines when creating the channel name: 
+ The Knative channel naming follows this pattern: `{event-source-id}-{event-type}-{event-type-version}`. In order to avoid naming conflicts, the following rules are considered when creating the channel name: 
  1. If the event component's name already contains a hyphen, a second hyphen is added. For example, `external-application` becomes `external--application`.
  2. If the event component's name contains a period, the period is replaced with `-dot-`. For example, `order.created` becomes `order-dot-created`.
  
