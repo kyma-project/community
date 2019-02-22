@@ -6,12 +6,12 @@ These are acceptance tests.
 All subfolders in the `tests` directory define one test suite, usually focusing on one component.
 
 ## Problem
-Each subfolder uses a different naming style. For example, `kubeless` or `ui-api-layer-acceptance-tests`.
+Each subfolder uses a different naming pattern. For example, `kubeless` or `ui-api-layer-acceptance-tests`.
 
 As a result:
 - It's difficult to decide which convention to follow when creating a new subfolder.
-- It is not always possible to derive the related component (there is no e2e test yet, the tests are all focused on components).
-- It is confusing for readers.
+- It's not always possible to derive the related component (there is no e2e test yet, the tests are focused on components).
+- It's confusing for readers.
 
 ## Goal
 
@@ -34,17 +34,17 @@ Use the component's name for the component-specific subfolder.
 
 No prefix, no suffix, no `acceptance` no multi-components.
 
-The docker image for a subfolder should reside in the `tests` subfolder.
+The docker image for a subfolder resides in the `tests` subfolder.
 
-**Example**: The Event-Bus component has its acceptance tests in the `tests/event-bus` folder and produces a docker image named like `XX/tests/event-bus:0.5.1`
+**Example**: The Event-Bus component has its acceptance tests in the `tests/event-bus` folder and produces the `XX/tests/event-bus:0.5.1` docker image.
 
-+ Bundle the real e2e scenarios (like kubeless-integration) into one `e2e` subfolder. Here we should have one test project which executes all e2e tests divided by scenarios to different packages.
++ Bundle the real e2e scenarios (like kubeless-integration) into one `e2e` subfolder. Here we should have one test project which executes all e2e tests divided by scenarios into different packages.
 
 ## Actions
 
 - Include a `README.md` file in the `tests` folder to explain the naming convention.
-- Link the `README.md` file in the developer guide.
-- Migrate the `kubeless-integration_ to _e2e` project containing e2e scenarios on the package level to have one test suite.
+- Link the `README.md` file in the developer's guide.
+- Migrate the `kubeless-integration` to `e2e` project containing e2e scenarios on the package level to have one test suite.
 - Keep all folders in the root `tests` folder rename them according to the information in this table:
 
 | old folder | new folder | action required |
