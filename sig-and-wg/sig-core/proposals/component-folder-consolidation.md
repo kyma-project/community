@@ -10,8 +10,8 @@ Each component subfolder uses a different naming convention. For example `ui-api
 
 As a result:
 - It's difficult to decide which naming convention to follow when creating a new component. What is the difference between a layer and a service?
-- It is not always possible to derive the related Kyma module or domain. For example, you don't know to which domain or module the `configurations-generator` relates to.
-- It is not always possible to derive the nature or kind of component. For example, you don't know if `environments` serves an API or needs access to the K8S API Server?
+- It's not always possible to derive the related Kyma module or domain. For example, you don't know which domain or module the `configurations-generator` relates to.
+- It's not always possible to derive the nature or kind of component. For example, you don't know if `environments` serves an API or needs access to the K8S API Server.
 
 ## Goal
 
@@ -27,9 +27,9 @@ Grouping the components into the `API` and `K8S` categories sounds meaningful as
 - Runtime workload or management workload only (auto-scaling)
 - ...
 
-Naming standard Business API specific components **service**  sounds feasible, as they serve an API and usually require to prefix the API with the domain it is bound to, such as `application-connector-service`. Here, the `api-ui-layer` should be counted in as well, as its main intention is to expose a public business API requiring a security model (even if it is accessing the API Server). Besides that, there is a special category of API which is implementing the `OpenServiceBrokerAPI`. As we have multiple of them, the suggested name is **broker**.
+Naming standard Business API specific components `service`  sounds feasible, as they serve an API and usually require to prefix the API with the domain it is bound to, such as **application-connector-service**. Here, the **api-ui-layer** should be counted in as well, as its main intention is to expose a public business API requiring a security model (even if it is accessing the API Server). Besides that, there is a special category of API which is implementing the **OpenServiceBrokerAPI**. As we have multiple of them, the suggested name is `broker`.
 
-The Kubernetes API specific components usually follows one of the well-known Kubernetes patterns like **controller** and **operator**. Furthermore, there is currently one component which is a **job** not fitting into any other pattern. The components proxying other components do not fit well into any of the categories, but for now, they are proxying only K8S specific components, so we could categorize them the same way and create a new **proxy** sub-category.
+The Kubernetes API specific components usually follows one of the well-known Kubernetes patterns like `controller` and `operator`. Currently, one component which is a `job` does not match any pattern. The components proxying other components do not fit well into any of the categories, but for now, they are proxying only K8S specific components, so we could categorize them the same way and create a new `proxy` sub-category.
 
 ## Proposal
 
@@ -38,14 +38,14 @@ The Kubernetes API specific components usually follows one of the well-known Kub
 The proposed naming pattern for the component folders are defined per sub-category and contain the sub-category name as a suffix. The main category is not included as it is implied.
 
 Kubernetes API-specific categories:
-- **controller** is a [Kubernetes Controller](https://kubernetes.io/docs/concepts/extend-kubernetes/extend-cluster/). It uses the name of the primary Kubernetes resource which it controls. For example, `api-controller`.
-- **operator** is a [Kubernetes Operator](https://coreos.com/operators/). It uses the name of the module it operates. For example, `application-operator`.
-- **job** is a [Kubernetes Job](https://kubernetes.io/docs/tasks/job/), performing a task once or periodically. It uses the name of the task it performs. For example, `istio-patch-job`.
-- **proxy**  proxies an existing component, usually introducing a security model for the proxied component. It uses the component name. For example, `api-server-proxy`.
+- `controller` is a [Kubernetes Controller](https://kubernetes.io/docs/concepts/extend-kubernetes/extend-cluster/). It uses the name of the primary Kubernetes resource which it controls. For example, **api-controller**.
+- `operator` is a [Kubernetes Operator](https://coreos.com/operators/). It uses the name of the module it operates. For example, **application-operator**.
+- `job` is a [Kubernetes Job](https://kubernetes.io/docs/tasks/job/), performing a task once or periodically. It uses the name of the task it performs. For example, **istio-patch-job**.
+- `proxy`  proxies an existing component, usually introducing a security model for the proxied component. It uses the component name. For example, **api-server-proxy**.
 
 Business API-specific categories:
-- **service** serves an HTTP/S-based API, usually exposed securely to the public. It uses the domain name and the API it serves. For example, `application-connector-service`.
-- **broker** is implementing the OpenServiceBroker API. It uses the name of the provider it integrates with. For example, `azure-broker`.
+- `service` serves an HTTP/S-based API, usually exposed securely to the public. It uses the domain name and the API it serves. For example, **application-connector-service**.
+- `broker` is implementing the OpenServiceBroker API. It uses the name of the provider it integrates with. For example, **azure-broker**.
 
 ### Action Items
 
@@ -83,7 +83,7 @@ Business API-specific categories:
 
 ## Addition
 
-Going the extra mile we should also have a look at the `tools` folder. Currently, the term `tool` is not specified. To define the tool, let's define a module and a component first:
+Going the extra mile we should also have a look at the `tools` folder. Currently, the term **tool** is not specified. To define it, let's define a module and a component first:
 
 - **module** A Kyma module is a helm chart installed by the installer. It is located in the `kyma/resources` folder. A module can be optional for a Kyma installation. For example,  `service-catalog` is a module consisting mainly of 3rd party images but also leveraging some Kyma components, such as the `binding-usage-controller`.
 - **component** A Kyma component is any Pod/container/image deployed with a Kyma module to provide its functionality. A component is made of sources located in the `kyma/components` folder.
