@@ -2,56 +2,60 @@
 
 This guide covers the best practices for creating Helm charts every Kyma team should employ. 
 
-### Do not use `crd-install` hook
+## Do not use the crd-install hook
 
-You should never rely on `crd-install` helm hook. This is because Helm does not trigger this hook on upgrade so new CRDs won't be installed when Kyma is upgraded.
+Helm doesn't trigger the `crd-install` hook in the upgrade process. Because of that, new Custom Resource Definitions (CRDs) aren't installed. See the alternatives to using the `crd-install` hook:
 
-There are several alternatives to `crd-install` hook. Here are some of them order by rising implementation effort:
-1. Make CRDs part of separate chart which must be installed before chart that requires them.
-   
-   Cons:
-    * It requires yet another chart.
-    * CRDs are managed by Helm and have all the limitations tha come with it.
-   
-   Pros:
-    * There is no additional implementation effort needed.
-    * CRD is separate file and may be used without other components (for tests for example).
+1. Make the CRD part of a separate chart which must be installed before the chart that requires the CRD.
+
+  - Implementation effort: **low**
+
+  - Pros:
+    * No additional implementation effort required.
+    * The CRD is a separate file which can be used on its own, for example for tests.
   
-2. Register CRD via its controller (if there is one). 
-   
-   Cons:
-    * Requires controller.
-    * CRDs are not listed as part of Helm release.
-    * CRD is not available as file.
-   
-   Pros:
-    * CRD is managed by component that is logically responsible for it.
-    * CRD is not subject ot Helm limitations.
-    
-2. Create a job triggered on `pre-install` and `pre-upgrade` which registers new CRDs and removes old ones.
-   
-   Cons:
+  - Cons:
+    * Requires creating more charts.
+    * The CRD is managed by Helm and comes with all of the associated limitations.
+
+2. Register the CRD through its controller.
+
+  - Implementation effort: **medium**
+
+  - Pros:
+    * The CRD is managed by a component that is logically responsible for it.
+    * The CRD is not subject to the Helm limitations.
+
+  - Cons:
+    * Requires a controller for the CRD.
+    * The CRD is not listed as a part of Helm release.
+    * The CRD is not available as a file.
+
+3. Create a job that registers the new CRD and removes its old version. The job must be triggered on `pre-install` and `pre-upgrade` Helm hooks.
+
+  - Implementation effort: **high**
+
+  - Pros:
+    * The CRD can be a separate entity.
+    * Migration can be easily implemented in the job. 
+    * The CRD is not subject to the Helm limitations.
+
+  - Cons:
     * Jobs are troublesome to debug.
-    * CRDs are not listed as part of Helm release.
-   
-   Pros:
-    * CRD may still be available as separate file.
-    * If there is any migration that needs to be run it can be easily implemented in job.
-    * CRD is not subject ot Helm limitations.
-    
-### Do not move resources between charts
+    * The CRD is not listed as a part of Helm release.
 
-Sometimes you might want to move a resource (ConfigMap, Deployment, CRD, etc.) from one chart to another. How simple it may sound it is very dangerous operation as it causes charts to loose backward compatibility: it won't be possible to upgrade existing installations to new version. 
+## Moving resources between charts
 
-First time problem manifested itself because CRD `clustermicrofrontends.ui.kya-project.io` in Kyma repository was moved from chart `core` to chart `cluster-essentials` in release 0.7. During upgrade Kyma was not able to apply changes to `cluster-essentials` release, because `clustermicrofrontends.ui.kya-project.io` has already existed in 0.6 cluster, but was part of `core` chart. 
+Moving resources, such as ConfigMaps, Deployments, CRDs, and others from one chart to another is problematic as it causes Kyma to lose backward compatibility. The deployment in which the CRD is moved cannot be upgraded to a newer version.  
 
-#### How to do it
+The `ABC` CRD is part of the `YYYY` chart in the 0.6 release. That CRD is moved to the `ZZZZ` chart in the 0.7 release. Kyma cannot apply changes to the `ZZZZ` chart because its CRD, `ABC`, exists in the 0.6 version as a part of the `YYYY` chart.  
+ 
+To avoid these problems, rename your resources when you move them from one chart to another. 
+>**NOTE:** Using this approach removes the old CRD and creates a new one. 
 
-To avoid compatibility problems you have to rename your resource when moving it from one chart to another. Bear in mind that this is destructive operation: old copy of resource will be removed and new one will be created. 
+When a CRD is deleted, all of the associated implementations are removed, which may cause the user to lose data. Because of this risk, migrate the CRDs instead of simply moving them between charts. Follow this procedure:
 
-CRDs are special in this case: all CRD implementations are removed when CRD is deleted. This may cause user to loose his data. Because of that you should never move CRDs between charts. In case you really need to move CRD migration procedure needs to be prepared. Procedure should:
 1. Backup all existing implementations. 
-2. Remove old CRD.
-3. Run upgrade.
-4. Restore CRD implementations.
-
+2. Remove the old CRD.
+3. Run the upgrade.
+4. Restore all CRD implementations. 
