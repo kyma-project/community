@@ -51,7 +51,7 @@ Moving resources, such as ConfigMaps, Deployments, CRDs, and others from one cha
 The `ABC` CRD is part of the `YYYY` chart in the 0.6 release. That CRD is moved to the `ZZZZ` chart in the 0.7 release. Kyma cannot apply changes to the `ZZZZ` chart because its CRD, `ABC`, exists in the 0.6 version as a part of the `YYYY` chart.  
  
 To avoid these problems, rename your resources when you move them from one chart to another. 
->**NOTE:** Using this approach removes the old CRD and creates a new one. 
+>**NOTE:** Using this approach removes the old resource and creates a new one. 
 
 When a CRD is deleted, all of the associated implementations are removed, which may cause the user to lose data. Because of this risk, migrate the CRDs instead of simply moving them between charts. Follow this procedure:
 
