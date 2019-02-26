@@ -86,8 +86,8 @@ Here is the preferred terminology to use in the Kyma documentation:
 ✅ In your request, supply the values for the following parameters:    
 ⛔️ In your request, supply the values as shown below:
 
-* "back end" or "back-end," not "backend"
-* "front end" or "front-end," not "frontend"
+* "backend,"  not "back end" or "back-end"
+* "frontend," not "front end" or "front-end"
 * "email," not "e-mail"
 * "fill in," not "complete"
 * "ID," not "id"
@@ -107,6 +107,7 @@ Don't use "e.g." in documentation. Use the words "for example" or "such as" inst
 * "API Micro Gateway," not "API Gateway"
 * "connect/connection," not "integrate/integration"
 * "custom resource," not "Custom Resource" or "CustomResource"
+* "Application" to describe an external solution connected to Kyma through the Application Connector, "application" to describe software
 
 > **NOTE:** Do not use words such as "currently" or "now" to indicate that something is in the transitional phase of development. Avoid promising anything and mention only those components and functionalities that are already in use.
 

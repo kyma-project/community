@@ -86,11 +86,11 @@ These are the versioning criteria:
 - The version name must contain the word **beta**, for example `v2beta3`, if the software is well-tested, enabling features is safe, has the features enabled by default, and support for the features is available, even though the details can change.
 - A stable definition must be versioned as `vX` where X is an integer, for example `v1`, and it contains features which appear in multiple subsequent versions of the released software.
 
-For more details about the criteria, see the [API changes documentation](https://github.com/kubernetes/community/blob/master/contributors/devel/api_changes.md#alpha-beta-and-stable-versions).
+For more details about the criteria, see the [API changes documentation](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api_changes.md#alpha-beta-and-stable-versions).
 
 ### GA release
 
-Before the first GA release of Kyma, use the **alpha** versions to handle the unplanned scope changes. Alternatively, use a **beta** version if you do not plan to make any further changes, the CRD is covered by end-to-end tests, and you provide support, including the migration paths for version updates. After the GA release of Kyma, upgrade the existing CRDs to stable versions and ensure that you meet the [requirements](https://github.com/kubernetes/community/blob/master/contributors/devel/api_changes.md#alpha-beta-and-stable-versions).
+Before the first GA release of Kyma, use the **alpha** versions to handle the unplanned scope changes. Alternatively, use a **beta** version if you do not plan to make any further changes, the CRD is covered by end-to-end tests, and you provide support, including the migration paths for version updates. After the GA release of Kyma, upgrade the existing CRDs to stable versions and ensure that you meet the [requirements](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api_changes.md#alpha-beta-and-stable-versions).
 
 ## Validation
 
@@ -112,6 +112,6 @@ For more details, see these documents:
 - https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources
 - https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions
 - https://kubernetes.io/docs/concepts/overview/kubernetes-api/#api-versioning
-- https://github.com/kubernetes/community/blob/master/contributors/devel/api_changes.md#alpha-beta-and-stable-versions
+- https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api_changes.md#alpha-beta-and-stable-versions
 - https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#schema-object  
 - https://docs.openshift.org/latest/admin_guide/custom_resource_definitions.html
