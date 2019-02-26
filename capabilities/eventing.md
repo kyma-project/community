@@ -16,7 +16,7 @@ Eventing helps you to deliver the following business use cases:
 
 ## Vision
 
-* Enable customers to plug in messaging middleware that fits their requirements best as well as to run multiple messaging implementations in paralell. 
+* Enable customers to plug in messaging middleware that fits their requirements best as well as to run multiple messaging implementations in parallel.
 * Provide **Health metrics** and **Performance metrics** for Event Bus to enable smooth operations and proactive actions.
 * Provide tooling to enable customers to benchmark Event Bus for their volume or fan-out needs.
 * Align with [CloudEvents specification](https://github.com/cloudevents/spec).
