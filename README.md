@@ -7,13 +7,15 @@ Welcome to the Kyma community. Here you can find information on how to join the 
 Before you proceed, review the [Code of Conduct](CODE_OF_CONDUCT.md) and contact us on [Slack](https://kyma-community.slack.com/messages/CBLBESMST/) for any questions or concerns.
 
 Go directly to the section that you are most interested in:
-- [Product information](#product-information)
-- [Contribution](#contribution)
-  - [Process](#process)
-  - [Issues](#issues)
-  - [Collaboration](#collaboration)
-- [Guidelines and templates](#guidelines-and-templates)
-- [Security](#security)
+- [Kyma Community](#kyma-community)
+    - [Overview](#overview)
+    - [Product information](#product-information)
+    - [Contribution](#contribution)
+        - [Process](#process)
+        - [Issues](#issues)
+        - [Collaboration](#collaboration)
+    - [Guidelines and templates](#guidelines-and-templates)
+    - [Security](#security)
 
 ## Product information
 
@@ -51,6 +53,7 @@ You can also find these guidelines and templates in the `community` repository:
 - Overview of the [content strategy](guidelines/content-guidelines/content-strategy.md) and [content guidelines](/guidelines/content-guidelines)
 - [Release process](/guidelines/releases) details
 - [Decisions](/sig-and-wg/sig-core/decisions) made by Kyma team members and the SIG Core.
+- [Coding standards](/guidelines/coding-standards/README.md) 
 
 There are also [internal guidelines](/guidelines/internal-guidelines) for the Kyma team members. They contain a folder, file, and document structure required for a [skeleton Kyma repository](/guidelines/internal-guidelines/repository-template).
 
