@@ -42,7 +42,7 @@ There are five different stages of the triage:
 | Stage | Description | Labels |
 |--------- |----------|---------|
 | Validity | Assess the validity of the issue (whether it is taken for the further triage and proper classification). | invalid, duplicate, wontfix, question |
-| Kind | Differentiate whether the related issue is a new feature or a bug. | enhancement, bug |
+| Kind | Differentiate whether the related issue is a new feature or a bug. | enhancement, bug, test-failing |
 | Decision | Check if the issue is related to a [decision](governance.md#decision-making) | decision |
 | Help | Identify issues that do not have high priority and can be taken by the community. | help wanted, good first issue|
 | Security | Specify the [CVSSv3](https://www.first.org/cvss/calculator/3.0) severity with the support of the security team. | security/{SEVERITY} |
