@@ -6,12 +6,12 @@ As a developer, I just want to configure a subscription for an event type from a
 
 ## Requirement
 
-* The pluggable Knative layer for the messaging middlewar (Knative ClusterChannelProvisioner) is available and deployable.
+* The pluggable Knative layer for the messaging middleware (Knative ClusterChannelProvisioner) is available and deployable.
 * Operator will provision the pluggable layer into Kyma (Knative ClusterChannelProvisioner).
   > Note: There will be some refernce examples that customers can follow. The provisioning/deployment will be an operator action as customes can choose a implementation specific to their needs.
 * Kyma is updated to use Knative version 0.4+.
 
-## The out-of-box Kyma installation
+## The out-of-the-box Kyma installation
 
 The OOB Kyma installation will have NATS Streaming set as the default messaging middleware. The required Knative configurations will be set to use that.
 
