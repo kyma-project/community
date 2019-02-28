@@ -46,6 +46,8 @@ data:
         name: cloud-pubsub
 ```
 
+  * There will a separate concept where the operator will be able to specify a non-default messaging middleware.
+
 ### Why not during installation?
 
 * There is no standard way to deploy a provisioner. It can be done via Helm Chart, plain kubernetes deployments or some other mechanism. 
@@ -76,8 +78,9 @@ data:
 
 With great power comes great responsibility. Operator will have power to leverage pluggability of messaginng middleware. This implies the responsibility to not break the system.
 
-There should be some User Interface that can help operator to avoid mistakes. Some of the details include:
+* Add possible validations in place that can prevent the operator from a destructive operation.
 
-* Existing ClusterChannelProvisioner in the system.
-* Any channels/resources related for the ClusterChannelProvisioner. If there is none, then operator knows that deprovisioning is safe.
-* Additionally for each channel there is a drill down for channel details and its resources. This will help the operator to understand the existing set up better.
+* There should be some User Interface that can help operator to avoid mistakes. Some of the details include:
+  * Existing ClusterChannelProvisioner in the system.
+  * Any channels/resources related for the ClusterChannelProvisioner. If there is none, then operator knows that deprovisioning is safe.
+  * Additionally for each channel there is a drill down for channel details and its resources. This will help the operator to understand the existing set up better.
