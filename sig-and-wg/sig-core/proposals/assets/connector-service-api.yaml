@@ -522,6 +522,18 @@ components:
           $ref: '#/components/schemas/csrAplicationApiURLs'
         certificate:
           $ref: '#/components/schemas/cert'
+    applicationClientIdentity:
+      type: 'object'
+      properties:
+        application:
+          type: 'string'
+          example: 'example-application'
+        group:
+          type: 'string'
+          example: 'example-group'
+        tenant:
+          type: 'string'
+          example: 'example-tenant'
     applicationInfoResponseUrls:
       type: 'object'
       properties:
@@ -537,8 +549,19 @@ components:
     applicationInfoResponse:
       type: 'object'
       properties:
+        clientIdentity:
+          $ref: '#/components/schemas/applicationClientIdentity'
         urls:
           $ref: '#/components/schemas/applicationInfoResponseUrls'
+    runtimeClientIdentity:
+      type: 'object'
+      properties:
+        group:
+          type: 'string'
+          example: 'example-group'
+        tenant:
+          type: 'string'
+          example: 'example-tenant'
     runtimeInfoResponseUrls:
       type: 'object'
       properties:
@@ -548,6 +571,8 @@ components:
     runtimeInfoResponse:
       type: 'object'
       properties:
+        clientIdentity:
+          $ref: '#/components/schemas/runtimeClientIdentity'
         urls:
           $ref: '#/components/schemas/runtimeInfoResponseUrls'
     csrRuntimeApiURLs:
