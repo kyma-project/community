@@ -2,18 +2,18 @@
 
 As an operator, I want to configure a default messaging middleware that my Kyma cluster should use for eventing.
 
-As a developer, I just want to configure a subscription for an event type from a source in Kyma and do not care about the underlying details.
+As a developer, I want to configure a subscription for an event type from a source in Kyma. I don't want to care about the underlying details.
 
 ## Requirements
 
 * The pluggable Knative layer for the messaging middleware (Knative ClusterChannelProvisioner) is available and deployable.
 * The operator provisions the pluggable layer into Kyma (Knative ClusterChannelProvisioner).
-  > Note: There will be some refernce examples that customers can follow. The provisioning/deployment will be an operator action as customes can choose a implementation specific to their needs.
+  > **NOTE**: There will be some examples that customers can follow. The provisioning/deployment will be an operator action as customers can choose an implementation specific to their needs.
 * Kyma is updated to use Knative version 0.4+.
 
 ## The out-of-the-box Kyma installation
 
-The OOTB Kyma installation will have NATS Streaming set as the default messaging middleware. The required Knative configurations will be set to use that.
+The OOTB Kyma installation will have NATS Streaming set as the default messaging middleware. The required Knative configurations will be set to use it.
 
 ## When to specify the default?
 
@@ -51,18 +51,18 @@ data:
 ### Why not during installation?
 
 * There is no standard way to deploy a provisioner. It can be done via Helm Chart, plain Kubernetes deployments or other mechanisms. 
-  * We do not intend to impose a restriction as provisioners will be implemented in Knative open source or by customers or partners themselves.
+ * We do not intend to impose a restriction as provisioners will be implemented in Knative open source or by customers or partners themselves.
 * The injection of secrets during installation will be tricky.
 * There may be scenarios assuming the reuse of some existing instance.
 
 ## What happens to NATS Streaming?
 
 * The operator has the possibility pf deprovisioning to save costs. 
-  >**NOTE:** The detailed deprovisioning/migration will be solved in the future, through collaborating with Knative community.
+  >**NOTE:** The detailed deprovisioning/migration will be solved in the future through the collaboration with Knative community.
 
 **Concerns**
 
-* It can lead to broken state if there are already some resources created with NATS Streaming.
+* It can lead to a broken state if there are already some resources created with NATS Streaming.
 
 ## Can the default be changed?
 
