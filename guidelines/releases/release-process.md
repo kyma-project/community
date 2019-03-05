@@ -105,4 +105,4 @@ Update the release content manually with the instruction on how to install the l
 
 13. Update `RELEASE_VERSION` to the next version both on the `master` and release branches. Do it immediately after the release, otherwise any PR to a release branch overrides the previously published Docker images. 
  
->**NOTE:** Remember that Release Candidate versions should be tested by all teams. To make it easier, provision a publicly available cluster with the RC version after performing all the steps listed above.
+>**NOTE:** All teams should test the release candidate versions. To make the testing easier, provision a publicly available cluster with the release candidate version after performing all steps listed in this document.
