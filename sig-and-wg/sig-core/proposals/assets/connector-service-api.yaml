@@ -7,31 +7,31 @@ paths:
     get:
       summary: 'Returns health status'
       tags:
-        - health API
+      - health API
       responses:
         '200':
           description: 'The service is up.'
   /v1/applications/tokens:
     post:
       parameters:
-        - in: header
-          name: Group
-          schema:
-            type: string
-            format: uuid
-          required: false
-        - in: header
-          name: Tenant
-          schema:
-            type: string
-          required: false
-        - in: header
-          name: Application
-          schema:
-            type: string
-          required: true
+      - in: header
+        name: Group
+        schema:
+          type: string
+          format: uuid
+        required: false
+      - in: header
+        name: Tenant
+        schema:
+          type: string
+        required: false
+      - in: header
+        name: Application
+        schema:
+          type: string
+        required: true
       tags:
-        - applications internal API
+      - applications internal API
       summary: 'Creates a token used for certificate signing flow.'
       responses:
         '201':
@@ -54,45 +54,12 @@ paths:
                 $ref: '#/components/schemas/appError'
   /v1/applications/certificates/revocations:
     post:
-      parameters:
-        - in: header
-          name: Group
-          schema:
-            type: string
-            format: uuid
-          required: false
-        - in: header
-          name: Tenant
-          schema:
-            type: string
-            format: uuid
-          required: false
-        - in: header
-          name: Application
-          schema:
-            type: string
-            format: uuid
-          required: true
       tags:
-        - applications internal API
-        - applications external API
+      - applications external API
       summary: 'Marks certificate as revoked.'
-      requestBody:
-        description: 'SHA-256 hash of certificate that is to be revoked.'
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/revokeRequest'
       responses:
         '201':
           description: 'Successful operation.'
-        '400':
-          description: 'Invalid request payload.'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/appError'
         '500':
           description: 'Server error.'
           content:
@@ -102,28 +69,28 @@ paths:
   /v1/applications/signingRequests/info:
     get:
       parameters:
-        - in: query
-          name: token
-          description: 'Access Token fetched from /tokens endpoint.'
-          required: true
-          schema:
-            type: string
-        - in: header
-          name: EventsHost
-          description: 'Value of the URL to Event service which must be returned to the caller'
-          schema:
-            type: string
-            format: url
-          required: false
-        - in: header
-          name: MetadataHost
-          description: 'Value of the URL to Application Registry which must be returned to the caller'
-          schema:
-            type: string
-            format: url
-          required: false
+      - in: query
+        name: token
+        description: 'Access Token fetched from /tokens endpoint.'
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: EventsHost
+        description: 'Value of the URL to Event service which must be returned to the caller'
+        schema:
+          type: string
+          format: url
+        required: false
+      - in: header
+        name: MetadataHost
+        description: 'Value of the URL to Application Registry which must be returned to the caller'
+        schema:
+          type: string
+          format: url
+        required: false
       tags:
-        - applications external API
+      - applications external API
       summary: 'Allows for fetching information for CSR.'
       responses:
         '200':
@@ -147,22 +114,22 @@ paths:
   /v1/applications/management/info:
     get:
       parameters:
-        - in: header
-          name: EventsHost
-          description: 'Value of the URL to Event service which must be returned to the caller'
-          schema:
-            type: string
-            format: url
-          required: false
-        - in: header
-          name: MetadataHost
-          description: 'Value of the URL to Application Registry which must be returned to the caller'
-          schema:
-            type: string
-            format: url
-          required: false
+      - in: header
+        name: EventsHost
+        description: 'Value of the URL to Event service which must be returned to the caller'
+        schema:
+          type: string
+          format: url
+        required: false
+      - in: header
+        name: MetadataHost
+        description: 'Value of the URL to Application Registry which must be returned to the caller'
+        schema:
+          type: string
+          format: url
+        required: false
       tags:
-        - applications external API
+      - applications external API
       summary: 'Returns information on available services.'
       responses:
         '200':
@@ -180,14 +147,14 @@ paths:
   /v1/applications/certificates:
     post:
       parameters:
-        - in: query
-          name: token
-          description: 'Access Token fetched from /tokens endpoint.'
-          required: true
-          schema:
-            type: string
+      - in: query
+        name: token
+        description: 'Access Token fetched from /tokens endpoint.'
+        required: true
+        schema:
+          type: string
       tags:
-        - applications external API
+      - applications external API
       summary: 'Signs CSR.'
       requestBody:
         description: 'The CSR to be signed'
@@ -230,7 +197,7 @@ paths:
   /v1/applications/certificates/renewals:
     post:
       tags:
-        - applications external API
+      - applications external API
       summary: 'Renews certificate using CSR.'
       requestBody:
         description: 'The CSR to be signed'
@@ -261,19 +228,19 @@ paths:
   /v1/runtimes/tokens:
     post:
       parameters:
-        - in: header
-          name: Group
-          schema:
-            type: string
-            format: uuid
-          required: false
-        - in: header
-          name: Tenant
-          schema:
-            type: string
-          required: false
+      - in: header
+        name: Group
+        schema:
+          type: string
+          format: uuid
+        required: false
+      - in: header
+        name: Tenant
+        schema:
+          type: string
+        required: false
       tags:
-        - runtimes internal API
+      - runtimes internal API
       summary: 'Creates a token used for certificate signing flow.'
       responses:
         '201':
@@ -290,35 +257,12 @@ paths:
                 $ref: '#/components/schemas/appError'
   /v1/runtimes/certificates/revocations:
     post:
-      parameters:
-        - in: header
-          name: Group
-          schema:
-            type: string
-            format: uuid
-          required: false
-        - in: header
-          name: Tenant
-          schema:
-            type: string
-            format: uuid
-          required: false
       tags:
-        - runtimes internal API
-        - runtimes external API
+      - runtimes external API
       summary: 'Marks certificate as revoked.'
-      requestBody:
-        description: 'SHA-256 hash of certificate that is to be revoked.'
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/revokeRequest'
       responses:
         '201':
           description: 'Successful operation.'
-        '400':
-          description: 'Invalid request payload.'
         '500':
           description: 'Server error.'
           content:
@@ -328,14 +272,14 @@ paths:
   /v1/runtimes/signingRequests/info:
     get:
       parameters:
-        - in: query
-          name: token
-          description: 'Access Token fetched from /tokens endpoint.'
-          required: true
-          schema:
-            type: string
+      - in: query
+        name: token
+        description: 'Access Token fetched from /tokens endpoint.'
+        required: true
+        schema:
+          type: string
       tags:
-        - runtimes external API
+      - runtimes external API
       summary: 'Allows for fetching information for CSR.'
       responses:
         '200':
@@ -359,7 +303,7 @@ paths:
   /v1/runtimes/management/info:
     get:
       tags:
-        - runtimes external API
+      - runtimes external API
       summary: 'Returns information on available services.'
       responses:
         '200':
@@ -377,14 +321,14 @@ paths:
   /v1/runtimes/certificates:
     post:
       parameters:
-        - in: query
-          name: token
-          description: 'Access Token fetched from /tokens endpoint.'
-          required: true
-          schema:
-            type: string
+      - in: query
+        name: token
+        description: 'Access Token fetched from /tokens endpoint.'
+        required: true
+        schema:
+          type: string
       tags:
-        - runtimes external API
+      - runtimes external API
       summary: 'Signs CSR.'
       requestBody:
         description: 'The CSR to be signed'
@@ -427,7 +371,7 @@ paths:
   /v1/runtimes/certificates/renewals:
     post:
       tags:
-        - runtimes external API
+      - runtimes external API
       summary: 'Renews certificate using CSR.'
       requestBody:
         description: 'The CSR to be signed'
@@ -576,13 +520,6 @@ components:
           type: 'integer'
         error:
           type: 'string'
-    revokeRequest:
-      type: 'object'
-      properties:
-        hash:
-          type: 'string'
-          description: 'SHA-256 hash of a certificate.'
-          example: 'e1ead8be0635a83e249774d8d6d2d6879a81d91456e770915cbb5f774bb7fd93'
     csrRequest:
       type: 'object'
       properties:
