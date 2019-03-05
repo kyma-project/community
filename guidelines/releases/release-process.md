@@ -97,7 +97,7 @@ You don't have to wait until the `pre-rel06-kyma-integration` job finishes.
 Prow triggers the jobs again. Return to point 6 to rerun manual jobs.
 
 11. After all checks pass, merge the PR.
->**NOTE:** Bear in mind that merging to the release branch requires approvals from all teams.
+>**NOTE:** To merge the PR to the release branch, you must receive approvals from all teams.
 
 12. Merging the PR to the release branch runs the postsubmit job that creates a GitHub release.
 Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
