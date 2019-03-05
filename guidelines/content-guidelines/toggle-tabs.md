@@ -4,9 +4,9 @@ These are the guidelines for making documentation toggle (usually for content de
 
 ## Writing rules
 
-* toggles belonging to one group must start with `<div tabs>` and end with `</div>` html tags.
-* single to must starts with `<details>` tag and ends with `</details>` tag.
-* title of toggle must be between `<summary>` and `</summary>` tag. Every part of title must    starts in a new line. Example:
+* Toggles belonging to one group must start with `<div tabs>` and end with `</div>` html tags.
+* Single to must starts with `<details>` tag and ends with `</details>` tag.
+* Title of toggle must be between `<summary>` and `</summary>` tag. Every part of title must    starts in a new line. Example:
   ``` markdown
   <summary>
   From release
@@ -57,6 +57,7 @@ See the exemplary markdown code for reference:
   </details>
 </div>
 
+
 Rendered version in `kyma-project.io`:
 
 ![](./assets/toggle_flat_structure.png)
@@ -94,6 +95,7 @@ Rendered version in `kyma-project.io`:
       ```
       </details>
     </div>
+
 
 Rendered version in `kyma-project.io`:
 
