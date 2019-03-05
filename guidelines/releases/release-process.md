@@ -97,9 +97,12 @@ You don't have to wait until the `pre-rel06-kyma-integration` job finishes.
 Prow triggers the jobs again. Return to point 6 to rerun manual jobs.
 
 11. After all checks pass, merge the PR.
+>**NOTE:** Bear in mind that merging to the release branch requires approvals from all teams.
 
 12. Merging the PR to the release branch runs the postsubmit job that creates a GitHub release.
 Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
 Update the release content manually with the instruction on how to install the latest Kyma release.
 
-13. Update `RELEASE_VERSION` to the next version both on the `master` and release branches. Do it immediately after the release, otherwise any PR to a release branch overrides the previously published Docker images.  
+13. Update `RELEASE_VERSION` to the next version both on the `master` and release branches. Do it immediately after the release, otherwise any PR to a release branch overrides the previously published Docker images. 
+ 
+>**NOTE:** Remember that Release Candidate versions should be tested by all teams. To make it easier, provision a publicly available cluster with the RC version after performing all the steps listed above.
