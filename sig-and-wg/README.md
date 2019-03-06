@@ -65,7 +65,7 @@ The list of public WGs in Kyma includes:
 
 ### Closed SIGs or WGs
 
-To see closed SIG or WG and their outcomes check the [archive](archive). 
+To see closed SIG or WG and their outcomes check the [archive](archive/). 
 
 ## Organize new SIGs and WGs
 
@@ -120,7 +120,7 @@ When a SIG or WG has completed its goals or there is an explicit request to conc
 * Close the remaining open issues of the group or reassign them accordingly, with appropriate comment.
 * [Delete the group label](https://help.github.com/en/articles/deleting-a-label) used on the issues or PRs.
 * Remove the group from the [List of SIGs](#list-of-sigs) or [List of WGs](#list-of-wgs) in this `README.md` file. 
-* Move the group folder (together with all subfolders and files) to the [archive](./sig-and-wg/archive) folder.
+* Move the group folder (together with all subfolders and files) to the [archive](archive) folder.
 * Add a `CLOSURE.md` file to the archived group folder. Write it in a form of a blog post which informs about the group's outcomes, achievements, challenges, and lessons learned. Remember to provide links to the relevant material. The PR undergoes standard review by group members, Kyma Council and is subsequently closed. 
 * Publish the content of the `CLOSURE.md` in a form of a blog post on the Kyma website or link to it. 
 * Communicate the closure of a given SIG or WG through the SIG Core.
