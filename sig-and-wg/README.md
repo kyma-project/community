@@ -13,6 +13,7 @@ See these sections for details:
   * [The Kyma Council](#the-kyma-council)
   * [List of SIGs](#list-of-sigs)
   * [List of WGs](#list-of-wgs)
+  * 8Closed SIGs or WGs](#closed-sigs-or-wgs)
 * [Organize new SIGs and WGs](#organize-new-sigs-and-wgs)
 * [General guidelines](#general-guidelines)
 * [Roles](#roles)
@@ -61,6 +62,10 @@ The list of public SIGs in Kyma includes:
 The list of public WGs in Kyma includes:
 
 * [Knative integration](wg-knative/README.md)
+
+### Closed SIGs or WGs
+
+Closed SIG or WG groups are available [here](archive). 
 
 ## Organize new SIGs and WGs
 
@@ -111,9 +116,10 @@ When you join a SIG or a WG, you perform at least one of the following roles:
 ## Close a SIG or WG
 When a SIG or WG has completed its goals or there is an explicit request to conclude further work, it has to be closed. The request to close a SIG or WG may come from group members, group leaders, Kyma community or Kyma Council. To close a SIG or WG, group leaders need to:
 
-* Create an issue and accompanying PR to close a SIG/WG and add the **decision** label to them.
+* Create an issue and accompanying pull request (PR) to close a SIG or WG and add the **decision** label to them.
 * Close the remaining open issues of the group or reassign them accordingly, with appropriate comment.
-* Move the SIG/WG group folder (together with all subfolders and files) to the [archive](./sig-and-wg/archive) folder.
-* Add a `CLOSURE.md` file to the archived group folder. Write it in a form of a blog post which informs about the group's outcomes, achievements, challenges, and lessons learned. Remember to provide links to the relevant material. The PR undergoes standard review by group members, Kyma Council, editorial team, and is subsequently closed. 
+* Remove the group from the [List of SIGs](#list-of-sigs) or [List of WGs](#list-of-wgs) in this `README.md` file. 
+* Move the group folder (together with all subfolders and files) to the [archive](./sig-and-wg/archive) folder.
+* Add a `CLOSURE.md` file to the archived group folder. Write it in a form of a blog post which informs about the group's outcomes, achievements, challenges, and lessons learned. Remember to provide links to the relevant material. The PR undergoes standard review by group members, Kyma Council and is subsequently closed. 
 * Publish the content of the `CLOSURE.md` in a form of a blog post on the Kyma website or link to it. 
-* Communicate the closure of a given SIG or WG to the group . To do so, reach out to the editorial team.
+* Communicate the closure of a given SIG or WG through the SIG Core.
