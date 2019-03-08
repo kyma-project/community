@@ -11,4 +11,4 @@ Read about:
 - Rules for creating [diagrams](./diagrams.md) and [screenshots](./screenshots.md).
 - Tips and hints on how to write [release notes](./release-notes.md).
 - Guidelines for making [cross-references](./links-in-docs.md) between documents in the [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) folder.
-- The [documentation toggle](./documentation-toggle.md) that you can use to create several versions of a given section in one document between which you can switch.
+- The [documentation toggle](./documentation-toggle.md) that you can use to create several versions of a given document section and switch between them.
