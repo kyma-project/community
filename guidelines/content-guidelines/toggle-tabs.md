@@ -1,31 +1,40 @@
 # Toggle
 
-These are the guidelines for making documentation toggle (usually for content dependent on chosen OS).
+The documentation toggle is a feature that allows you to render several versions of a given section in one document or have several versions of one document.
+The toggle renders the text in Github documents in the form of expandable sections and shows it as tabs on the `http://kyma-project.io` website.
+
+You can use the toggle to include instructions for different operating systems (OS) in one guide or to describe installation guides that differ only in a few steps.  
 
 ## Writing rules
 
-* Toggles belonging to one group must start with `<div tabs>` and end with `</div>` html tags.
-* Single to must starts with `<details>` tag and ends with `</details>` tag.
-* Title of toggle must be between `<summary>` and `</summary>` tag. Every part of title must    starts in a new line. Example:
+Follow these rules when inserting toggles in documents:
+
+* Toggles belonging to one group must start with `<div tabs>` and end with `</div>` HTML tags.
+* A single toggle must start with the `<details>` tag and end with the `</details>` tag.
+* Insert the title of the toggle between `<summary>` and `</summary>` tags. Every part of the title must start from a new line.
+
+See an example:
+
   ``` markdown
   <summary>
   From release
   </summary>
   ```
-* After `</summary>` tag, must be blank line (otherwise content not be rendered).
-* Content can write in markdown.
-* Indentation with flat structure:
-  - for the div element: 0 spaces.
-  - for other elements: 2 spaces.
-* Indentation using list:
-  - for the div element: 4 spaces.
-  - for other elements: 6 spaces.
+
+* Leave a blank line after the `</summary>` tag. Only this way the content can render.
+* Add content using Markdown syntax.
+* Use this indentation when you add the toggle as a regular document section:
+  - No spaces for the div element
+  - Two spaces for other elements
+* Use this indentation when you add a toggle under a list:
+  - Four spaces for the div element
+  - Six spaces for other elements
 
 ## Examples
 
-See the exemplary markdown code for reference:
+This section contains exemplary uses of the toggle in Markdown documents.
 
-* Example 1 (flat structure)
+* See an example of the toggle added as a regular document section:  
 
 <div tabs>
   <details>
@@ -33,7 +42,7 @@ See the exemplary markdown code for reference:
   From release
   </summary>
 
-  When you install Kyma locally from a release, follow [this](#installation-install-kyma-locally-from-the-release-install-kyma-on-minikube) guide. 
+  When you install Kyma locally from a release, follow [this](#installation-install-kyma-locally-from-the-release-install-kyma-on-minikube) guide.
   Ensure that you created the local Kubernetes cluster with `10240Mb` memory and `30Gb` disk size.
   ```
   ./scripts/minikube.sh --domain "kyma.local" --vm-driver "hyperkit" --memory 10240Mb --disk-size 30g
@@ -58,11 +67,11 @@ See the exemplary markdown code for reference:
 </div>
 
 
-Rendered version in `kyma-project.io`:
+The code renders on `kyma-project.io` as follows:
 
 ![](./assets/toggle_flat_structure.png)
 
-* Example 2 (with list)
+* See an example of the toggle added under a list:  
 
 1. First element
 2. Second element
@@ -72,7 +81,7 @@ Rendered version in `kyma-project.io`:
       From release
       </summary>
 
-      When you install Kyma locally from a release, follow [this](#installation-install-kyma-locally-from-the-release-install-kyma-on-minikube) guide. 
+      When you install Kyma locally from a release, follow [this](#installation-install-kyma-locally-from-the-release-install-kyma-on-minikube) guide.
       Ensure that you created the local Kubernetes cluster with `10240Mb` memory and `30Gb` disk size.
       ```
       ./scripts/minikube.sh --domain "kyma.local" --vm-driver "hyperkit" --memory 10240Mb --disk-size 30g
@@ -97,6 +106,6 @@ Rendered version in `kyma-project.io`:
     </div>
 
 
-Rendered version in `kyma-project.io`:
+The code renders on `kyma-project.io` as follows:
 
 ![](./assets/toggle_in_list.png)
