@@ -34,8 +34,14 @@ Parameter and value pairs | The controller adds the `env=true` label to all newl
 ## Content formatting
 Format the content in an attention-grabbing way. In general, content is easier to read when it is in chunks. Consider breaking up endless paragraphs by using a list or a table. Use action verbs and present tense for headings to engage the reader, and also follow the guidelines for the best way to include links and images. When you include lists, tables, code samples, or images, precede them with a brief explanation of what they describe.
 
-### Notes
-To call attention to a specific note, such as a word of caution or a tip, use this format: `>**NOTE:**`. For example:
+### Panels
+Panels are colorful containers that call out important or additional information within a topic. To call attention to a specific note, such as a word of caution or a tip, use this format: `>**{TYPE}:**`, where `{TYPE}` is one of:
+- NOTE
+- TIP
+- CAUTION
+
+Example:
+
 >**NOTE:** Provision a Public IP for Ingress and a DNS record before you start the installation.
 
 ### Ordered and unordered lists
