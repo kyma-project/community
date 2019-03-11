@@ -20,7 +20,8 @@ An API can be any application (lambda, GO application, etc.)
 * Extend authorization strategies for API's
 	* OAuth2 server issuing access tokens to exposed Kyma APIs (both user and non-user oriented tokens)
 	* OAuth2 proxy securing exposed APIs in Kyma, allowing access based on issued access tokens 
-	* Enable Open Policy Agent policies for authorization and admission control (https://www.openpolicyagent.org/)	
+	* Enable Open Policy Agent policies for authorization and admission control (https://www.openpolicyagent.org/)
+	* Support refreshing Oauth2 tokens	
 	
 * Traffic management for APIs
 	* Control outbound traffic for APIs - define a list of external services which the API can access
