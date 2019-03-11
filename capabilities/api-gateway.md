@@ -37,7 +37,7 @@ An API can be any application (lambda, GO application, etc.)
     * Automate configuration and deployment of front end proxies to allow communication using GraphQl
   
 * Expose services running on different environments
-    * Allow proxying requests to services running on cloud foundry, other k8s clusters etc.
+    * Allow proxying requests to services running outside Kyma - on cloud foundry, other k8s clusters etc.
     * Allow configuring the same authentication and authorization policies as for services deployed in the Kyma
     
 	
