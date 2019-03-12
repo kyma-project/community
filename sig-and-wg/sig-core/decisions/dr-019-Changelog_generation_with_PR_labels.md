@@ -1,6 +1,7 @@
 # DR 019: Changelog generation with pull request labels
 
 Created on 2018-09-13 by Paweł Kosiec (@pkosiec).
+Updated on 2019-02-08 by Paweł Kosiec (@pkosiec).
 
 ## Decision log
 
@@ -25,11 +26,12 @@ The main advantage of the second approach is having one place to define changes 
 ## Decision
 
 The decision is to use pull request titles to describe changes, and to reuse the existing **`area/`** labels for pull request categorization. Changes will be grouped in the changelog by the area.
-The changelog will be generated as a part of the CI pipeline using the [**Lerna Changelog**](https://github.com/lerna/lerna-changelog) tool, in the form of a `CHANGELOG.md` file and the GitHub release description.
+The changelog will be generated as a part of the CI pipeline using the [**Lerna Changelog**](https://github.com/lerna/lerna-changelog) tool, in the form of the GitHub release description.
 
 ## Status
 
 Accepted on 2018-08-17.
+Revisited on 2019-01-03.
 
 ## Consequences
 
