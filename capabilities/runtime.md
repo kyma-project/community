@@ -19,4 +19,4 @@ The goal of Serverless Runtime capability is to:
 - Integrate 3rd Party Serverless providers using knative.
 - Integrate FaaS (kyma FaaS and 3rd Party FaaS) with other services provided by Kyma (Eventing, API, Service Catalog)
 - Provide a easy way to run Containerized workloads inside and outside of kyme (using knative)
-- Provide a easy way to host static file for frontend workloads
+- Provide helpers/sdk/utilities to eliminate boilerplate code.
