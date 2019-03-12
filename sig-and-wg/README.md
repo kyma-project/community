@@ -63,7 +63,7 @@ The list of public WGs in Kyma includes:
 
 * [Knative integration](wg-knative/README.md)
 
-### Closed SIGs or WGs
+### Closed SIGs and WGs
 
 To see closed SIG or WG and their outcomes check the [archive](archive/). 
 
