@@ -13,7 +13,7 @@ See these sections for details:
   * [The Kyma Council](#the-kyma-council)
   * [List of SIGs](#list-of-sigs)
   * [List of WGs](#list-of-wgs)
-  * [Closed SIGs or WGs](#closed-sigs-or-wgs)
+  * [Closed SIGs and WGs](#closed-sigs-and-wgs)
 * [Organize new SIGs and WGs](#organize-new-sigs-and-wgs)
 * [General guidelines](#general-guidelines)
 * [Roles](#roles)
