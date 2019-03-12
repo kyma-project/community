@@ -65,7 +65,7 @@ The list of public WGs in Kyma includes:
 
 ### Closed SIGs and WGs
 
-To see closed SIG or WG and their outcomes check the [archive](archive/). 
+To see the list of closed SIGs and WGs, check the [archive](archive/). 
 
 ## Organize new SIGs and WGs
 
