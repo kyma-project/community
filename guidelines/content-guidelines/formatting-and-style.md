@@ -38,7 +38,6 @@ Format the content in an attention-grabbing way. In general, content is easier t
 Panels are colorful containers that call out important or additional information within a topic. To call attention to a specific note, such as a word of caution or a tip, use this format: `>**{TYPE}:**`, where `{TYPE}` is one of:
 - NOTE
 - TIP
-- CAUTION
 
 Example:
 
