@@ -42,7 +42,7 @@ Use:
 - The green **TIP** panel to share helpful advice, such as a shortcut to save time.
 - TIP
 
-Example:
+See an example:
 
 >**NOTE:** Provision a Public IP for Ingress and a DNS record before you start the installation.
 
