@@ -7,5 +7,8 @@ This directory contains a description of each capability, its vision, and goal. 
 This table lists all capabilities and links to their descriptions.
 
 | Capability | Owner |
-| ----------- | -------------|
-| [displayName](display-name.md) | [@derberg](https://github.com/derberg) |
+|------------|-------|
+| [Application Connectivity](application-connectivity.md) | [@lszymik](https://github.com/lszymik) |
+| [Eventing](eventing.md) | [@abbi-gaurav](https://github.com/abbi-gaurav) |
+| [API Gateway](api-gateway.md)| [@piotrmsc](https://github.com/piotrmsc) |
+| [Service Management](service-management.md) | [@PK85](https://github.com/PK85) |

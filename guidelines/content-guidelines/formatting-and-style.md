@@ -34,8 +34,15 @@ Parameter and value pairs | The controller adds the `env=true` label to all newl
 ## Content formatting
 Format the content in an attention-grabbing way. In general, content is easier to read when it is in chunks. Consider breaking up endless paragraphs by using a list or a table. Use action verbs and present tense for headings to engage the reader, and also follow the guidelines for the best way to include links and images. When you include lists, tables, code samples, or images, precede them with a brief explanation of what they describe.
 
-### Notes
-To call attention to a specific note, such as a word of caution or a tip, use this format: `>**NOTE:**`. For example:
+### Panels
+Panels are colorful containers that call out important or additional information within a topic. To call attention to a specific note, a word of caution or a tip, use the `>**{TYPE}:**`format, where `{TYPE}` is **NOTE**, **TIP**, or **CAUTION**.
+Use:
+- The blue **NOTE** panel to point to something specific, usually relating to the topic. 
+- The red **CAUTION** panel to call attention to something critical that can cause inoperable behavior.
+- The green **TIP** panel to share helpful advice, such as a shortcut to save time.
+
+See an example:
+
 >**NOTE:** Provision a Public IP for Ingress and a DNS record before you start the installation.
 
 ### Ordered and unordered lists
@@ -67,4 +74,4 @@ Linking is a great tool to use to incorporate a lot of content into your documen
 - Every link has the potential to go bad over time and the more links you include, the higher the chance that one will break. If something is not central to the subject at hand, is well-known by your audience, or can be found with a simple search, there is no point in linking.
 - Choose the link text carefully. Do not link entire phrases which become overemphatic. Instead, choose the noun, such as an article or specification within the phrase that helps the reader understand where the navigation leads them. You can also use the title of the article or book as the link, but do not include the author and publisher.
 
->**NOTE:** If you want to make any cross-reference between the documents in the `kyma/docs` folder, point to the given document by providing its title **in bold**, since the relative links do not work on the UI. For example, `For more details, see the **Troubleshooting** document.`
+>**NOTE:** If you want to make any cross-reference between the documents in the `kyma/docs` folder, read [this](./links-in-docs.md) document.

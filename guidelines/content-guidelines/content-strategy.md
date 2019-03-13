@@ -7,7 +7,7 @@ Content Strategy is a term that relates to the approach you need to to define be
 * Where the content will be visible
 * What types of content you have
 * How the reader will navigate through the content
-* What is the review process
+* What the review process is
 
 ## Location and context
 
@@ -43,31 +43,34 @@ There is a set of documents that a given technical topic must include. You can a
 
 ### Obligatory
 
-Each technical topic must have the following document types:
+Each technical topic must have the following document types arranged in the fixed order. Follow the `{document-type-number}-(document-number)-{document-name}.md` format to name the documents. For example, use `06-02-clustermicrofrontend.md` to name the second document of the **Custom Resource** type that describes the `clustermicrofrontend.ui.kyma-project.io` CustomResourceDefinition (CRD).
 
 >**NOTE:** The Kyma content developers create templates for a given document type once there are at least two documents to use as a base for such a template.
 
-- [Overview](../templates/resources/overview.md) - Use it to describe the component in general. It serves as an entry point for the topic. Make sure it is short but descriptive.
-- [Architecture](../templates/resources/architecture.md) - Use it to describe in detail the architecture of the component. Include a diagram in this document.
-- [Getting Started](../templates/resources/getting-started.md) - Use it to provide a clear step-by-step instruction that helps the user to understand a given concept better. The user must be able to go through all the steps of the document and complete them. There is no separate tutorial type. The document does not have to explicitly point out the example used as, at the end, the explicit reference to the example will be in the main content of the guide.
-- [Details](../templates/resources/details.md) - Use it to describe more technical details of the component that do not fit into any other document type. Among other things, include a detailed explanation of the application lifecycle that describes how the resource is created and what other resources are created, how it is updated, how it is removed, and what each operation means from the technical point of view.
-- **Configuration** - Use it to describe configuration options for a given component. Define the settings that a user can change and the expected outcome of such changes. Include the table structure with the settings in the document.
-- [CLI Reference](../templates/resources/cli-reference.md) - Use it to describe the syntax and the use of CLI commands for a given component.
-- [Custom Resource](../templates/resources/custom-resource.md) - Use it to document details of CustomResourceDefinitions (CRDs) that are part of a given component.
-- **API** - Use it to document the exposed external API of components that the Kyma administrators use to integrate them with Kyma.
-- **Operational Guide** - Use it to describe how to operate the component. Explain all details needed for the component troubleshooting.
+1. [**Overview**](../templates/resources/overview.md) (`01`) - Use it to describe the component in general. It serves as an entry point for the topic. Make sure it is short but descriptive.
+2. [**Architecture**](../templates/resources/architecture.md) (`02`) - Use it to describe in detail the architecture of the component. Include a diagram in this document.
+3. [**Details**](../templates/resources/details.md) (`03`) - Use it to describe more technical details of the component that do not fit into any other document type. Among other things, include a detailed explanation of the application lifecycle that describes how the resource is created and what other resources are created, how it is updated, how it is removed, and what each operation means from the technical point of view.
+4. **Installation** (`04`) - Use it to describe the installation process. This includes guides for local, cluster, or component installation, as well as documents describing installation scripts.
+5. **Configuration** (`05`) - Use it to describe configuration options for a given component. Define the settings that a user can change and the expected outcome of such changes. Include the table structure with the settings in the document.
+6. [**Custom Resource**](../templates/resources/custom-resource.md) (`06`) - Use it to document details of CRDs that are part of a given component.
+7. [**CLI Reference**](../templates/resources/cli-reference.md) (`07`) - Use it to describe the syntax and the use of CLI commands for a given component.
+8. [**Tutorials**](../templates/resources/tutorials.md) (`08`) - Use it to provide a clear step-by-step instruction that helps the user to understand a given concept better. The user must be able to go through all the steps of the document and complete them. There is no separate tutorial type. The document does not have to explicitly point out the example used as, at the end, the explicit reference to the example will be in the main content of the guide.
+9. **API** (`09`) - Use it to document the exposed external API of components that the Kyma administrators use to integrate them with Kyma.
+10. **Operational Guide** (`10`) - Use it to describe how to operate the component. Explain all details needed for the component troubleshooting.
 
->**NOTE:** The examples are exceptions from the above types. The plan is to expose a table-like view as a reference to all examples and to enhance it with examples that the external Kyma users provide. Another plan is to implement an automated way of filling in the content in such documents.
 
 ### Optional
 
+>**NOTE:** Place the optional types of documents right after the obligatory types.
+
 You can add the following document type to the Kyma documentation:
-- **Installation** - Use it to describe the installation process. This includes guides for local, cluster, or component installation, as well as documents describing installation scripts.
-- **UI Contracts** - Use it to describe the mapping of OSBA service objects, plan objects, and conventions in the Kyma Console view.
+- **UI Contracts** (`11`) - Use it to describe the mapping of OSBA service objects, plan objects, and conventions in the Kyma Console view.
+- **Examples** (`12`) - Use it to demonstrate a given Kyma feature or concept in a form of a short demo.
+- **Service Brokers** (`13`) - Use it to describe Service Brokers that Kyma provides.
 
 ## The content source
 
-The Kyma content developers write the content in [markdown](https://daringfireball.net/projects/markdown/) and store it in [Git](https://git-scm.com/) repositories.
+The Kyma content developers write the content in [Markdown](https://daringfireball.net/projects/markdown/) and store it in [Git](https://git-scm.com/) repositories.
 
 ## Audience
 

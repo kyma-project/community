@@ -13,7 +13,7 @@ type: Details
 > * Use headings to name sections. Use H2 (##) for the main sections and H3 (###) for the sub-sections. Do not use headings smaller than H3 as they do not display well.
 > * Provide any relevant links to the related external documentation. However, do not use cross-references between documents in the `kyma/docs` folder. Mention the related document title instead and put the document name in bold.
 > * Do not mix different concepts in one document. Instead, describe them in separate documents.
-> * Follow the `{000}-details-{document-title}.md` convention to name the document. The title must summarize what the document is about.
+> * Follow the `03-{00}-{document-title}.md` convention to name the document. The title must summarize what the document is about.
 > * If there is only one document of a certain type, remove the `type` metadata completely so that the document displays well on the UI.
 >
-> For reference, see the existing **Details** document concerning the [Application Connector security](https://github.com/kyma-project/kyma/blob/master/docs/application-connector/docs/011-details-ac-security.md).
+> For reference, see the existing **Details** document concerning the [Application Connector security](https://kyma-project.io/docs/master/components/application-connector/#details-security).

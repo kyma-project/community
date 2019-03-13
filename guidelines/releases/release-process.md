@@ -1,65 +1,108 @@
-# Release process
+# Release Process
 
-Read this document to learn how to create tags and releases in Kyma component repositories.
+This document describes how to create a Kyma release using Prow.
 
-## Create a tag
+## Preparation
 
-Use tags to mark new functionalities in the repository.
-You can create a tag using either the terminal or the GitHub UI.
+This section only applies to new major and minor versions. Follow the preparation steps at any point in time.
 
-> **NOTE:** Create the tags manually if you do not have an automated process in place to tag the `master` branch on merge.
+1. Define these release jobs in the `test-infra` repository:
+ - for every component
+ - for every tool
+ - for every test
+ - `kyma-docs`
+ - `kyma-integration`
+ - `kyma-gke-integration`
+ - `kyma-gke-upgrade`
+ - `kyma-artifacts`
+ - `kyma-installer`
 
-### Terminal
+>**NOTE:** Read [here](https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md) how to define a release job for a component.
 
-Follow these steps to create a tag in the repository using the terminal:
+To see all release jobs for the 0.6 release, look for job names with the `pre-rel06` prefix.
+Since every job name has to be unique, prefix it with `pre-rel{XY}`.
+Define the release jobs on the `master` branch since Prow reads the job configuration from the `master` branch of the `test-infra` repository.
 
-1. Merge the pull request that introduces a new functionality, checkout the `master` branch of the repository and pull the latest changes.
-2. If there are already releases on your repository, run `git tag` to list all existing tags and see the latest one.
-3. The Kyma organization uses [lightweigh tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging#_lightweight_tags). To create a new tag, run `git tag {tagname}`, where {tagname} stands for the consecutive release version you want the tag to represent. For example, `v2.3.14`.
+2. Ensure that tests for release jobs exist. Release tests usually iterate through all release versions and run tests for them.
+See the `TestBucReleases` test defined in `development/tools/jobs/kyma/binding_usage_controller_test.go` as a reference.
+To add tests for all jobs for the new release, update the `GetAllKymaReleaseBranches()` function
+defined in the `development/tools/jobs/tester/tester.go` file under the `test-infra` repository.
 
-> **NOTE:** When you create a new tag, follow the [semantic versioning](https://semver.org/) naming schema.
+3. Define branch protection rules for the release branch in the `prow/config.yaml` file.
+For example, see the release-0.6 definition:
+```
+release-0.6:
+  protect: true
+  required_status_checks:
+    contexts:
+      - pre-rel06-kyma-integration
+      - pre-rel06-kyma-gke-integration
+      - pre-rel06-kyma-artifacts
+      - pre-rel06-kyma-installer
+```
 
-4. The `git tag {tagname}` command creates the tag locally. To push it to the remote repository, run the `git push origin {tagname}` command.
 
-5. The tag is applied to the `master` branch of the given repository.
-
-### GitHub UI
-
-To create a tag in the GitHub UI, you must create and publish a release first.
-The **Tag version** box in which you enter the new tag name appears when you start writing a draft of the release.
-
-See the [**Create a release**](#create-a-release) section for more details.
-
-To learn more about the tagging process in general, read the [GitHub documentation](https://git-scm.com/book/en/v2/Git-Basics-Tagging).
-
-## Create a release
-
-Releases base on tags. After you create a tag, you can add a release to it to describe the changes that the given tag introduces.
-
-> **NOTE:** You need to have write access to the repository to create or edit releases, and to view drafts of releases.
+## Release
 
 Follow these steps to create a release:
+1. Create a release branch in the `test-infra` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-0.6`.
 
-1. Go to the `https://github.com/kyma-project/{repositoryname}/releases` page.
-2. Select **Draft a new release**.
+>**NOTE:** This point only applies to new major and minor versions.
 
-> **NOTE:** If there are no releases in this repository yet, the **Create a new release** button appears instead.
+2. Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on a release branch contains the correct version to be created.
+The file should contain a release version following the `{A}.{B}.{C}` or `{A}.{B}.{C}-rc{D}` format, where `A`,`B`, `C`, and `D` are numbers.
+If you define a release candidate version, a pre-release is created.
 
-3. Select the tag version from the drop-down menu or create a new one using the [semantic versioning](https://semver.org/) naming schema. For example, `v2.3.14`.
+3. Create a release branch in the `kyma` repository. Do it only for a new release, not for a bugfix release.
+The name of this branch should follow the `release-x.y` pattern, such as `release-0.6`.
 
-4. Enter the **Release title**.
+4. Create a PR for the `kyma` release branch.
 
-5. Provide a description of the release in the **Description** box.
+![](../../assets/release-PR.png)
+This triggers all jobs for components.
+Update your PR with the version and the directory of components used in `values.yaml` files.
 
-> **NOTE:** It is a good practice to include the content of the well-described pull requests merged before the release into the release notes description. See the [git-workflow](../../git-workflow.md) document for rules on how to write descriptive commit titles and bodies.
+Change these values in the files:
 
-6. If your release needs additional files, add them manually or use the drag-and-drop method.
+```
+dir: develop/
+version: {current_version}
+```
+Replace them with:
+```
+dir:
+version: {rel_version}
+```    
 
-> **NOTE:** There is no limit to the overall size of all combined files in the release. However, a single file must be under 2 GB in size.
+Every component image is published with a version defined in the `RELEASE_VERSION` file stored in the `test-infra` repository on the given release branch.
 
-7. Select the **This is a pre-release** check box if the release is unstable and not ready for the production yet.
-8. Select **Publish release** to publish the release or **Save draft** to work on it later.
+5. If any job fails, retrigger it by adding the following comment to the PR:
+```
+/test {job_name}
+```
 
-> **NOTE:** Before you publish the release, ask another contributor to review it.
+6. Wait until all jobs for components and tools finish. You must run the
+`kyma-integration`, `kyma-gke-integration`, `kyma-gke-upgrade`, `kyma-artifacts`, and `kyma-installer` jobs manually because there are dependencies between them. See the diagram for details:
 
-To learn more about the release process in general, read the [GitHub documentation](https://help.github.com/categories/releases/).
+![](../../assets/kyma-rel-jobs.svg)
+
+7. Run `kyma-integration` by adding the `/test pre-rel06-kyma-integration` comment to the PR.
+
+8. Run `kyma-installer` and `kyma-artifacts` one after the other.
+You don't have to wait until the `pre-rel06-kyma-integration` job finishes.
+
+9. Run `kyma-gke-integration` and `kyma-gke-upgrade`. Wait until the jobs from step 8 finish.
+
+10. If you detect any problems with the release, such as failing tests, wait for the fix that can be delivered either on a PR or cherry-picked to the PR from the `master` branch.  
+Prow triggers the jobs again. Return to point 6 to rerun manual jobs.
+
+11. After all checks pass, merge the PR.
+>**NOTE:** To merge the PR to the release branch, you must receive approvals from all teams.
+
+12. Merging the PR to the release branch runs the postsubmit job that creates a GitHub release.
+Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
+Update the release content manually with the instruction on how to install the latest Kyma release.
+
+13. Update `RELEASE_VERSION` to the next version both on the `master` and release branches. Do it immediately after the release, otherwise any PR to a release branch overrides the previously published Docker images. 
+ 
+>**NOTE:** All teams should test the release candidate versions. To make the testing easier, provision a publicly available cluster with the release candidate version after performing all steps listed in this document.
