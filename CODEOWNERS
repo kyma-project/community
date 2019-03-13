@@ -1,5 +1,5 @@
 # Default owners of the repository
-* @kazydek @klaudiagrz @tomekpapiernik @bszwarc
+* @kazydek @klaudiagrz @tomekpapiernik @bszwarc @mmitoraj
 
 # Owners of the manifesto-app folder
 /manifesto-app/ @akucharska @michal-hudy @pkosiec @mjasinski5 @aerfio @derberg @aerfio @magicmatatjahu
@@ -8,7 +8,7 @@
 /sig-and-wg/sig-core/ @PK85 @mszostok @Abd4llA @derberg
 
 # Owners of all .md files in the repository
-*.md @kazydek @klaudiagrz @tomekpapiernik @bszwarc
+*.md @kazydek @klaudiagrz @tomekpapiernik @bszwarc @mmitoraj
 
 # Owners of config file for MILV - milv.config.yaml
 milv.config.yaml @akucharska @michal-hudy @pkosiec @mjasinski5 @aerfio @magicmatatjahu
