@@ -171,7 +171,7 @@ The name of this branch should follow the `release-x.y` pattern, such as `releas
          - `kyma-gke-upgrade`
 
 6. If you detect any problems with the release, such as failing tests, wait for the fix that can be delivered either on a PR or cherry-picked to the PR from the `master` branch.  
-    Prow triggers the jobs again. Rerun manual jobs as described [here](#execute-remaining-tests).
+    Prow triggers the jobs again. Rerun manual jobs as described in *Step 5 (Execute remaining tests)*.
 
 7. After all checks pass, merge the PR.
     > **NOTE:** To merge the PR to the release branch, you must receive approvals from all teams.
