@@ -8,7 +8,10 @@ This section only applies to new major and minor versions. Follow the preparatio
 
 1. Define these release jobs in the `test-infra` repository:
    - for every component
-   - for every tool
+   - for every tool  
+     Exceptions:
+     - prow/jobs/kyma/tools/docsbuilder/docsbuilder.yaml
+
    - for every test
    - `kyma-docs`
    - `kyma-integration`
@@ -44,11 +47,14 @@ defined in the `development/tools/jobs/tester/tester.go` file under the `test-in
 
 ## Release
 
->**NOTE:** Currently it is most likely required to push to the release-X.X branch more than once. Make sure that someone with admin permissions on github.com/kyma-project/kyma is available 
+> **NOTE:** Currently it is most likely required to push to the release-X.X branch more than once. Make sure that someone with admin permissions on github.com/kyma-project/kyma is available  
+>
+> **IMPORTANT:** Never use `/test all` as it might run tests that you do not want to execute!
 
 Follow these steps to create a release:
 
 ### kyma-project/test-infra
+
 1. Create a release branch in the `test-infra` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-0.6`.
 
     ```bash
@@ -62,16 +68,17 @@ Follow these steps to create a release:
 The file should contain a release version following the `{A}.{B}.{C}` or `{A}.{B}.{C}-rc{D}` format, where `A`,`B`, `C`, and `D` are numbers.
 If you define a release candidate version, a pre-release is created.
 
-    >**NOTE:** make sure the RELEASE_VERSION file has only one single line:  
-    `echo -n $RELEASE_VERSION > prow/RELEASE_VERSION`
+    > **NOTE:** make sure the RELEASE_VERSION file has only one single line:  
+    > `echo -n $RELEASE_VERSION > prow/RELEASE_VERSION`
 
 3. Push the branch to the `test-infra`  
 
 4. Create a PR to test-infra/release-X.X. This will trigger the pre-release job for watch-pods
 
 ### kyma-project/kyma
-1. Create a release branch in the `kyma` repository. 
-   >**NOTE:** Do it only for a new release, not for a bugfix release.
+
+1. Create a release branch in the `kyma` repository.
+   > **NOTE:** Do it only for a new release, not for a bugfix release.
 The name of this branch should follow the `release-x.y` pattern, such as `release-0.6`.
 
     ```bash
@@ -83,49 +90,74 @@ The name of this branch should follow the `release-x.y` pattern, such as `releas
 2. Create a PR for the `kyma` release branch.
     ![PullRequest](../../assets/release-PR.png)
     This triggers all jobs for components.
-    
-   1. Update your PR with the version and the directory of components used in `values.yaml` files.
 
-      Change these values in the files:
+    1. Update your PR with the version and the directory of components used in `values.yaml` files.
 
-      ```yaml
-      dir: develop/
-      version: {current_version}
-      ```
+        Change these values in the files:
 
-      Replace them with:
+        ```yaml
+        dir: develop/
+        version: {current_version}
+        ```
 
-      ```yaml
-      dir:
-      version: {rel_version}
-      ```    
+        Replace them with:
 
-      >**NOTE:** replace only `develop/` so `develop/tests` becomes `tests/`
+        ```yaml
+        dir:
+        version: {rel_version}
+        ```
 
-      Every component image is published with a version defined in the `RELEASE_VERSION` file stored in the `test-infra` repository on the given release branch.
+        > **NOTE:** replace only `develop/` so `develop/tests` becomes `tests/`
 
-    2. check all yaml files for references in the form of:  
-      `image: eu.gcr.io/kyma-project/develop/{{IMAGE_NAME}}:{{SOME_SHA}}`
-      and change them to:  
-      `image: eu.gcr.io/kyma-project/kyma-installer:{{RELEASE_NAME}}`
-      
-          known files to change:
-         - `installation/resources/installer-local.yaml`
-         - `installation/resources/watch-pods.yaml`
-         - `resources/application-connector-ingress/templates/upgrade-job.yaml`
+        Every component image is published with a version defined in the `RELEASE_VERSION` file stored in the `test-infra` repository on the given release branch.
 
+    2. check all `yaml` files for references in the form of:  
+        `image: eu.gcr.io/kyma-project/develop/{{IMAGE_NAME}}:{{SOME_SHA}}`
+        and change them to:  
+        `image: eu.gcr.io/kyma-project/{{IMAGE_NAME}}:{{RELEASE_NAME}}`
+
+        known files to change:
+        - `installation/resources/installer-local.yaml`
+        - `installation/resources/watch-pods.yaml`
+        - `resources/application-connector-ingress/templates/upgrade-job.yaml`
+
+        Don't change the following reference:
+        - `installation/resources/installer.yaml`:  
+
+            ```yaml
+            apiVersion: extensions/v1beta1
+            kind: Deployment
+            metadata:
+              name: kyma-installer
+              namespace: kyma-installer
+              labels:
+                kyma-project.io/installation: ""
+            spec:
+              template:
+                metadata:
+                  labels:
+                    name: kyma-installer
+                spec:
+                  serviceAccountName: kyma-installer
+                  containers:
+                  - name: kyma-installer-container
+                    image: eu.gcr.io/kyma-project/develop/installer:55bc6038
+                    imagePullPolicy: IfNotPresent
+             ```
 
 3. If any job fails, retrigger it by adding the following comment to the PR:
 
-    ```
+    ```;
     /test {job_name}
     ```
+
+    > **IMPORTANT:** Never use `/test all` as it might run tests that you do not want to execute!
 
 4. Wait until all jobs for components and tools finish.
 5. Execute remaining tests
     ![JobDependencies](../../assets/kyma-rel-jobs.svg)
     1. Run `kyma-integration` by adding the  `/test pre-{release_number}-kyma-integration`  comment to the PR.
-    >**NOTE:** You don't have to wait until the `pre-{release_number}-kyma-integration` job finishes.
+        > **NOTE:** You don't have to wait until the `pre-{release_number}-kyma-integration` job finishes.
 
     2. Run `kyma-installer`
     ```/test pre-{release_number}-kyma-installer``` and wait until it finishes
@@ -141,13 +173,13 @@ The name of this branch should follow the `release-x.y` pattern, such as `releas
 6. If you detect any problems with the release, such as failing tests, wait for the fix that can be delivered either on a PR or cherry-picked to the PR from the `master` branch.  
     Prow triggers the jobs again. Rerun manual jobs as described [here](#execute-remaining-tests).
 
-7.  After all checks pass, merge the PR.
-    >**NOTE:** To merge the PR to the release branch, you must receive approvals from all teams.
+7. After all checks pass, merge the PR.
+    > **NOTE:** To merge the PR to the release branch, you must receive approvals from all teams.
 
-8.  Merging the PR to the release branch runs the postsubmit job that creates a GitHub release.
+8. Merging the PR to the release branch runs the postsubmit job that creates a GitHub release.
 Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
 Update the release content manually with the instruction on how to install the latest Kyma release.
 
-12. Update `RELEASE_VERSION` to the next version both on the `master` and release branches. Do it immediately after the release, otherwise any PR to a release branch overrides the previously published Docker images.
+9. Update `RELEASE_VERSION` to the next version both on the `master` and release branches. Do it immediately after the release, otherwise any PR to a release branch overrides the previously published Docker images.
 
->**NOTE:** All teams should test the release candidate versions. To make the testing easier, provision a publicly available cluster with the release candidate version after performing all steps listed in this document.
+> **NOTE:** All teams should test the release candidate versions. To make the testing easier, provision a publicly available cluster with the release candidate version after performing all steps listed in this document.
