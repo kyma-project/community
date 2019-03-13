@@ -57,9 +57,7 @@ The list of public SIGs in Kyma includes:
 
 ### List of WGs
 
-The list of public WGs in Kyma includes:
-
-* [Knative integration](wg-knative/README.md)
+There is no actively working WG right now.
 
 ## Organize new SIGs and WGs
 
