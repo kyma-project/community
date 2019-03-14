@@ -177,9 +177,12 @@ The name of this branch should follow the `release-x.y` pattern, such as `releas
     > **NOTE:** To merge the PR to the release branch, you must receive approvals from all teams.
 
 8. Merging the PR to the release branch runs the postsubmit job that creates a GitHub release.
-Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
-Update the release content manually with the instruction on how to install the latest Kyma release.
 
 9. Update `RELEASE_VERSION` to the next version both on the `master` and release branches. Do it immediately after the release, otherwise any PR to a release branch overrides the previously published Docker images.
+
+10. Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
+11. Update the release content manually with the instruction on how to install the latest Kyma release.  
+    Currently this means to grab the instructions from the previous release and change the version number in them. If contributors want you to change something in them they would address you directly.
+
 
 > **NOTE:** All teams should test the release candidate versions. To make the testing easier, provision a publicly available cluster with the release candidate version after performing all steps listed in this document.
