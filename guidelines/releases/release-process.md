@@ -47,9 +47,10 @@ defined in the `development/tools/jobs/tester/tester.go` file under the `test-in
 
 ## Release
 
-> **NOTE:** Currently it is most likely required to push to the release-X.X branch more than once. Make sure that someone with admin permissions on github.com/kyma-project/kyma is available  
->
 > **IMPORTANT:** Never use `/test all` as it might run tests that you do not want to execute!
+>
+> **NOTE:** Currently it is most likely required to push to the release-X.X branch more than once. Make sure that someone with admin permissions on github.com/kyma-project/kyma is available  
+> Before every release you need to bump the version in github.com/kyma-project/test-infra `prow/RELEASE_NUMBER`. This requires the approval of a member of wg-prow!  
 
 Follow these steps to create a release:
 
