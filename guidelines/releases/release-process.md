@@ -122,7 +122,7 @@ The name of this branch should follow the `release-x.y` pattern, such as `releas
         - `installation/resources/watch-pods.yaml`
         - `resources/application-connector-ingress/templates/upgrade-job.yaml`
 
-        Don't change the following reference:
+        Don't change the following file:
         - `installation/resources/installer.yaml`:  
 
             ```yaml
