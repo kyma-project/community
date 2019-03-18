@@ -155,7 +155,7 @@ The name of this branch should follow the `release-x.y` pattern, such as `releas
     > **CAUTION:** Never use `/test all` as it might run tests that you do not want to execute.
 
 4. Wait until all jobs for components and tools finish.
-5. Execute remaining tests
+5. Execute remaining tests. The diagram shows you the jobs and dependencies between them.
     ![JobDependencies](../../assets/kyma-rel-jobs.svg)
     1. Run `kyma-integration` by adding the  `/test pre-{release_number}-kyma-integration`  comment to the PR.
         > **NOTE:** You don't have to wait until the `pre-{release_number}-kyma-integration` job finishes to proceed with further jobs.
