@@ -146,7 +146,7 @@ The name of this branch should follow the `release-x.y` pattern, such as `releas
                     imagePullPolicy: IfNotPresent
              ```
 
-3. If any job fails, retrigger it by adding the following comment to the PR:
+3. If any job fails, trigger it again by adding the following comment to the PR:
 
     ```;
     /test {job_name}
