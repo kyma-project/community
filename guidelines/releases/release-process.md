@@ -152,7 +152,7 @@ The name of this branch should follow the `release-x.y` pattern, such as `releas
     /test {job_name}
     ```
 
-    > **IMPORTANT:** Never use `/test all` as it might run tests that you do not want to execute!
+    > **CAUTION:** Never use `/test all` as it might run tests that you do not want to execute.
 
 4. Wait until all jobs for components and tools finish.
 5. Execute remaining tests
