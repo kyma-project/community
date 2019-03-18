@@ -94,7 +94,7 @@ The name of this branch should follow the `release-x.y` pattern, such as `releas
 
     1. Update your PR with the version and the directory of components used in `values.yaml` files.
 
-        Change these values in the files:
+        Find these values in the files:
 
         ```yaml
         dir: develop/
