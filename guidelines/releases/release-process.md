@@ -158,7 +158,7 @@ The name of this branch should follow the `release-x.y` pattern, such as `releas
 5. Execute remaining tests
     ![JobDependencies](../../assets/kyma-rel-jobs.svg)
     1. Run `kyma-integration` by adding the  `/test pre-{release_number}-kyma-integration`  comment to the PR.
-        > **NOTE:** You don't have to wait until the `pre-{release_number}-kyma-integration` job finishes.
+        > **NOTE:** You don't have to wait until the `pre-{release_number}-kyma-integration` job finishes to proceed with further jobs.
 
     2. Run `kyma-installer`
     ```/test pre-{release_number}-kyma-installer``` and wait until it finishes
