@@ -114,7 +114,7 @@ The name of this branch should follow the `release-x.y` pattern, such as `releas
 
     2. Check all `yaml` files for the following references:  
         `image: eu.gcr.io/kyma-project/develop/{{IMAGE_NAME}}:{{SOME_SHA}}`
-        and change them to:  
+        Change them to:  
         `image: eu.gcr.io/kyma-project/{{IMAGE_NAME}}:{{RELEASE_NAME}}`
 
         known files to change:
