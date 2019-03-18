@@ -74,7 +74,7 @@ If you define a release candidate version, a pre-release is created.
 
 3. Push the branch to the `test-infra`  repository.
 
-4. Create a PR to test-infra/release-X.X. This will trigger the pre-release job for watch-pods
+4. Create a PR to `test-infra/release-x.y`. This triggers the pre-release job for watch-pods.
 
 ### kyma-project/kyma
 
