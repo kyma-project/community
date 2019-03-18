@@ -63,7 +63,7 @@ Follow these steps to create a release:
     git checkout -b $RELEASE_NAME upstream/master
     ```
 
-    >**NOTE:** This point only applies to new major and minor versions.
+    >**NOTE:** This point applies only to new major and minor versions.
 
 2. Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on a release branch contains the correct version to be created.
 The file should contain a release version following the `{A}.{B}.{C}` or `{A}.{B}.{C}-rc{D}` format, where `A`,`B`, `C`, and `D` are numbers.
