@@ -112,7 +112,7 @@ The name of this branch should follow the `release-x.y` pattern, such as `releas
 
         Every component image is published with a version defined in the `RELEASE_VERSION` file stored in the `test-infra` repository on the given release branch.
 
-    2. check all `yaml` files for references in the form of:  
+    2. Check all `yaml` files for the following references:  
         `image: eu.gcr.io/kyma-project/develop/{{IMAGE_NAME}}:{{SOME_SHA}}`
         and change them to:  
         `image: eu.gcr.io/kyma-project/{{IMAGE_NAME}}:{{RELEASE_NAME}}`
