@@ -47,8 +47,6 @@ defined in the `development/tools/jobs/tester/tester.go` file under the `test-in
 
 ## Release
 
-> **IMPORTANT:** Never use `/test all` as it might run tests that you do not want to execute!
->
 > **NOTE:** Currently, you are most likely required to push to the `release-x.y` branch more than once. Make sure that a user with **admin** role is present in the `kyma` repository. 
 > Before every release you must bump the version in `prow/RELEASE_VERSION` directory of the `test-infra` repository. Make sure it is approved by a member of wg-prow. 
 
@@ -65,12 +63,10 @@ Follow these steps to create a release:
 
     >**NOTE:** This point applies only to new major and minor versions.
 
-2. Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on a release branch contains the correct version to be created.
-The file should contain a release version following the `{A}.{B}.{C}` or `{A}.{B}.{C}-rc{D}` format, where `A`,`B`, `C`, and `D` are numbers.
-If you define a release candidate version, a pre-release is created.
+2. Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on a release branch contains the correct version to be created. The file should contain a release version following the `{A}.{B}.{C}` or `{A}.{B}.{C}-rc{D}` format, where `A`,`B`, `C`, and `D` are numbers. If you define a release candidate version, a pre-release is created.  
 
-    > **NOTE:** make sure the RELEASE_VERSION file has only one single line:  
-    > `echo -n $RELEASE_VERSION > prow/RELEASE_VERSION`
+    Make sure the `RELEASE_VERSION` file includes just this single line:  
+    ` echo -n $RELEASE_VERSION > prow/RELEASE_VERSION`
 
 3. Push the branch to the `test-infra`  repository.
 
@@ -78,9 +74,9 @@ If you define a release candidate version, a pre-release is created.
 
 ### kyma-project/kyma
 
-1. Create a release branch in the `kyma` repository.
-   > **NOTE:** Do it only for a new release, not for a bugfix release.
-The name of this branch should follow the `release-x.y` pattern, such as `release-0.6`.
+1. Create a release branch in the `kyma` repository.  
+    Do it only for a new release, not for a bugfix release.
+    The name of this branch should follow the `release-x.y` pattern, such as `release-0.6`.
 
     ```bash
     git fetch upstream
@@ -117,7 +113,7 @@ The name of this branch should follow the `release-x.y` pattern, such as `releas
         Change them to:  
         `image: eu.gcr.io/kyma-project/{{IMAGE_NAME}}:{{RELEASE_NAME}}`
 
-        known files to change:
+        Change the known files including:
         - `installation/resources/installer-local.yaml`
         - `installation/resources/watch-pods.yaml`
         - `resources/application-connector-ingress/templates/upgrade-job.yaml`
@@ -160,19 +156,17 @@ The name of this branch should follow the `release-x.y` pattern, such as `releas
     1. Run `kyma-integration` by adding the  `/test pre-{release_number}-kyma-integration`  comment to the PR.
         > **NOTE:** You don't have to wait until the `pre-{release_number}-kyma-integration` job finishes to proceed with further jobs.
 
-    2. Run `kyma-installer`
-    ```/test pre-{release_number}-kyma-installer``` and wait until it finishes
-    3. Run `kyma-artifacts`
-    ```/test pre-{release_number}-kyma-artifacts``` and wait until it finishes
+    2. Run `/test pre-{release_number}-kyma-installer` and wait until it finishes
+    1. Run `/test pre-{release_number}-kyma-artifacts` and wait until it finishes
 
-    4. Run `kyma-gke-integration` and `kyma-gke-upgrade`. You can start them in parallel.
-    5. Wait for the jobs to finish:
-         - `kyma-integration`
-         - `kyma-gke-integration`
-         - `kyma-gke-upgrade`
+    1. Run `/test pre-{release_number}-kyma-gke-integration` and `/test pre-{release_number}-kyma-gke-upgrade`. You can start them in parallel.
+    2. Wait for the jobs to finish:
+         - `pre-{release_number}-kyma-integration`
+         - `pre-{release_number}-kyma-gke-integration`
+         - `pre-{release_number}-kyma-gke-upgrade`
 
 6. If you detect any problems with the release, such as failing tests, wait for the fix that can be delivered either on a PR or cherry-picked to the PR from the `master` branch.  
-    Prow triggers the jobs again. Rerun manual jobs as described in **step 5 **.
+    Prow triggers the jobs again. Rerun manual jobs as described in **step 5**.
 
 7. After all checks pass, merge the PR.
     > **NOTE:** To merge the PR to the release branch, you must receive approvals from all teams.
@@ -181,7 +175,7 @@ The name of this branch should follow the `release-x.y` pattern, such as `releas
 
 9. Update `RELEASE_VERSION` to the next version both on the `master` and release branches. Do it immediately after the release, otherwise any PR to a release branch overrides the previously published Docker images.
 
-10. Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
+10.  Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
 11. Update the release content manually with the instruction on how to install the latest Kyma release.  
     Currently this means to grab the instructions from the previous release and change the version number in them. If contributors want you to change something in them they would address you directly.
 
