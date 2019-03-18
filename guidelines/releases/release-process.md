@@ -166,7 +166,7 @@ The name of this branch should follow the `release-x.y` pattern, such as `releas
     ```/test pre-{release_number}-kyma-artifacts``` and wait until it finishes
 
     4. Run `kyma-gke-integration` and `kyma-gke-upgrade`. You can start them in parallel.
-    5. Wait for the jobs to finish
+    5. Wait for the jobs to finish:
          - `kyma-integration`
          - `kyma-gke-integration`
          - `kyma-gke-upgrade`
