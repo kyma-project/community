@@ -108,7 +108,7 @@ The name of this branch should follow the `release-x.y` pattern, such as `releas
         version: {rel_version}
         ```
 
-        > **NOTE:** replace only `develop/` so `develop/tests` becomes `tests/`
+        > **NOTE:** Replace only `develop/` so `develop/tests` becomes `tests/`.
 
         Every component image is published with a version defined in the `RELEASE_VERSION` file stored in the `test-infra` repository on the given release branch.
 
