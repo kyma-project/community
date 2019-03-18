@@ -10,7 +10,7 @@ This section only applies to new major and minor versions. Follow the preparatio
    - for every component
    - for every tool  
      Exceptions:
-     - prow/jobs/kyma/tools/docsbuilder/docsbuilder.yaml
+     - `prow/jobs/kyma/tools/docsbuilder/docsbuilder.yaml`
 
    - for every test
    - `kyma-docs`
