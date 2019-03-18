@@ -72,7 +72,7 @@ If you define a release candidate version, a pre-release is created.
     > **NOTE:** make sure the RELEASE_VERSION file has only one single line:  
     > `echo -n $RELEASE_VERSION > prow/RELEASE_VERSION`
 
-3. Push the branch to the `test-infra`  
+3. Push the branch to the `test-infra`  repository.
 
 4. Create a PR to test-infra/release-X.X. This will trigger the pre-release job for watch-pods
 
