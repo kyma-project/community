@@ -157,7 +157,7 @@ Follow these steps to create a release:
     1. Run `kyma-integration` by adding the  `/test pre-{release_number}-kyma-integration`  comment to the PR.
         > **NOTE:** You don't have to wait until the `pre-{release_number}-kyma-integration` job finishes to proceed with further jobs.
 
-    2. Run `/test pre-{release_number}-kyma-installer` and wait until it finishes
+    2. Run `/test pre-{release_number}-kyma-installer` and wait until it finishes.
     1. Run `/test pre-{release_number}-kyma-artifacts` and wait until it finishes
 
     1. Run `/test pre-{release_number}-kyma-gke-integration` and `/test pre-{release_number}-kyma-gke-upgrade`. You can start them in parallel.
