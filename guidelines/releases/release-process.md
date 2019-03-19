@@ -111,7 +111,7 @@ Follow these steps to create a release:
 
     2. Check all `yaml` files for the following references:  
         `image: eu.gcr.io/kyma-project/develop/{{IMAGE_NAME}}:{{SOME_SHA}}`
-        Change them to:  
+        Change the references to:  
         `image: eu.gcr.io/kyma-project/{{IMAGE_NAME}}:{{RELEASE_NAME}}`
 
         Change the known files including:
