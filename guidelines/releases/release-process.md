@@ -114,7 +114,7 @@ Follow these steps to create a release:
         Change the references to:  
         `image: eu.gcr.io/kyma-project/{{IMAGE_NAME}}:{{RELEASE_NAME}}`
 
-        Change the known files including:
+        The known files you must check include:
         - `installation/resources/installer-local.yaml`
         - `installation/resources/watch-pods.yaml`
         - `resources/application-connector-ingress/templates/upgrade-job.yaml`
