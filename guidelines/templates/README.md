@@ -26,6 +26,7 @@ The table provides an overview of the template names, the repository they refer 
 | [`community/sig-and-wg`](https://github.com/kyma-project/community/sig-and-wg) | [`sig-wg-meeting-notes-template.md`](./resources/sig-wg-meeting-notes-template.md) | Use the template to document meeting notes of a given SIG or WG.
 | [`website/src/blog-posts`](https://github.com/kyma-project/website/tree/master/src/blog-posts) | [`release-notes.md`](./resources/release-notes.md) | Use the template to write release notes. This template is dedicated to technical writers.
 | Internal use | [`release-notes-input.md`](./resources/release-notes-input.md) | Use the template to provide input for the release notes. This template is dedicated to product owners.
+| No specific repository | [`Kyma open source deck`](./resources/Kyma Open Source deck_FINAL.pptx) | Use the official Kyma Open Source deck with the Kyma related content to talk about the project and present it to new audiences. |
 
 
 >**NOTE:** Update the table each time you add a new template to the `resources` folder.
