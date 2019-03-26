@@ -34,7 +34,7 @@ A new custom solution called the Asset Store.
 8. The controller updates the status of the Asset CR with the information on the location of the file.
 
 >**NOTE**
-> The naming for the validation and mutation functionalities was inspired by Kubernetes [admission webhooks](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#admission-webhooks).
+> The naming for the validation and mutation functionalities was inspired by Kubernetes [admission webhooks](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers).
 
 ### Bucket custom resource
 
