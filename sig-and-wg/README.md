@@ -13,9 +13,11 @@ See these sections for details:
   * [The Kyma Council](#the-kyma-council)
   * [List of SIGs](#list-of-sigs)
   * [List of WGs](#list-of-wgs)
+  * [Closed SIGs and WGs](#closed-sigs-and-wgs)
 * [Organize new SIGs and WGs](#organize-new-sigs-and-wgs)
 * [General guidelines](#general-guidelines)
 * [Roles](#roles)
+* [Close a SIG or WG](#close-a-sig-or-wg)
 
 ## Overview
 
@@ -58,6 +60,10 @@ The list of public SIGs in Kyma includes:
 ### List of WGs
 
 There is no actively working WG right now.
+
+### Closed SIGs and WGs
+
+To see the list of closed SIGs and WGs, check the [archive](archive/). 
 
 ## Organize new SIGs and WGs
 
@@ -104,3 +110,15 @@ When you join a SIG or a WG, you perform at least one of the following roles:
 * **Group member** - The member is active in one or more areas of the project and can perform a wide variety of roles within the organization.
 * **Group leader** - SIGs and WGs must nominate at least two group leaders at any given time. Group leaders make sure that the group topics are relevant to Kyma and the group topics. They facilitate the group meetings, maintain, and communicate the meeting minutes. Group leaders record tasks identified by the group as issues in the respective issue tracker. They are responsible for smooth communication and coordination with other SIGs, the Council, and the SIG Community.
 * **Group representative** - It is a specific group member who represents the group to other groups or the Council. This is either the group's leader or any other group member. The choice depends on the topic and the place where the group is represented.
+
+## Close a SIG or WG
+When a SIG or WG has completed its goals or there is an explicit request to conclude further work, it has to be closed. The request to close a SIG or WG may come from group members, group leaders, Kyma community or Kyma Council. To close a SIG or WG, group leaders need to:
+
+* Create an issue and accompanying pull request (PR) to close a SIG or WG and add the **decision** label to them.
+* Close the remaining open issues of the group or reassign them accordingly, with appropriate comment.
+* [Delete the group label](https://help.github.com/en/articles/deleting-a-label) used on the issues or PRs.
+* Remove the group from the [List of SIGs](#list-of-sigs) or [List of WGs](#list-of-wgs) in this `README.md` file. 
+* Move the group folder (together with all subfolders and files) to the [archive](archive) folder.
+* Add a `CLOSURE.md` file to the archived group folder. Write it in a form of a blog post which informs about the group's outcomes, achievements, challenges, and lessons learned. Remember to provide links to the relevant material. The PR undergoes standard review by group members, Kyma Council and is subsequently closed. 
+* Publish the content of the `CLOSURE.md` in a form of a blog post on the Kyma website or link to it. 
+* Communicate the closure of a given SIG or WG through the SIG Core.
