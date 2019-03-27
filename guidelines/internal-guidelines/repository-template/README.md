@@ -12,7 +12,7 @@ The `template` folder consists of:
 
 * [`.github`](./template/.github) - This folder contains pull request and issue templates.
 
-* [`docs`](./template/docs) - In this folder, put the repository-specific documentation only. Store any architectural decisions or documents applicable to all Kyma repositories in the `community` repository. The folder contains the Creative Commons Attribution license that specifies the terms and conditions of redistribution and reuse of content in the `docs` folder.
+* [`docs`](./template/docs) - In this folder, put the repository-specific documentation only. Store any architectural decisions or documents applicable to all Kyma repositories in the `community` repository.
 
 * [CODE_OF_CONDUCT.md](./template/CODE_OF_CONDUCT.md) - This document is a ready-to-use template which provides a link to the general `CODE_OF_CONDUCT.md` document from the `community` repository. Copy the template into your own repository.
 
