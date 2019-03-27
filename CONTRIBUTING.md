@@ -32,6 +32,8 @@ the [Corporate Contributor License Agreement](https://github.com/kyma-project/co
 
 If you are a contributor, follow these basic rules:
 
+*	Issue [follows agreed guidelines](https://github.com/kyma-project/community/blob/master/issues-workflow.md) and provide sufficient informative context
+*	Pull request [follows the template](https://github.com/kyma-project/community/blob/master/.github/pull-request-template.md) and references an issue
 * The contribution workflow in all Kyma repositories bases on the principles of the [GitHub Flow](https://guides.github.com/introduction/flow/). Thus, the `master` branch is the most important one. Avoid working directly on it. When you work on new features or bug fixes, work on separate branches.
 * Work on forks of Kyma repositories.
 * You can merge a PR if you receive an approval from at least one code owner from each part of the repository to which you contribute in your PR.
