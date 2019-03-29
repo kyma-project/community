@@ -13,7 +13,7 @@ The table provides an overview of the template names, the repository they refer 
 | [`kyma`](https://github.com/kyma-project/kyma)| [`README.md`](./resources/chart_README.md), [`NOTES.txt`](./resources/NOTES.txt) | Use the template for charts. |
 | [`examples`](https://github.com/kyma-project/examples) | [`README.md`](./resources/example_README.md) | Use the template for examples. |
 | All | [`README.md`](../../guidelines/internal-guidelines/repository-template/template/README.md) | Use the template for the `README.md` document in any repository, directory, or subdirectory within the Kyma organization. |
-| No specific repository | [`Kyma-open-source-deck`](./resources/Kyma-open-source-deck.pptx) | Use the official Kyma-branded presentation to talk about the project and present it to new audiences. |
+| No specific repository | [`Kyma open-source slide deck`](./resources/kyma-open-source-deck.pptx) | Use the official Kyma-branded presentation to talk about the project and present it to new audiences. |
 | No specific repository | [`Official Kyma graphics and logo`](./resources/assets) | Use these graphics for any Kyma-related communication. |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`overview.md`](./resources/overview.md) | Use the template to introduce a Kyma component. |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`architecture.md`](./resources/architecture.md) | Use the template to describe the architecture of a Kyma component. |
