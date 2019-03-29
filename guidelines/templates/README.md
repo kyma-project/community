@@ -20,11 +20,10 @@ The table provides an overview of the template names, the repository they refer 
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`details.md`](./resources/details.md) | Use the template to provide more details about a Kyma component. |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`custom-resource.md`](./resources/custom-resource.md) | Use the template to describe a custom resource (CR) and its elements. |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`cli-reference.md`](./resources/cli-reference.md) | Use the template to describe the syntax and the use of CLI commands for a given component. |
-| [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`tutorial.md`](./resources/tutorial.md) | Use the template to provide a clear step-by-step instruction that helps the user to understand a given concept better. |
-| [`community/sig-and-wg`](https://github.com/kyma-project/community/sig-and-wg) | [`DR.md`](./resources/DR.md) | Use the template to document decisions made by SIGs and WGs.
-| [`community/sig-and-wg`](https://github.com/kyma-project/community/sig-and-wg) | [`sig-wg-readme-template.md`](./resources/sig-wg-readme-template.md) | Use the template for the main `README.md` document in a given SIG or WG folder.
-| [`community/sig-and-wg`](https://github.com/kyma-project/community/sig-and-wg) | [`sig-wg-meeting-notes-template.md`](./resources/sig-wg-meeting-notes-template.md) | Use the template to document meeting notes of a given SIG or WG.
-| [`website/src/blog-posts`](https://github.com/kyma-project/website/tree/master/src/blog-posts) | [`release-notes.md`](./resources/release-notes.md) | Use the template to write release notes. This template is dedicated to technical writers.
+| [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`tutorials.md`](./resources/tutorials.md) | Use the template to provide a clear step-by-step instruction that helps the user to understand a given concept better. |
+| [`community/sig-and-wg`](https://github.com/kyma-project/community/tree/master/sig-and-wg) | [`sig-wg-readme-template.md`](./resources/sig-wg-readme-template.md) | Use the template for the main `README.md` document in a given SIG or WG folder.
+| [`community/sig-and-wg`](https://github.com/kyma-project/community/tree/master/sig-and-wg) | [`sig-wg-meeting-notes-template.md`](./resources/sig-wg-meeting-notes-template.md) | Use the template to document meeting notes of a given SIG or WG.
+| [`website/content/blog-posts`](https://github.com/kyma-project/website/tree/master/content/blog-posts) | [`release-notes.md`](./resources/release-notes.md) | Use the template to write release notes. This template is dedicated to technical writers.
 | Internal use | [`release-notes-input.md`](./resources/release-notes-input.md) | Use the template to provide input for the release notes. This template is dedicated to product owners.
 
 

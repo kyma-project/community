@@ -1,4 +1,4 @@
-# Style and standards
+# Style and terminology
 
 These are the guidelines for the grammar, preferred word choices, and the list of terms to capitalize when writing Kyma documentation. The goal of these guidelines is to have all contributors write in the same way to ensure a uniform flow throughout the whole Kyma documentation.
 
