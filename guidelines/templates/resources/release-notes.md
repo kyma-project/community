@@ -1,15 +1,18 @@
-> This template is dedicated to technical writers. Use it to write release notes for Kyma releases. Add them as a blog post under [`website/src/blog-posts/`](https://github.com/kyma-project/website/tree/master/src/blog-posts). Place any related screenshots under the [`assets`](https://github.com/kyma-project/website/tree/master/src/blog-posts/assets) folder. Follow the content-related guidelines and tips for writing [release notes](../../content-guidelines/release-notes.md).
+> This template is dedicated to technical writers. Use it to write release notes for Kyma releases. Add them as a blog post under [`website/content/blog-posts/`](https://github.com/kyma-project/website/tree/master/content/blog-posts). Place any related screenshots in the same folder. Follow the content-related guidelines and tips for writing [release notes](../../content-guidelines/release-notes.md).
 
 <!-- Fill in the required metadata for the blog post to render properly on the "kyma-project.io" website. Remember to remove the code block. -->
 
 ```
 ---
-path: "/blog/{link}"
-date: "{YYY-MM-DD}"
-author: "{Name and surname}, {Role} @Kyma"
+title: "Kyma {release-number} {code-name}"
+author:
+  name: "{Name and surname}, {Role} @Kyma"
 tags:
   - release-notes
-title: "Kyma {release-number} {code-name}"
+type: release
+releaseTag: "{release-number}"
+redirectFrom:
+  - "/blog/release-notes-{release-number}"
 ---
 ```
 
@@ -53,3 +56,7 @@ title: "Kyma {release-number} {code-name}"
 ### {Feature or fix name}
 
 > Write a short paragraph that describes the feature or the fix in details and explains its benefits to the Kyma users. Include screenshots to illustrate the change better.
+
+### Known issues
+
+> Describe any known issues that the users can face, together with the way on how to solve these issues.
