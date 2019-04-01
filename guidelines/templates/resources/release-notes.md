@@ -4,12 +4,15 @@
 
 ```
 ---
-path: "/blog/{link}"
-date: "{YYY-MM-DD}"
-author: "{Name and surname}, {Role} @Kyma"
+title: "Kyma {release-number} {code-name}"
+author:
+  name: "{Name and surname}, {Role} @Kyma"
 tags:
   - release-notes
-title: "Kyma {release-number} {code-name}"
+type: release
+releaseTag: "{release-number}"
+redirectFrom:
+  - "/blog/release-notes-{release-number}"
 ---
 ```
 
@@ -53,3 +56,7 @@ title: "Kyma {release-number} {code-name}"
 ### {Feature or fix name}
 
 > Write a short paragraph that describes the feature or the fix in details and explains its benefits to the Kyma users. Include screenshots to illustrate the change better.
+
+### Known issues
+
+> Describe any known issues that the users can face, together with the way on how to solve these issues.
