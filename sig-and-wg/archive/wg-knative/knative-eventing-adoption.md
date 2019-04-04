@@ -56,15 +56,16 @@ With Knative adoption, this model can no longer be applied due to the following:
  The Knative channel naming follows this pattern: `{event-source-id}--{event-type}--{event-type-version}`. In order to avoid naming conflicts, the following rules are considered when creating the channel name: 
  1. If the event component's name already contains a hyphen, the hyphen is replaced with `-d`. For example, `external-application` becomes `external-dapplication`.
  2. If the event component's name already contains a period, the period is replaced with `-p`. For example, `order.created` becomes `order-pcreated`.
+ 3. Finally, a hashing function is applied to the Knative channel name and the output hash is a 32-character alphanumeric lower case string.
  
 The table includes sample channel names created according to the naming pattern:
  
-| Source ID                  | Event Type    | Event Type Version | Channel Name                              |
-| :---                       | :---          | :---               | :---                                      |
-| external.application       | order.created | v1                 | external-papplication--order-pcreated--v1 |
-| external.application.order | created       | v1                 | external-papplication-porder--created--v1 |
-| external-application       | order-created | v1                 | external-dapplication--order-dcreated--v1 |
-| external-application-order | created       | v1                 | external-dapplication-dorder--created--v1 |
+| Source ID                  | Event Type    | Event Type Version | Encoded channel Name                      | Hashed channel Name |
+| :---                       | :---          | :---               | :---                                      | :---                |
+| external.application       | order.created | v1                 | external-papplication--order-pcreated--v1 | COMPUTED_HASH       |
+| external.application.order | created       | v1                 | external-papplication-porder--created--v1 | COMPUTED_HASH       |
+| external-application       | order-created | v1                 | external-dapplication--order-dcreated--v1 | COMPUTED_HASH       |
+| external-application-order | created       | v1                 | external-dapplication-dorder--created--v1 | COMPUTED_HASH       |
 
 ### Option 1
 `1 Kyma event-type` is mapped to a `1 Knative channel`.
