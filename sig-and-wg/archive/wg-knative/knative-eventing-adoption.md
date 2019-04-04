@@ -56,7 +56,7 @@ With Knative adoption, this model can no longer be applied due to the following:
  The Knative channel naming follows this pattern: `{event-source-id}--{event-type}--{event-type-version}`. In order to avoid naming conflicts, the following rules are considered when creating the channel name: 
  1. If the event component's name already contains a hyphen, the hyphen is replaced with `-d`. For example, `external-application` becomes `external-dapplication`.
  2. If the event component's name already contains a period, the period is replaced with `-p`. For example, `order.created` becomes `order-pcreated`.
- 3. Finally, a hashing function is applied to the Knative channel name and the output hash is an Alphanumeric lower case string with length of 32 characters.
+ 3. Finally, a hashing function is applied to the Knative channel name and the output hash is a 32-character alphanumeric lower case string.
  
 The table includes sample channel names created according to the naming pattern:
  
