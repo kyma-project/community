@@ -9,7 +9,7 @@ files:
       white-list-internal: ["{CVSS"]
       #milv doesn't support that mysterious anchor
       white-list-external: ["https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"]
-  - path: "./community/guidelines/content-guidelines/formatting-and-style.md"
+  - path: "./community/guidelines/content-guidelines/formatting.md"
     config:
       white-list-internal: ["./deployment.yaml"]
   - path: "./community/guidelines/releases/release-process.md"

@@ -1,4 +1,4 @@
-# Formatting and style
+# Formatting
 
 These are the guidelines for formatting text and using specific elements such as lists, tables, headings, and links. For guidelines regarding the creation of diagrams, see [this document](./diagrams.md).
 
@@ -34,8 +34,15 @@ Parameter and value pairs | The controller adds the `env=true` label to all newl
 ## Content formatting
 Format the content in an attention-grabbing way. In general, content is easier to read when it is in chunks. Consider breaking up endless paragraphs by using a list or a table. Use action verbs and present tense for headings to engage the reader, and also follow the guidelines for the best way to include links and images. When you include lists, tables, code samples, or images, precede them with a brief explanation of what they describe.
 
-### Notes
-To call attention to a specific note, such as a word of caution or a tip, use this format: `>**NOTE:**`. For example:
+### Panels
+Panels are colorful containers that call out important or additional information within a topic. To call attention to a specific note, a word of caution or a tip, use the `>**{TYPE}:**`format, where `{TYPE}` is **NOTE**, **TIP**, or **CAUTION**.
+Use:
+- The blue **NOTE** panel to point to something specific, usually relating to the topic.
+- The red **CAUTION** panel to call attention to something critical that can cause inoperable behavior.
+- The green **TIP** panel to share helpful advice, such as a shortcut to save time.
+
+See an example:
+
 >**NOTE:** Provision a Public IP for Ingress and a DNS record before you start the installation.
 
 ### Ordered and unordered lists
