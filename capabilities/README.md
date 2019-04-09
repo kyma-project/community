@@ -13,3 +13,4 @@ This table lists all capabilities and links to their descriptions.
 | [API Gateway](api-gateway.md)| [@piotrmsc](https://github.com/piotrmsc) |
 | [Service Management](service-management.md) | [@PK85](https://github.com/PK85) |
 | [Core and Supporting](core-and-supporting.md) | [@derberg](https://github.com/derberg) |
+| [Console/Microfrontends](console-microfrontend.md) | [@kwiatekus](https://github.com/kwiatekus) |
