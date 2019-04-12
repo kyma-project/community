@@ -4,15 +4,15 @@ This document describes how to create a Kyma release using Prow.
 
 ## Preparation
 
-This section only applies to new major and minor versions. If you do a patch release, skip this paragraph.
+This section only applies to new major and minor versions. If you release a patch, skip the preparation and go to the [**Steps**](#steps) section.
 
-Preparation consists of defining new release jobs and removing old ones.
+To prepare a release, define new and remove old release jobs.
 
 ### Define release jobs
 
-Define the release jobs on the `master` branch in the `test-infra` repository. Since every job name has to be unique, prefix it with `pre-rel{XY}`. To learn how to define a release job for a component, read the following [document](https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md). To find all release jobs for the 0.9 release, look for job names with the `pre-rel09` prefix.
+Define release jobs on the `master` branch in the `test-infra` repository. To ensure every job name is unique, prefix it with `pre-rel{versionNumber}`. Remember to provide the version number without any periods. To learn how to define a release job for a component, read the following [document](https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md). To find all jobs for the 0.9 release, look for job names with the `pre-rel09` prefix.
 
-1. In `test-infra` repository navigate to `prow/jobs` directory.
+1. In the `test-infra` repository, navigate to the `prow/jobs` directory.
 1. Define release jobs in the `test-infra` repository in the following files:
    - `test-infra/watch-pods.yaml`
    - every YAML in `kyma/components` 
@@ -28,7 +28,7 @@ Define the release jobs on the `master` branch in the `test-infra` repository. S
    - `kyma/kyma-installer.yaml`
    - `kyma/kyma-github-release.yaml`
 
-        > **Note:** Remember about modifying `presets` array. For example, for 0.9 release the preset is the following:
+        > **Note:** Remember to modify the `presets` array. This is an example of the 0.9 release `preset`:
 
         ```
         - labels:
@@ -38,7 +38,7 @@ Define the release jobs on the `master` branch in the `test-infra` repository. S
                 value: release-0.9
         ```
 
-1. Ensure that tests for release jobs exist. Release tests usually iterate through all release versions and run tests for them.
+1. Ensure that tests for the release jobs exist. Release tests usually iterate through all release versions and run tests for them.
 See the `TestBucReleases` test defined in `development/tools/jobs/kyma/binding_usage_controller_test.go` as a reference.
 
 1. Update the `GetAllKymaReleaseBranches()` function
@@ -69,7 +69,7 @@ After adding new release jobs, remove all previous ones. For example, while doin
 
 > **NOTE:** Currently, you are most likely required to push to the `release-x.y` branch more than once. Make sure that a user with **admin** role is present in the `kyma` repository. 
 
-Before doing the release, make sure there is no mismatch between source code and YAML files. All components are rebuilt from source code, which means all Helm charts need to be up to date.
+Before a release, make sure there is no mismatch between source code and `.yaml` files. All components are rebuilt from source code, which requires all Helm charts to be up to date.
 
 Follow these steps to create a release:
 
@@ -95,9 +95,9 @@ Follow these steps to create a release:
 
 4. Create a PR to `test-infra/release-x.y`. This triggers the pre-release job for `watch-pods`. 
 
-    > **NOTE:** If you want to just trigger `watch-pods` build without introducing any changes, edit any file within `test-infra` repository and create a pull request. You don't need to merge it - the job will be triggered anyway. After successful `watch-pods` image build, you can close the pull request.
+    > **NOTE:** To trigger the `watch-pods` build without introducing any changes, edit any file within the `test-infra` repository and create a pull request. You don't need to merge it as the job will be triggered anyway. After a successful `watch-pods` image build, you can close the pull request.
 
-5. Prepare and merge pull request to `master` with updating RELEASE_VERSION for next minor release candidate. For example, if `RELEASE_VERSION` on `master` branch is set to `0.9.2`, then change the version to `1.0.0-rc1`.
+5. Update the `RELEASE_VERSION`file with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `0.9.2`, then change the version to `1.0.0-rc1`.
 
 ### kyma-project/kyma
 
@@ -142,9 +142,9 @@ Follow these steps to create a release:
         `image: eu.gcr.io/kyma-project/{IMAGE_NAME}:{release_version}`
 
         - `installation/resources/installer-local.yaml`
-        - In `installation/resources/installer.yaml` change from `eu.gcr.io/kyma-project/develop/installer:{image_tag}` to `eu.gcr.io/kyma-project/kyma-installer:{release_version}`
+        - In `installation/resources/installer.yaml` replace`eu.gcr.io/kyma-project/develop/installer:{image_tag}` with `eu.gcr.io/kyma-project/kyma-installer:{release_version}`
     
-    3. In `resources/core/values.yaml` file, replace the `clusterDocsTopicsVersion` value to your release branch name. For example, for 0.9.1 release, find the following section:
+    3. In  the `resources/core/values.yaml` file, replace the `clusterDocsTopicsVersion` value with your release branch name. For example, for the 0.9.1 release, find the following section:
 
         ```yaml
         docs:
@@ -152,7 +152,7 @@ Follow these steps to create a release:
             clusterDocsTopicsVersion: master
         ```
 
-        Replace the value `clusterDocsTopicsVersion` to the following:
+        And replace the `clusterDocsTopicsVersion` value with the following:
 
         ```yaml
         docs:
@@ -200,7 +200,7 @@ Follow these steps to create a release:
 
 10.  Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
 
-11. Update the release content manually with the links how to install the latest Kyma release.  
-    Currently this means to grab the links from the previous release and update the version number in URLs. If contributors want you to change something in them they would address you directly.
+11. Update the release content manually with links to the instruction on how to install the latest Kyma release.  
+    Currently, this means to grab the links from the previous release and update the version number in URLs. If contributors want you to change something in the instruction, they would address you directly.
 
 > **NOTE:** All teams should test the release candidate versions. To make the testing easier, provision a publicly available cluster with the release candidate version after performing all steps listed in this document.
