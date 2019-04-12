@@ -16,9 +16,9 @@ Define release jobs on the `master` branch in the `test-infra` repository. To en
 1. Define release jobs in the `prow/jobs/test-infra` directory in the following files:
     - `watch-pods.yaml`
 1. Define release jobs in the `prow/jobs/kyma` directory in the following files:
-   - every YAML in `components` 
-   - every YAML in `tests`
-   - every YAML in `tools/` **except**:
+   - every `.yaml` in `components` 
+   - every `.yaml` in `tests`
+   - every `.yaml` in `tools/` **except for**:
      - `tools/docsbuilder/docsbuilder.yaml`
      - `tools/failery/failery.yaml`
    - `kyma-docs.yaml`
@@ -137,21 +137,19 @@ Follow these steps to create a release:
 
         Every component image is published with a version defined in the `RELEASE_VERSION` file stored in the `test-infra` repository on the given release branch. Test scripts for integration jobs like GKE Integration or GKE Upgrade are also loaded from the `test-infra` release branch.
 
-    1. Check all `yaml` files for the following references:
+    1. Check all `yaml` files in the `kyma` repository for references of the following Docker image:
 
         ```yaml
         image: eu.gcr.io/kyma-project/develop/{IMAGE_NAME}:{SOME_SHA}
         ```
 
-        Change the references to:
+        Change the Docker image to:
         
         ```yaml
         image: eu.gcr.io/kyma-project/{IMAGE_NAME}:{release_version}
         ```
 
-        > **NOTE**: Remember about the `installation/resources/installer-local.yaml` file.
-
-    1. In `installation/resources/installer.yaml` replace `eu.gcr.io/kyma-project/develop/installer:{image_tag}` with `eu.gcr.io/kyma-project/kyma-installer:{release_version}`
+        > **CAUTION**: In `installation/resources/installer.yaml` replace `eu.gcr.io/kyma-project/develop/installer:{image_tag}` with `eu.gcr.io/kyma-project/kyma-installer:{release_version}`
     
     1. In  the `resources/core/values.yaml` file, replace the `clusterDocsTopicsVersion` value with your release branch name. For example, for the 0.9.1 release, find the following section:
 
