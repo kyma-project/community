@@ -4,7 +4,7 @@ This document describes how to create a Kyma release using Prow.
 
 ## Preparation
 
-This section only applies to new major and minor versions. If you release a patch, skip the preparation and go to the [**Do release**](#do-release) section.
+This section only applies to new major and minor versions. If you release a patch, skip the preparation and go to the [**Steps**](#steps) section.
 
 To prepare a release, define new and remove old release jobs.
 
@@ -64,9 +64,9 @@ defined in the `development/tools/jobs/tester/tester.go` file under the `test-in
 
 ### Remove previous release jobs
 
-After adding new release jobs, remove all previous ones. For example, while doing 0.9 release, add `pre-rel09` jobs and remove all `pre-rel06` jobs. Make sure that there are only defined jobs with `pre-rel07`, `pre-rel08` and `pre-rel09` prefixes.
+After adding new release jobs, remove the old ones. Remember to leave jobs for three latest releases. For example, during the preparation for the 0.9 release, add `pre-rel09` jobs and remove all `pre-rel06` jobs. Make sure that the only defined jobs are those with `pre-rel07`, `pre-rel08`, and `pre-rel09` prefixes.
 
-## Do release
+## Steps
 
 > **NOTE:** Currently, you are most likely required to push to the `release-x.y` branch more than once. Make sure that a user with **admin** role is present in the `kyma` repository. 
 
@@ -96,7 +96,7 @@ Follow these steps to create a release:
 
 4. Create a PR to `test-infra/release-x.y`. This triggers the pre-release job for `watch-pods`. 
 
-    > **NOTE:** To trigger the `watch-pods` build without introducing any changes, edit any file within the `test-infra` repository and create a pull request. You don't need to merge it as the job will be triggered anyway. After a successful `watch-pods` image build, you can close the pull request.
+    > **NOTE:** To trigger the `watch-pods` build without introducing any changes, edit any file within the `test-infra` repository and create a pull request. You don't need to merge it as the job is triggered anyway. After a successful `watch-pods` image build, close the pull request.
 
 5. Update the `RELEASE_VERSION`file with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `0.9.2`, then change the version to `1.0.0-rc1`.
 
@@ -195,7 +195,7 @@ Follow these steps to create a release:
 
 8. Merging the PR to the release branch runs the postsubmit job that creates a GitHub release. This job also triggers documentation update on the official Kyma website.
 
-9. Update `RELEASE_VERSION` to the next patch RC1 version on the release branch. Do it immediately after the release, otherwise any PR to a release branch overrides the previously published Docker images.
+9. Update the `RELEASE_VERSION` file to contain the next patch RC1 version on the release branch. Do it immediately after the release, otherwise, any PR to a release branch overrides the previously published Docker images.
 
     For example, if the `RELEASE_VERSION` file on the release branch contains `0.9.1`, change it to `0.9.2-rc1`.
 
