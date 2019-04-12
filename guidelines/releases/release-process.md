@@ -12,21 +12,22 @@ To prepare a release, define new and remove old release jobs.
 
 Define release jobs on the `master` branch in the `test-infra` repository. To ensure every job name is unique, prefix it with `pre-rel{versionNumber}`. Remember to provide the version number without any periods. To learn how to define a release job for a component, read the following [document](https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md). To find all jobs for the 0.9 release, look for job names with the `pre-rel09` prefix.
 
-1. In the `test-infra` repository, navigate to the `prow/jobs` directory.
-1. Define release jobs in the `test-infra` repository in the following files:
-   - `test-infra/watch-pods.yaml`
-   - every YAML in `kyma/components` 
-   - every YAML in `kyma/tests`
-   - every YAML in `kyma/tools/` **except**:
-     - `prow/jobs/kyma/tools/docsbuilder/docsbuilder.yaml`
-     - `prow/jobs/kyma/tools/failery/failery.yaml`
-   - `kyma/kyma-docs.yaml`
-   - `kyma/kyma-integration.yaml`
-   - `kyma/kyma-gke-integration.yaml`
-   - `kyma/kyma-gke-upgrade.yaml`
-   - `kyma/kyma-artifacts.yaml`
-   - `kyma/kyma-installer.yaml`
-   - `kyma/kyma-github-release.yaml`
+1. Navigate to the `test-infra` repository.
+1. Define release jobs in the `prow/jobs/test-infra` directory in the following files:
+    - `watch-pods.yaml`
+1. Define release jobs in the `prow/jobs/kyma` directory in the following files:
+   - every YAML in `components` 
+   - every YAML in `tests`
+   - every YAML in `tools/` **except**:
+     - `tools/docsbuilder/docsbuilder.yaml`
+     - `tools/failery/failery.yaml`
+   - `kyma-docs.yaml`
+   - `kyma-integration.yaml`
+   - `kyma-gke-integration.yaml`
+   - `kyma-gke-upgrade.yaml`
+   - `kyma-artifacts.yaml`
+   - `kyma-installer.yaml`
+   - `kyma-github-release.yaml`
 
         > **Note:** Remember to modify the `presets` array. This is an example of the 0.9 release `preset`:
 
