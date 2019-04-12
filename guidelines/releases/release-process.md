@@ -112,7 +112,7 @@ Follow these steps to create a release:
     git push upstream release-{release_version}
     ```
 
-    > **NOTE:** Pushing anything to release branch (and also pushing rebased branch) results in creating new Github release.
+    > **NOTE:** If you push anything to the release branch, or if you rebase the branch, a new Github release is created.
 
 2. Create a new branch and do the following changes.
     
@@ -196,7 +196,7 @@ Follow these steps to create a release:
 
 9. Update `RELEASE_VERSION` to the next patch RC1 version on the release branch. Do it immediately after the release, otherwise any PR to a release branch overrides the previously published Docker images.
 
-    For example, if `RELEASE_VERSION` on release branch contains `0.9.1`, change it to `0.9.2-rc1`.
+    For example, if the `RELEASE_VERSION` file on the release branch contains `0.9.1`, change it to `0.9.2-rc1`.
 
 10.  Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
 
