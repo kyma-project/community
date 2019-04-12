@@ -137,15 +137,23 @@ Follow these steps to create a release:
 
         Every component image is published with a version defined in the `RELEASE_VERSION` file stored in the `test-infra` repository on the given release branch. Test scripts for integration jobs like GKE Integration or GKE Upgrade are also loaded from the `test-infra` release branch.
 
-    2. Check all `yaml` files for the following references:  
-        `image: eu.gcr.io/kyma-project/develop/{IMAGE_NAME}:{SOME_SHA}`
-        Change the references to:  
-        `image: eu.gcr.io/kyma-project/{IMAGE_NAME}:{release_version}`
+    1. Check all `yaml` files for the following references:
 
-        - `installation/resources/installer-local.yaml`
-        - In `installation/resources/installer.yaml` replace`eu.gcr.io/kyma-project/develop/installer:{image_tag}` with `eu.gcr.io/kyma-project/kyma-installer:{release_version}`
+        ```yaml
+        image: eu.gcr.io/kyma-project/develop/{IMAGE_NAME}:{SOME_SHA}
+        ```
+
+        Change the references to:
+        
+        ```yaml
+        image: eu.gcr.io/kyma-project/{IMAGE_NAME}:{release_version}
+        ```
+
+        > **NOTE**: Remember about the `installation/resources/installer-local.yaml` file.
+
+    1. In `installation/resources/installer.yaml` replace `eu.gcr.io/kyma-project/develop/installer:{image_tag}` with `eu.gcr.io/kyma-project/kyma-installer:{release_version}`
     
-    3. In  the `resources/core/values.yaml` file, replace the `clusterDocsTopicsVersion` value with your release branch name. For example, for the 0.9.1 release, find the following section:
+    1. In  the `resources/core/values.yaml` file, replace the `clusterDocsTopicsVersion` value with your release branch name. For example, for the 0.9.1 release, find the following section:
 
         ```yaml
         docs:
@@ -160,7 +168,7 @@ Follow these steps to create a release:
             # (...)
             clusterDocsTopicsVersion: release-0.9
         ```
-    4. Create a pull request with your changes to the release branch. It triggers all jobs for components.
+    1. Create a pull request with your changes to the release branch. It triggers all jobs for components.
 
         ![PullRequest](../../assets/release-PR.png)
 
@@ -176,13 +184,13 @@ Follow these steps to create a release:
 5. Execute remaining tests. The diagram shows you the jobs and dependencies between them.
     ![JobDependencies](../../assets/kyma-rel-jobs.svg)
     1. Run `kyma-integration` by adding the  `/test pre-{release_number}-kyma-integration`  comment to the PR.
+
         > **NOTE:** You don't have to wait until the `pre-{release_number}-kyma-integration` job finishes to proceed with further jobs.
 
-    2. Run `/test pre-{release_number}-kyma-installer` and wait until it finishes.
+    1. Run `/test pre-{release_number}-kyma-installer` and wait until it finishes.
     1. Run `/test pre-{release_number}-kyma-artifacts` and wait until it finishes.
-
     1. Run `/test pre-{release_number}-kyma-gke-integration` and `/test pre-{release_number}-kyma-gke-upgrade`. You can start them in parallel.
-    2. Wait for the jobs to finish:
+    1. Wait for the jobs to finish:
          - `pre-{release_number}-kyma-integration`
          - `pre-{release_number}-kyma-gke-integration`
          - `pre-{release_number}-kyma-gke-upgrade`
