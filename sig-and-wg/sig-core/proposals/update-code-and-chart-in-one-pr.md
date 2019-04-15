@@ -50,7 +50,7 @@ waits until all component's jobs will be finished.
 ![](./assets/prow-init-containers.png)
 
 To read more details, see [Prow Job Dependencies](#poc-prow-jobs-dependencies).
-At the beginning, we can use it as an option, a developer can decide if he update code and chart in the same PR. 
+At the beginning, we can use described approach as an option, a developer can decide if he updates code and chart in the same PR. 
 As a next step, we can introduce a job that checks if version of the chart is updated in the PR. To read more details, 
 see [Job enforcing changes in one PR](#poc-job-enforcing-changes-in-one-pr).
 
@@ -58,7 +58,7 @@ see [Job enforcing changes in one PR](#poc-job-enforcing-changes-in-one-pr).
 ### [POC] Prow Jobs Dependencies
 Prow reacts on changes to the PR by creating ProwJob CR for all jobs to be executed for specific PR. Generally, we have 
 two kind of jobs:
-- component jobs, that creates Docker images. These jobs are executed only if we modify given job, Prowjobs 
+- component jobs, that creates Docker images. These jobs are executed only if we modify given component because Prowjobs 
  have specified parameter `run_if_changed`
  - integration jobs, that depends on component jobs. They are executed when `resources` or `installation` directory were modified.
  If we implement described here concept, these jobs will be executed on almost every PR. List of all integration jobs:
