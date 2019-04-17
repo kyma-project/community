@@ -25,6 +25,6 @@ This includes the following features:
 * Namespace separation support.
 * Support of transactional event logs such as audit logs.
 * Support for auto-scaling based on application metrics.
-* Proactive and reactive alerting for potential unhealthy cluster components
-* Pre-integration with notification systems for alerting like VictorOps and Slack.
+* Proactive and reactive alerting for potential unhealthy cluster components.
+* Pre-integration with notification systems for alerting, such as VictorOps and Slack.
 * End-to-end tracing of distributed applications including eventing and external system connectivity.
