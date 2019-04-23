@@ -7,7 +7,7 @@ epicsLabels:
 
 ## Scope
 
-The Console/Microfrontends capability is all about how a user interacts with kyma UI. It drives the development of Console, a modular and extensible web user interface for managing all aspects of kyma.
+The Console/Microfrontends capability relates to the way in which a user interacts with the Kyma UI. It drives the development of the Console, a modular and extensible web user interface for managing all aspects of Kyma.
 
 ## Vision
 
