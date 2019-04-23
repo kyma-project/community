@@ -13,7 +13,7 @@ The Console/Microfrontends capability relates to the way in which a user interac
 
 * User Experience
 
-    * Provide easy and intuitive user interfaces for kyma to support its users in the best possible way
+    * Provide easy and intuitive user interfaces for Kyma to support its users in the best possible way.
     * Focus on a consistent user experience based on unified [Fiori 3 Fundamentals](https://sap.github.io/fundamental/components/index.html) style guides
     * Enable most common user journeys in the UI so that usage of CLI is not required
     * Don't hide the kubernetes nature from the user but augment it with kyma-specific user guidance
