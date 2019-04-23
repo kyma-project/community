@@ -33,7 +33,7 @@ When doing a release we rebuild all components. We should not be surprised on th
 
 Let assume that I am working on PR-1234. When I modify `componentA`, Presubmit jobs builds Docker image. 
 Tag of this image is the same as a pull request number.
-So, a developer can modify component's code and it in values.yaml:
+A developer can use this version in a `values.yaml` file:
 ```
 component_a:
   dir: pr/
@@ -41,8 +41,8 @@ component_a:
 ```
 
 With this approach, Prow executes component's and integration's jobs for the same PR. We have to ensure proper order of jobs,
-to build component, before using it in the integration job. To achieve that, we execute additional step at the beginning of 
-all integration jobs that waits for all dependant jobs.
+to build components before using them in integration jobs. To achieve that, additional step is required at the beginning of 
+every integration jobs that waits for all dependant jobs.
 
 To read more details, see [Guard integration jobs](#guard-integration-jobs).
 
@@ -53,21 +53,22 @@ see [Job enforcing changes in one PR](#poc-job-enforcing-changes-in-one-pr).
 
 ### Guard integration jobs
 To postpone execution of integration jobs, we should add additional step at the beginning of every integration job.
-To decide, if integration job can be executed, we check statues for given pull request:
+To decide, if integration job can be executed, use statuses of given pull request:
 ![](./assets/job-status-checks.png)
+
 Most of this statuses are sent by Prow and represents statuses of executing jobs.
 
-The algorithm is following:
+The algorithm of Guard is following:
 1. Fetch all required statuses sent by Prow for given PR that represents component's build. 
-2. If some status failed, fail fast integration job. 
+2. If some status is marked as a failed, fail fast integration job. 
 3. If all statuses are successful, continue integration job execution.
-4. If waiting for statuses took more than defined timeout (10min), fail integration job.
+4. If waiting for statuses takes more than defined timeout (10min), fail integration job.
 5. If some statuses are in Pending state, sleep for some time (15s) and go to point 1.
 
-Ad Step 1. we filter statuses by it's names. In Kyma Prow configuration, there is a convention for
+Ad Step 1. Guard filters statuses by it's names. In Kyma Prow configuration, there is a convention for
 job names. For example, every component job name for master branch starts with `pre-master-kyma-components-`.
-Ad Step 2, we fail fast integration job to reduce number of provisioned clusters and VMs.
-Ad Step 4, we define timeout for checking jobs statuses, because Prow defines maximum number of concurrently executed jobs. 
+Ad Step 2, Guard fails fast integration job to reduce number of provisioned clusters and VMs.
+Ad Step 4, Guard defines timeout for checking jobs statuses. Prow defines maximum number of concurrently executed jobs. 
 There could be a extremely rare situation, that Prow executes only integration jobs that all wait for components jobs that cannot be executed because maximum
 number of concurrent jobs was reached. In such case, a developer has to trigger integration job manually. 
 
