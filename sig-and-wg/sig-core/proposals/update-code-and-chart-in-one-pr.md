@@ -1,9 +1,9 @@
 # Update component and its chart in one pull request
 
-Created on 2019-XX-04 by Adam Szecowka (@aszecowka) and Pawel Kosiec (@pkosiec). 
+Created on 2019-23-04 by Adam Szecowka (@aszecowka) and Pawel Kosiec (@pkosiec). 
 
 ## Status
-Proposed on 2019-XX-04.
+Proposed on 2019-23-04.
 
 ## Motivation
 Currently, when a developer introduces changes to his component, he needs to do at least 2 PR:
@@ -17,6 +17,7 @@ Such an approach has many drawbacks:
 - A developer can forget to bump image and version can be updated only on the release day. Updating version on the release day is 
 a worst case scenario, because we postponed integration of our components. This is against Continuous Integration approach.
 - The code in the repository does not reflect what is really running.
+- Ugly repository history. Many commits only bumps component's image version.
 
 ## Goal
 - Kyma developer can introduce his changes to Kyma in one Pull Request. Changes to the component and helm chart where we update component version is done in the same PR.
@@ -25,18 +26,14 @@ When doing a release we rebuild all components. We should not be surprised on th
 - Kyma repository has a nice commit history and commits that only bumps a component version are rare.
 - Run Kyma integration tests with the modified component within the same pull request status checks
 
-## Suggested solution
 
-**Allow to use images built on Pull Requests**
+## Proposed solution
+
+**Allow to use images built on Pull Requests on master branch**
 
 Let assume that I am working on PR-1234. When I modify `componentA`, Presubmit jobs builds Docker image. 
-In values.yaml instead of:
-```
-component_a:
-  dir: develop/
-  version: 7cacbc23
-```  
-we will have:
+Tag of this image is the same as a pull request number.
+So, a developer can modify component's code and it in values.yaml:
 ```
 component_a:
   dir: pr/
@@ -44,51 +41,35 @@ component_a:
 ```
 
 With this approach, Prow executes component's and integration's jobs for the same PR. We have to ensure proper order of jobs,
-to build component, before using it in the integration job. To achieve that, we can add init-container for integration jobs that 
-waits until all component's jobs will be finished.
+to build component, before using it in the integration job. To achieve that, we execute additional step at the beginning of 
+all integration jobs that waits for all dependant jobs.
 
-![](./assets/prow-init-containers.png)
+To read more details, see [Guard integration jobs](#guard-integration-jobs).
 
-To read more details, see [Prow Job Dependencies](#poc-prow-jobs-dependencies).
 At the beginning, we can use described approach as an option, a developer can decide if he updates code and chart in the same PR. 
 As a next step, we can introduce a job that checks if version of the chart is updated in the PR. To read more details, 
 see [Job enforcing changes in one PR](#poc-job-enforcing-changes-in-one-pr).
 
 
-### [POC] Prow Jobs Dependencies
-Prow reacts on changes to the PR by creating ProwJob CR for all jobs to be executed for specific PR. Generally, we have 
-two kind of jobs:
-- component jobs, that creates Docker images. These jobs are executed only if we modify given component because Prowjobs 
- have specified parameter `run_if_changed`
- - integration jobs, that depends on component jobs. They are executed when `resources` or `installation` directory were modified.
- If we implement described here concept, these jobs will be executed on almost every PR. List of all integration jobs:
-    * `pre-master-kyma-integration`
-    * `pre-master-kyma-gke-integration`
-    * `pre-master-kyma-gke-upgrade`
-    * `pre-master-kyma-gke-central-connector`
-    
-To distinguish 2 types of jobs, we should label jobs, as it is presented on the diagram above:
-- components jobs have label: `kyma-job-type: component`
-- integration jobs have label: `kyma-job-type: integration`
+### Guard integration jobs
+To postpone execution of integration jobs, we should add additional step at the beginning of every integration job.
+To decide, if integration job can be executed, we check statues for given pull request:
+![](./assets/job-status-checks.png)
+Most of this statuses are sent by Prow and represents statuses of executing jobs.
 
-All integration jobs have to have init-container, to postpone it's execution until all components jobs finished.
-Init container has following logic:
-```
-fetch all prowjobs that current job depends:
-- get all ProwJobs for given PR
-- filter out ProwJobs for given PR but were triggered for previous commits
-- filter out ProwJobs that don't build components (don't wait for other integration jobs)
+The algorithm is following:
+1. Fetch all required statuses sent by Prow for given PR that represents component's build. 
+2. If some status failed, fail fast integration job. 
+3. If all statuses are successful, continue integration job execution.
+4. If waiting for statuses took more than defined timeout (10min), fail integration job.
+5. If some statuses are in Pending state, sleep for some time (15s) and go to point 1.
 
-if all jobs succeeded 
-    exit init-container with status 0 - integration job will be executed
-else
-    exit init-container with status 1 - integration job will fail but without execution
-``` 
-
-Prow defines maximum number of concurrently executed jobs.There could be a extremely rare situation, that 
-Prow executes only integration jobs that all wait for components jobs that cannot be executed because maximum
-number of concurrent jobs was reached. Init container script should detect such situation and exit init container. 
-In such case, a developer has to trigger integration job manually. 
+Ad Step 1. we filter statuses by it's names. In Kyma Prow configuration, there is a convention for
+job names. For example, every component job name for master branch starts with `pre-master-kyma-components-`.
+Ad Step 2, we fail fast integration job to reduce number of provisioned clusters and VMs.
+Ad Step 4, we define timeout for checking jobs statuses, because Prow defines maximum number of concurrently executed jobs. 
+There could be a extremely rare situation, that Prow executes only integration jobs that all wait for components jobs that cannot be executed because maximum
+number of concurrent jobs was reached. In such case, a developer has to trigger integration job manually. 
 
 
 ### [POC] Job enforcing changes in one PR
