@@ -28,5 +28,5 @@ The Console/Microfrontends capability relates to the way in which a user interac
     
     * Quick loading time for user interfaces
     * Load only the essential data that is needed for rendering user interfaces and nothing more (use GraphQL).
-    * Give the user feedback for his actions (use websockets)   
+    * Give the user feedback for his actions (use websockets).
 
