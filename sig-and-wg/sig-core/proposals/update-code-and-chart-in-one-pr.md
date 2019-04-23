@@ -50,6 +50,8 @@ In the beginning, we can use the described approach as an option, a developer ca
 As a next step, we can introduce a job that checks if a version of the chart is updated in the PR. To read more details, 
 see [Job enforcing changes in one PR](#job-enforcing-changes-in-one-pr).
 
+In situation, that there are two PRs changing the same component, there will be a merge conflict for the second PR because
+the same line in `values.yaml` was modified. Thanks to that, we ensure that the `master` branch contains changes from both PRs.
 
 ### Guard integration jobs
 To postpone the execution of integration jobs, we should add an additional step at the beginning of every integration job.
