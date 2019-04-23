@@ -48,7 +48,7 @@ To read more details, see [Guard integration jobs](#guard-integration-jobs).
 
 At the beginning, we can use described approach as an option, a developer can decide if he updates code and chart in the same PR. 
 As a next step, we can introduce a job that checks if version of the chart is updated in the PR. To read more details, 
-see [Job enforcing changes in one PR](#poc-job-enforcing-changes-in-one-pr).
+see [Job enforcing changes in one PR](#job-enforcing-changes-in-one-pr).
 
 
 ### Guard integration jobs
@@ -72,8 +72,9 @@ Ad Step 4, Guard defines timeout for checking jobs statuses. Prow defines maximu
 There could be a extremely rare situation, that Prow executes only integration jobs that all wait for components jobs that cannot be executed because maximum
 number of concurrent jobs was reached. In such case, a developer has to trigger integration job manually. 
 
+Working code for Guard can be found in [PR#904](https://github.com/kyma-project/test-infra/pull/904)
 
-### [POC] Job enforcing changes in one PR
+### Job enforcing changes in one PR
 To require updating charts immediately, a new Presubmit job should be defined. Below you can find it's pseudocode:
 ```
 - get component's changed in current PR (ignore markdown files)
