@@ -1,7 +1,8 @@
 ---
-displayName: Service Management
+displayName: "Service Management"
 epicsLabels:
   - area/service-catalog
+id: service-management
 ---
 
 ## Scope

@@ -1,8 +1,9 @@
 ---
-displayName: Console/Microfrontends
+displayName: "Console / Microfrontends"
 epicsLabels:
   - area/console
   - area/luigi
+id: console-microfrontends
 ---
 
 ## Scope
