@@ -1,9 +1,10 @@
 ---
-displayName: Logging-Tracing-Monitoring
+displayName: "Logging / Tracing / Monitoring"
 epicsLabels:
   - area/logging
   - area/tracing
   - area/monitoring
+id: logging-tracing-monitoring
 ---
 
  ## Scope

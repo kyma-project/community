@@ -1,10 +1,12 @@
 ---
-displayName: Display Name
+displayName: "Display Name"
 epicsLabels:
   - area/displayName1
   - area/displayName2
+id: display-name
 ---
-<!-- The metadata is used on the "https://kyma-project.io/ " page to display a descriptive name of the capability and have a reference to the label that should be used while fetching information about related Epics and their delivery plan from ZenHub and GitHub.   -->
+
+<!-- The metadata is used on the "https://kyma-project.io/ " page to display a descriptive name of the capability and have a reference to the label that should be used while fetching information about related Epics and their delivery plan from ZenHub and GitHub. Please also remember about id for capability, because by it is assigned svg for appropriate capability. -->
 
 ## Scope
 
