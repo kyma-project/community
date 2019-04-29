@@ -60,7 +60,7 @@ Most of these checks are sent by Prow and represent statuses of jobs execution.
 
 The Guard workflow looks as follows:
 1. Fetch all required checks sent by Prow for a given PR that represent components build. 
-Guard filters checks by its names. In Kyma Prow configuration, there is a convention for
+Guard filters checks by their names. In Kyma Prow configuration, there is a convention for
 job names. For example, every component job name for master branch starts with `pre-master-kyma-components-`.
 2. If any status is marked as failed, the integration job fails to reduce the number of provisioned clusters and VMs.
 3. If all checks are successful, the integration job execution is continued.
@@ -68,7 +68,7 @@ job names. For example, every component job name for master branch starts with `
 Notice that Prow defines a maximum number of concurrently executed jobs. 
 There could be an extremely rare situation, that Prow executes only integration jobs that all wait for components jobs that cannot be executed because a maximum
 number of concurrent jobs was reached. In such a case, a developer has to trigger an integration job manually. 
-5. If some statuses are in Pending state, wait some time (15s) and go to point 1.
+5. If some statuses are in the Pending state, wait some time (15s) and go to point 1.
 
 Find more information on Guard implementation in [PR#904](https://github.com/kyma-project/test-infra/pull/904).
 
