@@ -22,7 +22,7 @@ the worst case scenario as it results in postponing the integration of our compo
 ## Goal
 - You can introduce your changes and bump the image version of the Helm chart in the same pull request.
 - The code in the `kyma` repository reflects the code that is actually used.
-When doing a release we rebuild all components. We should not be surprised on the release day that some tests are failing because some component was not updated for 3 weeks
+During the release process, all components are rebuilt and some tests may fail because the components' image versions are outdated.
 - The `kyma` repository has a transparent commit history and commits that only bump image versions are rare.
 - Run Kyma integration tests with the modified component within the same pull request status checks.
 
@@ -68,7 +68,7 @@ job names. For example, every component job name for master branch starts with `
 Notice that Prow defines a maximum number of concurrently executed jobs. 
 There could be an extremely rare situation, that Prow executes only integration jobs that all wait for components jobs that cannot be executed because a maximum
 number of concurrent jobs was reached. In such a case, a developer has to trigger an integration job manually. 
-5. If some statuses are in Pending state, sleep for some time (15s) and go to point 1.
+5. If some statuses are in Pending state, wait some time (15s) and go to point 1.
 
 Find more information on Guard implementation in [PR#904](https://github.com/kyma-project/test-infra/pull/904).
 
