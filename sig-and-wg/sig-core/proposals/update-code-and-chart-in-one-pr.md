@@ -59,14 +59,14 @@ Let's assume that you work on an issue that requires changes in the `helm-broker
 the `pre-master-kyma-component-helm-broker` job is executed. All the other jobs are skipped.
 If the job is successful, the component's image is published under `eu.grc.io/kyma-project/pr/helm-broker:PR-1234`.
 4. Test your changes locally on Minikube. In order to use the newly created image, edit [this](https://github.com/kyma-project/kyma/blob/master/resources/helm-broker/values.yaml) `values.yaml` file:
-```
-global:
-
-  helm_broker:
-    dir: pr/
-    version: PR-1234
-```
-If everything is fine, commit the changes you have made to the `values.yaml` file.
+    ```
+    global:
+    
+      helm_broker:
+        dir: pr/
+        version: PR-1234
+    ```
+    If everything is fine, commit the changes you have made to the `values.yaml` file.
 5. The following Prowjobs are triggered:
     - `pre-master-kyma-component-helm-broker` - even though component was not changed in this commit, Prow triggers all jobs
 according to the changes introduced in the PR.
