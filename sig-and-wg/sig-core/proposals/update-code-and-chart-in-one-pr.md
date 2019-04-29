@@ -51,6 +51,35 @@ As a next step, we can introduce a job that checks if a version of the chart is 
 In case there are two PRs that change the same component, there will be a merge conflict for the second PR because
 it will modify the same line in the `values.yaml` file. Such approach ensures that the `master` branch contains changes from both PRs.
 
+### Developers workflow
+A developer is working on an issue that requires changes in the `helm-broker` component.
+- Create a branch.
+- Introduce changes to the `helm-broker`. Write or update unit tests.
+- In order to test introduced changes in Kyma, create a Pull Request. Pull request has number `1234`. Because only `helm-broker` code was modified, 
+the `pre-master-kyma-component-helm-broker` job is executed. All other jobs are skipped.
+If the job is successful, the component's image is published: `eu.grc.io/kyma-project/pr/helm-broker:PR-1234`.
+- A developer tests changes locally on a minikube. In order to use the newly created image, he edits `kyma-project/kyma/resources/helm-broker/values.yaml` file:
+```
+global:
+
+  helm_broker:
+    dir: pr/
+    version: PR-1234
+```
+If everything is fine, commit changes made to `values.yaml` file.
+- The following Prowjobs are triggered:
+    - `pre-master-kyma-component-helm-broker` - even though component was not changed in this commit, Prow triggers all jobs
+according to the changes introduced in the PR.
+    - all integration jobs: `pre-master-kyma-integration`, `pre-master-kyma-gke-integration`, `pre-master-kyma-gke-upgrade` etc. 
+All those jobs are triggered because the file in `resources` directory was modified. All integration jobs have a Guard step that waits
+until `pre-master-kyma-component-helm-broker` is completed.
+- If all jobs are successful, a developer can merge changes to the `master` branch. The following jobs are triggered:
+    - `post-master-kyma-component-helm-broker`. This job creates the image `eu.grc.io/kyma-project/develop/helm-broker:{commit-id}`. 
+This image is not used.
+    - all integration jobs: `post-master-kyma-integration`, `post-master-kyma-gke-integration`, `post-master-kyma-gke-upgrade` etc. 
+These jobs do not have to wait for any other jobs, because images that they use, already exist.
+
+
 ### Guard integration jobs
 To postpone the execution of integration jobs, we should add an additional step at the beginning of every integration job.
 To decide whether the integration job can be executed, use the checks of a given pull request:
