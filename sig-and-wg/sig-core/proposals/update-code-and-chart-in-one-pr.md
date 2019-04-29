@@ -31,7 +31,7 @@ During the release process, all components are rebuilt and some tests may fail b
 
 The solution assumes using images built on pull requests on the master branch.
 
-Let assume that I am working on PR-1234. When I modify `componentA`, presubmit jobs build Docker images. 
+Let's assume that I am working on PR-1234. When I modify `componentA`, presubmit jobs build Docker images. 
 The image has the same tag as the pull request number.
 A developer can use this tag as a version in the `values.yaml` file:
 ```
@@ -52,13 +52,13 @@ In case there are two PRs that change the same component, there will be a merge 
 it will modify the same line in the `values.yaml` file. Such approach ensures that the `master` branch contains changes from both PRs.
 
 ### Developers workflow
-A developer is working on an issue that requires changes in the `helm-broker` component.
-- Create a branch.
-- Introduce changes to the `helm-broker`. Write or update unit tests.
-- In order to test introduced changes in Kyma, create a Pull Request. Pull request has number `1234`. Because only `helm-broker` code was modified, 
-the `pre-master-kyma-component-helm-broker` job is executed. All other jobs are skipped.
-If the job is successful, the component's image is published: `eu.grc.io/kyma-project/pr/helm-broker:PR-1234`.
-- A developer tests changes locally on a minikube. In order to use the newly created image, he edits `kyma-project/kyma/resources/helm-broker/values.yaml` file:
+Let's assume that you work on an issue that requires changes in the `helm-broker` component. These are the steps you need to perform:
+1. Create a branch.
+2. Introduce changes to the `helm-broker`. Write or update unit tests.
+3. Create a pull request to test the introduced changes (let's assume that the pull request has number `1234`). As only the `helm-broker` code was modified, 
+the `pre-master-kyma-component-helm-broker` job is executed. All the other jobs are skipped.
+If the job is successful, the component's image is published under `eu.grc.io/kyma-project/pr/helm-broker:PR-1234`.
+4. Test your changes locally on Minikube. In order to use the newly created image, edit [this](https://github.com/kyma-project/kyma/blob/master/resources/helm-broker/values.yaml) `values.yaml` file:
 ```
 global:
 
@@ -66,18 +66,18 @@ global:
     dir: pr/
     version: PR-1234
 ```
-If everything is fine, commit changes made to `values.yaml` file.
-- The following Prowjobs are triggered:
+If everything is fine, commit the changes you have made to the `values.yaml` file.
+5. The following Prowjobs are triggered:
     - `pre-master-kyma-component-helm-broker` - even though component was not changed in this commit, Prow triggers all jobs
 according to the changes introduced in the PR.
-    - all integration jobs: `pre-master-kyma-integration`, `pre-master-kyma-gke-integration`, `pre-master-kyma-gke-upgrade` etc. 
-All those jobs are triggered because the file in `resources` directory was modified. All integration jobs have a Guard step that waits
+    - All pre-master integration jobs, such as `pre-master-kyma-integration`, `pre-master-kyma-gke-integration`, `pre-master-kyma-gke-upgrade`, etc. 
+All these jobs are triggered because the file in the `resources` directory was modified. All integration jobs have a Guard step that waits
 until `pre-master-kyma-component-helm-broker` is completed.
-- If all jobs are successful, a developer can merge changes to the `master` branch. The following jobs are triggered:
-    - `post-master-kyma-component-helm-broker`. This job creates the image `eu.grc.io/kyma-project/develop/helm-broker:{commit-id}`. 
+6. If all jobs are successful, you can merge changes to the `master` branch. The following jobs are triggered:
+    - `post-master-kyma-component-helm-broker` which creates the `eu.grc.io/kyma-project/develop/helm-broker:{commit-id}` image. 
 This image is not used.
-    - all integration jobs: `post-master-kyma-integration`, `post-master-kyma-gke-integration`, `post-master-kyma-gke-upgrade` etc. 
-These jobs do not have to wait for any other jobs, because images that they use, already exist.
+    - All post-master integration jobs, such as `post-master-kyma-integration`, `post-master-kyma-gke-integration`, `post-master-kyma-gke-upgrade`, etc. 
+These jobs do not have to wait for any other jobs because images that they use already exist.
 
 
 ### Guard integration jobs
