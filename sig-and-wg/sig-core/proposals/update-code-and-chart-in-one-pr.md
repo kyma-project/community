@@ -44,8 +44,6 @@ With this approach, Prow executes component and integration jobs for the same PR
 to build components before using them in integration jobs. To achieve that, an additional step is required at the beginning of 
 every integration job that waits for all dependent jobs. See [this](#guard-integration-jobs) section for more details.
 
-To read more details, see [Guard integration jobs](#guard-integration-jobs).
-
 In the beginning, the described approach can be optional, which means that a developer can decide whether he updates code and chart in the same PR or not. 
 As a next step, we can introduce a job that checks if a version of the chart is updated in the PR. See
 [this](#job-enforcing-changes-in-one-pr) section for more information.
@@ -62,17 +60,15 @@ Most of these checks are sent by Prow and represent statuses of jobs execution.
 
 The Guard workflow looks as follows:
 1. Fetch all required checks sent by Prow for a given PR that represent components build. 
-2. If any status is marked as failed, the integration job fails. 
+Guard filters checks by its names. In Kyma Prow configuration, there is a convention for
+job names. For example, every component job name for master branch starts with `pre-master-kyma-components-`.
+2. If any status is marked as failed, the integration job fails to reduce the number of provisioned clusters and VMs.
 3. If all checks are successful, the integration job execution is continued.
 4. If waiting for checks takes more than the defined timeout (10min), the integration job fails.
-5. If some statuses are in Pending state, sleep for some time (15s) and go to point 1.
-
-Ad Step 1. Guard filters statuses by its names. In Kyma Prow configuration, there is a convention for
-job names. For example, every component job name for master branch starts with `pre-master-kyma-components-`.
-Ad Step 2, Guard fails fast integration job to reduce the number of provisioned clusters and VMs.
-Ad Step 4, Guard defines a timeout for checking jobs statuses. Prow defines a maximum number of concurrently executed jobs. 
+Notice that Prow defines a maximum number of concurrently executed jobs. 
 There could be an extremely rare situation, that Prow executes only integration jobs that all wait for components jobs that cannot be executed because a maximum
 number of concurrent jobs was reached. In such a case, a developer has to trigger an integration job manually. 
+5. If some statuses are in Pending state, sleep for some time (15s) and go to point 1.
 
 Find more information on Guard implementation in [PR#904](https://github.com/kyma-project/test-infra/pull/904).
 
