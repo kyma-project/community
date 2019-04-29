@@ -21,9 +21,9 @@ the worst case scenario as it results in postponing the integration of our compo
 
 ## Goal
 - You can introduce your changes and bump the image version of the Helm chart in the same pull request.
-- The code in the Kyma repository reflects code executed on the Kyma.
+- The code in the `kyma` repository reflects the code that is actually used.
 When doing a release we rebuild all components. We should not be surprised on the release day that some tests are failing because some component was not updated for 3 weeks
-- Kyma repository has a nice commit history and commits that only bumps a component version are rare.
+- The `kyma` repository has a transparent commit history and commits that only bump image versions are rare.
 - Run Kyma integration tests with the modified component within the same pull request status checks.
 
 
@@ -73,9 +73,9 @@ number of concurrent jobs was reached. In such a case, a developer has to trigge
 Find more information on Guard implementation in [PR#904](https://github.com/kyma-project/test-infra/pull/904).
 
 ### Job enforcing changes in one PR
-To require updating charts immediately, a new Presubmit job should be defined. Below you can find it's pseudocode:
+To require updating charts immediately, a new presubmit job should be defined. For example:
 ```
-- get component's changed in current PR (ignore markdown files)
+- Get components changed in the current PR (ignore Markdown files)
 - Check if the chart uses the current version. Use the "path-to-referenced-charts" Makefile target.
 ```
 Still, there should be an option to merge a PR without updating a chart. In such a case, a PR should have a special label, for
