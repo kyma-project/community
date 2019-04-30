@@ -19,20 +19,20 @@
 
 |Metric Name |Description |Motivation |
 |------------|------------|-----------|
-|events in |Total Number of received events | Gives insights about system load|
-|events in per {namespace &\| source ID &\| event type &\| event type version} |Number of events requests per {namespace &\| source ID &\| event type &\| event type version} | Filtering received events by different criteria combination can help with giving a better insight about the system load as well as troubleshooting events not delivered cases and system integrity|
-|succeeded events per {namespace &\| source ID &\| event type &\| event type version} | Number of succeeded events per {namespace &\| source ID &\| event type &\| event type version} | Helps in troubleshooting events not delivered cases and system integrity as well as being a system health indicator|
-|ignored events per {namespace &\| source ID &\| event type &\| event type version} | Number of ignored events per {namespace &\| source ID &\| event type &\| event type version} | Helps in troubleshooting events not delivered cases and system integrity as well as being a system health indicator|
-|failed events per {namespace &\| source ID &\| event type &\| event type version} | Number of failed events per {namespace &\| source ID &\| event type &\| event type version} | Helps in troubleshooting events not delivered cases and system integrity as well as being a system health indicator|
-|latency 99 percentile | Latency 99 percentile of published event request | High latency maybe a reason for not delivered events in some cases and it gives an insight about the system health and performance
+|events in total |The number of received Events | Provides insights on the system load|
+|events in total per {namespace &\| source ID &\| event type &\| event type version} |The number of Event requests per {namespace &\| source ID &\| event type &\| event type version} | Filtering received Events by different criteria combination provides a better insight on the system load as well as facilitates troubleshooting unsuccessful Event deliveries and system integrity issues|
+|succeeded events per {namespace &\| source ID &\| event type &\| event type version} | The number of successful Events per {namespace &\| source ID &\| event type &\| event type version} | Facilitates troubleshooting unsuccessful Event deliveries and system integrity issues as well as acts as the system health indicator|
+|ignored events per {namespace &\| source ID &\| event type &\| event type version} | The number of ignored events per {namespace &\| source ID &\| event type &\| event type version} | Facilitates troubleshooting unsuccessful Event deliveries and system integrity issues as well as acts as the system health indicator|
+|failed events per {namespace &\| source ID &\| event type &\| event type version} | Number of failed events per {namespace &\| source ID &\| event type &\| event type version} | Facilitates troubleshooting unsuccessful Event deliveries and system integrity issues as well as acts as the system health indicator|
+|latency 99 percentile | Latency 99 percentile of published event request | High latency may be a reason for unsuccessful Event deliveries in some cases so it gives more insight on the system health and performance
 
 ## Push App Metrics
 
 |Metric Name |Description |Motivation |
 |------------|------------|-----------|
-|events in | Number of events push requests | Comparing this metric to the received events by the publish app metric can help in troubleshooting events not delivered cases and system integrity|
-|pushed messages | Number of pushed messages to all consumers | Giving insight about knative eventing health by monitoring the rates as well as assuring the system integrity|
+|events in total | The number of Events push requests | Comparing this metric its counterpart from the publish-app metric facilitates troubleshooting unsuccessful Event deliveries and system integrity issues|
+|pushed messages | The number of messages pushed to all consumers | Provides insight on knative eventing health by monitoring the rates as well as ensuring system integrity|
 |latency 99 percentile to all consumers|Latency 99 percentile of pushed events to all consumers | Provides insight on the knative/Event delivery system performance and facilitates troubleshooting unsuccessful Event deliveries|
-|latency 99 percentile to a single consumer | Latency 99 percentile of pushed message to a single consumer | Assessing the system delivery performance and contributes to judging the whole system performance diagnosis|
-|failed pushed messages | Number of failed pushed messages | Help in troubleshooting events not delivered scenarios and system integrity|
+|latency 99 percentile to a single consumer | Latency 99 percentile of messages pushed to a single consumer | Assesses system delivery performance and contributes to the diagnosis of the general system performance|
+|failed pushed messages | The number of failed pushed messages | Facilitates troubleshooting unsuccessful Event deliveries and system integrity issues|
 | | |
