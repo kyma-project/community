@@ -32,7 +32,7 @@
 |------------|------------|-----------|
 |events in | Number of events push requests | Comparing this metric to the received events by the publish app metric can help in troubleshooting events not delivered cases and system integrity|
 |pushed messages | Number of pushed messages to all consumers | Giving insight about knative eventing health by monitoring the rates as well as assuring the system integrity|
-|latency 99 percentile to all consumers|Latency 99 percentile of pushed events to all consumers | Gives insight about the knative/events delivery system performance and can help in troubleshooting events not delivered scenarios|
+|latency 99 percentile to all consumers|Latency 99 percentile of pushed events to all consumers | Provides insight on the knative/Event delivery system performance and facilitates troubleshooting unsuccessful Event deliveries|
 |latency 99 percentile to a single consumer | Latency 99 percentile of pushed message to a single consumer | Assessing the system delivery performance and contributes to judging the whole system performance diagnosis|
 |failed pushed messages | Number of failed pushed messages | Help in troubleshooting events not delivered scenarios and system integrity|
 | | |
