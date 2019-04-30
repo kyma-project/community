@@ -4,7 +4,7 @@
 
 |Metric Name |Description |Motivation |
 |------------|------------|-----------|
-|Throughput |Number of all events delivered that were successfully received by publish-app per minute | Gives insight about the whole system performance|
+|throughput |The number of all delivered Events that were successfully received by the publish-app per minute | Gives insight about the whole system performance|
 |event propagation time 99 percentile |event propagation time 99 percentile | Gives more accurate insight about the whole system performance and events delivery|
 |lag | number of events in queue | Helps in diagnosing system performance as well as troubleshooting events not delivered cases|
 |kyma subscriptions per {namespace &\| source ID &\| event type &\| event type version &\| ready &\| endpoint} |Number of Kyma subscriptions per {namespace &\| source ID &\| event type &\| event type version &\| ready &\| endpoint} | Helps in events not delivered cases and insights about the subscriptions distribution over multiple criteria|
