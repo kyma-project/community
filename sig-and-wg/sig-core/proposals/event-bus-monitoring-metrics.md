@@ -1,4 +1,13 @@
 # Event Bus Monitoring Metrics Proposal
+Created on 2019-04-16 by Ahmed Hamouda (@montaro).
+
+## Status
+
+Proposed on 2019-04-16.
+
+## Motivation
+
+The Event Bus monitoring dashboard uses metrics to allow for improved performance monitoring and faster issue troubleshooting.
 
 ## Event Bus Metrics
 
