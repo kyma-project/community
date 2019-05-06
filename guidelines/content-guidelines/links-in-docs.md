@@ -36,6 +36,6 @@ If you want to link to a document in the different topic, create a reference by 
 
 If the `{type}` doesn't exist, the pattern has the form of `/{type-of-topic}/{id}#{title}-{title}-{header}`. If you want to create a reference to the whole `{type}`, the pattern has the form of `/{type-of-topic}/{id}#{type}-{type}`.
 
->**TIP:** You can copy the reference to the documentation directly from the website. See the different topic reference to the Helm Broker details document:
+>**TIP:** You can copy the reference to the documentation directly from the website. See the cross-topic reference to the Helm Broker details document:
 
 ![Different topic reference](../../assets/reference-2.png)
