@@ -26,7 +26,7 @@ To add a reference to a YAML, JSON, SVG, PNG, or JPG file located in the `assets
 ## Links between documents in different topics
 
 If you want to link to a document in a different topic, create a reference using the `/{type-of-topic}/{id}#{type}-{title}-{header}` pattern, where:
-- `{type-of-topic}` is a type of the topic that you want to reference. Apart from documents related directly to Kyma, all components have the `components` type of topic. For Kyma, use `root` in place of the type of topic.
+- `{type-of-topic}` is a type of topic that you want to reference. Apart from documents related directly to Kyma, all components have the `components` type of topic. For Kyma, use `root` in place of topic type.
 - `{id}` is an ID of the topic that you want to reference. It is identical with the name of the component. For example, write `helm-broker` or `kyma`.
 - `{type}` is a metadata type of the document that you want to reference.
 - `{title}` is a metadata title of the document that you want to reference.
