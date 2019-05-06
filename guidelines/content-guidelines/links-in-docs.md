@@ -34,7 +34,7 @@ If you want to link to a document in a different topic, create a reference using
 
 >**NOTE:** All variables must consist of lowercase characters separated with dashes (-).
 
-If the `{type}` doesn't exist, the pattern has the form of `/{type-of-topic}/{id}#{title}-{title}-{header}`. If you want to create a reference to the whole `{type}`, the pattern has the form of `/{type-of-topic}/{id}#{type}-{type}`.
+If the `{type}` doesn't exist, the pattern has the form of `/{type-of-topic}/{id}#{title}-{title}-{header}`. If you want to create a reference to the whole `{type}`, use the `/{type-of-topic}/{id}#{type}-{type}` pattern.
 
 >**TIP:** You can copy the reference to the documentation directly from the website. See the cross-topic reference to the Helm Broker details document:
 
