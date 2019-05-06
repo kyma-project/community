@@ -15,7 +15,7 @@ If you want to link to another document in the same topic, create a reference us
 
 If the `{type}` doesn't exist, the pattern has the form of `#{title}-{title}-{header}`. If you want to create a reference to the whole `{type}`, use the `#{type}-{type}` pattern.
 
->**TIP:** You can copy the reference to the documentation directly from the website. See the same topic reference to the Helm Broker details document:
+>**TIP:** You can copy the reference to the documentation directly from the website. See the reference to the Helm Broker **Details** document:
 
 ![Same topic reference](../../assets/reference-1.png)
 
