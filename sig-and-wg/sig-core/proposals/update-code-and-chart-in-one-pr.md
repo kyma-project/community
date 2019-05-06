@@ -21,11 +21,8 @@ the worst case scenario as it results in postponing the integration of our compo
 
 ## Goal
 - You can introduce your changes and bump the image version of the Helm chart in the same pull request.
-- The code in the `kyma` repository reflects the code that is actually used.
-During the release process, all components are rebuilt and some tests may fail because the components' image versions are outdated.
-- The `kyma` repository has a transparent commit history and commits that only bump image versions are rare.
 - Run Kyma integration tests with the modified component within the same pull request status checks.
-
+- The `kyma` repository has a transparent commit history and commits that only bump image versions are rare.
 
 ## Proposed solution
 
@@ -88,7 +85,7 @@ To decide whether the integration job can be executed, use the checks of a given
 Most of these checks are sent by Prow and represent statuses of jobs execution.
 
 The Guard workflow looks as follows:
-1. Fetch all required checks sent by Prow for a given PR that represent components build. 
+1. Fetch all required checks sent by Prow for a given PR and commit SHA that represent components build. 
 Guard filters checks by their names. In Kyma Prow configuration, there is a convention for
 job names. For example, every component job name for master branch starts with `pre-master-kyma-components-`.
 2. If any status is marked as failed, the integration job fails to reduce the number of provisioned clusters and VMs.
