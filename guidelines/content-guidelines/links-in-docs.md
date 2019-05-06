@@ -13,7 +13,7 @@ If you want to link to another document in the same topic, create a reference us
 
 >**NOTE:** All variables must consist of lowercase characters separated with dashes (-).
 
-If the `{type}` doesn't exist, the pattern has the form of `#{title}-{title}-{header}`. If you want to create a reference to the whole `{type}`, the pattern has the form of `#{type}-{type}`.
+If the `{type}` doesn't exist, the pattern has the form of `#{title}-{title}-{header}`. If you want to create a reference to the whole `{type}`, use the `#{type}-{type}` pattern.
 
 >**TIP:** You can copy the reference to the documentation directly from the website. See the same topic reference to the Helm Broker details document:
 
