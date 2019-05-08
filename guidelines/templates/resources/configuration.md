@@ -9,7 +9,7 @@ type: Configuration
 
 To configure the {Component name} {sub-}chart, override the default values of its `values.yaml` file. This document describes parameters that you can configure.
 
->Use the tip feature to provide links to the documentation about Kyma overrides. Add also a link to examples of either top-level charts overrides for charts configuration documents or sub-charts overrides for sub-chart configuration documents.
+>Use the tip feature to provide links to the documentation about Kyma overrides. Also add a link to examples of either top-level charts overrides for charts configuration documents or sub-charts overrides for sub-chart configuration documents.
 
 >**TIP:** To learn more about how to use overrides in Kyma, see the following documents: 
 >* [Helm overrides for Kyma installation](/root/kyma/#configuration-helm-overrides-for-kyma-installation)
@@ -23,6 +23,5 @@ This table lists the configurable parameters, their descriptions, and default va
 | Parameter | Description | Default value |
 |-----------|-------------|---------------|
 | **{parameter}** | {Parameter description} | `{parameter value}` |
-| **{another.parameter}** | {Another parameter description} | `{another parameter value}` |
 
 > For reference, see the existing **Configuration** documents for the [Asset Store](https://kyma-project.io/docs/master/components/asset-store/#configuration-configuration).
