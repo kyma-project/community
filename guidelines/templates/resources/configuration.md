@@ -1,5 +1,5 @@
 ---
-title: {Component name} {sub-}chart
+title: "{Component name} {sub-}chart"
 type: Configuration
 ---
 
