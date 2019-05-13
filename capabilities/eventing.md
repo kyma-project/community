@@ -2,7 +2,7 @@
 displayName: Eventing
 epicsLabels:
   - area/eventing
-  
+id: eventing
 ---
 
 ## Scope

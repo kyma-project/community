@@ -1,4 +1,4 @@
-> This template is dedicated to technical writers. Use it to write release notes for Kyma releases. Add them as a blog post under [`website/content/blog-posts/`](https://github.com/kyma-project/website/tree/master/content/blog-posts). Place any related screenshots in the same folder. Follow the content-related guidelines and tips for writing [release notes](../../content-guidelines/release-notes.md).
+> This template is dedicated to technical writers. Use it to write release notes for Kyma releases. Add them as a new `index.md` document in a dedicated `YYYY-MM-DD-release-notes-X.X` folder under [`website/content/blog-posts/`](https://github.com/kyma-project/website/tree/master/content/blog-posts). Place any related screenshots in the same folder. Follow the content-related guidelines and tips for writing [release notes](../../content-guidelines/release-notes.md).
 
 <!-- Fill in the required metadata for the blog post to render properly on the "kyma-project.io" website. Remember to remove the code block. -->
 
@@ -14,12 +14,6 @@ releaseTag: "{release-number}"
 redirectFrom:
   - "/blog/release-notes-{release-number}"
 ---
-```
-
-<!-- This line adds a button that allows you to download the latest release. Provide the path to the release on GitHub in place of the {path} placeholder and put "Download {version number}" in place of the {content} placeholders. Remember to remove the code block. -->
-
-```
-<a class="btn-blog" href="{path}" alt="{content}">{content}</a>
 ```
 
 > Write an introductory paragraph and present the most important release highlights from all components. List the highlights as bullet points and provide relative links to their corresponding sections.

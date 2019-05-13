@@ -1,8 +1,8 @@
 ---
-displayName: Core and Supporting
+displayName: "Core & Supporting"
 epicsLabels:
   - area/core-and-supporting
-  - area/community
+id: "core-and-supporting"
 ---
 
 ## Scope
