@@ -7,16 +7,16 @@ epicsLabels:
 
 ## Scope
 
-The Serverless Runtime capability offering is a central part of the serverless strategy of kyma. It is the easiest way to to run custom code in kyma and to integrate different services provided by the services broker and application connector. Based on the Batteries included strategy of Kyma a FaaS Solution based on Knative is provided inside the OSS Project. Beside the included FaaS Solution it is possible to schedule Workloads on 3rd Party Offerings using knative.
+The Serverless Runtime capability offering is a central part of the serverless strategy of Kyma. It is the easiest way to run custom code in Kyma and to integrate different services provided by the Services Broker and the Application Connector. Following the "batteries included" rule of Kyma, the function-as-a-service (FaaS) solution based on Knative is provided inside the OSS Project. Apart from having the FaaS solution, it is also possible to schedule workloads on third-party offerings using Knative.
 
 ## Vision
 
 The goal of Serverless Runtime capability is to:
 
-- Provide a simple FaaS runtime as part of kyma.
-- Enable easy deployment from version control systems.
+- Provide a simple FaaS runtime as a part of Kyma.
+- Enable an easy deployment from version control systems.
 - Allow fast feedback loops for development and testing.
-- Integrate 3rd Party Serverless providers using knative.
-- Integrate FaaS (kyma FaaS and 3rd Party FaaS) with other services provided by Kyma (Eventing, API, Service Catalog)
-- Provide a easy way to run Containerized workloads inside and outside of kyme (using knative)
+- Integrate third-party serverless providers using Knative.
+- Integrate both Kyma and third-party FaaS solutions with other services provided by Kyma, such as Eventing, API, Service Catalog.
+- Provide an easy way to run containerized workloads inside and outside Kyme using Knative.
 - Provide helpers/sdk/utilities to eliminate boilerplate code.
