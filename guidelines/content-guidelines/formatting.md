@@ -3,6 +3,7 @@
 These are the guidelines for formatting text and using specific elements such as lists, tables, headings, and links. For guidelines regarding the creation of diagrams, see [this document](./diagrams.md).
 
 ## Code formatting
+
 It is important to consistently format items such as code or filenames to quickly distinguish them while reading technical documentation. The following tables outline when to use **bold** font and when to use `code` font:
 
 ### Use bold font for these items:
@@ -32,9 +33,11 @@ Parameter and value pairs | The controller adds the `env=true` label to all newl
 >**NOTE:** When you mention specific configuration files in your documents, consider linking to them instead of just mentioning their names. When you link to a file, use its name without the format extension, for example: `To adjust the number of Pods in your Deployment, edit the [deployment](./deployment.yaml) file.`
 
 ## Content formatting
+
 Format the content in an attention-grabbing way. In general, content is easier to read when it is in chunks. Consider breaking up endless paragraphs by using a list or a table. Use action verbs and present tense for headings to engage the reader, and also follow the guidelines for the best way to include links and images. When you include lists, tables, code samples, or images, precede them with a brief explanation of what they describe.
 
 ### Panels
+
 Panels are colorful containers that call out important or additional information within a topic. To call attention to a specific note, a word of caution or a tip, use the `>**{TYPE}:**`format, where `{TYPE}` is **NOTE**, **TIP**, or **CAUTION**.
 Use:
 - The blue **NOTE** panel to point to something specific, usually relating to the topic.
@@ -46,6 +49,7 @@ See an example:
 >**NOTE:** Provision a Public IP for Ingress and a DNS record before you start the installation.
 
 ### Ordered and unordered lists
+
 As you write about your topic, use lists to create visual clarity within your content. List items in a category or in a sequence. Use an ordered list for sequential, instructional steps. Unordered lists are appropriate for items that have no sequential order, such as a list of valid file types. Follow these guidelines:
 * Make list content consistent in structure. For example, make all the bullet points sentences, questions, or sentence fragments, but do not mix types.
 * Punctuate bullet points consistently. If they are sentences, use periods. If they are sentence fragments, do not use periods.
@@ -55,7 +59,15 @@ As you write about your topic, use lists to create visual clarity within your co
 * If readers must perform list items in order, as in a step-by-step procedure, use an ordered list and maintain consistency in structure.
 
 ### Tables
-Another effective way to chunk content is to use tables. Use tables when content needs comparison, or as a way to provide information mapping. Think of a table as a list with optional columns useful to provide and organize more information than belongs in a list. Make sure tables are not too long or hard to read, causing the reader to scroll a lot. If possible, break up a long table into multiple tables
+
+Another effective way to chunk content is to use tables. Use tables when content needs comparison, or as a way to provide information mapping. Think of a table as a list with optional columns useful to provide and organize more information than belongs in a list. Make sure tables are not too long or hard to read, causing the reader to scroll a lot. If possible, break up a long table into multiple tables.
+
+When creating a table, centralize the columns that have choice-type values, such as `YES/NO` or `true/false`. See the example:
+```
+| Parameter   |      Required      |  Description |
+|-------------|:------------------:|--------------|
+|             |       YES/NO       |              |
+```
 
 ### Headings
 Ideally, headings fit into one line in the generated output. Be concise, but also make sure to adequately describe the main point of the document or a section. Follow these guidelines when writing headings:
@@ -67,6 +79,7 @@ Ideally, headings fit into one line in the generated output. Be concise, but als
 * Do not use small headings, such as Heading 4 (H4) and smaller. Use Heading 1 (H1) for the document title, and Heading 2s (H2) and Heading 3s (H3) to organize the content of the document.
 
 ### Links
+
 Linking is a great tool to use to incorporate a lot of content into your document with fewer words. That being said, overuse of linking can cause "link rot" when links break, and if a page has more links than content, it is not very pleasing to read. Choose carefully when and how to link by using these best practices.
 
 - Use absolute links to link to other repositories and external sources.

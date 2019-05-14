@@ -34,10 +34,10 @@ metadata:
 This table lists all the possible parameters of a given resource together with their descriptions:
 
 
-| Parameter   |      Mandatory      |  Description |
-|:----------:|:-------------:|:------|
-| **metadata.name** |    **YES**   | Specifies the name of the CR. |
-| **{another_parameter}** |    **{YES/NO}**   | {Parameter description} |
+| Parameter   | Mandatory |  Description |
+|-------------|:---------:|--------------|
+| **metadata.name** |    YES   | Specifies the name of the CR. |
+| **{another_parameter}** |    {YES/NO}   | {Parameter description} |
 
 
 ## Related resources and components
@@ -45,11 +45,11 @@ This table lists all the possible parameters of a given resource together with t
 These are the resources related to this CR:
 
 | Custom resource |   Description |
-|:----------:|:------|
+|-----------------|---------------|
 | {Related CRD kind} |  {Briefly describe the relation between the resources}. |
 
 These components use this CR:
 
 | Component   |   Description |
-|:----------:|:------|
+|-------------|---------------|
 | {Component name} |  {Briefly describe the relation between the CR and the given component}. |
