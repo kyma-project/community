@@ -1,5 +1,5 @@
 ---
-displayName: Serverless Runtime
+displayName: "Serverless Runtime"
 epicsLabels:
   - area/serverless
 ---
