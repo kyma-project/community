@@ -2,8 +2,8 @@
 
 When you add a new component to the `kyma/docs` folder, you must ensure that the content also shows on the `https://kyma-project.io/` website and in the Console UI. To do so, update the following files:
 
-- [`manifest.yaml`](https://github.com/kyma-project/kyma/blob/master/docs/manifest.yaml) specifies the order of documentation topics on the website. If you do not include the component in this file, it doesn't show on the UI.
-- [`docs-build.yaml`](https://github.com/kyma-project/kyma/blob/master/docs/docs-build.yaml) specifies all documentation topics needed for building Docker images. Every item must have the **name** field specified, which represents the name of the Docker image for a topic. The final image name is followed by a `-docs` suffix. If the name of the new component directory matches the name of the image, you don’t have to specify it. Otherwise, add an additional **directory** property.
+- `manifest.yaml` specifies the order of documentation topics on the website. If you do not include the component in this file, it doesn't show on the UI.
+- `docs-build.yaml` specifies all documentation topics needed for building Docker images. Every item must have the **name** field specified, which represents the name of the Docker image for a topic. The final image name is followed by a `-docs` suffix. If the name of the new component directory matches the name of the image, you don’t have to specify it. Otherwise, add an additional **directory** property.
 
 
   Example 1:
