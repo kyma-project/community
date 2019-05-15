@@ -40,7 +40,7 @@ Every contributor commits to the following agreement:
 
 * In every PR, include a description or a reference to a detailed description of the steps that the maintainer goes through to check if a PR works and does not break any other functionality.
 * Provide clear and descriptive commit messages.
-* Label you PRs.
+* Label your PRs.
 * Follow the accepted documentation rules and use appropriate templates.
 * As the creator of the PR, you are responsible for ensuring that the PR follows the correct review and approval flow.
 
