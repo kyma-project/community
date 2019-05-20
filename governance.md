@@ -44,7 +44,7 @@ SIGs and WGs follow the **lazy consensus** approach to decision-making which ass
 
 > **NOTE:** The described approach only concerns the decisions made by SIGs and WGs. It does not affect any Kyma decisions made during daily team activities.
 
-To see the current state of processed decisions in the Kyma project, go to the project's [decision board](https://app.zenhub.com/workspaces/kyma---all-repositories-5b6d5985084045741e744dea/boards?labels=decision&repos=139590666).
+To see the current state of processed decisions in the Kyma project, go to the project's [decision board](https://app.zenhub.com/workspaces/kyma---all-repositories-5b6d5985084045741e744dea/board?labels=decision&repos=139590616,139590577,139847219,139590666,139590641,147495537,151691065,167399060,169101295,171673731,150745068,167146343,165843160,170300585&showPRs=false&showClosed=false).
 
 The SIG/WG decison-making process is as follows:
 
@@ -82,7 +82,7 @@ Once you reach the consensus:
 
 ### Lack of consensus
 
-Engage the ultimate decision makers if there are still unresolved objections by the decision due date. The ultimate decision makers are stated in the decision log of the **Decision record** issue. Work with them to reach the final decision as soon as possible and close the issue.
+Engage [the Kyma Council](https://github.com/kyma-project/community/tree/master/sig-and-wg#the-kyma-council), which is the ultimate decision maker, if there are still unresolved objections by the decision due date. Work with them to reach the final decision as soon as possible and close the issue.
 
 ### Revisit a decision
 

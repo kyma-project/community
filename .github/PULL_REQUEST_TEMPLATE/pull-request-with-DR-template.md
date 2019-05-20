@@ -1,11 +1,11 @@
----
-name: Decision record
-about: Decision record
----
+<!--   Thank you for your contribution. Before you submit the pull request:
+1. Follow contributing guidelines, templates, the recommended Git workflow, and any related documentation.
+2. Read and submit the required Contributor Licence Agreements (https://github.com/kyma-project/community/blob/master/CONTRIBUTING.md#agreements-and-licenses).
+3. Test your changes and attach their results to the pull request.
+4. Update the relevant documentation.
+-->
 
-Created on {YYYY-MM-DD} by {name and surname (@Github username)}.
-
-## Decision log
+**Decision log**
 
 | Name | Description |
 |-----------------------|------------------------------------------------------------------------------------|
@@ -15,19 +15,19 @@ Created on {YYYY-MM-DD} by {name and surname (@Github username)}.
 | Decision type | {Type in `Binary`, `Choice`, or `Prioritization`. The `Binary` type refers to the  yes/no decisions, the `Choice` type means that the decision involves choosing between many possibilities, such as a name for a new product, and the `Prioritization` type involves ranking a number of options, such as choosing the next five features to build out of one hundred possible options.} |
 | Affected decisions | {Specify the id of the decision issue or a link to the previous decision record which is affected by this decision. Use the `#{issueid}\|{decision-record-URL}(replaces\|extends\|depends on)` format. For example, write `#265(replaces)` or `#278(depends on)` which means that the decision you propose replaces the issue 265 or depends on the issue 278. Specify as many references as possible and separate them with a comma. Write `None` if no other decision is affected.}|
 
-## Context
+**Context**
 
 <!-- Briefly describe what the decision record (DR) is about. 
 Explain the factors for the decision, what are the forces at play, and the reasons why the discussed solution is needed. 
 Remember that this document should be relatively short and concise. If necessary, provide relevant links for more details.
 If the decision concerns more solutions, mark them with separate subsections. Use H3 for the subsection headings.  -->
 
-## Decision
+**Decision**
 
 <!--Avoid using personal constructions such as "we." Use impersonal forms instead. 
 For example, `The decision is to...`. If it is necessary to indicate the subject, use `SIG/WG members` instead of "we." -->
 
-## Consequences
+**Consequences**
 
 <!-- Briefly explain the consequences of this decision for the Kyma project. 
 Include both the advantages and disadvantages of the discussed solution.
