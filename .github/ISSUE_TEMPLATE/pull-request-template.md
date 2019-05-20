@@ -6,6 +6,7 @@
 -->
 
 **Decision log**
+<!-- Required for pull requests with the decision record only -->
 
 | Name | Description |
 |-----------------------|------------------------------------------------------------------------------------|
@@ -17,18 +18,28 @@
 
 **Context**
 
-<!-- Briefly describe what the decision record (DR) is about. 
+<!-- Required for pull requests with the decision record only. Briefly describe what the decision record (DR) is about. 
 Explain the factors for the decision, what are the forces at play, and the reasons why the discussed solution is needed. 
 Remember that this document should be relatively short and concise. If necessary, provide relevant links for more details.
 If the decision concerns more solutions, mark them with separate subsections. Use H3 for the subsection headings.  -->
 
-**Decision**
 
+**Description**
 <!--Avoid using personal constructions such as "we." Use impersonal forms instead. 
 For example, `The decision is to...`. If it is necessary to indicate the subject, use `SIG/WG members` instead of "we." -->
 
+Changes proposed in this pull request:
+
+- ...
+- ...
+- ...
+
 **Consequences**
 
-<!-- Briefly explain the consequences of this decision for the Kyma project. 
-Include both the advantages and disadvantages of the discussed solution.
+<!-- Required for pull requests with the decision record. Briefly explain the consequences of this decision for the Kyma project. Include both the advantages and disadvantages of the discussed solution.
 -->
+
+**Related issue(s)**
+<!-- If you refer to a particular issue, provide its number. For example, `Resolves #123`, `Fixes #43`, or `See also #33`. -->
+
+
