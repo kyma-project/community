@@ -2,8 +2,7 @@
 
 ## Overview
 
-This directory contains records of decisions made by the SIG Core and the Kyma project members.
+This directory contains records of decisions made by the SIG Core and the Kyma project members before end of May 2019.
 
-A decision record (DR) is a short document containing a record of a significant decision made by a Special Interest Group (SIG) or a Working Groups (WG) that affects the project, including its structure, functionalities, components, or work of the project teams. A DR provides, apart from the decision itself, the context and consequences of implementing the discussed solution.
-
-Find the template and guidelines for writing DR documents [here](../../../guidelines/templates/resources/DR.md).
+Currently decisions are made based on the issues or pull requests that have the decision flag assigned. The decision making process is described [here](https://github.com/kyma-project/community/blob/master/governance.md)
+ 
