@@ -210,7 +210,7 @@ Follow these steps to create a release:
 8. Merging the PR to the release branch runs the postsubmit jobs, which:
     - create a GitHub release and trigger documentation update on the official Kyma website.  
     - trigger provisioning of the cluster from the created release
-    The cluster name will contain the release verion with `.` replaced with `-`. For example: `gke-release-1-1-0-rc1`. Cluster can be used for testing the release candidate.
+    The cluster name will contain the release version with `.` replaced with `-`. For example: `gke-release-1-1-0-rc1`. Cluster can be used for testing the release candidate.
     > **CAUTION**: Release cluster needs to be deleted manually, same as other resources created by the job: IP Adresses and DNS records.
 
 9. Update the `RELEASE_VERSION` file to contain the next patch RC1 version on the release branch. Do it immediately after the release, otherwise, any PR to a release branch overrides the previously published Docker images.
