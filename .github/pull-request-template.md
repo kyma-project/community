@@ -3,41 +3,17 @@
 2. Read and submit the required Contributor Licence Agreements (https://github.com/kyma-project/community/blob/master/CONTRIBUTING.md#agreements-and-licenses).
 3. Test your changes and attach their results to the pull request.
 4. Update the relevant documentation.
+
+if the pull request requires a decision please follow the decision making process (https://github.com/kyma-project/community/blob/master/governance.md) and replace that PR template with the decision record template (https://github.com/kyma-project/community/blob/master/.github/ISSUE_TEMPLATE/decision-record.md)
 -->
 
-**Decision log**
-<!-- Required for pull requests with the decision record only -->
-
-| Name | Description |
-|-----------------------|------------------------------------------------------------------------------------|
-| Title | {Provide a brief summary of the decision.} |
-| Due date | {Specify the date by which the SIG or WG members need to make the decision. Use the `YYYY-MM-DD` date format.} |
-| Status | {The status of the document can be `Accepted`, `Declined` or `Proposed` (when it is waiting for decision). This section should contain one of these three words followed by the date on which the status of the document is agreed on. Follow the `YYYY-MM-DD` format for the date. For example: Proposed on 2018-03-20. Accepted on 2018-03-23. Add the new status change when it happens. Do not overwrite the previous status change.}|
-| Decision type | {Type in `Binary`, `Choice`, or `Prioritization`. The `Binary` type refers to the  yes/no decisions, the `Choice` type means that the decision involves choosing between many possibilities, such as a name for a new product, and the `Prioritization` type involves ranking a number of options, such as choosing the next five features to build out of one hundred possible options.} |
-| Affected decisions | {Specify the id of the decision issue or a link to the previous decision record which is affected by this decision. Use the `#{issueid}\|{decision-record-URL}(replaces\|extends\|depends on)` format. For example, write `#265(replaces)` or `#278(depends on)` which means that the decision you propose replaces the issue 265 or depends on the issue 278. Specify as many references as possible and separate them with a comma. Write `None` if no other decision is affected.}|
-
-**Context**
-
-<!-- Required for pull requests with the decision record only. Briefly describe what the decision record (DR) is about. 
-Explain the factors for the decision, what are the forces at play, and the reasons why the discussed solution is needed. 
-Remember that this document should be relatively short and concise. If necessary, provide relevant links for more details.
-If the decision concerns more solutions, mark them with separate subsections. Use H3 for the subsection headings.  -->
-
-
 **Description**
-<!--Avoid using personal constructions such as "we." Use impersonal forms instead. 
-For example, `The decision is to...`. If it is necessary to indicate the subject, use `SIG/WG members` instead of "we." -->
 
 Changes proposed in this pull request:
 
 - ...
 - ...
 - ...
-
-**Consequences**
-
-<!-- Required for pull requests with the decision record. Briefly explain the consequences of this decision for the Kyma project. Include both the advantages and disadvantages of the discussed solution.
--->
 
 **Related issue(s)**
 <!-- If you refer to a particular issue, provide its number. For example, `Resolves #123`, `Fixes #43`, or `See also #33`. -->
