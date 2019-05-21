@@ -28,6 +28,7 @@ Define release jobs on the `master` branch in the `test-infra` repository. To en
    - `kyma-artifacts.yaml`
    - `kyma-installer.yaml`
    - `kyma-github-release.yaml`
+   - `kyma-release-candidate.yaml`
 
         > **Note:** Remember to modify the `presets` array. This is an example of the 0.9 release `preset`:
 
@@ -137,6 +138,13 @@ Follow these steps to create a release:
 
         Every component image is published with a version defined in the `RELEASE_VERSION` file stored in the `test-infra` repository on the given release branch. Test scripts for integration jobs like GKE Integration or GKE Upgrade are also loaded from the `test-infra` release branch.
 
+        For example for first release candidate of 1.1.0, the release version will be `1.1.0-rc1` and `yaml` files should be modified as follows:
+        ``` yaml
+        dir:
+        version: 1.1.0-rc1
+        ```
+        > **CAUTION**: Do **not** update versions of the components where `dir` section does not contain `develop`. For example Console related components.
+
     1. Check all `yaml` files in the `kyma` repository for references of the following Docker image:
 
         ```yaml
@@ -199,7 +207,11 @@ Follow these steps to create a release:
 7. After all checks pass, merge the PR.
     > **NOTE:** To merge the PR to the release branch, you must receive approvals from all teams.
 
-8. Merging the PR to the release branch runs the postsubmit job that creates a GitHub release. This job also triggers documentation update on the official Kyma website.
+8. Merging the PR to the release branch runs the postsubmit jobs, which:
+    - create a GitHub release and trigger documentation update on the official Kyma website.  
+    - trigger provisioning of the cluster from the created release
+    The cluster name will contain the release verion with `.` replaced with `-`. For example: `gke-release-1-1-0-rc1`. Cluster can be used for testing the release candidate.
+    > **CAUTION**: Release cluster needs to be deleted manually, same as other resources created by the job: IP Adresses and DNS records.
 
 9. Update the `RELEASE_VERSION` file to contain the next patch RC1 version on the release branch. Do it immediately after the release, otherwise, any PR to a release branch overrides the previously published Docker images.
 
