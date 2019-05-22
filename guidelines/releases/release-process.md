@@ -138,12 +138,12 @@ Follow these steps to create a release:
 
         Every component image is published with a version defined in the `RELEASE_VERSION` file stored in the `test-infra` repository on the given release branch. Test scripts for integration jobs like GKE Integration or GKE Upgrade are also loaded from the `test-infra` release branch.
 
-        For example for first release candidate of 1.1.0, the release version will be `1.1.0-rc1` and `yaml` files should be modified as follows:
+        For example, for the first release candidate of 1.1.0, the release version will be `1.1.0-rc1` and the `yaml` files should be modified as follows:
         ``` yaml
         dir:
         version: 1.1.0-rc1
         ```
-        > **CAUTION**: Do **not** update versions of the components where `dir` section does not contain `develop`. For example Console related components.
+        > **CAUTION**: Do **not** update the version of components whose `dir` section does not contain `develop`, as is the case with Console-related components.
 
     1. Check all `yaml` files in the `kyma` repository for references of the following Docker image:
 
@@ -208,10 +208,10 @@ Follow these steps to create a release:
     > **NOTE:** To merge the PR to the release branch, you must receive approvals from all teams.
 
 8. Merging the PR to the release branch runs the postsubmit jobs, which:
-    - create a GitHub release and trigger documentation update on the official Kyma website.  
+    - create a GitHub release and trigger documentation update on the official Kyma website  
     - trigger provisioning of the cluster from the created release
-    The cluster name will contain the release version with `.` replaced with `-`. For example: `gke-release-1-1-0-rc1`. Cluster can be used for testing the release candidate.
-    > **CAUTION**: Release cluster needs to be deleted manually, same as other resources created by the job: IP Adresses and DNS records.
+    The cluster name contains the release version with a period `.` replaced by a dash `-`. For example: `gke-release-1-1-0-rc1`. Use the cluster to test the release candidate.
+    > **CAUTION**: The release cluster, the IP Addresses, and the DNS records must be deleted manually.
 
 9. Update the `RELEASE_VERSION` file to contain the next patch RC1 version on the release branch. Do it immediately after the release, otherwise, any PR to a release branch overrides the previously published Docker images.
 
