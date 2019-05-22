@@ -82,7 +82,7 @@ Once you reach the consensus:
 
 ### Lack of consensus
 
-Engage [the Kyma Council](https://github.com/kyma-project/community/tree/master/sig-and-wg#the-kyma-council), which is the ultimate decision maker, if there are still unresolved objections by the decision due date. Work with them to reach the final decision as soon as possible and close the issue.
+Engage [the SIG Core Leaders](https://github.com/kyma-project/community/blob/master/sig-and-wg/sig-core/README.md), if there are still unresolved objections by the decision due date. They will work with [the Kyma Council](https://github.com/kyma-project/community/tree/master/sig-and-wg#the-kyma-council) if necessare,  to reach the final decision as soon as possible and close the issue.
 
 ### Revisit a decision
 
