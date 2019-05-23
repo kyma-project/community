@@ -2,6 +2,7 @@
 name: Decision record
 about: Decision record
 ---
+<!-- Follow the decision making process (https://github.com/kyma-project/community/blob/master/governance.md) -->
 
 Created on {YYYY-MM-DD} by {name and surname (@Github username)}.
 
