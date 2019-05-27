@@ -4,7 +4,7 @@
 3. Test your changes and attach their results to the pull request.
 4. Update the relevant documentation.
 
-if the pull request requires a decision please follow the decision making process (https://github.com/kyma-project/community/blob/master/governance.md) and replace that PR template with the decision record template (https://github.com/kyma-project/community/blob/master/.github/ISSUE_TEMPLATE/decision-record.md)
+If the pull request requires a decision, follow the [decision-making process](https://github.com/kyma-project/community/blob/master/governance.md) and replace the PR template with the [decision record template](https://github.com/kyma-project/community/blob/master/.github/ISSUE_TEMPLATE/decision-record.md).
 -->
 
 **Description**
