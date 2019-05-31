@@ -10,7 +10,6 @@ This table lists all capabilities and links to their descriptions.
 
 | Capability | Owner |
 |------------|-------|
-
 | [API Gateway](api-gateway.md)| [@piotrmsc](https://github.com/piotrmsc) |
 | [Application Connectivity](application-connectivity.md) | [@lszymik](https://github.com/lszymik) |
 | [Console / Microfrontends](console-microfrontends.md) | [@kwiatekus](https://github.com/kwiatekus) |
