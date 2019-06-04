@@ -7,31 +7,31 @@ paths:
     get:
       summary: 'Returns health status'
       tags:
-        - health API
+      - health API
       responses:
         '200':
           description: 'The service is up.'
   /v1/applications/tokens:
     post:
       parameters:
-        - in: header
-          name: Group
-          schema:
-            type: string
-            format: uuid
-          required: true
-        - in: header
-          name: Tenant
-          schema:
-            type: string
-          required: true
-        - in: header
-          name: Application
-          schema:
-            type: string
-          required: true
+      - in: header
+        name: Group
+        schema:
+          type: string
+          format: uuid
+        required: false
+      - in: header
+        name: Tenant
+        schema:
+          type: string
+        required: false
+      - in: header
+        name: Application
+        schema:
+          type: string
+        required: true
       tags:
-        - applications internal API
+      - applications internal API
       summary: 'Creates a token used for certificate signing flow.'
       responses:
         '201':
@@ -54,30 +54,11 @@ paths:
                 $ref: '#/components/schemas/appError'
   /v1/applications/certificates/revocations:
     post:
-      parameters:
-        - in: header
-          name: Group
-          schema:
-            type: string
-            format: uuid
-          required: true
-        - in: header
-          name: Tenant
-          schema:
-            type: string
-            format: uuid
-          required: true
-        - in: header
-          name: Application
-          schema:
-            type: string
-            format: uuid
-          required: true
       tags:
-        - applications internal API
+      - applications external API
       summary: 'Marks certificate as revoked.'
       responses:
-        '204':
+        '201':
           description: 'Successful operation.'
         '500':
           description: 'Server error.'
@@ -88,28 +69,28 @@ paths:
   /v1/applications/signingRequests/info:
     get:
       parameters:
-        - in: query
-          name: token
-          description: 'Access Token fetched from /tokens endpoint.'
-          required: true
-          schema:
-            type: string
-        - in: header
-          name: EventsURL
-          description: 'Value of the URL to Event service which must be returned to the caller'
-          schema:
-            type: string
-            format: url
-          required: false
-        - in: header
-          name: MetadataURL
-          description: 'Value of the URL to Application Registry which must be returned to the caller'
-          schema:
-            type: string
-            format: url
-          required: false
+      - in: query
+        name: token
+        description: 'Access Token fetched from /tokens endpoint.'
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: EventsHost
+        description: 'Value of the URL to Event service which must be returned to the caller'
+        schema:
+          type: string
+          format: url
+        required: false
+      - in: header
+        name: MetadataHost
+        description: 'Value of the URL to Application Registry which must be returned to the caller'
+        schema:
+          type: string
+          format: url
+        required: false
       tags:
-        - applications external API
+      - applications external API
       summary: 'Allows for fetching information for CSR.'
       responses:
         '200':
@@ -133,22 +114,22 @@ paths:
   /v1/applications/management/info:
     get:
       parameters:
-        - in: header
-          name: EventsURL
-          description: 'Value of the URL to Event service which must be returned to the caller'
-          schema:
-            type: string
-            format: url
-          required: false
-        - in: header
-          name: MetadataURL
-          description: 'Value of the URL to Application Registry which must be returned to the caller'
-          schema:
-            type: string
-            format: url
-          required: false
+      - in: header
+        name: EventsHost
+        description: 'Value of the URL to Event service which must be returned to the caller'
+        schema:
+          type: string
+          format: url
+        required: false
+      - in: header
+        name: MetadataHost
+        description: 'Value of the URL to Application Registry which must be returned to the caller'
+        schema:
+          type: string
+          format: url
+        required: false
       tags:
-        - applications external API
+      - applications external API
       summary: 'Returns information on available services.'
       responses:
         '200':
@@ -166,14 +147,14 @@ paths:
   /v1/applications/certificates:
     post:
       parameters:
-        - in: query
-          name: token
-          description: 'Access Token fetched from /tokens endpoint.'
-          required: true
-          schema:
-            type: string
+      - in: query
+        name: token
+        description: 'Access Token fetched from /tokens endpoint.'
+        required: true
+        schema:
+          type: string
       tags:
-        - applications external API
+      - applications external API
       summary: 'Signs CSR.'
       requestBody:
         description: 'The CSR to be signed'
@@ -216,7 +197,7 @@ paths:
   /v1/applications/certificates/renewals:
     post:
       tags:
-        - applications external API
+      - applications external API
       summary: 'Renews certificate using CSR.'
       requestBody:
         description: 'The CSR to be signed'
@@ -247,19 +228,19 @@ paths:
   /v1/runtimes/tokens:
     post:
       parameters:
-        - in: header
-          name: Group
-          schema:
-            type: string
-            format: uuid
-          required: true
-        - in: header
-          name: Tenant
-          schema:
-            type: string
-          required: true
+      - in: header
+        name: Group
+        schema:
+          type: string
+          format: uuid
+        required: false
+      - in: header
+        name: Tenant
+        schema:
+          type: string
+        required: false
       tags:
-        - runtimes internal API
+      - runtimes internal API
       summary: 'Creates a token used for certificate signing flow.'
       responses:
         '201':
@@ -276,24 +257,11 @@ paths:
                 $ref: '#/components/schemas/appError'
   /v1/runtimes/certificates/revocations:
     post:
-      parameters:
-        - in: header
-          name: Group
-          schema:
-            type: string
-            format: uuid
-          required: true
-        - in: header
-          name: Tenant
-          schema:
-            type: string
-            format: uuid
-          required: true
       tags:
-        - runtimes internal API
+      - runtimes external API
       summary: 'Marks certificate as revoked.'
       responses:
-        '204':
+        '201':
           description: 'Successful operation.'
         '500':
           description: 'Server error.'
@@ -304,14 +272,14 @@ paths:
   /v1/runtimes/signingRequests/info:
     get:
       parameters:
-        - in: query
-          name: token
-          description: 'Access Token fetched from /tokens endpoint.'
-          required: true
-          schema:
-            type: string
+      - in: query
+        name: token
+        description: 'Access Token fetched from /tokens endpoint.'
+        required: true
+        schema:
+          type: string
       tags:
-        - runtimes external API
+      - runtimes external API
       summary: 'Allows for fetching information for CSR.'
       responses:
         '200':
@@ -335,7 +303,7 @@ paths:
   /v1/runtimes/management/info:
     get:
       tags:
-        - runtimes external API
+      - runtimes external API
       summary: 'Returns information on available services.'
       responses:
         '200':
@@ -353,14 +321,14 @@ paths:
   /v1/runtimes/certificates:
     post:
       parameters:
-        - in: query
-          name: token
-          description: 'Access Token fetched from /tokens endpoint.'
-          required: true
-          schema:
-            type: string
+      - in: query
+        name: token
+        description: 'Access Token fetched from /tokens endpoint.'
+        required: true
+        schema:
+          type: string
       tags:
-        - runtimes external API
+      - runtimes external API
       summary: 'Signs CSR.'
       requestBody:
         description: 'The CSR to be signed'
@@ -403,7 +371,7 @@ paths:
   /v1/runtimes/certificates/renewals:
     post:
       tags:
-        - runtimes external API
+      - runtimes external API
       summary: 'Renews certificate using CSR.'
       requestBody:
         description: 'The CSR to be signed'
@@ -478,52 +446,83 @@ components:
       properties:
         metadataUrl:
           type: 'string'
-          example: 'gateway.test.cluster.kyma.cx/{APP_NAME}/v1/metadata/services'
+          example: 'https://gateway.test.cluster.kyma.cx/{APP_NAME}/v1/metadata/services'
         eventsUrl:
           type: 'string'
-          example: 'gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events'
+          example: 'https://gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events'
         certificatesUrl:
           type: 'string'
-          example: 'certificate-service.kyma.cluster.cx/v1/applications'
+          example: 'https://certificate-service.kyma.cluster.cx/v1/applications'
         infoUrl:
           type: 'string'
-          example: 'connector-service.test.cluster.kyma.cx/v1/applications/management/info'
+          example: 'https://connector-service.test.cluster.kyma.cx/v1/applications/management/info'
     csrApplicationInfoResponse:
       type: 'object'
       properties:
-        signUrl:
+        csrUrl:
           type: 'string'
           example: 'https://connector-service.test.cluster.kyma.cx/v1/applications/certificates?token=1edfc34g'
         api:
           $ref: '#/components/schemas/csrAplicationApiURLs'
         certificate:
           $ref: '#/components/schemas/cert'
+    applicationClientIdentity:
+      type: 'object'
+      properties:
+        application:
+          type: 'string'
+          example: 'example-application'
+        group:
+          type: 'string'
+          example: 'example-group'
+        tenant:
+          type: 'string'
+          example: 'example-tenant'
     applicationInfoResponseUrls:
       type: 'object'
       properties:
         metadataUrl:
           type: 'string'
-          example: '{BASE_METADATA_PATH}/{APP_NAME}/v1/metadata/services'
+          example: 'https://gateway.test.cluster.kyma.cx/{APP_NAME}/v1/metadata/services'
         eventsUrl:
           type: 'string'
-          example: '{BASE_EVENTS_PATH}/{APP_NAME}/v1/events'
+          example: 'https://gateway.test.cluster.kyma.cx/{APP_NAME}/v1/events'
         renewCertUrl:
           type: 'string'
-          example: '{BASE_RENEWAL_PATH}/v1/applications/certificates/renewals'
+          example: 'https://connector-service.test.cluster.kyma.cx/v1/applications/certificates/renewal'
+        revokeCertUrl:
+          type: 'string'
+          example: 'https://connector-service.test.cluster.kyma.cx/v1/applications/certificates/revocations'
     applicationInfoResponse:
       type: 'object'
       properties:
+        clientIdentity:
+          $ref: '#/components/schemas/applicationClientIdentity'
         urls:
           $ref: '#/components/schemas/applicationInfoResponseUrls'
+    runtimeClientIdentity:
+      type: 'object'
+      properties:
+        group:
+          type: 'string'
+          example: 'example-group'
+        tenant:
+          type: 'string'
+          example: 'example-tenant'
     runtimeInfoResponseUrls:
       type: 'object'
       properties:
         renewCertUrl:
           type: 'string'
           example: 'https://connector-service.test.cluster.kyma.cx/v1/applications/certificates/renewal'
+        revokeCertUrl:
+          type: 'string'
+          example: 'https://connector-service.test.cluster.kyma.cx/v1/applications/certificates/revocations'
     runtimeInfoResponse:
       type: 'object'
       properties:
+        clientIdentity:
+          $ref: '#/components/schemas/runtimeClientIdentity'
         urls:
           $ref: '#/components/schemas/runtimeInfoResponseUrls'
     csrRuntimeApiURLs:
@@ -532,10 +531,13 @@ components:
         infoUrl:
           type: 'string'
           example: 'connector-service.test.cluster.kyma.cx/v1/runtimes/management/info'
+        certificatesUrl:
+          type: 'string'
+          example: 'https://certificate-service.kyma.cluster.cx/v1/applications'
     csrRuntimeInfoResponse:
       type: 'object'
       properties:
-        signUrl:
+        csrUrl:
           type: 'string'
           example: 'https://connector-service.test.cluster.kyma.cx/v1/runtimes/certificates?token=1edfc34g'
         api:
