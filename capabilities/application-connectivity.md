@@ -1,7 +1,8 @@
 ---
-displayName: Application Connectivity
+displayName: "Application Connectivity"
 epicsLabels:
   - area/application-connector
+id: application-connectivity
 ---
 
 ## Scope

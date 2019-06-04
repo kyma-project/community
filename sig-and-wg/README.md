@@ -13,9 +13,11 @@ See these sections for details:
   * [The Kyma Council](#the-kyma-council)
   * [List of SIGs](#list-of-sigs)
   * [List of WGs](#list-of-wgs)
+  * [Closed SIGs and WGs](#closed-sigs-and-wgs)
 * [Organize new SIGs and WGs](#organize-new-sigs-and-wgs)
 * [General guidelines](#general-guidelines)
 * [Roles](#roles)
+* [Close a SIG or WG](#close-a-sig-or-wg)
 
 ## Overview
 
@@ -57,31 +59,31 @@ The list of public SIGs in Kyma includes:
 
 ### List of WGs
 
-The list of public WGs in Kyma includes:
+There is no actively working WG right now.
 
-* [Prow migration](wg-prow/README.md)
+### Closed SIGs and WGs
+
+To see the list of closed SIGs and WGs, check the [archive](archive/). 
 
 ## Organize new SIGs and WGs
 
-To propose a new SIG or WG, go to the [issue tracker](https://github.com/kyma-project/community/issues) in the `community` repository and create a new issue from the **SIG or WG proposal** template. The template contains general information explaining the purpose, the goals of the group, and the criteria for the group assessment and evaluation. Provide the required details and submit the issue.
+To propose a new SIG or WG, go to the [issue tracker](https://github.com/kyma-project/community/issues) in the `community` repository and create a new issue from the **SIG or WG proposal** template. The template contains general information explaining the purpose, the goals of the group, and the criteria for the group assessment and evaluation. Provide the required details and submit the issue. If necessary, contact SIG Community leaders to verify it.
 
 >**NOTE:** You must have at least five candidates for the new SIG or WG to submit the proposal.
 
 The proposal revision process is as follows:
-* The SIG Community discusses the SIG or the WG proposal with the authors and informs the Kyma Council of the proposal.
+* The SIG Community discusses the SIG or the WG proposal with the authors and in parallel informs the Kyma Council of the proposal.
 * All involved parties decide whether the topic requires a SIG or a WG collaboration or if you can address the topic by creating one or more issues in GitHub and pairing the sprints of several teams for several iterations.
 * The SIG Community can suggest a public discussion of the proposal to make sure it meets the community needs and raises enough interest.
-* The SIG Community can decide to recommend the creation of a new SIG or WG and inform the Council. The SIG Community can also suggest the revision of the SIG and the WG topics or object to a given group creation and provide the authors of the proposal with the reason for the objection. The SIG Community can also advise on other ways to address the topics suggested in the proposal.  
-* When informed by the SIG Community, the Council agrees to the creation of the new SIG or WG, suggests the revision of the group's topics, or objects to the group creation stating the reason for the objection.
+* The SIG Community can also suggest the revision of the SIG and the WG topics or object to a given group creation and provide the authors of the proposal with the reason for the objection. The SIG Community can also advise on other ways to address the topics suggested in the proposal.  
+* When informed by the SIG Community, the Council agrees, during the weekly meeting, to the creation of the new SIG or WG, suggests the revision of the group's topics, or objects to the group creation stating the reason for the objection.
 
-Once the SIG or the WG receives an approval for the group creation, the SIG Community arranges the appropriate communication channels.
-
-The process is as follows:
+Once the SIG or the WG receives an approval for the group creation, the authors of the proposal arrange the appropriate communication channels. The process is as follows:
  * Create a new folder in this directory following the `[sig|wg]-{shortname}` naming pattern.
  * Use the [template](../guidelines/templates/resources/sig-wg-readme-template.md) to create a given group's main `README.md` document.
  * Add a new [label](https://github.com/kyma-project/community/labels) that follows the `[sig|wg]-{shortname}` naming pattern.
  * Use the [template](../guidelines/templates/resources/sig-wg-meeting-notes-template.md) to create a `meeting-notes.md` document in a given group's folder.
- * Create a Slack channel that follows the `kyma-[sig|wg]-{shortname}` naming pattern.
+ * Create a Slack channel that follows the `[sig|wg]-{shortname}` naming pattern.
  * Create a new team in the GitHub organization that follows the `[sig|wg]-{shortname}` naming pattern. Add all SIG participants as members of this team.
 
 >**NOTE:** Use the dedicated Slack channel for online video meetings. If Slack fails to scale due to a large number of participants, choose a different tool that is accessible to all of them.
@@ -108,3 +110,15 @@ When you join a SIG or a WG, you perform at least one of the following roles:
 * **Group member** - The member is active in one or more areas of the project and can perform a wide variety of roles within the organization.
 * **Group leader** - SIGs and WGs must nominate at least two group leaders at any given time. Group leaders make sure that the group topics are relevant to Kyma and the group topics. They facilitate the group meetings, maintain, and communicate the meeting minutes. Group leaders record tasks identified by the group as issues in the respective issue tracker. They are responsible for smooth communication and coordination with other SIGs, the Council, and the SIG Community.
 * **Group representative** - It is a specific group member who represents the group to other groups or the Council. This is either the group's leader or any other group member. The choice depends on the topic and the place where the group is represented.
+
+## Close a SIG or WG
+When a SIG or WG has completed its goals or there is an explicit request to conclude further work, it has to be closed. The request to close a SIG or WG may come from group members, group leaders, Kyma community or Kyma Council. To close a SIG or WG, group leaders need to:
+
+* Create an issue and accompanying pull request (PR) to close a SIG or WG and add the **decision** label to them.
+* Close the remaining open issues of the group or reassign them accordingly, with appropriate comment.
+* [Delete the group label](https://help.github.com/en/articles/deleting-a-label) used on the issues or PRs.
+* Remove the group from the [List of SIGs](#list-of-sigs) or [List of WGs](#list-of-wgs) in this `README.md` file. 
+* Move the group folder (together with all subfolders and files) to the [archive](archive) folder.
+* Add a `CLOSURE.md` file to the archived group folder. Write it in a form of a blog post which informs about the group's outcomes, achievements, challenges, and lessons learned. Remember to provide links to the relevant material. The PR undergoes standard review by group members, Kyma Council and is subsequently closed. 
+* Publish the content of the `CLOSURE.md` in a form of a blog post on the Kyma website or link to it. 
+* Communicate the closure of a given SIG or WG through the SIG Core.

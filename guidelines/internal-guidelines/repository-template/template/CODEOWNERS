@@ -11,7 +11,7 @@
 
 # When defining the file, keep in mind the following rules:
 
-# Lines starting with a hashtag (#) are comments.
+# Lines starting with a hash (#) are comments.
 # Each line of the file is a file pattern followed by one or more owners.
 # You can use individual GitHub usernames, e-mail addresses, or team names to define owners. To define the owners with a team name, first add the team to your repository as collaborators with write access permissions. For more details, read the following article on GitHub: https://help.github.com/articles/adding-outside-collaborators-to-repositories-in-your-organization/.
 # Define the default owners of the repository. They are automatically requested for a review of any content at the root of the repository and any content for which no owners are specified in this file.
