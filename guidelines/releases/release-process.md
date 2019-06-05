@@ -101,6 +101,28 @@ Follow these steps to create a release:
 
 5. Update the `RELEASE_VERSION`file with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `0.9.2`, then change the version to `1.0.0-rc1`.
 
+### kyma-project/cli
+
+1. Create a release branch in the `cli` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-0.9`.
+
+    ```bash
+    git fetch upstream
+    git checkout -b $RELEASE_NAME upstream/master
+    ```
+
+    >**NOTE:** This point applies only to new major and minor versions.
+
+2. Push the branch to the `cli` repository.
+
+3. Create a tag on the release branch contains the correct version to be created. The tag should be equal to the release version following the `{A}.{B}.{C}` or `{A}.{B}.{C}-rc{D}` format, where `A`,`B`, `C`, and `D` are numbers. If you define a release candidate version, a pre-release is created.
+
+    ```bash
+    git tag -a $RELEASE_VERSION -m "Release $RELEASE_VERSION"
+    git push upstream $RELEASE_VERSION
+    ```
+
+4. Pushing the tag will trigger the postsubmit job that will create the GitHub release. Validate that the release is generated under [releases](https://github.com/kyma-project/cli/releases).
+
 ### kyma-project/kyma
 
 1. Create a release branch in the `kyma` repository.
