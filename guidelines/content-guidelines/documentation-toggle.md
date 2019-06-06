@@ -9,7 +9,7 @@ You can use the toggle to include instructions for different operating systems (
 
 Follow these rules when inserting toggles in documents:
 
-* Toggles belonging to one group must start with `<div tabs>` and end with `</div>` HTML tags.
+* Toggles belonging to one group must start with `<div tabs>` or `<div tabs name="{NAME}">` and end with `</div>` HTML tags, where `{NAME}` is optional distinctive ID used for links. `name` attribute can be ommited if there are no headers inside tabs. It's use is explained more throughly in [this](./links-in-docs.md#links-in-documentation-toggle) document.
 * A single toggle must start with the `<details>` tag and end with the `</details>` tag.
 * Insert the title of the toggle between `<summary>` and `</summary>` tags. Every part of the title must start from a new line.
 

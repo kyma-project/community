@@ -2,7 +2,7 @@
 
 These are the guidelines for making cross-references between the documents in the [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) folder.
 
->**NOTE:** The linking works only on the [Kyma website](https://kyma-project.io/docs). Currently, the cross-references between [GitHub documentation](ttps://github.com/kyma-project/kyma/tree/master/docs) is not available.
+>**NOTE:** The linking works only on the [Kyma website](https://kyma-project.io/docs). Currently, the cross-references between [GitHub documentation](https://github.com/kyma-project/kyma/tree/master/docs) is not available.
 
 ## Links between documents in the same topic
 
@@ -41,3 +41,35 @@ If the `{type}` doesn't exist, the pattern has the form of `/{type-of-topic}/{id
 ![Different topic reference](../../assets/reference-2.png)
 
 ![Kyma reference](../../assets/reference-3.png)
+
+## Links in documentation toggle
+
+To link to document inside the documentation toggle it needs to start with `<div tabs name="{toggle-name}">` and end with `</div>` HTML tags, where `{NAME}` is optional distinctive ID used for links. Use of toggle is explained in detail in [this](./documentation-toggle.md) document.
+
+If you want to link to a document in a documentation toggle, create an appropriate reference using instructions from previous sections, additionally adding `--{toggle-name}--{tab-name}--{header}`, where 
+- `{toggle-name}` is value added to specific toggle in `name` attribute
+- `{tab-name}` is the title of the tab containing desired header
+- `{header}` is a header located in the document that you want to reference.
+
+Use lowercase Kebab-Case for those variables, ommiting `-` on the end of expression 
+
+<!-- i don't know whether to write about full proces:
+1. change anything that is not a letter or number into -
+2. cut trailing `-`
+3. change any adjacent `-` into single `-`, e.g. following those rules: 
+expression: `sit (amet)`
+1. sit--amet-
+2. sit--amet
+3. sit-amet
+
+and number 3 is correct
+ -->
+
+Example: 
+1. header `Choose the release to install` becomes `choose-the-release-to-install`
+2. `Lorem ipsum dolor sit (amet)` becomes `lorem-ipsum-dolor-sit-amet`
+
+Example: https://kyma-project.io/docs/master#installation-install-kyma-on-a-cluster--provider-installation--aks--choose-the-release-to-install in which:
+- `{toggle-name}` is `provider-installation`
+- `{tab-name}` is `aks`
+- `{header}` is `choose-the-release-to-install`
