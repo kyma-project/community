@@ -51,7 +51,7 @@ If you want to link to a document in a documentation toggle, create an appropria
 - `{tab-name}` is the title of the tab containing desired header
 - `{header}` is a header located in the document that you want to reference.
 
-Use lowercase Kebab-Case for those variables, ommiting `-` on the end of expression 
+Use lowercase Kebab-Case for those variables, changing any character that is not letter or number into `-`, cutting trailing `-` that emerged in a process and squashing consecutive `-` into one `-`.
 
 <!-- i don't know whether to write about full proces:
 1. change anything that is not a letter or number into -
