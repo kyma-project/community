@@ -53,23 +53,11 @@ If you want to link to a document in a documentation toggle, create an appropria
 
 Use lowercase Kebab-Case for those variables, changing any character that is not letter or number into `-`, cutting trailing `-` that emerged in a process and squashing consecutive `-` into one `-`.
 
-<!-- i don't know whether to write about full proces:
-1. change anything that is not a letter or number into -
-2. cut trailing `-`
-3. change any adjacent `-` into single `-`, e.g. following those rules: 
-expression: `sit (amet)`
-1. sit--amet-
-2. sit--amet
-3. sit-amet
-
-and number 3 is correct
- -->
-
 Example: 
 1. header `Choose the release to install` becomes `choose-the-release-to-install`
 2. `Lorem ipsum dolor sit (amet)` becomes `lorem-ipsum-dolor-sit-amet`
 
-Example: https://kyma-project.io/docs/master#installation-install-kyma-on-a-cluster--provider-installation--aks--choose-the-release-to-install in which:
+Example: https://kyma-project.io/docs/master#installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install in which:
 - `{toggle-name}` is `provider-installation`
-- `{tab-name}` is `aks`
+- `{tab-name}` is `gke`
 - `{header}` is `choose-the-release-to-install`
