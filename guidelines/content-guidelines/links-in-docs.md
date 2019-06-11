@@ -55,7 +55,7 @@ If you want to link to a document in a documentation toggle, create a reference 
 
 For example, the **Choose the release to install** heading changes into the `choose-the-release-to-install` header or the **Lorem ipsum dolor sit (amet)** heading becomes the `lorem-ipsum-dolor-sit-amet` header.
 
-### Example
+### Examples
 
 - Absolute links
 
