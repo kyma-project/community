@@ -101,28 +101,6 @@ Follow these steps to create a release:
 
 5. Update the `RELEASE_VERSION`file with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `0.9.2`, then change the version to `1.0.0-rc1`.
 
-### kyma-project/cli
-
-1. Create a release branch in the `cli` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-0.9`.
-
-    ```bash
-    git fetch upstream
-    git checkout -b $RELEASE_NAME upstream/master
-    ```
-
-    >**NOTE:** This point applies only to new major and minor versions.
-
-2. Push the branch to the `cli` repository.
-
-3. Create a tag on the release branch contains the correct version to be created. The tag should be equal to the release version following the `{A}.{B}.{C}` or `{A}.{B}.{C}-rc{D}` format, where `A`,`B`, `C`, and `D` are numbers. If you define a release candidate version, a pre-release is created.
-
-    ```bash
-    git tag -a $RELEASE_VERSION -m "Release $RELEASE_VERSION"
-    git push upstream $RELEASE_VERSION
-    ```
-
-4. Pushing the tag will trigger the postsubmit job that will create the GitHub release. Validate that the release is generated under [releases](https://github.com/kyma-project/cli/releases).
-
 ### kyma-project/kyma
 
 1. Create a release branch in the `kyma` repository.
@@ -242,6 +220,32 @@ Follow these steps to create a release:
 	Currently, this means to grab the links from the previous release and update the version number in URLs. If contributors want you to change something in the instruction, they would address you directly.
 
 12. Create a spreadsheet with all open issues labeled as `test-missing`. Every team assigned to an issue must cover the outstanding test with manual verification on every release candidate. After the test is finished successfully, the responsible team must mark it as completed in the spreadsheet. Every issue identified during testing must be reported. To make the testing easier, provision a publicly available cluster with the release candidate version after you complete all steps listed in this document.
+
+### kyma-project/cli
+
+1. After making sure that Kyma is released, create a release branch in the `cli` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-0.9`.
+
+    ```bash
+    git fetch upstream
+    git checkout -b $RELEASE_NAME upstream/master
+    ```
+
+    >**NOTE:** This point applies only to new major and minor versions.
+
+2. Ensure that the `KYMA_VERSION` variables on `Makefile` and `.goreleaser` file from the `cli` repository on the release branch contains the latest Kyma version that you just released.
+
+3. Push the branch to the `cli` repository.
+
+4. Create a PR to `cli/release-x.y`. This triggers the pre-submit job for `cli`.
+
+5. After merging the PR, create a tag on the release branch that has the same version name as Kyma. If you define a release candidate version, a pre-release is created.  
+
+    ```bash
+    git tag -a $RELEASE_VERSION -m "Release $RELEASE_VERSION"
+    git push upstream $RELEASE_VERSION
+    ```
+
+4. Pushing the tag will trigger the postsubmit job that will create the GitHub release. Validate that the release is generated under [releases](https://github.com/kyma-project/cli/releases).
 
 [1]:	#steps
 [2]:	https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md
