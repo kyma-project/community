@@ -60,6 +60,9 @@ This is an absolute link to a document in a documentatin toggle: https://kyma-pr
 - `{tab-name}` is `gke`
 - `{header}` is `choose-the-release-to-install`
 
-To use a recommended relative link to a document in a documentation toggle which is in the same topic, use the following pattern: `#installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install`.
+To use a recommended relative link to a document in a documentation toggle which is in the same topic, use the following pattern: 
+```
+#installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install`
+```
 
 
