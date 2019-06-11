@@ -55,14 +55,14 @@ If you want to link to a document in a documentation toggle, create a reference 
 
 For example, a header: Choose the release to install changes to `choose-the-release-to-install`, or a header Lorem ipsum dolor sit (amet) becomes `lorem-ipsum-dolor-sit-amet`.
 
-This is an absolute link to a document in a documentatin toggle: https://kyma-project.io/docs/master#installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install. In the following example:
+This is an absolute link to a document in a documentatin toggle: https://kyma-project.io/docs/master/root/kyma/#installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install. In the following example:
 - `{toggle-name}` is `provider-installation`
 - `{tab-name}` is `gke`
 - `{header}` is `choose-the-release-to-install`
 
 To use a recommended relative link to a document in a documentation toggle which is in the same topic, use the following pattern: 
 ```
-#installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install`
+#installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install
 ```
 
 

@@ -10,6 +10,14 @@ You can use the toggle to include instructions for different operating systems (
 Follow these rules when inserting toggles in documents:
 
 * Toggles belonging to one group must start with the `<div tabs name="{toggle-name}">` tag and end with the `</div>` tag, where **name** is a distinctive ID of a specific toggle used for linking. It can be any name describing the contet of the documentation toggle.
+
+See an example:
+```markdown
+<div tabs name="installation">
+{toggle content}
+</div>
+```
+
 * A single toggle must start with the `<details>` tag and end with the `</details>` tag.
 * Insert the title of the toggle between `<summary>` and `</summary>` tags. Every part of the title must start from a new line.
 
