@@ -51,18 +51,27 @@ If you want to link to a document in a documentation toggle, create a reference 
 - `{tab-name}` is a title of the tab containing the header that you want to reference.
 - `{header}` is a header located in the document that you want to reference.
 
->**NOTE:** All variables must consist of lowercase characters separated with dashes (-). Change any character that is not a letter or number into a dash (-) and squash consecutive dashes (--) into one (-). 
+>**NOTE:** All variables must consist of lowercase characters separated with dashes (-). Change any character that is not a letter or number into a dash (-) and squash consecutive dashes (--) into one (-).
 
-For example, a header: Choose the release to install changes to `choose-the-release-to-install`, or a header Lorem ipsum dolor sit (amet) becomes `lorem-ipsum-dolor-sit-amet`.
+For example, the **Choose the release to install** heading changes into the `choose-the-release-to-install` header or the **Lorem ipsum dolor sit (amet)** heading becomes the `lorem-ipsum-dolor-sit-amet` header.
 
-This is an absolute link to a document in a documentatin toggle: https://kyma-project.io/docs/master/root/kyma/#installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install. In the following example:
-- `{toggle-name}` is `provider-installation`
-- `{tab-name}` is `gke`
-- `{header}` is `choose-the-release-to-install`
+### Example
 
-To use a recommended relative link to a document in a documentation toggle which is in the same topic, use the following pattern: 
-```
-#installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install
-```
+- Absolute links
+
+  This is an absolute link to a document in a documentatin toggle:
+  ```markdown
+  https://kyma-project.io/docs/root/kyma/#installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install
+  ```
+  In the absolute link example:
+  - `{toggle-name}` is `provider-installation`
+  - `{tab-name}` is `gke`
+  - `{header}` is `choose-the-release-to-install`
 
 
+- Relative links
+
+  To use a recommended relative link to a document in a documentation toggle which is in the same topic, use the following pattern:
+  ```markdown
+  #installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install
+  ```

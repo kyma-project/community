@@ -33,3 +33,6 @@ files:
   - path: "./community/guidelines/content-guidelines/links-in-docs.md"
     config:
       white-list-internal: ["./assets/mf-namespaced.yaml"]
+  - path: "./community/guidelines/content-guidelines/links-in-docs.md"
+    config:
+      white-list-internal: ["https://kyma-project.io/docs/root/kyma/#installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install"]
