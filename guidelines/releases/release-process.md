@@ -236,7 +236,7 @@ Follow these steps to create a release:
 
 3. Push the branch to the `cli` repository.
 
-4. Create a PR to `cli/release-x.y`. This triggers the pre-submit job for `cli`.
+4. Create a PR to `cli/release-x.y`. This triggers the presubmit job for `cli`.
 
 5. After merging the PR, create a tag on the release branch that has the same version name as Kyma. If you define a release candidate version, a pre-release is created.  
 
@@ -245,7 +245,7 @@ Follow these steps to create a release:
     git push upstream $RELEASE_VERSION
     ```
 
-4. Pushing the tag will trigger the postsubmit job that will create the GitHub release. Validate that the release is generated under [releases](https://github.com/kyma-project/cli/releases).
+4. Pushing the tag triggers the postsubmit job that creates the GitHub release. Validate if the release is available under [releases](https://github.com/kyma-project/cli/releases).
 
 [1]:	#steps
 [2]:	https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md
