@@ -9,7 +9,7 @@ You can use the toggle to include instructions for different operating systems (
 
 Follow these rules when inserting toggles in documents:
 
-* Toggles belonging to one group must start with `<div tabs name="{toggle-name}">` and end with `</div>` HTML tags, where **name** is a distinctive ID of a specific toggle used for linking. It can be any name describing the contet of the documentation toggle.
+* Toggles belonging to one group must start with the `<div tabs name="{toggle-name}">` tag and end with the `</div>` tag, where **name** is a distinctive ID of a specific toggle used for linking. It can be any name describing the contet of the documentation toggle.
 * A single toggle must start with the `<details>` tag and end with the `</details>` tag.
 * Insert the title of the toggle between `<summary>` and `</summary>` tags. Every part of the title must start from a new line.
 
@@ -75,7 +75,7 @@ The code renders on `kyma-project.io` as follows:
 
 1. First element
 2. Second element
-    <div tabs name="installation>
+    <div tabs name="installation">
       <details>
       <summary>
       From release

@@ -44,18 +44,22 @@ If the `{type}` doesn't exist, the pattern has the form of `/{type-of-topic}/{id
 
 ## Links in documentation toggles
 
-To link to a document in a documentation toggle, the toggle must start with `<div tabs name="{toggle-name}">` and end with `</div>` HTML tags, where **name** is a distinctive ID used for linking. To learn more about how to use toggles, read [this](./documentation-toggle.md) document.
+To link to a document in a documentation toggle, the toggle must start with the `<div tabs name="{toggle-name}">` tag and end with the `</div>` tag, where **name** is a distinctive ID used for linking. To learn more about how to use toggles, read [this](./documentation-toggle.md) document.
 
-If you want to link to a document in a documentation toggle, create a reference using `/{type-of-topic}/{id}#{type}-{title}-{header}` pattern as described in the previous sections, and additionally add `--{toggle-name}--{tab-name}--{header}`, where 
-- `{toggle-name}` is a value of the **name** attribute in the toggle that you want to reference.
+If you want to link to a document in a documentation toggle, create a reference using `/{type-of-topic}/{id}#{type}-{title}-{header}` pattern as described in the previous sections, and add `--{toggle-name}--{tab-name}--{header}`, where:
+- `{toggle-name}` is a value of the **name** attribute in the `<div>` HTML tag in the toggle that you want to reference.
 - `{tab-name}` is a title of the tab containing the header that you want to reference.
 - `{header}` is a header located in the document that you want to reference.
 
 >**NOTE:** All variables must consist of lowercase characters separated with dashes (-). Change any character that is not a letter or number into a dash (-) and squash consecutive dashes (--) into one (-). 
 
-For example, a header: `Choose the release to install` changes to `choose-the-release-to-install`, or a header `Lorem ipsum dolor sit (amet)` becomes `lorem-ipsum-dolor-sit-amet`.
+For example, a header: Choose the release to install changes to `choose-the-release-to-install`, or a header Lorem ipsum dolor sit (amet) becomes `lorem-ipsum-dolor-sit-amet`.
 
-This is a link to a document in a documentatin toggle: https://kyma-project.io/docs/master#installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install. In the following example:
+This is an absolute link to a document in a documentatin toggle: https://kyma-project.io/docs/master#installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install. In the following example:
 - `{toggle-name}` is `provider-installation`
 - `{tab-name}` is `gke`
 - `{header}` is `choose-the-release-to-install`
+
+To link to the document in the same topic, use the following pattern: `#installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install`.
+
+
