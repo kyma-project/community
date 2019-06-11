@@ -232,7 +232,7 @@ Follow these steps to create a release:
 
     >**NOTE:** This point applies only to new major and minor versions.
 
-2. Ensure that the `KYMA_VERSION` variables on `Makefile` and `.goreleaser` file from the `cli` repository on the release branch contains the latest Kyma version that you just released.
+2. Ensure that the `KYMA_VERSION` variables on `Makefile` and `.goreleaser.yml` file from the `cli` repository on the release branch contains the latest Kyma version that you just released.
 
 3. Push the branch to the `cli` repository.
 
