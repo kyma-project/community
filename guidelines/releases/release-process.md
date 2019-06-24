@@ -201,10 +201,9 @@ Follow these steps to create a release:
 6. If you detect any problems with the release, such as failing tests, wait for the fix that can be delivered either on a PR or cherry-picked to the PR from the `master` branch.  
 	Prow triggers the jobs again. Rerun manual jobs as described in **step 5**.
 
-7. After all checks pass, merge the PR, using the `rebase and merge` option.
-    > **CAUTION:** By default, the `rebase and merge` option is disabled. Ask one of the `kyma-project/kyma` repository admins to enable it.
+7. After all checks pass, merge the PR, using the `rebase and merge` option. To merge the PR to the release branch, you must receive approvals from all teams.
+    > **CAUTION:** By default, the `rebase and merge` option is disabled. Contact one of the `kyma-project/kyma` repository admins to enable it.
     
-	> **NOTE:** To merge the PR to the release branch, you must receive approvals from all teams.
 
 8. Merging the PR to the release branch runs the postsubmit jobs, which:
 	- create a GitHub release and trigger documentation update on the official Kyma website
