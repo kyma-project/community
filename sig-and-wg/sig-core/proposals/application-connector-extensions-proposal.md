@@ -41,7 +41,11 @@ In the future, we might even create a registry of the ACE components.
 
 ## Wireframes
 
-- That is a placeholder for wireframes.
+The following images show a draft proposal for the UI part in the console.
+
+![](assets/kyma_application_2_filled.png)
+![](assets/kyma_application_3_add_specs-type.png)
+![](assets/kyma_application_5-edit-API.png)
 
 ## Glossary
 
