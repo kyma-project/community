@@ -62,7 +62,7 @@ Team Sprint is modeled as a GitHub milestone named with the following pattern: `
 - area (default capability of the team first)
 - dependencies (unblock others)
 
-Contributors move the issue to "In progress" track in ZenHub when they start working on it. When the work is done, the issue is closed.
+Contributors move the issue to the **In progress** column on the ZenHub board when they start working on it. When the work is done, the issue is closed.
 
 ### Team backlog (optional)
 If any team wants to keep team backlog (assign issues they want to work on later), they can assign it to the Github milestone with no due date named with following pattern: `Backlog_{TEAM_NAME}`.
