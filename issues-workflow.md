@@ -57,15 +57,15 @@ The Kyma backlog contains issues that went through the triage, are not closed, a
 >**NOTE**: Issues are taken from the main Kyma backlog by different teams that are responsible for specific areas of Kyma. This is the actual workflow in Kyma which allows distinguishing which team works on a specific issue. This approach allows easy work in team sprints using ZenHub board. We are aware that our teams' names may be cryptic for the external community, but at the moment we are not able to provide any better solution. If you have a better idea, your feedback would be highly appreciated. Sorry for the inconvenience.
 
 ### Team sprints
-Team Sprint is modeled as a GitHub milestone named with the following pattern: `{TEAM_NAME} Sprint {NUMBER}`. During the planning, a team selects issues from the backlog considering:
+Team Sprint is modeled as a GitHub milestone named with the following pattern: `Sprint_{TEAM_NAME}_{NUMBER}`. During the planning, a team selects issues from the backlog considering:
 - priority (high priority first)
 - area (default capability of the team first)
 - dependencies (unblock others)
 
-Contributors mark issues with the `WIP` label when they start working on it. When the work is done, the issue is closed.
+Contributors move the issue to "In progress" track in ZenHub when they start working on it. When the work is done, the issue is closed.
 
 ### Team backlog (optional)
-If any team wants to keep team backlog (assign issues they want to work on later), they can assign it to the Github milestone with no due date named with following pattern: `{TEAM_NAME} backlog`.
+If any team wants to keep team backlog (assign issues they want to work on later), they can assign it to the Github milestone with no due date named with following pattern: `Backlog_{TEAM_NAME}`.
 
 ### Stale issues
 
