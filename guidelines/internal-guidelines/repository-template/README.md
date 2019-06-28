@@ -10,7 +10,7 @@ The `template` folder contains all elements required for a skeleton repository. 
 
 The `template` folder consists of:
 
-* [`.github`](./template/.github) - This folder contains pull request and issue templates.
+* [`.github`](./template/.github) - This folder contains a pull request template, issue templates, and a stale bot that monitors inactive issues and closes them after a specified period of time.
 
 * [`docs`](./template/docs) - In this folder, put the repository-specific documentation only. Store any architectural decisions or documents applicable to all Kyma repositories in the `community` repository.
 
