@@ -9,12 +9,13 @@ The communication Kyma team should be conducted simultaneously on the two import
 - `c4core-xf-team` - main channel to communicate about the release progress. 
 - `c4core-kyma-scrum-masters` - a channel to escalate actions in case when some team lingers with their job. In that case you can also write directly to the proper Scrum Master.
 
+The Kyma community should be notified about the release on the external channel. Our official channel for external announcements in `#general` on the `kyma-community` slack workspace.
+
 ## Communication persons
 
 The Kyma team persons which are responsible for the releasing:
 
 - [Jose Cortina](https://github.com/jose-cortina)
-
 
 ## Release master responsibilities
 
@@ -34,7 +35,6 @@ The release master is obliged to do the following things:
 
 - Inform the Kyma teams which tests are failing to fix them as quickly as possible. It should be escalated if there is any risk that some test won't be fixed which will affect the release. The Kyma teams which are responsible for failing test should communicate with release master about fixing progress.
 
-
 ## Communication rules
 
 The messages about the release sent to the Kyma slack channels should be written transparently. They should inform about each aspect of the next release step.
@@ -43,8 +43,10 @@ It's recommended to write updates about releases using the multiline sentences w
 
 When the updates about the release are important, they should be pinned to the channel so they will be more visible.
 
-
 ## Scrum of scrums meetings
 
-The Scrum Master which team is responsible for the release should give a status about the release progress at the SoS meetings, so all of the Scrum Masters will know if there is some obstacles for the release.
+Scrum of Scrums is the internal meeting for the Kyma Scrum Masters.
 
+The Scrum Master which team is responsible for the release should give a status about the release progress at the Scrum of Scrums meetings, so all of the Scrum Masters will know if there are some obstacles for the release.
+
+The Scrum Master is also responsible for updating a Scrum of Scrums MagicBox under the Wiki page for the adequate release.
