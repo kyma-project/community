@@ -29,6 +29,7 @@ Path names                | Save the file in the `\services\repository` folder.
 Repository names          | The file is located in the `Kyma` repository.
 Status and error codes    | A successful response includes a status code of `200 OK`.
 Parameter and value pairs | The controller adds the `env=true` label to all newly created Namespaces.
+Metadata names            | When you create a Markdown document, define its `title` and `type`.
 
 >**NOTE:** When you mention specific configuration files in your documents, consider linking to them instead of just mentioning their names. When you link to a file, use its name without the format extension, for example: `To adjust the number of Pods in your Deployment, edit the [deployment](./deployment.yaml) file.`
 
