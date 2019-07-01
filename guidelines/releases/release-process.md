@@ -6,31 +6,25 @@ This document describes how to create a Kyma release using Prow.
 
 This section only applies to new major and minor versions. If you release a patch, skip the preparation and go to the [**Steps**][1] section.
 
-To prepare a release, define new and remove old release 
+To prepare a release, define a new and remove the old release.
 
 ### Define release jobs
 
-Define release jobs on the `master` branch in the `test-infra` repository. To ensure every job name is unique, prefix it with `pre-rel{versionNumber}`. Remember to provide the version number without any periods. To learn how to define a release job for a component, read the following [document][2]. To find all jobs for the 0.9 release, look for job names with the `pre-rel09` prefix.
+Define release jobs on the `master` branch in the `test-infra` repository. To ensure every job name is unique, prefix it with `pre-rel{versionNumber}`. Remember to provide the version number without any periods. For example, to find all jobs for the 0.9 release, look for job names with the `pre-rel09` prefix. To learn how to define a release job for a component, read the following [document][2].
 
 1. Navigate to the `test-infra` repository.
-1. Define release jobs in the `prow/jobs/test-infra` directory in the following files:
-	- `watch-pods.yaml`
-1. Define release jobs in the `prow/jobs/kyma` directory in the following files:
-   4. every `.yaml` in `components` 
-   5. every `.yaml` in `tests`
-   6. every `.yaml` in `tools/` \*\*except for\*\*:
-	 - `tools/docsbuilder/docsbuilder.yaml`
-	 - `tools/failery/failery.yaml`
-   7. `kyma-docs.yaml`
-   8. `kyma-integration.yaml`
-   9. `kyma-gke-integration.yaml`
-   10. `kyma-gke-upgrade.yaml`
-   11. `kyma-artifacts.yaml`
-   12. `kyma-installer.yaml`
-   13. `kyma-github-release.yaml`
-   14. `kyma-release-candidate.yaml`
+2. Define release jobs in the `prow/jobs/test-infra` directory in the `watch-pods.yaml` file.
+3. Define release jobs in the `prow/jobs/kyma` directory in the following files:
+   - every `.yaml` in `components` 
+   - every `.yaml` in `tests`
+   - every `.yaml` in `tools/` **except for** the `tools/failery/failery.yaml` file
+   - `kyma-integration.yaml`
+   - `kyma-artifacts.yaml`
+   - `kyma-installer.yaml`
+   - `kyma-github-release.yaml`
+   - `kyma-release-candidate.yaml`
 
-		> **Note:** Remember to modify the `presets` array. This is an example of the 0.9 release `preset`:
+		> **NOTE:** Remember to modify the `presets` array. This is an example of the 0.9 release `preset`:
 		
 		```
 		- labels:
@@ -41,26 +35,26 @@ Define release jobs on the `master` branch in the `test-infra` repository. To en
 		```
 
 1. Ensure that tests for the release jobs exist. Release tests usually iterate through all release versions and run tests for them.
-See the `TestBucReleases` test defined in `development/tools/jobs/kyma/binding_usage_controller_test.go` as a reference.
+See the `TestBucReleases` test defined in `development/tools/jobs/kyma/service_binding_usage_controller_test.go` as a reference.
 
 1. Update the `GetAllKymaReleaseBranches()` function
 defined in the `development/tools/jobs/tester/tester.go` file under the `test-infra` repository.
 
 1. Define branch protection rules for the release branch in the `prow/config.yaml` file.
-
-	For example, see the release-0.9 definition:
+	For example, see the release-1.2 definition:
 
 	```yaml
-	release-0.9:
+    release-1.2:
 	  protect: true
-	  required_status_checks:
-	    contexts:
-	      - pre-rel09-kyma-integration
-	      - pre-rel09-kyma-gke-integration
-	      - pre-rel09-kyma-artifacts
-	      - pre-rel09-kyma-installer
-	      - pre-rel09-kyma-gke-upgrade
-	      - pre-rel09-kyma-gke-central-connector
+      required_status_checks:
+        contexts:
+          - pre-rel12-kyma-integration
+          - pre-rel12-kyma-gke-integration
+          - pre-rel12-kyma-gke-upgrade
+          - pre-rel12-kyma-gke-central-connector
+          - pre-rel12-kyma-artifacts
+          - pre-rel12-kyma-installer
+          - pre-rel12-kyma-gke-minio-gateway
 	```
 
 ### Remove previous release jobs
