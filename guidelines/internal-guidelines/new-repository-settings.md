@@ -12,8 +12,8 @@ Follow these sections:
 - [Adjust repository options](#adjust-repository-options)
 - [Set branch protection rules](#set-branch-protection-rules)
 - [Add webhooks](#add-webhooks)
-  - [Prow webhook](#prow-webhooks)
-  - [ZenHub webhook](#zenhub-webhooks)
+  - [Prow webhook](#prow-webhook)
+  - [ZenHub webhook](#zenhub-webhook)
 - [Add a milv file](#add-a-milv-file)
 - [Create labels](#create-labels)
 
@@ -36,7 +36,7 @@ Under the repository name, click **Settings**. The **Options** view opens as the
 - Restrict editing to users in teams with push access only
 - Projects
 
-![](../../../assets/features.png)
+![](/../../assets/features.png)
 
 2. Go to the **Merge button** section and clear these options:
 - Allow merge commits
@@ -66,7 +66,7 @@ Add ZenHub and Prow webhooks to integrate them with your repository. This way, G
 
 These settings are available under **Webhooks** in the left menu, under repository **Settings**:
 
-![](../../../assets/webhooks.png)
+![](../../../../../assets/webhooks.png)
 
 ### Prow webhook
 
