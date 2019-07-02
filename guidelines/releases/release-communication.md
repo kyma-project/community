@@ -17,7 +17,7 @@ The following are contact persons responsible for the whole release process in K
 
 - Release manager [Jose Cortina](https://github.com/jose-cortina)
 
-## Release Master responsibilities
+## Release Master communication
 
 At the beginning of the release process, the team responsible for the release picks a Release Master who will manage the release process. 
 
