@@ -2,7 +2,7 @@
 
 At the beginning of the release process, the team responsible for the release picks a Release Master who will manage the release process. One of the Release Master's responsibilities is to update the rest of the organization on the progress of the release process. The Release Master is obliged to do the following:
 
-- Inform Kyma teams about release deadlines on Slack channels at least one week before RC1, and pin the message so that it is easy to find. 
+- Inform Kyma teams about release deadlines on Slack channels at least one week before the first release candidate (RC1), and pin the message so that it is easy to find. 
 
 - Prepare the environment to test a release candidate. Share access to the testing environment with Kyma teams so that they can test their components before merging the RC.
 
@@ -21,7 +21,7 @@ The Release Master communicates the release progress simultaneously on these two
 - `c4core-xf-team` - the main channel to communicate with the Kyma teams
 - `c4core-kyma-scrum-masters` - a channel used to communicate the release progress to Scrum Masters
 
-The Kyma community must be notified about the planned dates of both release candidates (RC1 and RC2), as well as the date of the final release. Apart from that, the Release Master must inform about any occurrences regarding the release process. After the release is out, the Release Master sends notification about the new release on the external Kyma community [Slack channel](https://kyma-community.slack.com/messages/CBLBESMST/convo/CBLBESMST-1561563669.058300/).
+The Kyma community must be notified about the planned dates of both release candidates, as well as the date of the final release. Apart from that, the Release Master must inform about any occurrences regarding the release process. After the release is out, the Release Master sends notification about the new release on the external Kyma community [Slack channel](https://kyma-community.slack.com/messages/CBLBESMST/convo/CBLBESMST-1561563669.058300/).
 
 ## Communication persons
 
