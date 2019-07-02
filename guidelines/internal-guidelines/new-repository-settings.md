@@ -58,7 +58,7 @@ In Kyma, these rules are defined in the Prow [`config.yaml`](https://github.com/
 
 If you add a new repository in:
 - `kyma-project`, you do not need to add a new entry to the Prow `config.yaml` file as the branch protection is already defined for [all repositories](https://github.com/kyma-project/test-infra/blob/master/prow/config.yaml#L380) within this organization. The only exception is if you want to specify additional rules that are not handled by Prow.
-- `kyma-incubator`, add a new repository entry to the Prow `config.yaml` file, under **branch-protection.kyma-incubator.repos**. [See](https://github.com/kyma-project/test-infra/blob/master/prow/config.yaml#L422) an example of such an entry for the `varkes` repository.
+- `kyma-incubator`, add a new repository entry to the Prow `config.yaml` file, under **branch-protection.kyma-incubator.repos**. [See](https://github.com/kyma-project/test-infra/blob/master/prow/config.yaml#L442) an example of such an entry for the `marketplaces` repository.
 
 ## Add webhooks
 
@@ -86,7 +86,7 @@ To activate the ZenHub webhook:
 
 ## Add a milv file
 
-If you define any `governance` [Prow job](https://github.com/kyma-project/test-infra/blob/master/prow/jobs/) for the new repository to validate documentation links, you must add a `milv.config.yaml` file at the root of the repository. [See](https://github.com/kyma-project/test-infra/blob/master/milv.config.yaml) an example of the milv file.
+If you define any governance [Prow job](https://github.com/kyma-project/test-infra/blob/master/prow/jobs/) for the new repository to validate documentation links, you must add a `milv.config.yaml` file at the root of the repository. [See](https://github.com/kyma-project/test-infra/blob/master/milv.config.yaml) an example of the milv file.
 
 ## Create labels
 
