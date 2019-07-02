@@ -3,15 +3,15 @@
 In the Kyma project, we use GitHub Issues for tracking development process, and [ZenHub](https://zenhub.com) to manage the issues on a team and sprint level and to have a clear overview of the work across all Kyma repositories.
 
 This document explains:
-- how the issues and pull requests workflows are organized in the Kyma project
-- how issues triage is organized
-- which tools are used on every stage of the workflow
+- How the issues and pull requests workflows are organized in the Kyma project
+- How issues triage is organized
+- Which tools are used on every stage of the workflow
 
 ## Used labels
 
 Our statement is to:
-* use default labels provided by GitHub
-* introduce new labels only if necessary
+* Use default labels provided by GitHub
+* Introduce new labels only if necessary
 
 ### Default labels
 
