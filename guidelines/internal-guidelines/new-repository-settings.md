@@ -78,11 +78,11 @@ To activate the ZenHub webhook:
 1. Go to the [Kyma workspace](https://app.zenhub.com/workspaces/kyma---all-repositories-5b6d5985084045741e744dea/board?repos=139590616,139590577,139847219,139590666,139590641,147495537,151691065,146318286,157188288,156510564,167399060,169101295,171673731,150745068,167146343,165843160,170300585,186589820,188835954) on ZenHub.
 2. Click **Repos** and select the **Add Repos** option.
 
-![Zenhub webhook](../../../assets/zenhub-webhook.png)
+![Zenhub webhook](../../assets/zenhub-webhook.png)
 
 3. Choose the organization in the left bottom corner of the pop-up box, select the repository you want to add from the available list, and click the **Add this repo** button.
 
-![](../../assets/zenhub-webhook2.png)
+![Zenhub webhook 2](../../assets/zenhub-webhook2.png)
 
 ## Add a milv file
 
