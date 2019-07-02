@@ -18,15 +18,15 @@ With great power comes great responsibility. Code owners not only review and app
 
 Every code owner is expected to:
 
-* Contribute high-quality code and content
-* Communicate and collaborate with other code owners to improve the ownership process
-* Perform a thorough review of incoming PRs and make sure they follow the [contributing rules](CONTRIBUTING.md)
-* Approve only those PRs in which the contributor made the requested improvements
-* Check if the related CI tests have completed successfully before approving the PR
-* Make sure that the PR approval flow runs smoothly
-* Prioritize issues and manage their processing
-* Proactively fix bugs
-* Perform maintenance tasks for their projects
+* Contribute high-quality code and content.
+* Communicate and collaborate with other code owners to improve the ownership process.
+* Perform a thorough review of incoming PRs and make sure they follow the [contributing rules](CONTRIBUTING.md).
+* Approve only those PRs in which the contributor made the requested improvements.
+* Check if the related CI tests have completed successfully before approving the PR.
+* Make sure that the PR approval flow runs smoothly.
+* Prioritize issues and manage their processing.
+* Proactively fix bugs.
+* Perform maintenance tasks for their projects.
 
 ### Add or remove a code owner
 
