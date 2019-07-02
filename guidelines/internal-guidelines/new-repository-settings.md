@@ -1,10 +1,10 @@
 # Repository Settings
 
-All repositories in `kyma-project` and `kyma-incubator` organizations should be similar in structure, settings, and restrictions. Follow this document to adjust the new repository settings when you create a new repository in one of these organizations.
+All repositories in `kyma-project` and `kyma-incubator` organizations should be similar in structure, settings, and restrictions. Follow these guidelines to adjust settings of a new repository created in one of these organizations.
 
 > **NOTE:** You have to be an owner of the given organization to create a new repository in it.
 
-## Table of contents
+## Contents
 
 Follow these sections:
 
@@ -21,15 +21,15 @@ Follow these sections:
 
 After you create a new repository, copy the basic repository structure from the [`template`](./repository-template/template) folder that is available in the `community` repository. It contains such files as the obligatory Apache license, the `CODEOWNERS` file that governs the review and approval flow in the repository, and the Stale Bot that handles inactive issues.
 
-> **TIP:** Read this [`README.md`](./repository-template/README.md) document to learn more about each file and document within the `template` folder.
+> **TIP:** Read this [`README.md`](./repository-template/README.md) document to learn more about the content of the `template` folder.
 
-After copying the template documents and files, modify these according to the instructions they contain:
+After copying the folder's contents, modify these according to the instructions they contain:
 - [`CODEOWNERS`](./repository-template/template/CODEOWNERS) to define who is responsible for the review and approval of specific repository parts
 - [`README.md`](./repository-template/template/README.md) to describe the repository and explain how to use and develop it
 
 ## Adjust repository options
 
-Under the repository name, click **Settings**. The **Options** view opens as the default one in the left menu.
+Under the repository name, choose the **Settings** tab. The **Options** view opens as the default one in the left menu.
 
 1. Scroll down to the **Features** section and clear these options:
 - Wikis
@@ -54,7 +54,7 @@ To see these settings, go to **Branches** in the left menu, under repository **S
 
 ![Branch protection rules](../../assets/branch-protection-rules.png)
 
-In Kyma, these rules are defined in the Prow [`config.yaml`](https://github.com/kyma-project/test-infra/blob/master/prow/config.yaml) file and handled by a Prow component called [Branch Protector](https://github.com/kyma-project/test-infra/blob/master/docs/prow/prow-architecture.md#branch-protector).
+In Kyma, the protection rules are defined in the Prow [`config.yaml`](https://github.com/kyma-project/test-infra/blob/master/prow/config.yaml) file and handled by a Prow component called [Branch Protector](https://github.com/kyma-project/test-infra/blob/master/docs/prow/prow-architecture.md#branch-protector).
 
 If you add a new repository in:
 - `kyma-project`, you do not need to add a new entry to the Prow `config.yaml` file as the branch protection is already defined for [all repositories](https://github.com/kyma-project/test-infra/blob/master/prow/config.yaml#L380) within this organization. The only exception is if you want to specify additional rules that are not handled by Prow.
@@ -90,4 +90,6 @@ If you define any governance-related [Prow job](https://github.com/kyma-project/
 
 ## Create labels
 
-[Define labels](https://help.github.com/en/articles/creating-a-label) for the new repository so you could use them in issues and pull requests. Follow the naming convention and color array used in other repositories.
+[Define labels](https://help.github.com/en/articles/creating-a-label) for the new repository so you could use them in issues and pull requests. Follow the naming convention and color array used in other repositories such as [`kyma`](https://github.com/kyma-project/kyma/labels).
+
+> **TIP:** You can copy labels from the existing repository to the new repository using [this](https://github.com/jvandemo/copy-github-labels-cli) GitHub CLI tool.

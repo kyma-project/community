@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository offers a unified folder, file, and document structure. Use it for every new repository that you create in Kyma. It helps you to ensure that the project is consistent and standardized.
+This `template` folder offers a unified file, document, and folder structure. Use it for every new repository that you create in Kyma. It helps you to ensure that the project is consistent and standardized.
 
 ## Usage
 
