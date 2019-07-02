@@ -36,7 +36,7 @@ Under the repository name, click **Settings**. The **Options** view opens as the
 - Restrict editing to users in teams with push access only
 - Projects
 
-![](/../../assets/features.png)
+![](../../../assets/features.png)
 
 2. Go to the **Merge button** section and clear these options:
 - Allow merge commits
@@ -52,7 +52,7 @@ Define branch protection rules that include enforcing obligatory review and appr
 
 To see these settings, go to **Branches** in the left menu, under repository **Settings**:
 
-![](../../../../assets/branch-protection-rules.png)
+![](../../../assets/branch-protection-rules.png)
 
 In Kyma, these rules are defined in the Prow [`config.yaml`](https://github.com/kyma-project/test-infra/blob/master/prow/config.yaml#L368) file and handled by a Prow component called [Branch Protector](https://github.com/kyma-project/test-infra/blob/master/docs/prow/prow-architecture.md#branch-protector).
 
@@ -66,7 +66,7 @@ Add ZenHub and Prow webhooks to integrate them with your repository. This way, G
 
 These settings are available under **Webhooks** in the left menu, under repository **Settings**:
 
-![](../../../../../assets/webhooks.png)
+![](../../../assets/webhooks.png)
 
 ### Prow webhook
 
