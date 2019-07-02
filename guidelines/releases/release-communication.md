@@ -1,39 +1,39 @@
 # Release communication
 
-This document describes a release process communication.
+One of the Release Master's responsibilities is to update the rest of the organization on the progress of the release process. This document describes how to perform the release process communication.
 
 ## Communication channels
 
-The communication Kyma team should be conducted simultaneously on the two important channels: 
+The Release Master communicates the release progress simultaneously on these two internal Slack channels: 
 
-- `c4core-xf-team` - main channel to communicate about the release progress. 
-- `c4core-kyma-scrum-masters` - a channel to escalate actions in case when some team lingers with their job. In that case you can also write directly to the proper Scrum Master.
+- `c4core-xf-team` - the main channel to communicate with the Kyma teams
+- `c4core-kyma-scrum-masters` - a channel used to communicate the release progress to scrum masters
 
-The Kyma community should be notified about the release on the external channel. Our official channel for external announcements in `#general` on the `kyma-community` slack workspace.
+The Kyma community must be notified about the planned dates of both release candidates (RC1 and RC2), as well as the date of the final release. Apart from that, the Release Master must inform about any occurrences regarding the release process. After the release is out, the Release Master sends notification about the new release on the external Kyma community [Slack channel](https://kyma-community.slack.com/messages/CBLBESMST/convo/CBLBESMST-1561563669.058300/).
 
 ## Communication persons
 
-The Kyma team persons which are responsible for the releasing:
+The following are contact persons responsible for the whole release process in Kyma:
 
 - [Jose Cortina](https://github.com/jose-cortina)
 
-## Release master responsibilities
+## Release Master responsibilities
 
-At the beginning of the release the releasing team should pick a release master which will manage the release process. 
+At the beginning of the release process, the team responsible for the release picks a Release Master who will manage the release process. 
 
-The release master is obliged to do the following things:
+The Release Master is obliged to do the following:
 
-- Inform the Kyma team about release deadlines about one week before RC1. The release important dates should be pinned in all channels mentioned above. The Kyma team must know the planned date of the release to don't exceed them. The release master must watch if all Kyma teams respect the deadlines. In case not, he must escalate that to a proper channel or person.
+- Inform Kyma teams about release deadlines on Slack channels at least one week before RC1, and pin the message so that it is easy to find. 
 
-- Prepare the environment to test the release candidates at least 3 days before merging it. All kyma teams should use the prepared cluster to test their components. 
+- Prepare the environment to test a release candidate. Share access to the testing environment with Kyma teams so that they can test their components before merging the RC.
 
-- Create a excel sheet where all the manual tests are defined and he must take care that all of them are executed by the teams responsible for them. If some team doesnt executed their manual tests, that case must be escalated as well.
+- Create an excel sheet where all the manual tests are defined and ensure that all tests are executed by responsible teams.
 
-- Inform the Kyma teams about deadlines for cherry-picking to the release candidates.
+- Inform Kyma teams about deadlines for cherry-picking changes to the release branch.
 
-- Inform the Kyma teams about all the release related pull requests which requires approvals in order to merge them as quickly as possible.
+- Inform Kyma teams about all the release-related pull requests that require approvals.
 
-- Inform the Kyma teams which tests are failing to fix them as quickly as possible. It should be escalated if there is any risk that some test won't be fixed which will affect the release. The Kyma teams which are responsible for failing test should communicate with release master about fixing progress.
+- Notify Kyma teams about failing tests to fix them as quickly as possible. Kyma teams responsible for failing tests should communicate with a Release Master about the fixing progress.
 
 ## Communication rules
 
@@ -43,10 +43,10 @@ It's recommended to write updates about releases using the multiline sentences w
 
 When the updates about the release are important, they should be pinned to the channel so they will be more visible.
 
-## Scrum of scrums meetings
+## Scrum of Scrums meetings
 
-Scrum of Scrums is the internal meeting for the Kyma Scrum Masters.
+A Release Master should cooperate with scrum masters regarding the release process communication. Either the Release Master or a scrum master dedicated to the releasing team must inform other scrum masters on the release progress during the biweekly Scrum of Scrums (SoS) meetings.
 
 The Scrum Master which team is responsible for the release should give a status about the release progress at the Scrum of Scrums meetings, so all of the Scrum Masters will know if there are some obstacles for the release.
 
-The Scrum Master is also responsible for updating a Scrum of Scrums MagicBox under the Wiki page for the adequate release.
+A dedicated scrum master is also responsible for updating the SoS MagicBox under the Wiki page for a given release. The MagicBox must contain all the information and deadlines that affect all Kyma teams.
