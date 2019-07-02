@@ -1,8 +1,6 @@
 # Release communication
 
-At the beginning of the release process, the team responsible for the release picks a Release Master who will manage the release process. 
-
-One of the Release Master's responsibilities is to update the rest of the organization on the progress of the release process. This document describes how to perform the release process communication.
+At the beginning of the release process, the team responsible for the release picks a Release Master who will manage the release process. One of the Release Master's responsibilities is to update the rest of the organization on the progress of the release process.
 
 The Release Master is obliged to do the following:
 
