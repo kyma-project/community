@@ -36,13 +36,13 @@ Under the repository name, click **Settings**. The **Options** view opens as the
 - Restrict editing to users in teams with push access only
 - Projects
 
-![](../../../assets/features.png)
+![Features](../../assets/features.png)
 
 2. Go to the **Merge button** section and clear these options:
 - Allow merge commits
 - Allow rebase merging
 
-![](../../../assets/merge-button.png)
+![Merge button](../../assets/merge-button.png)
 
 Leave only the **Allow squash merging** option selected. This option combines all commits into one before merging the changes into the `master` branch.
 
@@ -52,7 +52,7 @@ Define branch protection rules that include enforcing obligatory review and appr
 
 To see these settings, go to **Branches** in the left menu, under repository **Settings**:
 
-![](../../../assets/branch-protection-rules.png)
+![Branch protection rules](../../assets/branch-protection-rules.png)
 
 In Kyma, these rules are defined in the Prow [`config.yaml`](https://github.com/kyma-project/test-infra/blob/master/prow/config.yaml#L368) file and handled by a Prow component called [Branch Protector](https://github.com/kyma-project/test-infra/blob/master/docs/prow/prow-architecture.md#branch-protector).
 
@@ -66,7 +66,7 @@ Add ZenHub and Prow webhooks to integrate them with your repository. This way, G
 
 These settings are available under **Webhooks** in the left menu, under repository **Settings**:
 
-![](../../../assets/webhooks.png)
+![Webhooks](../../assets/webhooks.png)
 
 ### Prow webhook
 
@@ -78,11 +78,11 @@ To activate the ZenHub webhook:
 1. Go to the [Kyma workspace](https://app.zenhub.com/workspaces/kyma---all-repositories-5b6d5985084045741e744dea/board?repos=139590616,139590577,139847219,139590666,139590641,147495537,151691065,146318286,157188288,156510564,167399060,169101295,171673731,150745068,167146343,165843160,170300585,186589820,188835954) on ZenHub.
 2. Click **Repos** and select the **Add Repos** option.
 
-![](../../../assets/zenhub-webhook.png)
+![Zenhub webhook](../../../assets/zenhub-webhook.png)
 
 3. Choose the organization in the left bottom corner of the pop-up box, select the repository you want to add from the available list, and click the **Add this repo** button.
 
-![](../../../assets/zenhub-webhook2.png)
+![](../../assets/zenhub-webhook2.png)
 
 ## Add a milv file
 
