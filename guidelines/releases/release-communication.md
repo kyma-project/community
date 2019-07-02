@@ -35,14 +35,6 @@ The Release Master is obliged to do the following:
 
 - Notify Kyma teams about failing tests to fix them as quickly as possible. Kyma teams responsible for failing tests should communicate with a Release Master about the fixing progress.
 
-## Communication rules
-
-The messages about the release sent to the Kyma slack channels should be written transparently. They should inform about each aspect of the next release step.
-
-It's recommended to write updates about releases using the multiline sentences which won't be missed among other messages in the channel.
-
-When the updates about the release are important, they should be pinned to the channel so they will be more visible.
-
 ## Scrum of Scrums meetings
 
 A Release Master should cooperate with scrum masters regarding the release process communication. Either the Release Master or a scrum master dedicated to the releasing team must inform other scrum masters on the release progress during the biweekly Scrum of Scrums (SoS) meetings.
