@@ -82,7 +82,7 @@ To activate the ZenHub webhook:
 
 3. Choose the organization in the left bottom corner of the pop-up box, select the repository you want to add from the available list, and click the **Add this repo** button.
 
-![Zenhub webhook 2](../../assets/zenhub-webhook2.png)
+![Zenhub webhook 2](../../assets/zenhub-webhook-2.png)
 
 ## Add a milv file
 
