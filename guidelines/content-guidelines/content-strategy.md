@@ -56,7 +56,7 @@ Each technical topic must have the following document types arranged in the fixe
 7. [**CLI Reference**](../templates/resources/cli-reference.md) (`07`) - Use it to describe the syntax and the use of CLI commands for a given component.
 8. [**Tutorials**](../templates/resources/tutorials.md) (`08`) - Use it to provide a clear step-by-step instruction that helps the user to understand a given concept better. The user must be able to go through all the steps of the document and complete them. There is no separate tutorial type. The document does not have to explicitly point out the example used as, at the end, the explicit reference to the example will be in the main content of the guide.
 9. **API** (`09`) - Use it to document the exposed external API of components that the Kyma administrators use to integrate them with Kyma.
-10. **Troubleshooting** (`10`) - Use it to explain all details needed for Kyma and its components' troubleshooting.
+10. [**Troubleshooting**](../templates/resources/troubleshooting.md) (`10`) - Use it to explain all details needed for Kyma and its components' troubleshooting.
 
 ### Optional
 
