@@ -16,12 +16,7 @@ At the beginning of the release process, the team responsible for the release pi
 
 ## Communication channels
 
-The Release Master communicates the release progress simultaneously on these two internal Slack channels: 
-
-- `c4core-xf-team` - the main channel to communicate with the Kyma teams
-- `c4core-kyma-scrum-masters` - a channel used to communicate the release progress to Scrum Masters
-
-The Kyma community must be notified about the planned dates of both release candidates, as well as the date of the final release. Apart from that, the Release Master must inform about any occurrences regarding the release process. After the release is out, the Release Master sends notification about the new release on the external Kyma community [Slack channel](https://kyma-community.slack.com/messages/CBLBESMST/convo/CBLBESMST-1561563669.058300/).
+The Kyma team must be notified about the planned dates of both release candidates, as well as the date of the final release. Apart from that, the Release Master must inform about any occurrences regarding the release process. After the release is out, the Release Master sends notification about the new release on the external Kyma community [Slack channel](https://kyma-community.slack.com/messages/CBLBESMST/convo/CBLBESMST-1561563669.058300/).
 
 ## Communication persons
 
