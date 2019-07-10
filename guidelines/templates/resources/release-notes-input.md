@@ -1,4 +1,4 @@
-> This template is dedicated to product owners. Use it to provide input for release notes for your Kyma component. See the template for [release notes](./release-notes.md) to see how your input fits into the whole release notes picture.
+> This template is dedicated to Product Owners. Use it to provide input for release notes for your Kyma component. See the template for [release notes](./release-notes.md) to see how your input fits into the whole release notes picture.
 
 ## {Component Name}
 
@@ -20,3 +20,11 @@
 > List the known issues affecting the component. Add a short description of the issue and a workaround for it, if there is any.
 - {Known issue} - {Short description}
     - {Workaround} - {Workaround description}
+
+### Security vulnerabilities fixed
+
+> List the solved security vulnerability issues related to the Kyma project. Provide a short issue description, its risk assesment, and a link to the pull request that solves the issue. You can also include a link to the created issue. The risk assement is provided in each issue of the `Security Vulnerability` type created on Github. 
+- {Short issue description} - {Issue link} - {Risk assesment} - {PR link}
+
+>For example, write:
+> Prow jobs access Kyma test cluster using insecure channels - [Issue](https://github.wdf.sap.corp/SAP-CP-Extension-Factory/commercialization/issues/260) - CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L **5.6 (Medium)** - {PR link}
