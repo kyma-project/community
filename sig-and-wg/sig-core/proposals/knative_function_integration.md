@@ -2,27 +2,27 @@
 
 ## Introduction
 
-One of the main features of kyma is its ability to run serverless functions. Currently this feature is implemented using the open source project [kubeless.io](https://github.com/kubeless/kubeless). With the focus shift towards knative kubeless.io will be replaced with a knative based function runtime controller (called knative-functions from here on).
+One of the main features of kyma is its ability to run serverless functions. Currently this feature is implemented using the open source project [kubeless](https://github.com/kubeless/kubeless). With the focus shift towards knative will be replaced with a [knative](https://github.com/knative) based function runtime controller (called knative-functions from here on).
 
 ## Problem
 
-As long as neither knative-serving / knative-build nor the knative-functions itself provides a stable API it shall be an experimental feature to use the new function controller.
+As long as neither [knative-serving](https://github.com/knative/serving) / [knative-build](https://github.com/knative/build) nor the knative-functions itself provide a stable API it shall be an experimental feature to use the new function controller.
 
-Switching the runtime should provide a similar user experience as with the currently available kubeless.io runtime. This includes CRUD operations for the functions from within the user interface as well as monitoring / alerting and  backup / restore.
+Switching the runtime should provide a similar user experience as with the currently available kubeless runtime. This includes CRUD operations for the functions from within the user interface as well as monitoring / alerting and  backup / restore.
 
 ## Goal
 
 * Clearly show problems and provide possible solutions.
 * Propose next steps for integration of the new controller runtime.
-* Provide a migration path from kubeless.io to the new runtime
+* Provide a migration path from kubeless to the new runtime
 
 ## Problems
 
 ### Multiple Runtimes
 
-Currently kubeless.io is installed by default as a core component into every kyma installation. Technically it is easily possible to install the knative-functions in parallel with kubeless.io.
+Currently kubeless is installed by default as a core component into every kyma installation. Technically it is easily possible to install the knative-functions in parallel with kubeless.
 
-#### Sole Installation
+#### 'Solo' Installation
 
 Installing only one of the runtimes requires changes in the current installation approach for kubeless. kubeless is currently not a separate module. This means its installation cannot be disabled at the moment. Moving kubeless to its own module is a major task. Due to the fact that the use of kubeless will be discontinued we advise against this solution.
 
@@ -47,7 +47,7 @@ Another approach to have only one active runtime could be a feature-flag that al
 ##### Disadvantages
 
 * both runtimes use system ressources
-* UI has to be able to kope with both runtimes
+* UI has to be able to cope with both runtimes
   
 #### Both runtimes active
 
@@ -61,15 +61,15 @@ It is also possible to install both runtimes at the same time and support functi
 ##### Disadvantages
 
 * both runtimes use system ressources
-* UI has to be able to kope with both runtimes at the same time(probably hardest version to implement)
+* UI has to be able to cope with both runtimes at the same time(probably hardest version to implement)
 
 #### Proposal
 
-install both runtimes into the same cluster, but introduce a flag that marks the active runtime.
+install both runtimes into the same cluster and allow the user to use both runtimes at will.
 
 ### UI changes
 
-Even though the kubeless.io function crd and the knative-functions crd look very similar some changes to the UI layer are required:
+Even though the kubeless function crd and the knative-functions crd look very similar some changes to the UI layer are required:
 
 #### Builds
 
@@ -114,7 +114,6 @@ spec:
 
 The problem that needs to be solved here is that as soon as the service binding controller modifies the knative-service knative-serving creates a new revision and automatically starts a new pod with the updated configuration. The PodPreset also does this creates a new pod based on the old configuration plus the updated PodPreset. So until knative-serving scales down the service the pods are duplicated.
 
-
 ### Monitoring and Alerting
 
 Currently existing dashboards must be adapted to support the new knative-functions. Existing alert rules have to be adapted as well.
@@ -135,8 +134,7 @@ Currently existing dashboards must be adapted to support the new knative-functio
 
 * implement the required UI and GraphQL changes
 * create knative-functions module for kyma installer
-* implement an upgrade job
-
+* implement an migration job
 
 ## Additional Thoughts
 * it might be necessary to run multiple function controllers in the same cluster that reconcile the same CRD. (e.g. one that schedules the function locally, on that schedules it in a different cluster). The knative-function CRD should be implemented in a way to support this.
