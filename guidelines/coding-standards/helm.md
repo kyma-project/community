@@ -64,7 +64,9 @@ When a CRD is deleted, all of the associated implementations are removed, which 
 
 This section cover minimal requirements and conventions of metadata schema definition for Kyma charts. 
 
-1. Each chart should have a metadata file with name `values.schema.json` placed where charts `values.yaml` file placed. E.g. see screenshot below.
+Schema should define important configuration parameters (not all parameters listed in `values.yaml` files) from customer perspective and which can vary depending on installation.
+
+1. Each chart should have a metadata file with name `values.schema.json` placed where charts `values.yaml` (same for sub-charts) file placed. E.g. see screenshot below.
 
    ![Example 1](../../assets/metadata-schema.png)
 
@@ -79,7 +81,7 @@ E.g.  helm chart value `.Values.loki.port` should be modeled in schema example b
   - A `description` to explain purpose of configuration property
   - A `default` to provide default value of configuration property
   - A `type` to declare data type of configuration property value
-  - A `examples` if required, a list of possible example values, e.g. for cases when no default value provided 
+  - A `examples` if required, a list of possible example values, e.g. storage types supported (see example schema below)
 
 Example chart values.yaml file
 ```yaml
@@ -89,6 +91,7 @@ loki:
   
   config:
     auth_enabled: false
+    store: inmemory
 
 promtail:
   port: 3101
@@ -120,12 +123,17 @@ Example schema definition for values.yaml
           "type": "object",
           "description": "Loki service configuration",
           "contentEncoding": "base64",
-          "examples": ["MD5", "base64"],
           "properties": {
             "auth_enabled": {
               "description": "Setting to enable or disable loki basic http authentication",
               "default": false,
               "type": "boolean"
+            },
+            "store": {
+              "description": "Storage type of log chunks",
+              "type": "string",
+              "default": "inmemory",
+              "examples": ["consul", "inmemory"]
             }
           }
         }
