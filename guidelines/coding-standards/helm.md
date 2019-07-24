@@ -75,13 +75,13 @@ The schema defines configuration parameters important from a customer perspectiv
 3. Schema definition does not support dot `(.)` notation. This means that if you have nested value properties, your schema definition must define the object structure.
 See the **.Values.loki.port** property for a sample object structure defined within a schema. 
 
-4. For each schema `object`, define a **description**  to explain the purpose of the schema definition.
+4. For each schema object, define a **description**  to explain its purpose.
 
 5. For each configuration property, declare:
-  - A **description** to explain the configuration purpose.
-  - A **default** value.
+  - A **description** property to explain the configuration purpose.
+  - A **default** property and its value.
   - A data **type**.
-  -  An **examples** property to list of possible example values, such as supported storage types. This property is optional.
+  - An **examples** property to list of possible example values, such as supported storage types. This property is optional.
 
 An example chart `values.yaml` file looks as follows:
 
