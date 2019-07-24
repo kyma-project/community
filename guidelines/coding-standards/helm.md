@@ -66,18 +66,18 @@ This section covers the minimal requirements and conventions of metadata schema 
 
 The schema defines configuration parameters important from a customer perspective, as opposed to all parameters you can find in the `values.yaml` files. These parameters can vary depending on installation.
 
-1. Make sure to place the `values.schema.json` metadata file where the chart's `values.yaml` file resides. See the screenshot for reference.
+* Make sure to place the `values.schema.json` metadata file where the chart's `values.yaml` file resides. See the screenshot for reference.
 
    ![Example 1](../../assets/metadata-schema.png)
 
-2. For each schema, define a description including detailed information about schema and Helm chart. 
+* For each schema, define a description including detailed information about schema and Helm chart. 
 
-3. Schema definition does not support dot `(.)` notation. This means that if you have nested value properties, your schema definition must define the object structure.
+* Schema definition does not support dot `(.)` notation. This means that if you have nested value properties, your schema definition must define the object structure.
 See the **.Values.loki.port** property for a sample object structure defined within a schema. 
 
-4. For each schema object, define a **description**  to explain its purpose.
+* For each schema object, define a **description**  to explain its purpose.
 
-5. For each configuration property, declare:
+* For each configuration property, declare:
   - A **description** property to explain the configuration purpose.
   - A **default** property and its value.
   - A data **type**.
@@ -99,7 +99,7 @@ promtail:
   nameOverride: promtail
 ```
 
-Example schema definition for values.yaml
+An example `values.yaml` file looks as follows:
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
