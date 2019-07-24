@@ -65,7 +65,7 @@ When a CRD is deleted, all of the associated implementations are removed, which 
 This section covers the minimal requirements and conventions of metadata schema definition for Kyma charts. 
 
 The schema defines configuration parameters important from a customer perspective, as opposed to all parameters you can find in the `values.yaml` files. These parameters can vary depending on installation.
-
+When defining a schema for a Kyma chart, follow these guidelines: 
 * Make sure to place the `values.schema.json` metadata file where the chart's `values.yaml` file resides. See the screenshot for reference.
 
    ![Example 1](../../assets/metadata-schema.png)
