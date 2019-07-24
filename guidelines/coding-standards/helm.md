@@ -66,24 +66,25 @@ This section covers the minimal requirements and conventions of metadata schema 
 
 The schema should define important configuration parameters (not all parameters listed in `values.yaml` files) from a customer perspective and which can vary depending on installation.
 
-1. Each chart should have a metadata file with name `values.schema.json` placed where the chart's `values.yaml` (same for sub-charts) file is placed. E.g. see screenshot below.
+1. Make sure to place the `values.schema.json` metadata file where the chart's `values.yaml` file resides. See the screenshot for reference.
 
    ![Example 1](../../assets/metadata-schema.png)
 
-2. Each schema should define `desription` for detailed information about schema and helm chart. 
+2. For each schema, define a description including detailed information about schema and Helm chart. 
 
-3. Schema definition does not support dot `(.)` notation which mean if you have nested value properties schema definition should define object structure.
-E.g.  helm chart value `.Values.loki.port` should be modeled in schema example below.
+3. Schema definition does not support dot `(.)` notation. This means that if you have nested value properties, your schema definition must define the object structure.
+See the **.Values.loki.port** property for a sample object structure defined within a schema. 
 
-4. Each schema `object` definition should define at least a `description` to explain configuration section
+4. For each schema `object`, define a **description**  to explain the purpose of the schema definition.
 
-5. Each configuration property should declare:
-  - A `description` to explain purpose of configuration property
-  - A `default` to provide default value of configuration property
-  - A `type` to declare data type of configuration property value
-  - A `examples` if required, a list of possible example values, e.g. storage types supported (see example schema below)
+5. For each configuration property, declare:
+  - A **description** to explain the configuration purpose.
+  - A **default** value.
+  - A data **type**.
+  -  An **examples** property to list of possible example values, such as supported storage types. This property is optional.
 
-Example chart values.yaml file
+An example chart `values.yaml` file looks as follows:
+
 ```yaml
 loki:
   port: 3100
