@@ -99,7 +99,7 @@ promtail:
   nameOverride: promtail
 ```
 
-An example `values.yaml` file looks as follows:
+An example `values.schema.json` file looks as follows:
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
