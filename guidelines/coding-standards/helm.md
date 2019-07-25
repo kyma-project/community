@@ -59,3 +59,103 @@ When a CRD is deleted, all of the associated implementations are removed, which 
 2. Remove the old CRD.
 3. Run the upgrade.
 4. Restore all CRD implementations. 
+
+## Defining metadata schema for Kyma charts
+
+This section covers the minimal requirements and conventions of metadata schema definition for Kyma charts. 
+
+The schema defines configuration parameters important from a customer perspective, as opposed to all parameters you can find in the `values.yaml` files. These parameters can vary depending on installation.
+When defining a schema for a Kyma chart, follow these guidelines: 
+* Make sure to place the `values.schema.json` metadata file where the chart's `values.yaml` file resides. See the screenshot for reference.
+
+   ![Example 1](../../assets/metadata-schema.png)
+
+* For each schema, define a description including detailed information about schema and Helm chart. 
+
+* Schema definition does not support dot `(.)` notation. This means that if you have nested value properties, your schema definition must define the object structure.
+See the **.Values.loki.port** property for a sample object structure defined within a schema. 
+
+* For each schema object, define a **description**  to explain its purpose.
+
+* For each configuration property, declare:
+  - A **description** property to explain the configuration purpose.
+  - A **default** property and its value.
+  - A data **type**.
+  - An **examples** property to list of possible example values, such as supported storage types. This property is optional.
+
+An example chart `values.yaml` file looks as follows:
+
+```yaml
+loki:
+  port: 3100
+  nameOverride: loki
+  
+  config:
+    auth_enabled: false
+    store: inmemory
+
+promtail:
+  port: 3101
+  nameOverride: promtail
+```
+
+An example `values.yaml` file looks as follows:
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Schema definition for logging helm chart values",
+  "type": "object",
+  "properties": {
+    "loki": {
+      "description": "Configuration properties for component loki",
+      "type": "object",
+      "properties": {
+        "port": {
+          "description": "TCP port loki expose",
+          "default": 3100,
+          "type": "number"
+        },
+        "nameOverride": {
+          "description": "Property to override service name of loki",
+          "default": "loki",
+          "type": "string"
+        },
+        "config": {
+          "type": "object",
+          "description": "Loki service configuration",
+          "contentEncoding": "base64",
+          "properties": {
+            "auth_enabled": {
+              "description": "Setting to enable or disable loki basic http authentication",
+              "default": false,
+              "type": "boolean"
+            },
+            "store": {
+              "description": "Storage type of log chunks",
+              "type": "string",
+              "default": "inmemory",
+              "examples": ["consul", "inmemory"]
+            }
+          }
+        }
+      }
+    },
+    "promtail": {
+      "description": "Configuration properties for component promtail",
+      "type": "object",
+      "properties": {
+        "port": {
+          "description": "TCP port promtail expose",
+          "default": 3101,
+          "type": "number"
+        },
+        "nameOverride": {
+          "description": "Property to override service name of promtail",
+          "default": "promtail",
+          "type": "string"
+        }
+      }
+    }
+  }
+}
+```
