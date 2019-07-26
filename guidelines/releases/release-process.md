@@ -186,11 +186,12 @@ Follow these steps to create a release:
 
 	1. Run `/test pre-{release_number}-kyma-installer` and wait until it finishes.
 	1. Run `/test pre-{release_number}-kyma-artifacts` and wait until it finishes.
-	1. Run `/test pre-{release_number}-kyma-gke-integration` and `/test pre-{release_number}-kyma-gke-upgrade`. You can start them in parallel.
+	1. Run `/test pre-{release_number}-kyma-gke-integration`, `/test pre-{release_number}-kyma-gke-upgrade`, and `/test pre-{release_number}-kyma-gke-backup`. You can start them in parallel.
 	1. Wait for the jobs to finish:
 		 - `pre-{release_numberg s}-kyma-integration`
 		 - `pre-{release_number}-kyma-gke-integration`
 		 - `pre-{release_number}-kyma-gke-upgrade`
+		 - `pre-{release_number}-kyma-gke-backup`
 
 6. If you detect any problems with the release, such as failing tests, wait for the fix that can be delivered either on a PR or cherry-picked to the PR from the `master` branch.  
 	Prow triggers the jobs again. Rerun manual jobs as described in **step 5**.
