@@ -83,13 +83,59 @@ knative-serving allows scale to zero. This means a function can have zero runnin
 
 In the current implementation function sizes (S, M, L, XL) are configured and handled by the UI-Layer. This means the sizes are translated into their configured cpu / memory requests/limits. For the new controller this mapping is handled by the controller itself. It is also possible to add or remove additional sizes. The UI just has to retrieve the configured sizes from the controller and configure the function accordingly.
 
+#### Function creation flow
+
+![Creation flow](assets/knative_function_workflow.svg)
+When a user creates a function in the UI, the creation of 4 objects will be triggered.
+
+* Function
+* ServiceBinding
+* ServiceBindingUsage
+* API  
+
+#### GraphQL
+
+In order to allow changes to the function implementation without having to change the UI all calls to the API server have to be replaced by GraphQL calls. Currently these are not implemented, so an additional GraphQL layer has to be implemented that allows CRUD operations on function objects.
+
+```json
+type Function {
+  name: String!
+  functionCode: String!
+  size: FunctionSize
+  runtime: FunctionRuntime
+  dependencies: String
+  environment: [EnvironmentVariable]
+  timeout: Int
+  status: FunctionStatus!
+}
+
+type FunctionSize {
+  name: String!
+  description: String!
+}
+
+type FunctionRuntime {
+  name: String!
+  description: String!
+}
+
+type FunctionStatus {
+  type: FunctionStatusType!
+  message: String
+}
+
+type EnvironmentVariable {
+  name: String!
+  value: String!
+}
+```
+
 ### Proposal
 
 The UI for knative-functions should be implemented as a new micro frontend. This will allow us to enable the old and the new UI at the same time and keep the code clean. The feature flag will be used to enable the new UI.
 
-### GraphQL
+With a proper GraphQL layer in place the UI should create the objects not in one huge call but one by one. This means that at first only the Function-CR related information can be entered. As soon as a user created the function more options will be available. The user is now able to expose the function by creating a api object and bind to services using ServiceBindings.
 
-In order to allow changes to the function implementation without having to change the UI all calls to the API server have to be replaced by GraphQL calls. Currently these are not implemented, so an additional GraphQL layer has to be implemented that allows CRUD operations on function objects as well as their subobjects (services, routes, builds).
 
 ### Service Catalog
 
