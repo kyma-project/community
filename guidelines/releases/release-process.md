@@ -83,9 +83,9 @@ Follow these steps to create a release:
 2. Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on a release branch contains the correct version to be created. The file should contain a release version following the `{A}.{B}.{C}` or `{A}.{B}.{C}-rc{D}` format, where `A`,`B`, `C`, and `D` are numbers. If you define a release candidate version, a pre-release is created.  
 
 	Make sure the `RELEASE_VERSION` file includes just this single line:  
-	\`\`\`bash
-	echo -n {RELEASE\_VERSION} \> prow/RELEASE\_VERSION
-	\`\`\\\`
+	```bash
+	echo -n {RELEASE_VERSION} > prow/RELEASE_VERSION
+	```
 
 3. Push the branch to the `test-infra` repository.
 
