@@ -70,7 +70,12 @@ These settings are available under **Webhooks** in the left menu, under reposito
 
 ### Prow webhook
 
-Only Prow admins can activate the Prow webhook. Contact them by raising an issue in the `test-infra` repository with details of your request. You can also contact them on the [CI Slack channel](https://kyma-community.slack.com/messages/CD1C8PK1B/).
+Only Prow admins can activate the Prow webhook. In order to do that Prow admin needs to have admin permission to your repository. Contact them by raising an issue in the `test-infra` repository with details of your request. You can also contact them on the [CI Slack channel](https://kyma-community.slack.com/messages/CD1C8PK1B/).
+
+Prow admin has to connect to to Prow cluster and retrieve `hmac-token` from secret.
+`kubectl get secret hmac-token -o jsonpath="{.data.hmac}" | base64 --decode`
+
+![Webhooks](../../assets/webhook-git-config.png)
 
 ### ZenHub webhook
 
