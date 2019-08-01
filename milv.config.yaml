@@ -1,6 +1,6 @@
 white-list-external: ["localhost", "kyma.local", "kyma-system"]
-white-list-internal: ["mailto:kyma-security@googlegroups.com", "/.kyma-project-io/", "/collaboration/", "/contributing/", "/governance/", "/guidelines/content-guidelines/", "/guidelines/releases-guidelines/", "/guidelines/repository-guidelines/", "/guidelines/technical-guidelines/", "/guidelines/templates/README.md", "/guidelines/templates/templates-type.md"]
-black-list: ["/templates/","-template.md"]
+white-list-internal: ["mailto:kyma-security@googlegroups.com", "/community/"]
+black-list: ["/templates/","-template.md", "/.kyma-project-io/", "/collaboration/", "/contributing/", "/governance/", "/guidelines/content-guidelines/", "/guidelines/releases-guidelines/", "/guidelines/repository-guidelines/", "/guidelines/technical-guidelines/", "/guidelines/templates/README.md", "/guidelines/templates/templates-type.md"]
 timeout: 60
 request-repeats: 5
 files:
