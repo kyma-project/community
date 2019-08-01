@@ -74,7 +74,7 @@ data:
 
 **Yes, default can be changed**.
 
-* The existing channels/subscriptions still stay the same with the previous PubSub. [Same approach](https://github.com/knative/docs/blob/master/docs/eventing/channels/default-channels.md#caveats-1) as followed by Knative.
+* The existing channels/subscriptions still stay the same with the previous PubSub. [Same approach](https://github.com/knative/docs/blob/master/docs/eventing/channels/default-channels.md) as followed by Knative.
 
 ## How to support the operator
 
