@@ -8,15 +8,15 @@ If you are looking for information on how to join us, you are in the right place
 
 # <img src="assets/contribution-collaboration-icon.svg" width="120"> Contribution & Collaboration
 
-## Contribution Rules
+## Contribution rules
 
 Before you start contributing, read our [Code of Conduct](/contributing/#code-of-conduct-code-of-conduct) and learn about our [working model](/governance/#kyma-working-model-kyma-working-model) to understand the way Kyma community works. Get familiar with the [contributing rules](/contributing/#contributing-rules-contributing-rules), recommended [Git workflow](/contributing/#git-wokflow-git-wokflow), and [issues workflow](/governance/#issues-workflow-issues-workflow) we use in Kyma so you can apply them later in practice as an active contributor.
 
 ## Guidelines
 
-Follow guidelines for writing [content](https://github.com/kyma-project/community/tree/master/guidelines/content-guidelines) and [code](https://github.com/kyma-project/community/tree/master/guidelines/technical-guidelines). See how to create a [new repository](https://github.com/kyma-project/community/tree/master/guidelines/repository-guidelines) or a [new release](https://github.com/kyma-project/community/tree/master/guidelines/releases-guidelines), and use [templates](https://github.com/kyma-project/community/tree/master/guidelines/templates) for various document types.
+Follow guidelines for writing [content](/guidelines/content/) and [code](/guidelines/technicalities/). See how to create a [new repository](/guidelines/repository/) or a [new release](/guidelines/release/), and use [templates](/guidelines/templates/) for various document types.
 
-## Bugs & Features
+## Bugs & features
 
 Create an issue on [GitHub](https://github.com/kyma-project) to report a bug or request a feature. Go to the given repository's issue tracker and raise an issue using one of the available templates. The owners of the repository will review your issue and provide you with their feedback. If you are not certain which repository your issue refers to, open it in the [`kyma`](https://github.com/kyma-project/kyma) repository.
 
@@ -26,7 +26,7 @@ The Kyma community collaborates through Special Interest Groups and Working Grou
 
 # <img src="assets/stay-informed-icon.svg" width="120"> Stay Informed
 
-## Social Media
+## Social media
 
 We're on [Twitter](https://twitter.com/kymaproject) and [LinkedIn](https://www.linkedin.com/company/kyma-project/). Stay tuned for the news and spread the good word about Kyma among your followers.
 

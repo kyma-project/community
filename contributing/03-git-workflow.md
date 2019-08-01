@@ -159,15 +159,15 @@ In each pull request:
 
 Follow these steps:
 
-    ```
-    $ git log # Check the log for the commits history and get the number of your commits that you need to squash. Do not squash commits that are not yours.
-    ```
+```
+$ git log # Check the log for the commits history and get the number of your commits that you need to squash. Do not squash commits that are not yours.
+```
 Press `q` to exit the log.
 
-    ```
-    $ git rebase HEAD~{number} -i # Enter the interactive mode to squash the number of commits. For example, to enter interactive mode and squash the last three commits:
-    $ git rebase HEAD~3 -i
-    ```
+```
+$ git rebase HEAD~{number} -i # Enter the interactive mode to squash the number of commits. For example, to enter interactive mode and squash the last three commits:
+$ git rebase HEAD~3 -i
+ ```
 
 Leave the top commit, and squash the remaining ones by changing the `pick` command to `squash`. To change the command, type `cw` and then enter `s` in place of `pick`. Press `esc` to exit the insert mode, move to the line with the next commit, and enter `.` to make the same change there. Repeat the same action with all the remaining commits. When you finish, save the changes and exit the editor by pressing `:wq`.
 
@@ -181,13 +181,13 @@ See how to squash your commits step-by-step in this video:
 
 After you squash commits on your branch into one commit, reapply it on the top of the `master` branch. Follow this process:
 
-    ```
-    $ git checkout master # Switch to the master branch.
-    $ git pull # Update the master branch by pulling all changes.
-    $ git checkout {branch-name} # Switch back to your branch.
-    $ git rebase master # Reapply commits on the top of the master branch.
-    $ git push -f # Update your remote branch with the local changes.
-    ```
+```
+$ git checkout master # Switch to the master branch.
+$ git pull # Update the master branch by pulling all changes.
+$ git checkout {branch-name} # Switch back to your branch.
+$ git rebase master # Reapply commits on the top of the master branch.
+$ git push -f # Update your remote branch with the local changes.
+```
 
 > **NOTE:** When you use the `git push-f` command, make sure you do not work on a branch simultaneously with another person.
 
@@ -195,7 +195,7 @@ After you squash commits on your branch into one commit, reapply it on the top o
 
 Use GitHub to merge the pull request. If you are an external contributor, contact the repository maintainers specified in the `CODEOWNERS` file to do the merge.
 
-> **NOTE:** If there are at least two contributors who add commits to the pull request, contact the repository administrators to enable the **Rebase and merge** option temporarily. It allows you to merge the pull request with the number of commits that corresponds to the number of its contributors.
+>**NOTE:** If there are at least two contributors who add commits to the pull request, contact the repository administrators to enable the **Rebase and merge** option temporarily. It allows you to merge the pull request with the number of commits that corresponds to the number of its contributors.
 
 ## Keep your branch up to date
 
@@ -203,15 +203,15 @@ Perform these actions if you work on a branch for a long period of time and you 
 
 Systematically incorporate changes from the master branch into your branch. To keep your branch up to date, use the `git rebase master` command as described in the following flow:
 
-    ```
-    $ git checkout master # Switch to the master branch.
-    $ git pull # Update the master branch by pulling all changes.
-    $ git checkout {branch-name} # Switch back to your branch.
-    $ git rebase master # Reapply commits on the top of the master branch.
-    ```
+```
+$ git checkout master # Switch to the master branch.
+$ git pull # Update the master branch by pulling all changes.
+$ git checkout {branch-name} # Switch back to your branch.
+$ git rebase master # Reapply commits on the top of the master branch.
+```
 
 See how to rebase the `master` branch step-by-step in this video:
 
 ![Rebase](./assets/rebase.gif)
 
-> **NOTE:** Do not merge the `master` branch into another branch as it can make latter rebase not feasible.
+>**NOTE:** Do not merge the `master` branch into another branch as it can make latter rebase not feasible.

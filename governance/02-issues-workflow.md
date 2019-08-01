@@ -82,6 +82,6 @@ Although the bot helps us to keep the backlog clean, we regularly monitor its ac
 
 ## ZenHub links
 
-* Install the [ZenHub Chrome plugin](https://chrome.google.com/webstore/detail/zenhub-for-github/ogcgkffhplmphkaahpmffcafajaocjbd)
-* Login to [ZenHub](https://www.zenhub.com/)
-* Open the [Kyma ZenHub workspace](https://app.zenhub.com/workspace/o/kyma-project/kyma)
+* Install the [ZenHub Chrome plugin](https://chrome.google.com/webstore/detail/zenhub-for-github/ogcgkffhplmphkaahpmffcafajaocjbd).
+* Log into [ZenHub](https://www.zenhub.com/).
+* Open the [Kyma ZenHub workspace](https://app.zenhub.com/workspace/o/kyma-project/kyma).

@@ -6,7 +6,7 @@ This document provides guidelines on writing CustomResourceDefinition (CRD) file
 
 ## Third party CRDs
 
-If you use a third-party CRD, apply the [Location and file name](#custom-resource-definition-custom-resource-definition-location-and-file-name) recommendations from this guide. Keep the content unaltered if the technical requirements allow it. The content must comply with the company's software usage policy and the third-party CRD's license.
+If you use a third-party CRD, apply the [location and file name](#custom-resource-definition-custom-resource-definition-location-and-file-name) recommendations from this guide. Keep the content unaltered if the technical requirements allow it. The content must comply with the company's software usage policy and the third-party CRD's license.
 
 ## Location and file name
 
