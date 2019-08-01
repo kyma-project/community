@@ -31,9 +31,9 @@ We are an open-source community and the number of contributors is growing. Meet 
 
 ### Process
 
-Before you start to contribute, review the [CONTRIBUTING.md](CONTRIBUTING.md) document. To understand better the way the Kyma community works, read the [governance](governance.md) model and learn about the [Special Interest Groups and Working Groups](sig-and-wg/README.md) in Kyma.
+Before you start to contribute, review the [`contributing.md`](./contributing/02-contributing.md) document. To understand better the way the Kyma community works, read about the [working model](./governance/governance.md) and learn about the [Special Interest Groups and Working Groups](./collaboration/README.md) in Kyma.
 
-All contributors follow the recommended [Git workflow](git-workflow.md) that relies on forks, branches, rebasing, and squashing. Review it to ensure that you contribute high-quality code and content to the project.
+All contributors follow the recommended [Git workflow](./contributing/03-git-workflow.md) that relies on forks, branches, rebasing, and squashing. Review it to ensure that you contribute high-quality code and content to the project.
 
 ### Issues
 
@@ -48,14 +48,14 @@ Feel invited to join the public [SIG Core meetings](https://kyma-community.slack
 
 You can also find these guidelines and templates in the `community` repository:
 
-- [Naming](/guidelines/naming.md) conventions
-- Document [templates](/guidelines/templates)
-- Overview of the [content strategy](guidelines/content-guidelines/content-strategy.md) and [content guidelines](/guidelines/content-guidelines)
-- [Release process](/guidelines/releases) details
-- [Decisions](/sig-and-wg/sig-core/decisions) made by Kyma team members and the SIG Core.
-- [Coding standards](/guidelines/coding-standards/README.md) 
+- [Naming](./guidelines/technical-guidelines/01-naming.md) conventions
+- Document [templates](./guidelines/templates)
+- Overview of the [content strategy](./guidelines/content-guidelines/01-content-strategy.md) and [content guidelines](./guidelines/content-guidelines)
+- [Release process](./guidelines/releases-guidelines) details
+- [Decisions](./collaboration/sig-core/decisions) made by Kyma team members and the Core SIG.
+- [Coding standards](./guidelines/technical-guidelines) 
 
-There are also [internal guidelines](/guidelines/internal-guidelines) for the Kyma team members. They contain a folder, file, and document structure required for a [skeleton Kyma repository](/guidelines/internal-guidelines/repository-template).
+There are also [repository guidelines](./guidelines/repository-guidelines) for the Kyma team members. The guidelines contain a folder, file, and document structure required for a [skeleton Kyma repository](./guidelines/repository-guidelines/repository-template).
 
 ## Security
 

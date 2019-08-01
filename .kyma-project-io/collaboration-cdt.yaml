@@ -1,0 +1,18 @@
+apiVersion: cms.kyma-project.io/v1alpha1
+kind: ClusterDocsTopic
+metadata:
+  name: collaboration
+  labels:
+    cms.kyma-project.io/view-context: community
+    cms.kyma-project.io/group-name: collaboration
+    cms.kyma-project.io/order: "1"
+    cms.kyma-project.io/group-order: "4"
+spec:
+  displayName: "Collaboration"
+  description: "Collaboration in Kyma"
+  sources:
+    - type: markdown
+      name: docs
+      mode: package
+      url: https://github.com/mmitoraj/community/archive/kyma-project-io.zip
+      filter: /collaboration/
