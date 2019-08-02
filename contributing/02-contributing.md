@@ -34,7 +34,7 @@ the [Corporate Contributor License Agreement](./assets/SAP%20Corporate%20Contrib
 
 If you are a contributor, follow these basic rules:
 
-* The contribution workflow in all Kyma repositories bases on the principles of the [GitHub Flow](https://guides.github.com/introduction/flow/). Thus, the `master` branch is the most important one. Avoid working directly on it. When you work on new features or bug fixes, work on separate branches.
+* The contribution workflow in all Kyma repositories bases on the principles of the [GitHub flow](https://guides.github.com/introduction/flow/). Thus, the `master` branch is the most important one. Avoid working directly on it. When you work on new features or bug fixes, work on separate branches.
 * Work on forks of Kyma repositories.
 * You can merge a PR if you receive an approval from at least one code owner from each part of the repository to which you contribute in your PR.
 

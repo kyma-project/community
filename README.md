@@ -4,7 +4,7 @@
 
 Welcome to the Kyma community. Here you can find information on how to join the community, get involved, and improve Kyma code and documentation.
 
-Before you proceed, review the [Code of Conduct](CODE_OF_CONDUCT.md) and contact us on [Slack](https://kyma-community.slack.com/messages/CBLBESMST/) for any questions or concerns.
+Before you proceed, review the [Code of Conduct](./contributing/01-code-of-conduct.md) and contact us on [Slack](https://kyma-community.slack.com/messages/CBLBESMST/) for any questions or concerns.
 
 Go directly to the section that you are most interested in:
 - [Kyma Community](#kyma-community)
@@ -31,7 +31,7 @@ We are an open-source community and the number of contributors is growing. Meet 
 
 ### Process
 
-Before you start to contribute, review the [`contributing.md`](./contributing/02-contributing.md) document. To understand better the way the Kyma community works, read about the [working model](./governance/governance.md) and learn about the [Special Interest Groups and Working Groups](./collaboration/README.md) in Kyma.
+Before you start to contribute, review the [contribution rules](./contributing/02-contributing.md). To understand better the way the Kyma community works, read about the [working model](./governance/01-governance.md) and learn about the [Special Interest Groups and Working Groups](./collaboration/01-sig-and-wg.md) in Kyma.
 
 All contributors follow the recommended [Git workflow](./contributing/03-git-workflow.md) that relies on forks, branches, rebasing, and squashing. Review it to ensure that you contribute high-quality code and content to the project.
 

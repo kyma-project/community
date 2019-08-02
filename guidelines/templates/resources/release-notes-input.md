@@ -23,8 +23,8 @@
 
 ### Security vulnerabilities fixed
 
-> List the solved security vulnerability issues related to the Kyma project. Provide a short issue description, its risk assesment, and a link to the pull request that solves the issue. You can also include a link to the created issue. The risk assement is provided in each issue of the `Security Vulnerability` type created on Github. 
-- {Short issue description} - {Issue link} - {Risk assesment} - {PR link}
+> List the solved security vulnerability issues related to the Kyma project. Provide a short issue description, its calculated risk assessment, and a link to the pull request that solves the issue. You can also include a GitHub link to the issue itself. The calculated risk assessment is provided in each issue of the `Security Vulnerability` type created on Github. 
+- {Short issue description} - {Issue link} - {Calculated risk assessment} - {PR link}
 
 >For example, write:
 > Prow jobs access Kyma test cluster using insecure channels - [Issue](https://github.wdf.sap.corp/SAP-CP-Extension-Factory/commercialization/issues/260) - CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L **5.6 (Medium)** - {PR link}
