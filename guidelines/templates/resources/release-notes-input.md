@@ -27,4 +27,4 @@
 - {Short issue description} - {Issue link} - {Calculated risk assessment} - {PR link}
 
 >For example, write:
-> Prow jobs access Kyma test cluster using insecure channels - [Issue](https://github.wdf.sap.corp/SAP-CP-Extension-Factory/commercialization/issues/260) - CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L **5.6 (Medium)** - {PR link}
+> Prow jobs access Kyma test cluster using insecure channels - [Issue](https://github.com/kyma-project/kyma/issues/5080) - CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L **5.6 (Medium)** - {PR link}
