@@ -57,4 +57,4 @@ redirectFrom:
 
 ### Fixed security vulnerabilities
 
-> Describe any security vulnerabilities that have been fixed recently. Provide the [calculated risk assessment](https://github.com/kyma-project/community/issues/new?template=security-vulnerability.md) and link to a PR that fixes a vulnerability. If available, connect the PR with the related issue.
+> Describe the solved security vulnerability issues related to the Kyma project. Provide a short issue description, its calculated risk assessment, and a link to the pull request that solves the issue. You can also include a GitHub link to the issue itself. The calculated risk assessment is provided in each issue of the [Security Vulnerability](https://github.com/kyma-project/kyma/issues/new?template=security-vulnerability.md) type created on Github.
