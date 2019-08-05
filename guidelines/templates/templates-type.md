@@ -13,7 +13,7 @@ This table contains templates for general documents, such as `README.md` and `NO
 | Repository | Template(s) | Usage | Author |
 |---|---|---|---|
 | [`kyma`](https://github.com/kyma-project/kyma)| [`README.md`](https://github.com/kyma-project/community/blob/master/guidelines/templates/resources/chart_README.md), [`NOTES.txt`](https://github.com/kyma-project/community/blob/master/guidelines/templates/resources/NOTES.txt) | Use the template for charts. | All contributors |
-| [`examples`](https://github.com/kyma-project/examples) | [`README.md`](https://github.com/kyma-projectj/community/blob/master/guidelines/templates/resources/example_README.md) | Use the template for examples. | All contributors |
+| [`examples`](https://github.com/kyma-project/examples) | [`README.md`](https://github.com/kyma-project/community/blob/master/guidelines/templates/resources/example_README.md) | Use the template for examples. | All contributors |
 | All | [`README.md`](https://github.com/kyma-project/community/blob/master/guidelines/repository-guidelines/repository-template/README.md) | Use the template for the `README.md` document in any repository, directory, or subdirectory within the Kyma organization. | All contributors |
 
 ## Official Kyma graphics and logo
