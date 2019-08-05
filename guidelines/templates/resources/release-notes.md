@@ -54,3 +54,7 @@ redirectFrom:
 ### Known issues
 
 > Describe any known issues that the users can face, together with the way on how to solve these issues.
+
+### Fixed security vulnerabilities
+
+> Describe any security vulnerabilities that have been fixed recently. Provide the [calculated risk assessment](https://github.com/kyma-project/community/issues/new?template=security-vulnerability.md) and link to a PR that fixes a vulnerability. If available, connect the PR with the related issue.
