@@ -62,7 +62,9 @@ Only Prow admins can activate the Prow webhook. To activate the Prow webhook in 
 
 To activate the Prow webook:
 1. A Prow admin connects to the Prow cluster and retrieves `hmac-token` from a Secret. They run:
-`kubectl get secret hmac-token -o jsonpath="{.data.hmac}" | base64 --decode`
+```
+kubectl get secret hmac-token -o jsonpath="{.data.hmac}" | base64 --decode
+```
 2. The Prow admin enters the `hmac-token` into the **Secret** field. 
 
 ![Prow Webhook](./assets/prow-webhook.png)
