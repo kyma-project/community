@@ -54,3 +54,7 @@ redirectFrom:
 ### Known issues
 
 > Describe any known issues that the users can face, together with the way on how to solve these issues.
+
+### Fixed security vulnerabilities
+
+> Describe the solved security vulnerability issues related to the Kyma project. Provide a short issue description, its calculated risk assessment, and a link to the pull request that solves the issue. You can also include a GitHub link to the issue itself. The calculated risk assessment is provided in each issue of the [Security Vulnerability](https://github.com/kyma-project/kyma/issues/new?template=security-vulnerability.md) type created on Github.
