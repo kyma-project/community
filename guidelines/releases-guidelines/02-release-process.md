@@ -189,7 +189,12 @@ Follow these steps to create a release:
 
 	1. Run `/test pre-{release_number}-kyma-installer` and wait until it finishes.
 	1. Run `/test pre-{release_number}-kyma-artifacts` and wait until it finishes.
-	1. Run `/test pre-{release_number}-kyma-gke-integration`, `/test pre-{release_number}-kyma-gke-upgrade`, and `/test pre-{release_number}-kyma-gke-backup`. You can start them in parallel.
+    1. Run the following tests in parallel:
+       ```bash
+       /test pre-rel14-kyma-gke-integration
+       /test pre-rel14-kyma-gke-upgrade
+       /test pre-rel14-kyma-gke-backup
+    ```	
 	1. Wait for the jobs to finish:
 		 - `pre-{release_number}-kyma-integration`
 		 - `pre-{release_number}-kyma-gke-integration`
