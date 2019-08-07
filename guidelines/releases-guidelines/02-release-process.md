@@ -227,26 +227,41 @@ Follow these steps to create a release:
 
 ### kyma-project/cli
 
+A release of `cli` consists of:
+* bumping the code to a release tag/branch
+* creating artifacts (cli binaries and source code archives)
+* github release with automated changelog generation
+
+First the current code is pinned in a release branch.
+Then the Kyma version is updated to test the integration with the latest Kyma version. Finally cli is released via a git tag which triggers a Github release.
+
+#### Steps for new major minor
+
+>**NOTE:** This point applies only to new major and minor versions and not for new release candidates such as rc2 when already having rc1.
+
 1. After making sure that Kyma is released, create a release branch in the `cli` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-0.9`.
 
     ```bash
     git fetch upstream
-    git checkout -b $RELEASE_NAME upstream/master
+    git checkout -b {RELEASE_NAME} upstream/master
+    git push upstream {RELEASE_NAME}
     ```
 
-    >**NOTE:** This point applies only to new major and minor versions.
+#### Steps for new release candidate
+
+>**NOTE:** This point applies for new release candidates such as rc1, rc2 and the final version.
 
 2. Ensure that the `KYMA_VERSION` variables on `Makefile` and `.goreleaser.yml` file from the `cli` repository on the release branch contains the latest Kyma version that you just released.
 
-3. Push the branch to the `cli` repository.
+3. Create a PR to `cli/release-x.y`. This triggers the presubmit job for `cli`.
 
-4. Create a PR to `cli/release-x.y`. This triggers the presubmit job for `cli`.
-
-5. After merging the PR, create a tag on the release branch that has the same version name as Kyma. If you define a release candidate version, a pre-release is created.  
+4. After merging the PR, create a tag on the release branch that has the same version name as Kyma. If you define a release candidate version, a pre-release is created.  
 
     ```bash
-    git tag -a $RELEASE_VERSION -m "Release $RELEASE_VERSION"
-    git push upstream $RELEASE_VERSION
+    git tag -a {RELEASE_VERSION} -m "Release {RELEASE_VERSION}"
+    git push upstream {RELEASE_VERSION}
     ```
+   
+   where {RELEASE_VERSION} could be e.g. `1.4.0-rc1`, `1.4.0-rc2` or `1.4.0`.
 
-4. Pushing the tag triggers the postsubmit job that creates the GitHub release. Validate if the release is available under [releases](https://github.com/kyma-project/cli/releases).
+5. Pushing the tag triggers the postsubmit job that creates the GitHub release. Validate if the release is available under [releases](https://github.com/kyma-project/cli/releases).
