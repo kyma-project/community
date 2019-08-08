@@ -201,7 +201,6 @@ Follow these steps to create a release:
 
 7. After all checks pass, merge the PR, using the `rebase and merge` option. To merge the PR to the release branch, you must receive approvals from all teams.
     > **CAUTION:** By default, the `rebase and merge` option is disabled. Contact one of the `kyma-project/kyma` repository admins to enable it.
-    
 
 8. Merging the PR to the release branch runs the postsubmit jobs, which:
 	- create a GitHub release and trigger documentation update on the official Kyma website
@@ -219,6 +218,8 @@ Follow these steps to create a release:
 	Currently, this means to grab the links from the previous release and update the version number in URLs. If contributors want you to change something in the instruction, they would address you directly.
 
 12. Create a spreadsheet with all open issues labeled as `test-missing`. Every team assigned to an issue must cover the outstanding test with manual verification on every release candidate. After the test is finished successfully, the responsible team must mark it as completed in the spreadsheet. Every issue identified during testing must be reported. To make the testing easier, provision a publicly available cluster with the release candidate version after you complete all steps listed in this document.
+
+13. Notify the breaking-pixels team about the availability of a release for integration in Faros.
 
 ### kyma-project/cli
 
