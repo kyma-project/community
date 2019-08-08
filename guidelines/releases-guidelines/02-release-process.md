@@ -56,8 +56,6 @@ Define release jobs on the `master` branch in the `test-infra` repository. To en
               preset-target-commit-1.4: "true"
         ```  
 
-
-
 1. Ensure that tests for the release jobs exist. Release tests usually iterate through all release versions and run tests for them.
 See the `TestBucReleases` test defined in `development/tools/jobs/kyma/service_binding_usage_controller_test.go` as a reference.
 
@@ -80,7 +78,9 @@ defined in the `development/tools/jobs/tester/tester.go` file under the `test-in
           - pre-rel14-kyma-installer
           - pre-rel14-kyma-gke-minio-gateway
 	```
-
+ 
+1. Remove the now unsupported release in `tester.go` and all references of it. E.g `Release12 SupportedRelease = "release-1.2"` when releasing 1.5.
+ 
 ### Remove previous release jobs
 
 After adding new release jobs, remove the old ones. Remember to leave jobs for three latest releases. For example, during the preparation for the 1.4 release, add `pre-rel14` jobs and remove all `pre-rel11` jobs. Make sure that the only defined jobs are those with `pre-rel12`, `pre-rel13`, and `pre-rel14` prefixes.
