@@ -7,13 +7,13 @@ This document describes how to create a Kyma release using Prow.
 
 ## Preparation
 
-This section only applies to new major and minor versions. If you release a patch, skip the preparation and go to the [**Steps**][/#release-process-release-process-steps] section.
+This section only applies to new major and minor versions. If you release a patch, skip the preparation and go to the [**Steps**](#steps) section.
 
 To prepare a release, define a new and remove the old release.
 
 ### Define release jobs
 
-Define release jobs on the `master` branch in the `test-infra` repository. To ensure every job name is unique, prefix it with `pre-rel{versionNumber}`. Remember to provide the version number without any periods. For example, to find all jobs for the 0.9 release, look for job names with the `pre-rel09` prefix. To learn how to define a release job for a component, read the following [document][https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md].
+Define release jobs on the `master` branch in the `test-infra` repository. To ensure every job name is unique, prefix it with `pre-rel{versionNumber}`. Remember to provide the version number without any periods. For example, to find all jobs for the 0.9 release, look for job names with the `pre-rel09` prefix. To learn how to define a release job for a component, read the following [document](https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md).
 
 1. Navigate to the `test-infra` repository.
 2. Define release jobs in the `prow/jobs/test-infra` directory in the `watch-pods.yaml` file.
@@ -37,13 +37,13 @@ Define release jobs on the `master` branch in the `test-infra` repository. To en
 		        value: release-0.9
 		```
 
-1. Ensure that tests for the release jobs exist. Release tests usually iterate through all release versions and run tests for them.
+4. Ensure that tests for the release jobs exist. Release tests usually iterate through all release versions and run tests for them.
 See the `TestBucReleases` test defined in `development/tools/jobs/kyma/service_binding_usage_controller_test.go` as a reference.
 
-1. Update the `GetAllKymaReleaseBranches()` function
+5. Update the `GetAllKymaReleaseBranches()` function
 defined in the `development/tools/jobs/tester/tester.go` file under the `test-infra` repository.
 
-1. Define branch protection rules for the release branch in the `prow/config.yaml` file.
+6. Define branch protection rules for the release branch in the `prow/config.yaml` file.
 	For example, see the release-1.2 definition:
 
 	```yaml
