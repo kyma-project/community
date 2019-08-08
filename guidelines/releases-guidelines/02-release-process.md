@@ -13,7 +13,7 @@ To prepare a release, define a new and remove the old release.
 
 ### Define release jobs
 
-Define release jobs on the `master` branch in the `test-infra` repository. To ensure every job name is unique, prefix it with `pre-rel{versionNumber}`. Remember to provide the version number without any periods. For example, to find all jobs for the 0.9 release, look for job names with the `pre-rel09` prefix. To learn how to define a release job for a component, read the following [document](https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md).
+Define release jobs on the `master` branch in the `test-infra` repository. To ensure every job name is unique, prefix it with `pre-rel{versionNumber}`. Remember to provide the version number without any periods. For example, to find all jobs for the 1.4 release, look for job names with the `pre-rel14` prefix. To learn how to define a release job for a component, read the following [document](https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md).
 
 1. Navigate to the `test-infra` repository.
 2. Define release jobs in the `prow/jobs/test-infra` directory in the `watch-pods.yaml` file.
@@ -24,18 +24,39 @@ Define release jobs on the `master` branch in the `test-infra` repository. To en
    - `kyma-integration.yaml`
    - `kyma-artifacts.yaml`
    - `kyma-installer.yaml`
-   - `kyma-github-release.yaml`
    - `kyma-release-candidate.yaml`
+   - `kyma-github-release.yaml`
+      For this file also do the following steps:
 
-		> **NOTE:** Remember to modify the `presets` array. This is an example of the 0.9 release `preset`:
+	  - Modify the `presets` array. This is an example of the 1.4 release `preset`:
 		
-		```
+		```yaml
 		- labels:
-		    preset-target-commit-0.9: "true"
+		    preset-target-commit-1.4: "true"
 		    env:
 		    - name: RELEASE_TARGET_COMMIT
-		        value: release-0.9
+		        value: release-1.4
 		```
+  
+	  -  Remember to also set the `preset-target-commit-1.4` label for the `post-rel14-kyma-github-release` job. This is an example of the 1.4 release `postsubmit` job:
+
+        ```yaml
+        postsubmits: 
+          kyma-project/kyma:
+          - name: post-rel14-kyma-github-release
+            branches:
+            - release-1.4
+            <<: *job_template
+            extra_refs:
+            - <<: *test_infra_ref
+              base_ref: release-1.4
+            labels:
+              <<: *job_labels_template
+              preset-build-release: "true"
+              preset-target-commit-1.4: "true"
+        ```  
+
+
 
 1. Ensure that tests for the release jobs exist. Release tests usually iterate through all release versions and run tests for them.
 See the `TestBucReleases` test defined in `development/tools/jobs/kyma/service_binding_usage_controller_test.go` as a reference.
@@ -44,25 +65,25 @@ See the `TestBucReleases` test defined in `development/tools/jobs/kyma/service_b
 defined in the `development/tools/jobs/tester/tester.go` file under the `test-infra` repository.
 
 1. Define branch protection rules for the release branch in the `prow/config.yaml` file.
-	For example, see the release-1.2 definition:
+	For example, see the release-1.4 definition:
 
 	```yaml
-    release-1.2:
+    release-1.4:
 	  protect: true
       required_status_checks:
         contexts:
-          - pre-rel12-kyma-integration
-          - pre-rel12-kyma-gke-integration
-          - pre-rel12-kyma-gke-upgrade
-          - pre-rel12-kyma-gke-central-connector
-          - pre-rel12-kyma-artifacts
-          - pre-rel12-kyma-installer
-          - pre-rel12-kyma-gke-minio-gateway
+          - pre-rel14-kyma-integration
+          - pre-rel14-kyma-gke-integration
+          - pre-rel14-kyma-gke-upgrade
+          - pre-rel14-kyma-gke-central-connector
+          - pre-rel14-kyma-artifacts
+          - pre-rel14-kyma-installer
+          - pre-rel14-kyma-gke-minio-gateway
 	```
 
 ### Remove previous release jobs
 
-After adding new release jobs, remove the old ones. Remember to leave jobs for three latest releases. For example, during the preparation for the 0.9 release, add `pre-rel09` jobs and remove all `pre-rel06` jobs. Make sure that the only defined jobs are those with `pre-rel07`, `pre-rel08`, and `pre-rel09` prefixes.
+After adding new release jobs, remove the old ones. Remember to leave jobs for three latest releases. For example, during the preparation for the 1.4 release, add `pre-rel14` jobs and remove all `pre-rel11` jobs. Make sure that the only defined jobs are those with `pre-rel12`, `pre-rel13`, and `pre-rel14` prefixes.
 
 ## Steps
 
@@ -74,7 +95,7 @@ Follow these steps to create a release:
 
 ### kyma-project/test-infra
 
-1. Create a release branch in the `test-infra` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-0.9`.
+1. Create a release branch in the `test-infra` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-1.4`.
 
 	```bash
 	git fetch upstream
@@ -96,14 +117,14 @@ Follow these steps to create a release:
 
 	> **NOTE:** To trigger the `watch-pods` build without introducing any changes, edit any file within the `test-infra` repository and create a pull request. You don't need to merge it as the job is triggered anyway. After a successful `watch-pods` image build, close the pull request.
 
-5. Update the `RELEASE_VERSION`file with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `0.9.2`, then change the version to `1.0.0-rc1`.
+5. Update the `RELEASE_VERSION` file with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `1.4.2`, then change the version to `1.5.0-rc1`.
 
 ### kyma-project/kyma
 
 1. Create a release branch in the `kyma` repository.
 
 	Do it only for major and minor releases.
-	The name of this branch should follow the `release-x.y` pattern, such as `release-0.9`.
+	The name of this branch should follow the `release-x.y` pattern, such as `release-1.4`.
 
 	```bash
 	git fetch upstream
@@ -158,7 +179,7 @@ Follow these steps to create a release:
 		```
 
 		> **CAUTION**: In `installation/resources/installer.yaml` replace `eu.gcr.io/kyma-project/develop/installer:{image_tag}` with `eu.gcr.io/kyma-project/kyma-installer:{release_version}`
-	1. In  the `resources/core/values.yaml` file, replace the `clusterDocsTopicsVersion` value with your release branch name. For example, for the 0.9.1 release, find the following section:
+	1. In  the `resources/core/values.yaml` file, replace the `clusterDocsTopicsVersion` value with your release branch name. For example, for the 1.4.1 release, find the following section:
 
 		```yaml
 		docs:
@@ -171,7 +192,7 @@ Follow these steps to create a release:
 		```yaml
 		docs:
 		    # (...)
-		    clusterDocsTopicsVersion: release-0.9
+		    clusterDocsTopicsVersion: release-1.4
 		```
 	1. Create a pull request with your changes to the release branch. It triggers all jobs for components.
 
@@ -229,7 +250,7 @@ Follow these steps to create a release:
     
 9. Update the `RELEASE_VERSION` file to contain the next patch RC1 version on the release branch. Do it immediately after the release, otherwise, any PR to a release branch overrides the previously published Docker images.
 
-	For example, if the `RELEASE_VERSION` file on the release branch contains `0.9.1`, change it to `0.9.2-rc1`.
+	For example, if the `RELEASE_VERSION` file on the release branch contains `1.4.1`, change it to `1.4.2-rc1`.
 
 10.  Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
 
@@ -252,7 +273,7 @@ Then the Kyma version is updated to test the integration with the latest Kyma ve
 
 >**NOTE:** This point applies only to new major and minor versions and not for new release candidates such as rc2 when already having rc1.
 
-1. After making sure that Kyma is released, create a release branch in the `cli` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-0.9`.
+1. After making sure that Kyma is released, create a release branch in the `cli` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-1.4`.
 
     ```bash
     git fetch upstream
