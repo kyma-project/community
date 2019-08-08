@@ -22,6 +22,7 @@ Define release jobs on the `master` branch in the `test-infra` repository. To en
    - every `.yaml` in `tests`
    - every `.yaml` in `tools/` **except for** the `tools/failery/failery.yaml` file
    - `kyma-integration.yaml`
+   - `kyma-compass-integration.yaml` (define presubmit job)
    - `kyma-artifacts.yaml`
    - `kyma-installer.yaml`
    - `kyma-github-release.yaml`
@@ -43,22 +44,34 @@ See the `TestBucReleases` test defined in `development/tools/jobs/kyma/service_b
 1. Update the `GetAllKymaReleaseBranches()` function
 defined in the `development/tools/jobs/tester/tester.go` file under the `test-infra` repository.
 
-1. Define branch protection rules for the release branch in the `prow/config.yaml` file.
-	For example, see the release-1.2 definition:
+1. Define branch protection rules for the release branches in the `prow/config.yaml` file.
 
-	```yaml
-    release-1.2:
-	  protect: true
-      required_status_checks:
-        contexts:
-          - pre-rel12-kyma-integration
-          - pre-rel12-kyma-gke-integration
-          - pre-rel12-kyma-gke-upgrade
-          - pre-rel12-kyma-gke-central-connector
-          - pre-rel12-kyma-artifacts
-          - pre-rel12-kyma-installer
-          - pre-rel12-kyma-gke-minio-gateway
-	```
+	- Update  `branch-protection.orgs.kyma-project.repos.kyma.branches` property. For example, see the release-1.4 definition:
+
+		```yaml
+		release-1.4:
+			protect: true
+			required_status_checks:
+				contexts:
+				- pre-rel14-kyma-integration
+				- pre-rel14-kyma-gke-integration
+				- pre-rel14-kyma-gke-upgrade
+				- pre-rel14-kyma-gke-central-connector
+				- pre-rel14-kyma-artifacts
+				- pre-rel14-kyma-installer
+				- pre-rel14-kyma-gke-minio-gateway
+				- pre-rel14-kyma-gke-compass-integration
+		```
+	
+	- Update  `branch-protection.orgs.kyma-incubator.repos.compass.branches` property. For example, see the release-1.4 definition:
+
+		```yaml
+		release-1.4:
+			protect: true
+			required_status_checks:
+				contexts:
+				- pre-rel14-compass-integration
+		```
 
 ### Remove previous release jobs
 
@@ -97,6 +110,33 @@ Follow these steps to create a release:
 	> **NOTE:** To trigger the `watch-pods` build without introducing any changes, edit any file within the `test-infra` repository and create a pull request. You don't need to merge it as the job is triggered anyway. After a successful `watch-pods` image build, close the pull request.
 
 5. Update the `RELEASE_VERSION`file with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `0.9.2`, then change the version to `1.0.0-rc1`.
+
+### kyma-incubator/compass
+
+1. Create a release branch in the `compass` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-0.9`.
+
+    ```bash
+    git fetch upstream
+    git checkout -b $RELEASE_NAME upstream/master
+    ```
+
+    >**NOTE:** This point applies only to new major and minor versions.
+
+2. Push the branch to the `compass` repository.
+
+	>**NOTE:** This point applies only to new major and minor versions.
+
+3. Create a PR to `compass/release-x.y`. This triggers all presubmit jobs for `compass`, which build all Compass components.
+
+4. Wait until all jobs for components finish.
+
+5. Run `pre-{release_version}-compass-integration` test by adding the following comment to the PR:
+
+	```
+	/test pre-{release_version}-compass-integration
+	```
+
+6. Merge PR.
 
 ### kyma-project/kyma
 
@@ -189,12 +229,13 @@ Follow these steps to create a release:
 
 	1. Run `/test pre-{release_number}-kyma-installer` and wait until it finishes.
 	1. Run `/test pre-{release_number}-kyma-artifacts` and wait until it finishes.
-	1. Run `/test pre-{release_number}-kyma-gke-integration`, `/test pre-{release_number}-kyma-gke-upgrade`, and `/test pre-{release_number}-kyma-gke-backup`. You can start them in parallel.
+	1. Run `/test pre-{release_number}-kyma-gke-integration`, `/test pre-{release_number}-kyma-gke-upgrade`, `/test pre-{release_number}-kyma-gke-backup` and `pre-{release_number}-kyma-gke-compass-integration`. You can start them in parallel.
 	1. Wait for the jobs to finish:
-		 - `pre-{release_numberg s}-kyma-integration`
+		 - `pre-{release_number}-kyma-integration`
 		 - `pre-{release_number}-kyma-gke-integration`
 		 - `pre-{release_number}-kyma-gke-upgrade`
 		 - `pre-{release_number}-kyma-gke-backup`
+		 - `pre-{release_number}-kyma-gke-compass-integration`
 
 6. If you detect any problems with the release, such as failing tests, wait for the fix that can be delivered either on a PR or cherry-picked to the PR from the `master` branch.  
 	Prow triggers the jobs again. Rerun manual jobs as described in **step 5**.
