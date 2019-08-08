@@ -13,7 +13,7 @@ To prepare a release, define a new and remove the old release.
 
 ### Define release jobs
 
-Define release jobs on the `master` branch in the `test-infra` repository. To ensure every job name is unique, prefix it with `pre-rel{versionNumber}`. Remember to provide the version number without any periods. For example, to find all jobs for the 0.9 release, look for job names with the `pre-rel09` prefix. To learn how to define a release job for a component, read the following [document][https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md].
+Define release jobs on the `master` branch in the `test-infra` repository. To ensure every job name is unique, prefix it with `pre-rel{versionNumber}`. Remember to provide the version number without any periods. For example, to find all jobs for the 0.9 release, look for job names with the `pre-rel09` prefix. To learn how to define a release job for a component, read the following [document](https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md).
 
 1. Navigate to the `test-infra` repository.
 2. Define release jobs in the `prow/jobs/test-infra` directory in the `watch-pods.yaml` file.
@@ -139,7 +139,7 @@ Follow these steps to create a release:
 		dir:
 		version: 1.1.0-rc1
 		```
-		> **CAUTION**: Do **not** update the version of components whose `dir` section does not contain `develop`, as is the case with Console-related components.
+		> **CAUTION**: Do **not** update the version of components whose `dir` section does not contain `develop`, as is the case with Console-related components. Also do not change octopus image in `kyma/resources/testing/values.yaml` even though it has `develop`.
 
 	1. Check all `yaml` files in the `kyma` repository for references of the following Docker image:
 
