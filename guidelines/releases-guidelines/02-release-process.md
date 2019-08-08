@@ -122,6 +122,11 @@ Follow these steps to create a release:
 		dir: develop/
 		version: {current_version}
 		```
+  
+		```yaml
+		dir: pr/
+		version: {current_version}
+		```
 
 		Replace them with:
 
@@ -212,8 +217,16 @@ Follow these steps to create a release:
 	- create a GitHub release and trigger documentation update on the official Kyma website
 	- trigger provisioning of the cluster from the created release
 	The cluster name contains the release version with a period `.` replaced by a dash `-`. For example: `gke-release-1-1-0-rc1`. Use the cluster to test the release candidate.
-	> **CAUTION**: The release cluster, the IP Addresses, and the DNS records must be deleted manually.
+	> **CAUTION**: The cluster is automatically generated for you! You don't need to create it yourself! The release cluster, the IP Addresses, and the DNS records must be deleted manually after tests on the rc2 cluster are finished.
+    
+    - Get access to the release cluster. If you don't have access to the GCP project, ask someone in the Slack team channel.
+    
+   ```bash
+   gcloud container clusters get-credentials gke-release-1-4-0-rc2 --zone europe-west4-c --project sap-hybris-sf-playground
+   ```
 
+   - Follow instructions on [Access the cluster](https://kyma-project.io/docs/#installation-use-your-own-domain-access-the-cluster) and give Kyma teams access to start testing the release candidate.
+    
 9. Update the `RELEASE_VERSION` file to contain the next patch RC1 version on the release branch. Do it immediately after the release, otherwise, any PR to a release branch overrides the previously published Docker images.
 
 	For example, if the `RELEASE_VERSION` file on the release branch contains `0.9.1`, change it to `0.9.2-rc1`.
