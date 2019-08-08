@@ -246,3 +246,13 @@ Follow these steps to create a release:
     ```
 
 4. Pushing the tag triggers the postsubmit job that creates the GitHub release. Validate if the release is available under [releases](https://github.com/kyma-project/cli/releases).
+
+## Process Improvement
+
+Aiming to ensure the continuous improvement of the release process, the release master raises and documents issues regarding potential improvements to the release process. These issues are tagged with the `quality/release` label and are added to a Release Improvement Backlog.
+
+After completing the release, the team executing the release (together with the Release Manager and the previous release master) will refine the Release Improvement Backlog, considering the implementation estimation as well as the estimated time save on manual work after the implementation, and make a decision of the issue(s) bringing the most value to be prioritized.
+
+The team will invest time in the implementation of a release improvement. It will be ensured that the implementation is done before the next release execution starts.
+
+With this, the release process will always be better than on the previous release, and the responsibility (and workload) of these improvements will be distributed among the teams avoiding to have this laying on a single person, team or SIG.
