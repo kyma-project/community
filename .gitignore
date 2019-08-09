@@ -2,3 +2,4 @@
 .idea/
 .DS_Store
 !.kyma-project-io/
+!guidelines/repository-guidelines/repository-template/.github
