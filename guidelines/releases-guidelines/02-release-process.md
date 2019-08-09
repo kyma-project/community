@@ -168,6 +168,7 @@ Follow these steps to create a release:
 		    # (...)
 		    clusterDocsTopicsVersion: release-0.9
 		```
+	1. Ensure that in the `resources/compass/values.yaml` there are no `PR-XXX` values. All image versions should be in a form of commit hashes.
 	1. Create a pull request with your changes to the release branch. It triggers all jobs for components.
 
 		![PullRequest][./assets/release-PR.png]
