@@ -236,7 +236,8 @@ Before a release, make sure there is no mismatch between source code and `.yaml`
        /test pre-rel14-kyma-gke-integration
        /test pre-rel14-kyma-gke-upgrade
        /test pre-rel14-kyma-gke-backup
-    ```	
+       ```
+       
 	1. Wait for the jobs to finish:
      - `pre-{release_number}-kyma-integration`
      - `pre-{release_number}-kyma-gke-integration`
