@@ -239,10 +239,10 @@ Before a release, make sure there is no mismatch between source code and `.yaml`
        ```
        
 	1. Wait for the jobs to finish:
-     - `pre-{release_number}-kyma-integration`
-     - `pre-{release_number}-kyma-gke-integration`
-     - `pre-{release_number}-kyma-gke-upgrade`
-     - `pre-{release_number}-kyma-gke-backup`
+        - `pre-{release_number}-kyma-integration`
+        - `pre-{release_number}-kyma-gke-integration`
+        - `pre-{release_number}-kyma-gke-upgrade`
+        - `pre-{release_number}-kyma-gke-backup`
 
 6. If you detect any problems with the release, such as failing tests, wait for the fix that can be delivered either on a PR or cherry-picked to the PR from the `master` branch.  
 	Prow triggers the jobs again. Rerun manual jobs as described in **step 5**.
