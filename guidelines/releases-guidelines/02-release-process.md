@@ -23,8 +23,8 @@ A Kyma release consists of the following things:
 Define release jobs on the `master` branch in the `test-infra` repository. To ensure every job name is unique, prefix it with `pre-rel{versionNumber}`. Remember to provide the version number without any periods. For example, to find all jobs for the 1.4 release, look for job names with the `pre-rel14` prefix. To learn how to define a release job for a component, read the following [document](https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md).
 
 1. Navigate to the `test-infra` repository.
-2. Define release jobs in the `prow/jobs/test-infra` directory in the `watch-pods.yaml` file.
-3. Define release jobs in the `prow/jobs/kyma` directory in the following files:
+1. Define release jobs in the `prow/jobs/test-infra` directory in the `watch-pods.yaml` file.
+1. Define release jobs in the `prow/jobs/kyma` directory in the following files:
    - every `.yaml` in `components` 
    - every `.yaml` in `tests`
    - every `.yaml` in `tools/` **except for** the `tools/failery/failery.yaml` file
@@ -214,7 +214,7 @@ Before a release, make sure there is no mismatch between source code and `.yaml`
 
 		![PullRequest](./assets/release-PR.png)
 
-3. If any job fails, trigger it again by adding the following comment to the PR:
+1. If any job fails, trigger it again by adding the following comment to the PR:
 
 	```
 	/test {job_name}
@@ -222,8 +222,8 @@ Before a release, make sure there is no mismatch between source code and `.yaml`
 
 	> **CAUTION:** Never use `/test all` as it might run tests that you do not want to execute.
 
-4. Wait until all jobs for components and tools finish.
-5. Execute remaining tests. The diagram shows you the jobs and dependencies between them.
+1. Wait until all jobs for components and tools finish.
+1. Execute remaining tests. The diagram shows you the jobs and dependencies between them.
 	![JobDependencies](assets/kyma-rel-jobs.svg)
 	1. Run `kyma-integration` by adding the  `/test pre-{release_number}-kyma-integration`  comment to the PR.
 
@@ -244,14 +244,14 @@ Before a release, make sure there is no mismatch between source code and `.yaml`
         - `pre-{release_number}-kyma-gke-upgrade`
         - `pre-{release_number}-kyma-gke-backup`
 
-6. If you detect any problems with the release, such as failing tests, wait for the fix that can be delivered either on a PR or cherry-picked to the PR from the `master` branch.  
+1. If you detect any problems with the release, such as failing tests, wait for the fix that can be delivered either on a PR or cherry-picked to the PR from the `master` branch.  
 	Prow triggers the jobs again. Rerun manual jobs as described in **step 5**.
 
-7. After all checks pass, merge the PR, using the `rebase and merge` option. To merge the PR to the release branch, you must receive approvals from all teams.
+1. After all checks pass, merge the PR, using the `rebase and merge` option. To merge the PR to the release branch, you must receive approvals from all teams.
+
     > **CAUTION:** By default, the `rebase and merge` option is disabled. Contact one of the `kyma-project/kyma` repository admins to enable it.
     
-
-8. Merging the PR to the release branch runs the postsubmit jobs, which:
+1. Merging the PR to the release branch runs the postsubmit jobs, which:
 	- create a GitHub release and trigger documentation update on the official Kyma website
 	- trigger provisioning of the cluster from the created release
 	The cluster name contains the release version with a period `.` replaced by a dash `-`. For example: `gke-release-1-1-0-rc1`. Use the cluster to test the release candidate.
@@ -265,16 +265,16 @@ Before a release, make sure there is no mismatch between source code and `.yaml`
 
    - Follow instructions on [Access the cluster](https://kyma-project.io/docs/#installation-use-your-own-domain-access-the-cluster) and give Kyma teams access to start testing the release candidate.
     
-9. Update the `RELEASE_VERSION` file to contain the next patch RC1 version on the release branch. Do it immediately after the release, otherwise, any PR to a release branch overrides the previously published Docker images.
+1. Update the `RELEASE_VERSION` file to contain the next patch RC1 version on the release branch. Do it immediately after the release, otherwise, any PR to a release branch overrides the previously published Docker images.
 
 	For example, if the `RELEASE_VERSION` file on the release branch contains `1.4.1`, change it to `1.4.2-rc1`.
 
-10.  Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
+1.  Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
 
-11. Update the release content manually with links to the instruction on how to install the latest Kyma release.  
+1. Update the release content manually with links to the instruction on how to install the latest Kyma release.  
 	Currently, this means to grab the links from the previous release and update the version number in URLs. If contributors want you to change something in the instruction, they would address you directly.
 
-12. Create a spreadsheet with all open issues labeled as `test-missing`. Every team assigned to an issue must cover the outstanding test with manual verification on every release candidate. After the test is finished successfully, the responsible team must mark it as completed in the spreadsheet. Every issue identified during testing must be reported. To make the testing easier, provision a publicly available cluster with the release candidate version after you complete all steps listed in this document.
+1. Create a spreadsheet with all open issues labeled as `test-missing`. Every team assigned to an issue must cover the outstanding test with manual verification on every release candidate. After the test is finished successfully, the responsible team must mark it as completed in the spreadsheet. Every issue identified during testing must be reported. To make the testing easier, provision a publicly available cluster with the release candidate version after you complete all steps listed in this document.
 
 ## CLI
 
@@ -291,25 +291,25 @@ Then the Kyma version is updated to test the integration with the latest Kyma ve
 
 >**NOTE:** This point applies only to new major and minor versions and not for new release candidates such as rc2 when already having rc1.
 
-1. After making sure that Kyma is released, create a release branch in the `cli` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-1.4`.
+ After making sure that Kyma is released, create a release branch in the `cli` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-1.4`.
 
-    ```bash
-    git fetch upstream
-    git checkout -b {RELEASE_NAME} upstream/master
-    git push upstream {RELEASE_NAME}
-    ```
+```bash
+git fetch upstream
+git checkout -b {RELEASE_NAME} upstream/master
+git push upstream {RELEASE_NAME}
+```
 
 ### Steps for new release candidate
 
 >**NOTE:** This point applies for new release candidates such as rc1, rc2 and the final version.
 
-2. Ensure that the `KYMA_VERSION` variables on `Makefile` and `.goreleaser.yml` file from the `cli` repository on the release branch contains the latest Kyma version that you just released.
+1. Ensure that the `KYMA_VERSION` variables on `Makefile` and `.goreleaser.yml` file from the `cli` repository on the release branch contains the latest Kyma version that you just released.
 
-3. Create a PR to `cli/release-x.y`. This triggers the presubmit job for `cli`.
+1. Create a PR to `cli/release-x.y`. This triggers the presubmit job for `cli`.
 
->**NOTE:** A CLI release requires Kyma to be released first. Otherwise integration jobs will fail. However anything can be prepared. Just do not merge the PR until Kyma is relesed. Then do a retest and merge the PR.
+    >**NOTE:** A CLI release requires Kyma to be released first. Otherwise integration jobs will fail. However anything can be prepared. Just do not merge the PR until Kyma is relesed. Then do a retest and merge the PR.
 
-4. After merging the PR, create a tag on the release branch that has the same version name as Kyma. If you define a release candidate version, a pre-release is created.  
+1. After merging the PR, create a tag on the release branch that has the same version name as Kyma. If you define a release candidate version, a pre-release is created.  
 
     ```bash
     git tag -a {RELEASE_VERSION} -m "Release {RELEASE_VERSION}"
@@ -318,4 +318,4 @@ Then the Kyma version is updated to test the integration with the latest Kyma ve
    
    where {RELEASE_VERSION} could be e.g. `1.4.0-rc1`, `1.4.0-rc2` or `1.4.0`.
 
-5. Pushing the tag triggers the postsubmit job that creates the GitHub release. Validate if the release is available under [releases](https://github.com/kyma-project/cli/releases).
+1. Pushing the tag triggers the postsubmit job that creates the GitHub release. Validate if the release is available under [releases](https://github.com/kyma-project/cli/releases).
