@@ -2,102 +2,101 @@
 
 ## Introduction
 
-One of the main features of kyma is its ability to run serverless functions. Currently this feature is implemented using the open source project [kubeless](https://github.com/kubeless/kubeless). With the focus shift towards knative will be replaced with a [knative](https://github.com/knative) based function runtime controller (called knative-functions from here on).
+One of the main features of kyma is its ability to run serverless functions. Currently the functions provider in Kyma is the open source project [kubeless](https://github.com/kubeless/kubeless). With the focus shift towards knative, Kubeless will be replaced with a functions runtime controller (called `function-controller` from here on) that is the provider of a [Knative](https://github.com/knative) based functions (called `knative-functions` from here on).
 
-## Problem
+The migration to a new functions provider should provide a similar user experience as with the currently available kubeless runtime. This includes UI based CRUD operations for the functions as well as monitoring, alerting and  backup / restore.
 
-As long as neither [knative-serving](https://github.com/knative/serving) / [knative-build](https://github.com/knative/build) nor the knative-functions itself provide a stable API it shall be an experimental feature to use the new function controller.
+## Features
 
-Switching the runtime should provide a similar user experience as with the currently available kubeless runtime. This includes CRUD operations for the functions from within the user interface as well as monitoring / alerting and  backup / restore.
+### Current Features
 
-## Goal
+- As a developer, I want to provide my code as a function of a certain language and runtime to be deployed.
+- As a developer, I want to specify the packages/library dependencies of my code so that it's available for my code.
+- As a developer, I want to be able to provide arbitrary environment variables as name, value pairs to be available for use inside my function.
+- As a developer, I want to create a `Service Binding` to a `Service Instance` that is provisioned inside my namespace.
+- As a developer, I want to add configure my function to be triggered via an event from an application bound to my namespace.
+- As a developer, I want to expose my function via `http` & `https` with the option to add a token based authentication.
+- As a developer, I want to be able to choose different runtimes for my function.
 
-* Clearly show problems and provide possible solutions.
-* Propose next steps for integration of the new controller runtime.
-* Provide a migration path from kubeless to the new runtime
+### New Features
 
-## Problems
+- As a developer, I want to define enable and disable scale to zero as well as specify the scale to zero grace period.
+- As a developer, I want to view the status of my function.
 
-### Multiple Runtimes
+## Proposed Solution
 
-Currently kubeless is installed by default as a core component into every kyma installation. Technically it is easily possible to install the knative-functions in parallel with kubeless.
+### Overview
+We are proposing introducing the following changes:
 
-#### 'Solo' Installation
+1. A new `Function` CRD and `function-controller` component.
+2. Bundle [Tekton Pipelines](https://github.com/tektoncd/pipeline/) and [Knative Serving](https://github.com/knative/serving) as Kyma modules.
+3. Bundle a docker registry inside Kyma for hosting function images.
+4. Adding GraphQL layer support.
+5. Updating the UI with a new Microfrontend Functions section that leverages all new functionality.
 
-Installing only one of the runtimes requires changes in the current installation approach for kubeless. kubeless is currently not a separate module. This means its installation cannot be disabled at the moment. Moving kubeless to its own module is a major task. Due to the fact that the use of kubeless will be discontinued we advise against this solution.
+### Function CRD
 
-##### Advantages
+#### CRD Definition
 
-* no unused system ressources due to unused controllers
-* cleaner setup (only one runtime available)
+The new `Function` CRD gives the user a way to define how to turn his source code into a running container inside Kyma. That source code is conventionally a single function running inside a specific execution environment (aka runtime). This is an example of the minimum set of fields you need to successfully define your function.
 
-##### Disadvantages
+```YAML
+apiVersion: serverless.kyma-project.io/v1alpha1
+kind: Function
+metadata:
+  name: sample
+  labels:
+    foo: bar
+spec:
+  function: |
+    module.exports = {
+        main: function(event, context) {
+          return 'Hello World'
+        }
+      }
+  functionContentType: "plaintext"
+  size: "L"
+  runtime: "nodejs8"
+```
 
-* kubeless has to be converted into an optional module
+[Appendix A](#appendix-a-function-custom-resource-definition) has the full definition of the function CRD.
 
-#### Active runtime selection
+#### Function Controller
 
-Another approach to have only one active runtime could be a feature-flag that allows the administrator to select the active runtime during installation/upgrade of kyma.
+The function controller reconciles `Function` objects by using `Tekton` and `Knative Serving` to do the following:
 
-##### Advantages
+1. Create a `TaskRun` object for the proper `Task` based on the provided runtime in the `Function Object`.
+2. Create a `Knative Service` object that refers to the newly published image created in the previous step.
 
-* installation easy to implement
-* only one function implementation will be active per cluster
+The following diagram gives a brief overview of the sequence of events. The
+only thing the user does is create a function object.
 
-##### Disadvantages
+![function controller](assets/knative_function_controller.svg) .
 
-* both runtimes use system ressources
-* UI has to be able to cope with both runtimes
-  
-#### Both runtimes active
+### Tekton Pipelines and Knative Serving
 
-It is also possible to install both runtimes at the same time and support functions of both flavors simultaneously
+`Tekton Pipelines` and `Knative Serving` will be bundled with Kyma as Kyma modules. They will be installed by default once the knative-functions provider completely replaces Kubeless.
 
-##### Advantages
+### Docker Registry module
 
-* installation easiest to implement
-* users can compare both runtimes
+[Docker Registry](https://hub.docker.com/_/registry) will be bundled as a Kyma module that is used to host and serve the docker images generated by building functions. It will be configurable to use the Minio in Kyma for storage. It'll also be configurable so that Kyma
+users can skip installing it and provide an external registry instead.
 
-##### Disadvantages
+### GraphQL layer support
 
-* both runtimes use system ressources
-* UI has to be able to cope with both runtimes at the same time(probably hardest version to implement)
+For the user to have a fully functional and integrated function from the UI, CRUD operations for the following four
+objects needs to be supported in the GraphQL API layer.
 
-#### Proposal
+* Function (New)
+* Subscription (New)
+* ServiceBinding (Exists)
+* ServiceBindingUsage (Exists)
+* API
 
-install both runtimes into the same cluster and allow the user to use both runtimes at will.
 
-### UI changes
+#### Function GraphQL Objects Spec
 
-Even though the kubeless function crd and the knative-functions crd look very similar some changes to the UI layer are required:
-
-#### Builds
-
-The new function runtime will create new container images based on the user supplied function code. Functions will now not only be in a serving state but also will report a 'building' state. This also enables us to have an old version of the function in a serving state and simultaneously have the runtime prepare a new version of the image.
-
-#### Services
-
-knative-serving allows scale to zero. This means a function can have zero running instances and still be fully operational as it will automatically be scaled up to as many instances as required if request are routed to the function.
-
-#### Function Sizes
-
-In the current implementation function sizes (S, M, L, XL) are configured and handled by the UI-Layer. This means the sizes are translated into their configured cpu / memory requests/limits. For the new controller this mapping is handled by the controller itself. It is also possible to add or remove additional sizes. The UI just has to retrieve the configured sizes from the controller and configure the function accordingly.
-
-#### Function creation flow
-
-![Creation flow](assets/knative_function_workflow.svg)
-When a user creates a function in the UI, the creation of 4 objects will be triggered.
-
-* Function
-* ServiceBinding
-* ServiceBindingUsage
-* API  
-
-#### GraphQL
-
-In order to allow changes to the function implementation without having to change the UI all calls to the API server have to be replaced by GraphQL calls. Currently these are not implemented, so an additional GraphQL layer has to be implemented that allows CRUD operations on function objects.
-
-```json
+```YAML
 type Function {
   name: String!
   functionCode: String!
@@ -130,12 +129,55 @@ type EnvironmentVariable {
 }
 ```
 
-### Proposal
+#### Subscription GraphQL Objects Spec
 
-The UI for knative-functions should be implemented as a new micro frontend. This will allow us to enable the old and the new UI at the same time and keep the code clean. The feature flag will be used to enable the new UI.
+```YAML
+type Subscription {
+    type: EventSpec!
+    subscriberURI: String!
+}
+```
+
+Currently there exists an `EventActivationEvent` object in GraphQL, we recommend renaming it to `EventSpec` and having it look as follows
+
+```YAML
+type EventSpec {
+    eventType: String!
+    version: String!
+    description: String!
+    schema: JSON!
+}
+```
+
+### New UI Functions Microfrontend
+
+Even though the kubeless function crd and the knative-functions crd look very similar some changes to the UI layer are
+required to fully leverage the new approach and new functionality.
+
+The UI for knative-functions should be implemented as a new micro frontend. This will allow us to enable the old and the new UI at the same time and keep the code clean. A feature flag will be used to enable the new UI.
+
+#### Function Creation Flow
+
+The following diagram summarizes the objections creation flow that needs to be done via the GraphQL API client on behalf
+of the user to have a fully functional and integrated `Function`. 
+
+![Creation flow](assets/knative_function_workflow.svg)
 
 With a proper GraphQL layer in place the UI should create the objects not in one huge call but one by one. This means that at first only the Function-CR related information can be entered. As soon as a user created the function more options will be available. The user is now able to expose the function by creating a api object and bind to services using ServiceBindings.
 
+#### Function State
+
+##### Building State
+
+The new function runtime will create new container images based on the user supplied function code. Functions will now not only be in a serving state but also will report a 'building' state. This also enables us to have an old version of the function in a serving state and simultaneously have the runtime prepare a new version of the image.
+
+##### Scaled to Zero
+
+knative-serving allows scale to zero. This means a function can have zero running instances and still be fully operational as it will automatically be scaled up to as many instances as required if request are routed to the function.
+
+#### Function Sizes
+
+In the current implementation function sizes (S, M, L, XL) are configured and handled by the UI-Layer. This means the sizes are translated into their configured cpu / memory requests/limits. For the new controller this mapping is handled by the controller itself. It is also possible to add or remove additional sizes. The UI just has to retrieve the configured sizes from the controller and configure the function accordingly.
 
 ### Service Catalog
 
@@ -160,27 +202,189 @@ spec:
 
 The problem that needs to be solved here is that as soon as the service binding controller modifies the knative-service knative-serving creates a new revision and automatically starts a new pod with the updated configuration. The PodPreset also does this creates a new pod based on the old configuration plus the updated PodPreset. So until knative-serving scales down the service the pods are duplicated.
 
-### Monitoring and Alerting
+## Challenges
+
+### Multiple Functions Provider
+
+Currently kubeless is installed by default as a core component into every kyma installation. Technically it is easily possible to install the `function-controller` in parallel with kubeless.
+
+#### Single Functions Provider - Modularize Kubeless
+
+Installing only one of the runtimes requires changes in the current installation approach for kubeless. Kubeless is currently not a separate module. This means its installation cannot be disabled at the moment. Moving kubeless to its own module is a major task. Due to the fact that the use of kubeless will be discontinued we advise against this solution.
+
+##### Pros
+
+- No unused system resources due to unused controllers.
+- Only one function implementation will be active per cluster.
+
+##### Cons
+
+- Kubeless has to be converted into an optional module.
+- No way to try out the new `function-controller` while still having Kubeless functions as the production ready functions provider.
+
+#### Single Functions Provider - Feature Flag
+
+Another approach to have only one active runtime could be a feature-flag that allows the selection of the functions provider during installation/upgrade of kyma.
+
+##### Pros
+
+- Installation is easier to implement.
+- No unused system resources due to unused controllers.
+- Only one function implementation will be active per cluster.
+
+##### Cons
+
+- No way to try out the new `function-controller` while still having Kubeless functions as the production ready functions provider.
+
+#### Both Functions Provider
+
+It is also possible to install both function providers at the same time and support functions of both flavors simultaneously
+
+##### Pros
+
+- Installation is the easiest to implement.
+- Users can compare both functions providers.
+- Gives a way to play around with the new functions provider while relying on Kubeless functions provider for production workload.
+
+##### Cons
+
+- Both providers use system resources.
+- UI has to be able to cope with both function providers at the same time(probably hardest version to implement)
+
+#### Recommendation
+
+To install both functions providers into the same cluster and allow the user to use both providers at will.
+
+## Monitoring and Alerting
 
 Currently existing dashboards must be adapted to support the new knative-functions. Existing alert rules have to be adapted as well.
 
 ## Migration
 
-* integrate the knative function controller
-* install both runtimes simultaneously (installation of knative-functions is triggered using a feature flag)
-  * in this phase the user can run functions on kubeless with UI integration
-  * knative-functions can be scheduled using the `kubectl`
-* as soon as the UI for knative-functions is available it will be enabled by the feature flag
-  * the user can now use the UI to schedule knative functions
-  * kubeless functions can still be scheduled using the old UI
-* all other parts (alerting, monitoring, upgrade) will be enabled as soon as they are available
-* once knative-functions is production ready the upgrade job will migrate all existing kubeless function to knative-functions.
+1. Integrate the knative function controller.
+2. Install both runtimes simultaneously (installation of `function-controller` is triggered using a feature flag).
+   - In this phase the user can run functions on kubeless with UI integration.
+   - `knative-functions` can be created using the `kubectl`.
+3. When the UI for `knative-functions` is released it will be enabled by the feature flag.
+   - The user can now use the UI to schedule knative functions.
+   - Kubeless functions can still be scheduled using the old UI
+4. All other parts (alerting, monitoring, upgrade) will be enabled as soon as they are available
+5. Once `knative-functions` is production ready the upgrade job will migrate all existing kubeless function to `knative-functions`.
 
 ## Next Steps
 
-* implement the required UI and GraphQL changes
-* create knative-functions module for kyma installer
-* implement an migration job
+- Implement the required UI and GraphQL changes.
+- Create `function-controller` module for kyma installer.
+- Implement a migration job.
 
 ## Additional Thoughts
-* it might be necessary to run multiple function controllers in the same cluster that reconcile the same CRD. (e.g. one that schedules the function locally, on that schedules it in a different cluster). The knative-function CRD should be implemented in a way to support this.
+
+- It might be necessary to run multiple function controllers in the same cluster that reconcile the same CRD. (e.g. one that schedules the function locally, one that schedules it in a different cluster). The `Function` CRD should support this.
+
+## Open Issues
+
+The following is a list of open issues that need to be further addressed
+
+1. Creation of ServiceAccounts to push docker images required or tekton.
+2. The design and verification of the bundled docker registry.
+
+## Appendix A. Function Custom Resource Definition
+
+```YAML
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: serverless.kyma-project.io
+spec:
+  additionalPrinterColumns:
+  - JSONPath: .spec.size
+    description: Size defines as the size of a function pertaining to memory and cpu
+      only. Values can be any one of these S M L XL)
+    name: Size
+    type: string
+  - JSONPath: .spec.runtime
+    description: Runtime is the programming language used for a function e.g. nodejs8
+    name: Runtime
+    type: string
+  - JSONPath: .metadata.creationTimestamp
+    name: Age
+    type: date
+  - JSONPath: .status.condition
+    description: Check if the function is ready
+    name: Status
+    type: string
+  group: serverless.kyma-project.io
+  names:
+    kind: Function
+    plural: functions
+  scope: Namespaced
+  subresources:
+    status: {}
+  validation:
+    openAPIV3Schema:
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          properties:
+            deps:
+              description: deps defines the dependencies for a function
+              type: string
+            env:
+              description: envs defines an array of key value pairs need to be used
+                as env variable for a function
+              items:
+                type: object
+              type: array
+            function:
+              description: function defines the content of a function
+              type: string
+            functionContentType:
+              description: functionContentType defines file content type (plaintext
+                or base64)
+              type: string
+            runtime:
+              description: runtime is the programming language used for a function
+                e.g. nodejs8
+              type: string
+            size:
+              description: size defines as the size of a function pertaining to memory
+                and cpu only. Values can be any one of these S, M, L, XL
+              type: string
+            timeout:
+              description: timeout defines maximum duration alloted to a function
+                to complete its execution, defaults to 180s
+              format: int32
+              type: integer
+          required:
+          - function
+          - functionContentType
+          - size
+          - runtime
+          type: object
+        status:
+          properties:
+            condition:
+              type: string
+          type: object
+  version: v1alpha1
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+```
