@@ -88,13 +88,28 @@ defined in the `development/tools/jobs/tester/tester.go` file under the `test-in
  
 1. Remove the now unsupported release in `tester.go` and all references of it. E.g `Release12 SupportedRelease = "release-1.2"` when releasing 1.5.
  
-##### Remove previous release jobs
+1. Remove previous release jobs
 
-After adding new release jobs, remove the old ones. Remember to leave jobs for three latest releases. For example, during the preparation for the 1.4 release, add `pre-rel14` jobs and remove all `pre-rel11` jobs. Make sure that the only defined jobs are those with `pre-rel12`, `pre-rel13`, and `pre-rel14` prefixes.
+    After adding new release jobs, remove the old ones. Remember to leave jobs for three latest releases. For example, during the preparation for the 1.4 release, add `pre-rel14` jobs and remove all `pre-rel11` jobs. Make sure that the only defined jobs are those with `pre-rel12`, `pre-rel13`, and `pre-rel14` prefixes.
+    
+1. Merge the PR first when Kyma release branch is created!
 
-> **NOTE:** Currently, you are most likely required to push to the `release-x.y` branch more than once. Make sure that a user with **admin** role is present in the `kyma` repository.
+    Create a release branch in the `kyma` repository.
 
-Before a release, make sure there is no mismatch between source code and `.yaml` files. All components are rebuilt from source code, which requires all Helm charts to be up to date.
+    Do it only for major and minor releases.
+    The name of this branch should follow the `release-x.y` pattern, such as `release-1.4`.
+
+    ```bash
+    git fetch upstream
+    git checkout -b release-{release_version} upstream/master
+    git push upstream release-{release_version}
+    ```
+
+	> **NOTE:** If you don't create the Kyma release branch and merge the PR in test-infra, then pushing anything to the release branch (includes creation of the branch), or if you rebase the branch, a new Github release will be created. This is because of the post-submit job `post-rel14-kyma-release-candidate` in `kyma-github-release.yaml`.
+
+1. Merge the test-infra PR against current master
+
+> **NOTE:** Before a release, make sure there is no mismatch between source code and `.yaml` files. All components are rebuilt from source code, which requires all Helm charts to be up to date.
 
 ##### Create release branch
 
@@ -102,7 +117,7 @@ Before a release, make sure there is no mismatch between source code and `.yaml`
 
 	```bash
 	git fetch upstream
-	git checkout -b $RELEASE_NAME upstream/master
+	git checkout -b {RELEASE_NAME} upstream/master
 	```
 
 #### Steps for new release candidate
@@ -128,19 +143,6 @@ Before a release, make sure there is no mismatch between source code and `.yaml`
 ### Changes to Kyma repository
 
 #### Steps for new major/minor version
-
-1. Create a release branch in the `kyma` repository.
-
-	Do it only for major and minor releases.
-	The name of this branch should follow the `release-x.y` pattern, such as `release-1.4`.
-
-	```bash
-	git fetch upstream
-	git checkout -b release-{release_version} upstream/master
-	git push upstream release-{release_version}
-	```
-
-	> **NOTE:** If you push anything to the release branch (includes creating of the branch), or if you rebase the branch, a new Github release is created. This is because of the post-submit job `post-rel14-kyma-release-candidate` in `kyma-github-release.yaml` and only happens if you already merged the test-infra changes.
 
 1. Create a new branch and do the following changes.
 	1. In  the `resources/core/values.yaml` file, replace the `clusterDocsTopicsVersion` value with your release branch name. For example, for the 1.4.1 release, find the following section:
@@ -209,7 +211,7 @@ Before a release, make sure there is no mismatch between source code and `.yaml`
 		```
 
 		> **CAUTION**: In `installation/resources/installer.yaml` replace `eu.gcr.io/kyma-project/develop/installer:{image_tag}` with `eu.gcr.io/kyma-project/kyma-installer:{release_version}`
-                                                                                                                                                                                                                                                                                                   >
+
 	1. Create a pull request with your changes to the release branch. It triggers all jobs for components.
 
 		![PullRequest](./assets/release-PR.png)
