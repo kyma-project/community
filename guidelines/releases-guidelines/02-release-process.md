@@ -16,9 +16,38 @@ A Kyma release consists of the following things:
 * Git tag
 * Release branch
 
+### Timeline
+
+> **NOTE:** You should start a few days before the first release candidate to prepare the test-infra and Kyma PRs.
+
+This is the timeline for creating the first release candidate.
+
+1. Create Kyma release branch
+1. Prepare test-infra PR against master branch
+1. Prepare test-infra PR against release branch
+1. Rebase kyma release branch to incorporate all rc1 changes
+1. Merge test-infra PRs
+1. Prepare and merge Kyma PR against release branch 
+
+### Create Kyma release branch
+
+>**NOTE:** This point applies only to new major and minor versions and not for new release candidates such as rc2 when already having rc1.
+>
+Create a release branch in the `kyma` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-1.4`.
+
+```bash
+git fetch upstream
+git checkout -b release-{release_version} upstream/master
+git push upstream release-{release_version}
+```
+
+> **NOTE:** If you don't create the kyma release branch now and add a post-submit job `post-rel{release_version}-kyma-release-candidate` to test-infra master, then pushing anything to the kyma release branch (includes creation of the branch), or if you rebase the branch, a new Github release will be created.
+
 ### Changes to test-infra repository
 
 #### Steps for new major/minor version
+
+>**NOTE:** This point applies only to new major and minor versions and not for new release candidates such as rc2 when already having rc1.
 
 Define release jobs on the `master` branch in the `test-infra` repository. To ensure every job name is unique, prefix it with `pre-rel{versionNumber}`. Remember to provide the version number without any periods. For example, to find all jobs for the 1.4 release, look for job names with the `pre-rel14` prefix. To learn how to define a release job for a component, read the following [document](https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md).
 
@@ -92,20 +121,6 @@ defined in the `development/tools/jobs/tester/tester.go` file under the `test-in
 
     After adding new release jobs, remove the old ones. Remember to leave jobs for three latest releases. For example, during the preparation for the 1.4 release, add `pre-rel14` jobs and remove all `pre-rel11` jobs. Make sure that the only defined jobs are those with `pre-rel12`, `pre-rel13`, and `pre-rel14` prefixes.
     
-1. Merge the PR first when Kyma release branch is created!
-
-    Create a release branch in the `kyma` repository.
-
-    Do it only for major and minor releases.
-    The name of this branch should follow the `release-x.y` pattern, such as `release-1.4`.
-
-    ```bash
-    git fetch upstream
-    git checkout -b release-{release_version} upstream/master
-    git push upstream release-{release_version}
-    ```
-
-	> **NOTE:** If you don't create the Kyma release branch and merge the PR in test-infra, then pushing anything to the release branch (includes creation of the branch), or if you rebase the branch, a new Github release will be created. This is because of the post-submit job `post-rel14-kyma-release-candidate` in `kyma-github-release.yaml`.
 
 1. Merge the test-infra PR against current master
 
