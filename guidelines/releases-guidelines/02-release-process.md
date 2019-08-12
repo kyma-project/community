@@ -22,12 +22,12 @@ A Kyma release consists of the following things:
 
 This is the timeline for creating the first release candidate.
 
-1. Create Kyma release branch
-1. Prepare test-infra PR against master branch
-1. Prepare test-infra PR against release branch
+1. [Create Kyma release branch](#create-kyma-release-branch)
+1. [Prepare test-infra PR against master branch](#steps-for-new-majorminor-version)
+1. [Prepare test-infra PR against release branch](#steps-for-new-release-candidate)
 1. Rebase kyma release branch to incorporate all rc1 changes
 1. Merge test-infra PRs
-1. Prepare and merge Kyma PR against release branch 
+1. [Prepare and merge Kyma PR against release branch](#changes-to-kyma-repository)
 
 ### Create Kyma release branch
 
