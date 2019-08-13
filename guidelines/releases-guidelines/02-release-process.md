@@ -7,13 +7,13 @@ This document describes how to create a Kyma release using Prow.
 
 ## Preparation
 
-This section only applies to new major and minor versions. If you release a patch, skip the preparation and go to the [**Steps**][/#release-process-release-process-steps] section.
+This section only applies to new major and minor versions. If you release a patch, skip the preparation and go to the [**Steps**](#release-process-release-process-steps) section.
 
 To prepare a release, define a new and remove the old release.
 
 ### Define release jobs
 
-Define release jobs on the `master` branch in the `test-infra` repository. To ensure every job name is unique, prefix it with `pre-rel{versionNumber}`. Remember to provide the version number without any periods. For example, to find all jobs for the 0.9 release, look for job names with the `pre-rel09` prefix. To learn how to define a release job for a component, read the following [document][https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md].
+Define release jobs on the `master` branch in the `test-infra` repository. To ensure every job name is unique, prefix it with `pre-rel{versionNumber}`. Remember to provide the version number without any periods. For example, to find all jobs for the 0.9 release, look for job names with the `pre-rel09` prefix. To learn how to define a release job for a component, read the following [document](https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md).
 
 1. Navigate to the `test-infra` repository.
 2. Define release jobs in the `prow/jobs/test-infra` directory in the `watch-pods.yaml` file.
@@ -37,13 +37,13 @@ Define release jobs on the `master` branch in the `test-infra` repository. To en
 		        value: release-0.9
 		```
 
-1. Ensure that tests for the release jobs exist. Release tests usually iterate through all release versions and run tests for them.
+4. Ensure that tests for the release jobs exist. Release tests usually iterate through all release versions and run tests for them.
 See the `TestBucReleases` test defined in `development/tools/jobs/kyma/service_binding_usage_controller_test.go` as a reference.
 
-1. Update the `GetAllKymaReleaseBranches()` function
+5. Update the `GetAllKymaReleaseBranches()` function
 defined in the `development/tools/jobs/tester/tester.go` file under the `test-infra` repository.
 
-1. Define branch protection rules for the release branch in the `prow/config.yaml` file.
+6. Define branch protection rules for the release branch in the `prow/config.yaml` file.
 	For example, see the release-1.2 definition:
 
 	```yaml
@@ -202,7 +202,6 @@ Follow these steps to create a release:
 
 7. After all checks pass, merge the PR, using the `rebase and merge` option. To merge the PR to the release branch, you must receive approvals from all teams.
     > **CAUTION:** By default, the `rebase and merge` option is disabled. Contact one of the `kyma-project/kyma` repository admins to enable it.
-    
 
 8. Merging the PR to the release branch runs the postsubmit jobs, which:
 	- create a GitHub release and trigger documentation update on the official Kyma website
@@ -220,6 +219,8 @@ Follow these steps to create a release:
 	Currently, this means to grab the links from the previous release and update the version number in URLs. If contributors want you to change something in the instruction, they would address you directly.
 
 12. Create a spreadsheet with all open issues labeled as `test-missing`. Every team assigned to an issue must cover the outstanding test with manual verification on every release candidate. After the test is finished successfully, the responsible team must mark it as completed in the spreadsheet. Every issue identified during testing must be reported. To make the testing easier, provision a publicly available cluster with the release candidate version after you complete all steps listed in this document.
+
+13. Notify Team Breaking Pixels that the release is available for integration with Faros.
 
 ### kyma-project/cli
 
@@ -246,3 +247,13 @@ Follow these steps to create a release:
     ```
 
 4. Pushing the tag triggers the postsubmit job that creates the GitHub release. Validate if the release is available under [releases](https://github.com/kyma-project/cli/releases).
+
+## Release process improvement
+
+To ensure continuous improvement of the release process, during or after each release the Release Master creates and describes Github issues regarding potential enhancements. These issues are tagged with the `quality/release` label and added to the Release Improvement Backlog.
+
+After the release is complete, the team responsible for the release, the Release Manager and the previous Release Master meet to refine the Release Improvement Backlog. During the meeting, they discuss the issues in detail and estimate time needed for their implementation. Taking into account how much time during the following release process could be saved, they make a decision of the issue(s) bringing the most value to be prioritized.
+
+The team invests time to implement the prioritized release improvement. The implementation must be ready before the following release process starts.
+
+Such an approach ensures the release process is better and better with every release. Also, both the responsibility for the release improvements and the workload are distributed among all Kyma teams instead of a single person, team or SIG.
