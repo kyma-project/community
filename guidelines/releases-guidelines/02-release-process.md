@@ -7,7 +7,7 @@ This document describes how to create a Kyma release using Prow.
 
 ## Preparation
 
-This section only applies to new major and minor versions. If you release a patch, skip the preparation and go to the [**Steps**](#steps) section.
+This section only applies to new major and minor versions. If you release a patch, skip the preparation and go to the [**Steps**](#release-process-release-process-steps) section.
 
 To prepare a release, define a new and remove the old release.
 
