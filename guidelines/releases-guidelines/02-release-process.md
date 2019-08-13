@@ -219,7 +219,7 @@ Follow these steps to create a release:
 
 12. Create a spreadsheet with all open issues labeled as `test-missing`. Every team assigned to an issue must cover the outstanding test with manual verification on every release candidate. After the test is finished successfully, the responsible team must mark it as completed in the spreadsheet. Every issue identified during testing must be reported. To make the testing easier, provision a publicly available cluster with the release candidate version after you complete all steps listed in this document.
 
-13. Notify the breaking-pixels team about the availability of a release for integration in Faros.
+13. Notify Team Breaking Pixels that the release is available for integration with Faros.
 
 ### kyma-project/cli
 
