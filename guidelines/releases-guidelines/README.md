@@ -8,5 +8,5 @@ Read about:
 
 - The [release strategy](#release-strategy-release-strategy) in Kyma
 - How to create a release using Prow according to the [release process](#release-process-release-process)
-- [Communication](03-release-communication.md) between the Release Master and the rest of the organization
+- [Communication](#release-communication-release-communication) between the Release Master and the rest of the organization
 - [Subscription to releases](#subscription-to-releases-subscription-to-releases)
