@@ -253,6 +253,6 @@ To ensure continuous improvement of the release process, during or after each re
 
 After completing the release, the team executing the release (together with the Release Manager and the previous release master) will refine the Release Improvement Backlog, considering the implementation estimation as well as the estimated time save on manual work after the implementation, and make a decision of the issue(s) bringing the most value to be prioritized.
 
-The team will invest time in the implementation of a release improvement. It will be ensured that the implementation is done before the next release execution starts.
+The team invests time to implement the prioritized release improvement. The implementation must be ready before the following release process starts.
 
 With this, the release process will always be better than on the previous release, and the responsibility (and workload) of these improvements will be distributed among the teams avoiding to have this laying on a single person, team or SIG.
