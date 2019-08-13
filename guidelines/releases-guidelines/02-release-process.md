@@ -255,4 +255,4 @@ After the release is complete, the team responsible for the release, the Release
 
 The team invests time to implement the prioritized release improvement. The implementation must be ready before the following release process starts.
 
-With this, the release process will always be better than on the previous release, and the responsibility (and workload) of these improvements will be distributed among the teams avoiding to have this laying on a single person, team or SIG.
+Such an approach ensures the release process is better and better with every release. Also, both the responsibility for the release improvements and the workload are distributed among all Kyma teams instead of a single person, team or SIG.
