@@ -13,6 +13,6 @@ type: Architecture
 > * Use an ordered list to describe a step-by-step workflow.
 > * Use sections if the document does not describe any workflow but the overall arrangement of the components and sub-components. In this case, each component should be described in a separate section. Use H2 (##) for sections and H3 (###) for sub-sections. Do not use headings smaller than H3 as they do not display well on the UI.
 > * Follow the `02-{00}-{component-name}.md` convention to name the document.
-> * In the metadata section, follow the `{Component name} architecture` convention for the `title` if there are more than one Architecture document in a repository. If there is only one document of a certain type, remove the `type` metadata completely so that the document displays well on the UI.
+> * In the metadata section, follow the `{Component name} architecture` convention for the `title` if there is more than one Architecture document in a repository. If there is only one document of a certain type, remove the `type` metadata completely so that the document displays well on the UI.
 >
 > For reference, see the existing **Architecture** document for the [Service Catalog](https://kyma-project.io/docs/master/components/service-catalog/#architecture-architecture).

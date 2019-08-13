@@ -227,6 +227,14 @@ defined in the `development/tools/jobs/tester/tester.go` file under the `test-in
 
 		> **CAUTION**: In `installation/resources/installer.yaml` replace `eu.gcr.io/kyma-project/develop/installer:{image_tag}` with `eu.gcr.io/kyma-project/kyma-installer:{release_version}`
 
+		And replace the `clusterDocsTopicsVersion` value with the following:
+
+		```yaml
+		docs:
+		    # (...)
+		    clusterDocsTopicsVersion: release-0.9
+		```
+  	1. Ensure that in the `resources/compass/values.yaml` there are no `PR-XXX` values. All image versions should be in a form of commit hashes.
 	1. Create a pull request with your changes to the release branch. It triggers all jobs for components.
 
 		![PullRequest](./assets/release-PR.png)
@@ -293,6 +301,8 @@ defined in the `development/tools/jobs/tester/tester.go` file under the `test-in
 
 1. Create a spreadsheet with all open issues labeled as `test-missing`. Every team assigned to an issue must cover the outstanding test with manual verification on every release candidate. After the test is finished successfully, the responsible team must mark it as completed in the spreadsheet. Every issue identified during testing must be reported. To make the testing easier, provision a publicly available cluster with the release candidate version after you complete all steps listed in this document.
 
+13. Notify Team Breaking Pixels that the release is available for integration with Faros.
+
 ## CLI
 
 A release of `cli` consists of:
@@ -336,3 +346,13 @@ git push upstream {RELEASE_NAME}
    where {RELEASE_VERSION} could be e.g. `1.4.0-rc1`, `1.4.0-rc2` or `1.4.0`.
 
 1. Pushing the tag triggers the postsubmit job that creates the GitHub release. Validate if the release is available under [releases](https://github.com/kyma-project/cli/releases).
+
+## Release process improvement
+
+To ensure continuous improvement of the release process, during or after each release the Release Master creates and describes Github issues regarding potential enhancements. These issues are tagged with the `quality/release` label and added to the Release Improvement Backlog.
+
+After the release is complete, the team responsible for the release, the Release Manager and the previous Release Master meet to refine the Release Improvement Backlog. During the meeting, they discuss the issues in detail and estimate time needed for their implementation. Taking into account how much time during the following release process could be saved, they make a decision of the issue(s) bringing the most value to be prioritized.
+
+The team invests time to implement the prioritized release improvement. The implementation must be ready before the following release process starts.
+
+Such an approach ensures the release process is better and better with every release. Also, both the responsibility for the release improvements and the workload are distributed among all Kyma teams instead of a single person, team or SIG.

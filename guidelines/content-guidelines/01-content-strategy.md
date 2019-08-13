@@ -83,6 +83,7 @@ As for the documentation that is published in the publicly available portal, the
 - Developers
 - Technical analysts
 - Business decision makers
+
 Because of such a diversified audience, the navigation of the Kyma portal needs to clearly separate technical content from the more showcase-based content.
 
 >**NOTE:** When you write a given document type, adjust its voice and tone to the audience that you address. See the **Voice and tone** section in the [guidelines](https://github.com/YaaS/REST_API_Documentation_Guidelines/blob/master/010_About_Style_And_Standards.html.md#voice-and-tone) for more details.
