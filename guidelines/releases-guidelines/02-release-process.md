@@ -251,7 +251,7 @@ Follow these steps to create a release:
 
 To ensure continuous improvement of the release process, during or after each release the Release Master creates and describes Github issues regarding potential enhancements. These issues are tagged with the `quality/release` label and are added to the Release Improvement Backlog.
 
-After completing the release, the team executing the release (together with the Release Manager and the previous release master) will refine the Release Improvement Backlog, considering the implementation estimation as well as the estimated time save on manual work after the implementation, and make a decision of the issue(s) bringing the most value to be prioritized.
+After the release is complete, the team responsible for the release, the Release Manager and the previous Release Master meet to refine the Release Improvement Backlog. During the meeting, they discuss the issues in detail and estimate time needed for their implementation. Taking into account how much time during the following release process could be saved, they make a decision of the issue(s) bringing the most value to be prioritized.
 
 The team invests time to implement the prioritized release improvement. The implementation must be ready before the following release process starts.
 
