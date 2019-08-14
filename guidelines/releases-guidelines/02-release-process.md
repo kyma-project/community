@@ -13,24 +13,24 @@ A Kyma release includes the following items:
 * Docker images for Kyma components
 * A GitHub release including release artifacts, such as source code and configuration
 * Git tag
-* Release branch
+* A release branch
 
-### Timeline
+### Release process
 
-> **NOTE:** You should start a few days before the first release candidate to prepare the test-infra and Kyma PRs.
+> **TIP:** Start a few days before creating the first release candidate to prepare the test-infra and Kyma PRs.
 
 This is the timeline for creating the first release candidate.
 
-1. [Create Kyma release branch](#create-kyma-release-branch)
-2. [Prepare test-infra PR against master branch](#steps-for-new-majorminor-version)
-3. [Prepare test-infra PR against release branch](#steps-for-new-release-candidate)
-4. Rebase kyma release branch to incorporate all rc1 changes
-5. Merge test-infra PRs
-6. [Prepare and merge Kyma PR against release branch](#changes-to-kyma-repository)
+1. [Create the Kyma release branch](#create-kyma-release-branch).
+2. [In the `test-infra` repository, prepare the PR to the master branch](#steps-for-new-majorminor-version).
+3. [In the `test-infra` repository, prepare the PR to the release branch](#steps-for-new-release-candidate).
+4. Rebase the Kyma release branch to add all RC1 changes.
+5. Merge the PRs created in the `test-infra` repository.
+6. [In the `kyma` repository, prepare and merge the PR to the release branch](#changes-to-kyma-repository).
 
 ### Create Kyma release branch
 
->**NOTE:** This point applies only to new major and minor versions and not for new release candidates such as rc2 when already having rc1.
+>**NOTE:** This section applies only to new major and minor versions. It does **not** apply to release candidates, such as RC2.
 
 Create a release branch in the `kyma` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-1.4`.
 
@@ -42,11 +42,11 @@ git push upstream release-{release_version}
 
 > **NOTE:** If you don't create the kyma release branch now and add a post-submit job `post-rel{release_version}-kyma-release-candidate` to test-infra master, then pushing anything to the kyma release branch (includes creation of the branch), or if you rebase the branch, a new Github release will be created.
 
-### Changes to test-infra repository
+### `test-infra` repository
 
 #### Steps for new major/minor version
 
->**NOTE:** This point applies only to new major and minor versions and not for new release candidates such as rc2 when already having rc1.
+>**NOTE:** This section applies only to new major and minor versions. It does **not** apply to release candidates, such as RC2.
 
 Define release jobs on the `master` branch in the `test-infra` repository. To ensure every job name is unique, prefix it with `pre-rel{versionNumber}`. Remember to provide the version number without any periods. For example, to find all jobs for the 1.4 release, look for job names with the `pre-rel14` prefix. To learn how to define a release job for a component, read the following [document](https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md).
 
@@ -121,7 +121,7 @@ defined in the `development/tools/jobs/tester/tester.go` file under the `test-in
     After adding new release jobs, remove the old ones. Remember to leave jobs for three latest releases. For example, during the preparation for the 1.4 release, add `pre-rel14` jobs and remove all `pre-rel11` jobs. Make sure that the only defined jobs are those with `pre-rel12`, `pre-rel13`, and `pre-rel14` prefixes.
     
 
-9. Merge the test-infra PR against current master
+9. Merge the PR to the current master branch.
 
 > **NOTE:** Before a release, make sure there is no mismatch between source code and `.yaml` files. All components are rebuilt from source code, which requires all Helm charts to be up to date.
 
@@ -136,7 +136,7 @@ defined in the `development/tools/jobs/tester/tester.go` file under the `test-in
 
 #### Steps for new release candidate
 
->**NOTE:** This point applies for new release candidates such as rc1, rc2 and the final version.
+>**NOTE:** This section applies to new release candidates, such as RC1, RC2, and the final release version.
 
 11. Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on a release branch contains the correct version to be created. The file should contain a release version following the `{A}.{B}.{C}` or `{A}.{B}.{C}-rc{D}` format, where `A`,`B`, `C`, and `D` are numbers. If you define a release candidate version, a pre-release is created.  
 
@@ -176,7 +176,7 @@ docs:
   
 #### Steps for new release candidate
 
->**NOTE:** This point applies for new release candidates such as rc1, rc2 and the final version.
+>**NOTE:** This section applies to new release candidates such as RC1, RC2, and the final release version.
 
 1. Inside the release branch do the following changes.
 
@@ -287,15 +287,15 @@ docs:
 	- create a GitHub release and trigger documentation update on the official Kyma website
 	- trigger provisioning of the cluster from the created release
 	The cluster name contains the release version with a period `.` replaced by a dash `-`. For example: `gke-release-1-1-0-rc1`. Use the cluster to test the release candidate.
-	> **CAUTION**: The cluster is automatically generated for you! You don't need to create it yourself! The release cluster, the IP Addresses, and the DNS records must be deleted manually after tests on the rc2 cluster are finished.
+	> **CAUTION**: The cluster is automatically generated for you, so you don't need to create it. The release cluster, the IP Addresses, and the DNS records must be deleted manually after tests on the RC2 cluster are done.
     
-    - Get access to the release cluster. If you don't have access to the GCP project, ask someone in the Slack team channel.
+    - Get access to the release cluster. If you don't have access to the GCP project, post a request in the Slack team channel.
     
    ```bash
    gcloud container clusters get-credentials gke-release-1-4-0-rc2 --zone europe-west4-c --project sap-hybris-sf-playground
    ```
 
-   - Follow instructions on [Access the cluster](https://kyma-project.io/docs/#installation-use-your-own-domain-access-the-cluster) and give Kyma teams access to start testing the release candidate.
+   - Follow [these](https://kyma-project.io/docs/#installation-use-your-own-domain-access-the-cluster) instructions to give Kyma teams access to start testing the release candidate.
     
 8. Update the `RELEASE_VERSION` file to contain the next patch RC1 version on the release branch. Do it immediately after the release, otherwise, any PR to a release branch overrides the previously published Docker images.
 
@@ -312,13 +312,16 @@ docs:
 
 ## CLI
 
-A release of `cli` consists of:
-* bumping the code to a release tag/branch
-* creating artifacts (cli binaries and source code archives)
-* github release with automated changelog generation
 
-First the current code is pinned in a release branch.
-Then the Kyma version is updated to test the integration with the latest Kyma version. Finally cli is released via a git tag which triggers a Github release.
+### Release contents
+
+A Kyma CLI release consists of:
+* A release tag or branch holding the code.
+* Artifacts, including `cli` binaries and source code archives.
+* GitHub release with automated changelog generation.
+
+In the release process, the current code is pinned in a release branch first.
+Then the Kyma version is updated to test the integration with the latest Kyma version. Finally, Kyma CLI is released via a git tag which triggers a GitHub release.
 
 
 ### Steps for new major/minor version
@@ -335,7 +338,7 @@ git push upstream {RELEASE_NAME}
 
 ### Steps for new release candidate
 
->**NOTE:** This point applies for new release candidates such as rc1, rc2 and the final version.
+>**NOTE:** This section applies only to new release candidates, such as RC1, RC2, and the final release version.
 
 1. Ensure that the `KYMA_VERSION` variables on `Makefile` and `.goreleaser.yml` file from the `cli` repository on the release branch contains the latest Kyma version that you just released.
 
