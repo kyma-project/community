@@ -1,5 +1,5 @@
 ---
-title: Git wokflow
+title: Git workflow
 ---
 
 This document is the best practice guide that contains the rules to follow when working with Kyma repositories.
