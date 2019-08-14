@@ -12,7 +12,6 @@ This document describes how to create  Kyma and Kyma CLI releases.
 A Kyma release includes the following items:
 * Docker images for Kyma components
 * Github release
-  * Release artifacts such as source code and configuration
 * Git tag
 * Release branch
 
