@@ -210,7 +210,7 @@ docs:
 		dir:
 		version: 1.1.0-rc1
 		```
-		> **CAUTION**: Do **not** update the version of components whose `dir` section does not contain `develop`, as is the case with Console-related components. Also do not change octopus image in `kyma/resources/testing/values.yaml` even though it has `develop`.
+		> **CAUTION**: Do **not** update the version of components whose `dir` section does not contain `develop`, as is the case with Console-related components. Also do not change octopus version in `kyma/resources/testing/values.yaml` even though the directory is `develop` .
 
 	2. Check all `yaml` files in the `kyma` repository for references of the following Docker image:
 
@@ -326,7 +326,7 @@ Then the Kyma version is updated to test the integration with the latest Kyma ve
 
 ### Steps for new major/minor version
 
->**NOTE:** This point applies only to new major and minor versions and not for new release candidates such as rc2 when already having rc1.
+>**NOTE:** This section applies only to new major and minor versions. It does **not** apply to release candidates, such as RC2.
 
  After making sure that Kyma is released, create a release branch in the `cli` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-1.4`.
 
