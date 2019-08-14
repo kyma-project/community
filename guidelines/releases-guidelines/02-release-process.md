@@ -12,7 +12,7 @@ This document describes how to create  Kyma and Kyma CLI releases.
 A Kyma release includes the following items:
 * Docker images for Kyma components
 * A GitHub release including release artifacts, such as source code and configuration
-* Git tag
+* A Git tag
 * A release branch
 
 ### Release process
@@ -116,7 +116,7 @@ defined in the `development/tools/jobs/tester/tester.go` file under the `test-in
  
 7. Remove the now unsupported release in `tester.go` and all references of it. E.g `Release12 SupportedRelease = "release-1.2"` when releasing 1.5.
  
-8. Remove previous release jobs
+8. Remove previous release jobs.
 
     After adding new release jobs, remove the old ones. Remember to leave jobs for three latest releases. For example, during the preparation for the 1.4 release, add `pre-rel14` jobs and remove all `pre-rel11` jobs. Make sure that the only defined jobs are those with `pre-rel12`, `pre-rel13`, and `pre-rel14` prefixes.
     
