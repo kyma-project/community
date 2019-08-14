@@ -19,7 +19,7 @@ A Kyma release includes the following items:
 
 > **TIP:** Start a few days before creating the first release candidate to prepare the test-infra and Kyma PRs.
 
-This is the timeline for creating the first release candidate.
+These are the steps you must follow to create the first release candidate.
 
 1. [Create the Kyma release branch](#create-kyma-release-branch).
 2. [In the `test-infra` repository, prepare the PR to the master branch](#steps-for-new-majorminor-version).
@@ -154,7 +154,7 @@ defined in the `development/tools/jobs/tester/tester.go` file under the `test-in
 14. Update the `RELEASE_VERSION` file with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `1.4.2`, then change the version to `1.5.0-rc1`.
 
 
-### Changes to Kyma repository
+### `kyma` repository
 
 #### Steps for new major/minor version
 
