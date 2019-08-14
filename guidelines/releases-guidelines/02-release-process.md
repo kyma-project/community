@@ -7,7 +7,7 @@ This document describes how to create  Kyma and Kyma CLI releases.
 
 ## Kyma
 
-### Release Information
+### Release contents
 
 A Kyma release consists of the following things:
 * Docker images for Kyma components
