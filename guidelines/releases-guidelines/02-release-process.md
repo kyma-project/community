@@ -3,7 +3,7 @@ title: Release process
 label: internal
 ---
 
-This document explains how a new Kyma and also new Kyma CLI release can be introduced.
+This document describes how to create  Kyma and Kyma CLI releases.
 
 ## Kyma
 
