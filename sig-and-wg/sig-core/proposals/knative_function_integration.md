@@ -20,6 +20,7 @@ The migration to a new functions provider should provide a similar user experien
 
 ### New Features
 
+- As a developer, I want to debug my functions
 - As a developer, I want to define enable and disable scale to zero as well as specify the scale to zero grace period.
 - As a developer, I want to view the status of my function.
 
@@ -169,15 +170,15 @@ With a proper GraphQL layer in place the UI should create the objects not in one
 
 ##### Building State
 
-The new function runtime will create new container images based on the user supplied function code. Functions will now not only be in a serving state but also will report a 'building' state. This also enables us to have an old version of the function in a serving state and simultaneously have the runtime prepare a new version of the image.
+The new function controller uses Tekton to bake the function code together with its runitime. Functions will now not only be in a serving state but also will report a 'building' state. This also enables us to have an old version of the function in a serving state and simultaneously have the runtime prepare a new version of the image.
 
 ##### Scaled to Zero
 
 knative-serving allows scale to zero. This means a function can have zero running instances and still be fully operational as it will automatically be scaled up to as many instances as required if request are routed to the function.
 
-#### Function Sizes
+#### Compute requirements for Functions
 
-In the current implementation function sizes (S, M, L, XL) are configured and handled by the UI-Layer. This means the sizes are translated into their configured cpu / memory requests/limits. For the new controller this mapping is handled by the controller itself. It is also possible to add or remove additional sizes. The UI just has to retrieve the configured sizes from the controller and configure the function accordingly.
+In the current implementation, compute requirements for functions, expressed as "Function Size" (S, M, L, XL) are configured and handled by the UI-Layer. This means the compute requirements are translated into their configured cpu / memory requests/limits and number of replicas. For the new controller this mapping is handled by the controller itself. It is also possible to add or remove additional sizes. The UI just has to retrieve the configured sizes from the controller and configure the function accordingly.
 
 ### Service Catalog
 
@@ -285,7 +286,7 @@ Currently existing dashboards must be adapted to support the new knative-functio
 
 The following is a list of open issues that need to be further addressed
 
-1. Creation of ServiceAccounts to push docker images required or tekton.
+1. How to create ServiceAccounts to push docker images required for Tekton.
 2. The design and verification of the bundled docker registry.
 
 ## Appendix A. Function Custom Resource Definition
