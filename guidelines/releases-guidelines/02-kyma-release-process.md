@@ -29,13 +29,13 @@ To prepare a release:
    > **NOTE:** If you don't create the Kyma release branch at this point and add a  `post-rel{release_version}-kyma-release-candidate` post-submit job to the `test-infra` master, then pushing anything to the Kyma release branch, creating or rebasing the branch, triggers a new GitHub release.
 
 2. [Define new release jobs](#kyma-release-process-kyma-release-process-preparation-define-new-release-jobs) in the `test-infra` repository.
-3. [Remove old release jobs](#kyma-release-process-kyma-release-process-preparation-remove-old-release-jobs) in the `test-infra`.
+3. [Remove old release jobs](#kyma-release-process-kyma-release-process-preparation-remove-old-release-jobs) in the `test-infra` repository.
 
 ### Define new release jobs
 
-Define release jobs on the `master` branch in the `test-infra` repository. To ensure every job name is unique, prefix it with `pre-rel{versionNumber}`. Remember to provide the version number without any periods. For example, to find all jobs for the 0.9 release, look for job names with the `pre-rel09` prefix. To learn how to define a release job for a component, read the following [document](https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md).
+Define release jobs on the `master` branch in the `test-infra` repository. To ensure every job name is unique, prefix it with `pre-rel{versionNumber}`. Remember to provide the version number without any periods. For example, to find all jobs for the 1.4 release, look for job names with the `pre-rel14` prefix. To learn how to define a release job for a component, read the following [document](https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md).
 
-1. Navigate to the `test-infra` repository.
+1. Go to the `test-infra` repository.
 2. Define release jobs in the `prow/jobs/test-infra` directory in the `watch-pods.yaml` file.
 3. Define release jobs in the `prow/jobs/kyma` directory in the following files:
 
@@ -58,7 +58,7 @@ Define release jobs on the `master` branch in the `test-infra` repository. To en
            value: release-1.4
    ```
 
-   > **NOTE:** Remember to update the `preset-target-commit-1.4` label for the `post-rel14-kyma-github-release` job. Follow the same procedure for each released version. See this example release 1.4.
+   > **NOTE:** Remember to update the `preset-target-commit-1.4` label for the `post-rel14-kyma-github-release` job. Follow the same procedure for each released version. For example, see release 1.4 configuration:
 
    ```yaml
    postsubmits:
@@ -88,13 +88,13 @@ Define release jobs on the `master` branch in the `test-infra` repository. To en
      protect: true
      required_status_checks:
        contexts:
-         - pre-rel12-kyma-integration
-         - pre-rel12-kyma-gke-integration
-         - pre-rel12-kyma-gke-upgrade
-         - pre-rel12-kyma-gke-central-connector
-         - pre-rel12-kyma-artifacts
-         - pre-rel12-kyma-installer
-         - pre-rel12-kyma-gke-minio-gateway
+         - pre-rel14-kyma-integration
+         - pre-rel14-kyma-gke-integration
+         - pre-rel14-kyma-gke-upgrade
+         - pre-rel14-kyma-gke-central-connector
+         - pre-rel14-kyma-artifacts
+         - pre-rel14-kyma-installer
+         - pre-rel14-kyma-gke-minio-gateway
    ```
 
 ### Remove old release jobs
@@ -167,11 +167,11 @@ Follow these steps to release another Kyma version.
 
    Every component image is published with a version defined in the `RELEASE_VERSION` file stored in the `test-infra` repository on the given release branch. Test scripts for integration jobs like GKE Integration or GKE Upgrade are also loaded from the `test-infra` release branch.
 
-   For example, for the first release candidate of 1.1.0, the release version will be `1.1.0-rc1` and the `yaml` files should be modified as follows:
+   For example, for the first release candidate of 1.4.0, the release version will be `1.4.0-rc1` and the `yaml` files should be modified as follows:
 
    ``` yaml
    dir:
-   version: 1.1.0-rc1
+   version: 1.4.0-rc1
    ```
 
    > **CAUTION**: Do **not** update the version of components whose `dir` section does not contain `develop`, as is the case with Console-related components. Also do not change octopus version in `kyma/resources/testing/values.yaml` even though the directory is `develop` .
@@ -190,7 +190,7 @@ Follow these steps to release another Kyma version.
 
    > **CAUTION**: In `installation/resources/installer.yaml` replace `eu.gcr.io/kyma-project/develop/installer:{image_tag}` with `eu.gcr.io/kyma-project/kyma-installer:{release_version}`
 
-   iii. In the `resources/core/values.yaml` file, replace the the `clusterDocsTopicsVersion` value with your release branch name. For example, for the 0.9.1 release, find the following section:
+   iii. In the `resources/core/values.yaml` file, replace the the `clusterDocsTopicsVersion` value with your release branch name. For example, for the 1.4 release, find the following section:
 
    ```yaml
    docs:
@@ -255,7 +255,7 @@ Follow these steps to release another Kyma version.
 7. Merging the PR to the release branch runs the postsubmit jobs, which:
 
    * create a GitHub release and trigger documentation update on the official Kyma website
-   * trigger provisioning of the cluster from the created release. The cluster name contains the release version with a period `.` replaced by a dash `-`. For example: `gke-release-1-1-0-rc1`. Use the cluster to test the release candidate.
+   * trigger provisioning of the cluster from the created release. The cluster name contains the release version with a period `.` replaced by a dash `-`. For example: `gke-release-1-4-0-rc1`. Use the cluster to test the release candidate.
 
    > **CAUTION**: The cluster is automatically generated for you, so you don't need to create it. The release cluster, the IP Addresses, and the DNS records must be deleted manually after tests on the RC2 cluster are done.
 
