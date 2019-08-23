@@ -3,7 +3,7 @@ title: Kyma release process
 label: internal
 ---
 
-This document describes how to create a Kyma release. Start from defining release jobs as described in the [**Preparation**](#release-process-release-process-preparation) section. Then proceed to the [**Steps**](#release-process-release-process-steps).
+This document describes how to create a Kyma release. Start from defining release jobs as described in the [**Preparation**](#kyma-release-process-kyma-release-process-preparation) section. Then proceed to the [**Steps**](#kyma-release-process-kyma-release-process-steps).
 
 A Kyma release includes the following items:
 
@@ -14,7 +14,7 @@ A Kyma release includes the following items:
 
 ## Preparation
 
-> **NOTE:** This section applies only to new major and minor versions. If you release a patch, skip the preparation and go to the [**Steps**](#release-process-release-process-steps) section.
+> **NOTE:** This section applies only to new major and minor versions. If you release a patch, skip the preparation and go to the [**Steps**](#kyma-release-process-kyma-release-process-steps) section.
 
 To prepare a release:
 
@@ -28,8 +28,8 @@ To prepare a release:
 
    > **NOTE:** If you don't create the Kyma release branch at this point and add a  `post-rel{release_version}-kyma-release-candidate` post-submit job to the `test-infra` master, then pushing anything to the Kyma release branch, creating or rebasing the branch, triggers a new GitHub release.
 
-2. [Define new release jobs](#release-process-release-process-preparation-define-new-release-jobs) in the `test-infra` repository.
-3. [Remove old release jobs](#release-process-release-process-preparation-remove-old-release-jobs) in the `test-infra`.
+2. [Define new release jobs](#kyma-release-process-kyma-release-process-preparation-define-new-release-jobs) in the `test-infra` repository.
+3. [Remove old release jobs](#kyma-release-process-kyma-release-process-preparation-remove-old-release-jobs) in the `test-infra`.
 
 ### Define new release jobs
 
@@ -278,3 +278,5 @@ Follow these steps to release another Kyma version.
 11. Create a spreadsheet with all open issues labeled as `test-missing`. Every team assigned to an issue must cover the outstanding test with manual verification on every release candidate. After the test is finished successfully, the responsible team must mark it as completed in the spreadsheet. Every issue identified during testing must be reported. To make the testing easier, provision a publicly available cluster with the release candidate version after you complete all steps listed in this document.
 
 12. Notify Team Breaking Pixels that the release is available for integration with Faros.
+
+> **NOTE:** After the Kyma release is complete, proceed with [releasing Kyma CLI](/release/#kyma-cli-release-process-kyma-cli-release-process).
