@@ -15,7 +15,7 @@ A Kyma CLI release consists of:
 
 ## Steps
 
-1. After making sure that Kyma is released, create a release branch in the `cli` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-1.4`.
+1. Make sure Kyma is released and create a release branch in the `cli` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-1.4`.
 
    >**NOTE:** This step applies only to new major and minor versions.
 
@@ -38,4 +38,4 @@ A Kyma CLI release consists of:
 
     where {RELEASE_VERSION} could be `1.4.0-rc1`, `1.4.0-rc2` or `1.4.0`.
 
-5. Pushing the tag triggers the postsubmit job that creates the GitHub release. Validate if the release is available under [releases](https://github.com/kyma-project/cli/releases).
+5. Push the tag to trigger a postsubmit job that creates the GitHub release. Validate if the release is available under [releases](https://github.com/kyma-project/cli/releases).
