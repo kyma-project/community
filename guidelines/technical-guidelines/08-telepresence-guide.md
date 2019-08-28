@@ -10,8 +10,7 @@ Mocking the dependency and developing locally are not possible, and manual deplo
 Telepresence is a tool that connects your local process to a remote Kubernetes cluster through proxy, which lets you easily debug locally.  
 When you use Telepresence, it replaces a container in a specified Pod, opens up a new local shell or a pre-configured bash, and proxies the network traffic from the local shell through the Pod. 
 
-Telepresence enables you to make calls such as `curl http://....svc.cluster.local:8081/v1/metadata/services` from your local machine.  
-When you run a server in this shell, other Kubernetes services can access it. 
+Telepresence enables you to make calls such as `curl http://....svc.cluster.local:8081/v1/metadata/services` from your local machine. When you run a server in this shell, other Kubernetes services can access it. 
 
 To start developing with Telepresence, follow these steps:
 
@@ -30,4 +29,4 @@ To start developing with Telepresence, follow these steps:
 	sudo ln -s $TELEPRESENCE_ROOT/var/run/secrets /var/run/secrets
 	```
 
-5. Run `CGO_ENABLED=0 go build ./cmd/{COMPONENT-NAME}` to build the component and give all Kubernetes services that call the component access to this process. The process runs locally on your machine. Use the same command to run various Application Connector services like Application Registry, Proxy or Events.
+5. Run `CGO_ENABLED=0 go build ./cmd/{COMPONENT-NAME}` to build the component and give all Kubernetes services that call the component access to this process. The process runs locally on your machine. Use the same command to run various Application Connector services, such as Application Registry, Proxy or Events.
