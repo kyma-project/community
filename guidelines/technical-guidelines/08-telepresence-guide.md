@@ -8,7 +8,7 @@ Certain Kyma components store their state in Kubernetes custom resources and, th
 Mocking the dependency and developing locally is not possible, and manual deployment on every change is a mundane task.  
 
 Telepresence is a tool that connects your local process to a remote Kubernetes cluster through proxy, which lets you easily debug locally.  
-It replaces a container in the specified Pod, opens up a new local shell or a pre-configured bash, and proxies the network traffic from the local shell through the Pod. 
+It replaces a container in the specified Pod, opens up a new local shell, and proxies the network traffic from the local shell through the Pod. 
 
 Telepresence enables you to make HTTP requests from your local machine to services in the cluster that are not exposed outside. When you run a server in this shell, other Kubernetes services can access it. 
 
