@@ -17,7 +17,7 @@ To start developing with Telepresence, follow these steps:
 
 1. [Install Telepresence](https://www.telepresence.io/reference/install).
 
-2. Run your local Kyma or use the cluster. Then, configure your local kubectl to use the desired Kyma cluster. 
+2. Run Kyma locally or connect to a cluster. Then, configure your local kubectl to use the desired Kyma cluster. 
 
 3. To check the container name of the deployment to swap, run:
 
@@ -31,9 +31,9 @@ To start developing with Telepresence, follow these steps:
 	telepresence --namespace {NAMESPACE} --swap-deployment {DEPLOYMENT_NAME}:{CONTAINER_NAME} --run-shell
 	```
 
-4. Every Kubernetes Pod has the directory `/var/run/secrets` mounted. The Kubernetes client uses it in the component services. By default, Telepresence copies this directory. It stores the directory path in `$TELEPRESENCE_ROOT`, under the Telepresence shell. The `$TELEPRESENCE_ROOT` variable unwinds to `/tmp/...`. Move it to `/var/run/secrets`, where the service expects it. To move it there, create a symlink:
+5. Every Kubernetes Pod has the directory `/var/run/secrets` mounted. The Kubernetes client uses it in the component services. By default, Telepresence copies this directory. It stores the directory path in `$TELEPRESENCE_ROOT`, under the Telepresence shell. The `$TELEPRESENCE_ROOT` variable unwinds to `/tmp/...`. Move it to `/var/run/secrets`, where the service expects it. To move it there, create a symlink:
 	```
 	sudo ln -s $TELEPRESENCE_ROOT/var/run/secrets /var/run/secrets
 	```
 
-5. Run `CGO_ENABLED=0 go build ./cmd/{COMPONENT-NAME}` to build the component and give all Kubernetes services that call the component access to this process. The process runs locally on your machine. Use the same command to run various Application Connector services.
+6. Run `CGO_ENABLED=0 go build ./cmd/{COMPONENT-NAME}` to build the component and give all Kubernetes services that call the component access to this process. The process runs locally on your machine. Use the same command to run various Application Connector services.
