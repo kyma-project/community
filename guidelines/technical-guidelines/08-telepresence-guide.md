@@ -17,7 +17,7 @@ To start developing with Telepresence, follow these steps:
 
 1. [Install Telepresence](https://www.telepresence.io/reference/install).
 
-2. Run Kyma locally or connect to a cluster. Then, configure your local kubectl to use the desired Kyma cluster. 
+2. Run Kyma locally or connect to a remote cluster. Then, configure your local kubectl to use the desired Kyma cluster. 
 
 3. To check the container name of the deployment to swap, run:
 
