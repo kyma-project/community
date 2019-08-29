@@ -10,7 +10,7 @@ The migration to a new functions provider should ensure a similar user experienc
 
 ### Current Features
 
-- As a developer, I want to provide my code as a function of a certain language and runtime to be deployed.
+- As a developer, I want to provide my code as a function written in a certain language and using a certain runtime for deployment.
 - As a developer, I want to specify the packages and library dependencies available for my code.
 - As a developer, I want to be able to provide arbitrary environment variables, such as name or value pairs to use them inside my function.
 - As a developer, I want to create a Service Binding to a Service Instance provisioned in my Namespace.
@@ -20,7 +20,7 @@ The migration to a new functions provider should ensure a similar user experienc
 
 ### New features
 
-- As a developer, I want to debug my functions
+- As a developer, I want to debug my functions.
 - As a developer, I want to define enable and disable scale to zero as well as specify the scale to zero grace period.
 - As a developer, I want to view the status of my function.
 
