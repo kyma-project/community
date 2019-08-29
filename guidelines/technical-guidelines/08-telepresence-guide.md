@@ -4,7 +4,7 @@ title: Using Telepresence for local Kyma development
 
 This document is a general guide to local development with [Telepresence](https://www.telepresence.io/).
 
-Certain Kyma components store their state in Kubernetes custom resources and, therefore, depends on Kubernetes.    
+Certain Kyma components store their state in Kubernetes custom resources and, therefore, depend on Kubernetes.    
 Mocking the dependency and developing locally is not possible, and manual deployment on every change is a mundane task.  
 
 Telepresence is a tool that connects your local process to a remote Kubernetes cluster through proxy, which lets you easily debug locally.  
