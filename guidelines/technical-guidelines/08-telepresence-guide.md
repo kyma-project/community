@@ -2,7 +2,7 @@
 title: Using Telepresence for local Kyma development
 ---
 
-This document is a general guide to local development with [Telepresence](https://www.telepresence.io/) (tested on version `0.101`).
+This document is a general guide to local development with [Telepresence](https://www.telepresence.io/).
 
 The Kyma component that you want to debug stores its state in the Kubernetes Custom Resource and, therefore, depends on Kubernetes.    
 Mocking the dependency and developing locally are not possible, and manual deployment on every change is a mundane task.  
