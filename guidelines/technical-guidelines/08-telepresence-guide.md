@@ -4,8 +4,8 @@ title: Using Telepresence for local Kyma development
 
 This document is a general guide to local development with [Telepresence](https://www.telepresence.io/).
 
-The Kyma component that you want to debug stores its state in the Kubernetes Custom Resource and, therefore, depends on Kubernetes.    
-Mocking the dependency and developing locally are not possible, and manual deployment on every change is a mundane task.  
+Certain Kyma components store their state in Kubernetes custom resources and, therefore, depends on Kubernetes.    
+Mocking the dependency and developing locally is not possible, and manual deployment on every change is a mundane task.  
 
 Telepresence is a tool that connects your local process to a remote Kubernetes cluster through proxy, which lets you easily debug locally.  
 It replaces a container in the specified Pod, opens up a new local shell or a pre-configured bash, and proxies the network traffic from the local shell through the Pod. 
@@ -19,7 +19,13 @@ To start developing with Telepresence, follow these steps:
 
 2. Run your local Kyma or use the cluster. Then, configure your local kubectl to use the desired Kyma cluster. 
 
-3. Check the deployment name to swap, and run: 
+3. To check the container name of the deployment to swap, run:
+
+	```
+	kubectl get deployment {DEPLOYMENT_NAME} -o jsonpath='{.spec.template.spec.containers[0].name}'
+	```
+
+4. Run this command to swap the deployment: 
 
 	```
 	telepresence --namespace {NAMESPACE} --swap-deployment {DEPLOYMENT_NAME}:{CONTAINER_NAME} --run-shell
