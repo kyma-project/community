@@ -29,7 +29,6 @@ To prepare a release:
    > **NOTE:** If you don't create the Kyma release branch at this point and add a  `post-rel{release_version}-kyma-release-candidate` post-submit job to the `test-infra` master, then pushing anything to the Kyma release branch, creating or rebasing the branch, triggers a new GitHub release.
 
 2. [Define new release jobs](#kyma-release-process-kyma-release-process-preparation-define-new-release-jobs) in the `test-infra` repository.
-3. [Remove old release jobs](#kyma-release-process-kyma-release-process-preparation-remove-old-release-jobs) in the `test-infra` repository.
 
 ### Define new release jobs
 
@@ -37,6 +36,7 @@ To prepare a release:
 2. Open `templates/config.yaml`
 3. Change `global.releases` to contain new release. Also remove oldest release on the list.
 4. Change `global.nextRelease` to contain version for future release. 
+5. Run `dep ensure -v --vendor-only` in the `development/tools` directory to install dependencies.
 5. Run `go run development/tools/cmd/rendertemplates/main.go --config templates/config.yaml` in the root of the repository to generate jobs.
 6. Run `go test development/tools/jobs/...` in the root of the repository. If anything is red fix it using these guidelines: 
   * For release tests using `GetKymaReleasesSince` with a release that is no longer supported change it to use `GetAllKymaReleases`.
