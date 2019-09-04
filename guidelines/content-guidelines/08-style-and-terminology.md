@@ -90,6 +90,7 @@ Here is the preferred terminology to use in the Kyma documentation:
 
 * "backend,"  not "back end" or "back-end"
 * "frontend," not "front end" or "front-end"
+* “micro frontend,” not “microfrontend” or “micro front-end”
 * "email," not "e-mail"
 * "fill in," not "complete"
 * "ID," not "id"
