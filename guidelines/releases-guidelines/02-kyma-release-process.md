@@ -29,81 +29,19 @@ To prepare a release:
    > **NOTE:** If you don't create the Kyma release branch at this point and add a  `post-rel{release_version}-kyma-release-candidate` post-submit job to the `test-infra` master, then pushing anything to the Kyma release branch, creating or rebasing the branch, triggers a new GitHub release.
 
 2. [Define new release jobs](#kyma-release-process-kyma-release-process-preparation-define-new-release-jobs) in the `test-infra` repository.
-3. [Remove old release jobs](#kyma-release-process-kyma-release-process-preparation-remove-old-release-jobs) in the `test-infra` repository.
 
 ### Define new release jobs
 
-Define release jobs on the `master` branch in the `test-infra` repository. To ensure every job name is unique, prefix it with `pre-rel{versionNumber}`. Remember to provide the version number without any periods. For example, to find all jobs for the 1.4 release, look for job names with the `pre-rel14` prefix. To learn how to define a release job for a component, read the following [document](https://github.com/kyma-project/test-infra/blob/master/docs/prow/release-jobs.md).
-
 1. Go to the `test-infra` repository.
-2. Define release jobs in the `prow/jobs/test-infra` directory in the `watch-pods.yaml` file.
-3. Define release jobs in the `prow/jobs/kyma` directory in the following files:
-
- * every `.yaml` in `components`
- * every `.yaml` in `tests`
- * every `.yaml` in `tools/` **except for** the `tools/failery/failery.yaml` file
- * `kyma-integration.yaml`
- * `kyma-artifacts.yaml`
- * `kyma-installer.yaml`
- * `kyma-release-candidate.yaml`
- * `kyma-github-release.yaml`
-
-   > **NOTE:** Remember to modify the `presets` array. This is an example of the 1.4 release `preset`:
-
-   ```yaml
-   - labels:
-       preset-target-commit-1.4: "true"
-       env:
-       - name: RELEASE_TARGET_COMMIT 
-           value: release-1.4
-   ```
-
-   > **NOTE:** Remember to update the `preset-target-commit-1.4` label for the `post-rel14-kyma-github-release` job. Follow the same procedure for each released version. For example, see release 1.4 configuration:
-
-   ```yaml
-   postsubmits:
-     kyma-project/kyma:
-     - name: post-rel14-kyma-github-release
-       branches:
-       - release-1.4
-       <<: *job_template
-       extra_refs:
-       - <<: *test_infra_ref
-         base_ref: release-1.4
-       labels:
-         <<: *job_labels_template
-         preset-build-release: "true"
-         preset-target-commit-1.4: "true"
-   ```
-
-4. Ensure that tests for the release jobs exist. Release tests usually iterate through all release versions and run tests for them. See the `TestBucReleases` test defined in `development/tools/jobs/kyma/service_binding_usage_controller_test.go` as a reference.
-
-5. Update the `GetAllKymaReleaseBranches()` function defined in the `development/tools/jobs/tester/tester.go` file under the `test-infra` repository.
-
-6. Define branch protection rules for the release branch in the `prow/config.yaml` file.
-   For example, see the release-1.4 definition:
-
-   ```yaml
-   release-1.4:
-     protect: true
-     required_status_checks:
-       contexts:
-         - pre-rel14-kyma-integration
-         - pre-rel14-kyma-gke-integration
-         - pre-rel14-kyma-gke-upgrade
-         - pre-rel14-kyma-gke-central-connector
-         - pre-rel14-kyma-artifacts
-         - pre-rel14-kyma-installer
-         - pre-rel14-kyma-gke-minio-gateway
-   ```
-
-### Remove old release jobs
-
-1. After adding new release jobs, remove the old ones. Remember to leave jobs for three latest releases. For example, during the preparation for the 1.4 release, add `pre-rel14` jobs and remove all `pre-rel11` jobs. Make sure that the only defined jobs are those with `pre-rel12`, `pre-rel13`, and `pre-rel14` prefixes.
-
-2. Additionally, remove the unsupported `tester.go` file and all references to it. For example, when releasing 1.4, `Release11 SupportedRelease = "release-1.1"` should be removed.
-
-3. Merge the PR to the current master branch.
+2. Open `templates/config.yaml`
+3. Add the new release to `global.releases`. Remove the oldest release on the list.
+4. Set `global.nextRelease` to the future release version. 
+5. Run `dep ensure -v --vendor-only` in the `development/tools` directory to install dependencies.
+5. Run `go run development/tools/cmd/rendertemplates/main.go --config templates/config.yaml` in the root of the repository to generate jobs.
+6. Run `go test ./development/tools/jobs/...` in the root of the repository. If any of the tests is marked red, fix it using these guidelines: 
+  * For release tests using `GetKymaReleasesSince` with a release that is no longer supported, change the method to `GetAllKymaReleases`.
+  * For release tests using `GetKymaReleasesUntil` with a release that is no longer supported, remove the part of the test which includes the method.
+7. If tests are green, commit all jobs. The new release jobs are ready.
 
 ## Steps
 
