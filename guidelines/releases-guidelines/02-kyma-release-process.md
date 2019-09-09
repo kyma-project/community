@@ -112,7 +112,7 @@ Follow these steps to release another Kyma version.
    version: 1.4.0-rc1
    ```
 
-   > **CAUTION**: Do **not** update the version of components whose `dir` section does not contain `develop`, as is the case with Console-related components. Also do not change octopus version in `kyma/resources/testing/values.yaml` even though the directory is `develop` .
+   > **CAUTION**: Do **not** update the version of components whose `dir` section does not contain `develop`, as is the case with Console-related components. Also do not change octopus version in `kyma/resources/testing/values.yaml` and `helm_broker` version in `resources/helm-broker/values.yaml` even though their directory is `develop`.
 
    ii. Check all `yaml` files in the `kyma` repository for references of the following Docker image:
 
@@ -170,19 +170,18 @@ Follow these steps to release another Kyma version.
    ii. Run `/test pre-{release_number}-kyma-installer` and wait until it finishes.
 
    iii. Run `/test pre-{release_number}-kyma-artifacts` and wait until it finishes.
-   iv. Run the following tests in parallel:
+   
+   iv. Run the following tests in parallel and wait for them to finish:
 
      ```bash
-     /test pre-rel14-kyma-gke-integration
-     /test pre-rel14-kyma-gke-upgrade
-     /test pre-rel14-kyma-gke-backup
+     /test pre-{release_number}-kyma-gke-integration
+     /test pre-{release_number}-kyma-gke-minio-gateway
+     /test pre-{release_number}-kyma-gke-minio-gateway-migration
+     /test pre-{release_number}-kyma-gke-central-connector
+     /test pre-{release_number}-kyma-gke-upgrade
+     /test pre-{release_number}-kyma-gke-backup
      ```
 
-   iv. Wait for the jobs to finish:
-   * `pre-{release_number}-kyma-integration`
-   * `pre-{release_number}-kyma-gke-integration`
-   * `pre-{release_number}-kyma-gke-upgrade`
-   * `pre-{release_number}-kyma-gke-backup`
 
 5. If you detect any problems with the release, such as failing tests, wait for the fix that can be delivered either on a PR or cherry-picked to the PR from the `master` branch. Prow triggers the jobs again. Rerun manual jobs as described in **step 4**.
 
