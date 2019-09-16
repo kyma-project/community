@@ -13,8 +13,6 @@ Currently, the connection between an external solution and Kyma is always point-
 
 As the customers work with multiple Kyma clusters, they will benefit from extending the provisioning of Kyma client certificates. A central Connector Service would manage the provisioning of certificates for multiple Kyma clusters and connected clients. Such approach allows the users to control their entire Kyma ecosystem from a single, central point.
 
-
-
 ## Goal
 
 1. The Connector service can be deployed outside of Kyma cluster
@@ -25,19 +23,17 @@ As the customers work with multiple Kyma clusters, they will benefit from extend
 1. The Connector service handles certificate revocation.
 1. The Connector service returns information about the available cluster endpoints.
 
-
 ## Suggested solution
 
 The Connector Service (CS) is deployed as a central component.
 
-  - The CS is deployed as a independent component inside Kyma cluster or Kubernetes.
-  - The CS exposes a secured connection for requesting client certificates signed with root CA.
-  - The CS exposes a secured connection for requesting server certificates signed with root CA and deployed to Kyma cluster.
-  - The client certificate enables a trusted connection with the central Kyma cluster where the App Registry is stored.
-  - The client certificate enables a trusted connection with the Kyma cluster where the server certificate is delivered.
-  - The server certificate enables a trusted connection with central Kyma cluster.
-  - For standalone Kyma clusters, the Connector Service is deployed locally and works in the same manner.
-
+- The CS is deployed as a independent component inside Kyma cluster or Kubernetes.
+- The CS exposes a secured connection for requesting client certificates signed with root CA.
+- The CS exposes a secured connection for requesting server certificates signed with root CA and deployed to Kyma cluster.
+- The client certificate enables a trusted connection with the central Kyma cluster where the App Registry is stored.
+- The client certificate enables a trusted connection with the Kyma cluster where the server certificate is delivered.
+- The server certificate enables a trusted connection with central Kyma cluster.
+- For standalone Kyma clusters, the Connector Service is deployed locally and works in the same manner.
 
 ### Component Diagram
 
@@ -77,7 +73,6 @@ The assumption is that certificates are short-living - 24 hours.
 
 The endpoint for renewal is protected with a certificate. If a certificate expires then the whole pairing process need to be started again. 
 
-
 ### Certificate revocation 
 
 The client certificates and Kyma cluster client certificates must be revoked as soon as they are compromised. Due to the fact that certificates are short-living that is enough to block the certificate renewal.
@@ -97,10 +92,9 @@ The information about real endpoints will be passed to the Connector service in 
 1. The application certificates and Kyma cluster certificates will be renewed frequently.
 1. The Root CA certificate, used for signing client certificates, will be rotated in a special way. 
 
-
 ## Proof of Concept
 
-### Prerequisites:
+### Prerequisites
 
 - Private key (`rootCA.key`) and certificate (`rootCA.crt`) generated as a root CA
 - Kyma cluster provisioned with `rootCA.key` and `rootCA.crt` as a CA
@@ -123,7 +117,7 @@ The information about real endpoints will be passed to the Connector service in 
     openssl x509 -req -sha256 -in client.csr -out client.crt -CAkey rootCA.key -CA rootCA.crt -days 1800 -CAcreateserial -CAserial serial
     ```
 
-4.  Create the certificate chain containing `rootCA.crt` and `client.crt`.
+4. Create the certificate chain containing `rootCA.crt` and `client.crt`.
 
     ```
     cat rootCA.crt client.crt > client-chain.crt
@@ -223,7 +217,7 @@ The following assumptions were taken:
 - Application ID is not needed in paths.
 - Resource names can be changed to ensure consistent naming.
 - Payloads returned in certificate generation flow cannot change.
-- Application ID may be obtained from the certificate used for accessing the endpoints, however, it needs to be confirmed if it is technically feaseable with Nginx Ingress and Golang.
+- Application ID may be obtained from the certificate used for accessing the endpoints, however, it needs to be confirmed if it is technically feaseable with Nginx Ingress and Go.
 
 The connector service exposes the following groups of endpoits:
 

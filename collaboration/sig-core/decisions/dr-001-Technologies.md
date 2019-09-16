@@ -5,19 +5,20 @@ Created on 2017-11-20 by Łukasz Górnicki (@derberg).
 ## Context
 
 The Kyma developers need to select specific technologies. Their purpose is to:
+
 * Enable the most lightweight solution and cost-effective solution for the cluster installation.
 * Facilitate the cross-teams collaboration development.
 * Enable easy context-switching between teams.
 
 ## Decision
 
-The decision is to use the **Golang** language for all new implementations in Kyma. Golang allows to create very efficient applications with low memory usage and a vast set of system libraries. Many projects which Kyma depends on are written in Golang, including Kubernetes.
+The decision is to use the **Go** language for all new implementations in Kyma. Go allows to create very efficient applications with low memory usage and a vast set of system libraries. Many projects which Kyma depends on are written in Go, including Kubernetes.
 
 Use the following front-end technologies within Kyma:
 
-- Open UI5
-- Angular (version 4 and later)
-- React
+* Open UI5
+* Angular (version 4 and later)
+* React
 
 The recommended technologies fulfill the Kyma principles.
 
