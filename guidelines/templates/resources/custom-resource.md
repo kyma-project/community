@@ -10,7 +10,7 @@ For reference, see the existing documents for the [Installation](https://kyma-pr
 
 The `{CRD name}` CustomResourceDefinition (CRD) is a detailed description of the kind of data and the format used to {provide the CRD description}. To get the up-to-date CRD and show the output in the `yaml` format, run this command:
 
-```
+```bash
 kubectl get crd {CRD name} -o yaml
 ```
 
@@ -21,7 +21,7 @@ Provide the custom resource code sample in a ready-to-use format.
 
 This is a sample resource that {provide a description of what the example presents}.
 
-```
+```yaml
 apiVersion:
 kind:
 metadata:
@@ -33,12 +33,10 @@ metadata:
 
 This table lists all the possible parameters of a given resource together with their descriptions:
 
-
-| Parameter   | Mandatory |  Description |
+| Parameter   | Required |  Description |
 |-------------|:---------:|--------------|
-| **metadata.name** |    YES   | Specifies the name of the CR. |
-| **{another_parameter}** |    {YES/NO}   | {Parameter description} |
-
+| **metadata.name** | Yes | Specifies the name of the CR. |
+| **{another_parameter}** | {Yes/No} | {Parameter description} |
 
 ## Related resources and components
 
