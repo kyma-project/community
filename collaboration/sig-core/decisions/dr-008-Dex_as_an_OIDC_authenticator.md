@@ -8,13 +8,15 @@ Although Kubernetes manages service accounts, the solution leaves the management
 For this reason, Kyma needs an authentication provider for end-users.
 
 Kubernetes has the following requirements for authentication providers:
+
 - The authentication provider must support the [OpenID connect discovery](https://openid.net/specs/openid-connect-discovery-1_0.html).
 - The authentication provider must run in TLS with non-obsolete ciphers.
 - The authentication provider must support CA-signed certificates, even for commercial and self-signed CAs.
 
 The solution must also fulfill the general platform requirements:
+
 - It must be a cloud-native solution.
-- It must be lightweight, preferably written in GoLang.
+- It must be lightweight, preferably written in Go.
 - It must be open-source, with the ability to contribute to the project development.
 
 Additionally, the solution must allow to delegate authentication to SAML2-compliant Identity Providers.
@@ -29,7 +31,7 @@ Accepted on 2018-03-01.
 
 ## Consequences
 
-Dex is a lightweight application written in GoLang.
+Dex is a lightweight application written in Go.
 
 Using connectors, Dex supports both the OIDC- and SAML2-compliant Identity Providers. Dex does not have its own user database, and therefore requires at least one connector to work in the production
 environment. The solution supports static users but, as it is not a completely secure method of user management, it should be used for test purposes only.

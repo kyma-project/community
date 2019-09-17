@@ -220,7 +220,7 @@ Thanks to `template.go.mk`, we will have one place in a repository with target d
 
 ### Sandbox validation
 
-Developers often work in a different environment than the one used by the CI system. For example, they use different versions of Golang. It is important to provide a way of verifying the code against the CI environment. This can be enabled by creating targets with the `-sandbox` suffix that will execute targets in the same `buildpack` Docker image as the one the CI system uses.
+Developers often work in a different environment than the one used by the CI system. For example, they use different versions of Go. It is important to provide a way of verifying the code against the CI environment. This can be enabled by creating targets with the `-sandbox` suffix that will execute targets in the same `buildpack` Docker image as the one the CI system uses.
 
 To achieve that, we need to update `template.go.mk` and the makefile for a given component.
 
