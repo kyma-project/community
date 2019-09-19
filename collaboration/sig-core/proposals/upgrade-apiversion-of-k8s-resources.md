@@ -4,17 +4,17 @@ Created on 2019-09-18 by Michal Hudy (@michal-hudy).
 
 ## Motivation
 
-API Versions of Kubernetes resources are changing in time and some of them are going to be deprecated. Later, deprecated versions are no longer served by API server. Currently, we have such situation with Kubernetes 1.16 (https://kubernetes.io/blog/2019/07/18/api-deprecations-in-1-16), where some API versions that we are using in Kyma will be no longer served. The problem with an upgrade is that field `apiVersion` is immutable, so the resource cannot be just updated, they needs to be recreated.
+API Versions of Kubernetes resources are changing with time and some of them are going to be deprecated. Once deprecated, the versions are no longer served by an API server. Currently, we have such a situation with [Kubernetes 1.16](https://kubernetes.io/blog/2019/07/18/api-deprecations-in-1-16), where some API versions that we use in Kyma will be no longer served. The problem with an upgrade is that field `apiVersion` is immutable, so the resource cannot be just updated, it needs to be recreated.
 
 ## Solution
 
-Solution is not easy as Kubernetes cluster should work without downtime so in ideal world we should create a new resources next to the old one that are deprecated and when new resources are ready, then remove the old one. Unfortunately, world is not ideal and not all resources can be duplicated - ingresses, resources that expects only one instance in the cluster, etc.
+There is no perfect solution. We know that a Kubernetes cluster should work without downtime. In the ideal world, we should create new resources next to the deprecated ones, and when the new resources are ready then we should remove the old ones. Unfortunately, not all resources can be duplicated, for example, ingresses or resources that expect only one instance in the cluster.
 
-In such a case the downtime will be necessary, and we need to the following:
-- Create a `pre-upgrade` Helm hook that will be removing old resource definition if there is a new API version available in the cluster
-- Update API versions in resources if new API version is available.
+In such a case the downtime will be necessary, and we need to do the following:
+- Create a `pre-upgrade` Helm hook that will remove old resource definitions if a new API version is available in the cluster.
+- Update API versions in resources if a new API version is available.
 
-Pre-upgrade hook may look as following:
+See the following example of how the `pre-upgrade hook` may look:
 
 `_helpers.tpl` file:
 ```yaml
