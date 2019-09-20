@@ -39,7 +39,7 @@ Metadata names            | When you create a Markdown document, define its `tit
 
 ### Omission in code
 
-Often, when you quote snippets of code, it is not necessary to include them in full. For example, when you quote an HTTP response, it is enough to quote only the relevant part instead of enclosing the whole response. In such a case, replace the omitted parts with `...` to signalize that something has been removed. 
+Often when you quote snippets of code, it is not necessary to include them in full. For example, when you quote an HTTP response, it is enough to quote only the relevant part instead of enclosing the whole response. In such a case, replace the omitted parts with `...` to signalize that something has been removed. 
 
 For example, you might have an HTTP response as such:
 
