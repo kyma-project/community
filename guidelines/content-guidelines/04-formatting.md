@@ -60,7 +60,7 @@ For example, you might have an HTTP response as such:
 }
 ```
 
-Suppose, that it is only the part containing the certificate information that is of interest to the user. In that case, instead of quoting the whole reponse, quote it like this:
+Suppose that it is only the part containing the certificate information that is of interest to the user. In that case, instead of quoting the whole response, quote it like this:
 ```json
 {
   ...
