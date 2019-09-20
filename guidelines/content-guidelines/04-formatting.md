@@ -37,9 +37,9 @@ Metadata names            | When you create a Markdown document, define its `tit
 > `To adjust the number of Pods in your Deployment, edit the [deployment](./deployment.yaml) file.`
 
 
-### Ellipsis in code
+### Omission in code
 
-Often, when you quote snippets of code, it is not necessary to include it in full. For example, when you quote an HTTP response, most often, it is enough to only quote the relevant part, and there is no need to enclose the whole thing. In such a case, replace the omitted parts with `...` to signalize to the reader that something has been removed. 
+Often, when you quote snippets of code, it is not necessary to include them in full. For example, when you quote an HTTP response, most often, it is enough to only quote the relevant part, and there is no need to enclose the whole thing. In such a case, replace the omitted parts with `...` to signalize to the reader that something has been removed. 
 
 For example, you might have an HTTP response as such:
 
