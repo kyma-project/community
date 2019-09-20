@@ -36,6 +36,42 @@ Metadata names            | When you create a Markdown document, define its `tit
 >**NOTE:** When you mention specific configuration files in your documents, consider linking to them instead of just mentioning their names. When you link to a file, use its name without the format extension. See the following example:
 > `To adjust the number of Pods in your Deployment, edit the [deployment](./deployment.yaml) file.`
 
+
+### Omission in code
+
+Often when you quote snippets of code, it is not necessary to include them in full. For example, when you quote an HTTP response, it is enough to quote only the relevant part instead of enclosing the whole response. In such a case, replace the omitted parts with `...` to signalize that something has been removed. 
+
+For example, you might have an HTTP response as such:
+
+```json
+{
+  "csrUrl":"https://connector-service.name.cluster.extend.cx.cloud.sap/v1/applications/certificates?token=5o7ucwjz9vcpFlBsHJcwnnuL-rU8af1MsfQ6OlWTgauw7aB-xtSkXUn_ts0RtMMKhvlZVPridqmAPbf2mKC8YA==",
+  "api":{
+    "eventsUrl":"https://gateway.name.cluster.extend.cx.cloud.sap/app/v1/events",
+    "metadataUrl":"https://gateway.name.cluster.extend.cx.cloud.sap/app/v1/metadata/services",
+    "infoUrl":"https://gateway.name.cluster.extend.cx.cloud.sap/v1/applications/management/info",
+    "certificatesUrl":"https://connector-service.name.cluster.extend.cx.cloud.sap/v1/applications/certificates"
+  },
+  "certificate":{
+    "subject":"O=Organization,OU=OrgUnit,L=Waldorf,ST=Waldorf,C=DE,CN=CNAME",
+    "extensions":"",
+    "key-algorithm":"rsa2048"
+  }
+}
+```
+
+Suppose that it is only the part containing the certificate information that is of interest to the user. In that case, instead of quoting the whole response, quote it like this:
+```json
+{
+  ...
+  "certificate":{
+    "subject":"O=Organization,OU=OrgUnit,L=Waldorf,ST=Waldorf,C=DE,CN=CNAME",
+    "extensions":"",
+    "key-algorithm":"rsa2048"
+  }
+}
+```
+
 ## Content formatting
 
 Format the content in an attention-grabbing way. In general, content is easier to read when it is in chunks. Consider breaking up endless paragraphs by using a list or a table. Use action verbs and present tense for headings to engage the reader, and also follow the guidelines for the best way to include links and images. When you include lists, tables, code samples, or images, precede them with a brief explanation of what they describe.
