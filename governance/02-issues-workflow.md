@@ -25,13 +25,15 @@ The default labels provided by GitHub are as follows:
 
 Here are the custom labels introduced by the Kyma team. The labels colors are provided in brackets in Hex code: 
 
-* `WIP` (#ECF44F) indicates that an issue is already in progress.
+* `WIP` (#ECF44F) indicates that an issue is not ready for further processing.
 * `decision` (#ED635E) indicates that an issue is related to a decision.
 * `priority/critical` (#FB0104) indicates the top-priority of a given issue.
 * `area/{CAPABILITY_NAME}` (#3CB913) indicates which capabilities are related to a given issue. You can assign more than one `area` label an issue.
 * `security/{SEVERITY}` (#2D51F9) indicates a security issue based on its [CVSSv3](https://www.first.org/cvss/calculator/3.0) severity, either `low`, `medium`, `high`, or `critical`.
 * `sig/{SIG_NAME}` (#E99694) indicates which [Special interest group (SIG)](/collaboration/#overview-overview) identified the issue and is responsible for further follow-up on the issue.
 * `wg/{WG_NAME}` (#E99694) indicates which [Working group (WG)](/collaboration/#overview-overview) identified the issue and is responsible for further follow-up on the issue.
+* `area/quality` (#e99695) indicates that an issue is related to a quality topics.
+
 
 ## Issues triage
 
@@ -50,7 +52,7 @@ There are eight different stages of the triage:
 | Security | Specify the [CVSSv3](https://www.first.org/cvss/calculator/3.0) severity with the support of the security team. | security/{SEVERITY} |
 | SIG/WG | Clarify which SIG or WG is involved in this issue and is responsible for the further follow-up on the issue. | sig/{SIG_NAME}, wg/{WG_NAME}|
 | Priority | Prioritize issues in the general Kyma backlog to select those which are the most critical and should be taken as first. | priority/critical |
-| Area | Clarify which capabilities are involved in a given issue. | area/{CAPABILITY_NAME} |
+| Area | Clarify which capabilities or qualities are involved in a given issue. | area/{CAPABILITY_NAME} or area/quality |
 
 ## Backlog
 
@@ -63,6 +65,7 @@ Team Sprint is modeled as a GitHub milestone named with the following pattern: `
 - priority (high priority first)
 - area (default capability of the team first)
 - dependencies (unblock others)
+
 
 Contributors move the issue to the **In Progress** column on the ZenHub board when they start working on it. When the work is done, the issue is closed.
 
