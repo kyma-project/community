@@ -10,38 +10,38 @@ Helm doesn't trigger the `crd-install` hook in the upgrade process. Because of t
 
 1. Make the CRD part of a separate chart which must be installed before the chart that requires the CRD.
 
-   - Implementation effort: **low**
-   - Pros:
-      - No additional implementation effort required.
-      - The CRD is a separate file which can be used on its own, for example for tests.
+  - Implementation effort: **low**
+  - Pros:
+    - No additional implementation effort required.
+    - The CRD is a separate file which can be used on its own, for example for tests.
   
-   - Cons:
-      - Requires creating more charts.
-      - The CRD is managed by Helm and comes with all of the associated limitations.
+  - Cons:
+    - Requires creating more charts.
+    - The CRD is managed by Helm and comes with all of the associated limitations.
 
 2. Register the CRD through its controller.
 
-   - Implementation effort: **medium**
-   - Pros:
-      - The CRD is managed by a component that is logically responsible for it.
+  - Implementation effort: **medium**
+  - Pros:
+    - The CRD is managed by a component that is logically responsible for it.
       - The CRD is not subject to the Helm limitations.
 
-   - Cons:
-      - Requires a controller for the CRD.
-      - The CRD is not listed as a part of Helm release.
-      - The CRD is not available as a file.
+  - Cons:
+    - Requires a controller for the CRD.
+    - The CRD is not listed as a part of Helm release.
+    - The CRD is not available as a file.
 
 3. Create a job that registers the new CRD and removes its old version. The job must be triggered on `pre-install` and `pre-upgrade` Helm hooks.
 
-   - Implementation effort: **high**
-   - Pros:
-      - The CRD can be a separate entity.
-      - Migration can be easily implemented in the job.
-      - The CRD is not subject to the Helm limitations.
+  - Implementation effort: **high**
+  - Pros:
+    - The CRD can be a separate entity.
+    - Migration can be easily implemented in the job.
+    - The CRD is not subject to the Helm limitations.
 
-   - Cons:
-      - Jobs are troublesome to debug.
-      - The CRD is not listed as a part of Helm release.
+  - Cons:
+    - Jobs are troublesome to debug.
+    - The CRD is not listed as a part of Helm release.
 
 ## Moving resources between charts
 
