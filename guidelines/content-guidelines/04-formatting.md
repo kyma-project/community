@@ -104,7 +104,7 @@ As you write about your topic, use lists to create visual clarity within your co
 
     ✅ `**ClusterServiceBroker** is an endpoint for ...`
 
-Use one type of formatting throughout the whole document. Do not write:
+    Use one type of formatting throughout the whole document. Do not write:
 
     ⛔️ `**ClusterServiceBroker**, an endpoint for ...`
 
