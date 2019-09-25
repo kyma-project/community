@@ -39,7 +39,7 @@ Metadata names            | When you create a Markdown document, define its `tit
 
 ### Omission in code
 
-Often when you quote snippets of code, it is not necessary to include them in full. For example, when you quote an HTTP response, it is enough to quote only the relevant part instead of enclosing the whole response. In such a case, replace the omitted parts with `...` to signalize that something has been removed. 
+Often when you quote snippets of code, it is not necessary to include them in full. For example, when you quote an HTTP response, it is enough to quote only the relevant part instead of enclosing the whole response. In such a case, replace the omitted parts with `...` to signalize that something has been removed.
 
 For example, you might have an HTTP response as such:
 
@@ -91,12 +91,22 @@ See an example:
 ### Ordered and unordered lists
 
 As you write about your topic, use lists to create visual clarity within your content. List items in a category or in a sequence. Use an ordered list for sequential, instructional steps. Unordered lists are appropriate for items that have no sequential order, such as a list of valid file types. Follow these guidelines:
+
 * Make list content consistent in structure. For example, make all the bullet points sentences, questions, or sentence fragments, but do not mix types.
 * Punctuate bullet points consistently. If they are sentences, use periods. If they are sentence fragments, do not use periods.
 * Avoid ending bullet points with semicolons or commas.
 * Capitalize the first letter of each bullet point consistently. Capitalize the first letter unless the list items are always lowercased, as with parameters names.
 * Emphasize the beginning of the bullet point to capture the main idea.
 * If readers must perform list items in order, as in a step-by-step procedure, use an ordered list and maintain consistency in structure.
+* If you explain terms, bold them and provide their definitions either after a hyphen or in the sentence structure:  
+
+    ✅ **ClusterServiceBroker** - an endpoint for ...
+
+    ✅ **ClusterServiceBroker** is an endpoint for ...
+
+    Use one type of formatting throughout the whole document. Do not write:
+
+    ⛔️ **ClusterServiceBroker**, an endpoint for ...
 
 ### Tables
 
@@ -116,7 +126,7 @@ Ideally, headings fit into one line in the generated output. Be concise, but als
 * Use action verbs and present tense verbs in headings when possible, especially in tutorials. For example, **Add a document type**.
 * While gerunds are acceptable in body-level content, DO NOT use gerunds in headings. Use **Create a storefront** instead of **Creating a storefront**.
 * Avoid stacked headings, which are headings without body-level content in between. For example, DO NOT use a Heading 2 (H2) to introduce one or more Heading 3s. Instead, add a paragraph after the H2 that describes the main idea of the content in the headings that follow.
-* Do not use small headings, such as Heading 4 (H4) and smaller. Use Heading 1 (H1) for the document title, and Heading 2s (H2) and Heading 3s (H3) to organize the content of the document.
+* Do not use small headings, such as Heading 4 (H4) and smaller. Use Heading 1 (H1) for the document title, Heading 2 (H2), and Heading 3 (H3) to organize the content of the document.
 
 ### Links
 
