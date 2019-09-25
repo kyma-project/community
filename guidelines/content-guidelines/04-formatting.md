@@ -100,13 +100,13 @@ As you write about your topic, use lists to create visual clarity within your co
 * If readers must perform list items in order, as in a step-by-step procedure, use an ordered list and maintain consistency in structure.
 * If you explain terms, bold them and provide their definitions either after a hyphen or in the sentence structure:  
 
-    ✅ `**ClusterServiceBroker** - an endpoint for ...`
+    ✅ **ClusterServiceBroker** - an endpoint for ...
 
-    ✅ `**ClusterServiceBroker** is an endpoint for ...`
+    ✅ **ClusterServiceBroker** is an endpoint for ...
 
     Use one type of formatting throughout the whole document. Do not write:
 
-    ⛔️ `**ClusterServiceBroker**, an endpoint for ...`
+    ⛔️ **ClusterServiceBroker**, an endpoint for ...
 
 ### Tables
 
