@@ -30,7 +30,7 @@ Here are the custom labels introduced by the Kyma team. The labels colors are pr
 * `decision` (#ED635E) indicates that an issue is related to a decision.
 * `priority/critical` (#FB0104) indicates the top-priority of a given issue.
 * `area/{CAPABILITY_NAME}` (#3CB913) indicates which capabilities are related to a given issue. You can assign more than one `area` label an issue.
-* `area/quality` (#3CB913) indicates that an issue is related to a quality topics.
+* `area/quality` (#3CB913) indicates that an issue is related to a quality topic.
 * `area/performance` (#3CB913) indicates that an issue is related to a performance topics.
 * `security/{SEVERITY}` (#2D51F9) indicates a security issue based on its [CVSSv3](https://www.first.org/cvss/calculator/3.0) severity, either `low`, `medium`, `high`, or `critical`.
 * `sig/{SIG_NAME}` (#E99694) indicates which [Special interest group (SIG)](/collaboration/#overview-overview) identified the issue and is responsible for further follow-up on the issue.
