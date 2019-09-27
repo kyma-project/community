@@ -112,11 +112,11 @@ As you write about your topic, use lists to create visual clarity within your co
 
 Another effective way to chunk content is to use tables. Use tables when content needs comparison, or as a way to provide information mapping. Think of a table as a list with optional columns useful to provide and organize more information than belongs in a list. Make sure tables are not too long or hard to read, causing the reader to scroll a lot. If possible, break up a long table into multiple tables.
 
-When creating a table, centralize the columns that have choice-type values, such as `Yes/No` or `true/false`. See the example:
+When creating a table, centralize the columns that have choice-type values, such as `Yes/No` or `true/false`. If you include the **Default** column in your table, write `None` for parameters that have no default values. See the example:
 ```
-| Parameter   |      Required      |  Description |
-|-------------|:------------------:|--------------|
-|             |       Yes/No       |              |
+|     Parameter      |      Required      |  Description  | Default |
+|--------------------|:------------------:|---------------|---------|
+| {Parameter's name} |      {Yes/No}      | {Description} |   None  |
 ```
 
 ### Headings
