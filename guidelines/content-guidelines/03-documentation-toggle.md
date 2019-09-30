@@ -14,7 +14,7 @@ Follow these rules when inserting toggles in documents:
 
 * Toggles belonging to one container must start with the `<div tabs name="{toggle-name}">` tag and end with the `</div>` tag, where **name** is a distinctive ID of a specific toggle used for linking. It can be any name describing the content of the documentation toggle.
 
-See an example:
+See the example:
 
 ```markdown
 <div tabs name="installation">
@@ -25,7 +25,7 @@ See an example:
 * A single toggle must start with the `<details>` tag and end with the `</details>` tag.
 * Insert the title of the toggle between `<summary>` and `</summary>` tags. Every part of the title must start from a new line.
 
-See an example:
+See the example:
 
 ``` markdown
 <summary>
@@ -45,9 +45,9 @@ From release
   - Four spaces for the div element
   - Six spaces for other elements
 
-* Toggles can belong to group of containers of toggles for cross linking between them. For that, container of toggles must contains `group` attribute with distinctive ID of a specific group. When a toggle in one container is changing, the toggles adjust automatically in other containers with this same group. Every `<summary>` tag in container must also contains `label` attribute for classification of toggles.
+* Toggles can belong to a group of containers of toggles for cross-linking between them. For that, a container of toggles must contain the `group` attribute with a distinctive ID of a specific group. When a toggle in one container changes, the toggles in the other containers with the same group adjust automatically. Every `<summary>` tag in the container must also contain the `label` attribute for classification of toggles.
 
-See an example:
+See the example:
 
 ``` markdown
 <div tabs name="pre-installation" group="cluster-installation">
@@ -62,7 +62,7 @@ See an example:
 
 This section contains exemplary uses of the toggle in Markdown documents.
 
-* See an example of the toggle added as a regular document section:
+* See the example of the toggle added as a regular document section:
 
 <div tabs name="installation">
   <details>
@@ -98,7 +98,7 @@ The code renders on `kyma-project.io` as follows:
 
 ![](./assets/toggle_flat_structure.png)
 
-* See an example of the toggle added under a list:
+* See the example of the toggle added under a list:
 
 1. First element
 2. Second element
@@ -138,7 +138,7 @@ The code renders on `kyma-project.io` as follows:
 
 ![](./assets/toggle_in_list.png)
 
-* See an example of two toggle containers which belong to group of toggles:
+* See the example of two toggle containers which belong to a group of toggles:
 
 <div tabs name="installation" group="foo-bar">
   <details>
