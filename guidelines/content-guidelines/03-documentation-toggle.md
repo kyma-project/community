@@ -3,6 +3,7 @@ title: Toggle
 ---
 
 The documentation toggle is a feature that allows you to render several versions of a given section in one document or have several versions of one document.
+
 The toggle renders the text in Github documents in the form of expandable sections and shows it as tabs on the `http://kyma-project.io` website.
 
 You can use the toggle to include instructions for different operating systems (OS) in one guide or to describe installation guides that differ only in a few steps.  
@@ -11,9 +12,10 @@ You can use the toggle to include instructions for different operating systems (
 
 Follow these rules when inserting toggles in documents:
 
-* Toggles belonging to one group must start with the `<div tabs name="{toggle-name}">` tag and end with the `</div>` tag, where **name** is a distinctive ID of a specific toggle used for linking. It can be any name describing the content of the documentation toggle.
+* Toggles belonging to one container must start with the `<div tabs name="{toggle-name}">` tag and end with the `</div>` tag, where **name** is a distinctive ID of a specific toggle used for linking. It can be any name describing the content of the documentation toggle.
 
 See an example:
+
 ```markdown
 <div tabs name="installation">
 {toggle content}
@@ -25,20 +27,36 @@ See an example:
 
 See an example:
 
-  ``` markdown
-  <summary>
-  From release
-  </summary>
-  ```
+``` markdown
+<summary>
+From release
+</summary> 
+```
 
 * Leave a blank line after the `</summary>` tag. Only this way the content can render.
 * Add content using Markdown syntax.
 * Use this indentation when you add the toggle as a regular document section:
+
   - No spaces for the div element
   - Two spaces for other elements
+
 * Use this indentation when you add a toggle under a list:
+
   - Four spaces for the div element
   - Six spaces for other elements
+
+* Toggles can belong to group of containers of toggles for cross linking between them. For that, container of toggles must contains `group` attribute with distinctive ID of a specific group. When a toggle in one container is changing, the toggles adjust automatically in other containers with this same group. Every `<summary>` tag in container must also contains `label` attribute for classification of toggles.
+
+See an example:
+
+``` markdown
+<div tabs name="pre-installation" group="cluster-installation">
+  <details>
+  <summary label="from-release">
+  From release
+  </summary>
+  ...
+```
 
 ## Examples
 
@@ -76,7 +94,6 @@ This section contains exemplary uses of the toggle in Markdown documents.
   </details>
 </div>
 
-
 The code renders on `kyma-project.io` as follows:
 
 ![](./assets/toggle_flat_structure.png)
@@ -85,6 +102,7 @@ The code renders on `kyma-project.io` as follows:
 
 1. First element
 2. Second element
+
     <div tabs name="installation">
       <details>
       <summary>
@@ -119,3 +137,39 @@ The code renders on `kyma-project.io` as follows:
 The code renders on `kyma-project.io` as follows:
 
 ![](./assets/toggle_in_list.png)
+
+* See an example of two toggle containers which belong to group of toggles:
+
+<div tabs name="installation" group="foo-bar">
+  <details>
+  <summary label="from-release">
+  From release
+  </summary>
+
+  foo bar
+  </details>
+  <details>
+  <summary label="from-sources">
+  From sources
+  </summary>
+
+  foo bar v2
+  </details>
+</div>
+
+<div tabs name="installation-2" group="foo-bar">
+  <details>
+  <summary label="from-release">
+  From release
+  </summary>
+
+  foo bar
+  </details>
+  <details>
+  <summary label="from-sources">
+  From sources
+  </summary>
+
+  foo bar v2
+  </details>
+</div>
