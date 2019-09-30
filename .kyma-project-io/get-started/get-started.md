@@ -42,7 +42,7 @@ Go the [Kyma blog](https://kyma-project.io/blog/) to read the latest news on our
 
 ## Slack
 
-If you prefer even more direct contact, use one of the available [Slack channels](https://kyma-community.slack.com/messages/CBLBESMST/). Feel free to write to us with any questions, concerns, or ideas for improvement. Any constructive feedback or criticism is welcome.
+If you prefer even more direct contact, use one of the available [Slack channels](http://slack.kyma-project.io/). Feel free to write to us with any questions, concerns, or ideas for improvement. Any constructive feedback or criticism is welcome.
 
 # <img src="assets/technical-support-icon.svg" width="120"> Technical Support
 
