@@ -67,63 +67,25 @@ Follow these steps to release another Kyma version.
 
 3. Push the branch to the `test-infra` repository.
 
-4. Create a PR to `test-infra/release-x.y`. This triggers the pre-release job for `watch-pods`. 
-
-   > **NOTE:** To trigger the `watch-pods` build without introducing any changes, edit any file within the `test-infra` repository and create a pull request. You don't need to merge it as the job is triggered anyway. After a successful `watch-pods` image build, close the pull request.
-
-5. Update the `RELEASE_VERSION` file with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `1.4.2`, then change the version to `1.5.0-rc1`.
+4. Update the `RELEASE_VERSION` file with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `1.4.2`, then change the version to `1.5.0-rc1`.
 
 ### kyma-project/kyma
 
 1. Inside the release branch do the following changes.
 
-   i. Update your PR with the version and the directory of components used in `values.yaml` files.
+   i. In `installation/resources/installer.yaml` replace `eu.gcr.io/kyma-project/develop/installer:{image_tag}` with `eu.gcr.io/kyma-project/kyma-installer:{release_version}`
 
-   Find these values in the files:
-
-   ```yaml
-   dir: develop/
-   version: {current_version}
+   ii. In `tools/kyma-installer/kyma.Dockerfile` replace:
    ```
-  
-   ```yaml
-   dir: pr/
-   version: {current_version}
+   ARG INSTALLER_VERSION="{kyma_operator_version}"	
+   ARG INSTALLER_DIR={kyma_operator_path}
+   FROM $INSTALLER_DIR/kyma-operator:$INSTALLER_VERSION
    ```
 
-   Replace them with:
-
-   ```yaml
-   dir:
-   version: {release_version}
+   with
    ```
-
-   > **NOTE:** Replace only `develop/` so `develop/tests` becomes `tests/`.
-
-   Every component image is published with a version defined in the `RELEASE_VERSION` file stored in the `test-infra` repository on the given release branch. Test scripts for integration jobs like GKE Integration or GKE Upgrade are also loaded from the `test-infra` release branch.
-
-   For example, for the first release candidate of 1.4.0, the release version will be `1.4.0-rc1` and the `yaml` files should be modified as follows:
-
-   ``` yaml
-   dir:
-   version: 1.4.0-rc1
+   FROM {kyma_operator_path}/kyma-operator:{kyma_operator_version}
    ```
-
-   > **CAUTION**: Do **not** update the version of components whose `dir` section does not contain `develop`, as is the case with Console-related components. Also do not change octopus version in `kyma/resources/testing/values.yaml` and `helm_broker` version in `resources/helm-broker/values.yaml` even though their directory is `develop`.
-
-   ii. Check all `yaml` files in the `kyma` repository for references of the following Docker image:
-
-   ```yaml
-   image: eu.gcr.io/kyma-project/develop/{IMAGE_NAME}:{SOME_SHA}
-   ```
-
-   Change the Docker image to:
-
-   ```yaml
-   image: eu.gcr.io/kyma-project/{IMAGE_NAME}:{release_version}
-   ```
-
-   > **CAUTION**: In `installation/resources/installer.yaml` replace `eu.gcr.io/kyma-project/develop/installer:{image_tag}` with `eu.gcr.io/kyma-project/kyma-installer:{release_version}`
 
    iii. In the `resources/core/values.yaml` file, replace the the `clusterDocsTopicsVersion` value with your release branch name. For example, for the 1.4 release, find the following section:
 
@@ -140,10 +102,8 @@ Follow these steps to release another Kyma version.
    # (...)
    clusterDocsTopicsVersion: release-1.4
    ```
-  
-   iv. Ensure that in the `resources/compass/values.yaml` there are no `PR-XXX` values. All image versions should be in a form of commit hashes.
 
-   v. Create a pull request with your changes to the release branch. It triggers all jobs for components.
+   iv. Create a pull request with your changes to the release branch. It triggers all jobs for components.
 
    ![PullRequest](./assets/release-PR.png)
 
