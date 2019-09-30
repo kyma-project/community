@@ -39,8 +39,8 @@ To prepare a release:
 5. Run `dep ensure -v --vendor-only` in the `development/tools` directory to install dependencies.
 5. Run `go run development/tools/cmd/rendertemplates/main.go --config templates/config.yaml` in the root of the repository to generate jobs.
 6. Run `go test ./development/tools/jobs/...` in the root of the repository. If any of the tests is marked red, fix it using these guidelines: 
-  * For release tests using `GetKymaReleasesSince` with a release that is no longer supported, change the method to `GetAllKymaReleases`.
-  * For release tests using `GetKymaReleasesUntil` with a release that is no longer supported, remove the part of the test which includes the method.
+  * For release tests using `GetKymaReleasesSince` or `jobsuite.Since` with a release that is no longer supported, change the method to `GetAllKymaReleases` or `jobsuite.AllReleases` respectively.
+  * For release tests using `GetKymaReleasesUntil` or `jobsuite.Until` with a release that is no longer supported, remove the part of the test which includes the method.
 7. If tests are green, commit all jobs. The new release jobs are ready.
 
 ## Steps
