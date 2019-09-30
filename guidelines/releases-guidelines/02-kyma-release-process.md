@@ -44,9 +44,6 @@ To prepare a release:
 7. If tests are green, commit all jobs. The new release jobs are ready.
 
 ## Steps
-
-Before completing these guidelines, make sure there is no mismatch between the source code and `.yaml` files. All components are rebuilt from the source code, which requires all Helm charts to be up to date.
-
 Follow these steps to release another Kyma version.
 
 ### kyma-project/test-infra
