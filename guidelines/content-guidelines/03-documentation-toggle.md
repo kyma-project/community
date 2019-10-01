@@ -3,6 +3,7 @@ title: Toggle
 ---
 
 The documentation toggle is a feature that allows you to render several versions of a given section in one document or have several versions of one document.
+
 The toggle renders the text in Github documents in the form of expandable sections and shows it as tabs on the `http://kyma-project.io` website.
 
 You can use the toggle to include instructions for different operating systems (OS) in one guide or to describe installation guides that differ only in a few steps.  
@@ -11,9 +12,10 @@ You can use the toggle to include instructions for different operating systems (
 
 Follow these rules when inserting toggles in documents:
 
-* Toggles belonging to one group must start with the `<div tabs name="{toggle-name}">` tag and end with the `</div>` tag, where **name** is a distinctive ID of a specific toggle used for linking. It can be any name describing the content of the documentation toggle.
+* Toggles belonging to one set must start with the `<div tabs name="{toggle-name}">` tag and end with the `</div>` tag, where **name** is a distinctive ID of a specific toggle used for linking. It can be any name describing the content of the documentation toggle.
 
-See an example:
+See the example:
+
 ```markdown
 <div tabs name="installation">
 {toggle content}
@@ -23,28 +25,63 @@ See an example:
 * A single toggle must start with the `<details>` tag and end with the `</details>` tag.
 * Insert the title of the toggle between `<summary>` and `</summary>` tags. Every part of the title must start from a new line.
 
-See an example:
+See the example:
 
-  ``` markdown
-  <summary>
-  From release
-  </summary>
-  ```
+``` markdown
+<summary>
+From release
+</summary> 
+```
 
 * Leave a blank line after the `</summary>` tag. Only this way the content can render.
 * Add content using Markdown syntax.
 * Use this indentation when you add the toggle as a regular document section:
+
   - No spaces for the div element
   - Two spaces for other elements
+
 * Use this indentation when you add a toggle under a list:
+
   - Four spaces for the div element
   - Six spaces for other elements
+
+* When you add two or more toggle sets that belong to the same group, you must classify them properly. This way each time you switch to one of the toggles in the set, it opens automatically in all other sets from the same group within one document and across all documents that use the group. To create a toggle group:
+
+  - All sets of toggles from the given group must contain the `group` attribute with a distinctive ID of this group. For example, add the `cluster-installation` group to categorize all toggle sets that refer to Kyma installation on a cluster.
+  - Every `<summary>` tag in the set must also contain the `label` attribute. For example, add the `GKE` label to all toggles that describe steps for Kyma installation on a GKE cluster in the `cluster-installation` group.
+
+  > **NOTE:** The label does not have to be the same as the summary. If the label is a combination of two or more words, separate them with the dash (`-`). For example, write `<summary label="install-on-gke">`.
+
+  See the example:
+
+  ``` markdown
+  <div tabs name="prerequisites" group="cluster-installation">
+    <details>
+    <summary label="gke">
+    GKE
+    </summary>
+    ...
+    </details>
+    <details>
+    <summary label="aks">
+    AKS
+    </summary>
+    ...
+    </details>
+    <details>
+    <summary label="gardener">
+    Gardener
+    </summary>
+    ...
+    </details>
+  </div>
+  ```
 
 ## Examples
 
 This section contains exemplary uses of the toggle in Markdown documents.
 
-* See an example of the toggle added as a regular document section:
+* See the example of the toggle added as a regular document section:
 
 <div tabs name="installation">
   <details>
@@ -76,15 +113,15 @@ This section contains exemplary uses of the toggle in Markdown documents.
   </details>
 </div>
 
-
 The code renders on `kyma-project.io` as follows:
 
 ![](./assets/toggle_flat_structure.png)
 
-* See an example of the toggle added under a list:
+* See the example of the toggle added under a list:
 
 1. First element
 2. Second element
+
     <div tabs name="installation">
       <details>
       <summary>
@@ -119,3 +156,59 @@ The code renders on `kyma-project.io` as follows:
 The code renders on `kyma-project.io` as follows:
 
 ![](./assets/toggle_in_list.png)
+
+* See the example of two toggle sets which belong to a group of toggles:
+
+<div tabs name="prerequisites" group="cluster-installation">
+  <details>
+  <summary label="gke">
+  GKE
+  </summary>
+
+  ...
+  </details>
+  <details>
+  <summary label="aks">
+  AKS
+  </summary>
+
+  ...
+  </details>
+  <details>
+  <summary label="gardener">
+  Gardener
+  </summary>
+
+  ...
+  </details>
+</div>
+
+...
+
+<div tabs name="prepare-the-cluster" group="cluster-installation">
+  <details>
+  <summary label="gke">
+  GKE
+  </summary>
+
+  ...
+  </details>
+  <details>
+  <summary label="aks">
+  AKS
+  </summary>
+
+  ...
+  </details>
+  <details>
+  <summary label="gardener">
+  Gardener
+  </summary>
+  
+  ...
+  </details>
+</div>
+
+The code renders on `kyma-project.io` as follows:
+
+![](./assets/toggle-groups.png)
