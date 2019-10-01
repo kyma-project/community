@@ -77,8 +77,6 @@ See the example:
 </div>
 ```
 
-![](./assets/toggle-groups.png)
-
 ## Examples
 
 This section contains exemplary uses of the toggle in Markdown documents.
@@ -161,38 +159,56 @@ The code renders on `kyma-project.io` as follows:
 
 * See the example of two toggle containers which belong to a group of toggles:
 
-<div tabs name="installation" group="providers">
+<div tabs name="prerequisites" group="cluster-installation">
   <details>
-  <summary label="from-release">
-  From release
+  <summary label="gke">
+  GKE
   </summary>
 
-  foo bar
+  ...
   </details>
   <details>
-  <summary label="from-sources">
-  From sources
+  <summary label="aks">
+  AKS
   </summary>
 
-  foo bar v2
+  ...
+  </details>
+  <details>
+  <summary label="gardener">
+  Gardener
+  </summary>
+
+  ...
+  </details>
+</div>
+
+...
+
+<div tabs name="prepare-the-cluster" group="cluster-installation">
+  <details>
+  <summary label="gke">
+  GKE
+  </summary>
+
+  ...
+  </details>
+  <details>
+  <summary label="aks">
+  AKS
+  </summary>
+
+  ...
+  </details>
+  <details>
+  <summary label="gardener">
+  Gardener
+  </summary>
+  
+  ...
   </details>
 </div>
 
-Foo bar
+The code renders on `kyma-project.io` as follows:
 
-<div tabs name="installation-2" group="foo-bar">
-  <details>
-  <summary label="from-release">
-  From release
-  </summary>
-
-  foo bar
-  </details>
-  <details>
-  <summary label="from-sources">
-  From sources
-  </summary>
-
-  foo bar v2
-  </details>
-</div>
+![](./assets/toggle-groups.png)
