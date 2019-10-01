@@ -12,7 +12,7 @@ You can use the toggle to include instructions for different operating systems (
 
 Follow these rules when inserting toggles in documents:
 
-* Toggles belonging to one container must start with the `<div tabs name="{toggle-name}">` tag and end with the `</div>` tag, where **name** is a distinctive ID of a specific toggle used for linking. It can be any name describing the content of the documentation toggle.
+* Toggles belonging to one set must start with the `<div tabs name="{toggle-name}">` tag and end with the `</div>` tag, where **name** is a distinctive ID of a specific toggle used for linking. It can be any name describing the content of the documentation toggle.
 
 See the example:
 
@@ -45,18 +45,39 @@ From release
   - Four spaces for the div element
   - Six spaces for other elements
 
-* Toggles can belong to a group of containers of toggles for cross-linking between them. For that, a container of toggles must contain the `group` attribute with a distinctive ID of a specific group. When a toggle in one container changes, the toggles in the other containers with the same group adjust automatically. Every `<summary>` tag in the container must also contain the `label` attribute for classification of toggles.
+* When you add two or more toggle sets that belong to the same group, you must classify them properly. This way each time you switch to one of the toggles in the set, it opens automatically in all other sets from the same group within one document and across all documents that use the group. To create a toggle group:
+
+  - All sets of toggles from the given group must contain the `group` attribute with a distinctive ID of this group. For example, add the `cluster-installation` group to categorize all toggle sets that refer to Kyma installation on a cluster.
+  - Every `<summary>` tag in the set must also contain the `label` attribute. For example, add the `GKE` label to all toggles that describe steps for Kyma installation on a GKE cluster in the `cluster-installation` group.
+​
+> **NOTE:** The label does not have to be the same as the summary. If the label is a combination of two or more words, separate them with the dash (`-`). For example, write `<summary label="install-on-gke">`.
 
 See the example:
 
 ``` markdown
-<div tabs name="pre-installation" group="cluster-installation">
+<div tabs name="prerequisites" group="cluster-installation">
   <details>
-  <summary label="from-release">
-  From release
+  <summary label="gke">
+  GKE
   </summary>
   ...
+  </details>
+  <details>
+  <summary label="aks">
+  AKS
+  </summary>
+  ...
+  </details>
+  <details>
+  <summary label="gardener">
+  Gardener
+  </summary>
+  ...
+  </details>
+</div>
 ```
+
+![](./assets/toggle-groups.png)
 
 ## Examples
 
@@ -140,7 +161,7 @@ The code renders on `kyma-project.io` as follows:
 
 * See the example of two toggle containers which belong to a group of toggles:
 
-<div tabs name="installation" group="foo-bar">
+<div tabs name="installation" group="providers">
   <details>
   <summary label="from-release">
   From release
@@ -156,6 +177,8 @@ The code renders on `kyma-project.io` as follows:
   foo bar v2
   </details>
 </div>
+
+Foo bar
 
 <div tabs name="installation-2" group="foo-bar">
   <details>
