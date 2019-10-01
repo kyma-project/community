@@ -50,32 +50,32 @@ From release
   - All sets of toggles from the given group must contain the `group` attribute with a distinctive ID of this group. For example, add the `cluster-installation` group to categorize all toggle sets that refer to Kyma installation on a cluster.
   - Every `<summary>` tag in the set must also contain the `label` attribute. For example, add the `GKE` label to all toggles that describe steps for Kyma installation on a GKE cluster in the `cluster-installation` group.
 ​
-> **NOTE:** The label does not have to be the same as the summary. If the label is a combination of two or more words, separate them with the dash (`-`). For example, write `<summary label="install-on-gke">`.
+  > **NOTE:** The label does not have to be the same as the summary. If the label is a combination of two or more words, separate them with the dash (`-`). For example, write `<summary label="install-on-gke">`.
 
-See the example:
+  See the example:
 
-``` markdown
-<div tabs name="prerequisites" group="cluster-installation">
-  <details>
-  <summary label="gke">
-  GKE
-  </summary>
-  ...
-  </details>
-  <details>
-  <summary label="aks">
-  AKS
-  </summary>
-  ...
-  </details>
-  <details>
-  <summary label="gardener">
-  Gardener
-  </summary>
-  ...
-  </details>
-</div>
-```
+  ``` markdown
+  <div tabs name="prerequisites" group="cluster-installation">
+    <details>
+    <summary label="gke">
+    GKE
+    </summary>
+    ...
+    </details>
+    <details>
+    <summary label="aks">
+    AKS
+    </summary>
+    ...
+    </details>
+    <details>
+    <summary label="gardener">
+    Gardener
+    </summary>
+    ...
+    </details>
+  </div>
+  ```
 
 ## Examples
 
