@@ -49,6 +49,7 @@ From release
 
   - All sets of toggles from the given group must contain the `group` attribute with a distinctive ID of this group. For example, add the `cluster-installation` group to categorize all toggle sets that refer to Kyma installation on a cluster.
   - Every `<summary>` tag in the set must also contain the `label` attribute. For example, add the `GKE` label to all toggles that describe steps for Kyma installation on a GKE cluster in the `cluster-installation` group.
+
 ​
   > **NOTE:** The label does not have to be the same as the summary. If the label is a combination of two or more words, separate them with the dash (`-`). For example, write `<summary label="install-on-gke">`.
 
@@ -157,7 +158,7 @@ The code renders on `kyma-project.io` as follows:
 
 ![](./assets/toggle_in_list.png)
 
-* See the example of two toggle containers which belong to a group of toggles:
+* See the example of two toggle sets which belong to a group of toggles:
 
 <div tabs name="prerequisites" group="cluster-installation">
   <details>
