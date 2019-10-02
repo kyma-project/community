@@ -5,7 +5,7 @@ type: Metrics
 
 >**NOTE:** Blockquotes in this document provide instructions. Remove them from the final document.
 >
->This document is a ready-to-use template for the **Metrics** document type that describes service or controller metrics. Follow the `14-{00}-{service-name}.md` convention to name the document.
+>This document is a ready-to-use template for the **Metrics** document type that describes service or controller metrics. Follow the `14-{00}-{service/controller-name}.md` convention to name the document.
 
 This table shows the {Service/Controller name} custom metrics, their types, and descriptions.
 
