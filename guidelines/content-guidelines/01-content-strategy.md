@@ -3,13 +3,14 @@ title: Content Strategy
 ---
 
 Content Strategy is a term that relates to the approach you need to to define before you start content development. You need to know:
-* Who you write for
-* What to document
-* How and where to develop the content
-* Where the content will be visible
-* What types of content you have
-* How the reader will navigate through the content
-* What the review process is
+
+- Who you write for
+- What to document
+- How and where to develop the content
+- Where the content will be visible
+- What types of content you have
+- How the reader will navigate through the content
+- What the review process is
 
 ## Location and context
 
@@ -18,6 +19,7 @@ One of the main Kyma principles is to care about the developer experience. That 
 It is important to remember that you need to convince developers to use Kyma before they start to work on it. That is why technical documentation must be exposed to the public without a prerequisite to start a cluster first. Publicly available documentation should not only contain the technical content but also a more overarching explanation and showcases that help to convince developers and the business decision makers to use Kyma.
 
 This reasoning leads to a strategy of having two different locations for the documentation:
+
 - A specific Kyma instance (cluster):
     - Contextual help in the Service Catalog so the Kyma user does not have to search for the documentation of a specific service in the general location.
     - The Docs view in the Console UI with the overarching documentation.
@@ -26,8 +28,9 @@ This reasoning leads to a strategy of having two different locations for the doc
 ## Structure
 
 The decision for the document structure is to take a standard approach with the topic-oriented documentation. Looking at the structure of Kyma, there are two types of topics to differentiate:
-* Component
-* Task
+
+- Component
+- Task
 
 The content creation starts with the component-oriented structure that is easier to follow without clear customer expectations. In the long-term, once the Kyma content developers create the whole content and know what customers want, they need to assess the task-oriented structure.
 
@@ -36,6 +39,7 @@ To be more precise, now readers need to know at the start what such terms as `Se
 ## Topic types
 
 Every independent Kyma component is a separate documentation topic. The only exceptions from this rule are as follows:
+
 - Kyma is an overall topic treated as a grouping point for the overarching Kyma documentation.
 - For the publicly available documentation, there needs to be a separate topic for handling more business and marketing-oriented documentation with showcases.
 
@@ -59,12 +63,14 @@ Each technical topic must have the following document types arranged in the fixe
 8. [**Tutorials**](https://github.com/kyma-project/community/blob/master/guidelines/templates/resources/tutorials.md) (`08`) - Use it to provide a clear step-by-step instruction that helps the user to understand a given concept better. The user must be able to go through all the steps of the document and complete them. There is no separate tutorial type. The document does not have to explicitly point out the example used as, at the end, the explicit reference to the example will be in the main content of the guide.
 9. **API** (`09`) - Use it to document the exposed external API of components that the Kyma administrators use to integrate them with Kyma.
 10. [**Troubleshooting**](https://github.com/kyma-project/community/blob/master/guidelines/templates/resources/troubleshooting.md) (`10`) - Use it to explain all details needed for Kyma and its components' troubleshooting.
+11. [**Metrics**](https://github.com/kyma-project/community/blob/master/guidelines/templates/resources/metrics.md) (`14`) - Use it to describe custom and default service or controller metrics.
 
 ### Optional
 
 >**NOTE:** Place the optional types of documents right after the obligatory types.
 
 You can add the following document type to the Kyma documentation:
+
 - **UI Contracts** (`11`) - Use it to describe the mapping of OSBA service objects, plan objects, and conventions in the Kyma Console view.
 - **Examples** (`12`) - Use it to demonstrate a given Kyma feature or concept in a form of a short demo.
 - **Service Brokers** (`13`) - Use it to describe Service Brokers that Kyma provides.
@@ -76,10 +82,12 @@ The Kyma content developers write the content in [Markdown](https://daringfireba
 ## Audience
 
 For the documentation that is part of the Kyma cluster, the audience is the Kyma user. The assumption is that a person that gained access to the cluster and can sign in to the Console already knows the basics and knows what to use Kyma for. Therefore, the intended audience are the following technical people that operate the cluster:
+
 - Developers
 - Administrators
 
 As for the documentation that is published in the publicly available portal, the audience is much more diverse and it requires much more documentation to understand what Kyma is. Nevertheless, the assumption is that the audience has the basic technical understanding of such terms as containers, cloud, and Kubernetes:
+
 - Developers
 - Technical analysts
 - Business decision makers
@@ -91,6 +99,7 @@ Because of such a diversified audience, the navigation of the Kyma portal needs 
 ### The assumed reader's knowledge
 
 The assumption is that the audience is familiar with the following terms and does not require the explanation of technical concepts behind them:
+
 - Kubernetes
 - Docker and containers
 
