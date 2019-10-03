@@ -7,7 +7,7 @@ type: Metrics
 >
 >This document is a ready-to-use template for the **Metrics** document type that describes service or controller metrics. Follow the `11-{00}-{service/controller-name}.md` convention to name the document.
 
-This table shows the {Service/Controller name} custom metrics, their types, and descriptions.
+This table shows the {Service name} custom metrics, their types, and descriptions.
 
 | Name | Type | Description |
 |------|------|-------------|
@@ -15,11 +15,11 @@ This table shows the {Service/Controller name} custom metrics, their types, and 
 
 > If there are some default metrics, such as Prometheus metrics for [Go applications](https://prometheus.io/docs/guides/go-application/), exposed for the service or controller in addition to the custom ones, add this information to the document. For example, write:
 
-Apart from the custom metrics, the {Service/Controller name} also exposes default Prometheus metrics for [Go applications](https://prometheus.io/docs/guides/go-application/).
+Apart from the custom metrics, the {Service name} also exposes default Prometheus metrics for [Go applications](https://prometheus.io/docs/guides/go-application/).
 
-> If you describe metrics for a service or a controller that does not expose any custom metrics, write only about the default ones. For example, write:
+> If you describe metrics for a controller that does not expose any custom metrics, write only about the default ones. For example, write:
 
-Metrics for the {Service/Controller name} include:
+Metrics for the {Controller name} include:
 
 - {default metric name or description}.
 - {another default metric name or description}.
