@@ -76,7 +76,6 @@ For example, the **Choose the release to install** heading changes into the `cho
   - `{tab-name}` is `gke`
   - `{header}` is `choose-the-release-to-install`
 
-
 - Relative links
 
   To use a recommended relative link to a document in a documentation toggle which is in the same topic, use the following pattern:
