@@ -80,13 +80,13 @@ For example, the **Choose the release to install** heading changes into the `cho
 - Relative links
 
   To use a recommended relative link to a document in a documentation toggle which is in the same topic, use the following pattern:
-  
+
   ```markdown
   #installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install
   ```
 
 ## Links to specifications
 
-To link to a specification from specific topic, create a reference using `/{type-of-topic}/{id}/specifications/{name-of-specification}` pattern. `{type-of-topic}` and `{id}` is described in the previous sections, but `{name-of-specification}` is a name of specification defined in ClusterDocsTopic CR. For more information, read [this](#render-specifications) document.
+To link to a specification from specific topic, create a reference using `/{type-of-topic}/{id}/specifications/{name-of-specification}` pattern. `{type-of-topic}` and `{id}` are described in the previous sections, but `{name-of-specification}` is a name of specification defined in ClusterDocsTopic CR. For more information, read [this](#render-specifications) document.
 
 > **NOTE**: If specification used in ClusterDocsTopic CR of specific topic is in `assets` folder of this topic, the reference may has pattern: `./assets/{name-of-specification}.{extension}`, where `extension` is a extension of file. The link will be converted to correct on building process of the Kyma website.
