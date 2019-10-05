@@ -4,20 +4,21 @@ title: Links in docs
 
 These are the guidelines for making cross-references between the documents in the [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) folder.
 
->**NOTE:** The linking works only on the [Kyma website](https://kyma-project.io/docs). Currently, the cross-references between [GitHub documentation](https://github.com/kyma-project/kyma/tree/master/docs) is not available.
+> **NOTE:** The linking works only on the [Kyma website](https://kyma-project.io/docs). Currently, the cross-references between [GitHub documentation](https://github.com/kyma-project/kyma/tree/master/docs) is not available.
 
 ## Links between documents in the same topic
 
 If you want to link to another document in the same topic, create a reference using the `#{type}-{title}-{header}` pattern, where:
+
 - `{type}` is a metadata type of the document that you want to reference.
 - `{title}` is a metadata title of the document that you want to reference.
 - `{header}` is a header located in the document that you want to reference.
 
->**NOTE:** All variables must consist of lowercase characters separated with dashes (-).
+> **NOTE:** All variables must consist of lowercase characters separated with dashes (-).
 
 If the `{type}` doesn't exist, the pattern has the form of `#{title}-{title}-{header}`. If you want to create a reference to the whole `{type}`, use the `#{type}-{type}` pattern.
 
->**TIP:** You can copy the reference to the documentation directly from the website. See the reference to the Helm Broker **Details** document:
+> **TIP:** You can copy the reference to the documentation directly from the website. See the reference to the Helm Broker **Details** document:
 
 ![Same topic reference](./assets/reference-1.png)
 
@@ -28,17 +29,18 @@ To add a reference to a YAML, JSON, SVG, PNG, or JPG file located in the `assets
 ## Links between documents in different topics
 
 If you want to link to a document in a different topic, create a reference using the `/{type-of-topic}/{id}#{type}-{title}-{header}` pattern, where:
+
 - `{type-of-topic}` is a type of topic that you want to reference. Apart from documents related directly to Kyma, all components have the `components` type of topic. For Kyma, use `root` in place of topic type.
 - `{id}` is an ID of the topic that you want to reference. It is identical with the name of the component. For example, write `helm-broker` or `kyma`.
 - `{type}` is a metadata type of the document that you want to reference.
 - `{title}` is a metadata title of the document that you want to reference.
 - `{header}` is a header located in the document that you want to reference.
 
->**NOTE:** All variables must consist of lowercase characters separated with dashes (-).
+> **NOTE:** All variables must consist of lowercase characters separated with dashes (-).
 
 If the `{type}` doesn't exist, the pattern has the form of `/{type-of-topic}/{id}#{title}-{title}-{header}`. If you want to create a reference to the whole `{type}`, use the `/{type-of-topic}/{id}#{type}-{type}` pattern.
 
->**TIP:** You can copy the reference to the documentation directly from the website. See the cross-topic references to the Helm Broker **Details** document and to the Kyma **Overview**:
+> **TIP:** You can copy the reference to the documentation directly from the website. See the cross-topic references to the Helm Broker **Details** document and to the Kyma **Overview**:
 
 ![Different topic reference](./assets/reference-2.png)
 
@@ -49,6 +51,7 @@ If the `{type}` doesn't exist, the pattern has the form of `/{type-of-topic}/{id
 To link to a document in a documentation toggle, the toggle must start with the `<div tabs name="{toggle-name}">` tag and end with the `</div>` tag, where **name** is a distinctive ID used for linking. To learn more about how to use toggles, read [this](#toggle-toggle) document.
 
 If you want to link to a document in a documentation toggle, create a reference using `/{type-of-topic}/{id}#{type}-{title}-{header}` pattern as described in the previous sections, and add `--{toggle-name}--{tab-name}--{header}`, where:
+
 - `{toggle-name}` is a value of the **name** attribute in the `<div>` HTML tag in the toggle that you want to reference.
 - `{tab-name}` is a title of the tab containing the header that you want to reference.
 - `{header}` is a header located in the document that you want to reference.
@@ -62,10 +65,13 @@ For example, the **Choose the release to install** heading changes into the `cho
 - Absolute links
 
   This is an absolute link to a document in a documentatin toggle:
+
   ```markdown
   https://kyma-project.io/docs/root/kyma/#installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install
   ```
+
   In the absolute link example:
+
   - `{toggle-name}` is `provider-installation`
   - `{tab-name}` is `gke`
   - `{header}` is `choose-the-release-to-install`
@@ -74,6 +80,13 @@ For example, the **Choose the release to install** heading changes into the `cho
 - Relative links
 
   To use a recommended relative link to a document in a documentation toggle which is in the same topic, use the following pattern:
+  
   ```markdown
   #installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install
   ```
+
+## Links to specifications
+
+To link to a specification from specific topic, create a reference using `/{type-of-topic}/{id}/specifications/{name-of-specification}` pattern. `{type-of-topic}` and `{id}` is described in the previous sections, but `{name-of-specification}` is a name of specification defined in ClusterDocsTopic CR. For more information, read [this](#render-specifications) document.
+
+> **NOTE**: If specification used in ClusterDocsTopic CR of specific topic is in `assets` folder of this topic, the reference may has pattern: `./assets/{name-of-specification}.{extension}`, where `extension` is a extension of file. The link will be converted to correct on building process of the Kyma website.
