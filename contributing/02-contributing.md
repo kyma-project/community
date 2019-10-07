@@ -92,6 +92,6 @@ Although it is the responsibility of the owner of the PR to ensure that the main
 
 To learn more about maintainers' responsibilities and rules for appointing new maintainers, and removing the existing ones, refer to the [**Kyma working model**](/governance/#kyma-working-model-kyma-working-model) document.
 
-## Owners
+## Maintainers
 
-To identify the owners of particular parts of your repository, see the [`CODEOWNERS`](https://github.com/kyma-project/community/blob/master/CODEOWNERS) file in the root directory.
+To identify the maintainers of particular parts of your repository, see the [`CODEOWNERS`](https://github.com/kyma-project/community/blob/master/CODEOWNERS) file in the root directory of each Kyma repository.

@@ -8,33 +8,73 @@ All repositories in the Kyma organization must follow the official guidelines, c
 
 The Kyma project also includes the [Kyma Incubator](https://github.com/kyma-incubator) organization. It is a place where all new projects start in a more relaxed environment that facilitates their rapid growth. At that stage, they do not have to comply with all rules that govern the Kyma organization. Once the incubating project is ready to become a part of the main Kyma organization, adjust it to all standards.
 
+### Add new repository to the incubator
+
+Create a GitHub issue in [community](https://github.com/kyma-project/community) repository and describe what is the purpose of new repository.
+
 ## Ownership policy
 
 Kyma repositories are owned by code owners who are a group of people with special privileges in the repositories of the [Kyma](https://github.com/kyma-project) organization. Each repository has a separate `CODEOWNERS` file located at its root. The file specifies persons who have the ability to approve contribution to the part of the repository they own, after a detailed review of the related pull requests (PRs). Although the name suggests only the code ownership, the `CODEOWNERS` file is not only about the code but the content in general. Apart from the developers, you can define any relevant parties as code owners. For example, technical writers are set up as the owners of all `.md` documents in the Kyma repositories and SIG/WG members are the owners of their SIG/WG's folders' content.
 
-### Code owners' responsibilities
+### Code owners' aka Maintainers responsibilities
 
-With great power comes great responsibility. Code owners not only review and approve PRs but also truly care about their projects.
+With great power comes great responsibility. Maintainers not only review and approve PRs but also truly care about their projects.
 
 Every code owner is expected to:
 
-* Contribute high-quality code and content.
-* Communicate and collaborate with other code owners to improve the ownership process.
-* Perform a thorough review of incoming PRs and make sure they follow the [**Contributing rules**](/contributing/#contributing-rules-contributing-rules).
-* Approve only those PRs in which the contributor made the requested improvements.
-* Check if the related CI tests have completed successfully before approving the PR.
-* Make sure that the PR approval flow runs smoothly.
-* Prioritize issues and manage their processing.
-* Proactively fix bugs.
-* Perform maintenance tasks for their projects.
+* Contribute high-quality code and content
+* Communicate and collaborate with other code owners to improve the ownership process
+* Perform a thorough review of incoming PRs and make sure they follow the [contributing rules](CONTRIBUTING.md)
+* Approve only those PRs in which the contributor made the requested improvements
+* Check if the related CI tests have completed successfully before approving the PR
+* Make sure that the PR approval flow runs smoothly
+* Proactively fix bugs
+* Perform maintenance tasks for their projects
+* Issue that is assigned to current release is treated with priority by maintainer that is an assignee
+* Monitor Slack
+* Triage GitHub issues and perform pull request reviews for other maintainers and the community. Follow [labels workflow](/governance/#issues-workflow-issues-workflow) document
+* In general continue to be willing to spend at least 50% of one's time working on Kyma (~2.5 business days per week).
 
-### Add or remove a code owner
+### Process for becoming a maintainer aka codeowner
+
+* Express interest to the existing maintainers that you or your organization are interested in becoming a
+  maintainer. The difference is that in case you are individual or corporate contributor/maintainer then different contributor license agreement applies.
+* Express what are the areas of Kyma that you want to engage with. Kyma, because of its goal, is complex and it is impossible to become a maintainer in every area. Make sure you get support from proper group of maintainers.
+* Becoming a maintainer generally means that you are going to be spending substantial
+  time (>50%) on Kyma for the foreseeable future.
+* We will expect you to start contributing increasingly complicated PRs, under the guidance
+  of the existing maintainers.
+* We may ask you to do some PRs from our backlog.
+* As you gain experience with the code base and our standards, we will ask you to do code reviews for incoming PRs (i.e., all maintainers are expected to shoulder a proportional share of community reviews).
+* After a period of approximately 3 months of working together and making sure we see eye to eye, the existing maintainers will confer and decide whether to grant maintainer status or not. We make no guarantees on the length of time this will take, but no longer than 3 months.
+
+### When does a maintainer lose maintainer status?
+
+- If a maintainer is no longer interested or cannot perform the maintainer duties listed above, they
+should volunteer to be moved to emeritus status. 
+- If a maintainer is unresponsive for at least 3 months he can be removed from maintainers list immediately
+- In extreme cases this can also occur by a vote of
+the maintainers per the voting process below.
+
+### How to suggest a change in maintainers list?
 
 To suggest a change in the ownership of a given repository part, create a PR with the required changes in the `CODEOWNERS` file in the project's repository. The required number of code owners needs to approve the PR for the changes to take place. Read [here](https://github.com/kyma-project/community/blob/master/guidelines/repository-guidelines/repository-template/CODEOWNERS) how to set up and modify owners of the given repository folders and files.
 
+Name of removed maintainer should be added to [emeritus](https://github.com/kyma-project/community/blob/master/emeritus.md) file with short info what areas were covered by this person.
+
+### Conflict resolution and voting among maintainers
+
+In general, we prefer that technical issues and maintainer membership are amicably worked out
+between the persons involved. If a dispute cannot be decided independently, the maintainers can be
+called in to decide an issue. If the maintainers themselves cannot decide an issue, the issue will
+be resolved by voting. The voting process is a simple majority in which each maintainer
+receives one vote.
+
+For complex cases when there is a situation that we need a decision that affects more than just one group of maintainers the [Decision Making](/governance/#kyma-working-model-kyma-working-model-decision-making) process applies
+
 ## Decision-making
 
-In general, the Special Interest Groups (SIGs) and Working Groups (WGs) make decisions that affect the project, including its structure, functionalities, components, or work of the project teams. However, the organizational decisions and those that relate to the product strategy are made by the Kyma Council.
+In general, the Special Interest Groups (SIGs) and Working Groups (WGs) make decisions that affect the project, including its structure, functionalities, components, or work of the project teams. However, the organizational decisions and those that relate to the product strategy are made by the Kyma's Steering Committee.
 
 SIGs and WGs follow the **lazy consensus** approach to decision-making which assumes that:
 
@@ -82,13 +122,13 @@ Once you reach the consensus:
 
 ### Lack of consensus
 
-Engage the [Core SIG leaders](/collaboration/#core-special-interest-group-core-special-interest-group-leaders), if there are still unresolved objections by the decision due date. They will work with the [Kyma Council](/collaboration/#overview-overview-the-kyma-council) if necessary,  to reach the final decision as soon as possible and close the issue.
+Engage the [Core SIG leaders](/collaboration/#core-special-interest-group-core-special-interest-group-leaders), if there are still unresolved objections by the decision due date. They will work with the [Kyma Steering Committee](#special-interest-group-working-group-special-interest-group-working-group-the-kyma-steering-committee) if necessary, to reach the final decision as soon as possible and close the issue.
 
 ### Revisit a decision
 
 Raise an explicit request to revisit a decision or to review it. To request revision:
 
-- Create a new  decision record in the respective repository and populate the `Affected decisions` parameter.
+- Create a new decision record in the respective repository and populate the `Affected decisions` parameter.
 - Specify the `Due date` parameter and set a revision date that cannot be earlier than the revision date of the original decision
 - Explain in the **Context** and **Consequences** sections why you propose another approach and a new decision.
 
