@@ -127,19 +127,4 @@ Ideally, headings fit into one line in the generated output. Be concise, but als
 * Use action verbs and present tense verbs in headings when possible, especially in tutorials. For example, **Add a document type**.
 * While gerunds are acceptable in body-level content, DO NOT use gerunds in headings. Use **Create a storefront** instead of **Creating a storefront**.
 * Avoid stacked headings, which are headings without body-level content in between. For example, DO NOT use a Heading 2 (H2) to introduce one or more Heading 3s. Instead, add a paragraph after the H2 that describes the main idea of the content in the headings that follow.
-<<<<<<< HEAD
-* Do not use small headings, such as Heading 4 (H4) and smaller. Use Heading 1 (H1) for the document title, Heading 2 (H2), and Heading 3 (H3) to organize the content of the document.
-
-### Links
-
-Linking is a great tool to use to incorporate a lot of content into your document with fewer words. That being said, overuse of linking can cause "link rot" when links break, and if a page has more links than content, it is not very pleasing to read. Choose carefully when and how to link by using these best practices.
-
-- Use absolute links to link to other repositories and external sources.
-- Use relative links to link to documents or files located in the same repository.
-- Every link has the potential to go bad over time and the more links you include, the higher the chance that one will break. If something is not central to the subject at hand, is well-known by your audience, or can be found with a simple search, there is no point in linking.
-- Choose the link text carefully. Do not link entire phrases which become overemphatic. Instead, choose the noun, such as an article or specification within the phrase that helps the reader understand where the navigation leads them. You can also use the title of the article or book as the link, but do not include the author and publisher.
-
->**NOTE:** If you want to make any cross-reference between the documents in the `kyma/docs` folder, read [this](#links-in-docs-links-in-docs) document.
-=======
 * Do not use small headings, such as Heading 4 (H4) and smaller. Use Heading 1 (H1) for the document title, and Heading 2s (H2) and Heading 3s (H3) to organize the content of the document.
->>>>>>> Combine information about links
