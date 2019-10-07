@@ -10,7 +10,7 @@ See these sections for details:
 * [WG - Working Group](#wg---working-group)
 * [Collaborate and work together](#collaborate-and-work-together)
 * [Kyma project organization](#kyma-project-organization)
-  * [The Kyma Council](#the-kyma-council)
+  * [Steering Committee](#steering-committee)
   * [List of SIGs](#list-of-sigs)
   * [List of WGs](#list-of-wgs)
   * [Closed SIGs and WGs](#closed-sigs-and-wgs)
@@ -43,12 +43,12 @@ The Kyma project is open-source and is available on [GitHub](https://github.com/
 
 To ensure the continuous growth and the "scale-as-you-go-and-need" approach when extending the community, the current structure and governance bodies of Kyma SIGs and WGs are very simple. However, the structure of the community can change depending on the community needs. The SIG Community and the Kyma Council support the governance of Kyma and a single SIG Core represents it publicly. The aim of the SIG Core is to facilitate the collaboration with external contributors.
 
-### The Kyma Council
+### Steering Committee
 
-The purpose of the Kyma Council is to:
-* Drive the Kyma project strategy and vision
-* Engage in the resolution of conflicts that cannot be solved by the SIG Community or within a given SIG or WG
-* Publicly announce decisions or recommendations
+The purpose of the Steering Committee is to:
+* Maintaining the mission, vision, values, and scope of the project
+* Engage in the resolution of conflicts that cannot be solved by other governance rules
+* With help of community, refining the governance model as needed
 * Agree to the new SIG or WG proposals or raise concerns about them
 
 ### List of SIGs

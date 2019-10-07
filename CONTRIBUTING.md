@@ -90,6 +90,6 @@ Although it is the responsibility of the owner of the PR to ensure that the main
 
 To learn more about maintainers' responsibilities and rules for appointing new maintainers, and removing the existing ones, refer to the [governance.md](governance.md) document.
 
-## Owners
+## Maintainers
 
-To identify the owners of particular parts of your repository, see the `CODEOWNERS` file in the root directory.
+To identify the maintainers of particular parts of your repository, see the `CODEOWNERS` file in the root directory.
