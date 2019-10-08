@@ -66,7 +66,7 @@ For example, the **Choose the release to install** heading changes into the `cho
 
   This is an absolute link to a document in a documentatin toggle:
 
-  ```markdown
+  ``` markdown
   https://kyma-project.io/docs/root/kyma/#installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install
   ```
 
@@ -80,12 +80,16 @@ For example, the **Choose the release to install** heading changes into the `cho
 
   To use a recommended relative link to a document in a documentation toggle which is in the same topic, use the following pattern:
 
-  ```markdown
+  ``` markdown
   #installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install
   ```
 
 ## Links to specifications
 
-To link to a specification from specific topic, create a reference using `/{type-of-topic}/{id}/specifications/{name-of-specification}` pattern. `{type-of-topic}` and `{id}` are described in the previous sections, but `{name-of-specification}` is a name of specification defined in ClusterDocsTopic CR. For more information, read [this](#render-specifications) document.
+Follow these rules:
 
-> **NOTE**: If specification used in ClusterDocsTopic CR of specific topic is in `assets` folder of this topic, the reference may has pattern: `./assets/{name-of-specification}.{extension}`, where `extension` is a extension of file. The link will be converted to correct on building process of the Kyma website.
+- To link to a specification in the same or a different topic, create a reference using the `/{type-of-topic}/{id}/specifications/{name-of-specification}` pattern, such as `/components/application-connector/specifications/connectorapi/`. `{type-of-topic}` and `{id}` are described in the previous sections, and `{name-of-specification}` is the name of the specification defined in the ClusterDocsTopic CR.
+
+>**NOTE:** For more information on adding specifications as ClusterDocsTopic CR, read [this](#add-new-documentation-to-the-website) document.
+
+- If the specification used in the ClusterDocsTopic CR of a specific topic is in the `assets` folder of this topic, the reference should have the pattern of `./assets/{name-of-specification}.{extension}`, where `extension` is the extension of the file. For example, write `./assets/connectorapi.yaml` and the link will be properly modified on the website to `/components/application-connector/specifications/connectorapi/` during the website rebuild process.
