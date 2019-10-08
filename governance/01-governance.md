@@ -31,7 +31,7 @@ Every code owner is expected to:
 * Proactively fix bugs
 * Perform maintenance tasks for their projects
 * Issue that is assigned to current release is treated with priority by maintainer that is an assignee
-* Monitor Slack
+* Monitor [Slack](http://slack.kyma-project.io)
 * Triage GitHub issues and perform pull request reviews for other maintainers and the community. Follow [labels workflow](/governance/#issues-workflow-issues-workflow) document
 * In general continue to be willing to spend at least 50% of one's time working on Kyma (~2.5 business days per week).
 
@@ -46,7 +46,7 @@ Every code owner is expected to:
   of the existing maintainers.
 * We may ask you to do some PRs from our backlog.
 * As you gain experience with the code base and our standards, we will ask you to do code reviews for incoming PRs (i.e., all maintainers are expected to shoulder a proportional share of community reviews).
-* After a period of approximately 3 months of working together and making sure we see eye to eye, the existing maintainers will confer and decide whether to grant maintainer status or not. We make no guarantees on the length of time this will take, but no longer than 3 months.
+* After a period of approximately 3 months of working together and making sure we see eye to eye, candidate for maintainer should create an issue in [community](https://github.com/kyma-project/community) repository with list of his current contributions. The existing maintainers will confer and decide whether to grant maintainer status or not. We make no guarantees on the length of time this will take, but no longer than 3 months.
 
 ### When does a maintainer lose maintainer status?
 
