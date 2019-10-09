@@ -101,6 +101,7 @@ Don't use "e.g." in documentation. Use the words "for example" or "such as" inst
 ⛔️ There are many variables in the file, for example, user ID, that can be configured.  
 
 * "key-value," not "key/value," nor "key:value"
+* "YAML" (file formats) or "`.yaml`" (file extensions), not "yaml"
 * "can," not "it is possible"
 * "must," not "should"
 * "single sign on (SSO)," not "single sign-on"
