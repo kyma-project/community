@@ -40,13 +40,17 @@ Every code owner is expected to:
 * Express interest to the existing maintainers that you or your organization are interested in becoming a
   maintainer. The difference is that in case you are individual or corporate contributor/maintainer then different contributor license agreement applies.
 * Express what are the areas of Kyma that you want to engage with. Kyma, because of its goal, is complex and it is impossible to become a maintainer in every area. Make sure you get support from proper group of maintainers.
-* Becoming a maintainer generally means that you are going to be spending substantial
-  time (>50%) on Kyma for the foreseeable future.
+* Becoming a maintainer generally means that you are going to be spending substantial time (>50%) on Kyma for the foreseeable future. Among other responsibilities this is:
+  * creating and merging pull-request
+  * reviewing pull-request
+  * creating or commenting on issues
+  * helping on Slack and other community communication channels
 * We will expect you to start contributing increasingly complicated PRs, under the guidance
   of the existing maintainers.
 * We may ask you to do some PRs from our backlog.
 * As you gain experience with the code base and our standards, we will ask you to do code reviews for incoming PRs (i.e., all maintainers are expected to shoulder a proportional share of community reviews).
 * After a period of approximately 3 months of working together and making sure we see eye to eye, candidate for maintainer should create an issue in [community](https://github.com/kyma-project/community) repository with list of his current contributions. The existing maintainers will confer and decide whether to grant maintainer status or not. We make no guarantees on the length of time this will take, but no longer than 3 months.
+* Enabled [two-factor authentication](https://help.github.com/en/articles/about-two-factor-authentication) on GitHub account.
 
 ### When does a maintainer lose maintainer status?
 
