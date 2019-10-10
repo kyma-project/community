@@ -38,6 +38,7 @@ This table lists all document types used to fully describe a Kyma component.
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`cli-reference.md`](https://github.com/kyma-project/community/blob/master/guidelines/templates/resources/cli-reference.md) | Use the template to describe the syntax and the use of CLI commands for a given component. | All contributors |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`tutorials.md`](https://github.com/kyma-project/community/blob/master/guidelines/templates/resources/tutorials.md) | Use the template to provide a clear step-by-step instruction that helps the user to understand a given concept better. | All contributors |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`troubleshooting.md`](https://github.com/kyma-project/community/blob/master/guidelines/templates/resources/troubleshooting.md) | Use the template to explain all details needed for Kyma and its components' troubleshooting. | All contributors |
+| [`kyma/docs`](https://github.com/kyma-project/kyma/tree/master/docs) | [`metrics.md`](https://github.com/kyma-project/community/blob/master/guidelines/templates/resources/metrics.md) | Use the template to describe custom and default metrics for services or controllers. | All contributors |
 
 ## Special Interest Group and Working Group
 
