@@ -27,6 +27,7 @@ Code examples             | Get the list of all Pods in a Namespace using the `k
 Values                    | Set the partial attribute to `true` to perform a partial replacement.
 Endpoints                 | Send a POST request to the `/{tenant}/categories/{categoryId}/media/{mediaId}/commit` endpoint.
 File names                | Open the `deployment.yaml` file.
+File extensions           | Modify all `.yaml` and `.json` files. 
 Path names                | Save the file in the `\services\repository` folder.
 Repository names          | The file is located in the `Kyma` repository.
 Status and error codes    | A successful response includes a status code of `200 OK`.
