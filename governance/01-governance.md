@@ -8,9 +8,9 @@ All repositories in the Kyma organization must follow the official guidelines, c
 
 The Kyma project also includes the [Kyma Incubator](https://github.com/kyma-incubator) organization. It is a place where all new projects start in a more relaxed environment that facilitates their rapid growth. At that stage, they do not have to comply with all rules that govern the Kyma organization. Once the incubating project is ready to become a part of the main Kyma organization, adjust it to all standards.
 
-### Add new repository to the incubator
+### Add new repository to Kyma's organizations
 
-Create a GitHub issue in [community](https://github.com/kyma-project/community) repository and describe what is the purpose of new repository.
+Create a GitHub issue in [community](https://github.com/kyma-project/community) repository and describe what is the purpose of new repository, proposed name and explanation which organization it should go to, **kyma-project** or **kyma-incubator**
 
 ## Ownership policy
 
