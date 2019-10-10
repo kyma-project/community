@@ -1,6 +1,4 @@
 labels:
   - name: internal
-    description: >
-    \>**NOTE:** This section contains internal guidelines for contributors that are members of the Kyma organization.
-  - name:  
-  
+    description: |
+    \> **NOTE:** This section contains internal guidelines for contributors that are members of the Kyma organization
