@@ -43,8 +43,7 @@ step() {
 }
 
 copy-website-repo() {
-    git clone "${WEBSITE_REPO}" "${WEBSITE_DIR}"
-    cd "${BUILD_DIR}" && git checkout "docs-community-preview"
+  git clone -b "docs-community-preview" --single-branch "${WEBSITE_REPO}" "${WEBSITE_DIR}"
 }
 
 pre-build() {
@@ -54,11 +53,12 @@ pre-build() {
 }
 
 prepare-content() {
-    APP_PREPARE_DOCS="false" \
-    APP_PREPARE_COMMUNITY="true" \
-    APP_PREPARE_ROADMAP="false" \
-    APP_COMMUNITY_SOURCE_DIR="${KYMA_PROJECT_IO_DIR}/.." \
-    APP_COMMUNITY_OUTPUT="${BUILD_DIR}/content/community" \
+    export APP_PREPARE_DOCS="false"
+    export APP_PREPARE_COMMUNITY="true"
+    export APP_PREPARE_ROADMAP="false"
+    export APP_COMMUNITY_SOURCE_DIR="${KYMA_PROJECT_IO_DIR}/.."
+    export APP_COMMUNITY_OUTPUT="${BUILD_DIR}/content/community"
+
     cd "${BUILD_DIR}" && make -C "./tools/content-loader" fetch-content
 }
 
