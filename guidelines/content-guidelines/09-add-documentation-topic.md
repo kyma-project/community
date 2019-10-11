@@ -12,27 +12,27 @@ Follow these steps:
 
 2. In the same PR, create a `.yaml` file under the [`templates`](https://github.com/kyma-project/kyma/tree/master/resources/core/charts/docs/charts/content-ui/templates) folder to add a [ClusterDocsTopic CR](https://kyma-project.io/docs/components/headless-cms/#custom-resource-cluster-docs-topic) for your topic. For example, if you add a ClusterDocsTopic CR for the API Gateway v2 component, name it `docs-components-api-gateway-v2-cdt.yaml`.
 ​
-See the example definition:
+    See the example definition:
     ​
-   ``` yaml
-   apiVersion: cms.kyma-project.io/v1alpha1
-   kind: ClusterDocsTopic
-   metadata:
-     labels:
-       cms.kyma-project.io/view-context: docs-ui
-       cms.kyma-project.io/group-name: components
-       cms.kyma-project.io/order: "11"
-     name: api-gateway-v2
-   spec:
-     displayName: "API Gateway v2"
-     description: "Overall documentation for API Gateway v2"
-     sources:
+    ``` yaml
+    apiVersion: cms.kyma-project.io/v1alpha1
+    kind: ClusterDocsTopic
+    metadata:
+      labels:
+        cms.kyma-project.io/view-context: docs-ui
+        cms.kyma-project.io/group-name: components
+        cms.kyma-project.io/order: "11"
+      name: api-gateway-v2
+    spec:
+      displayName: "API Gateway v2"
+      description: "Overall documentation for API Gateway v2"
+      sources:
        - type: markdown
          name: docs
          mode: package
          url: https://github.com/{{ .Values.global.kymaOrgName }}/kyma/archive/{{ .Values.global.docs.clusterDocsTopicsVersion }}.zip
          filter: /docs/api-gateway-v2/
-   ```
+    ```
 ​
 3. Adjust values for these fields:
 ​
