@@ -7,7 +7,7 @@ This document explains how to add a new topic to the Kyma documentation to rende
 ## Add a new documentation topic
 ​
 Follow these steps:
-​
+
 1. Create a pull request with `.md` files for the new documentation topic. Place the `.md` files under a new `docs` subfolder in the `kyma` repository, such as `docs/api-gateway-v2/`.
 
 2. In the same PR, create a `.yaml` file under the [`templates`](https://github.com/kyma-project/kyma/tree/master/resources/core/charts/docs/charts/content-ui/templates) folder to add a [ClusterDocsTopic CR](https://kyma-project.io/docs/components/headless-cms/#custom-resource-cluster-docs-topic) for your topic. For example, if you add a ClusterDocsTopic CR for the API Gateway v2 component, name it `docs-components-api-gateway-v2-cdt.yaml`.
@@ -36,10 +36,10 @@ Follow these steps:
 ​
 3. Adjust values for these fields:
 ​
-  - **cms.kyma-project.io/order** defines the number of your topic on the list in the left navigation, such as `"11"`. To add it correctly, check in other `.yaml` files which number is assigned to the last documentation topic in the navigation on the website, and add a consecutive number to your component. If you decide to modify the existing topic order, change values for this parameter in all other `.yaml` files accordingly to avoid duplicates.
-  - **metadata.name** defines the CR name, such as `api-gateway-v2`.
-  - **spec.displayname** defines the component name displayed on the website, such as `"API Gateway v2"`.
-  - **spec.sources.filter** defines the location of the new topic's document sources, such as `/docs/api-gateway-v2/`.
+    - **cms.kyma-project.io/order** defines the number of your topic on the list in the left navigation, such as `"11"`. To add it correctly, check in other `.yaml` files which number is assigned to the last documentation topic in the navigation on the website, and add a consecutive number to your component. If you decide to modify the existing topic order, change values for this parameter in all other `.yaml` files accordingly to avoid duplicates.
+    - **metadata.name** defines the CR name, such as `api-gateway-v2`.
+    - **spec.displayname** defines the component name displayed on the website, such as `"API Gateway v2"`.
+    - **spec.sources.filter** defines the location of the new topic's document sources, such as `/docs/api-gateway-v2/`.
 ​
 4. Merge the changes and wait until the website is rebuilt.
 ​
@@ -76,13 +76,14 @@ To add a new specification, follow these steps:
 
     See the example:
   ​
-   ``` yaml
-   sources:
-     ...
-     - type: openapi
-       name: connectorapi
-       mode: single
-       url: https://raw.githubusercontent.com/{{ .Values.global.kymaOrgName }}/kyma/{{ .Values.global.docs.clusterDocsTopicsVersion }}/docs/application-connector/assets/connectorapi.yaml
-   ```
+
+    ``` yaml
+    sources:
+      ...
+      - type: openapi
+        name: connectorapi
+        mode: single
+        url: https://raw.githubusercontent.com/{{ .Values.global.kymaOrgName }}/kyma/{{ .Values.global.docs.clusterDocsTopicsVersion }}/docs/application-connector/assets/connectorapi.yaml
+    ```
 ​
 3. Merge the changes and wait until the website is rebuilt.
