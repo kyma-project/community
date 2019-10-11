@@ -14,25 +14,25 @@ Follow these steps:
 ​
     See the example definition:
     ​
-   ``` yaml
-   apiVersion: cms.kyma-project.io/v1alpha1
-   kind: ClusterDocsTopic
-   metadata:
-     labels:
-       cms.kyma-project.io/view-context: docs-ui
-       cms.kyma-project.io/group-name: components
-       cms.kyma-project.io/order: "11"
-     name: api-gateway-v2
-   spec:
-     displayName: "API Gateway v2"
-     description: "Overall documentation for API Gateway v2"
-     sources:
+    ``` yaml
+    apiVersion: cms.kyma-project.io/v1alpha1
+    kind: ClusterDocsTopic
+    metadata:
+      labels:
+        cms.kyma-project.io/view-context: docs-ui
+        cms.kyma-project.io/group-name: components
+        cms.kyma-project.io/order: "11"
+      name: api-gateway-v2
+    spec:
+      displayName: "API Gateway v2"
+      description: "Overall documentation for API Gateway v2"
+      sources:
        - type: markdown
          name: docs
          mode: package
          url: https://github.com/{{ .Values.global.kymaOrgName }}/kyma/archive/{{ .Values.global.docs.clusterDocsTopicsVersion }}.zip
          filter: /docs/api-gateway-v2/
-   ```
+    ```
 ​
 3. Adjust values for these fields:
 ​
@@ -53,29 +53,28 @@ To add a new specification, follow these steps:
 ​
 2. Add a new source entry in the **sources** field:
 ​
-   ``` yaml
-   sources:
-     ...
-     - type: {SPECIFICATION_TYPE}
-       name: {SPECIFICATION_NAME}
-       mode: single
-       url: {SPECIFICATION_URL}
-   ```
+    ``` yaml
+    sources:
+      ...
+      - type: {SPECIFICATION_TYPE}
+        name: {SPECIFICATION_NAME}
+        mode: single
+        url: {SPECIFICATION_URL}
+    ```
    ​
    where:
   ​
-   - **{SPECIFICATION_TYPE}** defines a type of a given specification. Currently, only [OpenAPI](https://swagger.io/specification/) specifications are supported and they are defined under the `openapi` type.
+    - **{SPECIFICATION_TYPE}** defines a type of a given specification. Currently, only [OpenAPI](https://swagger.io/specification/) specifications are supported and they are defined under the `openapi` type.
   ​
-   - **{SPECIFICATION_NAME}** defines a unique identifier of a given specification. This field defines the URL on https://kyma-project.io/docs under which the specification is displayed. For example, if the specification is added in the `application-connector` ClusterDocsTopic CR with the `connectorapi` value of the **name** field, its URL is `https://kyma-project.io/docs/{VERSION_OF_DOCS}/components/application-connector/specifications/connectorapi/`.
+    - **{SPECIFICATION_NAME}** defines a unique identifier of a given specification. This field defines the URL on https://kyma-project.io/docs under which the specification is displayed. For example, if the specification is added in the `application-connector` ClusterDocsTopic CR with the `connectorapi` value of the **name** field, its URL is `https://kyma-project.io/docs/{VERSION_OF_DOCS}/components/application-connector/specifications/connectorapi/`.
   ​
-   - **{SPECIFICATION_URL}** defines the location of the specification. It may contain directives using values defined in `values.yaml` files. For internal specifications defined in the [`kyma`](https://github.com/kyma-project/kyma) repository, it is recommended to use the directive with a Kyma version and the organization name, such as:
+    - **{SPECIFICATION_URL}** defines the location of the specification. It may contain directives using values defined in `values.yaml` files. For internal specifications defined in the [`kyma`](https://github.com/kyma-project/kyma) repository, it is recommended to use the directive with a Kyma version and the organization name, such as:
 ​
-     ``` yaml
-     url: https://raw.githubusercontent.com/{{ .Values.global.kymaOrgName }}/kyma/{{ .Values.global.docs.clusterDocsTopicsVersion }}/docs/application-connector/assets/connectorapi.yaml
-     ```
+    ``` yaml
+    url: https://raw.githubusercontent.com/{{ .Values.global.kymaOrgName }}/kyma/{{ .Values.global.docs.clusterDocsTopicsVersion }}/docs/application-connector/assets/connectorapi.yaml
+    ```
 
     See the example:
-  ​
 
     ``` yaml
     sources:
