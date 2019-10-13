@@ -2,7 +2,7 @@
 * @kazydek @klaudiagrz @tomekpapiernik @bszwarc @mmitoraj @majakurcius @alexandra-simeonova
 
 # Owners of the manifesto-app folder
-/manifesto-app/ @akucharska @michal-hudy @pkosiec @aerfio @derberg @aerfio @magicmatatjahu
+/manifesto-app/ @michal-hudy @m00g3n @aerfio @magicmatatjahu
 
 # Owners of the collaboration folder
 /collaboration/ @PK85 @mszostok @Abd4llA @derberg
@@ -10,11 +10,8 @@
 # Owners of all .md files in the repository
 *.md @kazydek @klaudiagrz @tomekpapiernik @bszwarc @mmitoraj @majakurcius @alexandra-simeonova
 
+# Owners of the .kyma-project-io folder
+/.kyma-project-io/ @michal-hudy @m00g3n @aerfio @magicmatatjahu
+
 # Owners of config file for MILV - milv.config.yaml
-milv.config.yaml @akucharska @michal-hudy @pkosiec @aerfio @magicmatatjahu
-
-# Owners of orchestrator file
-orchestrator.Jenkinsfile @suleymanakbas91 @clebs @a-thaler @lilitgh @akucharska @michal-hudy @pkosiec @derberg @aerfio @magicmatatjahu
-
-# Owners of governance file
-governance.Jenkinsfile @suleymanakbas91 @clebs @a-thaler @lilitgh @akucharska @michal-hudy @pkosiec @derberg @aerfio @magicmatatjahu
+milv.config.yaml @michal-hudy @m00g3n @aerfio @magicmatatjahu
