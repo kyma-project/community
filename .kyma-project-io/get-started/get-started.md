@@ -2,6 +2,8 @@
 title: Get started
 ---
 
+Checking PR
+
 Welcome to the Kyma community page!
 
 If you are looking for information on how to join us, you are in the right place. Read on to find out how you can get involved, contribute to Kyma code and documentation, and stay in touch with the latest Kyma news. Let's get started!

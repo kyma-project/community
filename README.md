@@ -2,8 +2,6 @@
 
 ## Overview
 
-Checking PR
-
 Welcome to the Kyma community. Here you can find information on how to join the community, get involved, and improve Kyma code and documentation.
 
 Before you proceed, review the [Code of Conduct](./contributing/01-code-of-conduct.md) and contact us on [Slack](http://slack.kyma-project.io/) for any questions or concerns.
