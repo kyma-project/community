@@ -2,9 +2,9 @@
 
 ## Introduction
 
-As of 0.5, Knative Eventing defines [`Broker` and `Trigger`](https://knative.dev/docs/eventing/broker-trigger/) objects as higher level abstractions that allows brokering events based on some event filtering criterea.
+As of 0.5, Knative Eventing defines [`Broker` and `Trigger`](https://knative.dev/docs/eventing/broker-trigger/) objects as higher-level abstractions that allow brokering events based on some event filtering criteria.
 
-This is a proposal of how to introduce these objects in Kyma as an alternative to using the existing Kyma Event Bus. It describes how to build namespace scoped eventing mesh with fault domain isotation and access control. The proposal describes two possible solutions, the migration path and tries to highlight and address the challenges and open questions of using them.
+This is a proposal of how to introduce these objects in Kyma as an alternative to using the existing Kyma Event Bus. It describes how to build namespace scoped eventing mesh with fault domain isolation and access control. The proposal describes two possible solutions, the migration path and tries to highlight and address the challenges and open questions of using them.
 
 ## Features
 
@@ -24,7 +24,7 @@ This is a proposal of how to introduce these objects in Kyma as an alternative t
 
 There are two proposed solutions. Solution 1 is an instant transition and deprecation proposal where the new `Broker` based eventing will replace the existing Event Bus. The Kyma `Susbscription` and `EventActivation` CRDs will be removed and Event Bus users will need to migrate to the new knative CRDs.
 
-Solution 2 is about having both systems coexisting for one or two releases, during which the namespaces with the `knative-injection-enabled=true` label will have the new `Broker` based eventing, while the ones that don't will just have the same old Kyma Event Bus based behavior (i.e uses Kyma `EventActivation` and `Subscription` CRDs) in order to:
+Solution 2 is about having both systems coexisting for one or two releases, during which the namespaces with the `knative-eventing-injection=enabled` label will have the new `Broker` based eventing, while the ones that don't will just have the same old Kyma Event Bus based behavior (i.e uses Kyma `EventActivation` and `Subscription` CRDs) in order to:
 
 1. Allow Kyma users to try the new Knative `Broker` based eventing.
 2. Keep current users of Event Bus CRDs unaffected and allow a smoother migration path.
