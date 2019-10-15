@@ -65,9 +65,8 @@ To offer Kyma Event Bus users (whether the UI or CRD users) a smoother transitio
 ![architecture](assets/knative_brokers_co_exist_arch.svg)
 
 1. For every new `Application` the `Application Operator` creates an `Event Service` and its corresponding  `Knative Channel` that will be used to fanout events to the opted-in namespaces.
-2. From Kyma Console UI, when the user creates a namespace, the pop up will show an info message and toggle with something like:
->Kyma now comes with a new `Knative Broker` based eventing feature (beta).
->Would you like to try it out for this namespace?. Read more about it here <link to more docs>
+2. From Kyma Console UI, when the user creates a namespace, the pop up will show an info message and toggle that looks like this:
+![screenshot](assets/event-bus-broker-arch.png)
 and by enabling the toggle, Kyma Console ensures it has the label `knative-eventing-injection=enabled` so that a default `Broker` gets created by the Knative Eventing controller.
 3. Once the `Application Broker` gets a provision request for a `Service Instance` which has `bindable` parameter set to `false`, it creates a `Knative Subscription` for `opted-in` namespaces (as in solution 1) or an `EventActivation` for `legacy namespaces`.
 4. `Kyma Console` creates the appropriate `Trigger` or `Kyma Subscription` objects for the `Lambda` function for `opted-in` and `legacy` namespaces.
