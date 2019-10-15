@@ -47,6 +47,7 @@ spec:
 ​
 In addition to Kyma documentation, there are also [OpenAPI](https://swagger.io/specification/) specifications rendered on the [Kyma website](https://kyma-project.io). You can find these specifications under the **API Consoles** type in the right navigation panel of a given component topic.
 ​
+
 To add a new specification, follow these steps:
 ​
 1. Go to the [`templates`](https://github.com/kyma-project/kyma/tree/master/resources/core/charts/docs/charts/content-ui/templates) folder and locate an existing ClusterDocsTopic CR that you want to modify.
