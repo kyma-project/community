@@ -45,7 +45,7 @@ spec:
 
 ## Add a single OpenAPI specification
 ​
-In addition to Kyma documentation, there are also [OpenAPI](https://swagger.io/specification/) specifications rendered on the [Kyma website](https://kyma-project.io). You can find these specifications under the **API Consoles** type in the right navigation panel of a given component topic
+In addition to Kyma documentation, there are also [OpenAPI](https://swagger.io/specification/) specifications rendered on the [Kyma website](https://kyma-project.io). You can find these specifications under the **API Consoles** type in the right navigation panel of a given component topic.
 ​
 To add a new specification, follow these steps:
 ​
