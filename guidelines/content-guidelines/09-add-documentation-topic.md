@@ -50,6 +50,7 @@ In addition to Kyma documentation, there are also [OpenAPI](https://swagger.io/s
 
 To add a new specification, follow these steps:
 ​
+
 1. Go to the [`templates`](https://github.com/kyma-project/kyma/tree/master/resources/core/charts/docs/charts/content-ui/templates) folder and locate an existing ClusterDocsTopic CR that you want to modify.
 ​
 2. Add a new source entry in the **sources** field:
