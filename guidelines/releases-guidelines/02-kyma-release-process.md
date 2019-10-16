@@ -75,7 +75,7 @@ Follow these steps to release another Kyma version.
 
    i. In `installation/resources/installer.yaml` replace `eu.gcr.io/kyma-project/develop/installer:{image_tag}` with `eu.gcr.io/kyma-project/kyma-installer:{release_version}`
 
-   ii. In `tools/kyma-installer/kyma.Dockerfile` replace:
+   ii. Find these lines in `tools/kyma-installer/kyma.Dockerfile`:
 
    ```
    ARG INSTALLER_VERSION="{kyma_operator_version}"	
@@ -83,7 +83,7 @@ Follow these steps to release another Kyma version.
    FROM $INSTALLER_DIR/kyma-operator:$INSTALLER_VERSION
    ```
 
-   with
+   Replace them with:
 
    ```
    FROM {kyma_operator_path}/kyma-operator:{kyma_operator_version}
