@@ -109,7 +109,7 @@ Follow these steps to release another Kyma version.
 
    ![PullRequest](./assets/release-PR.png)
 
-2. If `pre-release-pr-image-guard` fails ask owners to change PR-XXX images of the components to the master version.
+2. If `pre-release-pr-image-guard` fails, ask the owners to change PR-XXX images of the components to the master version.
 
    > **CAUTION:** Never use `/test all` as it might run tests that you do not want to execute.
 
@@ -137,7 +137,7 @@ Follow these steps to release another Kyma version.
      ```
 
 
-4. If you detect any problems with the release, such as failing tests, wait for the fix that can be delivered either on a PR or cherry-picked to the PR from the `master` branch. Prow triggers the jobs again. Rerun manual jobs as described in **step 4**.
+4. If you detect any problems with the release, such as failing tests, wait for the fix that can be either delivered on a PR or cherry-picked to the PR from the `master` branch. Prow triggers the jobs again. Rerun manual jobs as described in **step 4**.
 
 5. After all checks pass, merge the PR, using the `rebase and merge` option. 
 
