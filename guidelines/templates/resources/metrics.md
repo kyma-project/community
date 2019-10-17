@@ -24,7 +24,7 @@ Metrics for the {Controller name} include:
 - {default metric name or description}.
 - {another default metric name or description}.
 
-> Provide guidelines how to list all metrics for the described service/controller.
+> Provide guidelines how to list all metrics for the described service or controller.
 
 To see a complete list of metrics, run this command:
 
