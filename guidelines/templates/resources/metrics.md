@@ -24,6 +24,22 @@ Metrics for the {Controller name} include:
 - {default metric name or description}.
 - {another default metric name or description}.
 
+> Provide guidelines how to list all metrics for the described service/controller.
+
+To see a complete list of metrics, run this command:
+
+```bash
+kubectl -n {namespace_name} port-forward svc/{service/controller_name} {port}
+```
+
+To check the metrics, open a new terminal window and run:
+
+```bash
+curl http://localhost:{port}/{endpoint}
+```
+
+> **TIP:** To use these commands, you must have a running Kyma cluster and kubectl installed. If you cannot access port `{port}`, redirect the metrics to another one. For example, run `kubectl -n {namepace_name} port-forward svc/{service/controller_name} {another_port}:{port}` and update the port in the localhost address.
+
 > Provide a reference to the Monitoring documentation in Kyma.
 
 See the [Monitoring](/components/monitoring) documentation to learn more about monitoring and metrics in Kyma.
