@@ -83,42 +83,39 @@ This section contains exemplary uses of the toggle in Markdown documents.
 
 * See the example of the toggle added as a regular document section:
 
-<div tabs name="installation">
+```markdown
+<div tabs name="default-settings" group="configuration">
   <details>
-  <summary>
-  From release
+  <summary label="local-installation">
+  Local installation
   </summary>
 
-  When you install Kyma locally from a release, follow [this](https://kyma-project.io/docs/master/root/kyma/#installation-install-kyma-locally) guide.
-  Ensure that you created the local Kubernetes cluster with `10240Mb` memory and `30Gb` disk size.
-  ```
-  ./scripts/minikube.sh --domain "kyma.local" --vm-driver "hyperkit" --memory 10240Mb --disk-size 30g
-  ```
-
-  Run the following command before triggering the Kyma installation process:
-  ```
-  kubectl -n kyma-installer patch configmap installation-config-overrides -p '{"data": {"global.knative": "true", "global.kymaEventBus": "false", "global.natsStreaming.clusterID": "knative-nats-streaming"}}'
-  ```
+  For the list of all components available to install see the `installer-cr.yaml.tpl` file.
+  For the list of the default installation overrides see the `installer-config-local.yaml.tpl` file.
+  Other configuration values are defined directly in the configuration of the respective components.
+  
+  >**CAUTION:** The default configuration uses tested and recommended settings. Change them at your own risk.
   </details>
   <details>
-  <summary>
-  From sources
+  <summary label="cluster-installation">
+  Cluster installation
   </summary>
 
-  When you install Kyma locally from sources, add the `--knative` argument to the `run.sh` script. Run this command:
-
-  ```
-  ./run.sh --knative
-  ```
+  The default installation flow uses a Kyma release.
+  All components available in a given release are listed in the  `kyma-installer-cluster.yaml`, which is one of the release artifacts.
+  Any required overrides are described in the [cluster installation guide](#installation-install-kyma-on-a-cluster).
+  Other settings are defined directly in the configuration of the components released with the given Kyma version.
   </details>
 </div>
+```
 
 The code renders on `kyma-project.io` as follows:
 
-![](./assets/toggle_flat_structure.png)
+![](./assets/toggle-flat-structure.png)
 
 * See the example of the toggle added under a list:
 
+```markdown
 1. First element
 2. Second element
 
@@ -130,14 +127,17 @@ The code renders on `kyma-project.io` as follows:
 
       When you install Kyma locally from a release, follow [this](https://kyma-project.io/docs/master/root/kyma/#installation-install-kyma-locally) guide.
       Ensure that you created the local Kubernetes cluster with `10240Mb` memory and `30Gb` disk size.
-      ```
+
+      ```bash
       ./scripts/minikube.sh --domain "kyma.local" --vm-driver "hyperkit" --memory 10240Mb --disk-size 30g
       ```
 
       Run the following command before triggering the Kyma installation process:
-      ```
+
+      ```bash
       kubectl -n kyma-installer patch configmap installation-config-overrides -p '{"data": {"global.knative": "true", "global.kymaEventBus": "false", "global.natsStreaming.clusterID": "knative-nats-streaming"}}'
       ```
+
       </details>
       <details>
       <summary>
@@ -146,12 +146,12 @@ The code renders on `kyma-project.io` as follows:
 
       When you install Kyma locally from sources, add the `--knative` argument to the `run.sh` script. Run this command:
 
-      ```
+      ```bash
       ./run.sh --knative
       ```
       </details>
     </div>
-
+```
 
 The code renders on `kyma-project.io` as follows:
 
@@ -159,6 +159,7 @@ The code renders on `kyma-project.io` as follows:
 
 * See the example of two toggle sets which belong to a group of toggles:
 
+```markdown
 <div tabs name="prerequisites" group="cluster-installation">
   <details>
   <summary label="gke">
@@ -208,6 +209,7 @@ The code renders on `kyma-project.io` as follows:
   ...
   </details>
 </div>
+```
 
 The code renders on `kyma-project.io` as follows:
 
