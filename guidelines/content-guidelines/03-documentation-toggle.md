@@ -159,6 +159,7 @@ The code renders on `kyma-project.io` as follows:
 
 * See the example of two toggle sets which belong to a group of toggles:
 
+```markdown
 <div tabs name="prerequisites" group="cluster-installation">
   <details>
   <summary label="gke">
@@ -208,6 +209,7 @@ The code renders on `kyma-project.io` as follows:
   ...
   </details>
 </div>
+```
 
 The code renders on `kyma-project.io` as follows:
 
