@@ -83,11 +83,13 @@ This section contains exemplary uses of the toggle in Markdown documents.
 
 * See the example of the toggle added as a regular document section:
 
+```markdown
 <div tabs name="installation">
   <details>
   <summary>
   From release
   </summary>
+
 
   When you install Kyma locally from a release, follow [this](https://kyma-project.io/docs/master/root/kyma/#installation-install-kyma-locally) guide.
   Ensure that you created the local Kubernetes cluster with `10240Mb` memory and `30Gb` disk size.
@@ -112,6 +114,7 @@ This section contains exemplary uses of the toggle in Markdown documents.
   ```
   </details>
 </div>
+```
 
 The code renders on `kyma-project.io` as follows:
 
@@ -119,6 +122,7 @@ The code renders on `kyma-project.io` as follows:
 
 * See the example of the toggle added under a list:
 
+```markdown
 1. First element
 2. Second element
 
@@ -151,7 +155,7 @@ The code renders on `kyma-project.io` as follows:
       ```
       </details>
     </div>
-
+```
 
 The code renders on `kyma-project.io` as follows:
 
