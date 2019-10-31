@@ -12,7 +12,7 @@ The purpose of the Core SIG is to:
 * Own all code repositories in the Kyma organization except for the `community` repository.
 * Showcase proposals to the community and collect feedback on those proposals to assist the
 decision-making process.
-* Represent its members and the Kyma community in the Council meetings.
+* Represent its members and the Kyma community in the Steering Committee meetings.
 
 ## Contact
 
