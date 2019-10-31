@@ -78,7 +78,7 @@ For complex cases when there is a situation that we need a decision that affects
 
 ## Decision-making
 
-In general, the Special Interest Groups (SIGs) and Working Groups (WGs) make decisions that affect the project, including its structure, functionalities, components, or work of the project teams. However, the organizational decisions and those that relate to the product strategy are made by the Kyma's Steering Committee.
+In general, the Special Interest Groups (SIGs) and Working Groups (WGs) make decisions that affect the project, including its structure, functionalities, components, or work of the project teams. However, the organizational decisions and those that relate to the product strategy are made by the [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee).
 
 SIGs and WGs follow the **lazy consensus** approach to decision-making which assumes that:
 
@@ -126,7 +126,7 @@ Once you reach the consensus:
 
 ### Lack of consensus
 
-Engage the [Core SIG leaders](/collaboration/#core-special-interest-group-core-special-interest-group-leaders), if there are still unresolved objections by the decision due date. They will work with the [Kyma Steering Committee](#special-interest-group-working-group-special-interest-group-working-group-the-kyma-steering-committee) if necessary, to reach the final decision as soon as possible and close the issue.
+Engage the [Core SIG leaders](/collaboration/#core-special-interest-group-core-special-interest-group-leaders), if there are still unresolved objections by the decision due date. They will work with the [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee) if necessary, to reach the final decision as soon as possible and close the issue.
 
 ### Revisit a decision
 
