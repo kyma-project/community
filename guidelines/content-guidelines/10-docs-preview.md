@@ -34,4 +34,4 @@ The website preview deployment is also visible on the list of jobs that need to 
 
 ![Job details](./assets/job-details.png)
 
->**NOTE:** For the `kyma` repository, Netlify only attaches notifications for successful preview builds. This, if you make any changes in the `/docs` folder and there is no website preview attached to your pull request, access failed build information through **Details** of the **netlify/kyma-project/deploy-preview** job on the job list.  
+>**NOTE:** For the `kyma` repository, Netlify only attaches notifications for successful preview builds. Thus, if you make any changes in the `/docs` folder and there is no website preview attached to your pull request, access failed build information through **Details** of the **netlify/kyma-project/deploy-preview** job on the job list.  
