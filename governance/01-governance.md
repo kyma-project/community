@@ -50,7 +50,8 @@ Every code owner is expected to:
 * We may ask you to do some PRs from our backlog.
 * As you gain experience with the code base and our standards, we will ask you to do code reviews for incoming PRs (i.e., all maintainers are expected to shoulder a proportional share of community reviews).
 * After a period of approximately 3 months of working together and making sure we see eye to eye, a candidate for maintainer should create an issue in the [community](https://github.com/kyma-project/community) repository with a list of his/her current contributions. The existing maintainers will confer and decide whether to grant the maintainer status or not. While we make no guarantees on the length of time this will take, we expect it to be no longer than 3 months.
->**NOTE:** To be accepted as a maintainer, you need to have [two-factor authentication](https://help.github.com/en/articles/about-two-factor-authentication) enabled on your GitHub account.
+
+>**NOTE:** To be accepted as a maintainer and be added to Kyma GitHub organizations, you need to have [two-factor authentication](https://help.github.com/en/articles/about-two-factor-authentication) enabled on your GitHub account.
 
 ### When does a maintainer lose the maintainer status?
 
