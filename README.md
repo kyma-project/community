@@ -53,10 +53,12 @@ You can also find these guidelines and templates in the `community` repository:
 - Overview of the [content strategy](./guidelines/content-guidelines/01-content-strategy.md) and [content guidelines](./guidelines/content-guidelines)
 - [Release process](./guidelines/releases-guidelines) details
 - [Decisions](./collaboration/sig-core/decisions) made by Kyma team members and the Core SIG.
-- [Coding standards](./guidelines/technical-guidelines) 
+- [Coding standards](./guidelines/technical-guidelines)
 
 There are also [repository guidelines](./guidelines/repository-guidelines) for the Kyma team members. The guidelines contain a folder, file, and document structure required for a [skeleton Kyma repository](./guidelines/repository-guidelines/repository-template).
 
 ## Security
 
 The community is relentless about Kyma security. To report a security issue, send an email with details directly to [kyma-security@googlegroups.com](mailto:kyma-security@googlegroups.com) instead of using a public issue tracker.
+
+TEST2
