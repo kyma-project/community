@@ -19,6 +19,8 @@ Go directly to the section that you are most interested in:
 
 ## Product information
 
+TEST
+
 Kyma is a cloud-native application development framework which allows you to connect and extend products in a quick and modern way, using serverless computing and microservice architecture. Read more about the product [here](https://github.com/kyma-project/kyma/blob/master/README.md).
 
 If you are interested in the Kyma product management, architecture, and the operational responsibility philosophy, see the Kyma [Manifesto](https://kyma-project.github.io/community/).
@@ -53,7 +55,7 @@ You can also find these guidelines and templates in the `community` repository:
 - Overview of the [content strategy](./guidelines/content-guidelines/01-content-strategy.md) and [content guidelines](./guidelines/content-guidelines)
 - [Release process](./guidelines/releases-guidelines) details
 - [Decisions](./collaboration/sig-core/decisions) made by Kyma team members and the Core SIG.
-- [Coding standards](./guidelines/technical-guidelines) 
+- [Coding standards](./guidelines/technical-guidelines)
 
 There are also [repository guidelines](./guidelines/repository-guidelines) for the Kyma team members. The guidelines contain a folder, file, and document structure required for a [skeleton Kyma repository](./guidelines/repository-guidelines/repository-template).
 
