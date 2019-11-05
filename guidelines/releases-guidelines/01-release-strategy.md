@@ -116,7 +116,7 @@ At this time, the Release Manager publicly communicates the planned release sche
 
 After completing the planning, the Product Lead explicitly hands over the release to the engineering teams during the handover meeting. At this point, the development phase of the new release officially starts.
 
-During the development phase, the Release Manager keeps track of the development with the help of the Scrum of Scrums (SoS) meetings held twice a week. This allows the Release Manager to take early actions required to keep the release on track. When closer to the release date, the Release Manager, the Product Lead, and the Lead Product Engineer discuss the status of the release and decide if there are any additional checkpoints or actions to address.
+During the development phase, the Release Manager keeps track of the development with the help of the Scrum of Scrums (SoS) meetings held twice a week. This allows the Release Manager to take early actions required to keep the release on track. When closer to the release date, the Release Manager and the Product Lead discuss the status of the release and decide if there are any additional checkpoints or actions to address.
 
 The Core SIG leaders include the external communication regarding the progress and status of each release to the agenda of the Core SIG bi-weekly meetings. The Release Manager, or a person appointed as a stand-in, presents the release status during those meetings.
 
