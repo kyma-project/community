@@ -24,7 +24,7 @@ After you create a PR, Netlify attaches a notification to your PR on the build s
 
     ![Successful preview](./assets/successful-preview.png)
 
->**NOTE:** The preview rebuilds automatically under the same link after every commit.
+    >**NOTE:** The preview rebuilds automatically under the same link after every commit.
 
 - a direct link to log details for failed builds
 
