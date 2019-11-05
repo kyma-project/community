@@ -35,7 +35,7 @@ Every code owner is expected to:
 * Triage GitHub issues and perform pull request reviews for other maintainers and the community. Follow the [labels workflow](/governance/#issues-workflow-issues-workflow) document
 * In general, continue to be willing to spend at least 50% of one's time working on Kyma (~2.5 business days per week).
 
-### Process for becoming a maintainer, aka codeowner
+### Process for becoming a maintainer (aka codeowner)
 
 * Express interest to the existing maintainers that you or your organization are interested in becoming a
   maintainer. Depending on whether you are an individual or a corporate contributor/maintainer, different contributor license agreement applies.
