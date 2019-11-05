@@ -12,7 +12,7 @@ This feature is enabled on these Kyma repositories:
 
 - [`community`](https://github.com/kyma-project/community) for changes rendered in the [**Community**](https://kyma-project.io/community/) and [**Roadmap**](https://kyma-project.io/roadmap/) views.
 
-- [`website`](https://github.com/kyma-project/website) for changes rendered on the landing page and in the [**Blog**](https://kyma-project.io/blog/) view.
+- [`website`](https://github.com/kyma-project/website) for changes rendered on the [landing page](https://kyma-project.io/) and in the [**Blog**](https://kyma-project.io/blog/) view.
 
 Previews are built for PRs containing changes made to any files within these repositories. The only exception is the `kyma` repository where Netlify only publishes notifications of successful builds on PRs that modify the content of the `/docs` folder.
 
