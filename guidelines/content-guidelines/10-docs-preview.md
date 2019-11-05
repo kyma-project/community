@@ -22,13 +22,13 @@ After you create a PR, Netlify attaches a notification to your PR on the build s
 
 - a website preview for successful builds
 
-![Successful preview](./assets/successful-preview.png)
+    ![Successful preview](./assets/successful-preview.png)
 
 >**NOTE:** The preview rebuilds automatically under the same link after every commit.
 
 - a direct link to log details for failed builds
 
-![Failed preview](./assets/failed-preview.png)
+    ![Failed preview](./assets/failed-preview.png)
 
 The website preview deployment is also visible on the list of jobs that need to pass for the PR before it can be merged. Click on **Details** to go to the build logs.
 
