@@ -10,7 +10,7 @@ The Kyma project also includes the [Kyma Incubator](https://github.com/kyma-incu
 
 ### Add a new repository to Kyma's organizations
 
-Create a GitHub issue in the [community](https://github.com/kyma-project/community) repository and describe the purpose of the new repository, proposed name and explanation which organization it should go to, **kyma-project** or **kyma-incubator**
+Create a GitHub issue in the [community](https://github.com/kyma-project/community) repository and describe the purpose of the new repository, proposed name and explanation which organization it should go to, **kyma-project** or **kyma-incubator**.
 
 ## Ownership policy
 
@@ -24,21 +24,21 @@ Every code owner is expected to:
 
 * Contribute high-quality code and content
 * Communicate and collaborate with other code owners to improve the ownership process
-* Perform a thorough review of incoming PRs and make sure they follow the [contributing rules](CONTRIBUTING.md)
+* Perform a thorough review of incoming PRs and make sure he/she follows the [contributing rules](CONTRIBUTING.md)
 * Approve only those PRs in which the contributor made the requested improvements
 * Check if the related CI tests have completed successfully before approving the PR
 * Make sure that the PR approval flow runs smoothly
 * Proactively fix bugs
-* Perform maintenance tasks for their projects
-* An issue that is assigned to a current release is treated with priority by the maintainer that is the assignee
+* Perform maintenance tasks for his/her projects
+* As an assignee, treat issues assigned to a current release with priority
 * Monitor [Slack](http://slack.kyma-project.io)
 * Triage GitHub issues and perform pull request reviews for other maintainers and the community. Follow the [labels workflow](/governance/#issues-workflow-issues-workflow) document
-* In general, continue to be willing to spend at least 50% of one's time working on Kyma (~2.5 business days per week).
+* In general, continue to be willing to spend at least 50% of his/her time working on Kyma (~2.5 business days per week).
 
 ### Process for becoming a maintainer (aka codeowner)
 
 * Express interest to the existing maintainers that you or your organization are interested in becoming a
-  maintainer. Depending on whether you are an individual or a corporate contributor/maintainer, different contributor license agreement applies.
+  maintainer. Depending on whether you are an individual or a corporate contributor/maintainer, a different contributor license agreement applies.
 * Express what the areas of Kyma that you want to engage with are. Kyma, because of its goal, is complex, and it is impossible to become a maintainer in every area. Make sure you get support from a proper group of maintainers.
 * Becoming a maintainer generally means that you are going to be spending a substantial part of your time (>50%) on Kyma for the foreseeable future. Among other responsibilities, this means:
   * creating and merging pull requests
@@ -55,9 +55,9 @@ Every code owner is expected to:
 
 ### When does a maintainer lose the maintainer status?
 
-- If a maintainer is no longer interested or cannot perform the maintainer duties listed above, they
+- If a maintainer is no longer interested or cannot perform the maintainer duties listed above, he/she
 should volunteer to be transitioned to emeritus status. 
-- If a maintainer is unresponsive for at least 3 months, they can be removed from the maintainers list immediately.
+- If a maintainer is unresponsive for at least 3 months, he/she can be removed from the maintainers list immediately.
 - In extreme cases, this can also occur by a vote of
 the maintainers per the voting process below.
 

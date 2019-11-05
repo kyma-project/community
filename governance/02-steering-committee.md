@@ -34,10 +34,10 @@ The committee is open for any contributors, [individual or corporate](/contribut
 * A single company can have only one employee in the committee. It is up to the company to suggest a candidate that will acts as a representative of active maintainers for the given company. The representative, however, does not have to be an active maintainer himself/herself. 
 * In the case one company has one representative in the committee already, and another member starts working for this company, one of the members must resign once there are other candidates to replace him/her.
 
-Once you fulfil one of the requirements, create a GitHub issue in the [community](https://github.com/kyma-project/community) repository and describe:
+Once you fulfill one of the requirements, create a GitHub issue in the [community](https://github.com/kyma-project/community) repository and describe:
 * Why you want to join the committee
 * Who you represent
-* What was your current contribution to Kyma
+* What your current contribution to Kyma was
 * What components you officially maintain and provide links to all the activities that you took as a maintainer
 
 The members of the committee openly make comments under the issue. The comment should include information on what the vote is and the reasoning for the vote. The candidate will receive clear feedback in the case the request is rejected, with advice on what must be done to improve the request and be accepted.
