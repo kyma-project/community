@@ -44,4 +44,4 @@ curl http://localhost:{port}/{endpoint}
 
 See the [Monitoring](/components/monitoring) documentation to learn more about monitoring and metrics in Kyma.
 
-> For reference, see the existing **Metrics** documents for the [Asset Store](https://kyma-project.io/docs/1.6/components/asset-store/#metrics-metrics).
+> For reference, see the existing **Metrics** documents for the [Rafter](https://kyma-project.io/docs/1.9/components/rafter/#metrics-metrics).
