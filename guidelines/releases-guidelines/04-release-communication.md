@@ -26,9 +26,3 @@ The Kyma team must be notified about the planned dates of both release candidate
 The following are contact persons responsible for the whole release process in Kyma:
 
 - [Jose Cortina](https://github.com/jose-cortina) (Release Manager)
-
-## Scrum of Scrums meetings
-
-A Release Master should cooperate with Scrum Masters regarding the release process communication. Either the Release Master or a Scrum Master dedicated to the releasing team must inform other Scrum Masters on the release progress during the biweekly Scrum of Scrums (SoS) meetings.
-
-A dedicated Scrum Master is also responsible for updating the SoS MagicBox under the Wiki page for a given release. The MagicBox must contain all the information and deadlines that affect all Kyma teams.
