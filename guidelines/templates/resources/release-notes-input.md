@@ -23,7 +23,7 @@
 
 ### Migrations and upgrades
 
-> If your changed the way your component works or removed any of its subcomponents, clearly explain those changes and reasons behind them to the users. If users need to perform any steps to migrate, describe these steps in a separate migration guide and place it under `kyma/docs/migration-guides`.
+> If you changed the way your component works or removed any of its subcomponents, clearly explain those changes and reasons behind them to the users. If users need to perform any steps to migrate, describe these steps in a separate migration guide and place it under `kyma/docs/migration-guides`.
 
 ### Security vulnerabilities fixed
 

@@ -170,7 +170,7 @@ Follow these steps to release another Kyma version.
 - Instructions on cluster Kyma installation
 - Release notes
 
-For installation instructions, use the links from the previous release and update the version number in URLs. If contributors want you to change something in the instruction, they would address you directly.
+For installation instructions, use the links from the previous release and update the version number in URLs. Contact technical writers for the link to release notes. If contributors want you to change something in the instruction, they would address you directly.
 
 10. Create a spreadsheet with all open issues labeled as `test-missing`. Every team assigned to an issue must cover the outstanding test with manual verification on every release candidate. After the test is finished successfully, the responsible team must mark it as completed in the spreadsheet. Every issue identified during testing must be reported. To make the testing easier, provision a publicly available cluster with the release candidate version after you complete all steps listed in this document.
 

@@ -58,10 +58,22 @@ redirectFrom:
 
 > Describe any known issues that the users can face, together with the way on how to solve these issues.
 
+### {Component name}
+
+> Describe related known issues here.
+
 ## Migrations and upgrades
 
 > Describe any component-related migrations or upgrades and reasons behind them. Link to a separate migration guide under `kyma/docs/migration-guides` for manual steps the users must perform to migrate to a new Kyma version successfully.
 
+### {Component name}
+
+> Describe related changes here.
+
 ## Fixed security vulnerabilities
 
 > Describe any solved security vulnerability issues related to the Kyma project. Provide a short issue description, its calculated risk assessment, and a link to the pull request that solves the issue. You can also include a GitHub link to the issue itself. The calculated risk assessment is provided in each issue of the [Security Vulnerability](https://github.com/kyma-project/kyma/issues/new?template=security-vulnerability.md) type created on Github.
+
+### {Component name}
+
+> Describe related security fixes here.
