@@ -39,6 +39,9 @@ redirectFrom:
 - [Service Catalog](#relative-link-to-subsection) - {List of other features and fixes}
 - [Service Mesh](#relative-link-to-subsection) - {List of other features and fixes}
 - [Tracing](#relative-link-to-subsection) - {List of other features and fixes}
+- [Known issues](#relative-link-to-subsection) - {List of all known issues}
+- [Migrations and upgrades](#relative-link-to-subsection) - {List of all component-related migrations or upgrades}
+- [Fixed security vulnerabilities](#relative-link-to-subsection) - {List of all fixed security vulnerabilities}
 
 > For example, write:
 > [Application Connector](#application-connector) - Extended tests, client certificate verification
@@ -51,10 +54,14 @@ redirectFrom:
 
 > Write a short paragraph that describes the feature or the fix in details and explains its benefits to the Kyma users. Include screenshots to illustrate the change better.
 
-### Known issues
+## Known issues
 
 > Describe any known issues that the users can face, together with the way on how to solve these issues.
 
-### Fixed security vulnerabilities
+## Migrations and upgrades
 
-> Describe the solved security vulnerability issues related to the Kyma project. Provide a short issue description, its calculated risk assessment, and a link to the pull request that solves the issue. You can also include a GitHub link to the issue itself. The calculated risk assessment is provided in each issue of the [Security Vulnerability](https://github.com/kyma-project/kyma/issues/new?template=security-vulnerability.md) type created on Github.
+> Describe any component-related migrations or upgrades and reasons behind them. Link to a separate migration guide under `kyma/docs/migration-guides` for manual steps the users must perform to migrate to a new Kyma version successfully.
+
+## Fixed security vulnerabilities
+
+> Describe any solved security vulnerability issues related to the Kyma project. Provide a short issue description, its calculated risk assessment, and a link to the pull request that solves the issue. You can also include a GitHub link to the issue itself. The calculated risk assessment is provided in each issue of the [Security Vulnerability](https://github.com/kyma-project/kyma/issues/new?template=security-vulnerability.md) type created on Github.
