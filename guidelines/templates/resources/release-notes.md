@@ -29,19 +29,19 @@ redirectFrom:
 
 > Introduce other component features or fixes that are included in the release notes. They should reflect the names of subsections under each component. Add relative links to component sections.
 
-- [Application Connector](#relative-link-to-subsection) - {List of other features and fixes}
-- [Console](#relative-link-to-subsection) - {List of other features and fixes}
-- [Eventing](#relative-link-to-subsection) - {List of other features and fixes}
-- [Logging](#relative-link-to-subsection) - {List of other features and fixes}
-- [Monitoring](#relative-link-to-subsection) - {List of other features and fixes}
-- [Security](#relative-link-to-subsection) - {List of other features and fixes}
-- [Serverless](#relative-link-to-subsection) - {List of other features and fixes}
-- [Service Catalog](#relative-link-to-subsection) - {List of other features and fixes}
-- [Service Mesh](#relative-link-to-subsection) - {List of other features and fixes}
-- [Tracing](#relative-link-to-subsection) - {List of other features and fixes}
-- [Known issues](#relative-link-to-subsection) - {List of all known issues}
-- [Migrations and upgrades](#relative-link-to-subsection) - {List of all component-related migrations or upgrades}
-- [Fixed security vulnerabilities](#relative-link-to-subsection) - {List of all fixed security vulnerabilities}
+- [Application Connector](#application-connector) - {List of other features and fixes}
+- [Console](#console) - {List of other features and fixes}
+- [Eventing](#eventing) - {List of other features and fixes}
+- [Logging](#logging) - {List of other features and fixes}
+- [Monitoring](#monitoring) - {List of other features and fixes}
+- [Security](#security) - {List of other features and fixes}
+- [Serverless](#serverless) - {List of other features and fixes}
+- [Service Catalog](#service-catalog) - {List of other features and fixes}
+- [Service Mesh](#service-mesh) - {List of other features and fixes}
+- [Tracing](#tracing) - {List of other features and fixes}
+- [Known issues](#known-issues) - {List of all known issues}
+- [Migrations and upgrades](#migrations-and-upgrades) - {List of all component-related migrations or upgrades}
+- [Fixed security vulnerabilities](#fixed-security-vulnerabilities) - {List of all fixed security vulnerabilities}
 
 > For example, write:
 > [Application Connector](#application-connector) - Extended tests, client certificate verification
