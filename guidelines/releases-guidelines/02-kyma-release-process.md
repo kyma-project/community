@@ -35,10 +35,10 @@ To prepare a release:
 1. Go to the `test-infra` repository.
 2. Open `templates/config.yaml`
 3. Add the new release to `global.releases`. Remove the oldest release on the list.
-4. Set `global.nextRelease` to the future release version. 
+4. Set `global.nextRelease` to the future release version.
 5. Run `dep ensure -v --vendor-only` in the `development/tools` directory to install dependencies.
 5. Run `go run development/tools/cmd/rendertemplates/main.go --config templates/config.yaml` in the root of the repository to generate jobs.
-6. Run `go test ./development/tools/jobs/...` in the root of the repository. If any of the tests is marked red, fix it using these guidelines: 
+6. Run `go test ./development/tools/jobs/...` in the root of the repository. If any of the tests is marked red, fix it using these guidelines:
   * For release tests using `GetKymaReleasesSince` or `jobsuite.Since` with a release that is no longer supported, change the method to `GetAllKymaReleases` or `jobsuite.AllReleases` respectively.
   * For release tests using `GetKymaReleasesUntil` or `jobsuite.Until` with a release that is no longer supported, remove the part of the test which includes the method.
 7. If tests are green, commit all jobs. The new release jobs are ready.
@@ -78,7 +78,7 @@ Follow these steps to release another Kyma version.
    ii. Find these lines in `tools/kyma-installer/kyma.Dockerfile`:
 
    ```
-   ARG INSTALLER_VERSION="{kyma_operator_version}"	
+   ARG INSTALLER_VERSION="{kyma_operator_version}"
    ARG INSTALLER_DIR={kyma_operator_path}
    FROM $INSTALLER_DIR/kyma-operator:$INSTALLER_VERSION
    ```
@@ -122,7 +122,7 @@ Follow these steps to release another Kyma version.
    ii. Run `/test pre-rel{release_number}-kyma-installer` and wait until it finishes.
 
    iii. Run `/test pre-rel{release_number}-kyma-artifacts` and wait until it finishes.
-   
+
    iv. Run the following tests in parallel and wait for them to finish:
 
      ```bash
@@ -139,7 +139,7 @@ Follow these steps to release another Kyma version.
 
 4. If you detect any problems with the release, such as failing tests, wait for the fix that can be either delivered on a PR or cherry-picked to the PR from the `master` branch. Prow triggers the jobs again. Rerun manual jobs as described in **step 4**.
 
-5. After all checks pass, merge the PR, using the `rebase and merge` option. 
+5. After all checks pass, merge the PR, using the `rebase and merge` option.
 
    > **CAUTION:** By default, the `rebase and merge` option is disabled. Contact one of the `kyma-project/kyma` repository admins to enable it.
 
@@ -164,7 +164,13 @@ Follow these steps to release another Kyma version.
 
 8. Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
 
-9. Update the release content manually with links to the instruction on how to install the latest Kyma release. Currently, this means to grab the links from the previous release and update the version number in URLs. If contributors want you to change something in the instruction, they would address you directly.
+9. Update the release content manually with links to:
+
+   - Instructions on local Kyma installation
+   - Instructions on cluster Kyma installation
+   - Release notes
+
+   For installation instructions, use the links from the previous release and update the version number in URLs. If contributors want you to change something in the instructions, they would address you directly. Contact technical writers for the link to release notes.
 
 10. Create a spreadsheet with all open issues labeled as `test-missing`. Every team assigned to an issue must cover the outstanding test with manual verification on every release candidate. After the test is finished successfully, the responsible team must mark it as completed in the spreadsheet. Every issue identified during testing must be reported. To make the testing easier, provision a publicly available cluster with the release candidate version after you complete all steps listed in this document.
 

@@ -29,16 +29,19 @@ redirectFrom:
 
 > Introduce other component features or fixes that are included in the release notes. They should reflect the names of subsections under each component. Add relative links to component sections.
 
-- [Application Connector](#relative-link-to-subsection) - {List of other features and fixes}
-- [Console](#relative-link-to-subsection) - {List of other features and fixes}
-- [Eventing](#relative-link-to-subsection) - {List of other features and fixes}
-- [Logging](#relative-link-to-subsection) - {List of other features and fixes}
-- [Monitoring](#relative-link-to-subsection) - {List of other features and fixes}
-- [Security](#relative-link-to-subsection) - {List of other features and fixes}
-- [Serverless](#relative-link-to-subsection) - {List of other features and fixes}
-- [Service Catalog](#relative-link-to-subsection) - {List of other features and fixes}
-- [Service Mesh](#relative-link-to-subsection) - {List of other features and fixes}
-- [Tracing](#relative-link-to-subsection) - {List of other features and fixes}
+- [Application Connector](#application-connector) - {List of other features and fixes}
+- [Console](#console) - {List of other features and fixes}
+- [Eventing](#eventing) - {List of other features and fixes}
+- [Logging](#logging) - {List of other features and fixes}
+- [Monitoring](#monitoring) - {List of other features and fixes}
+- [Security](#security) - {List of other features and fixes}
+- [Serverless](#serverless) - {List of other features and fixes}
+- [Service Catalog](#service-catalog) - {List of other features and fixes}
+- [Service Mesh](#service-mesh) - {List of other features and fixes}
+- [Tracing](#tracing) - {List of other features and fixes}
+- [Known issues](#known-issues) - {List of all known issues}
+- [Migrations and upgrades](#migrations-and-upgrades) - {List of all component-related migrations or upgrades}
+- [Fixed security vulnerabilities](#fixed-security-vulnerabilities) - {List of all fixed security vulnerabilities}
 
 > For example, write:
 > [Application Connector](#application-connector) - Extended tests, client certificate verification
@@ -51,10 +54,26 @@ redirectFrom:
 
 > Write a short paragraph that describes the feature or the fix in details and explains its benefits to the Kyma users. Include screenshots to illustrate the change better.
 
-### Known issues
+## Known issues
 
 > Describe any known issues that the users can face, together with the way on how to solve these issues.
 
-### Fixed security vulnerabilities
+### {Component name}
 
-> Describe the solved security vulnerability issues related to the Kyma project. Provide a short issue description, its calculated risk assessment, and a link to the pull request that solves the issue. You can also include a GitHub link to the issue itself. The calculated risk assessment is provided in each issue of the [Security Vulnerability](https://github.com/kyma-project/kyma/issues/new?template=security-vulnerability.md) type created on Github.
+> Describe related known issues here.
+
+## Migrations and upgrades
+
+> Describe any component-related migrations or upgrades and reasons behind them. Link to a separate migration guide under `kyma/docs/migration-guides` for manual steps the users must perform to migrate to a new Kyma version successfully.
+
+### {Component name}
+
+> Describe related changes here.
+
+## Fixed security vulnerabilities
+
+> Describe any solved security vulnerability issues related to the Kyma project. Provide a short issue description, its calculated risk assessment, and a link to the pull request that solves the issue. You can also include a GitHub link to the issue itself. The calculated risk assessment is provided in each issue of the [Security Vulnerability](https://github.com/kyma-project/kyma/issues/new?template=security-vulnerability.md) type created on Github.
+
+### {Component name}
+
+> Describe related security fixes here.
