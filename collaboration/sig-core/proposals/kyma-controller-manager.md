@@ -47,14 +47,7 @@ It must be possible to opt out of each individual controller inside the manager 
 achieved using startup flags and/or a ConfigMap.
 
 A controller ("operator") SDK should be agreed upon by all code owners. [kyma#4327][kyma4327] initiated
-a discussion around that topic, but no conclusion has been reached at the time of writing. For the initial version of
-this document, we assume that [`kubebuilder`][kb] will be our SDK of choice. A few reasons to believe this assumption is
-safe to make:
-- well maintained and documented by a dedicated group (SIG) within the Kubernetes project
-- leverages `controller-runtime`, a collection of sensible libraries with everything a controller typically needs
-- bootstaps projects with the manager pattern enabled right from the start
-- includes tooling oriented towards future extensibility, with helpers to generate new APIs
-- RBAC objects are part of the code generation
+a discussion around that topic, but no conclusion has been reached at the time of writing.
 
 ## Proposed solution
 
@@ -113,9 +106,8 @@ A rough draft of what the structure of the Kyma controller manager could look li
 - `controllers/<group>` contains the high level interfaces and methods for the controllers of the given API group
 - `controller/commons` contains packages that can be reused by controllers from multiple groups
 
-> NOTE: although this project structure is heavily inspired by `kubebuilder`, it is currently not possible to scaffold
-> multiple API groups using the `kubebuilder create api` helper. This setup is nevertheless [supported][kb-multigroup]
-> if we decide to adopt that SDK.
+> NOTE: this project structure is heavily inspired by [`kubebuilder`][kb], however, there is no agreement to use that
+> SDK for the implementation of this proposal.
 
 ### Entry point
 
@@ -171,11 +163,11 @@ mgr := ctrl.NewManager(ctrl.GetConfigOrDie(), ctrl.Options{
 mgr.Start(ctrl.SetupSignalHandler())
 ```
 
-> NOTE: again, types and methods used in this example are directly sourced from code scaffolded by `kubebuilder`.
+> NOTE: again, types and methods used in this example are directly sourced from code scaffolded by `kubebuilder`, but
+> there is no agreement to use that SDK for the implementation of this proposal.
 
 
 
 [k8s-cm]: https://kubernetes.io/docs/concepts/overview/components/#kube-controller-manager
 [kyma4327]: https://github.com/kyma-project/kyma/issues/4327
 [kb]: https://github.com/kubernetes-sigs/kubebuilder
-[kb-multigroup]: https://book.kubebuilder.io/migration/multi-group.html
