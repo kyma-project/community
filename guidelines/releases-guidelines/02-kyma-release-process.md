@@ -158,13 +158,21 @@ Follow these steps to release another Kyma version.
 
    Follow [these](https://kyma-project.io/docs/#installation-use-your-own-domain-access-the-cluster) instructions to give Kyma teams access to start testing the release candidate.
 
-7. Update the `RELEASE_VERSION` file to contain the next patch RC1 version on the release branch. Do it immediately after the release, otherwise, any PR to a release branch overrides the previously published Docker images.
+7. The Github release postsumbit job creates a tag in the `kyma-project/kyma` repository, which triggers the [`post-kyma-release-upgrade`](https://github.com/kyma-project/test-infra/blob/master/prow/jobs/kyma/kyma-release-upgrade.yaml) pipeline. The purpose of this job is to test upgradability between the previous Kyma release, i.e. the latest release that is not a release candidate, and the brand new release published by the release postsubmit job.
+    
+    For example, if `1.7.0-rc2` is released, the pipeline will try to upgrade `1.6.0` to `1.7.0-rc2`.
+    
+    If you detect any problems with the upgrade, contact the teams responsible for failing components.
+    
+    > **CAUTION:** The job assumes no manual migration is involved. If the upgrade process requires any additional actions, the pipeline is likely to fail. In such case, the owners of the components concerned are responsible for running manual tests or modifying the pipeline.
+
+8. Update the `RELEASE_VERSION` file to contain the next patch RC1 version on the release branch. Do it immediately after the release, otherwise, any PR to a release branch overrides the previously published Docker images.
 
    For example, if the `RELEASE_VERSION` file on the release branch contains `1.4.1`, change it to `1.4.2-rc1`.
 
-8. Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
+9. Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
 
-9. Update the release content manually with links to:
+10. Update the release content manually with links to:
 
    - Instructions on local Kyma installation
    - Instructions on cluster Kyma installation
@@ -172,8 +180,8 @@ Follow these steps to release another Kyma version.
 
    For installation instructions, use the links from the previous release and update the version number in URLs. If contributors want you to change something in the instructions, they would address you directly. Contact technical writers for the link to release notes.
 
-10. Create a spreadsheet with all open issues labeled as `test-missing`. Every team assigned to an issue must cover the outstanding test with manual verification on every release candidate. After the test is finished successfully, the responsible team must mark it as completed in the spreadsheet. Every issue identified during testing must be reported. To make the testing easier, provision a publicly available cluster with the release candidate version after you complete all steps listed in this document.
+11. Create a spreadsheet with all open issues labeled as `test-missing`. Every team assigned to an issue must cover the outstanding test with manual verification on every release candidate. After the test is finished successfully, the responsible team must mark it as completed in the spreadsheet. Every issue identified during testing must be reported. To make the testing easier, provision a publicly available cluster with the release candidate version after you complete all steps listed in this document.
 
-11. Notify Team Breaking Pixels that the release is available for integration with Faros.
+12. Notify Team Breaking Pixels that the release is available for integration with Faros.
 
 > **NOTE:** After the Kyma release is complete, proceed with [releasing Kyma CLI](/release/#kyma-cli-release-process-kyma-cli-release-process).
