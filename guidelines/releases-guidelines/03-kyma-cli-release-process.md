@@ -39,3 +39,5 @@ A Kyma CLI release consists of:
     where {RELEASE_VERSION} could be `1.4.0-rc1`, `1.4.0-rc2` or `1.4.0`.
 
 5. Push the tag to trigger a postsubmit job that creates the GitHub release. Validate if the release is available under [releases](https://github.com/kyma-project/cli/releases).
+
+6. Once the release is complete, remove the existing `stable` tag and re-create it pointing to the latest commit on the `master` branch. Pushing this tag will trigger a postsubmit job that builds and pushes the latest stable binaries to a storage bucket. These are used by the continuous integration jobs.
