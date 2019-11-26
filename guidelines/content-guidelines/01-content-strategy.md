@@ -61,7 +61,7 @@ Each technical topic must have the following document types arranged in the fixe
 6. [**Custom Resource**](https://github.com/kyma-project/community/blob/master/guidelines/templates/resources/custom-resource.md) (`06`) - Use it to document details of CRDs that are part of a given component.
 7. [**CLI Reference**](https://github.com/kyma-project/community/blob/master/guidelines/templates/resources/cli-reference.md) (`07`) - Use it to describe the syntax and the use of CLI commands for a given component.
 8. [**Tutorials**](https://github.com/kyma-project/community/blob/master/guidelines/templates/resources/tutorials.md) (`08`) - Use it to provide a clear step-by-step instruction that helps the user to understand a given concept better. The user must be able to go through all the steps of the document and complete them. There is no separate tutorial type. The document does not have to explicitly point out the example used as, at the end, the explicit reference to the example will be in the main content of the guide.
-~~9. **API** (`09`) - Use it to document the exposed external API of components that the Kyma administrators use to integrate them with Kyma.~~
+9. ~~**API** (`09`) - Use it to document the exposed external API of components that the Kyma administrators use to integrate them with Kyma.~~
 10. [**Troubleshooting**](https://github.com/kyma-project/community/blob/master/guidelines/templates/resources/troubleshooting.md) (`10`) - Use it to explain all details needed for Kyma and its components' troubleshooting.
 11. [**Metrics**](https://github.com/kyma-project/community/blob/master/guidelines/templates/resources/metrics.md) (`11`) - Use it to describe custom and default metrics for services or controllers.
 
