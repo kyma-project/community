@@ -19,7 +19,7 @@ At the beginning of the release process, the team responsible for the release pi
 
 ## Communication channels
 
-The Kyma team must be notified about the planned dates of both release candidates, as well as the date of the final release. Apart from that, the Release Master must inform about any occurrences regarding the release process. After the release is out, the Release Master sends notification about the new release on the external Kyma community [Slack workspace](http://slack.kyma-project.io/) **general** channel.
+The Release Manager must notify the Kyma team about the planned dates of creating both release candidates, as well as the date of the final release. Apart from that, the Release Master must inform about the progress of the release process. After the release is out, the Release Master sends notification about the new release on the public **release** [Slack](http://slack.kyma-project.io/) channel.
 
 ## Communication persons
 
