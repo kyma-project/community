@@ -152,7 +152,7 @@ When planning the release scope, all persons involved in the release must take t
 
 ### Version maintenance
 
-There is no guaranteed support for the bug fixes in the previous Kyma versions. The default strategy is to upgrade to the latest version. The Kyma project encourages the community to always upgrade to the latest release.
+There is no guaranteed support for the bug fixes in the previous Kyma versions. The default strategy is to upgrade to the latest version. The Kyma team encourages the community to always upgrade to the latest release.
 
 ### Deprecation and backward-compatibility
 
