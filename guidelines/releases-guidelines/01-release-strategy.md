@@ -83,7 +83,7 @@ A scheduled release follows the planning cycles for the Kyma development that ty
 
 All planned releases happen at the end of a planned development cycle. Only the Product Lead and Release Manager can delay or resign from such a release if there are reasons that justify such a decision.
 
-We do not schedule patches but rather provide them on-demand if there is a need to address high priority issues before the next planned release. In this context, we explicitly define high priority issues as those which either affect multiple Kyma installations or result in the financial loss for the users. The Release Manager is involved in the decision to execute a patch release.
+We do not schedule patches but rather provide them on demand if there is a need to address high priority issues before the next planned release. In this context, we explicitly define high priority issues as those which either affect multiple Kyma installations or result in the financial loss for the users. The Release Manager is involved in the decision to execute a patch release.
 
 ### Nightly and weekly builds
 
