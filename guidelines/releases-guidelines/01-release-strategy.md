@@ -134,7 +134,7 @@ The release execution is a manual process and is not part of an automated nightl
 
 During the execution of a release, all automated end-to-end test scenarios are validated. If any scenario fails, the release process automatically stops and no release is possible.
 
-The Release Manager notifies the Kyma community on a public Slack channel when a release candidate is available, at which time the community can validate it and provide their feedback. If there are release-related issues identified, the Release Manager decides if any represent blockers for the release.
+The Release Manager notifies the Kyma community on the public **release** Slack channel when a release candidate is available, at which time the community can validate it and provide their feedback. If there are release-related issues identified, the Release Manager decides if any of them is a blocker for the release.
 
 ### Release publishing
 
