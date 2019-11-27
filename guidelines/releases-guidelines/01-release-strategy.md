@@ -64,7 +64,7 @@ Consider implementing tests that go beyond verifying the functionality of the sy
 
 ### Compliance rules
 
-All Kyma organization members involved in the release process comply with contribution rules defined for Kyma and ensure that all checks built into the continuous integration process pass. These requirements represent the absolute minimal acceptance criteria needed for a release from a compliance perspective.
+All Kyma organization members involved in the release process comply with contribution rules defined for Kyma and ensure that all checks built into the continuous integration process pass. These requirements represent the absolute minimal acceptance criteria needed for a release from the compliance perspective.
 
 Additionally, manual pre-release verification must cover these areas:
 
@@ -79,7 +79,7 @@ The Release Manager in Kyma takes care of formal security validation activities 
 
 ## Release schedule
 
-A scheduled release follows the planning cycles for the Kyma development that typically take four weeks. At the beginning of each planning cycle, the Product Lead communicates the specific time plan for a release. After reaching the end of the development cycle, Kyma developers create a release candidate.
+A scheduled release follows the planning cycles for the Kyma development that typically take four weeks. At the beginning of each planning cycle, the Product Lead communicates the specific timeframe for a release. After reaching the end of the development cycle, the Release Master creates a release candidate.
 
 All planned releases happen at the end of a planned development cycle. Only the Product Lead and Release Manager can delay or resign from such a release if there are reasons that justify such a decision.
 
