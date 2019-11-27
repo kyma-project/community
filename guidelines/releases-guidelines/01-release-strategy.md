@@ -116,9 +116,9 @@ At this time, the Release Manager publicly communicates the planned release sche
 
 After completing the planning, the Product Lead explicitly hands over the release to the engineering teams during the handover meeting. At this point, the development phase of the new release officially starts.
 
-During the development phase, the Release Manager keeps track of the development with the help of the Scrum of Scrums (SoS) meetings held twice a week. This allows the Release Manager to take early actions required to keep the release on track. When closer to the release date, the Release Manager and the Product Lead discuss the status of the release and decide if there are any additional checkpoints or actions to address.
+During the development phase, the Release Manager keeps track of the development and takes early actions required to keep the release on track. When closer to the release date, the Release Manager and the Product Lead discuss the status of the release and decide if there are any additional checkpoints or actions to address.
 
-The Core SIG leaders include the external communication regarding the progress and status of each release to the agenda of the Core SIG bi-weekly meetings. The Release Manager, or a person appointed as a stand-in, presents the release status during those meetings.
+The Core SIG leaders include the external communication regarding the progress and status of each release to the agenda of the Core SIG bi-weekly meetings.
 
 ### Development end
 
@@ -126,7 +126,7 @@ This is the last day of the period planned for the release development.
 
 ### Release decision
 
-The Release Manager and the Product Leadership decide to publish the release, based on the status and readiness of the developed functionality. The Release Manager communicates this decision before the release execution starts.
+The Release Manager and the Product Leadership decide to publish a release, based on its status, readiness and compliance of the developed functionality. If any issue is blocking the release, the Release Manager actively discusses the issue, implications and risks with the relevant developer(s), Product Owner and Release Engineer to make a decision to go/no-go.
 
 ### Release execution
 
@@ -134,7 +134,7 @@ The release execution is a manual process and is not part of an automated nightl
 
 During the execution of a release, all automated end-to-end test scenarios are validated. If any scenario fails, the release process automatically stops and no release is possible.
 
-The Release Manager notifies the Kyma community on a public Slack channel that the release candidate is available, requesting the community to validate it and provide their short-term feedback. The deadline for the feedback depends on the release type. Ideally, the final release is the same as the last release candidate, avoiding any additional changes. If there are release-related issues identified, the Release Manager decides if they are blockers for the release.
+The Release Manager notifies the Kyma community on a public Slack channel when a release candidate is available, at which time the community can validate it and provide their feedback. If there are release-related issues identified, the Release Manager decides if any represent blockers for the release.
 
 ### Release publishing
 
