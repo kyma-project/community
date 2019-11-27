@@ -19,7 +19,7 @@ For release versioning, Kyma uses the approach similar to [Semantic Versioning](
 
 ### Function freeze
 
-The **function freeze** term refers to the point in time when a new release branch is created from master, after which no new features will be included in the release. This is typically on Monday 9:00 AM CET/CEST every 4 weeks.
+The **function freeze** refers to the point in time when a new release branch is created from the master branch. After the function freeze, no new features are included in the release. This is typically on Monday at 9:00 AM CET/CEST every 4 weeks.
 
 ### Roles
 
