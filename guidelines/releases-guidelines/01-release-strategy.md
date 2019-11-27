@@ -98,7 +98,7 @@ After reaching the end of the development cycle, the Kyma developers create a re
 - two working days for minor releases
 - one week for major releases
 
-Should any **critical issues** be identified while testing a Release Candidate, the issues are to be documented in GitHub and communicated to the Release Master and Release Manager as soon as possible, indicating the impact of the issue, time to fix, and any potential implications when fixing it. At the latest when the fix has been implemented and merged into the master branch, the Release Manager makes a decision whether or not to cherry-pick the fix to the release branch.
+If during testing a release candidate any **critical issues** are identified, the issues should be documented in GitHub and communicated to both Release Master and Release Manager as soon as possible. The Release Master and Release Manager should be informed about the impact of the issue, time to fix, and any potential implications when fixing it. Not later than when the fix is implemented and merged into the master branch, the Release Manager makes a decision whether or not to cherry-pick the fix to the release branch.
 
 Once testing and validation is complete with no more issues identified, the final release is prepared and executed.
 
