@@ -126,7 +126,7 @@ This is the last day of the period planned for the release development.
 
 ### Release decision
 
-The Release Manager and the Product Leadership decide to publish a release, based on its status, readiness and compliance of the developed functionality. If any issue is blocking the release, the Release Manager actively discusses the issue, implications and risks with the relevant developer(s), Product Owner and Release Engineer to make a decision to go/no-go.
+The Release Manager and the Product Leadership decide to publish a release, based on its status, readiness and compliance of the developed functionality. If any issue blocks the release, the Release Manager actively discusses the issue, implications and risks with the relevant developer(s), Product Owner and Release Engineer to make a decision to release or not.
 
 ### Release execution
 
