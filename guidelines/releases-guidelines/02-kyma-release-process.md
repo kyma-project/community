@@ -113,7 +113,7 @@ Follow these steps to release another Kyma version.
 
    > **CAUTION:** Never use `/test all` as it might run tests that you do not want to execute.
 
-3. Execute remaining tests. There are dependencies between jobs, so the order described below is important.
+3. Execute remaining tests. There are dependencies between jobs, so follow the provided order of steps.
 
    i.  Run `kyma-integration` by adding the  `/test pre-rel{release_number}-kyma-integration`  comment to the PR.
 
