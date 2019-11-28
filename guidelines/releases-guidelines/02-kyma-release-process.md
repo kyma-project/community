@@ -113,7 +113,7 @@ Follow these steps to release another Kyma version.
 
    > **CAUTION:** Never use `/test all` as it might run tests that you do not want to execute.
 
-3. Execute remaining tests. The diagram shows you the jobs and dependencies between them.
+3. Execute remaining tests. There are dependencies between jobs, so follow the provided order of steps.
 
    i.  Run `kyma-integration` by adding the  `/test pre-rel{release_number}-kyma-integration`  comment to the PR.
 
@@ -148,7 +148,7 @@ Follow these steps to release another Kyma version.
    * create a GitHub release and trigger documentation update on the official Kyma website
    * trigger provisioning of the cluster from the created release. The cluster name contains the release version with a period `.` replaced by a dash `-`. For example: `gke-release-1-4-0-rc1`. Use the cluster to test the release candidate.
 
-   > **CAUTION**: The cluster is automatically generated for you, so you don't need to create it. The release cluster, the IP Addresses, and the DNS records must be deleted manually after tests on the RC2 cluster are done.
+   > **CAUTION**: The cluster is automatically generated for you, but removal is a manual action. The release cluster, the IP Addresses, and the DNS records must be deleted manually after tests on the given cluster are done.
 
    If you don't have access to the GCP project, post a request in the Slack team channel.
 
@@ -156,7 +156,7 @@ Follow these steps to release another Kyma version.
    gcloud container clusters get-credentials gke-release-1-4-0-rc2 --zone europe-west4-c --project sap-hybris-sf-playground
    ```
 
-   Follow [these](https://kyma-project.io/docs/#installation-use-your-own-domain-access-the-cluster) instructions to give Kyma teams access to start testing the release candidate.
+   Follow [these](https://kyma-project.io/docs/#installation-install-kyma-with-your-own-domain-access-the-cluster) instructions to give Kyma teams access to start testing the release candidate.
 
 7. The Github release postsumbit job creates a tag in the `kyma-project/kyma` repository, which triggers the [`post-kyma-release-upgrade`](https://github.com/kyma-project/test-infra/blob/master/prow/jobs/kyma/kyma-release-upgrade.yaml) pipeline. The purpose of this job is to test upgradability between the previous Kyma release, i.e. the latest release that is not a release candidate, and the brand new release published by the release postsubmit job.
     
