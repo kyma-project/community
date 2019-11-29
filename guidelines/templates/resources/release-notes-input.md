@@ -2,15 +2,6 @@
 
 ## {Component Name}
 
-### Highlight(s)
-
-> Provide the most important feature(s) or fix(es) that you want to expose at the beginning of release notes.
-
-- {Feature or fix name} - {One-sentence description}
-
-> For example, write:
-> Application Connector modularization - Components have been moved to separate Helm charts.
-
 ### {Feature or fix name}
 
 > List other component features or fixes that you want to include in the release notes. Add each feature or fix as a separate heading and describe it in a short paragraph. The paragraph should not only provide details of the feature or fix but also explain its benefits to the Kyma users. Include screenshots to illustrate the changes better.
