@@ -40,7 +40,7 @@ The path to each binary is unique. Significant information contained in the path
 | path | image name | rule |
 | ---- | ---------- | ---- |
 | `components/<component-name>/cmd/<component-binary>` | `<component-name>-<component-binary>` | applies if multiple images can be built using the component-folder |
-| `components/<component-name>/cmd/<component-binary>` | `<component-name>` | applies if only a single images can be built using the component-folder |
+| `components/<component-name>/` | `<component-name>` | applies if only a single images can be built using the component-folder |
 
 #### Example
 
