@@ -15,7 +15,8 @@ As a result:
 Propose a name pattern for container images that helps users quickly find images from source and vice versa.
 
 ##Conventions
-**cmd** its is a golang convention to put source code for the main executable in a folder called `cmd`. A subfolder should exist for every executable that shall be created from the project.
+**cmd** it is a golang convention to put source code for the main executable in a folder called `cmd`. A subfolder should exist for every executable that shall be created from the project.
+
 e.g.
 ```shell
 component-name
@@ -25,6 +26,8 @@ component-name
    └- executable_b
       └- main.go
 ```
+
+> The `cmd`-folder is not required, but good practise. If a components source code can only be used to create one single binary, it is also ok to put its `main`-function in a file called main.go on the root-level of the components folder
 
 **tests** Tests are sorted into the `test`-folder following this proposal [https://github.com/kyma-project/community/blob/master/collaboration/sig-core/proposals/test-folder-consolidation.md]
 
