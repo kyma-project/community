@@ -1,23 +1,23 @@
 # Container Image Name Consolidation
 
 ## Introduction
-In order to run kyma on a kubernetes cluster a lot of different container images are generated. These images are referenced in templates used by the helm charts that are installed by the `kyma-installer`
+To run Kyma on a Kubernetes cluster, a lot of different container images are generated. These images are referenced in templates used by Helm charts that are installed by the Kyma Installer.
 
 ## Problem
-Currently there is not always a clear relationship between an images name and the source code that resulted in the image.
+Currently, the correspondence between the image name and the image source code is not always clear.
 
 As a result:
-- It's not easily possible to find the source code for a particular image
-- It's not easily possible to find the latest image that was built using the source code
+- It's not easy to find the source code for a particular image.
+- It's not easy to find the latest image that was built using the source code.
 
 ## Goal
 
-Propose a name pattern for container images that helps users quickly find images from source and vice versa.
+Propose a name pattern for container images that helps users quickly find images from source code and vice versa.
 
-##Conventions
-**cmd** it is a golang convention to put source code for the main executable in a folder called `cmd`. A subfolder should exist for every executable that shall be created from the project.
+## Conventions
+According to the Go convention, the `cmd` folder contains the source code for the main executables. Each executable should be put in a separate subfolder.
 
-e.g.
+See the following example:
 ```shell
 component-name
 └- cmd
@@ -29,41 +29,40 @@ component-name
 
 > The `cmd`-folder is not required, but good practise. If a components source code can only be used to create one single binary, it is also ok to put its `main`-function in a file called main.go on the root-level of the components folder
 
-**tests** Tests are sorted into the `test`-folder following this proposal [https://github.com/kyma-project/community/blob/master/collaboration/sig-core/proposals/test-folder-consolidation.md]
-
+Tests are stored in the `test` folder following [this](https://github.com/kyma-project/community/blob/master/collaboration/sig-core/proposals/test-folder-consolidation.md) proposal.
 
 ## Proposal
 
 The path to each binary is unique. Significant information contained in the path of a binary should be used as the base for the image name that contains the binary.
 
-### Components:
+### Components
 
-#### Pattern:
+The naming pattern could be as presented in the following table: 
 
-| path | image name | rule |
+| Path | Image name | Description |
 | ---- | ---------- | ---- |
-| `components/<component-name>/cmd/<component-binary>` | `<component-name>-<component-binary>` | applies if multiple images can be built using the component-folder |
+| `components/<component-name>/cmd/<component-binary>` | `<component-name>-<component-binary>` | Applies if multiple images can be built using the component folder |
 | `components/<component-name>/` | `<component-name>` | applies if only a single images can be built using the component-folder |
 
-#### Example
+See the following examples:
 
-| path | image name | rule |
+| Path | Image name | Description |
 | ---- | ---------- | ---- |
-| components/event-bus/cmd/event-publish-service | event-bus-event-publish-service | multiple docker images |
-| components/apiserver-proxy/cmd/proxy | apiserver-proxy | single docker image |
+| components/event-bus/cmd/event-publish-service | event-bus-event-publish-service | Multiple Docker images |
+| components/apiserver-proxy/cmd/proxy | apiserver-proxy | Single Docker image |
 
-### Tests:
+### Tests
 
- #### Patterns:
+The naming pattern could be as presented in the following table
  
-| path | image name |
+| Path | Image name |
 | ---- | ---------- |
 | `tests/<test-type>/<test-name>` | `<test-name>-<test-type>-tests` |
 | `tests/<component-name>` | `<component-name>-tests` |
 
-#### Example
+See the following examples:
 
-| path | image name |
+| Path | Image name |
 | ---- | ---------- |
 | `tests/end-to-end/upgrade` | `upgrade-end-to-end-test` |
 | `tests/knative-serving` | `knative-serving-test` |
@@ -71,19 +70,19 @@ The path to each binary is unique. Significant information contained in the path
 
 ## Actions
 
-- Update the developer's guide to include the naming convention
-- Update all Makefiles to use the new naming convention
-- Update all helm charts to reference the new images
+- Update the developer's guide to include the naming convention.
+- Update all Makefiles to use the new naming convention.
+- Update all Helm charts to reference the new images.
 
-> Components and tests not listed below already adhere to the patterns described above
+> Components and tests not listed below already adhere to the patterns described above.
 
 ### Components
-Currently all images follow the proposed pattern and exclusions.
+Currently, all images follow the proposed pattern and exclusions.
 
-The following table assumes all tests will be renamed according to the naming convention proposed in [https://github.com/kyma-project/community/blob/master/collaboration/sig-core/proposals/test-folder-consolidation.md]
+The following table assumes all tests will be renamed according to the naming convention proposed in [https://github.com/kyma-project/community/blob/master/collaboration/sig-core/proposals/test-folder-consolidation.md].
 
 ### Tests
-| path | old image name | new image name |
+| Path | Old image name | New image name |
 | ---- | -------------- | -------------- |
 | tests/end-to-end/backup-restore/ | backup-test | backup-restore-end-to-end-tests |
 | tests/end-to-end/external-solution/ | e2e-external-integration-test | external-solution-end-to-end-tests |
@@ -96,6 +95,6 @@ The following table assumes all tests will be renamed according to the naming co
 | tests/service-catalog/ | service-catalog-acceptance-tests | service-catalog-tests |
 
 
-## Optional
+## Optional actions
 
-- automatically generate the image name in the Makefile.
+- Automatically generate the image name in the Makefile.
