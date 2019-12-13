@@ -153,7 +153,7 @@ Follow these steps to release another Kyma version.
    If you don't have access to the GCP project, post a request in the Slack team channel.
 
    ```bash
-   gcloud container clusters get-credentials gke-release-1-4-0-rc2 --zone europe-west4-c --project sap-hybris-sf-playground
+   gcloud container clusters get-credentials gke-release-1-4-0-rc2 --zone europe-west4-c --project sap-kyma-prow-workloads
    ```
 
    Follow [these](https://kyma-project.io/docs/#installation-install-kyma-with-your-own-domain-access-the-cluster) instructions to give Kyma teams access to start testing the release candidate.
