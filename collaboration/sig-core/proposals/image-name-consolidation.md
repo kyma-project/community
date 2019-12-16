@@ -27,7 +27,7 @@ component-name
       └- main.go
 ```
 
-> The `cmd`-folder is not required, but good practise. If a components source code can only be used to create one single binary, it is also ok to put its `main`-function in a file called main.go on the root-level of the components folder
+> The `cmd` directory is not always required, but it is good practice to use it. If a component's source code can be used to create only a single binary, it is also ok to put its `main` function in a file called `main.go` on the root-level of the `components` folder.
 
 Tests are stored in the `test` folder following [this](https://github.com/kyma-project/community/blob/master/collaboration/sig-core/proposals/test-folder-consolidation.md) proposal.
 
@@ -53,7 +53,7 @@ See the following examples:
 
 ### Tests
 
-The naming pattern could be as presented in the following table
+The naming pattern could be as presented in the following table:
  
 | Path | Image name |
 | ---- | ---------- |
@@ -97,4 +97,4 @@ The following table assumes all tests will be renamed according to the naming co
 
 ## Optional actions
 
-- Automatically generate the image name in the Makefile.
+- Automatically generate the image name in a Makefile.
