@@ -95,8 +95,8 @@ For example, the **Choose the release to install** heading changes into the `cho
 
 Follow these rules:
 
-- To link to a specification in the same or a different topic, create a reference using the `/{type-of-topic}/{id}/specifications/{name-of-specification}` pattern, such as `/components/application-connector/specifications/connectorapi/`. `{type-of-topic}` and `{id}` are described in the previous sections, and `{name-of-specification}` is the name of the specification defined in the ClusterDocsTopic CR.
+- To link to a specification in the same or a different topic, create a reference using the `/{type-of-topic}/{id}/specifications/{name-of-specification}` pattern, such as `/components/application-connector/specifications/connectorapi/`. `{type-of-topic}` and `{id}` are described in the previous sections, and `{name-of-specification}` is the name of the specification defined in the ClusterAssetGroup CR.
 
-  > **NOTE:** For more information on adding specifications as a ClusterDocsTopic CR, read [this](#add-new-documentation-to-the-website) document.
+  > **NOTE:** For more information on adding specifications as a ClusterAssetGroup CR, read [this](#add-new-documentation-to-the-website) document.
 
-- If the specification used in the ClusterDocsTopic CR of a specific topic is in the `assets` folder of this topic, the reference should have the pattern of `./assets/{name-of-specification}.{extension}`, where `extension` is the extension of the file. For example, write `./assets/connectorapi.yaml` and the link will be properly modified on the website to `/components/application-connector/specifications/connectorapi/` during the website rebuild process.
+- If the specification used in the ClusterAssetGroup CR of a specific topic is in the `assets` folder of this topic, the reference should have the pattern of `./assets/{name-of-specification}.{extension}`, where `extension` is the extension of the file. For example, write `./assets/connectorapi.yaml` and the link will be properly modified on the website to `/components/application-connector/specifications/connectorapi/` during the website rebuild process.

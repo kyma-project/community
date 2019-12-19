@@ -24,4 +24,4 @@ This table lists the configurable parameters, their descriptions, and default va
 |-----------|-------------|---------------|
 | **{parameter}** | {Parameter description} | `{parameter value}` |
 
-> For reference, see the existing **Configuration** documents for the [Asset Store](https://kyma-project.io/docs/1.5/components/asset-store/#configuration-configuration).
+> For reference, see the existing **Configuration** documents for the [Rafter](https://kyma-project.io/docs/1.9/components/rafter/#configuration-configuration).

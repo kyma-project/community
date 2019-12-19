@@ -89,20 +89,20 @@ Follow these steps to release another Kyma version.
    FROM {kyma_operator_path}/kyma-operator:{kyma_operator_version}
    ```
 
-   iii. In the `resources/core/values.yaml` file, replace the the `clusterDocsTopicsVersion` value with your release branch name. For example, for the 1.4 release, find the following section:
+   iii. In the `resources/core/values.yaml` file, replace the `clusterAssetGroupsVersion` value with your release branch name. For example, for the 1.4 release, find the following section:
 
    ```yaml
    docs:
    # (...) - truncated
-   clusterDocsTopicsVersion: master
+   clusterAssetGroupsVersion: master
    ```
 
-   And replace the `clusterDocsTopicsVersion` value with the following:
+   And replace the `clusterAssetGroupsVersion` value with the following:
 
    ```yaml
    docs:
    # (...)
-   clusterDocsTopicsVersion: release-1.4
+   clusterAssetGroupsVersion: release-1.4
    ```
 
    iv. Create a pull request with your changes to the release branch.
