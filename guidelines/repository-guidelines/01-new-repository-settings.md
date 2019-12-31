@@ -91,5 +91,5 @@ If you define any governance-related [Prow job](https://github.com/kyma-project/
 
 > **TIP:** You can copy labels from the existing repository to the new repository using [this](https://github.com/jvandemo/copy-github-labels-cli) GitHub CLI tool.
 
-## Add repository to teams
+## Add the repository to teams
 Add the repository to both [developers](https://github.com/orgs/kyma-project/teams/developers/repositories) and [developers-triage](https://github.com/orgs/kyma-project/teams/developers-triage/repositories) teams.
