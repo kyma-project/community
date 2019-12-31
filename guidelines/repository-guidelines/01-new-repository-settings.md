@@ -90,3 +90,6 @@ If you define any governance-related [Prow job](https://github.com/kyma-project/
 [Define labels](https://help.github.com/en/articles/creating-a-label) for the new repository so you could use them in issues and pull requests. Follow the naming convention and color array used in other repositories such as [`kyma`](https://github.com/kyma-project/kyma/labels).
 
 > **TIP:** You can copy labels from the existing repository to the new repository using [this](https://github.com/jvandemo/copy-github-labels-cli) GitHub CLI tool.
+
+## Add repository to teams
+Add the repository to both [developers](https://github.com/orgs/kyma-project/teams/developers/repositories) and [developers-triage](https://github.com/orgs/kyma-project/teams/developers-triage/repositories) teams.
