@@ -179,4 +179,4 @@ Follow these steps to release another Kyma version.
 
 12. Notify Team Breaking Pixels that the release is available for integration with Faros.
 
-> **NOTE:** After the Kyma release is complete, proceed with [releasing Kyma CLI](/guidelines/releases-guidelines/#kyma-cli-release-process-kyma-cli-release-process).
+> **NOTE:** After the Kyma release is complete, proceed with [releasing Kyma CLI](/guidelines/releases-guidelines/03-kyma-cli-release-process.md).
