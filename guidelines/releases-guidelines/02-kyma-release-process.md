@@ -127,17 +127,12 @@ Follow these steps to release another Kyma version.
 
      ```bash
      /test pre-rel{release_number}-kyma-gke-integration
-     /test pre-rel{release_number}-kyma-gke-minio-gcs-gateway
-     /test pre-rel{release_number}-kyma-gke-minio-gcs-gateway-migration
-     /test pre-rel{release_number}-kyma-gke-minio-az-gateway
-     /test pre-rel{release_number}-kyma-gke-minio-az-gateway-migration
      /test pre-rel{release_number}-kyma-gke-central-connector
      /test pre-rel{release_number}-kyma-gke-upgrade
      /test pre-rel{release_number}-kyma-gke-backup
      ```
 
-
-4. If you detect any problems with the release, such as failing tests, wait for the fix that can be either delivered on a PR or cherry-picked to the PR from the `master` branch. Prow triggers the jobs again. Rerun manual jobs as described in **step 4**.
+4. If you detect any problems with the release, such as failing tests, wait for the fix that can be either delivered on a PR or cherry-picked to the PR from the `master` branch. Prow triggers the jobs again. Rerun manual jobs as described in **step 3**.
 
 5. After all checks pass, merge the PR, using the `rebase and merge` option.
 
@@ -184,4 +179,4 @@ Follow these steps to release another Kyma version.
 
 12. Notify Team Breaking Pixels that the release is available for integration with Faros.
 
-> **NOTE:** After the Kyma release is complete, proceed with [releasing Kyma CLI](/release/#kyma-cli-release-process-kyma-cli-release-process).
+> **NOTE:** After the Kyma release is complete, proceed with [releasing Kyma CLI](/guidelines/releases-guidelines/03-kyma-cli-release-process.md).
