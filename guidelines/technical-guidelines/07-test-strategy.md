@@ -73,7 +73,7 @@ Contract tests are required to pass before merging a change into the `master` br
 ## Development
 Because tests are developed as code, some of the rules outlined above apply to them too. Every test must be covered at least by code quality checks. Tests run as applications can also be unit tested if applicable. Also, tests must pass a code review by one of Kyma maintainers. The code review process is documented in the [contributing guidelines](/contributing/02-contributing.md) in the `community` repository.
 
-The reviewer ishould not only for the quality of the code implementing functionality but also for the code validating it. Reviewer should pay attention to the implemented test cases. Test coverage should give confidence that the software is working as expected. There are currently no requirements in terms of measuring test coverage.
+The reviewer should not only for the quality of the code implementing functionality but also for the code validating it. Reviewer should pay attention to the implemented test cases. Test coverage should give confidence that the software is working as expected. There are currently no requirements in terms of measuring test coverage.
 
 ## Continuous integration
 Contributors should write tests at the same time then they make changes in production code according to test-driven development (TDD) practices. Such tests are automatically executed as a part of the CI process. Thanks to that approach, the newly created functionality is thoroughly tested before it is merged to the `master` branch.
