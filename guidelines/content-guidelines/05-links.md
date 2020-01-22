@@ -71,7 +71,7 @@ For example, the **Choose the release to install** heading changes into the `cho
 
 - Absolute links
 
-  This is an absolute link to a document in a documentatin toggle:
+  This is an absolute link to a document in a documentation toggle:
 
   ``` markdown
   https://kyma-project.io/docs/root/kyma/#installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install
