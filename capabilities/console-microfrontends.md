@@ -23,11 +23,10 @@ The Console/Microfrontends capability relates to the way in which a user interac
 
     * Use [Luigi orchestration framework](https://github.com/kyma-project/luigi) as UI extension mechanism to ease customization.
     * Compose user interfaces from modular and highly reusable UI components.
-    * Ensure consistent and correct usage of microfrontend-hosting.
+    * Ensure consistent and correct usage of micro frontend-hosting.
 
 * Fast & Responsive
-    
+
     * Quick loading time for user interfaces
     * Load only the essential data that is needed for rendering user interfaces and nothing more (use GraphQL).
     * Give the user feedback for his actions (use websockets).
-

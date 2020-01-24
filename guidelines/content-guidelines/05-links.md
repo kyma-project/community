@@ -31,7 +31,7 @@ If the `{type}` doesn't exist, the pattern has the form of `#{title}-{title}-{he
 
 ### Links to the assets folder
 
-To add a reference to a YAML, JSON, SVG, PNG, or JPG file located in the `assets` folder in the same topic, use GitHub relative links. For example, write `[Here](./assets/mf-namespaced.yaml) you can find a sample micro front-end entity.` When you click such a link on the `kyma-project.io` website, it opens the file content in the same tab.
+To add a reference to a YAML, JSON, SVG, PNG, or JPG file located in the `assets` folder in the same topic, use GitHub relative links. For example, write `[Here](./assets/mf-namespaced.yaml) you can find a sample micro frontend entity.` When you click such a link on the `kyma-project.io` website, it opens the file content in the same tab.
 
 ## Links between documents in different topics
 

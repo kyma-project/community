@@ -58,7 +58,7 @@ spec:
 
 The only required field is the unique name of the resource.
 
-Extending the existing custom resources, `Microfrontend` and `ClusterMicrofrontend`, has been considered. If the `(Cluster)Microfrontend` resource had references to the required UI API Layer modules, then we cannot make sure that the Kyma component is actually installed. There could be microfrontends that depend on two components. If just one of them is not installed, it would result in an error/crash.
+Extending the existing custom resources, `Microfrontend` and `ClusterMicrofrontend`, has been considered. If the `(Cluster)Microfrontend` resource had references to the required UI API Layer modules, then we cannot make sure that the Kyma component is actually installed. There could be micro frontends that depend on two components. If just one of them is not installed, it would result in an error/crash.
 
 On the other hand, combining two ideas together, `ConsoleBackendModule` and relation in `(Cluster)Microfrontend` to `ConsoleBackendModule`, would be too complicated.
 
@@ -85,4 +85,4 @@ On the other hand, combining two ideas together, `ConsoleBackendModule` and rela
 
 ### Proof of Concept
 
-The PoC has been created in [PR #1849](https://github.com/kyma-project/kyma/pull/1849/files) for the Kyma repository. It contains a pluggable `k8s` domain as an example. The PoC uses `Module`, an outdated name of the Custom Resource. 
+The PoC has been created in [PR #1849](https://github.com/kyma-project/kyma/pull/1849/files) for the Kyma repository. It contains a pluggable `k8s` domain as an example. The PoC uses `Module`, an outdated name of the Custom Resource.
