@@ -23,7 +23,7 @@ The goal is to allow users to add, remove, and replace Kyma components in more f
 - Install Kyma as Gardener add-on with dependencies to Istio and Knative add-ons.
 - Add a Service Broker to existing Kyma installation in runtime, for example Azure Broker.
 - Add a new Remote Environment (also new type of application) in runtime.
-- Add completely new Kyma component that integrates with UI in runtime (register micro front-end and custom resources).
+- Add completely new Kyma component that integrates with UI in runtime (register micro frontend and custom resources).
 - Use user provided S3 bucket instead of Minio.
 - Install private modules (from private Docker registry or private Git repository).
 - Install components from Kyma examples and showcases catalog easily (UI).
@@ -50,7 +50,7 @@ The proposed solution is to provide a flexible and modular installation of fine 
 - Parameters should not be hard-coded - there should be a convention on how to pass the parameters through the installation process to the Kyma components.
 - Default values everywhere - the list of mandatory parameters should be as short as possible. The goal is to have only the cluster domain as a mandatory parameter.
 - Optional dependencies, for example: Kyma ui-api-layer can work without custom resources introduced by the Service Catalog or Remote Environment and still can support other areas.
-- Dynamic UI (micro front-ends) + back-end - adding new components extends views and also the backed functionalities, such as the supported GraphQL queries.
+- Dynamic UI (micro frontends) + back-end - adding new components extends views and also the backed functionalities, such as the supported GraphQL queries.
 - No custom logic in the installation process (shell scripts) - it should be replaced by the operator pattern.
 - The minimal set of mandatory components that form the real Kyma "core". The dependency for the core can be mandatory, other dependencies should be optional.
 - Kyma core as Gardener add-on. For reference, see [Knative with Gardener](https://github.com/knative/docs/blob/master/docs/install/Knative-with-Gardener.md) and [Gardener Bouquet](https://github.com/gardener/bouquet) documentation.
@@ -72,4 +72,3 @@ This [project](https://github.com/PK85/kyma-bundles):
 - Gives you a one-step Helm Broker repository configuration update in your Kubernetes cluster.
 
 ![](assets/modularization-bundles.svg)
-

@@ -14,7 +14,7 @@ The Kyma developers need to select specific technologies. Their purpose is to:
 
 The decision is to use the **Go** language for all new implementations in Kyma. Go allows to create very efficient applications with low memory usage and a vast set of system libraries. Many projects which Kyma depends on are written in Go, including Kubernetes.
 
-Use the following front-end technologies within Kyma:
+Use the following frontend technologies within Kyma:
 
 * Open UI5
 * Angular (version 4 and later)
