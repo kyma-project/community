@@ -8,7 +8,7 @@ Use a particular document type template to be consistent with the Kyma standards
 
 ## General documents
 
-This table contains templates for general documents, such as and `NOTES.txt` and `README.md` document types.
+This table contains templates for general documents, such as `NOTES.txt` and `README.md` document types.
 
 | Repository | Template | Usage | Author |
 |---|---|---|---|
