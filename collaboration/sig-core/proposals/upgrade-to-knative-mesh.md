@@ -8,6 +8,7 @@
      - [I. Missing HttpSource objects](#i-missing-httpsource-objects)
      - [II. Legacy endpoints compatibility](#ii-legacy-endpoints-compatibility)
      - [III. User namespace migration](#iii-user-namespace-migration)
+     - [IV. Scale down Event Bus](#iv-scale-down-event-bus)
 4. [Second Kyma upgrade : 1.12](#second-kyma-upgrade--112)
      - [I. Purge event-bus component](#i-purge-event-bus-component)
 
@@ -93,10 +94,54 @@ The `post-upgrade` job should fail when
 
 #### III. User namespace migration
 
-TBD
+#### Changes summary
 
+| Name | Description | Artifact |
+|------|-------------|----------|
+|`ServiceInstance` recreation binary| A Go binary which creates `Trigger` objects for each Kyma `Subscription` objects | Docker image|
+|`Trigger` sync binary| A Go binary which recreates `ServiceInstance` objects  | Docker image|
+|`core` `pre-upgrade` hooks | Two `pre-upgrade` Jobs which will be executed when Kyma installer upgrades the `core` chart |`core` new version |
+   
+#### Execution logic
+
+- Recreate each `ServiceInstance` object in its same namespace (check CBS code [here](https://github.com/kyma-project/kyma/blob/master/components/console-backend-service/internal/domain/servicecatalog/serviceinstance_service.go#L239)).
+- Find all Kyma `Susbscription` objects and create a matching trigger object.
+- Delete each `Susbscription` object after a matching trigger is successfully created.  
+- Wait, check for failure conditions and fail if any of them are true.
+ 
+#### Failure conditions 
+The `pre-upgrade` job should fail when
+
+- If an `EventActivation` exists and no `Subscription` exists after 2 min. 
+- If a kyma `Subscriiption` still exists after 5 min. 
+
+#### IV. Scale down Event Bus
+
+#### Changes summary
+
+| Name | Description | Artifact |
+|------|-------------|----------|
+|Scale down Event Bus hook | A bashscript `post-upgrade` hook in `core` which will be executed when Kyma installer upgrades the chart |`core` new version |
+   
+#### Execution logic
+
+- Scale down `event-bus-event-publish-service` deployment to 0
+- Scale down `event-bus-subscription-controller` deployment to 0
+
+
+#### Failure conditions 
+
+- If any pods of `event-bus-event-publish-service` or `event-bus-subscription-controller` still exist. 
 
 ## Second Kyma upgrade : 1.12
 
 ### I. Purge event-bus component
-TBD
+
+#### Changes summary
+
+| Name | Description | Artifact |
+|------|-------------|----------|
+|Remove Event Bus CRDs | A new `cluster-essentials` chart versiion without `eventing-subscription.crd.yaml`| `cluster-essentials` new version |
+|Document deleting `event-bus` release | A step documented in Kyma 1.12 migration guide how to helm delete `event-bus` release| Kyma 1.12 migration guide|
+|Document deleting `event-bus` crds | A step documented in Kyma 1.12 migration guide how to delete `subscriptions.eventing.kyma-project.io` crd| Kyma 1.12 migration guide|
+
