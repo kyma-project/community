@@ -77,7 +77,7 @@ Open-source projects, like any other, must ensure secure development. You can pr
 
 The Release Manager in Kyma takes care of formal security validation activities performed before major releases. The results of these activities influence the release decision. Lack of attention to security topics can result in release delay.
 
-### Critical Issues
+### Critical issues
 
 Any issues affecting the expected functionality of Kyma should be documented in GitHub for review and planning. Should any of these issues be considered **critical** they should in addition be brought to the immediate attention of the Release Manager.
 
@@ -126,7 +126,7 @@ After reaching the end of the development cycle, the Kyma developers create a re
 - two working days for minor releases
 - one week for major releases
 
-A Release Candidate will be tested by all automated and manual tests there are. If any corrections are required (for critical issues) a new Release Candidate may be required, which will also be completely tested. Only when all tests have passed, and no critical issues are known, will the Release Manager approve the final release to be prepared and published.
+A Release Candidate will be tested by all automated and manual tests there are, following the [test strategy](/guidelines/technical-guidelines/07-test-strategy.md). If any corrections are required (for [critical issues](#critical-issues)) a new Release Candidate may be required, which will also be fully tested. Only when all tests have passed, and no critical issues are known, will the Release Manager approve the final release to be prepared and published.
 
 If any critical issues are still open by the time the final release should be made available according to the release schedule, the Release Manager will decide to:
 
@@ -168,7 +168,7 @@ The release execution is a manual process and is not part of an automated nightl
 
 During the execution of a release, all automated end-to-end test scenarios are validated. If any scenario fails, the release process automatically stops and no release is possible.
 
-The Release Manager notifies the Kyma community on the public **release** Slack channel when a release candidate is available, at which time the community can validate it and provide their feedback. If there are release-related issues identified, the Release Manager decides if any of them is a blocker for the release.
+The Release Manager notifies the Kyma community on the public **release** Slack channel when a release candidate is available, at which time the community can validate it and provide their feedback. If there are release-related issues identified, the Release Manager decides if any of them is a blocker for the release (see [Critical issues](#critical-issues) above).
 
 ### Release publishing
 
