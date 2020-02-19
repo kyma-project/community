@@ -99,7 +99,7 @@ Based on the information above and the time when the issue is found, the Release
 
 In either case, the following criteria must be met before the fix can be released:
 
-- The issue is properly documented in GitHub
+- The issue is properly documented in GitHub, and labeled `priority/critical`
 - It is a correction, not an enhancement
 - It is a critical issue, as described above
 - Adequate tests have been implemented to avoid the issue from ocurring again
