@@ -128,7 +128,13 @@ After reaching the end of the development cycle, the Kyma developers create a re
 
 A Release Candidate will be tested by all automated and manual tests there are. If any corrections are required (for critical issues) a new Release Candidate may be required, which will also be completely tested. Only when all tests have passed, and no critical issues are known, will the Release Manager approve the final release to be prepared and published.
 
-If any critical issues are still open by the time the final release should be made available according to the release schedule, the Release Manager will make a decision whether the release will be delayed or skipped. Such decision will be communicated to the community in the public **release** Slack channel.
+If any critical issues are still open by the time the final release should be made available according to the release schedule, the Release Manager will decide to:
+
+- remove or rollback the change causing the issue
+- wait for a fix (possibly delaying the release)
+- skip the release completely
+
+Such decision will be communicated to the community in the public **release** Slack channel.
 
 ### Planning start
 
