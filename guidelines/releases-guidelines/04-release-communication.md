@@ -3,9 +3,9 @@ title: Release communication
 label: internal
 ---
 
-At the beginning of the release process, the team responsible for the release picks a Release Master who will manage the release process. One of the Release Master's responsibilities is to update the rest of the organization on the progress of the release process. The Release Master is obliged to do the following:
+At the beginning of the release process, the team responsible for the release picks a Release Master who will manage the release process. One of the Release Master's responsibilities is to provide updates regarding the progress of the release process through the public **release** Slack channel. The Release Master is obliged to do the following:
 
-- Inform Kyma teams about release deadlines on Slack channels at least one week before the first release candidate (RC1), and pin the message so that it is easy to find.
+- Inform Kyma teams about release deadlines at least one week before the first release candidate (RC1), and pin the message so that it is easy to find.
 
 - Prepare the environment to test a release candidate. Share access to the testing environment with Kyma teams so that they can test their components before merging the RC.
 

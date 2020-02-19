@@ -77,6 +77,27 @@ Open-source projects, like any other, must ensure secure development. You can pr
 
 The Release Manager in Kyma takes care of formal security validation activities performed before major releases. The results of these activities influence the release decision. Lack of attention to security topics can result in release delay.
 
+### Critical Issues
+
+Any issues affecting the expected functionality of Kyma should be documented in GitHub for review and planning. Should any of these issues be considered **critical** they should in addition be brought to the immediate attention of the Release Manager.
+
+**Critical issues** are the ones that:
+
+- Render a Kyma cluster unstable/unusable **and** have no workaround
+- Cause loss/corruption of data
+- Expose critical security vulnerabilities (CVSS 3 Score 9.0 - 10.0)
+- Cause tests to fail on any supported environment
+
+In addition it should also be clear when a fix for the issue can be made available and any risks the fix itself may raise.
+
+Based on the information above, the Release Manager will then make a final decision whether this fix should be released, which could be either by cherry-picking the fix in the release branch for the next Release Candidate or producing a patch release, depending on the situation. In either case, the following criteria must be met before the fix can be released:
+
+- The issue is properly documented in GitHub
+- It is a correction, not an enhancement
+- It is a critical issue, as described above
+- Adequate tests have been implemented to avoid the issue from ocurring again
+- A fix is readily available and complies with the Definition of Done
+
 ## Release schedule
 
 A scheduled release follows the planning cycles for the Kyma development that typically take four weeks. At the beginning of each planning cycle, the Product Lead communicates the specific timeframe for a release. After reaching the end of the development cycle, the Release Master creates a release candidate.
@@ -98,9 +119,9 @@ After reaching the end of the development cycle, the Kyma developers create a re
 - two working days for minor releases
 - one week for major releases
 
-If during testing a release candidate any **critical issues** are identified, the issues should be documented in GitHub and communicated to both Release Master and Release Manager as soon as possible. The Release Master and Release Manager should be informed about the impact of the issue, time to fix, and any potential implications when fixing it. Not later than when the fix is implemented and merged into the master branch, the Release Manager makes a decision whether or not to cherry-pick the fix to the release branch.
+A Release Candidate will be tested by all automated and manual tests there are. If any corrections are required (for critical issues) a new Release Candidate may be required, which will also be completely tested. Only when all tests have passed, and no critical issues are known, will the Release Manager approve the final release to be prepared and published.
 
-Once testing and validation is complete with no more issues identified, the final release is prepared and executed.
+If any critical issues are still open by the time the final release should be made available according to the release schedule, the Release Manager will make a decision whether the release will be delayed or skipped. Such decision will be communicated to the community in the public **release** Slack channel.
 
 ### Planning start
 
@@ -156,4 +177,4 @@ There is no guaranteed support for the bug fixes in the previous Kyma versions. 
 
 ### Deprecation and backward-compatibility
 
-The 1.0 release and further release versions impose clear expectations regarding the depreciation and backward-compatibility of Kyma versions to ensure some level of stability for the users. This can mean a period of time in which you should not change the provided functionality. This is the practice that other open-source projects also follow.
+There are clear expectations regarding the depreciation and backward-compatibility of Kyma versions to ensure some level of stability for the users. This can mean a period of time in which you should not change the provided functionality. This is the practice that other open-source projects also follow.
