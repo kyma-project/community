@@ -87,10 +87,17 @@ Any issues affecting the expected functionality of Kyma should be documented in 
 - Cause loss/corruption of data
 - Expose critical security vulnerabilities (CVSS 3 Score 9.0 - 10.0)
 - Cause tests to fail on any supported environment
+- Cause major impact in any productive environment
 
-In addition it should also be clear when a fix for the issue can be made available and any risks the fix itself may raise.
+Critical issues have to be fixed with priority. They should contain information about the timeline of the fix and the risks which the fix may raise.
 
-Based on the information above, the Release Manager will then make a final decision whether this fix should be released, which could be either by cherry-picking the fix in the release branch for the next Release Candidate or producing a patch release, depending on the situation. In either case, the following criteria must be met before the fix can be released:
+Based on the information above and the time when the issue is found, the Release Manager will decide how to proceed:
+
+- Wait for the next release for the issue to be included and fixed
+- Include the fix in an ongoing release (cherry-pick)
+- Release a patch to fix the issue
+
+In either case, the following criteria must be met before the fix can be released:
 
 - The issue is properly documented in GitHub
 - It is a correction, not an enhancement
