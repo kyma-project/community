@@ -92,7 +92,6 @@ The new `Event Service` should serve legacy endpoint `/v1/events` and route them
 
 | Name | Description | Artifact |
 |------|-------------|----------|
-|Remove Event Bus CRDs | A new `cluster-essentials` chart versiion without `eventing-subscription.crd.yaml`| `cluster-essentials` new version |
+|Remove Event Bus CRDs | A new `cluster-essentials` chart version without `eventing-subscription.crd.yaml`| `cluster-essentials` new version |
 |Document deleting `event-bus` release | A step documented in Kyma 1.12 migration guide how to helm delete `event-bus` release| Kyma 1.12 migration guide|
 |Document deleting `event-bus` crds | A step documented in Kyma 1.12 migration guide how to delete `subscriptions.eventing.kyma-project.io` crd| Kyma 1.12 migration guide|
-
