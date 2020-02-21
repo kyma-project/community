@@ -126,7 +126,7 @@ After reaching the end of the development cycle, the Kyma developers create a re
 - two working days for minor releases
 - one week for major releases
 
-All Release Candidates will always be fully tested by all automated and manual tests defined, following the [test strategy](/guidelines/technical-guidelines/07-test-strategy.md). Manual tests are tracked in [this sheet](https://docs.google.com/spreadsheets/d/1ty3OciQzgzv0GagTG2Dku9os2AfMupbGNf8QxjHaO88/edit) for each release candidate.
+All release candidates must always be fully tested by all defined automated and manual tests, following the [test strategy](/guidelines/technical-guidelines/07-test-strategy.md). Manual tests are tracked in [this sheet](https://docs.google.com/spreadsheets/d/1ty3OciQzgzv0GagTG2Dku9os2AfMupbGNf8QxjHaO88/edit) for each release candidate.
 
 During the release process, only [critical issues](#critical-issues) will be considered for cherry-picking (as described above). Only when all tests have passed, and no critical issues are blocking the release, will the Release Manager approve the final release to be prepared and published.
 
