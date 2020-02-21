@@ -134,7 +134,7 @@ If any issue is still blocking the release by the time it should be made availab
 
 - Remove or rollback the change causing the issue.
 - Wait for a fix that can lead to a delay in the release.
-- skip the release completely
+- Skip the release completely.
 
 The Release Manager communicates such a decision to the community on the public **release** Slack channel.
 
