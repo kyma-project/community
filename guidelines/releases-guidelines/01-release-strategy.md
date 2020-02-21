@@ -100,7 +100,7 @@ Based on the critical issue definition and the time when the issue is found, the
 In each and every case, the following criteria must be met before the fix can be released:
 
 - The issue is properly documented on GitHub and labeled `priority/critical`.
-- It is a correction, not an enhancement
+- It is a correction, not an enhancement.
 - It is a critical issue by definition.
 - Adequate tests have been implemented to prevent the issue from occurring again.
 - A fix is readily available and complies with the Definition of Done
