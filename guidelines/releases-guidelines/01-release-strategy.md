@@ -87,7 +87,7 @@ Critical issues are the ones that:
 - Cause loss or corruption of data.
 - Expose critical security vulnerabilities (CVSS 3 Score 9.0 - 10.0)
 - Cause tests to fail on any supported environment
-- Cause major impact in any productive environment
+- Cause a major impact on any production environment.
 
 Critical issues have to be fixed with priority. They should contain information about the timeline of the fix and the risks which the fix may raise.
 
