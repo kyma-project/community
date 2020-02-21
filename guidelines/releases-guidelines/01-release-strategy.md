@@ -81,7 +81,7 @@ The Release Manager in Kyma takes care of formal security validation activities 
 
 Any issues affecting the expected functionality of Kyma should be documented in GitHub for review and planning. Should any of these issues be considered **critical** they should in addition be brought to the immediate attention of the Release Manager.
 
-**Critical issues** are the ones that:
+Critical issues are the ones that:
 
 - Render a Kyma cluster unstable/unusable **and** have no workaround
 - Cause loss/corruption of data
