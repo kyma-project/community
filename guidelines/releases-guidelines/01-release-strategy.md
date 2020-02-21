@@ -86,7 +86,7 @@ Critical issues are the ones that:
 - Render a Kyma cluster unstable or unusable and have no workaround.
 - Cause loss or corruption of data.
 - Expose critical security vulnerabilities (CVSS 3 Score 9.0 - 10.0).
-- Cause tests to fail on any supported environment
+- Cause tests to fail in any supported environment.
 - Cause a major impact on any production environment.
 
 Critical issues have to be fixed with priority. They should contain information about the timeline for the fix and the risks which the fix may raise.
