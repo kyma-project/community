@@ -128,7 +128,7 @@ After reaching the end of the development cycle, the Kyma developers create a re
 
 All release candidates must always be fully tested by all defined automated and manual tests, following the [test strategy](/guidelines/technical-guidelines/07-test-strategy.md). Manual tests are tracked in [this sheet](https://docs.google.com/spreadsheets/d/1ty3OciQzgzv0GagTG2Dku9os2AfMupbGNf8QxjHaO88/edit) for each release candidate.
 
-During the release process, only [critical issues](#critical-issues) will be considered for cherry-picking (as described above). Only when all tests have passed, and no critical issues are blocking the release, will the Release Manager approve the final release to be prepared and published.
+During the release process, only [critical issues](#critical-issues) will be considered for cherry-picking. The Release Manager approves the final release to be prepared and published only when all tests have passed, and no critical issues are blocking the release.
 
 If any issue is still blocking the release by the time it should be made available according to the release schedule, the Release Manager will decide to:
 
