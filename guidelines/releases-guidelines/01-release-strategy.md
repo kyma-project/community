@@ -132,7 +132,7 @@ During the release process, only [critical issues](#critical-issues) will be con
 
 If any issue is still blocking the release by the time it should be made available according to the release schedule, the Release Manager will decide to:
 
-- remove or rollback the change causing the issue
+- Remove or rollback the change causing the issue.
 - wait for a fix (possibly delaying the release)
 - skip the release completely
 
