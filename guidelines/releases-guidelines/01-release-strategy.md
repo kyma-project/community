@@ -97,7 +97,7 @@ Based on the critical issue definition and the time when the issue is found, the
 - Include the fix in an ongoing release (cherry-pick)
 - Release a patch to fix the issue
 
-In either case, the following criteria must be met before the fix can be released:
+In each and every case, the following criteria must be met before the fix can be released:
 
 - The issue is properly documented on GitHub and labeled `priority/critical`.
 - It is a correction, not an enhancement
