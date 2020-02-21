@@ -91,7 +91,7 @@ Critical issues are the ones that:
 
 Critical issues have to be fixed with priority. They should contain information about the timeline for the fix and the risks which the fix may raise.
 
-Based on the information above and the time when the issue is found, the Release Manager will decide how to proceed:
+Based on the critical issue definition and the time when the issue is found, the Release Manager will decide how to proceed:
 
 - Wait for the next release for the issue to be included and fixed
 - Include the fix in an ongoing release (cherry-pick)
