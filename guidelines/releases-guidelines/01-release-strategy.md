@@ -83,7 +83,7 @@ Any issues affecting the expected functionality of Kyma should be documented in 
 
 Critical issues are the ones that:
 
-- Render a Kyma cluster unstable/unusable **and** have no workaround
+- Render a Kyma cluster unstable or unusable and have no workaround.
 - Cause loss/corruption of data
 - Expose critical security vulnerabilities (CVSS 3 Score 9.0 - 10.0)
 - Cause tests to fail on any supported environment
