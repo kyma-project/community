@@ -136,7 +136,7 @@ If any issue is still blocking the release by the time it should be made availab
 - wait for a fix (possibly delaying the release)
 - skip the release completely
 
-Such decision will be communicated to the community in the public **release** Slack channel.
+The Release Manager communicates such a decision to the community on the public **release** Slack channel.
 
 ### Planning start
 
