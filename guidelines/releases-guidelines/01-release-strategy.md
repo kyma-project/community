@@ -133,7 +133,7 @@ During the release process, only [critical issues](#critical-issues) will be con
 If any issue is still blocking the release by the time it should be made available according to the release schedule, the Release Manager will decide to:
 
 - Remove or rollback the change causing the issue.
-- wait for a fix (possibly delaying the release)
+- Wait for a fix that can lead to a delay in the release.
 - skip the release completely
 
 The Release Manager communicates such a decision to the community on the public **release** Slack channel.
