@@ -95,7 +95,7 @@ Based on the critical issue definition and the time when the issue is found, the
 
 - Wait for the next release for the issue to be included and fixed
 - Include the fix in an ongoing release (cherry-pick)
-- Release a patch to fix the issue
+- Release a patch to fix the issue.
 
 In each and every case, the following criteria must be met before the fix can be released:
 
