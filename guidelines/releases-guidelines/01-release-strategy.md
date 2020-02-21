@@ -89,7 +89,7 @@ Critical issues are the ones that:
 - Cause tests to fail on any supported environment
 - Cause a major impact on any production environment.
 
-Critical issues have to be fixed with priority. They should contain information about the timeline of the fix and the risks which the fix may raise.
+Critical issues have to be fixed with priority. They should contain information about the timeline for the fix and the risks which the fix may raise.
 
 Based on the information above and the time when the issue is found, the Release Manager will decide how to proceed:
 
