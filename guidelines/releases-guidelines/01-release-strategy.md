@@ -93,7 +93,7 @@ Critical issues have to be fixed with priority. They should contain information 
 
 Based on the critical issue definition and the time when the issue is found, the Release Manager will decide how to proceed:
 
-- Wait for the next release for the issue to be included and fixed
+- Wait for the next release for the issue to be included and fixed.
 - Include the fix in an ongoing release (cherry-pick).
 - Release a patch to fix the issue.
 
