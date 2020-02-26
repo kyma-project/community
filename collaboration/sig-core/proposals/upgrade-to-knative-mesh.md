@@ -59,6 +59,7 @@ The new `Event Service` should serve legacy endpoint `/v1/events` and route them
 |`ServiceInstance` recreation binary| A Go binary which recreates `ServiceInstance` objects | Docker image|
 |`Trigger` sync binary|  A Go binary which creates `Trigger` objects for each Kyma `Subscription` objects | Docker image|
 |`event-bus` pre-upgrade hook| pre-upgrade Jobs which will be executed when Kyma installer upgrades the `event-bus`chart |`event-bus`new version|
+|`console` upgrade| Kyma console needs to no longer create kyma `Subscription` objects and only create `Trigger` objects|New version of `console`|
 
 #### Execution logic
 
