@@ -77,6 +77,34 @@ Open-source projects, like any other, must ensure secure development. You can pr
 
 The Release Manager in Kyma takes care of formal security validation activities performed before major releases. The results of these activities influence the release decision. Lack of attention to security topics can result in release delay.
 
+### Critical issues
+
+Any issues affecting the expected functionality of Kyma should be documented on GitHub for review and planning. If any of these issues is defined as critical according to the criteria specified in this section, it should be brought to the immediate attention of the Release Manager.
+
+Critical issues are the ones that:
+
+- Render a Kyma cluster unstable or unusable and have no workaround.
+- Cause loss or corruption of data.
+- Expose critical security vulnerabilities (CVSS 3 Score 9.0 - 10.0).
+- Cause tests to fail in any supported environment.
+- Cause a major impact on any production environment.
+
+Critical issues have to be fixed with priority. They should contain information about the timeline for the fix and the risks which the fix may raise.
+
+Based on the critical issue definition and the time when the issue is found, the Release Manager will decide how to proceed:
+
+- Wait for the next release for the issue to be included and fixed.
+- Include the fix in an ongoing release (cherry-pick).
+- Release a patch to fix the issue.
+
+In each and every case, the following criteria must be met before the fix can be released:
+
+- The issue is properly documented on GitHub and labeled `priority/critical`.
+- It is a correction, not an enhancement.
+- It is a critical issue by definition.
+- Adequate tests have been implemented to prevent the issue from occurring again.
+- A fix is readily available and complies with the Definition of Done.
+
 ## Release schedule
 
 A scheduled release follows the planning cycles for the Kyma development that typically take four weeks. At the beginning of each planning cycle, the Product Lead communicates the specific timeframe for a release. After reaching the end of the development cycle, the Release Master creates a release candidate.
@@ -98,9 +126,17 @@ After reaching the end of the development cycle, the Kyma developers create a re
 - two working days for minor releases
 - one week for major releases
 
-If during testing a release candidate any **critical issues** are identified, the issues should be documented in GitHub and communicated to both Release Master and Release Manager as soon as possible. The Release Master and Release Manager should be informed about the impact of the issue, time to fix, and any potential implications when fixing it. Not later than when the fix is implemented and merged into the master branch, the Release Manager makes a decision whether or not to cherry-pick the fix to the release branch.
+All release candidates must always be fully tested by all defined automated and manual tests, following the [test strategy](/guidelines/technical-guidelines/07-test-strategy.md). Manual tests are tracked in [this sheet](https://docs.google.com/spreadsheets/d/1ty3OciQzgzv0GagTG2Dku9os2AfMupbGNf8QxjHaO88/edit) for each release candidate.
 
-Once testing and validation is complete with no more issues identified, the final release is prepared and executed.
+During the release process, only [critical issues](#critical-issues) will be considered for cherry-picking. The Release Manager approves the final release to be prepared and published only when all tests have passed, and no critical issues are blocking the release.
+
+If any issue is still blocking the release by the time it should be made available according to the release schedule, the Release Manager will decide to:
+
+- Remove or rollback the change causing the issue.
+- Wait for a fix that can lead to a delay in the release.
+- Skip the release completely.
+
+The Release Manager communicates such a decision to the community on the public **release** Slack channel.
 
 ### Planning start
 
@@ -136,6 +172,8 @@ During the execution of a release, all automated end-to-end test scenarios are v
 
 The Release Manager notifies the Kyma community on the public **release** Slack channel when a release candidate is available, at which time the community can validate it and provide their feedback. If there are release-related issues identified, the Release Manager decides if any of them is a blocker for the release.
 
+ >**TIP:** See the [Critical issues](#critical-issues) section for details.
+
 ### Release publishing
 
 The final release is available in the GitHub releases, including the installation instructions. It also includes the complete changelog that lists all pull requests merged into this release.
@@ -156,4 +194,4 @@ There is no guaranteed support for the bug fixes in the previous Kyma versions. 
 
 ### Deprecation and backward-compatibility
 
-The 1.0 release and further release versions impose clear expectations regarding the depreciation and backward-compatibility of Kyma versions to ensure some level of stability for the users. This can mean a period of time in which you should not change the provided functionality. This is the practice that other open-source projects also follow.
+There are clear expectations regarding the depreciation and backward-compatibility of Kyma versions to ensure some level of stability for the users. This can mean a period of time in which you should not change the provided functionality. This is the practice that other open-source projects also follow.
