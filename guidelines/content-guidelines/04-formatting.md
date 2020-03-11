@@ -17,13 +17,13 @@ HTTP headers | The Authorization Proxy validates the JWT token passed in the **A
 Events       | The service publishes an **order.created** event.
 Roles        | Only the users with the **kyma_admin** role can list Pods in the Kyma system Namespaces.
 UI elements  | Click **Subscribe**.
-Variables    | Click **Project** > **{Your Project Name}**.
+Variables and placeholders | Click **Project** > **{YOUR_PROJECT_NAME}**.
 
 ### Use code font for these items:
 
 Items                     | Examples
 ------------------------- | -----------------------------------------------------------------------------------------------
-Code examples             | Get the list of all Pods in a Namespace using the `kubectl get pods -n {namespace}` command.
+Code examples             | Get the list of all Pods in a Namespace using the `kubectl get pods -n {NAMESPACE}` command.
 Values                    | Set the partial attribute to `true` to perform a partial replacement.
 Endpoints                 | Send a POST request to the `/{tenant}/categories/{categoryId}/media/{mediaId}/commit` endpoint.
 File names                | Open the `deployment.yaml` file.
