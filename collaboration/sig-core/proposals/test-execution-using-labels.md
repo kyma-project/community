@@ -69,4 +69,25 @@ spec:
     - kyma-project.io/test.before-backup: true
 ```
 
-In order to ease the process of executing those tests the kyma-cli tool should supporting not only listing testdefinitions and running them by name, but also listing scenarios and run tests based on label-queries
+
+## Implementation
+
+>*Octopus` does not require any changes*
+
+### Required Changes
+
+* Kyma CLI
+  * list available scenarios
+  * support creation of `ClusterTestSuite` based on scenario(s)
+* Existing Tests:
+  * apply labels to all `TestDefinitions` including the ones that are not part of a basic Kyma installation (e.g. tests-folder)
+* CI-Scripts
+  * remove custom test execution logic and replace by kyma-cli call
+* Upgrade and Backup/Restore tests:
+  * get rid off old upgrade test framework / backup/restore test framework by refactoring the implemented tests into their own test definitions
+
+
+### Optional Changes
+
+* move additional `Helm-charts` from tests-folder into default installation (resources-folder)
+  >*introduce additional/optional component 'additional-tests'*
