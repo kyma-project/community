@@ -157,7 +157,10 @@ Kyma Environment Broker implements retries as follows, we could do the same for 
 - If a provision request fails, it will get rescheduled (each step in KEB can define the retry interval based on the error).
 
 *Problem 1*: Fixes the problem.
-*Problem 2*: In theory possible to solve, see (*). We could use the database to remember which Service Instance uses the Knative Broker. 
+
+*Problem 2*: In theory possible to solve, see (*).
+             We could use the database to remember which Service Instance uses the Knative Broker. 
+
 *Problem 3*: Feature can be implemented, but when the status of the Broker changes, it won't be reflected in the Service Instance unless we have an Informer for the Broker.
 
 Disadvantage: We would need to store some state to keep track of provisioning operations.
@@ -172,7 +175,10 @@ Implement retries for failed Service Instances in Application Broker:
   Unfortunately, Application Broker does not implement the endpoint yet. See code endpoints [here](https://github.com/kyma-project/kyma/blob/f2c3b3498f91c22250ddbc7a6a4449b679a40263/components/application-broker/internal/broker/server.go#L143)
 
 *Problem 1*: By having an Informer on Service Instance we can react on any change on the object. We still need an in-memory queue and scheduler to retry the operation (e.g. exponential backoff).
-*Problem 2*: In theory possible to solve, see (*). Informer doesn't help. A Lister is required to know that a Service Instance is using the Knative Broker.
+
+*Problem 2*: In theory possible to solve, see (*).
+             Informer doesn't help. A Lister is required to know that a Service Instance is using the Knative Broker.
+
 *Problem 3*: Feature can be implemented, but when the status of the Broker changes, it won't be reflected in the Service Instance unless we have an Informer for the Broker.
 
 Disadvantages: The provisioning/deprovisioning endpoints are called by ServiceCatalog. We would need to call the the update endpoint from Application Broker which feels hacky.
@@ -187,7 +193,9 @@ A simple retry loop would be enough to delay the creation of the Knative Subscri
 *Problem 1*: Improves the situation by adding at least retries for a reasonable time.
              But this solution will need to have a good compromise on the timeout for the retry.
              If timeout is too low, it might not solve the problem, if timeout is too high we block goroutines too long.
+             
 *Problem 2*: In theory possible to solve, see (*).
+
 *Problem 3*: Feature can be implemented, but when the status of the Broker changes, it won't be reflected in the Service Instance unless we have an Informer for the Broker.
 
 Disadvantage: Every provisioning/deprovisioning request is executed in a goroutine. By waiting for the Channel we are blocking/leaking the goroutine.
