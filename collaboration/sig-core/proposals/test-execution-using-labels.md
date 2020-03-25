@@ -69,7 +69,7 @@ spec:
 
 ## Implementation
 
->**NOTE:** Octopus` does not require any changes.
+>**NOTE:** Octopus does not require any changes.
 
 ### Required Changes
 
@@ -86,5 +86,4 @@ spec:
 
 ### Optional Changes
 
-* Move additional Helm charts from the `tests` folder into the default installation (the `resources` folder).
-  >*introduce additional/optional component 'additional-tests'*
+* Move additional Helm charts from the `tests` folder into the default installation (the `resources` folder). For example, introduce an additional/optional `additional-tests` component.
