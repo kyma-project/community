@@ -1,5 +1,3 @@
-todo: move file to sig-and-wg/sig-core/proposals
-
 # EventFlow Proposal
 
 
@@ -31,14 +29,14 @@ During the asynchronous provisioning of a ServiceInstance Application-Broker per
 TL;DR:
 - Application-Broker does not implement retries then a provisioning request fails. The creation of a Knative Subscription can fail, if the Application Channel has not been created yet.
   If that happens, the ServiceInstance will stay in failed status forever => **No Eventing!**
-- According to the _Open Service Broker API_, it is the service brokers responsibility to implement retries. In contrast to Kyma Environment Broker (KEB), Application-Broker does not implement retries.
+- According to the _Open Service Broker API_, it is the Service Brokers responsibility to implement retries. In contrast to [Kyma Environment Broker (KEB)](https://github.com/kyma-incubator/compass/blob/master/docs/kyma-environment-broker/02-01-architecture.md), Application-Broker does not implement retries.
 - Platform retry behaviour may be part of OSB API v3.
 
 2: [Deprovision Knative Broker #6342](https://github.com/kyma-project/kyma/issues/6342)
 TL;DR:
 - There can be a race condition between provisioning and deprovisioning of a ServiceInstance.
-- Consequence would be a user namespace without Knative Broker => **No eventing!**
-- Therefore, deprovisioning is not implemented at the moment.
+- Consequence could be a user namespace without Knative Broker => **No eventing!**
+- Therefore, deprovisioning of a Knative Broker is not implemented at the moment.
 
 3: [Reflect Status of Knative Broker on ServiceInstance provisioning status #7696](https://github.com/kyma-project/kyma/issues/7696)
 TL;DR:
@@ -49,36 +47,41 @@ TL;DR:
 
 ### Custom Eventing Controller
 
-Instead of performing steps 2-5 inside Application-Broker, the necessary steps to enable eventing for a Kyma Application should be delegated to a new Kubernetes controller.
-In contrast to a Service Broker, a Kubernetes controller supports reconciliation such that we can react on changes on Kubernetes objects.
+Instead of performing steps 2-5 inside Application-Broker, the necessary steps to enable eventing for a Kyma Application should be `delegated` to a `new Kubernetes controller`.
 
-Status of EventFlow could be based on the following objects:
-- the HTTP Source Adapter (Knative Service)
-- the Knative Broker
-- Knative Subscription
 
-How would we solve the above mentioned problems with this solution ?
-1. The EventFlow CR (Custom Resource) would be created by the Application-Broker.
-   The chance that the creation of the CR fails due to an error is very low. Therefore, retries in the Application-Broker are not required anymore.
+How would we solve the above mentioned problems with this solution:
+1. The `EventFlow` CR (Custom Resource) would be created by the Application-Broker.
+   The chance that the creation of EventFlow CR fails due to an error in the provisioning request (inside Application-Broker - no retries) is very low.
+   Therefore, retries in the Application-Broker are not required anymore.
    If the Application Channel is not ready, an Informer on the Knative Service (which reflects the status of the Application Channel as well) would trigger a new reconciliation,
    therefore implementing the required retries.
-2. Whenever a ServiceInstance is provisioned by the Application-Broker, an EventFlow CR would be created in the same namespace as well. That means we know which applications are relying on a Knative Broker.
-   When a deprovisiong request arrives in the Application-Broker, we delete the appropriate EventFlow CR. If there are no EventFlow CRs left, we can safely delete the Knative Broker.
+2. Whenever a ServiceInstance is provisioned by the Application-Broker, an EventFlow CR would be created in the same namespace as well.
+   That means we know which applications are relying on a Knative Broker.
+   When a deprovisiong request arrives in the Application-Broker, we delete the appropriate EventFlow CR.
+   If there are no EventFlow CRs left, we can safely delete the Knative Broker.
    If a new provisioning request arrives in the meantime, we wait for the deprovisioning of the Knative Broker and trigger the creation of a new Knative Broker. If the broker is ready, the EventFlow CR status is set to ready.
 3. We can easily reflect the status of the Knative Broker inside the EventFlow status using an Informer on the Knative Broker. We won't reflect the status of the Knative Broker in the ServiceInstance.
 
-TODO: give example of EventFlow CR inclusive status
+#### Example of EventFlow CR
+
+Status of EventFlow could be based on the following objects:
+- the HTTP Source Adapter (Knative Service) - if the HTTP Source is down, no events are entering the event-mesh
+- the Knative Broker - if the Broker is down, the events will not be dispatched to  the 
+- Knative Subscription
 
 ```yaml
-apiVersion: <TODO>.kyma-project.io/v1alpha1
+apiVersion: eventing.kyma-project.io/v1alpha1
 kind: EventFlow
 metadata:
   name: event-flow-<service-instance-name> # e.g. event-flow-es-all-events-07ee5-bumpy-communication
-  namespace: kyma-integration
+  namespace: <user-namespace> # e.g my-user-namespace
+  finalizers:
+  - event-flow-controller # required to deprovision Knative Broker
 spec:
-  source: nachtmaar-test
+  source: <application-name> # same name as Application/HTTP Source
 status:
-  SinkURI: http://default-broker.default.svc.cluster.local  # URI of the Knative Broker
+  SinkURI: http://default-broker.default.svc.cluster.local  # URI of the Knative Broker - field has to be in status because it will be set by the EventFlow controller, not Application-Broker
   conditions:
   - lastTransitionTime: "2020-03-23T09:52:47Z"
     status: "True"
@@ -87,34 +90,40 @@ status:
     severity: Info
     status: "True"
     type: SinkReady # <- sink is abstraction over Knative Broker, could be any sink
+  - lastTransitionTime: "2020-03-23T09:52:32Z"
+    severity: Info
+    status: "True"
+    type: SubscriptionReady # Knative Subscription between Application Channel <-> Broker
   - lastTransitionTime: "2020-03-23T09:52:31Z"
     status: "True"
     type: Ready
 ```
 
+#### Implementation
 
-TODO: apigroup?
-
-TODO: implementation ideas:
-- knative eventing controller pkg  ... similiar to event-sources controller manager
-
-finalizer on EventFlow
-
+1. - Use `knative.dev/pkg/controller` to implement the controller - similar to [HTTP Source controller](https://github.com/kyma-project/kyma/blob/bb5810fdb969035617bb0fd70f0d1d1d91bea58b/components/event-sources/reconciler/httpsource/controller.go#L63)
+1. Remove steps 2-5 from Application-Broker. Instead create/delete EventFlow CR when Application-Broker receives provisioning/deprovisiong request. 
+1. Add EventFlow controller component to Kyma
+1. Bump Application-Broker image
 
 
 #### Migration/Upgrade
 
-TODO: What is required to implement the change. ??
+In order to upgrade Kyma to a new version with EventFlow controller in place, we need to 
+- recreate all ServiceInstances belong to Application-Broker (similar to [event-mesh-migration](https://github.com/kyma-project/kyma/blob/ed5c61f07e2e22172fcaf045fb55c7bc10336f55/components/event-bus/cmd/mesh-namespaces-migration/main.go#L68))
+   - this will delete all objects created in steps 2-5
+   - create EventFlow CR
+   - EventFlow controller will create objects from steps 2-5
 
-1. Remove steps 2-5 from Application-Broker. Instead create and delete EventFlow CR when Application-Broker receives provisioning/deprovisiong request. 
-2. Implement the changes in EventFlow controller
-3. Add EventFlow controller component to Kyma
-4. Bump Application-Broker image
+If we don't perform the migration, we won't have an EventFlow CR for old ServiceInstances and can't implement the deprovision correctly. 
 
-TODO: what is required to upgrade Kyma ?
+Also, the upgrade test has to be modified to wait for the readiness of the EventFlow CR [here](https://github.com/kyma-project/kyma/blob/a60d814eb91ea1e97f7fb1516f78227b73fe1e3a/tests/end-to-end/upgrade/pkg/tests/eventmesh-migration/migrate-eventmesh/eventmesh.go#L59) and [here](https://github.com/kyma-project/kyma/blob/a60d814eb91ea1e97f7fb1516f78227b73fe1e3a/tests/end-to-end/upgrade/pkg/tests/eventmesh-migration/migrate-eventmesh/eventmesh.go#L86)
 
-TODO: what is required to backup Kyma ?
-include EventFlow or not ?
+
+#### Backup/Restore
+
+- The backup tests needs to be modified to wait for the creation of the EventFlow CR [here](https://github.com/kyma-project/kyma/blob/1ac01ae13f2cd2de98d8069827e69e98e778bb7d/tests/end-to-end/backup/pkg/tests/eventmesh/eventmesh.go#L201) and [here](https://github.com/kyma-project/kyma/blob/1ac01ae13f2cd2de98d8069827e69e98e778bb7d/tests/end-to-end/backup/pkg/tests/eventmesh/eventmesh.go#L185).
+- Since the backup test already waits for the ServiceInstance, the EventFlow CR does not need to be included in the backup itself. It will be recreated by the ApplicationBroker if the ServiceInstance get's created.
 
 
 ### Retry in application-broker stateless
