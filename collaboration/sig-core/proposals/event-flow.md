@@ -162,14 +162,7 @@ Implement retries for failed ServiceInstances in Application-Broker:
 Disadvantages: The provisioning/deprovisioning endpoints are called by ServiceCatalog. We would need to call the the update endpoint from Application-Broker which feels hacky.
 
 
-### Retry in application-broker stateful
-
-Kyma Environment Broker implements retries using a database for storing state. That requires each step to be idempotent in order that each step can be repeated if one step fails ⁹.
-
-Disadvantage: We are stateful :/
-
-
-### Block provisioning call in application-broker
+#### Block provisioning call in application-broker
 
 We can implement retries ourselves without keeping any state.
 A simple retry loop would be enough to delay the creation of the Knative Subscription until the Application Channel exists and is ready.
