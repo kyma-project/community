@@ -1,7 +1,12 @@
 # EventFlow Proposal
 
+Created on 2019-03-24 by Nils Schmidt (@nachtmaar)
 
-## Current Status
+## Status
+
+Not proposed yet.
+
+## Current solution
 
 The [Application-Broker](https://kyma-project.io/docs/components/application-connector/#architecture-application-connector-components-application-broker) is a broker which implements the [Open Service Broker API](https://www.openservicebrokerapi.org/) ⁰.
 It basically does two things:
@@ -22,7 +27,7 @@ During the asynchronous provisioning of a ServiceInstance Application-Broker per
 3. Label user namespace in order to let the Knative Namespace controller create the `Knative Broker`
 4. Create `Istio Policy` (allows permissive communication between broker <-> broker filter)
 
-### Problems
+## Motivation/Problems
 
 1. [Provisioning events service instance fails on kyma 1.9 #7193](https://github.com/kyma-project/kyma/issues/7193)
 
