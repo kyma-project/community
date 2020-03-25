@@ -26,6 +26,7 @@ During the asynchronous provisioning of a ServiceInstance Application-Broker per
 ### Problems
 
 1. [Provisioning events service instance fails on kyma 1.9 #7193](https://github.com/kyma-project/kyma/issues/7193)
+
 TL;DR:
 - Application-Broker does not implement retries then a provisioning request fails. The creation of a Knative Subscription can fail, if the Application Channel has not been created yet.
   If that happens, the ServiceInstance will stay in failed status forever => **No Eventing!**
@@ -33,12 +34,14 @@ TL;DR:
 - Platform retry behaviour may be part of OSB API v3.
 
 2: [Deprovision Knative Broker #6342](https://github.com/kyma-project/kyma/issues/6342)
+
 TL;DR:
 - There can be a race condition between provisioning and deprovisioning of a ServiceInstance.
 - Consequence could be a user namespace without Knative Broker => **No eventing!**
 - Therefore, deprovisioning of a Knative Broker is not implemented at the moment.
 
 3: [Reflect Status of Knative Broker on ServiceInstance provisioning status #7696](https://github.com/kyma-project/kyma/issues/7696)
+
 TL;DR:
 - We can check the status of the Broker, but it would block the provisioning request for some time. If the broker is not ready, we mark the provisioning request as failed. However, if the broker heals itself (e.g. reconciliation or dependent objects heal), 
   the status of the ServiceInstance will stay in failed status.
@@ -101,7 +104,7 @@ status:
 
 #### Implementation
 
-1. - Use `knative.dev/pkg/controller` to implement the controller - similar to [HTTP Source controller](https://github.com/kyma-project/kyma/blob/bb5810fdb969035617bb0fd70f0d1d1d91bea58b/components/event-sources/reconciler/httpsource/controller.go#L63)
+1. Use `knative.dev/pkg/controller` to implement the controller - similar to [HTTP Source controller](https://github.com/kyma-project/kyma/blob/bb5810fdb969035617bb0fd70f0d1d1d91bea58b/components/event-sources/reconciler/httpsource/controller.go#L63)
 1. Remove steps 2-5 from Application-Broker. Instead create/delete EventFlow CR when Application-Broker receives provisioning/deprovisiong request. 
 1. Add EventFlow controller component to Kyma
 1. Bump Application-Broker image
@@ -158,8 +161,6 @@ A simple retry loop would be enough to delay the creation of the Knative Subscri
 
 Disadvantage: Every provisioning/deprovisiong request is executed in a goroutine. By waiting for the Channel we are blocking/leaking the goroutine.
 
-
-## Problem
 
 # Sources
 
