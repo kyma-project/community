@@ -30,7 +30,6 @@ During the asynchronous provisioning of a ServiceInstance Application-Broker per
 3. Label user namespace in order to let the Knative Namespace controller create the `Knative Broker`
 4. Create `Istio Policy` (allows permissive communication between Knative Broker <-> Knative Broker filter)
 
-TODO: provisioning flow diagram
 
 ## Motivation/Problems
 
@@ -64,19 +63,21 @@ TL;DR:
 
 Instead of performing steps 2-4 inside Application-Broker, the necessary steps to enable eventing for a Kyma Application should be `delegated` to a `new Kubernetes controller`.
 
-
 How would we solve the above mentioned problems with this solution:
-1. The `EventFlow` CR (Custom Resource) would be created by the Application-Broker.
+
+Problem 1: The `EventFlow` CR (Custom Resource) would be created by the Application-Broker.
    The chance that the creation of EventFlow CR fails due to an error in the provisioning request (inside Application-Broker - no retries) is very low.
    Therefore, retries in the Application-Broker are not required anymore.
    If the Application Channel is not ready, an Informer on the Knative Service (which reflects the status of the Application Channel as well) would trigger a new reconciliation,
    therefore implementing the required retries.
-2. Whenever a ServiceInstance is provisioned by the Application-Broker, an EventFlow CR would be created in the same namespace as well.
+
+Problem 2: Whenever a ServiceInstance is provisioned by the Application-Broker, an EventFlow CR would be created in the same namespace as well.
    That means we know which applications are relying on a Knative Broker.
    When a deprovisiong request arrives in the Application-Broker, we delete the appropriate EventFlow CR.
    If there are no EventFlow CRs left, we can safely delete the Knative Broker.
    If a new provisioning request arrives in the meantime, we wait for the deprovisioning of the Knative Broker and trigger the creation of a new Knative Broker. If the broker is ready, the EventFlow CR status is set to ready.
-3. We can easily reflect the status of the Knative Broker inside the EventFlow status using an Informer on the Knative Broker. We won't reflect the status of the Knative Broker in the ServiceInstance.
+
+Problem 3: We can easily reflect the status of the Knative Broker inside the EventFlow status using an Informer on the Knative Broker. We won't reflect the status of the Knative Broker in the ServiceInstance.
 
 #### Example of EventFlow CR
 
@@ -143,18 +144,21 @@ Also, the upgrade test has to be modified to wait for the readiness of the Event
 
 ### Retry in Application-Broker
 
-#### Queue-based Application-Broker
+#### Queue-based Application Broker
 
-Kyma Environment Broker implements a work queue, where all provisioning operations are stored.
-The queue operations are backed by a Postgres database and populated at [Broker start time](https://github.com/kyma-incubator/compass/blob/cf15310a2ed8f0f90d6ef9d739ab6fb27651a717/components/kyma-environment-broker/cmd/broker/main.go#L159)
-We could implement the same for Application-Broker. If a provision request fails, it will get rescheduled (each step in KEB can define the retry interval based on the error).
+Kyma Environment Broker implements retries as follows, we could do the same for Application-Broker:
+
+- Kyma Environment Broker implements a work queue, where all provisioning operations are stored.
+- The queue operations are backed by a Postgres database and populated at [Broker start time](https://github.com/kyma-incubator/compass/blob/cf15310a2ed8f0f90d6ef9d739ab6fb27651a717/components/kyma-environment-broker/cmd/broker/main.go#L159)
+- If a provision request fails, it will get rescheduled (each step in KEB can define the retry interval based on the error).
 
 Disadvantage: We would need to store some state to keep track of provisioning operations.
 
 
-#### Informer-Based Application-Broker
+#### Informer-Based Application Broker
 
 Implement retries for failed ServiceInstances in Application-Broker:
+
 - We could use an `Informer` for `ServiceInstances` and trigger an update of the failed ServiceInstances (only the ones which belong to Application-Broker). 
 - OSB API mentions an [update REST endpoint](https://github.com/kyma-project/kyma/blob/f2c3b3498f91c22250ddbc7a6a4449b679a40263/components/application-broker/internal/broker/server.go#L143).
   Unfortunately, Application-Broker does not implement the endpoint yet. See code endpoints [here](https://github.com/kyma-project/kyma/blob/f2c3b3498f91c22250ddbc7a6a4449b679a40263/components/application-broker/internal/broker/server.go#L143)
@@ -162,7 +166,7 @@ Implement retries for failed ServiceInstances in Application-Broker:
 Disadvantages: The provisioning/deprovisioning endpoints are called by ServiceCatalog. We would need to call the the update endpoint from Application-Broker which feels hacky.
 
 
-#### Block provisioning call in application-broker
+#### Blocking provisioning operation in Application Broker
 
 We can implement retries ourselves without keeping any state.
 A simple retry loop would be enough to delay the creation of the Knative Subscription until the Application Channel exists and is ready.
@@ -188,6 +192,6 @@ Disadvantage: Every provisioning/deprovisioning request is executed in a gorouti
 
 7: <https://github.com/kyma-project/community/pull/386/files>
 
-8: https://kyma-project.io/docs/components/event-bus/#details-knative-eventing-mesh-alpha
+8: <https://kyma-project.io/docs/components/event-bus/#details-knative-eventing-mesh-alpha>
 
 9: <https://github.com/kyma-incubator/compass/blob/master/docs/kyma-environment-broker/03-03-add-provisioning-step.md>
