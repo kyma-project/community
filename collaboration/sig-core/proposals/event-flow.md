@@ -21,7 +21,6 @@ During the asynchronous provisioning of a ServiceInstance Application-Broker per
 2. Create `Knative Subscription` to enable event flow between Application Channel and Broker Channel
 3. Label user namespace in order to let the Knative Namespace controller create the `Knative Broker`
 4. Create `Istio Policy` (allows permissive communication between broker <-> broker filter)
-5. TODO: authorization policy ??
 
 ### Problems
 
@@ -50,7 +49,7 @@ TL;DR:
 
 ### Custom Eventing Controller
 
-Instead of performing steps 2-5 inside Application-Broker, the necessary steps to enable eventing for a Kyma Application should be `delegated` to a `new Kubernetes controller`.
+Instead of performing steps 2-4 inside Application-Broker, the necessary steps to enable eventing for a Kyma Application should be `delegated` to a `new Kubernetes controller`.
 
 
 How would we solve the above mentioned problems with this solution:
@@ -105,7 +104,7 @@ status:
 #### Implementation
 
 1. Use `knative.dev/pkg/controller` to implement the controller - similar to [HTTP Source controller](https://github.com/kyma-project/kyma/blob/bb5810fdb969035617bb0fd70f0d1d1d91bea58b/components/event-sources/reconciler/httpsource/controller.go#L63)
-1. Remove steps 2-5 from Application-Broker. Instead create/delete EventFlow CR when Application-Broker receives provisioning/deprovisiong request. 
+1. Remove steps 2-4 from Application-Broker. Instead create/delete EventFlow CR when Application-Broker receives provisioning/deprovisiong request. 
 1. Add EventFlow controller component to Kyma
 1. Bump Application-Broker image
 
@@ -114,9 +113,9 @@ status:
 
 In order to upgrade Kyma to a new version with EventFlow controller in place, we need to 
 - recreate all ServiceInstances belong to Application-Broker (similar to [event-mesh-migration](https://github.com/kyma-project/kyma/blob/ed5c61f07e2e22172fcaf045fb55c7bc10336f55/components/event-bus/cmd/mesh-namespaces-migration/main.go#L68))
-   - this will delete all objects created in steps 2-5
+   - this will delete all objects created in steps 2-4
    - create EventFlow CR
-   - EventFlow controller will create objects from steps 2-5
+   - EventFlow controller will create objects from steps 2-4
 
 If we don't perform the migration, we won't have an EventFlow CR for old ServiceInstances and can't implement the deprovision correctly. 
 
@@ -129,22 +128,25 @@ Also, the upgrade test has to be modified to wait for the readiness of the Event
 - Since the backup test already waits for the ServiceInstance, the EventFlow CR does not need to be included in the backup itself. It will be recreated by the ApplicationBroker if the ServiceInstance get's created.
 
 
-### Retry in application-broker stateless
+### Retry in Application-Broker
 
-Application-Broker already has [informers](https://github.com/kyma-project/kyma/blob/f2c3b3498f91c22250ddbc7a6a4449b679a40263/components/application-broker/cmd/broker/main.go#L149) on:
-- Applications
-- Service Catalog (which CRs ??)
-- ApplicationMappings
-- Namespaces
+#### Queue-based Application-Broker
 
-We could add an `Informer` for `ServiceInstances` and trigger an update of the failed ServiceInstances which belong to Application-Broker. 
-OSB API mentions an [update REST endpoint](https://github.com/kyma-project/kyma/blob/f2c3b3498f91c22250ddbc7a6a4449b679a40263/components/application-broker/internal/broker/server.go#L143).
+Kyma Environment Broker implements a work queue, where all provisioning operations are stored.
+The queue operations are backed by a Postgres database and populated at [Broker start time](https://github.com/kyma-incubator/compass/blob/cf15310a2ed8f0f90d6ef9d739ab6fb27651a717/components/kyma-environment-broker/cmd/broker/main.go#L159)
+We could implement the same for Application-Broker. If a provision request fails, it will get rescheduled (each step in KEB can define the retry interval based on the error).
 
-Implementation:
-- Unfortunately, Application-Broker does not implement the endpoint yet. See code endpoints [here](https://github.com/kyma-project/kyma/blob/f2c3b3498f91c22250ddbc7a6a4449b679a40263/components/application-broker/internal/broker/server.go#L143)
-- Finding ServiceInstances belonging to Application-Broker is already done [here](https://github.com/kyma-project/kyma/blob/ed5c61f07e2e22172fcaf045fb55c7bc10336f55/components/event-bus/cmd/mesh-namespaces-migration/serviceinstance.go#L72)
+Disadvantage: We would need to store some state to keep track of provisioning operations.
 
-Disadvantages: 
+
+#### Informer-Based Application-Broker
+
+Implement retries for failed ServiceInstances in Application-Broker:
+- We could use an `Informer` for `ServiceInstances` and trigger an update of the failed ServiceInstances (only the ones which belong to Application-Broker). 
+- OSB API mentions an [update REST endpoint](https://github.com/kyma-project/kyma/blob/f2c3b3498f91c22250ddbc7a6a4449b679a40263/components/application-broker/internal/broker/server.go#L143).
+  Unfortunately, Application-Broker does not implement the endpoint yet. See code endpoints [here](https://github.com/kyma-project/kyma/blob/f2c3b3498f91c22250ddbc7a6a4449b679a40263/components/application-broker/internal/broker/server.go#L143)
+
+Disadvantages: The provisioning/deprovisioning endpoints are called by ServiceCatalog. We would need to call the the update endpoint from Application-Broker which feels hacky.
 
 
 ### Retry in application-broker stateful
