@@ -6,35 +6,43 @@ Created on 2019-03-24 by Nils Schmidt (@nachtmaar)
 
 Not proposed yet.
 
+## Goal
+
+Improve provisioning of Knative Event-Mesh related components and implement deprovisioning of those components.
+
 ## Current solution
 
 The [Application-Broker](https://kyma-project.io/docs/components/application-connector/#architecture-application-connector-components-application-broker) is a broker which implements the [Open Service Broker API](https://www.openservicebrokerapi.org/) ⁰.
 It basically does two things:
 
 1. "The AB fetches all the applications' custom resources and exposes their APIs and Events as service classes to the Service Catalog" ⁴.
-2. It is responsible for *provisioning* and *deprovisioning* of a *ServiceInstance*.
+2. It is responsible for *provisioning* and *deprovisioning* of a *Service Class*.
 
-TODO: provisioning flow diagram
 
 ### Provisioning Flow
 
-When Application-Broker receives a provisioning request, it returns 202 HTTP status code and triggers asynchronous provisioning of the ServiceInstance - as described in provisioning spec⁵.
-The platform then polls the `Last Operation for Service Instances endpoint` to watch the operation progress ⁶.
+When Application-Broker receives a provisioning request, it returns `202` HTTP status code and triggers asynchronous provisioning of the ServiceInstance - as described in provisioning spec⁵.
+The Service Catalog then polls the `Last Operation for Service Instances endpoint` to watch the operation progress ⁶.
 
-During the asynchronous provisioning of a ServiceInstance Application-Broker performs the following tasks in the following order:
+During the asynchronous provisioning of a ServiceInstance Application-Broker performs the following tasks in the given order:
 1. Create `EventActivation`
 2. Create `Knative Subscription` to enable event flow between Application Channel and Broker Channel
 3. Label user namespace in order to let the Knative Namespace controller create the `Knative Broker`
-4. Create `Istio Policy` (allows permissive communication between broker <-> broker filter)
+4. Create `Istio Policy` (allows permissive communication between Knative Broker <-> Knative Broker filter)
+
+TODO: provisioning flow diagram
 
 ## Motivation/Problems
+
+There are three open issues related to provisioning/deprovisioning of resources which are created by the Application Broker.
+This proposal tries to provide ideas how to solve them.
 
 1. [Provisioning events service instance fails on kyma 1.9 #7193](https://github.com/kyma-project/kyma/issues/7193)
 
 TL;DR:
 - Application-Broker does not implement retries then a provisioning request fails. The creation of a Knative Subscription can fail, if the Application Channel has not been created yet.
-  If that happens, the ServiceInstance will stay in failed status forever => **No Eventing!**
-- According to the _Open Service Broker API_, it is the Service Brokers responsibility to implement retries. In contrast to [Kyma Environment Broker (KEB)](https://github.com/kyma-incubator/compass/blob/master/docs/kyma-environment-broker/02-01-architecture.md), Application-Broker does not implement retries.
+  If that happens, the Service Instance will stay in failed status forever => **No Eventing!**
+- According to the _Open Service Broker API_, it is the Service Brokers responsibility ³ to implement retries. In contrast to [Kyma Environment Broker (KEB)](https://github.com/kyma-incubator/compass/blob/master/docs/kyma-environment-broker/02-01-architecture.md), Application-Broker does not implement retries.
 - Platform retry behaviour may be part of OSB API v3.
 
 2: [Deprovision Knative Broker #6342](https://github.com/kyma-project/kyma/issues/6342)
@@ -166,7 +174,7 @@ Disadvantage: We are stateful :/
 We can implement retries ourselves without keeping any state.
 A simple retry loop would be enough to delay the creation of the Knative Subscription until the Application Channel exists and is ready.
 
-Disadvantage: Every provisioning/deprovisiong request is executed in a goroutine. By waiting for the Channel we are blocking/leaking the goroutine.
+Disadvantage: Every provisioning/deprovisioning request is executed in a goroutine. By waiting for the Channel we are blocking/leaking the goroutine.
 
 
 # Sources
