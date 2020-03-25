@@ -36,7 +36,7 @@ During the asynchronous provisioning of a Service Instance Application Broker pe
 There are three open issues related to provisioning/deprovisioning of resources which are created by the Application Broker.
 This proposal tries to provide ideas how to solve them.
 
-1. [Provisioning events service instance fails on kyma 1.9 #7193](https://github.com/kyma-project/kyma/issues/7193)
+1: [Provisioning events service instance fails on kyma 1.9 #7193](https://github.com/kyma-project/kyma/issues/7193)
 
 TL;DR:
 - Application Broker does not implement retries then a provisioning request fails. The creation of a Knative Subscription can fail, if the Application Channel has not been created yet.
