@@ -76,6 +76,8 @@ How would we solve the above mentioned problems with this solution:
    Therefore, retries in the Application Broker are not required anymore.
    If the Application Channel is not ready, an Informer on the Knative Service (which reflects the status of the Application Channel as well) would trigger a new reconciliation,
    therefore implementing the required retries.
+   If the creation of the EventFlow CR succeeds, but the EventFlow status is not ready, then the user will think that eventing is enabled (because UI uses ServiceInstance status only), however there was an error.
+   In order to provide the user better feedback, the UI needs to query the Service Instance as well as the EventFlow status. See implementation for more details.
 
 *Problem 2*: Whenever a Service Instance is provisioned by the Application Broker, an EventFlow CR would be created in the same namespace as well.
    That means we know which applications are relying on a Knative Broker.
@@ -83,7 +85,9 @@ How would we solve the above mentioned problems with this solution:
    If there are no EventFlow CRs left, we can safely delete the Knative Broker.
    If a new provisioning request arrives in the meantime, we wait for the deprovisioning of the Knative Broker and trigger the creation of a new Knative Broker. If the broker is ready, the EventFlow CR status is set to ready.
 
-*Problem 3*: We can easily reflect the status of the Knative Broker inside the EventFlow status using an Informer on the Knative Broker. We won't reflect the status of the Knative Broker in the Service Instance.
+*Problem 3*: We can easily reflect the status of the Knative Broker inside the EventFlow status using an Informer on the Knative Broker.
+    We won't reflect the status of the Knative Broker in the Service Instance.
+
 
 #### Example of EventFlow CR
 
@@ -125,9 +129,48 @@ status:
 
 1. Use `knative.dev/pkg/controller` to implement the controller - similar to [HTTP Source controller](https://github.com/kyma-project/kyma/blob/bb5810fdb969035617bb0fd70f0d1d1d91bea58b/components/event-sources/reconciler/httpsource/controller.go#L63)
 1. Remove steps 2-4 from Application Broker. Instead create/delete EventFlow CR when Application Broker receives provisioning/deprovisiong request. 
-1. Add EventFlow controller component to Kyma
+1. Implement combined status of Service Instance & EventFlow in UI
+1. Add EventFlow controller component to Kyma resources folder, therefore creating a new Kyma installer image
 1. Bump Application Broker image
+1. Bump UI image
 
+
+*UI Changes*: 
+
+Currently the status of the ServiceInstance can be one of the following:
+1. `Provisioning`
+1. `Running`
+1. `Failed`
+1. `Deprovisioning`
+
+We have two options to display the status of both resources in the UI:
+1. Combined status of both resources in one string. 
+   The following table illustrates how we can create the combined status based on the status of the ServiceInstance and the EventFlow:
+
+   | Combined Status | Service Instance           | EventFlow      |
+   |-----------------|----------------------------|----------------|
+   | Provisoning     | Status.CurrentOperation && | any            |
+   | Running         | Status ready and           | Status ready   |
+   | Failed          | Status unready or          | Status unready |
+   | Deprovisioning  | Status.CurrentOperation and| any            |
+   
+   `Provisioning`  : is the case then the `Status.CurrentOperation` field of the ServiceInstance is equal to `Provision`
+   `Running`       : is the case then the status of the ServiceInstance and the EventFlow is ready
+   `Failed`        : is the case then the status of the ServiceInstance or the EventFlow is unready
+   `Deprovisioning`: is the case then the `Status.CurrentOperation` field of the ServiceInstance is equal to `Deprovision`
+   
+    Advantage: Easier to understand for the user
+    
+    Disadvantage: More changes in UI required
+
+1. Show status of both resources instead of a single status
+
+   Advantage: Easier to implement
+   
+   Disadvantage: Harder for the user to understand
+
+In both cases the tooltips for the status need to be revisited. Currently it is based on the ServiceInstance status conditions only.
+If the EventFlow CR is in unready state, the tooltip has to be taken from the EventFlow instead.
 
 #### Migration/Upgrade
 
