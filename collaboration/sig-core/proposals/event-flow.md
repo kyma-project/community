@@ -41,7 +41,7 @@ This proposal tries to provide ideas how to solve them.
 1: [Provisioning events service instance fails on kyma 1.9 #7193](https://github.com/kyma-project/kyma/issues/7193)
 
 TL;DR:
-- Application Broker does not implement retries then a provisioning request fails. The creation of a Knative Subscription can fail, if the Application Channel has not been created yet.
+- Application Broker does not implement retries for failed provisioning requests. The creation of a Knative Subscription can fail, if the Application Channel has not been created yet.
   If that happens, the Service Instance will stay in failed status forever => **No Eventing!**
 - According to the _Open Service Broker API_, it is the Service Brokers responsibility ³ to implement retries. In contrast to [Kyma Environment Broker (KEB)](https://github.com/kyma-incubator/compass/blob/master/docs/kyma-environment-broker/02-01-architecture.md), Application Broker does not implement retries.
 - Platform retry behaviour may be part of OSB API v3.
