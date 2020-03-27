@@ -28,7 +28,9 @@ During the asynchronous provisioning of a Service Instance Application Broker pe
 1. Create `EventActivation`
 2. Create `Knative Subscription` to enable event flow between Application Channel and Broker Channel
 3. Label user namespace in order to let the Knative Namespace controller create the `Knative Broker`
-4. Create `Istio Policy` (allows permissive communication between Knative Broker <-> Knative Broker filter)
+4. Create `Istio Policy` (allows Prometheus - which is outside the Service Mesh - to scrape metrics from the Knative Broker Pods)
+
+For more details on how Application Broker is involved in Knative Eventing Mesh, see [this document](https://kyma-project.io/docs/master/components/knative-eventing-mesh/#architecture-architecture-component-dependencies)
 
 
 ## Motivation/Problems
