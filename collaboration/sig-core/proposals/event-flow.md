@@ -60,8 +60,7 @@ TL;DR:
 3: [Reflect Status of Knative Broker on ServiceInstance provisioning status #7696](https://github.com/kyma-project/kyma/issues/7696)
 
 TL;DR:
-- We can check the status of the Broker, but it would block the provisioning request for some time. If the broker is not ready, we mark the provisioning request as failed. However, if the broker heals itself (e.g. reconciliation or dependent objects heal), 
-  the status of the Service Instance will stay in failed status.
+- We can check the status of the Broker, but it would block the provisioning request for some time. If the broker is not ready, we mark the provisioning request as failed. However, if the broker heals itself (e.g. reconciliation or dependent objects heal), the status of the Service Instance will stay in failed status.
 
 ## Possible Solutions
 
