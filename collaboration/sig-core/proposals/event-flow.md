@@ -16,21 +16,21 @@ The [Application Broker](https://kyma-project.io/docs/components/application-con
 It basically does two things:
 
 1. "The AB fetches all the applications' custom resources and exposes their APIs and Events as service classes to the Service Catalog" ⁴.
-2. It is responsible for *provisioning* and *deprovisioning* of a *Service Class*.
+2. It is responsible for provisioning and deprovisioning of a ServiceClass.
 
 
 ### Provisioning Flow
 
-When Application Broker receives a provisioning request, it returns `202` HTTP status code and triggers asynchronous provisioning of the Service Instance - as described in provisioning spec⁵.
+When the Application Broker receives a provisioning request, it returns `202` HTTP status code and triggers asynchronous provisioning of the Service Instance - as described in provisioning spec⁵.
 The Service Catalog then polls the `Last Operation for Service Instances endpoint` to watch the operation progress ⁶.
 
-During the asynchronous provisioning of a Service Instance Application Broker performs the following tasks in the given order:
-1. Create `EventActivation`
-2. Create `Knative Subscription` to enable event flow between Application Channel and Broker Channel
-3. Label user namespace in order to let the Knative Namespace controller create the `Knative Broker`
-4. Create `Istio Policy` (allows Prometheus - which is outside the Service Mesh - to scrape metrics from the Knative Broker Pods)
+During the asynchronous provisioning of a Service Instance, the Application Broker performs the following tasks in the given order:
+1. Creates `EventActivation`.
+2. Creates `Knative Subscription` to enable event flow between Application Channel and Broker Channel.
+3. Labels user namespace in order to let the Knative Namespace controller create the `Knative Broker`.
+4. Creates `Istio Policy` (allows Prometheus - which is outside the Service Mesh - to scrape metrics from the Knative Broker Pods).
 
-For more details on how Application Broker is involved in Knative Eventing Mesh, see [this document](https://kyma-project.io/docs/master/components/knative-eventing-mesh/#architecture-architecture-component-dependencies)
+For more details on how Application Broker is involved in Knative Eventing Mesh, see [this document](https://kyma-project.io/docs/master/components/knative-eventing-mesh/#architecture-architecture-component-dependencies).
 
 
 ## Motivation/Problems
@@ -43,8 +43,8 @@ This proposal tries to provide ideas how to solve them.
 TL;DR:
 - Application Broker does not implement retries for failed provisioning requests. The creation of a Knative Subscription can fail, if the Application Channel has not been created yet.
   If that happens, the Service Instance will stay in failed status forever => **No Eventing!**
-- According to the _Open Service Broker API_, it is the Service Brokers responsibility ³ to implement retries. In contrast to [Kyma Environment Broker (KEB)](https://github.com/kyma-incubator/compass/blob/master/docs/kyma-environment-broker/02-01-architecture.md), Application Broker does not implement retries.
-- Platform retry behaviour may be part of OSB API v3.
+- According to the _Open Service Broker API_, it is the Service Broker's responsibility ³ to implement retries. In contrast to [Kyma Environment Broker (KEB)](https://github.com/kyma-incubator/compass/blob/master/docs/kyma-environment-broker/02-01-architecture.md), Application Broker does not implement retries.
+- Platform retry behavior may be part of OSB API v3.
 
 2: [Deprovision Knative Broker #6342](https://github.com/kyma-project/kyma/issues/6342)
 
@@ -76,7 +76,7 @@ How would we solve the above mentioned problems with this solution:
    Therefore, retries in the Application Broker are not required anymore.
    If the Application Channel is not ready, an Informer on the Knative Service (which reflects the status of the Application Channel as well) would trigger a new reconciliation,
    therefore implementing the required retries.
-   If the creation of the EventFlow CR succeeds, but the EventFlow status is not ready, then the user will think that eventing is enabled (because UI uses ServiceInstance status only), however there was an error.
+   If the EventFlow CR is successfully created, but the EventFlow status is not ready, then the user will think that eventing is enabled (because UI uses ServiceInstance status only), however, there was an error.
    In order to provide the user better feedback, the UI needs to query the Service Instance as well as the EventFlow status. See implementation for more details.
 
 *Problem 2*: Whenever a Service Instance is provisioned by the Application Broker, an EventFlow CR would be created in the same namespace as well.
@@ -188,14 +188,14 @@ Also, the upgrade test has to be modified to wait for the readiness of the Event
 #### Backup/Restore
 
 - The backup tests needs to be modified to wait for the creation of the EventFlow CR [here](https://github.com/kyma-project/kyma/blob/1ac01ae13f2cd2de98d8069827e69e98e778bb7d/tests/end-to-end/backup/pkg/tests/eventmesh/eventmesh.go#L201) and [here](https://github.com/kyma-project/kyma/blob/1ac01ae13f2cd2de98d8069827e69e98e778bb7d/tests/end-to-end/backup/pkg/tests/eventmesh/eventmesh.go#L185).
-- Since the backup test already waits for the Service Instance, the EventFlow CR does not need to be included in the backup itself. It will be recreated by the ApplicationBroker if the Service Instance get's created.
+- Since the backup test already waits for the Service Instance, the EventFlow CR does not need to be included in the backup itself. It will be recreated by the ApplicationBroker if the Service Instance gets created.
 
 
 ### Retry in Application Broker
 
 #### Queue-based Application Broker
 
-Kyma Environment Broker implements retries as follows, we could do the same for Application Broker:
+Kyma Environment Broker implements retries as follows, we could do the same for the Application Broker:
 
 - Kyma Environment Broker implements a work queue, where all provisioning operations are stored.
 - The queue operations are backed by a Postgres database and populated at [Broker start time](https://github.com/kyma-incubator/compass/blob/cf15310a2ed8f0f90d6ef9d739ab6fb27651a717/components/kyma-environment-broker/cmd/broker/main.go#L159)
