@@ -8,7 +8,7 @@ Not proposed yet.
 
 ## Goal
 
-Improve provisioning of Knative Event-Mesh related components and implement deprovisioning of those components.
+Improve the provisioning of Knative Eventing Mesh-related components and implement deprovisioning of those components.
 
 ## Current solution
 
