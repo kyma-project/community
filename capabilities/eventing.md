@@ -25,5 +25,5 @@ Eventing helps you to deliver the following business use cases:
 * Generate Events inside a Kyma cluster and use them to enable asynchronous processing.
 * Support sending multiple Events in a single request.
 * Enable the subscriber to configure the backoff applied when the Event Bus retries to deliver the Events.
-* Support semantics allowing to move the message to a dead letter queue if not processed by a lambda function or a service.
+* Support semantics allowing to move the message to a dead letter queue if not processed by a function or a service.
 * Enable the possibility of assigning Event attributes and specifying Event durability.

@@ -11,7 +11,7 @@ id: api-gateway
 
 The API Gateway capability aims to provide a set of functionalities allowing developers to expose, secure and manage their API's in an easy way.
 Based on the Service Mesh capability, it provides a common way to plug in security (authorization & authentication), enable routing and accessibility for all created APIs.
-An API can be any application (lambda, GO application, etc.)
+An API can be any application (functions, GO application, etc.)
 
 
 
