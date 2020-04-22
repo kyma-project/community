@@ -34,7 +34,7 @@ The decision for the document structure is to take a standard approach with the 
 
 The content creation starts with the component-oriented structure that is easier to follow without clear customer expectations. In the long-term, once the Kyma content developers create the whole content and know what customers want, they need to assess the task-oriented structure.
 
-To be more precise, now readers need to know at the start what such terms as `Service Catalog` or `Serverless` mean as this is their starting point. In the long-term, they may prefer a topic, such as `Extensibility`, to see documents explaining how to quickly extend the application by provisioning external services through the catalog, and how to quickly extend the application with the lambda.
+To be more precise, now readers need to know at the start what such terms as `Service Catalog` or `Serverless` mean as this is their starting point. In the long-term, they may prefer a topic, such as `Extensibility`, to see documents explaining how to quickly extend the application by provisioning external services through the catalog, and how to quickly extend the application with the function.
 
 ## Topic types
 
