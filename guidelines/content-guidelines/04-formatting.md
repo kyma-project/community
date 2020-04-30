@@ -34,6 +34,7 @@ Status and error codes    | A successful response includes a status code of `200
 Parameter and value pairs | The controller adds the `env=true` label to all newly created Namespaces.
 Metadata names            | When you create a Markdown document, define its `title` and `type`.
 Flags                     | Add the `--tls` flag to every Helm command you run.
+GraphQL queries and mutations   | The `requestOneTimeTokenForApplication` mutation calls the internal GraphQL API to get a one-time token.
 
 >**NOTE:** When you mention specific configuration files in your documents, consider linking to them instead of just mentioning their names. When you link to a file, use its name without the format extension. See the following example:
 > `To adjust the number of Pods in your Deployment, edit the [deployment](./deployment.yaml) file.`
