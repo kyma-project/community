@@ -11,10 +11,10 @@ This table lists all capabilities and links to their descriptions.
 | Capability | Owner |
 |------------|-------|
 | [API Gateway](api-gateway.md)| [@piotrmsc](https://github.com/piotrmsc) |
-| [Application Connectivity](application-connectivity.md) | [@lszymik](https://github.com/lszymik) |
+| [Application Connectivity](application-connectivity.md) | [@janmedrek](https://github.com/janmedrek) |
 | [Console / Microfrontends](console-microfrontends.md) | [@kwiatekus](https://github.com/kwiatekus) |
-| [Core & Supporting](core-and-supporting.md) | [@derberg](https://github.com/derberg) |
-| [Eventing](eventing.md) | [@abbi-gaurav](https://github.com/abbi-gaurav) |
+| [Core & Supporting](core-and-supporting.md) | [@michal-hudy](https://github.com/michal-hudy) |
+| [Eventing](eventing.md) | [@anishj0shi](https://github.com/anishj0shi) |
 | [Logging / Tracing / Monitoring](logging-tracing-monitoring.md) | [@a-thaler](https://github.com/a-thaler) |
-| [Serverless Runtime](runtime.md) | [@joek](https://github.com/joek) |
+| [Serverless Runtime](runtime.md) | [@michal-hudy](https://github.com/michal-hudy) |
 | [Service Management](service-management.md) | [@PK85](https://github.com/PK85) |
