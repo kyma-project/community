@@ -39,5 +39,3 @@ A Kyma CLI release consists of:
     where {RELEASE_VERSION} could be `1.4.0-rc1`, `1.4.0-rc2` or `1.4.0`.
 
 5. Push the tag to trigger a postsubmit job that creates the GitHub release. Validate if the release is available under [releases](https://github.com/kyma-project/cli/releases).
-
-6. Update the Homebrew formula of the CLI to the just-released version by following this [guide](https://github.com/Homebrew/brew/blob/master/docs/How-To-Open-a-Homebrew-Pull-Request.md). For a sample Homebrew Kyma CLI formula version bump see the information in [this](https://github.com/Homebrew/homebrew-core/pull/52375) PR.
