@@ -28,7 +28,7 @@ Data Plane errors:
 
 ### How can the event-flow be verified?
 
-Idea: create a sidecar, that exposes its own endpoint events sent to this endpoint could be sent back to the
+Idea: create a sidecar, that exposes its own endpoint. Events sent to this endpoint could be sent back to the
 event-service.
 
 event-service acts as health-event source:
