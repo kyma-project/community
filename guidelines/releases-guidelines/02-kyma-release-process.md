@@ -59,7 +59,7 @@ Follow these steps to release another Kyma version.
 
 2. Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on a release branch contains the correct version to be created. The file should contain a release version following the `{A}.{B}.{C}` or `{A}.{B}.{C}-rc{D}` format, where `A`,`B`, `C`, and `D` are numbers. If you define a release candidate version, a pre-release is created.  
 
-   Make sure the `RELEASE_VERSION` file includes just this single line:  
+   Make sure the `RELEASE_VERSION` file includes just a single line, **without the newline character at the end**:  
 
    ```bash
    echo -n {RELEASE_VERSION} > prow/RELEASE_VERSION
@@ -129,7 +129,6 @@ Follow these steps to release another Kyma version.
      /test pre-rel{release_number}-kyma-gke-integration
      /test pre-rel{release_number}-kyma-gke-central-connector
      /test pre-rel{release_number}-kyma-gke-upgrade
-     /test pre-rel{release_number}-kyma-gke-backup
      ```
 
 4. If you detect any problems with the release, such as failing tests, wait for the fix that can be either delivered on a PR or cherry-picked to the PR from the `master` branch. Prow triggers the jobs again. Rerun manual jobs as described in **step 3**.
@@ -176,7 +175,5 @@ Follow these steps to release another Kyma version.
    For installation instructions, use the links from the previous release and update the version number in URLs. If contributors want you to change something in the instructions, they would address you directly. Contact technical writers for the link to release notes.
 
 11. Create a spreadsheet with all open issues labeled as `test-missing`. Every team assigned to an issue must cover the outstanding test with manual verification on every release candidate. After the test is finished successfully, the responsible team must mark it as completed in the spreadsheet. Every issue identified during testing must be reported. To make the testing easier, provision a publicly available cluster with the release candidate version after you complete all steps listed in this document.
-
-12. Notify Team Breaking Pixels that the release is available for integration with Faros.
 
 > **NOTE:** After the Kyma release is complete, proceed with [releasing Kyma CLI](/guidelines/releases-guidelines/03-kyma-cli-release-process.md).
