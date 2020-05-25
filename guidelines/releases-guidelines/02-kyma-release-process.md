@@ -18,6 +18,14 @@ A Kyma release includes the following items:
 
 To prepare a release:
 
+1. Before you create the relase branch you can check if it contains any PR-images:
+   
+   ```bash
+   git grep -e 'version:\s*[Pp][Rr]-.*' -e 'image:.*:[Pp][Rr]-.*' --before-context=2 -r resources
+   ```
+  
+   If this command returns any output inform the teams
+
 1. Create a release branch in the `kyma` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-1.4`.
 
    ```bash
