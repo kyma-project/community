@@ -25,8 +25,6 @@ In the context of the following document we will use:
 
 > **NOTE:** This section applies only to new major and minor versions. If you release a patch, skip the preparation and go to the [**Steps**](#kyma-release-process-kyma-release-process-steps) section.
 
-To prepare a release:
-
 1. Before you create the relase branch you can check if it contains any PR-images:
    
    ```bash
@@ -35,7 +33,7 @@ To prepare a release:
   
    If this command returns any output inform the teams
 
-1. Create a release branch in the `kyma` repository. The name of this branch should follow the `release-{major}.{minor}` pattern, such as `release-1.4`.
+2. Create a release branch in the `kyma` repository. The name of this branch should follow the `release-{major}.{minor}` pattern, such as `release-1.4`.
 
    ```bash
     git fetch upstream
@@ -45,18 +43,16 @@ To prepare a release:
 
    > **NOTE:** If you don't create the Kyma release branch at this point and add a  `post-rel{RELEASE_VERSION_SHORT}-kyma-release-candidate` post-submit job to the `test-infra` master, then pushing anything to the Kyma release branch, creating or rebasing the branch, triggers a new GitHub release.
 
-2. [Define new release jobs](#kyma-release-process-kyma-release-process-preparation-define-new-release-jobs) in the `test-infra` repository.
+3. Define new release jobs
 
-### Define new release jobs
-
-1. Go to the `test-infra` repository.
-2. Open `templates/config.yaml`
-3. Add the new release to `global.releases`. Remove the oldest release on the list.
-4. Set `global.nextRelease` to the future release version.
-5. Run `make` in the root of the repository to generate jobs and run tests. If any of the tests is marked red, fix it using these guidelines:
-  * For release tests using `GetKymaReleasesSince` or `jobsuite.Since` with a release that is no longer supported, change the method to `GetAllKymaReleases` or `jobsuite.AllReleases` respectively.
-  * For release tests using `GetKymaReleasesUntil` or `jobsuite.Until` with a release that is no longer supported, remove the part of the test which includes the method.
-6. If tests are green, commit all jobs. The new release jobs are ready.
+    1. Go to the `test-infra` repository.
+    2. Open `templates/config.yaml`
+    3. Add the new release to `global.releases`. Remove the oldest release on the list.
+    4. Set `global.nextRelease` to the future release version.
+    5. Run `make` in the root of the repository to generate jobs and run tests. If any of the tests is marked red, fix it using these guidelines:
+      * For release tests using `GetKymaReleasesSince` or `jobsuite.Since` with a release that is no longer supported, change the method to `GetAllKymaReleases` or `jobsuite.AllReleases` respectively.
+      * For release tests using `GetKymaReleasesUntil` or `jobsuite.Until` with a release that is no longer supported, remove the part of the test which includes the method.
+    6. If tests are green, commit all jobs. The new release jobs are ready.
 
 ## Steps
 Follow these steps to release another Kyma version.
@@ -82,9 +78,10 @@ Follow these steps to release another Kyma version.
 
 3. Push the branch to the `test-infra` repository.
 
-4. Update the `RELEASE_VERSION` file with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `1.4.2`, then change the version to `1.5.0-rc1`.
 
 ### kyma-project/kyma
+
+#### Create a PR per release
 
 1. Inside the release branch do the following changes.
 
@@ -127,10 +124,12 @@ Follow these steps to release another Kyma version.
 2. If `pre-release-pr-image-guard` fails, ask the owners to change PR-XXX images of the components to the master version.
 
    > **CAUTION:** Never use `/test all` as it might run tests that you do not want to execute.
-
+    
+#### Execute the tests for the release PR
+   
 3. Execute remaining tests. There are dependencies between jobs, so follow the provided order of steps.
 
-   1.  Run `kyma-integration` by adding the  `/test pre-rel{RELEASE_VERSION_SHORT}-kyma-integration`  comment to the PR.
+   1.  Run `kyma-integration` by adding the `/test pre-rel{RELEASE_VERSION_SHORT}-kyma-integration` comment to the PR.
 
     > **NOTE:** You don't have to wait until the `pre-rel{RELEASE_VERSION_SHORT}-kyma-integration` job finishes to proceed with further jobs.
 
@@ -145,7 +144,7 @@ Follow these steps to release another Kyma version.
             /test pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-upgrade
             ```
 
-4. If you detect any problems with the release, such as failing tests, wait for the fix that can be either delivered on a PR or cherry-picked to the PR from the `master` branch. Prow triggers the jobs again. Rerun manual jobs as described in **step 3**.
+4. If you detect any problems with the release, such as failing tests, wait for the fix that can be either delivered on a PR or cherry-picked to the PR from the `master` branch. Prow triggers the jobs again. Rerun manual jobs as described in .
 
 5. After all checks pass, merge the PR, using the `rebase and merge` option.
 
@@ -191,3 +190,7 @@ Follow these steps to release another Kyma version.
 11. Create a spreadsheet with all open issues labeled as `test-missing`. Every team assigned to an issue must cover the outstanding test with manual verification on every release candidate. After the test is finished successfully, the responsible team must mark it as completed in the spreadsheet. Every issue identified during testing must be reported. To make the testing easier, provision a publicly available cluster with the release candidate version after you complete all steps listed in this document.
 
 > **NOTE:** After the Kyma release is complete, proceed with [releasing Kyma CLI](/guidelines/releases-guidelines/03-kyma-cli-release-process.md).
+
+## Post Release Tasks
+
+1. Update `prow/RELEAS_VERSION` in the `test-infra` repository with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `1.4.2`, then change the version to `1.5.0-rc1`.
