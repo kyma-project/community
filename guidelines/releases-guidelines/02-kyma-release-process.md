@@ -12,6 +12,14 @@ A Kyma release includes the following items:
 * A Git tag
 * A release branch
 
+## Definitions
+In the context of the following document we will use:
+**RELEASE**: Release number in the form `{major}.{minor}` (e.g. `1.13`)
+**RELEASE_VERSION**: Release version in the form `{major}.{minor}.{patch}` (eg. `1.13.0`) or `{major}.{minor}.{patch}-rc{candidate}` (eg. `1.13.0-rc1`) 
+**RELEASE_VERSION_SHORT**: Release version in the form `{major}{minor}` (e.g. `113`)
+**RELEASE_VERSION_DASH**: Release version in the form `{major}-{minor}-{patch}` (e.g. `1-13-0`) or `{major}-{minor}-{patch}-rc{candidate}` (e.g. `1-13-0-rc1`)
+
+
 ## Preparation
 
 > **NOTE:** This section applies only to new major and minor versions. If you release a patch, skip the preparation and go to the [**Steps**](#kyma-release-process-kyma-release-process-steps) section.
@@ -26,15 +34,15 @@ To prepare a release:
   
    If this command returns any output inform the teams
 
-1. Create a release branch in the `kyma` repository. The name of this branch should follow the `release-x.y` pattern, such as `release-1.4`.
+1. Create a release branch in the `kyma` repository. The name of this branch should follow the `release-{major}.{minor}` pattern, such as `release-1.4`.
 
    ```bash
     git fetch upstream
-    git checkout -b release-{release_version} upstream/master
-    git push upstream release-{release_version}
+    git checkout -b release-{RELEASE} upstream/master
+    git push upstream release-{RELEASE}
     ```
 
-   > **NOTE:** If you don't create the Kyma release branch at this point and add a  `post-rel{release_version}-kyma-release-candidate` post-submit job to the `test-infra` master, then pushing anything to the Kyma release branch, creating or rebasing the branch, triggers a new GitHub release.
+   > **NOTE:** If you don't create the Kyma release branch at this point and add a  `post-rel{RELEASE_VERSION_SHORT}-kyma-release-candidate` post-submit job to the `test-infra` master, then pushing anything to the Kyma release branch, creating or rebasing the branch, triggers a new GitHub release.
 
 2. [Define new release jobs](#kyma-release-process-kyma-release-process-preparation-define-new-release-jobs) in the `test-infra` repository.
 
@@ -60,10 +68,10 @@ Follow these steps to release another Kyma version.
 
    ```bash
    git fetch upstream
-   git checkout -b {RELEASE_NAME} upstream/master
+   git checkout -b release-{RELEASE} upstream/master
    ```
 
-2. Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on a release branch contains the correct version to be created. The file should contain a release version following the `{A}.{B}.{C}` or `{A}.{B}.{C}-rc{D}` format, where `A`,`B`, `C`, and `D` are numbers. If you define a release candidate version, a pre-release is created.  
+2. Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on a release branch contains the correct version to be created. If you define a release candidate version, a pre-release is created.  
 
    Make sure the `RELEASE_VERSION` file includes just a single line, **without the newline character at the end**:  
 
@@ -79,9 +87,9 @@ Follow these steps to release another Kyma version.
 
 1. Inside the release branch do the following changes.
 
-   i. In `installation/resources/installer.yaml` replace `eu.gcr.io/kyma-project/develop/installer:{image_tag}` with `eu.gcr.io/kyma-project/kyma-installer:{release_version}`
+   1. In `installation/resources/installer.yaml` replace `eu.gcr.io/kyma-project/develop/installer:{image_tag}` with `eu.gcr.io/kyma-project/kyma-installer:{RELEASE_VERSION}`
 
-   ii. Find these lines in `tools/kyma-installer/kyma.Dockerfile`:
+   2. Find these lines in `tools/kyma-installer/kyma.Dockerfile`:
 
    ```
    ARG INSTALLER_VERSION="{kyma_operator_version}"
@@ -92,10 +100,10 @@ Follow these steps to release another Kyma version.
    Replace them with:
 
    ```
-   FROM {kyma_operator_path}/kyma-operator:{kyma_operator_version}
+   FROM {kyma_operator_path}/kyma-operator:master-{kyma_operator_version}
    ```
 
-   iii. In the `resources/core/values.yaml` file, replace the `clusterAssetGroupsVersion` value with your release branch name. For example, for the 1.4 release, find the following section:
+   3. In the `resources/core/values.yaml` file, replace the `clusterAssetGroupsVersion` value with your release branch name. For example, for the 1.4 release, find the following section:
 
    ```yaml
    docs:
@@ -111,7 +119,7 @@ Follow these steps to release another Kyma version.
    clusterAssetGroupsVersion: release-1.4
    ```
 
-   iv. Create a pull request with your changes to the release branch.
+   . Create a pull request with your changes to the release branch.
 
    ![PullRequest](./assets/release-PR.png)
 
@@ -121,21 +129,20 @@ Follow these steps to release another Kyma version.
 
 3. Execute remaining tests. There are dependencies between jobs, so follow the provided order of steps.
 
-   i.  Run `kyma-integration` by adding the  `/test pre-rel{release_number}-kyma-integration`  comment to the PR.
+   1.  Run `kyma-integration` by adding the  `/test pre-rel{RELEASE_VERSION_SHORT}-kyma-integration`  comment to the PR.
 
-    > **NOTE:** You don't have to wait until the `pre-rel{release_number}-kyma-integration` job finishes to proceed with further jobs.
+    > **NOTE:** You don't have to wait until the `pre-rel{RELEASE_VERSION_SHORT}-kyma-integration` job finishes to proceed with further jobs.
 
-   ii. Run `/test pre-rel{release_number}-kyma-installer` and wait until it finishes.
+   2. Execute the next steps in the following order
+       1. Run `/test pre-rel{RELEASE_VERSION_SHORT}-kyma-installer` and wait until it finishes.
+       2. Run `/test pre-rel{RELEASE_VERSION_SHORT}-kyma-artifacts` and wait until it finishes.
+       3. Run the following tests in parallel and wait for them to finish:
 
-   iii. Run `/test pre-rel{release_number}-kyma-artifacts` and wait until it finishes.
-
-   iv. Run the following tests in parallel and wait for them to finish:
-
-     ```bash
-     /test pre-rel{release_number}-kyma-gke-integration
-     /test pre-rel{release_number}-kyma-gke-central-connector
-     /test pre-rel{release_number}-kyma-gke-upgrade
-     ```
+            ```
+            /test pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-integration
+            /test pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-central-connector
+            /test pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-upgrade
+            ```
 
 4. If you detect any problems with the release, such as failing tests, wait for the fix that can be either delivered on a PR or cherry-picked to the PR from the `master` branch. Prow triggers the jobs again. Rerun manual jobs as described in **step 3**.
 
@@ -146,14 +153,14 @@ Follow these steps to release another Kyma version.
 6. Merging the PR to the release branch runs the postsubmit jobs, which:
 
    * create a GitHub release and trigger documentation update on the official Kyma website
-   * trigger provisioning of the cluster from the created release. The cluster name contains the release version with a period `.` replaced by a dash `-`. For example: `gke-release-1-4-0-rc1`. Use the cluster to test the release candidate.
+   * trigger provisioning of the cluster from the created release. Use the cluster to test the release candidate.
 
    > **CAUTION**: The cluster is automatically generated for you, but removal is a manual action. The release cluster, the IP Addresses, and the DNS records must be deleted manually after tests on the given cluster are done.
 
    If you don't have access to the GCP project, post a request in the Slack team channel.
 
    ```bash
-   gcloud container clusters get-credentials gke-release-1-4-0-rc2 --zone europe-west4-c --project sap-kyma-prow-workloads
+   gcloud container clusters get-credentials gke-{RELEASE_VERSION_DASH} --zone europe-west4-c --project sap-kyma-prow-workloads
    ```
 
    Follow [these](https://kyma-project.io/docs/#installation-install-kyma-with-your-own-domain-access-the-cluster) instructions to give Kyma teams access to start testing the release candidate.
