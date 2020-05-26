@@ -20,23 +20,15 @@ decision-making process.
 * [Google group](https://groups.google.com/forum/#!forum/kyma-sig-core)
 * [Open community issues and pull requests](https://github.com/kyma-project/community/labels/sig%2Fcore)
 
-## Meetings
-
-Regular SIG Meeting: Wednesdays at 15:00 CEST, biweekly. [Convert to your timezone](http://www.thetimezoneconverter.com/?t=15:00&tz=CEST%20%28Central%20European%20Summer%20Time%29).
-
-* [Zoom](https://sap-se.zoom.us/j/133192415)
-* [Meeting notes and agenda](https://docs.google.com/document/d/1vWleTon7sJIk0teee4SoVezS4mR3K8TlkvXkgLJwRD8)
-* [Meeting recordings](https://www.youtube.com/watch?v=1DD5aCBnywQ&list=PL7PGl--iaIH9jnbT8yG_KOV3unv1iUILR)
-
 ## Leaders
 
 * Piotr Kopczynski (**[@PK85](https://github.com/PK85)**)
 * Mateusz Szostok (**[@mszostok](https://github.com/mszostok)**)
-* Ahmed Abdalla (**[@Abd4llA](https://github.com/Abd4llA)**)
 
 ## Emeritus Leaders
 
 * Lukasz Gornicki (**[@derberg](https://github.com/derberg)**)
+* Ahmed Abdalla (**[@Abd4llA](https://github.com/Abd4llA)**)
 
 ## Members
 
