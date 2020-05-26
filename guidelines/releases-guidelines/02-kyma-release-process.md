@@ -14,10 +14,11 @@ A Kyma release includes the following items:
 
 ## Definitions
 In the context of the following document we will use:
-**RELEASE**: Release number in the form `{major}.{minor}` (e.g. `1.13`)
-**RELEASE_VERSION**: Release version in the form `{major}.{minor}.{patch}` (eg. `1.13.0`) or `{major}.{minor}.{patch}-rc{candidate}` (eg. `1.13.0-rc1`) 
-**RELEASE_VERSION_SHORT**: Release version in the form `{major}{minor}` (e.g. `113`)
-**RELEASE_VERSION_DASH**: Release version in the form `{major}-{minor}-{patch}` (e.g. `1-13-0`) or `{major}-{minor}-{patch}-rc{candidate}` (e.g. `1-13-0-rc1`)
+
+  - **RELEASE**: Release number in the form `{major}.{minor}` (e.g. `1.13`)
+  - **RELEASE_VERSION**: Release version in the form `{major}.{minor}.{patch}` (eg. `1.13.0`) or `{major}.{minor}.{patch}-rc{candidate}` (eg. `1.13.0-rc1`) 
+  - **RELEASE_VERSION_SHORT**: Release version in the form `{major}{minor}` (e.g. `113`)
+  - **RELEASE_VERSION_DASH**: Release version in the form `{major}-{minor}-{patch}` (e.g. `1-13-0`) or `{major}-{minor}-{patch}-rc{candidate}` (e.g. `1-13-0-rc1`)
 
 
 ## Preparation
