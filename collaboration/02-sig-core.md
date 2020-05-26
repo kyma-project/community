@@ -32,11 +32,11 @@ Regular SIG Meeting: Wednesdays at 15:00 CEST, biweekly. [Convert to your timezo
 
 * Piotr Kopczynski (**[@PK85](https://github.com/PK85)**)
 * Mateusz Szostok (**[@mszostok](https://github.com/mszostok)**)
-* Ahmed Abdalla (**[@Abd4llA](https://github.com/Abd4llA)**)
 
 ## Emeritus Leaders
 
 * Lukasz Gornicki (**[@derberg](https://github.com/derberg)**)
+* Ahmed Abdalla (**[@Abd4llA](https://github.com/Abd4llA)**)
 
 ## Members
 
