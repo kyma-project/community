@@ -57,15 +57,15 @@ Create a release branch in the `kyma` repository. The name of this branch should
 
 1. Create a PR to `master` containing the following changes to create the new job definitions
 
-    2. Open `templates/config.yaml`
+    1. Open `templates/config.yaml`
     2. Add the new release to `global.releases`. Remove the oldest release on the list.
-    2. Set `global.nextRelease` to the future release version.
-    2. Run `make` in the root of the repository to generate jobs and run tests. If any of the tests is marked red, fix it using these guidelines:
+    3. Set `global.nextRelease` to the future release version.
+    4. Run `make` in the root of the repository to generate jobs and run tests. If any of the tests is marked red, fix it using these guidelines:
       * For release tests using `GetKymaReleasesSince` or `jobsuite.Since` with a release that is no longer supported, change the method to `GetAllKymaReleases` or `jobsuite.AllReleases` respectively.
       * For release tests using `GetKymaReleasesUntil` or `jobsuite.Until` with a release that is no longer supported, remove the part of the test which includes the method.
-    2. If tests are green, commit all jobs.
+    5. If tests are green, commit all jobs.
 
-1. Once the PR is merged to master you can proceed
+2. Once the PR is merged to master you can proceed
 
 #### Create a release branch
 
@@ -95,8 +95,8 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
         echo -n {RELEASE_VERSION} > prow/RELEASE_VERSION
         ```
     
-1. If you had to change the RELEASE_VERSION create a PR to update it on the release branch
-1. Once this PR is merged you can proceed
+2. If you had to change the RELEASE_VERSION create a PR to update it on the release branch
+3. Once this PR is merged you can proceed
 
 
 
@@ -106,58 +106,59 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
 
 1. Inside the release branch do the following changes.
 
-   2. In `installation/resources/installer.yaml` replace `eu.gcr.io/kyma-project/develop/installer:{image_tag}` with `eu.gcr.io/kyma-project/kyma-installer:{RELEASE_VERSION}`
+   1. In `installation/resources/installer.yaml` replace `eu.gcr.io/kyma-project/develop/installer:{image_tag}` with `eu.gcr.io/kyma-project/kyma-installer:{RELEASE_VERSION}`
 
    2. Find these lines in `tools/kyma-installer/kyma.Dockerfile`:
 
-   ```
-   ARG INSTALLER_VERSION="{kyma_operator_version}"
-   ARG INSTALLER_DIR={kyma_operator_path}
-   FROM $INSTALLER_DIR/kyma-operator:$INSTALLER_VERSION
-   ```
+        ```
+        ARG INSTALLER_VERSION="{kyma_operator_version}"
+        ARG INSTALLER_DIR={kyma_operator_path}
+        FROM $INSTALLER_DIR/kyma-operator:$INSTALLER_VERSION
+        ```
 
-   Replace them with:
+      Replace them with:
 
-   ```
-   FROM {kyma_operator_path}/kyma-operator:master-{kyma_operator_version}
-   ```
+        ```
+        FROM {kyma_operator_path}/kyma-operator:master-{kyma_operator_version}
+        ```
 
-   2. In the `resources/core/values.yaml` file, find the `clusterAssetGroupsVersion`
+   3. In the `resources/core/values.yaml` file, find the `clusterAssetGroupsVersion`
 
-   ```yaml
-   docs:
-   # (...) - truncated
-   clusterAssetGroupsVersion: master
-   ```
+        ```yaml
+        docs:
+        # (...) - truncated
+        clusterAssetGroupsVersion: master
+        ```
 
-   And replace the `clusterAssetGroupsVersion` value with the following:
+      And replace the `clusterAssetGroupsVersion` value with the following:
 
-   ```yaml
-   docs:
-   # (...)
-   clusterAssetGroupsVersion: release-{RELEASE}
-   ```
+        ```yaml
+        docs:
+        # (...)
+        clusterAssetGroupsVersion: release-{RELEASE}
+        ```
 
-1. Create a pull request with your changes to the release branch.
+2. Create a pull request with your changes to the release branch.
 
    ![PullRequest](./assets/release-PR.png)
 
-1. If `pre-release-pr-image-guard` fails, ask the owners to change PR-XXX images of the components to the master version.
+3. If `pre-release-pr-image-guard` fails, ask the owners to change PR-XXX images of the components to the master version.
 
-   > **CAUTION:** Never use `/test all` as it might run tests that you do not want to execute.
     
 #### Execute the tests for the release PR
+
+> **CAUTION:** Never use `/test all` as it might run tests that you do not want to execute.
    
 1. Execute remaining tests. There are dependencies between jobs, so follow the provided order of steps.
 
-   2.  Run `kyma-integration` by adding the `/test pre-rel{RELEASE_VERSION_SHORT}-kyma-integration` comment to the PR.
+    1.  Run `kyma-integration` by adding the `/test pre-rel{RELEASE_VERSION_SHORT}-kyma-integration` comment to the PR.
 
-    > **NOTE:** You don't have to wait until the `pre-rel{RELEASE_VERSION_SHORT}-kyma-integration` job finishes to proceed with further jobs.
+        > **NOTE:** You don't have to wait until the `pre-rel{RELEASE_VERSION_SHORT}-kyma-integration` job finishes to proceed with further jobs.
 
-   2. Execute the next steps in the following order
-       3. Run `/test pre-rel{RELEASE_VERSION_SHORT}-kyma-installer` and wait until it finishes.
-       3. Run `/test pre-rel{RELEASE_VERSION_SHORT}-kyma-artifacts` and wait until it finishes.
-       3. Run the following tests in parallel and wait for them to finish:
+    2. Execute the next steps in the following order
+        1. Run `/test pre-rel{RELEASE_VERSION_SHORT}-kyma-installer` and wait until it finishes.
+        2. Run `/test pre-rel{RELEASE_VERSION_SHORT}-kyma-artifacts` and wait until it finishes.
+        3. Run the following tests in parallel and wait for them to finish:
 
             ```
             /test pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-integration
@@ -165,13 +166,13 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
             /test pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-upgrade
             ```
 
-1. If you detect any problems with the release, such as failing tests, wait for the fix that can be either delivered on a PR or cherry-picked to the PR from the `master` branch. Prow triggers the jobs again. Rerun manual jobs as described in .
+2. If you detect any problems with the release, such as failing tests, wait for the fix that can be either delivered on a PR or cherry-picked to the PR from the `master` branch. Prow triggers the jobs again. Rerun manual jobs as described in .
 
-1. After all checks pass, merge the PR, using the `rebase and merge` option.
+3. After all checks pass, merge the PR, using the `rebase and merge` option.
 
    > **CAUTION:** By default, the `rebase and merge` option is disabled. Contact one of the `kyma-project/kyma` repository admins to enable it.
 
-1. Merging the PR to the release branch runs the postsubmit jobs, which:
+4. Merging the PR to the release branch runs the postsubmit jobs, which:
 
    * create a GitHub release and trigger documentation update on the official Kyma website
    * trigger provisioning of the cluster from the created release. Use the cluster to test the release candidate.
@@ -186,7 +187,7 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
 
    Follow [these](https://kyma-project.io/docs/#installation-install-kyma-with-your-own-domain-access-the-cluster) instructions to give Kyma teams access to start testing the release candidate.
 
-1. The Github release postsumbit job creates a tag in the `kyma-project/kyma` repository, which triggers the [`post-kyma-release-upgrade`](https://github.com/kyma-project/test-infra/blob/master/prow/jobs/kyma/kyma-release-upgrade.yaml) pipeline. The purpose of this job is to test upgradability between the previous Kyma release, i.e. the latest release that is not a release candidate, and the brand new release published by the release postsubmit job.
+5. The Github release postsumbit job creates a tag in the `kyma-project/kyma` repository, which triggers the [`post-kyma-release-upgrade`](https://github.com/kyma-project/test-infra/blob/master/prow/jobs/kyma/kyma-release-upgrade.yaml) pipeline. The purpose of this job is to test upgradability between the previous Kyma release, i.e. the latest release that is not a release candidate, and the brand new release published by the release postsubmit job.
     
     For example, if `1.7.0-rc2` is released, the pipeline will try to upgrade `1.6.0` to `1.7.0-rc2`.
     
@@ -194,13 +195,13 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
     
     > **CAUTION:** The job assumes no manual migration is involved. If the upgrade process requires any additional actions, the pipeline is likely to fail. In such case, the owners of the components concerned are responsible for running manual tests or modifying the pipeline.
 
-1. Update the `RELEASE_VERSION` file to contain the next patch RC1 version on the release branch. Do it immediately after the release, otherwise, any PR to a release branch overrides the previously published Docker images.
+6. Update the `RELEASE_VERSION` file to contain the next patch RC1 version on the release branch. Do it immediately after the release, otherwise, any PR to a release branch overrides the previously published Docker images.
 
    For example, if the `RELEASE_VERSION` file on the release branch contains `1.4.1`, change it to `1.4.2-rc1`.
 
-1. Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
+7. Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
 
-1. Update the release content manually with links to:
+8. Update the release content manually with links to:
 
    - Instructions on local Kyma installation
    - Instructions on cluster Kyma installation
@@ -208,11 +209,11 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
 
    For installation instructions, use the links from the previous release and update the version number in URLs. If contributors want you to change something in the instructions, they would address you directly. Contact technical writers for the link to release notes.
 
-1. Create a new sheet in the [Release Testing](https://docs.google.com/spreadsheets/d/1ty3OciQzgzv0GagTG2Dku9os2AfMupbGNf8QxjHaO88)
+9. Create a new sheet in the [Release Testing](https://docs.google.com/spreadsheets/d/1ty3OciQzgzv0GagTG2Dku9os2AfMupbGNf8QxjHaO88)
    >**NOTE:** Make sure that you are not signed in with your SAP Google Account
-   2. Open the `Main`
+   1. Open the `Main`
    2. Click the `generate new sheet` button
-   2. it will ask you for a github personal access token. This token does not need any additional scopes!
+   3. it will ask you for a github personal access token. This token does not need any additional scopes!
 
 
 > **NOTE:** After the Kyma release is complete, proceed with [releasing Kyma CLI](/guidelines/releases-guidelines/03-kyma-cli-release-process.md).
