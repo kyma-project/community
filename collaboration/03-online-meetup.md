@@ -3,7 +3,7 @@ title: 🌱 Kyma Community Meetup
 ---
 
 This virtual event is designed for end users and is a space for our community to meet, get to know each other, and learn more about Kyma. We plan to have at least one demo in every meeting, with allocated time to discuss it in small groups.
-Get the meeting [agenda](https://docs.google.com/document/d/1vWleTon7sJIk0teee4SoVezS4mR3K8TlkvXkgLJwRD8)  to find out what topics are planned for the meeting.
+Get the meeting [agenda](https://docs.google.com/document/d/1vWleTon7sJIk0teee4SoVezS4mR3K8TlkvXkgLJwRD8) to find out what topics are planned for the meeting.
 
 
 ## Contact
