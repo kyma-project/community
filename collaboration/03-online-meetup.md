@@ -9,4 +9,4 @@ Get the meeting [agenda](https://docs.google.com/document/d/1vWleTon7sJIk0teee4S
 ## Contact
 
 * [Slack #community-meetup](https://kyma-community.slack.com/archives/CBP7LKRPS)
-* [Google Calendar](https://calendar.google.com/calendar/embed?src=3abtp9lh0mn3iiov5772jftccc%40group.calendar.google.com&ctz=Europe%2FBerlin) ( add to your [📅](https://calendar.google.com/calendar/ical/3abtp9lh0mn3iiov5772jftccc%40group.calendar.google.com/public/basic.ics) )
+* [Google Calendar](https://calendar.google.com/calendar/embed?src=3abtp9lh0mn3iiov5772jftccc%40group.calendar.google.com&ctz=Europe%2FBerlin) (grab the invitation here: [📅](https://calendar.google.com/calendar/ical/3abtp9lh0mn3iiov5772jftccc%40group.calendar.google.com/public/basic.ics) )
