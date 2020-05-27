@@ -29,7 +29,7 @@ In the context of the following document we will use:
 
 #### Perform initial checks
 
-1. Check if the master branch contains any PR-images:
+Check if the master branch contains any PR-images:
    
    ```bash
    git grep -e 'version:\s*[Pp][Rr]-.*' -e 'image:.*:[Pp][Rr]-.*' --before-context=2 -r resources
@@ -41,7 +41,7 @@ In the context of the following document we will use:
 
 >**NOTE:** a release branch needs to be created per new major / minor version. Patch releases and release candidates do not have a dedicated release branch
 
-1. Create a release branch in the `kyma` repository. The name of this branch should follow the `release-{major}.{minor}` pattern, such as `release-1.4`.
+Create a release branch in the `kyma` repository. The name of this branch should follow the `release-{major}.{minor}` pattern, such as `release-1.4`.
 
    ```bash
     git fetch upstream
@@ -49,7 +49,7 @@ In the context of the following document we will use:
     git push -u upstream release-{RELEASE}
     ```
 
-   > **NOTE:** If you don't create the Kyma release branch at this point and add a  `post-rel{RELEASE_VERSION_SHORT}-kyma-release-candidate` post-submit job to the `test-infra` master, then pushing anything to the Kyma release branch, creating or rebasing the branch, triggers a new GitHub release.
+   > **CAUTION:** If you don't create the Kyma release branch at this point and add a  `post-rel{RELEASE_VERSION_SHORT}-kyma-release-candidate` post-submit job to the `test-infra` master, then pushing anything to the Kyma release branch, creating or rebasing the branch, triggers a new GitHub release.
 
 ### kyma-project/test-infra
 
@@ -71,7 +71,7 @@ In the context of the following document we will use:
 
 >**NOTE:** a release branch needs to be created per new major / minor version. Patch releases and release candidates do not have a dedicated release branch. If this branch already exists this step will be skipped.
 
-1. Create a release branch in the `test-infra` repository
+Create a release branch in the `test-infra` repository
 
     ```bash
     git fetch upstream
@@ -87,16 +87,16 @@ Follow these steps to release another Kyma version. For every patch release or r
 ### kyma-project/test-infra
 
 
-1. Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on a release branch contains the correct version to be created. If you define a release candidate version, a pre-release is created.  
+Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on a release branch contains the correct version to be created. If you define a release candidate version, a pre-release is created.  
 
-    2. Make sure the `RELEASE_VERSION` file includes just a single line, **without the newline character at the end**:  
+1. Make sure the `RELEASE_VERSION` file includes just a single line, **without the newline character at the end**:  
 
         ```bash
         echo -n {RELEASE_VERSION} > prow/RELEASE_VERSION
         ```
     
-    2. If you had to change the RELEASE_VERSION create a PR to update it on the release branch
-    2. Once this PR is merged you can proceed
+1. If you had to change the RELEASE_VERSION create a PR to update it on the release branch
+1. Once this PR is merged you can proceed
 
 
 
@@ -219,4 +219,4 @@ Follow these steps to release another Kyma version. For every patch release or r
 
 ## Post Release Tasks
 
-1. Update `prow/RELEAS_VERSION` in the master branch of the `test-infra` repository with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `1.4.2`, then change the version to `1.5.0-rc1`.
+Update `prow/RELEAS_VERSION` in the master branch of the `test-infra` repository with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `1.4.2`, then change the version to `1.5.0-rc1`.
