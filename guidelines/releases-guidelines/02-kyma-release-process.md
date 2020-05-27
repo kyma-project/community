@@ -43,13 +43,13 @@ Check if the master branch contains any PR-images:
 
 Create a release branch in the `kyma` repository. The name of this branch should follow the `release-{major}.{minor}` pattern, such as `release-1.4`.
 
-   ```bash
+    ```bash
     git fetch upstream
     git checkout --no-track -b release-{RELEASE} upstream/master
     git push -u upstream release-{RELEASE}
     ```
 
-   > **CAUTION:** If you don't create the Kyma release branch at this point and add a  `post-rel{RELEASE_VERSION_SHORT}-kyma-release-candidate` post-submit job to the `test-infra` master, then pushing anything to the Kyma release branch, creating or rebasing the branch, triggers a new GitHub release.
+>**CAUTION:** If you don't create the Kyma release branch at this point and add a  `post-rel{RELEASE_VERSION_SHORT}-kyma-release-candidate` post-submit job to the `test-infra` master, then pushing anything to the Kyma release branch, creating or rebasing the branch, triggers a new GitHub release.
 
 ### kyma-project/test-infra
 
