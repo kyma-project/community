@@ -5,9 +5,9 @@ The purpose of this working group is to:
 * Facilitate collaboration with external contributors.
 * Discuss and work on installation and upgrade improvements/aspects:
 	* Process 
-		* Design - how it should look like
-		* Complexity - how many manual steps needs to be done
-		* Time consumption - how long does it take
+		* Design - rethink how it should look like
+		* Complexity - straightforward and declarative apporach with limitted manual steps
+		* Time consumption - focus on how long does it take to install/upgrade kyma
 	* Configuration and maintenance 
 	* Observability 
 	* Parallell processing with dependency management	
@@ -27,7 +27,7 @@ The purpose of this working group is to:
 * [Tuesday at 16:00 CEST](https://calendar.google.com/calendar/ical/3abtp9lh0mn3iiov5772jftccc%40group.calendar.google.com/public/basic.ics)
 * [Slack](https://kyma-community.slack.com/messages/CD2HJ0E78)
 * Frequency: weekly 
-* [Meeting notes and agenda](https://docs.google.com/document/d/19lM_wDLXRV-8rQQ7ZxFtasr6kgGRCwUm0kJaAK3NNik/edit)
+* [Meeting notes and agenda](https://docs.google.com/document/d/19lM_wDLXRV-8rQQ7ZxFtasr6kgGRCwUm0kJaAK3NNik)
 * [Meeting recordings]() - To be discussed
 
 ## Leaders
