@@ -19,7 +19,7 @@ The purpose of this working group is to:
 ## Contact
 
 * [Slack](https://kyma-community.slack.com/archives/CD2HJ0E78)
-* [Google group](https://groups.google.com/forum/#!forum/{group_name})
+* [Google group](https://groups.google.com/forum/#!forum/kyma-sig-core)
 * [Open community issues and pull requests](https://github.com/kyma-project/community/labels/area%2Finstallation) - separate label wg-installation to be discussed.
 
 ## Meetings
