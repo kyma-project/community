@@ -1,0 +1,49 @@
+#  Installation Working Group
+
+The purpose of this working group is to:
+* Publicly represent Kyma installation topics.
+* Facilitate collaboration with external contributors.
+* Discuss and work on installation and upgrade improvements/aspects:
+	* Process 
+		* Design - how it should look like
+		* Complexity - how many manual steps needs to be done
+		* Time consumption - how long does it take
+	* Configuration and maintenance 
+	* Observability 
+	* Parallell processing with dependency management	
+	* Pluggability of components
+	* Error handling and debugging
+	* Underlying technology
+
+
+## Contact
+
+* [Slack](https://kyma-community.slack.com/archives/CD2HJ0E78)
+* [Google group](https://groups.google.com/forum/#!forum/{group_name})
+* [Open community issues and pull requests](https://github.com/kyma-project/community/labels/area%2Finstallation) - separate label wg-installation to be discussed.
+
+## Meetings
+
+* [Tuesday at 16:00 CEST](https://calendar.google.com/calendar/ical/3abtp9lh0mn3iiov5772jftccc%40group.calendar.google.com/public/basic.ics)
+* [Slack](https://kyma-community.slack.com/messages/CD2HJ0E78)
+* Frequency: weekly 
+* [Meeting notes and agenda](https://docs.google.com/document/d/19lM_wDLXRV-8rQQ7ZxFtasr6kgGRCwUm0kJaAK3NNik/edit)
+* [Meeting recordings]() - To be discussed
+
+## Leaders
+
+* [Piotr Bochyński](https://github.com/pbochynski)
+* [Piotr Mścichowski](https://github.com/piotrmsc)
+* More leaders will be elected afer the first meeting if proposed
+
+## Members
+
+* [wg-installation](https://github.com/orgs/kyma-project/teams/wg-installation)
+
+## Owned repositories
+
+* WG does not own (yet) any repository
+
+## Reference
+
+Read the [**Special Interest Group & Working Group**](#special-interest-group-working-group-special-interest-group-working-group) document to learn about the structure of Kyma SIGs and WGs.
