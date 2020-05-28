@@ -12,6 +12,8 @@ Content Strategy is a term that relates to the approach you need to to define be
 - How the reader will navigate through the content
 - What the review process is
 
+test
+
 ## Location and context
 
 One of the main Kyma principles is to care about the developer experience. That is why the Kyma content developers' focus is to provide documentation in the context of the developer, inside the cluster, and in the Console UI. This makes it easy to access and its version corresponds to the given cluster version.
