@@ -213,7 +213,7 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
 
 9. Create a new sheet in the [Release Testing](https://docs.google.com/spreadsheets/d/1ty3OciQzgzv0GagTG2Dku9os2AfMupbGNf8QxjHaO88)
    >**NOTE:** Make sure that you are not signed in with your SAP Google Account
-   1. Open the **Main** sheet
+   1. Open the **Main** sheet.
    2. Click the **generate new sheet** button.
    3. You will be asked for a GitHub personal access token. This token does not need any additional scopes!
 
