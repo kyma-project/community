@@ -23,7 +23,7 @@ In the context of the following document we will use:
 
 ## Preparation
 
-> **NOTE:** This section applies only to new major and minor versions. If you release a patch, skip the preparation and go to the [**Steps**](#kyma-release-process-kyma-release-process-steps) section
+> **NOTE:** This section applies only to new major and minor versions. If you release a patch, skip the preparation and go to the [**Steps**](#kyma-release-process-kyma-release-process-steps) section.
 
 ### kyma-project/kyma
 
@@ -39,7 +39,7 @@ Check if the master branch contains any PR-images:
 
 #### Create a release branch
 
->**NOTE:** a release branch needs to be created per new major / minor version. Patch releases and release candidates do not have a dedicated release branch
+>**NOTE:** a release branch needs to be created per new major / minor version. Patch releases and release candidates do not have a dedicated release branch.
 
 Create a release branch in the `kyma` repository. The name of this branch should follow the `release-{major}.{minor}` pattern, such as `release-1.4`.
 
@@ -55,7 +55,7 @@ Create a release branch in the `kyma` repository. The name of this branch should
 
 #### Update the jobs on master branch
 
-1. Create a PR to `master` containing the following changes to create the new job definitions
+1. Create a PR to `master` containing the following changes to create the new job definitions:
 
     1. Open `templates/config.yaml`
     2. Add the new release to `global.releases`. Remove the oldest release on the list.
@@ -65,7 +65,7 @@ Create a release branch in the `kyma` repository. The name of this branch should
       * For release tests using `GetKymaReleasesUntil` or `jobsuite.Until` with a release that is no longer supported, remove the part of the test which includes the method.
     5. If tests are green, commit all jobs.
 
-2. Once the PR is merged to master you can proceed
+2. Once the PR is merged to master you can proceed.
 
 #### Create a release branch
 
@@ -82,7 +82,7 @@ Create a release branch in the `test-infra` repository
 
 ## Steps
 
-Follow these steps to release another Kyma version. For every patch release or release candidate these steps need to be executed.
+Follow these steps to release another Kyma version. Execute these steps for every patch release or release candidate.
 
 ### kyma-project/test-infra
 
@@ -95,8 +95,8 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
         echo -n {RELEASE_VERSION} > prow/RELEASE_VERSION
         ```
     
-2. If you had to change the RELEASE_VERSION create a PR to update it on the release branch
-3. Once this PR is merged you can proceed
+2. If you had to change the RELEASE_VERSION, create a PR to update it on the release branch.
+3. Once this PR is merged you can proceed.
 
 
 
@@ -212,12 +212,12 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
 9. Create a new sheet in the [Release Testing](https://docs.google.com/spreadsheets/d/1ty3OciQzgzv0GagTG2Dku9os2AfMupbGNf8QxjHaO88)
    >**NOTE:** Make sure that you are not signed in with your SAP Google Account
    1. Open the **Main** sheet
-   2. Click the `generate new sheet` button
-   3. it will ask you for a github personal access token. This token does not need any additional scopes!
+   2. Click the **generate new sheet** button.
+   3. You will be asked for a GitHub personal access token. This token does not need any additional scopes!
 
 
 > **NOTE:** After the Kyma release is complete, proceed with [releasing Kyma CLI](/guidelines/releases-guidelines/03-kyma-cli-release-process.md).
 
-## Post Release Tasks
+## Post-release tasks
 
 Update `prow/RELEAS_VERSION` in the `master` branch of the `test-infra` repository with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `1.4.2`, then change the version to `1.5.0-rc1`.
