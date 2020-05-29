@@ -13,13 +13,15 @@ A Kyma release includes the following items:
 * A release branch
 
 ## Definitions
-In the context of the following document we will use:
 
-  - **RELEASE**: Release number in the form `{major}.{minor}` (e.g. `1.13`)
-  - **RELEASE_VERSION**: Release version in the form `{major}.{minor}.{patch}` (eg. `1.13.0`) or `{major}.{minor}.{patch}-rc{candidate}` (eg. `1.13.0-rc1`) 
-  - **RELEASE_VERSION_SHORT**: Release version in the form `{major}{minor}` (e.g. `113`)
-  - **RELEASE_VERSION_DASH**: Release version in the form `{major}-{minor}-{patch}` (e.g. `1-13-0`) or `{major}-{minor}-{patch}-rc{candidate}` (e.g. `1-13-0-rc1`)
+The table below includes placeholders used throughout this document. When executing the commands, replace each of them with a suitable release number or version. 
 
+| Placeholders | Description | Pattern | Example| 
+|-------|------------|---------|--------|
+| `RELEASE` | Release number| `{major}.{minor}` | `1.13`|
+| `RELEASE_VERSION` | Release version | `{major}.{minor}.{patch}` or `{major}.{minor}.{patch}-rc{candidate}` | `1.13.0` or `1.13.0-rc1` |
+| `RELEASE_VERSION_SHORT` | Release version without additional characters | `{major}{minor}` | `113`|
+| `RELEASE_VERSION_DASH` | Release version with dashes |`{major}-{minor}-{patch}` or `{major}-{minor}-{patch}-rc{candidate}`| `1-13-0` or `1-13-0-rc1`|
 
 ## Preparation
 
