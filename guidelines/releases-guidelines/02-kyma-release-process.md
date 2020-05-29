@@ -211,7 +211,7 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
 
 9. Create a new sheet in the [Release Testing](https://docs.google.com/spreadsheets/d/1ty3OciQzgzv0GagTG2Dku9os2AfMupbGNf8QxjHaO88)
    >**NOTE:** Make sure that you are not signed in with your SAP Google Account
-   1. Open the `Main`
+   1. Open the **Main** sheet
    2. Click the `generate new sheet` button
    3. it will ask you for a github personal access token. This token does not need any additional scopes!
 
@@ -220,4 +220,4 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
 
 ## Post Release Tasks
 
-Update `prow/RELEAS_VERSION` in the master branch of the `test-infra` repository with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `1.4.2`, then change the version to `1.5.0-rc1`.
+Update `prow/RELEAS_VERSION` in the `master` branch of the `test-infra` repository with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `1.4.2`, then change the version to `1.5.0-rc1`.
