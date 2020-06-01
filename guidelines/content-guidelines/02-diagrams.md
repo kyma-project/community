@@ -11,9 +11,9 @@ To convey the intended message effectively in a diagram, follow these basic prin
 
 For details on how to format diagrams and their elements in Kyma documents, see the particular document sections.
 
-## Reference
+## Descriptions
 
-Always add an alternative text that concisely describes the content or function of the diagram you are referring to. The alt text:
+Always add an alternative (alt) texts that concisely describes the content or function of the diagram you are referring to. The alt text:
 
 - Helps to maintain accessibility for every visitor, including people with vision impairments.
 - Appears in place of a diagram if it fails to load.

@@ -13,9 +13,9 @@ Follow these basic principles when you place screenshots in your content:
 
 For details on how to format screenshots and their elements in Kyma documents, see the particular document sections.
 
-## Reference
+## Descriptions
 
-Always add an alternative text that concisely describes the content or function of the image you are referring to. The alt text:
+Always add an alternative (alt) text that concisely describes the content or function of the image you are referring to. The alt text:
 
 - Helps to maintain accessibility for every visitor, including people with vision impairments.
 - Appears in place of an image if it fails to load.
