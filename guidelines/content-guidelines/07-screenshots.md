@@ -21,7 +21,7 @@ Always add an alternative text that concisely describes the content or function 
 - Appears in place of an image if it fails to load.
 - Improves the SEO of the website by enabling crawlers to index the image contents better.
 
-    ⛔️ `![](./assets/create-bucket.png)`
+    ⛔️ `![](./assets/create-bucket.png)` 
     ✅ `![Create a bucket](./assets/create-bucket.png)`
 
 ## Tool
