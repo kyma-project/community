@@ -15,7 +15,7 @@ For details on how to format diagrams and their elements in Kyma documents, see 
 
 Always add an alternative text that concisely describes the content or function of the diagram you are referring to. The alt text:
 
-- Helps to maintain accessibility for every visitor (including people with vision impairments).
+- Helps to maintain accessibility for every visitor, including people with vision impairments.
 - Appears in place of a diagram if it fails to load.
 - Improves the SEO of the website by enabling crawlers to index the diagram contents better.
 
