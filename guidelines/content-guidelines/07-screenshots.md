@@ -5,6 +5,7 @@ title: Screenshots
 As someone once said, a picture is worth a thousand words. Therefore, whenever you need to illustrate operations performed on the UI, use a screenshot to convey the information visually.
 
 Follow these basic principles when you place screenshots in your content:
+
 - Do not overuse screenshots and limit visual noise.
 - Do not use directional indicators such as "above" and "below" to refer to screenshots. Instead, include a brief introduction before each screenshot that describes its purpose and any necessary details.
 - Do not include the mouse pointer in your screenshots, unless it shows a function related to the content.
@@ -12,13 +13,24 @@ Follow these basic principles when you place screenshots in your content:
 
 For details on how to format screenshots and their elements in Kyma documents, see the particular document sections.
 
+## Reference
+
+Always add an alternative text that concisely describes the content or function of the image you are referring to. The alt text:
+
+- Helps to maintain accessibility for every visitor (including people with vision impairments).
+- Appears in place of an image if it fails to load.
+- Improves the SEO of the website by enabling crawlers to index the image contents better.
+
+    ⛔️ `![](./assets/create-bucket.png)`
+    ✅ `![Create a bucket](./assets/create-bucket.png)`
+
 ## Tool
 
 Adjust or capture your screenshots using any tool that outputs high quality images, such as [Snagit](https://www.techsmith.com/screen-capture.html), [Lightshot](https://app.prntscr.com), or [Monosnap](https://www.monosnap.com/welcome). The desired image format is SVG, but PNG and JPG formats are also acceptable.
 Use an online tool such as [TinyPNG](https://tinypng.com/) to compress images and limit the size of each image to 1MB, or smaller.
 If you want to control the size of the image relative to the screen size, use one of these standard percentages: 100%, 75%, 50%, or 25%.
 
->**NOTE:** The images keep their original aspect ratio on both the Console UI and the `kyma-project.io` website. However, the maximum width on the website is 860px. Any image that exceeds that limit is resized to the maximum width. 
+>**NOTE:** The images keep their original aspect ratio on both the Console UI and the `kyma-project.io` website. However, the maximum width on the website is 860px. Any image that exceeds that limit is resized to the maximum width.
 
 Name the file as `{screenshot-name}` and save it under the corresponding `assets` directory.
 
