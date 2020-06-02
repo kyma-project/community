@@ -10,19 +10,95 @@ If you use a third-party CRD, apply the [location and file name](#custom-resourc
 
 ## Location and file name
 
-Place the Kyma CRDs in the Helm chart folder of the component that they are part of.
+Place the Kyma CRDs in the `cluster-essentials` Helm chart folder uder `files` subdirectory.
 
-When creating file names use the `names.singular` format, for example `crontab.crd.yaml`. To learn more, see the [Naming](#custom-resource-definition-custom-resource-definition-naming) section. Include other names or terms in the file names to differentiate them from other CRDs, for example `crontab-v1.crd.yaml`. In the file name, do not include words which appear in the file's path. For example, `resources/core/charts/batch/templates/batch-crontab.crd.yaml` is not compliant because the word "batch" appears both in the file name and the path.
+When creating file names use the `names.singular` format, for example `crontab.crd.yaml`. To learn more, see the [Naming](#custom-resource-definition-custom-resource-definition-naming) section. Include other names or terms in the file names to differentiate them from other CRDs, for example `crontab-v1.crd.yaml`. In the file name, do not include words which appear in the file's path. For example, `resources/cluster-essentials/files/batch-crontab.crd.yaml` is not compliant because the word "batch" appears both in the file name and the path.
 
-To differentiate CRDs from other types of Kubernetes resource files and enable their installation during the eventual initialization step, end the file names with the `.crd.yaml` suffix and include `CustomResourceDefinition` or any subset of it. If a file name consists of several words, separate them with hyphens, and do not use capital letters.
+To differentiate CRDs from other types of Kubernetes resource files end the file names with the `.crd.yaml` suffix and include `CustomResourceDefinition` or any subset of it. If a file name consists of several words, separate them with hyphens, and do not use capital letters.
 
-You might encounter a problem when attempting to use a CRD in the Helm chart which the CRD is part of because it is not yet available in the Kubernetes cluster.
+You might encounter a problem when attempting to use a CRD in the Helm chart because it is not yet available in the Kubernetes cluster.
+
+## CRD ConfigMap
+
+During the initial phase of installation/upgrade, CRDs are mounted in `ConfigMap`. 
+For convenience maps bundle component CRDs and are located in the same file the installation/upgrade `Job` is located in (`resources/cluster-essentials/templates`).
+This approach may change in the future.
+
+This is an example of `ConfigMap` containing mounted CRD
+
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: {{ .Release.Namespace }}
+  name: {{ .Release.Name }}-crd-core
+  annotations:
+    "helm.sh/hook": "pre-install, pre-upgrade"
+    "helm.sh/hook-weight": "1"
+    "helm.sh/hook-delete-policy": "before-hook-creation, hook-succeeded"
+data:
+  idppresets.authentication.kyma-project.io: |-
+{{.Files.Get "files/crd-idppreset.yaml" | printf "%s" | indent 4}}
+```
+
+## CRD install/upgrade
+
+In order to make installation process more efficient and maintanable we've decided to decouple `CustomResourceDefinitions` from charts and store them in `cluster-essentials` component.
+All the CRDs are `installed/updated` in first step, with a kubernetes `Job` that is triggered by Helm's [pre-install/pre-upgrade](https://helm.sh/docs/topics/charts_hooks/#the-available-hooks) hook.
+Right now each component has it's own job however this approach may change in the future. For convenience files containing `Job` definitions start with `crd-init-` prefix followed by the name of the component.
+
+This is an example of install/upgrade job
+
+`resources/cluster-essentials/templates/crd-init-core.yaml`:
+
+```
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Release.Name }}-init-core
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    helm.sh/hook-delete-policy: before-hook-creation, hook-succeeded"
+    helm.sh/hook: "pre-upgrade, pre-install"
+    helm.sh/hook-weight: "10"
+  labels:
+    job: {{ .Release.Name }}-init-core
+spec:
+  backoffLimit: 1
+  template:
+    metadata:
+      name: {{ .Release.Name }}-init-core
+      annotations:
+        sidecar.istio.io/inject: "false"
+      labels:
+        job: {{ .Release.Name }}-init-core
+    spec:
+      serviceAccountName: {{ .Release.Name }}-crd-init
+      restartPolicy: Never
+      containers:
+      - name: job
+        image: {{ .Values.jobs.image.repository }}:{{ .Values.jobs.image.tag }}
+        terminationMessagePolicy: "FallbackToLogsOnError"
+        volumeMounts:
+        - name: crd-core
+          mountPath: /etc/crd
+          readOnly: true
+        command:
+        - /bin/bash
+        - -c
+        - timeout 60s bash -c 'until kubectl apply -f /etc/crd/idppresets.authentication.kyma-project.io; do sleep 2; done'
+      volumes:
+      - name: crd-core
+        configMap:
+          name: {{ .Release.Name }}-crd-core
+```
+
 
 ## Consideration
 
 This is an example of a CRD:
 
-`resources/core/charts/batch/templates/crontab.crd.yaml`:
+`resources/cluster-essentials/files/crontab.crd.yaml`:
 
 ```
 apiVersion: apiextensions.k8s.io/v1beta1
