@@ -11,6 +11,17 @@ To convey the intended message effectively in a diagram, follow these basic prin
 
 For details on how to format diagrams and their elements in Kyma documents, see the particular document sections.
 
+## Alternative text
+
+Always add an alternative (alt) text that concisely describes the content or function of the diagram you are referring to. The alt text:
+
+- Helps to maintain accessibility for every visitor, including people with vision impairments.
+- Appears in place of a diagram if it fails to load.
+- Improves the SEO of the website by enabling crawlers to index the diagram contents better.
+
+    ⛔️ `![](./assets/create-bucket.svg)`  
+    ✅ `![Create a bucket](./assets/create-bucket.svg)`  
+
 ## Tool
 
 Use [draw.io](https://www.draw.io) as a recommended tool. Export the diagram as an SVG and save it under the corresponding `assets` directory.
@@ -19,7 +30,7 @@ Use [draw.io](https://www.draw.io) as a recommended tool. Export the diagram as 
 
 Keep your diagram reasonable in size. Preview the image at full size to see how it fits into the whole document. The diagram should be large enough to be legible and convey the intended message, but should not dominate the whole document. To demonstrate large concepts, simplify the diagram or divide it into a few smaller ones.
 
->**NOTE:** The diagrams keep their original aspect ratio on both the Console UI and the `kyma-project.io` website. However, the maximum width on the website is 860px. Any diagram that exceeds that limit is resized to the maximum width. 
+>**NOTE:** The diagrams keep their original aspect ratio on both the Console UI and the `kyma-project.io` website. However, the maximum width on the website is 860px. Any diagram that exceeds that limit is resized to the maximum width.
 
 ## Background
 
