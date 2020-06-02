@@ -84,6 +84,8 @@ If you find a bug to report or you want to propose a new feature, go to the GitH
 
 See the [**Issues workflow**](/governance/#issues-workflow-issues-workflow) document for details on issues triage and processing workflow.
 
+> **NOTE:** Security - The community is relentless about Kyma security. To report a sensitive security issue, send an email with details directly to [kyma-security@googlegroups.com](mailto:kyma-security@googlegroups.com) instead of using a public issue tracker.
+
 ## Maintenance rules
 
 Every maintainer reviews each contribution according to the rules listed in this document.
