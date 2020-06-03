@@ -3,16 +3,16 @@
 ## Matthew - Cloud Native Software Engineer
 
 ![Mathew](assets/matthew.png =100x)
-
-|                             |                                                                                                 |
+<img src="assets/matthew.png" width="120">
+| | |
 | --------------------------- | ----------------------------------------------------------------------------------------------- |
-| Name                        | **Matthew**                                                                                     |
-| Age                         | 26                                                                                              |
-| Ocupation                   | Cloud Native Engineer at ...                                                                    |
-| Characteristic              | Open source ethusiast and contributor. You will meet him at the webinars and community meetups. |
-| K8S experience              | :book: :book: :book: :book: :book: :book:                                                       |
-| Accountability/Decisiveness | :sweat: :sweat:                                                                                 |
-| Slogans                     | _Is there a CLI for that?_, _Can I automate it?_                                                |
+| Name | **Matthew** |
+| Age | 26 |
+| Ocupation | Cloud Native Engineer at ... |
+| Characteristic | Open source ethusiast and contributor. You will meet him at the webinars and community meetups. |
+| K8S experience | :book: :book: :book: :book: :book: :book: |
+| Accountability/Decisiveness | :sweat: :sweat: |
+| Slogans | _Is there a CLI for that?_, _Can I automate it?_ |
 
 ### GAINS
 
@@ -29,6 +29,7 @@
 ## Brandon - Tech Lead
 
 ![Nicolas](assets/nicolas.png =100x)
+<img src="assets/nicolas.png" width="120">
 
 |                             |                                                 |
 | --------------------------- | ----------------------------------------------- |
