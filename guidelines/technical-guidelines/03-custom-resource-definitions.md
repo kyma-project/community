@@ -10,21 +10,24 @@ If you use a third-party CRD, apply the [location and file name](#custom-resourc
 
 ## Location and file name
 
-Place the Kyma CRDs in the `cluster-essentials` Helm chart folder uder `files` subdirectory.
+Place the Kyma CRDs in the `cluster-essentials` Helm chart folder under the `files` subdirectory.
+
 
 When creating file names use the `names.singular` format, for example `crontab.crd.yaml`. To learn more, see the [Naming](#custom-resource-definition-custom-resource-definition-naming) section. Include other names or terms in the file names to differentiate them from other CRDs, for example `crontab-v1.crd.yaml`. In the file name, do not include words which appear in the file's path. For example, `resources/cluster-essentials/files/batch-crontab.crd.yaml` is not compliant because the word "batch" appears both in the file name and the path.
 
-To differentiate CRDs from other types of Kubernetes resource files end the file names with the `.crd.yaml` suffix and include `CustomResourceDefinition` or any subset of it. If a file name consists of several words, separate them with hyphens, and do not use capital letters.
+To differentiate CRDs from other types of Kubernetes resource files, end the file names with the `.crd.yaml` suffix and include the CRD name or any subset of it. If a file name consists of several words, separate them with hyphens, and do not use capital letters.
+
 
 You might encounter a problem when attempting to use a CRD in the Helm chart because it is not yet available in the Kubernetes cluster.
 
 ## CRD ConfigMap
 
-During the initial phase of installation/upgrade, CRDs are mounted in `ConfigMap`. 
-For convenience maps bundle component CRDs and are located in the same file the installation/upgrade `Job` is located in (`resources/cluster-essentials/templates`).
-This approach may change in the future.
+During the initial phase of installation or upgrade, CRDs are mounted in a ConfigMap. 
 
-This is an example of `ConfigMap` containing mounted CRD
+ConfigMaps bundle component-specific CRDs and are located in the same file as the installation and upgrade Job, which is `resources/cluster-essentials/templates`.
+
+This is an example of a ConfigMap containing a mounted CRD:
+
 
 ```
 apiVersion: v1
@@ -41,13 +44,18 @@ data:
 {{.Files.Get "files/crd-idppreset.yaml" | printf "%s" | indent 4}}
 ```
 
-## CRD install/upgrade
+## CRD installation and upgrade
 
-In order to make installation process more efficient and maintanable we've decided to decouple `CustomResourceDefinitions` from charts and store them in `cluster-essentials` component.
-All the CRDs are `installed/updated` in first step, with a kubernetes `Job` that is triggered by Helm's [pre-install/pre-upgrade](https://helm.sh/docs/topics/charts_hooks/#the-available-hooks) hook.
-Right now each component has it's own job however this approach may change in the future. For convenience files containing `Job` definitions start with `crd-init-` prefix followed by the name of the component.
 
-This is an example of install/upgrade job
+In order to make the installation process more efficient and maintainable, we've decided to decouple CRDs from charts and store them in the `cluster-essentials` component.
+
+All the CRDs are installed or updated in the first step, with a Kubernetes Job that is triggered by the Helm's [pre-install and pre-upgrade](https://helm.sh/docs/topics/charts_hooks/#the-available-hooks) hooks.
+
+Each component has its own Job. Files containing Job definitions start with the `crd-init-` prefix followed by the name of the component.
+
+
+This is an example of an installation and upgrade Job:
+
 
 `resources/cluster-essentials/templates/crd-init-core.yaml`:
 
