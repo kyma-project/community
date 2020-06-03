@@ -2,17 +2,17 @@
 
 ## Matthew - Cloud Native Software Engineer
 
-<!-- ![Mathew](assets/matthew.png =100x) -->
-<img src="/assets/matthew.png" width="40%">
-| | |
+![Mathew](assets/matthew.png)
+
+|                             |                                                                                                 |
 | --------------------------- | ----------------------------------------------------------------------------------------------- |
-| Name | **Matthew** |
-| Age | 26 |
-| Ocupation | Cloud Native Engineer at ... |
-| Characteristic | Open source ethusiast and contributor. You will meet him at the webinars and community meetups. |
-| K8S experience | :book: :book: :book: :book: :book: :book: |
-| Accountability/Decisiveness | :sweat: :sweat: |
-| Slogans | _Is there a CLI for that?_, _Can I automate it?_ |
+| Name                        | **Matthew**                                                                                     |
+| Age                         | 26                                                                                              |
+| Ocupation                   | Cloud Native Engineer at ...                                                                    |
+| Characteristic              | Open source ethusiast and contributor. You will meet him at the webinars and community meetups. |
+| K8S experience              | :book: :book: :book: :book: :book: :book:                                                       |
+| Accountability/Decisiveness | :sweat: :sweat:                                                                                 |
+| Slogans                     | _Is there a CLI for that?_, _Can I automate it?_                                                |
 
 ### GAINS
 
@@ -28,18 +28,17 @@
 
 ## Brandon - Tech Lead
 
-<!-- ![Nicolas](assets/nicolas.png =100x) -->
-<img src="/assets/nicolas.png" width="40%">
+![Nicolas](assets/nicolas.png)
 
-|                             |                                                 |
-| --------------------------- | ----------------------------------------------- |
-| Name                        | **Nicolas**                                     |
-| Age                         | 33                                              |
-| Ocupation                   | Tech Lead at ...                                |
-| Characteristic              |                                                 |
-| K8S experience              | :book: :book: :book: :book:                     |
-| Accountability/Decisiveness | :sweat: :sweat: :sweat: :sweat: :sweat: :sweat: |
-| Slogans                     |                                                 |
+|                             |                                                                                                                   |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Name                        | **Nicolas**                                                                                                       |
+| Age                         | 33                                                                                                                |
+| Ocupation                   | Tech Lead at ...                                                                                                  |
+| Characteristic              | Nicolas wants to bring innovation into a project. He needs to convince his boss and his team to go for CNCF tools |
+| K8S experience              | :book: :book: :book: :book:                                                                                       |
+| Accountability/Decisiveness | :sweat: :sweat: :sweat: :sweat: :sweat: :sweat:                                                                   |
+| Slogans                     |                                                                                                                   |
 
 ### GAINS
 
