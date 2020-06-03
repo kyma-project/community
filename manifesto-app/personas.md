@@ -2,8 +2,8 @@
 
 ## Matthew - Cloud Native Software Engineer
 
-![Mathew](assets/matthew.png =100x)
-<img src="assets/matthew.png" width="120">
+<!-- ![Mathew](assets/matthew.png =100x) -->
+<img src="/assets/matthew.png" width="40%">
 | | |
 | --------------------------- | ----------------------------------------------------------------------------------------------- |
 | Name | **Matthew** |
@@ -28,8 +28,8 @@
 
 ## Brandon - Tech Lead
 
-![Nicolas](assets/nicolas.png =100x)
-<img src="assets/nicolas.png" width="120">
+<!-- ![Nicolas](assets/nicolas.png =100x) -->
+<img src="/assets/nicolas.png" width="40%">
 
 |                             |                                                 |
 | --------------------------- | ----------------------------------------------- |
