@@ -21,7 +21,7 @@ A Kyma CLI release consists of:
 
    ```bash
    git fetch upstream
-   git checkout -b {RELEASE_NAME} upstream/master
+   git checkout --no-track -b {RELEASE_NAME} upstream/master
    git push upstream {RELEASE_NAME}
    ```
 
@@ -33,9 +33,21 @@ A Kyma CLI release consists of:
 
    ```bash
    git tag -a {RELEASE_VERSION} -m "Release {RELEASE_VERSION}"
-   git push upstream {RELEASE_VERSION}
    ```
 
     where {RELEASE_VERSION} could be `1.4.0-rc1`, `1.4.0-rc2` or `1.4.0`.
 
-5. Push the tag to trigger a postsubmit job that creates the GitHub release. Validate if the release is available under [releases](https://github.com/kyma-project/cli/releases).
+5. Create the new version
+   1. Push the tag to trigger a postsubmit job that creates the GitHub release. Validate if the release is available under [releases](https://github.com/kyma-project/cli/releases).
+
+      ```bash
+      git push upstream {RELEASE_VERSION}
+      ```
+
+   2. Verify the [Prow Status](https://status.build.kyma-project.io/?repo=kyma-project%2Fcli&type=postsubmit) of the matching revision ({RELEASE_VERSION}).
+   3. If the post submit job failed, you can re-trigger it by removing the tag from upstream and pushing it again.
+      
+      ```bash
+      git push --delete upstream {RELEASE_VERSION}
+      git push upstream {RELEASE_VERSION}
+      ```
