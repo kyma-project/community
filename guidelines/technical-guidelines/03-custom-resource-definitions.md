@@ -24,7 +24,8 @@ You might encounter a problem when attempting to use a CRD in the Helm chart bec
 
 During the initial phase of installation or upgrade, CRDs are mounted in a ConfigMap. 
 
-ConfigMaps bundle component-specific CRDs and are located in the same file as the installation and upgrade Job, which is `resources/cluster-essentials/templates`.
+ConfigMaps bundle component-specific CRDs and are located in the same file as the installation and upgrade Job, which is [`resources/cluster-essentials/templates`](https://github.com/kyma-project/kyma/tree/master/resources/cluster-essentials/templates).
+
 
 This is an example of a ConfigMap containing a mounted CRD:
 
