@@ -21,15 +21,18 @@ The following personas are fictional characters, which we defined in order to re
 
 ### GAINS
 
-- :green_heart: Build rapid K8S applications in any language
-- :green_heart: A thin "multi-cloud" runtime for my application
-- :green_heart: Replace some of the pre-configured components ( batteries) as needed
+- :green_heart: I want to write my K8S application using my favorite IDE and store it in github.
+- :green_heart: I want to build K8S applications in any language, really fast.
+- :green_heart: I need a thin "multi-cloud" runtime for my application.
+- :green_heart: I need a super easy, automated deployment directly from my application's source code.
 - :green_heart: Help me understand Kyma API
-- :green_heart:
 
 ### PAINS
 
 - :broken_heart: I hate doing backward engineering in order to understand how thigs work together
+- :broken_heart: Dont make me use code editors in the web.
+- :broken_heart: I dont want to be locked with any tools. Let me replace or completely opt out from any of the pre-configured components
+- :broken_heart: I hate tons of configuration
 
 ## Nicolas - Tech Lead
 
