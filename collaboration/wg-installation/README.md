@@ -40,10 +40,20 @@ The purpose of this working group is to:
 
 * [wg-installation](https://github.com/orgs/kyma-project/teams/wg-installation)
 
+#Exit criteria
+
+* Group will work out technical concept and way to install/upgrade kyma meeting all the given requirements mentioned [here](https://github.com/kyma-project/kyma/issues/8664)
+* Members will be inactive or interest will significantly drop down making it very hard to drive and implement topics
+* All the goals will be met/completed
+* Global product priorities will change
+
 ## Owned repositories
 
 * WG does not own (yet) any repository
 
 ## Reference
 
-Read the [**Special Interest Group & Working Group**](#special-interest-group-working-group-special-interest-group-working-group) document to learn about the structure of Kyma SIGs and WGs.
+* Working Group proposal PR : https://github.com/kyma-project/community/issues/464
+
+
+* Read the [**Special Interest Group & Working Group**](../01-sig-and-wg.md) document to learn about the structure of Kyma SIGs and WGs.
