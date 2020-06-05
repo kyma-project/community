@@ -40,7 +40,7 @@ The purpose of this working group is to:
 
 * [wg-installation](https://github.com/orgs/kyma-project/teams/wg-installation)
 
-#Exit criteria
+# Exit criteria
 
 * Group will work out technical concept and way to install/upgrade kyma meeting all the given requirements mentioned [here](https://github.com/kyma-project/kyma/issues/8664)
 * Members will be inactive or interest will significantly drop down making it very hard to drive and implement topics
