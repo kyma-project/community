@@ -80,8 +80,11 @@ All Kyma SIG and WG members agree to these rules:
 ## Roles
 
 When you join a SIG or a WG, you perform at least one of the following roles:
+
 * **Group member** - The member is active in one or more areas of the project and can perform a wide variety of roles within the organization.
-* **Group leader** - SIGs and WGs must nominate at least two group leaders at any given time. Group leaders make sure that the group topics are relevant to the Kyma goal and [the roadmap](https://kyma-project.io/roadmap/). They facilitate the group meetings, maintain, and communicate the meeting minutes. Group leaders record tasks identified by the group as issues in the respective issue tracker. They are responsible for smooth communication and coordination with other SIGs and the [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee).
+
+* **Group leader** - SIGs and WGs must nominate at least two group leaders at any given time. Group leaders make sure that the group topics are relevant to the Kyma goal and [the roadmap](https://kyma-project.io/roadmap/). They facilitate the group meetings, maintain, and communicate the meeting minutes. Group leaders record tasks identified by the group as issues in the respective issue tracker. They are responsible for smooth communication and coordination with other SIGs and the [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee). If the SIG or WG members lack capability or there are no volunteers to deal with an urgent issue, leaders identify the affected component and contact the Scrum Master and the Product Owner ([Capability Owner](https://github.com/kyma-project/community/blob/master/capabilities/README.md)) of the given team to negotiate ownership of the issue for the next release.
+
 * **Group representative** - It is a specific group member who represents the group to other groups or the [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee). This is either the group's leader or any other group member. The choice depends on the topic and the place where the group is represented.
 
 ## Close a SIG or WG
