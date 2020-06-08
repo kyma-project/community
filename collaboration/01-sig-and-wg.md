@@ -2,7 +2,7 @@
 title: Special Interest Group & Working Group
 ---
 
-This section describes SIGs and WGs, and their place in the Kyma organization. Read about the organization details on such groups' set-up and closure. 
+This section describes SIGs and WGs, and their place in the Kyma organization. Read about the organization details on such groups' set-up and closure.
 
 ## SIG - Special Interest Group
 
@@ -22,7 +22,7 @@ The cross-project activities can require a creation of a new WG to address them 
 
 The Kyma project is open-source and is available on [GitHub](https://github.com/kyma-project). Although external contributions to the Kyma open-source project are welcome through the public GitHub project, the Kyma teams within the organization largely drive the Kyma development.
 
-To ensure the continuous growth and the "scale-as-you-go-and-need" approach when extending the community, the current structure and governance bodies of Kyma SIGs and WGs are very simple. However, the structure of the community can change depending on the community needs. The SIG Community and the [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee) support the governance of Kyma and a single SIG Core represents it publicly. The aim of the SIG Core is to facilitate the collaboration with external contributors.
+To ensure the continuous growth and the "scale-as-you-go-and-need" approach when extending the community, the current structure and governance bodies of Kyma SIGs and WGs are very simple. However, the structure of the community can change depending on the community needs. The [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee) supports the governance of Kyma and a single SIG Core represents it publicly. The aim of the SIG Core is to facilitate the collaboration with external contributors.
 
 ### List of SIGs
 
@@ -40,16 +40,17 @@ To see the list of closed SIGs and WGs, check the [archive](https://github.com/k
 
 ## Organize new SIGs and WGs
 
-To propose a new SIG or WG, go to the [issue tracker](https://github.com/kyma-project/community/issues) in the `community` repository and create a new issue from the **SIG or WG proposal** template. The template contains general information explaining the purpose, the goals of the group, and the criteria for the group assessment and evaluation. Provide the required details and submit the issue. If necessary, contact SIG Community leaders to verify it.
+To propose a new SIG or WG, go to the [issue tracker](https://github.com/kyma-project/community/issues) in the `community` repository and create a new issue from the **SIG or WG proposal** template. The template contains general information explaining the purpose, the goals of the group, and the criteria for the group assessment and evaluation. Provide the required details and submit the issue. If necessary, contact [Kyma Steering Committee leaders](/governance/#kyma-steering-committee-kyma-steering-committee-members) to verify it.
 
 >**NOTE:** You must have at least five candidates for the new SIG or WG to submit the proposal.
 
 The proposal revision process is as follows:
-* The SIG Community discusses the SIG or the WG proposal with the authors and in parallel informs the Kyma Steering Committee of the proposal.
+* The Kyma Steering Committee discusses the SIG or the WG proposal with the authors.
 * All involved parties decide whether the topic requires a SIG or a WG collaboration or if you can address the topic by creating one or more issues in GitHub and pairing the sprints of several teams for several iterations.
-* The SIG Community can suggest a public discussion of the proposal to make sure it meets the community needs and raises enough interest.
-* The SIG Community can also suggest the revision of the SIG and the WG topics or object to a given group creation and provide the authors of the proposal with the reason for the objection. The SIG Community can also advise on other ways to address the topics suggested in the proposal.  
-* When informed by the SIG Community, the [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee) agrees, during the weekly meeting, to the creation of the new SIG or WG, suggests the revision of the group's topics, or objects to the group creation stating the reason for the objection.
+* The whole discussion over the proposed SIG or WG takes place transparently in the proposed issue. The community has three working days to provide their feedback and leave comments in the proposal, before it is discussed by the Kyma Steering Committee. 
+* The Kyma Steering Committee can additionally suggest a public discussion of the proposal to make sure it meets the community needs and raises enough interest.
+* The Kyma Steering Committee can also suggest the revision of the SIG and the WG topics or object to a given group creation and provide the authors of the proposal with the reason for the objection. The Kyma Steering Committee can also advise on other ways to address the topics suggested in the proposal.  
+* The [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee) agrees during the weekly meeting to the creation of the new SIG or WG, suggests the revision of the group's topics, or objects to the group creation stating the reason for the objection.
 
 Once the SIG or the WG receives an approval for the group creation, the authors of the proposal arrange the appropriate communication channels. The process is as follows:
  * Create a new folder in this directory following the `[sig|wg]-{shortname}` naming pattern.
@@ -66,7 +67,6 @@ To standardize the Special Interest Group and Working Group efforts, create maxi
 ## General guidelines
 
 All Kyma SIG and WG members agree to these rules:
-* Follow the Kyma [Manifesto](https://kyma-project.github.io/community/).
 * Follow the official project guidelines defined in the [**Contributing rules**](/contributing/#contributing-rules-contributing-rules) repository.
 * Meet regularly in the agreed frequency, for at least 30 minutes.
 * Keep up-to-date meeting notes in a given SIG's folder.
@@ -81,17 +81,17 @@ All Kyma SIG and WG members agree to these rules:
 
 When you join a SIG or a WG, you perform at least one of the following roles:
 * **Group member** - The member is active in one or more areas of the project and can perform a wide variety of roles within the organization.
-* **Group leader** - SIGs and WGs must nominate at least two group leaders at any given time. Group leaders make sure that the group topics are relevant to the Kyma goal and [the roadmap](https://kyma-project.io/roadmap/). They facilitate the group meetings, maintain, and communicate the meeting minutes. Group leaders record tasks identified by the group as issues in the respective issue tracker. They are responsible for smooth communication and coordination with other SIGs, the [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee), and the SIG Community.
+* **Group leader** - SIGs and WGs must nominate at least two group leaders at any given time. Group leaders make sure that the group topics are relevant to the Kyma goal and [the roadmap](https://kyma-project.io/roadmap/). They facilitate the group meetings, maintain, and communicate the meeting minutes. Group leaders record tasks identified by the group as issues in the respective issue tracker. They are responsible for smooth communication and coordination with other SIGs and the [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee).
 * **Group representative** - It is a specific group member who represents the group to other groups or the [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee). This is either the group's leader or any other group member. The choice depends on the topic and the place where the group is represented.
 
 ## Close a SIG or WG
-When a SIG or WG has completed its goals or there is an explicit request to conclude further work, it has to be closed. The request to close a SIG or WG may come from group members, group leaders, SIG Community or the [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee). To close a SIG or WG, group leaders need to:
+When a SIG or WG has completed its goals or there is an explicit request to conclude further work, it has to be closed. The request to close a SIG or WG may come from group members, group leaders, or the [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee). To close a SIG or WG, group leaders need to:
 
 * Create an issue and accompanying pull request (PR) to close a SIG or WG and add the **decision** label to them.
 * Close the remaining open issues of the group or reassign them accordingly, with appropriate comment.
 * [Delete the group label](https://help.github.com/en/articles/deleting-a-label) used on the issues or PRs.
-* Remove the group from the [list of SIGs](#list-of-sigs) or [list of WGs](#list-of-wgs) in this `README.md` file. 
+* Remove the group from the [list of SIGs](#list-of-sigs) or [list of WGs](#list-of-wgs) in this `README.md` file.
 * Move the group folder (together with all subfolders and files) to the [archive](https://github.com/kyma-project/community/tree/master/collaboration/archive) folder.
-* Add a `CLOSURE.md` file to the archived group folder. Write it in a form of a blog post which informs about the group's outcomes, achievements, challenges, and lessons learned. Remember to provide links to the relevant material. The PR undergoes a standard review by group members, the [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee), and is subsequently closed. 
-* Publish the content of the `CLOSURE.md` in a form of a blog post on the Kyma website or link to it. 
+* Add a `CLOSURE.md` file to the archived group folder. Write it in a form of a blog post which informs about the group's outcomes, achievements, challenges, and lessons learned. Remember to provide links to the relevant material. The PR undergoes a standard review by group members, the [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee), and is subsequently closed.
+* Publish the content of the `CLOSURE.md` in a form of a blog post on the Kyma website or link to it.
 * Communicate the closure of a given SIG or WG through the SIG Core.
