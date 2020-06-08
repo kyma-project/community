@@ -47,9 +47,9 @@ To propose a new SIG or WG, go to the [issue tracker](https://github.com/kyma-pr
 The proposal revision process is as follows:
 * The Kyma Steering Committee discusses the SIG or the WG proposal with the authors.
 * All involved parties decide whether the topic requires a SIG or a WG collaboration or if you can address the topic by creating one or more issues in GitHub and pairing the sprints of several teams for several iterations.
-* The whole discussion over the proposed SIG or WG takes place transparently in the proposed issue. The community has three working days to provide their feedback and leave comments in the proposal, before it is discussed by the Kyma Steering Committee. 
-* The Kyma Steering Committee can additionally suggest a public discussion of the proposal to make sure it meets the community needs and raises enough interest.
-* The Kyma Steering Committee can also suggest the revision of the SIG and the WG topics or object to a given group creation and provide the authors of the proposal with the reason for the objection. The Kyma Steering Committee can also advise on other ways to address the topics suggested in the proposal.  
+* The whole discussion over the new SIG or WG takes place transparently in the proposed issue. The community has three working days to provide their feedback and leave comments in the proposal, before it is discussed by the Kyma Steering Committee.
+* The Kyma Steering Committee can additionally suggest a public discussion over the proposal to make sure it meets the community needs and raises enough interest.
+* The Kyma Steering Committee can suggest the revision of the SIG and the WG topics or object to a given group creation and provide the authors of the proposal with the reason for the objection. They can also advise on other ways to address the topics suggested in the proposal.  
 * The [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee) agrees during the weekly meeting to the creation of the new SIG or WG, suggests the revision of the group's topics, or objects to the group creation stating the reason for the objection.
 
 Once the SIG or the WG receives an approval for the group creation, the authors of the proposal arrange the appropriate communication channels. The process is as follows:
