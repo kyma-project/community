@@ -24,7 +24,7 @@ The Kyma project is open-source and is available on [GitHub](https://github.com/
 
 To ensure the continuous growth and the "scale-as-you-go-and-need" approach when extending the community, the current structure and governance bodies of Kyma SIGs and WGs are very simple. However, the structure of the community can change depending on the community needs. The [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee) supports the governance of Kyma and a single SIG Core represents it publicly. The aim of the SIG Core is to facilitate the collaboration with external contributors.
 
-### Open SIGs and WGs
+## Open SIGs and WGs
 
 The list of public SIGs in Kyma includes:
 
@@ -34,7 +34,7 @@ The list of public WGs in Kyma includes:
 
 * Installation WG
 
-### Closed SIGs and WGs
+## Closed SIGs and WGs
 
 To see the list of closed SIGs and WGs, check the [`archive`](https://github.com/kyma-project/community/tree/master/collaboration/archive) folder.
 
