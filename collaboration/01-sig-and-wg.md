@@ -32,7 +32,7 @@ The list of public SIGs in Kyma includes:
 
 The list of public WGs in Kyma includes:
 
-* Installation WG
+* [Installation WG](https://github.com/kyma-project/community/tree/master/collaboration/wg-installation/README.md)
 
 ## Closed SIGs and WGs
 
