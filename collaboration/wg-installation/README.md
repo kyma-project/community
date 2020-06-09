@@ -6,7 +6,7 @@ The purpose of this working group is to:
 * Discuss and work on the installation and upgrade improvements/aspects:
 	* Process 
 		* Design - rethink how it should look like
-		* Complexity - straightforward and declarative apporach with limitted manual steps
+		* Complexity - straightforward and declarative approach with limited manual steps
 		* Time consumption - focus on how long does it take to install/upgrade kyma
 	* Configuration and maintenance 
 	* Observability 
