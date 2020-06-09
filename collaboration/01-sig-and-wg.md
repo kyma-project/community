@@ -22,7 +22,7 @@ The cross-project activities can require the creation of a new WG to address the
 
 The Kyma project is open-source and is available on [GitHub](https://github.com/kyma-project). Although external contributions to the Kyma open-source project are welcome through the public GitHub project, the Kyma teams within the organization largely drive the Kyma development.
 
-To ensure the continuous growth and the "scale-as-you-go-and-need" approach when extending the community, the current structure and governance bodies of Kyma SIGs and WGs are very simple. However, the structure of the community can change depending on the community needs. The [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee) supports the governance of Kyma and a single SIG Core represents it publicly. The aim of the SIG Core is to facilitate the collaboration with external contributors.
+To ensure the continuous growth and the "scale-as-you-go-and-need" approach when extending the community, the current structure and governance bodies of Kyma SIGs and WGs are very simple. However, the structure of the community can change depending on the community needs. The [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee) supports the governance of Kyma and the single Core SIG represents it publicly. The aim of the Core SIG is to facilitate the collaboration with external contributors.
 
 ## Open SIGs and WGs
 
@@ -97,4 +97,4 @@ When a SIG or WG has completed its goals or there is an explicit request to conc
 * Move the group folder (together with all subfolders and files) to the [archive](https://github.com/kyma-project/community/tree/master/collaboration/archive) folder.
 * Add a `CLOSURE.md` file to the archived group folder. Write it in the form of a blog post that informs about the group's outcomes, achievements, challenges, and lessons learned. Remember to provide links to the relevant material. The PR undergoes a standard review by group members, the Kyma Steering Committee, and is subsequently closed.
 * Publish the content of the `CLOSURE.md` in the form of a blog post on the Kyma website or link to it.
-* Communicate the closure of a given SIG or WG through the SIG Core.
+* Communicate the closure of a given SIG or WG through the Core SIG.
