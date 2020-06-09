@@ -3,7 +3,7 @@
 The purpose of this working group is to:
 * Publicly represent Kyma installation topics.
 * Facilitate collaboration with external contributors.
-* Discuss and work on installation and upgrade improvements/aspects:
+* Discuss and work on the installation and upgrade improvements/aspects:
 	* Process 
 		* Design - rethink how it should look like
 		* Complexity - straightforward and declarative apporach with limitted manual steps
