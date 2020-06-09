@@ -15,7 +15,6 @@ The purpose of this working group is to:
 	* Error handling and debugging
 	* Underlying technology
 
-
 ## Contact
 
 * [Slack](https://kyma-community.slack.com/archives/CD2HJ0E78)
@@ -54,6 +53,5 @@ The purpose of this working group is to:
 ## Reference
 
 * Working Group proposal PR : https://github.com/kyma-project/community/issues/464
-
 
 * Read the [**Special Interest Group & Working Group**](../01-sig-and-wg.md) document to learn about the structure of Kyma SIGs and WGs.
