@@ -7,10 +7,10 @@ The purpose of this working group is to:
 	* Process 
 		* Design - rethink how it should look like
 		* Complexity - straightforward and declarative approach with limited manual steps
-		* Time consumption - focus on how long does it take to install/upgrade kyma
+		* Time consumption - focus on how long it takes to install/upgrade Kyma
 	* Configuration and maintenance 
 	* Observability 
-	* Parallell processing with dependency management	
+	* Parallel processing with dependency management	
 	* Pluggability of components
 	* Error handling and debugging
 	* Underlying technology
@@ -20,7 +20,7 @@ The purpose of this working group is to:
 
 * [Slack](https://kyma-community.slack.com/archives/CD2HJ0E78)
 * [Google group](https://groups.google.com/forum/#!forum/kyma-sig-core)
-* [Open community issues and pull requests](https://github.com/kyma-project/community/labels/area%2Finstallation) - separate label wg-installation to be discussed.
+* [Open community issues and pull requests](https://github.com/kyma-project/community/labels/area%2Finstallation) - a separate **wg-installation** label to be discussed.
 
 ## Meetings
 
@@ -34,22 +34,22 @@ The purpose of this working group is to:
 
 * [Piotr Bochyński](https://github.com/pbochynski)
 * [Piotr Mścichowski](https://github.com/piotrmsc)
-* More leaders will be elected afer the first meeting if proposed
+* If proposed, more leaders will be elected after the first meeting
 
 ## Members
 
 * [wg-installation](https://github.com/orgs/kyma-project/teams/wg-installation)
 
-# Exit criteria
+## Exit criteria
 
-* Group will work out technical concept and way to install/upgrade kyma meeting all the given requirements mentioned [here](https://github.com/kyma-project/kyma/issues/8664)
-* Members will be inactive or interest will significantly drop down making it very hard to drive and implement topics
-* All the goals will be met/completed
-* Global product priorities will change
+* The group works out the technical concept and the way to install/upgrade Kyma. This concept should meet all the requirements mentioned in the issue describing the [redesign of the kyma-operator](https://github.com/kyma-project/kyma/issues/8664).
+* Members are inactive or interest drops significantly making it very hard to drive and implement topics.
+* All the goals are achieved/completed.
+* There is a change in product priorities.
 
 ## Owned repositories
 
-* WG does not own (yet) any repository
+* The installation working group does not own any repository yet.
 
 ## Reference
 
