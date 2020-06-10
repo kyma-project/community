@@ -36,7 +36,7 @@ decision-making process.
 
 ## Owned repositories
 
-The SIG Core owns all code repositories in the Kyma organization.
+The Core SIG owns all code repositories in the Kyma organization.
 
 ## Reference
 
