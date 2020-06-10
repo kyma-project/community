@@ -10,8 +10,8 @@ Linking is a great tool to use to incorporate a lot of content into your documen
 - Choose the link text carefully. Do not link entire phrases which become overemphatic. Instead, choose the noun, such as an article or specification within the phrase that helps the reader understand where the navigation leads them. Use descriptive text for the search engines to understand your content. Avoid certain [vague words](https://web.dev/link-text/#how-the-lighthouse-link-text-audit-fails) like `this`, `that`, or `here`.
 
     Example:  
-    ⛔️ "For more information, see **this** guide." or "Read more **here**."   
-    ✅ "For more information, see the **installation guide**."  
+     ⛔️ "For more information, see **this** guide." or "Read more **here**."   
+     ✅ "For more information, see the **installation guide**."  
 
 To create cross-reference links between documents in the `kyma/docs` folder, follow the guidelines below.
 

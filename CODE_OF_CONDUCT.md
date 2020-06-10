@@ -1,3 +1,3 @@
 # Code of Conduct
 
-To learn about the rules we follow and the values we cherish in this project, read our [Code of Conduct](/contributing/01-code-of-conduct.md).
+Each contributor and maintainer of this project agrees to follow the [community Code of Conduct](/contributing/01-code-of-conduct.md) that relies on the CNCF Code of Conduct. Read it to learn about the agreed standards of behavior, shared values that govern our community, and details on how to report any suspected Code of Conduct violations.
