@@ -1,3 +1,3 @@
 # Contributing
 
-To contribute to this project, follow the rules from the [this](./contributing/02-contributing.md) document.
+To contribute to this project, follow our [guidelines and rules](./contributing/02-contributing.md).

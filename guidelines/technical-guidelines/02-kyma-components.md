@@ -8,7 +8,7 @@ The [`components`](https://github.com/kyma-project/kyma/tree/master/components) 
 
 Every Kyma component resides in a dedicated folder which contains its sources and a `README.md` file. This file provides instructions on how to build and develop the component.
 
-The component's name consists of a term describing the component, followed by the **component type**. The first part of the name may differ depending on the component's purpose. 
+The component's name consists of a term describing the component, followed by the **component type**. The first part of the name may differ depending on the component's purpose.
 This table lists the available types:
 
 | type|description|example|
@@ -24,4 +24,4 @@ This table lists the available types:
 
 ## Development
 
-Follow [this](https://github.com/kyma-project/kyma/blob/master/resources/README.md) development guide when you add a new component to the `kyma` repository.
+Follow the [development guide](https://github.com/kyma-project/kyma/blob/master/resources/README.md) when you add a new component to the `kyma` repository.

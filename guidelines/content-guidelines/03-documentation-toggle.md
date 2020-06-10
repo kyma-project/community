@@ -30,7 +30,7 @@ See the example:
 ``` markdown
 <summary>
 From release
-</summary> 
+</summary>
 ```
 
 * Leave a blank line after the `</summary>` tag. Only this way the content can render.
@@ -93,7 +93,7 @@ This section contains exemplary uses of the toggle in Markdown documents.
   For the list of all components available to install see the `installer-cr.yaml.tpl` file.
   For the list of the default installation overrides see the `installer-config-local.yaml.tpl` file.
   Other configuration values are defined directly in the configuration of the respective components.
-  
+
   >**CAUTION:** The default configuration uses tested and recommended settings. Change them at your own risk.
   </details>
   <details>
@@ -125,7 +125,7 @@ The code renders on `kyma-project.io` as follows:
       From release
       </summary>
 
-      When you install Kyma locally from a release, follow [this](https://kyma-project.io/docs/master/root/kyma/#installation-install-kyma-locally) guide.
+      When you install Kyma locally from a release, follow the [guide](https://kyma-project.io/docs/master/root/kyma/#installation-install-kyma-locally).
       Ensure that you created the local Kubernetes cluster with `10240Mb` memory and `30Gb` disk size.
 
       ```bash
@@ -205,7 +205,7 @@ The code renders on `kyma-project.io` as follows:
   <summary label="gardener">
   Gardener
   </summary>
-  
+
   ...
   </details>
 </div>

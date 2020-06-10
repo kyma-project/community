@@ -10,7 +10,7 @@ Go to the **Guidelines** section to read about rules and tips for providing [con
 
 ## Documentation types
 
-Go to [this](/guidelines/templates/#overview-overview) document to see an overview of document templates used in specific Kyma repositories. The templates themselves are collected in the [`resources`](https://github.com/kyma-project/community/tree/master/guidelines/templates/resources/) subfolder in the `community` repository.
+Read an [overview](/guidelines/templates/#overview-overview) of document templates used in specific Kyma repositories. The templates themselves are collected in the [`resources`](https://github.com/kyma-project/community/tree/master/guidelines/templates/resources/) subfolder in the `community` repository.
 
 Extend the list whenever you define a new template for other document types. Make sure to update one of the tables in the [**Document types templates**](/guidelines/templates/#document-types-templates-document-types-templates) document after you add new templates to the [`resources`](https://github.com/kyma-project/community/tree/master/guidelines/templates/resources/) subfolder.
 
