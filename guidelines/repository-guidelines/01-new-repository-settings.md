@@ -65,7 +65,7 @@ To activate the Prow webook:
 ```
 kubectl get secret hmac-token -o jsonpath="{.data.hmac}" | base64 --decode
 ```
-2. The Prow admin enters the `hmac-token` into the **Secret** field. 
+2. The Prow admin enters the `hmac-token` into the **Secret** field.
 
 ![Prow Webhook](./assets/prow-webhook.png)
 
@@ -89,7 +89,7 @@ If you define any governance-related [Prow job](https://github.com/kyma-project/
 
 [Define labels](https://help.github.com/en/articles/creating-a-label) for the new repository so you could use them in issues and pull requests. Follow the naming convention and color array used in other repositories such as [`kyma`](https://github.com/kyma-project/kyma/labels).
 
-> **TIP:** You can copy labels from the existing repository to the new repository using [this](https://github.com/jvandemo/copy-github-labels-cli) GitHub CLI tool.
+> **TIP:** You can copy labels from the existing repository to the new repository using the [GitHub CLI tool](https://github.com/jvandemo/copy-github-labels-cli).
 
 ## Add the repository to teams
 Add the repository to both [developers](https://github.com/orgs/kyma-project/teams/developers/repositories) and [developers-triage](https://github.com/orgs/kyma-project/teams/developers-triage/repositories) teams.

@@ -1,3 +1,3 @@
 # Code of Conduct
 
-To read about the Code of Conduct of this project, go to the [this](/contributing/01-code-of-conduct.md) document.
+To learn about the rules we follow and the values we cherish in this project, read our [Code of Conduct](/contributing/01-code-of-conduct.md).

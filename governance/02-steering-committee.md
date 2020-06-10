@@ -8,7 +8,7 @@ The purpose of the Kyma Steering Committee is to:
 * With the help of the community, refine the governance model as needed
 * Agree to the new SIG or WG proposals or raise concerns about them
 
-## The size of the committee 
+## The size of the committee
 
 To make sure the committee can always make a majority decision, we have three members. The ultimate goal is to have five members (at least two [individual](/contributing/#contributing-rules-contributing-rules-agreements-and-licenses) ones) and never four.
 
@@ -18,7 +18,7 @@ Whenever the committee is involved and needs to make a decision, the decision is
 
 ## Members
 
-[This](https://github.com/orgs/kyma-project/teams/kyma-steering-committee/members) is a GitHub team that lists all current members of the Kyma Steering Committee:
+See the list of all current members of the Kyma Steering Committee:
 
 * [Ralf Hofmann](https://github.com/ormos) (SAP)
 * [Piotr Bochynski](https://github.com/pbochynski) (SAP)
@@ -31,7 +31,7 @@ We are aware that at the moment Kyma is steered by a single company, SAP. Our go
 The committee is open for any contributors, [individual or corporate](/contributing/#contributing-rules-contributing-rules-agreements-and-licenses). These are the rules we apply:
 
 * In case of individual contributors, you need to be an active [Kyma maintainer](#kyma-working-model-kyma-working-model-process-for-becoming-a-maintainer-aka-codeowner) for at least 2 major components.
-* A single company can have only one employee in the committee. It is up to the company to suggest a candidate that will acts as a representative of active maintainers for the given company. The representative, however, does not have to be an active maintainer himself/herself. 
+* A single company can have only one employee in the committee. It is up to the company to suggest a candidate that will acts as a representative of active maintainers for the given company. The representative, however, does not have to be an active maintainer himself/herself.
 * In the case one company has one representative in the committee already, and another member starts working for this company, one of the members must resign once there are other candidates to replace him/her.
 
 Once you fulfill one of the requirements, create a GitHub issue in the [community](https://github.com/kyma-project/community) repository and describe:
