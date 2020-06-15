@@ -44,8 +44,8 @@ The following personas are fictional characters, which we defined in order to re
 | Age                         | 36                                                                                                                                                                                                      |
 | Ocupation                   | Tech Lead (Technology evangelist) at **PureJoy**                                                                                                                                                        |
 | Characteristic              | Nicolas wants to bring innovation to products developed by **PureJoy**. He understands benefits of using opinionated tools from CNCF landscape. He needs to convince his boss and his development team. |
-| K8S experience              | :book: :book: :book: :book:                                                                                                                                                                             |
-| Accountability/Decisiveness | :sweat: :sweat: :sweat: :sweat: :sweat: :sweat:                                                                                                                                                         |
+| K8S experience (1-6)             | :book: :book: :book: :book:                                                                                                                                                                             |
+| Accountability/Decisiveness (1-6) | 💪 💪 💪 💪 💪 💪                                                                                                                                                    |
 | Slogans                     | _I know what I want.. not yet sure how to achieve it_                                                                                                                                                   |
 
 ### GAINS
