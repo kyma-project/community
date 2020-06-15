@@ -15,8 +15,8 @@ The following personas are fictional characters, which we defined in order to re
 | Age                         | 26                                                                                              |
 | Ocupation                   | Cloud Native Engineer at **PureJoy**                                                            |
 | Characteristic              | Open source ethusiast and contributor. You will meet him at the webinars and community meetups. |
-| K8S experience              | :book: :book: :book: :book: :book: :book:                                                       |
-| Accountability/Decisiveness | :sweat: :sweat:                                                                                 |
+| K8S experience (1-6)  | :book: :book: :book: :book: :book: :book:                                                       |
+| Accountability/Decisiveness (1-6) | 💪  💪                                                                                  |
 | Slogans                     | _Is there a CLI for that?_, _Can I automate it?_                                                |
 
 ### GAINS
