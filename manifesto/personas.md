@@ -29,9 +29,9 @@ The following personas are fictional characters that we defined in order to repr
 
 ### PAINS
 
-- :broken_heart: I hate doing backward engineering in order to understand how things work together
+- :broken_heart: I hate doing backward engineering in order to understand how things work together.
 - :broken_heart: Don't make me use code editors on the web.
-- :broken_heart: I don't want to be locked with any tools. Let me replace or completely opt out of any of the preconfigured components
+- :broken_heart: I don't want to be locked with any tools. Let me replace or completely opt out of any of the preconfigured components.
 - :broken_heart: I hate tons of configuration.
 
 ## Nicolas - Tech Lead
@@ -46,7 +46,7 @@ The following personas are fictional characters that we defined in order to repr
 | Characteristics              | Nicolas wants to bring innovation to products developed by **PureJoy**. He understands the benefits of using opinionated tools from the CNCF landscape. He needs to convince his boss and his development team. |
 | Kubernetes experience (1-6)             | :book: :book: :book: :book:                                                                                                                                                                             |
 | Accountability/Decisiveness (1-6) | 💪 💪 💪 💪 💪 💪                                                                                                                                                    |
-| Slogans                     | _I know what I want.. not yet sure how to achieve it._                                                                                                                                                   |
+| Slogans                     | _I know what I want... not yet sure how to achieve it._                                                                                                                                                   |
 
 ### GAINS
 
