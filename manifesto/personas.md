@@ -50,7 +50,7 @@ The following personas are fictional characters that we defined in order to repr
 
 ### GAINS
 
-- :green_heart: I need a comprehensive set of opinionated tools. (CNCF-approved, recognized by the community).
+- :green_heart: I need a comprehensive set of opinionated tools (CNCF-approved, recognized by the community).
 - :green_heart: I need certainty that Kyma uses industry standards.
 - :green_heart: I need a trial version of Kyma before I can recommend it.
 - :green_heart: I don't want to take extra care about security/monitoring/tracing...
