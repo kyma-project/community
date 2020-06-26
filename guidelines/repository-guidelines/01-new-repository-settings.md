@@ -81,6 +81,10 @@ To activate the ZenHub webhook:
 
 ![Zenhub webhook 2](./assets/zenhub-webhook-2.png)
 
+## Update CLA assistant configuration
+
+Ask [kyma-project owner](https://github.com/orgs/kyma-project/people) to add newly created repozitory to the https://cla-assistant.io/.
+
 ## Add a milv file
 
 If you define any governance-related [Prow job](https://github.com/kyma-project/test-infra/blob/master/prow/jobs/) for the new repository to validate documentation links, you must add a `milv.config.yaml` file at the root of the repository. [See](https://github.com/kyma-project/test-infra/blob/master/milv.config.yaml) an example of the milv file.
