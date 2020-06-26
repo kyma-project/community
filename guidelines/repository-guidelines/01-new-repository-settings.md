@@ -83,7 +83,7 @@ To activate the ZenHub webhook:
 
 ## Update CLA assistant configuration
 
-Ask [kyma-project owner](https://github.com/orgs/kyma-project/people) to add newly created repozitory to the https://cla-assistant.io/.
+Ask a [kyma-project owner](https://github.com/orgs/kyma-project/people) to add the newly created repository to the [Contributor License Agreement](https://cla-assistant.io/) (CLA).
 
 ## Add a milv file
 
