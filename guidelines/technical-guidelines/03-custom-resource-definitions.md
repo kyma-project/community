@@ -12,96 +12,32 @@ If you use a third-party CRD, apply the [location and file name](#custom-resourc
 
 Place the Kyma CRDs in the `cluster-essentials` Helm chart folder under the `files` subdirectory.
 
+When creating file names, use the **names:singular** format, for example `crontab.crd.yaml`.
 
-When creating file names use the `names.singular` format, for example `crontab.crd.yaml`. To learn more, see the [Naming](#custom-resource-definition-custom-resource-definition-naming) section. Include other names or terms in the file names to differentiate them from other CRDs, for example `crontab-v1.crd.yaml`. In the file name, do not include words which appear in the file's path. For example, `resources/cluster-essentials/files/batch-crontab.crd.yaml` is not compliant because the word "batch" appears both in the file name and the path.
+> **NOTE:** To learn more about the CRD content, see the [Naming](#custom-resource-definition-custom-resource-definition-naming) section.
+
+Include other names or terms in the file names to differentiate them from other CRDs, for example `crontab-v1.crd.yaml`. In the file name, do not include words which appear in the file's path. For example, `/resources/cluster-essentials/templates/resources-crontab.crd.yaml` is not compliant because the word "resources" appears both in the file name and the path.
 
 To differentiate CRDs from other types of Kubernetes resource files, end the file names with the `.crd.yaml` suffix and include the CRD name or any subset of it. If a file name consists of several words, separate them with hyphens, and do not use capital letters.
-
 
 You might encounter a problem when attempting to use a CRD in the Helm chart because it is not yet available in the Kubernetes cluster.
 
 ## CRD ConfigMap
 
-During the initial phase of installation or upgrade, CRDs are mounted in a ConfigMap. 
-
-ConfigMaps bundle component-specific CRDs and are located in the same file as the installation and upgrade Job, which is [`resources/cluster-essentials/templates`](https://github.com/kyma-project/kyma/tree/master/resources/cluster-essentials/templates).
-
-
-This is an example of a ConfigMap containing a mounted CRD:
-
-
-```
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  namespace: {{ .Release.Namespace }}
-  name: {{ .Release.Name }}-crd-core
-  annotations:
-    "helm.sh/hook": "pre-install, pre-upgrade"
-    "helm.sh/hook-weight": "1"
-    "helm.sh/hook-delete-policy": "before-hook-creation, hook-succeeded"
-data:
-  idppresets.authentication.kyma-project.io: |-
-{{.Files.Get "files/crd-idppreset.yaml" | printf "%s" | indent 4}}
-```
+During the initial phase of installation or upgrade, all CRDs from the `files` subdirectory are bundles by and mounted into one [ConfigMap](https://github.com/kyma-project/kyma/blob/master/resources/cluster-essentials/templates/crd-install-config-map.yaml). This ConfigMap is located under [`resources/cluster-essentials/templates`](https://github.com/kyma-project/kyma/tree/master/resources/cluster-essentials/templates) - in the same location as the installation and upgrade Job, the Service Account that Job uses to apply CRDs, and the ClusterRoleBinding which binds the ServiceAccount with proper ClusterRole for adequate permissions.
 
 ## CRD installation and upgrade
 
-
 In order to make the installation process more efficient and maintainable, we've decided to decouple CRDs from charts and store them in the `cluster-essentials` component.
 
-All the CRDs are installed or updated in the first step, with a Kubernetes Job that is triggered by the Helm's [pre-install and pre-upgrade](https://helm.sh/docs/topics/charts_hooks/#the-available-hooks) hooks.
+All the CRDs are installed or updated in the first step, with the [Kubernetes Job](https://github.com/kyma-project/kyma/blob/master/resources/cluster-essentials/templates/crd-install-job.yaml) that is triggered by the Helm's [pre-install and pre-upgrade](https://helm.sh/docs/topics/charts_hooks/#the-available-hooks) hooks.
 
-Each component has its own Job. Files containing Job definitions start with the `crd-init-` prefix followed by the name of the component.
+There is one unified Job for all components. It starts with the `crd-install-` prefix, same as all other Kubernetes objects that participate in the process of installing and upgrading all CRDs:
 
-
-This is an example of an installation and upgrade Job:
-
-
-`resources/cluster-essentials/templates/crd-init-core.yaml`:
-
-```
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: {{ .Release.Name }}-init-core
-  namespace: {{ .Release.Namespace }}
-  annotations:
-    helm.sh/hook-delete-policy: before-hook-creation, hook-succeeded"
-    helm.sh/hook: "pre-upgrade, pre-install"
-    helm.sh/hook-weight: "10"
-  labels:
-    job: {{ .Release.Name }}-init-core
-spec:
-  backoffLimit: 1
-  template:
-    metadata:
-      name: {{ .Release.Name }}-init-core
-      annotations:
-        sidecar.istio.io/inject: "false"
-      labels:
-        job: {{ .Release.Name }}-init-core
-    spec:
-      serviceAccountName: {{ .Release.Name }}-crd-init
-      restartPolicy: Never
-      containers:
-      - name: job
-        image: {{ .Values.jobs.image.repository }}:{{ .Values.jobs.image.tag }}
-        terminationMessagePolicy: "FallbackToLogsOnError"
-        volumeMounts:
-        - name: crd-core
-          mountPath: /etc/crd
-          readOnly: true
-        command:
-        - /bin/bash
-        - -c
-        - timeout 60s bash -c 'until kubectl apply -f /etc/crd/idppresets.authentication.kyma-project.io; do sleep 2; done'
-      volumes:
-      - name: crd-core
-        configMap:
-          name: {{ .Release.Name }}-crd-core
-```
-
+- [`crd-install-cluster-role-binding.yaml`](https://github.com/kyma-project/kyma/blob/master/resources/cluster-essentials/templates/crd-install-cluster-role-binding.yaml)
+- [`crd-install-config-map.yaml`](https://github.com/kyma-project/kyma/blob/master/resources/cluster-essentials/templates/crd-install-config-map.yaml)
+- [`crd-install-job.yaml`](https://github.com/kyma-project/kyma/blob/master/resources/cluster-essentials/templates/crd-install-job.yaml)
+- [`crd-install-service-account.yaml`](https://github.com/kyma-project/kyma/blob/master/resources/cluster-essentials/templates/crd-install-service-account.yaml)
 
 ## Consideration
 
