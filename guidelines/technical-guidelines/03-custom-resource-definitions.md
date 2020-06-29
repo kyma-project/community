@@ -26,7 +26,7 @@ You might encounter a problem when attempting to use a CRD in the Helm chart bec
 
 During the initial phase of installation or upgrade, all CRDs from the `files` subdirectory are bundles by and mounted into one [ConfigMap](https://github.com/kyma-project/kyma/blob/master/resources/cluster-essentials/templates/crd-install-config-map.yaml). This ConfigMap is located under [`resources/cluster-essentials/templates`](https://github.com/kyma-project/kyma/tree/master/resources/cluster-essentials/templates) - in the same location as the installation and upgrade Job, the Service Account that Job uses to apply CRDs, and the ClusterRoleBinding which binds the ServiceAccount with proper ClusterRole for adequate permissions.
 
-## CRD installation and upgrade
+## CRD installation and upgrade 
 
 In order to make the installation process more efficient and maintainable, we've decided to decouple CRDs from charts and store them in the `cluster-essentials` component.
 
