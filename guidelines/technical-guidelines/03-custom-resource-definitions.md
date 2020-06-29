@@ -10,13 +10,7 @@ If you use a third-party CRD, apply the [location and file name](#custom-resourc
 
 ## Location and file name
 
-Place the Kyma CRDs in the `cluster-essentials` Helm chart folder under the `files` subdirectory.
-
-When creating file names, use the **names:singular** format, for example `crontab.crd.yaml`.
-
-> **NOTE:** To learn more about the CRD standards, see the [Naming](#custom-resource-definition-custom-resource-definition-naming) section.
-
-Include additional names or terms in the file names to differentiate them from other CRDs, for example `crontab-v1.crd.yaml`. In the file name, do not include words which appear in the file path. For example, `/resources/cluster-essentials/templates/resources-crontab.crd.yaml` is not compliant because the word "resources" appears both in the file name and the path.
+Place the Kyma CRDs in the `cluster-essentials` Helm chart folder under the `files` subdirectory, and use singular file names, for example `crontab.crd.yaml`. Include additional names or terms in the file names to differentiate them from other CRDs, for example `crontab-v1.crd.yaml`. In the file name, do not include words which appear in the file path. For example, `/resources/cluster-essentials/templates/resources-crontab.crd.yaml` is not compliant because the word "resources" appears both in the file name and the path.
 
 To differentiate CRDs from other types of Kubernetes resource files, end the file names with the `.crd.yaml` suffix and include the CRD name or any subset of it. If a file name consists of several words, separate them with hyphens, and use only lowercase letters.
 
@@ -26,9 +20,9 @@ During the initial phase of installation or upgrade, all CRDs from the `files` s
 
 ## CRD installation and upgrade
 
-To make the installation process more efficient and maintainable, we decoupled CRDs from charts and store them in the `cluster-essentials` component.
+To make the installation process more efficient and maintainable, we decoupled CRDs from charts and now store them in the `cluster-essentials` component.
 
-All Kyma CRDs are installed or updated at the very beginning by the [Kubernetes Job](https://github.com/kyma-project/kyma/blob/master/resources/cluster-essentials/templates/crd-install-job.yaml) that is triggered by the Helm's [pre-install and pre-upgrade](https://helm.sh/docs/topics/charts_hooks/#the-available-hooks) hooks.
+All Kyma CRDs are installed or updated at the very beginning by the [Kubernetes Job](https://github.com/kyma-project/kyma/blob/master/resources/cluster-essentials/templates/crd-install-job.yaml) that is triggered by Helm's [pre-install and pre-upgrade](https://helm.sh/docs/topics/charts_hooks/#the-available-hooks) hooks.
 
 There is one unified Job for all components. Its name starts with the `crd-install-` prefix, like all other Kubernetes objects that participate in the process of CRD installation and upgrade:
 
