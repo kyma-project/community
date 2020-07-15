@@ -82,7 +82,7 @@ For the serverless component we should start with supporting following commands
 
 2. Testing/debugging it locally
 
-We can introduce commands to test the lambda locally and also if the developer wants to debug the code.
+We can introduce commands to test the lambda locally and also if the developer wants to debug the code. This is useful in case when we have some event payloads that are not easy to recreate.
 
 `kyma lambda debug <lambda-name>`
 
@@ -193,10 +193,38 @@ We should enable kyma cli to be able to configure service catalog too. We should
 
 `kyma service-binding get <service-binding-name> -n <namespace>`
 
+
+#### Service Binding Usage
+
+##### CRUD
+
+`kyma service-binding-usage create <sbu-name> -n namespace --service-binding <service-binding-name> --function <function-name>`
+
+`kyma service-binding-usage create <sbu-name> -n namespace --service-binding <service-binding-name> --microservice <microservice-name>`
+
+`kyma service-binding-usage update <sbu-name> -n namespace --service-binding <service-binding-name> --function <function-name>`
+
+`kyma service-binding-usage update <sbu-name> -n namespace --service-binding <service-binding-name> --microservice <microservice-name>`
+
+`kyma service-binding-usage delete <sbu-name> -n namespace`
+
+`kyma service-binding-usage delete <sbu-name> -n namespace`
+
+`kyma service-binding-usage get <sbu-name> -n namespace`
+
+`kyma service-binding-usage get <sbu-name> -n namespace`
+
 ### Events
 
 We should enable support for events in kyma cli too. We should have support for following commands and implementation abstracted as a separate library:
 
 `kyma event list -n <namespace>`
 
+`kyma event create -n <namespace> subscriptions --topic {"foo":"bar"}`
+`kyma event update -n <namespace> subscriptions --topic {"foo":"bar"}`
+
+`kyma event list -n <namespace> subscriptions`
+
 `kyma event trigger --topic {"foo":"bar"} --data {"foo": "bar"}`
+
+### Aplication Connector
