@@ -9,15 +9,15 @@ The following personas are fictional characters that we defined in order to repr
 
 ![Matthew](assets/matthew.png)
 
-|                             |                                                                                                 |
-| --------------------------- | ----------------------------------------------------------------------------------------------- |
-| Name                        | **Matthew**                                                                                     |
-| Age                         | 26                                                                                              |
-| Occupation                   | Cloud-Native Engineer at **PureJoy**                                                            |
-| Characteristics              | Open source enthusiast and contributor. You will meet him at the webinars and community meetups. |
-| Kubernetes experience (1-6)  | :book: :book: :book: :book: :book: :book:                                                       |
-| Accountability/Decisiveness (1-6) | 💪  💪                                                                                  |
-| Slogans                     | _Is there a CLI for that?_ <br> _Can I automate it?_                                                |
+|                                   |                                                                                                  |
+| --------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Name                              | **Matthew**                                                                                      |
+| Age                               | 26                                                                                               |
+| Occupation                        | Cloud-Native Engineer at **PureJoy**                                                             |
+| Characteristics                   | Open source enthusiast and contributor. You will meet him at the webinars and community meetups. |
+| Kubernetes experience (1-6)       | :book: :book: :book: :book: :book: :book:                                                        |
+| Accountability/Decisiveness (1-6) | 💪 💪                                                                                            |
+| Slogans                           | _Is there a CLI for that?_ <br> _Can I automate it?_                                             |
 
 ### GAINS
 
@@ -38,26 +38,30 @@ The following personas are fictional characters that we defined in order to repr
 
 ![Nicolas](assets/nicolas.png)
 
-|                             |                                                                                                                                                                                                         |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Name                        | **Nicolas**                                                                                                                                                                                             |
-| Age                         | 36                                                                                                                                                                                                      |
-| Occupation                   | Tech Lead (Technology evangelist) at **PureJoy**                                                                                                                                                        |
-| Characteristics              | Nicolas wants to bring innovation to products developed by **PureJoy**. He understands the benefits of using opinionated tools from the CNCF landscape. He needs to convince his boss and his development team. |
-| Kubernetes experience (1-6)             | :book: :book: :book: :book:                                                                                                                                                                             |
-| Accountability/Decisiveness (1-6) | 💪 💪 💪 💪 💪 💪                                                                                                                                                    |
-| Slogans                     | _I know what I want... not yet sure how to achieve it._                                                                                                                                                   |
+|                                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name                              | **Sebastian**                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Age                               | 38                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| Occupation                        | Enterprise Architect at **PureJoy**                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Characteristics                   | Sebastian wants to bring innovation to products developed at **PureJoy**. He understands the needs of his organisation and seeks for solutions in the CNCF landscape. He evaluates CNCF projects to identify what those tools bring for free and what are the gaps that need to be implemented by the teams in his organisation. He needs to convince his bosses and his development team to new solutions and he is accountable for his recommendations. |
+| Kubernetes experience (1-6)       | :book: :book: :book: :book:                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Accountability/Decisiveness (1-6) | 💪 💪 💪 💪 💪 💪                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Slogans                           | _I know what I want... not yet sure how to achieve it._                                                                                                                                                                                                                                                                                                                                                                                                   |
 
 ### GAINS
 
-- :green_heart: I need a comprehensive set of opinionated tools (CNCF-approved, recognized by the community).
-- :green_heart: I need certainty that Kyma uses industry standards.
+- :green_heart: I need to evaluate Kyma fast (within 1 day).
+- :green_heart: I love tutorials, sample code, recepies that refer to my use cases (i.e authentication/authorisation flows).
+- :green_heart: I want to tick off on product (industry) standards for free (i.e security, accessibility, observability, tracing, etc).
+- :green_heart: I want future proof platform - based on references.
+- :green_heart: With Kyma I want to connect to systems I know (public and internal systems).
 - :green_heart: I need a trial version of Kyma before I can recommend it.
-- :green_heart: I don't want to take extra care about security/monitoring/tracing...
-- :green_heart: I need developers in my organization to be focused on the solutions rather than infrastructure.
+- :green_heart: I need agility in architecture designs - I want to replace individual modules if needed.
+- :green_heart: I want a painless upgrade path.
+- :green_heart: I want operational support.
 
 ### PAINS
 
-- :broken_heart: I'm missing success stories, references.
-- :broken_heart: I don't want my dev teams to struggle.
-- :broken_heart: I'm missing best practices, recipes of how to put things together.
+- :broken_heart: I'm giving up on a project if success stories, references are missing
+- :broken_heart: I'm giving up on a project if documentation (inl. tutorials) is missing.
+- :broken_heart: I don't want to take extra care about security/monitoring/tracing...
