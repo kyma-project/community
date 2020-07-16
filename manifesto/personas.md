@@ -3,7 +3,7 @@
 The following personas are fictional characters that we defined in order to represent the different types of users that might use Kyma. Keep these personas in mind when contributing to Kyma as they will help you to understand Kyma users' needs and goals (GAINS :green_heart:) and major pain points (PAINS :broken_heart:).
 
 1. [Matthew](#matthew---cloud-native-software-engineer)
-2. [Nicolas](#nicolas---tech-lead)
+2. [Sebastian](#sebastian---tech-lead)
 
 ## Matthew - Cloud-Native Software Engineer
 
@@ -34,9 +34,9 @@ The following personas are fictional characters that we defined in order to repr
 - :broken_heart: I don't want to be locked with any tools. Let me replace or completely opt out of any of the preconfigured components.
 - :broken_heart: I hate tons of configuration.
 
-## Nicolas - Tech Lead
+## Sebastian - Tech Lead
 
-![Nicolas](assets/nicolas.png)
+![Sebastian](assets/sebastian.png)
 
 |                                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
