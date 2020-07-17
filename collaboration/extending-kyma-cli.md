@@ -1,4 +1,4 @@
-# Extend Kyma CLI
+# Managing Kyma components using Kyma CLI
 
 Kyma cli has been used for cluster management. We should look into how we can introduce support for management of components on the kyma cluster. This would bring in following benefits:
 
