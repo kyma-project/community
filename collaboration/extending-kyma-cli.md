@@ -2,15 +2,15 @@
 
 Kyma cli has been used for cluster management. We should look into how we can introduce support for management of components on the kyma cluster. This would bring in following benefits:
 
-* It would enable users who have limited or no kuberenetes knowledge to use kyma.
-* It would also provide an abstraction on complex kubectl command chains.
-* It could be easily used into CI/CD pipelines where they can have automated way of configuring kyma cluster to have functions deployed via CI/CD pipeline
+* Enable users who have limited or no kuberenetes knowledge to use kyma.
+* Provide an abstraction on complex kubectl command chains.
+* Could be easily used into CI/CD pipelines where they can have automated way of configuring kyma cluster to have functions deployed via CI/CD pipeline
 
 ## Architecture
 
 We should follow the modular approach with each component having its own library. This library can be used inside the kyma cli for acessing various components. The library contains all the implementation. The kyma cli should invoke this library. We can take inspiration from hydroform and implement it in similar way. Currently we have following modules in kyma:
 
-  1. functions
+  1. Functions
   2. Service Catalog
   3. Events
   4. Application Connector
@@ -37,7 +37,7 @@ kyma application <events>
 kyma apis <events>
 ```
 
-### functions
+### Functions
 
 For the serverless component we should start with supporting following commands
 
@@ -52,13 +52,13 @@ This could be used for the user who is new to kyma and kubernetes in general. He
 ```bash
   kyma function init <function-name> --language <language-name>
 
-  kyma function init <function-name> --language <language-name> -n (optional) <namespace> -p <path>
+  kyma function init <function-name> --language <language-name> -n <namespace> -p <path>
 
   kyma function init <function-name> --language <language-name> --from-git <path-to-function-code>
 ```
 
 > The namespace should be optional. When not passed it can be set to `default`. When the user has path to the function code (residing in git) we should generate the scaffolding around it (if its not existing already).
-When path `-p` is passed then it should create in desitnation path else it use the current directory.
+When path `-p` is passed then it should create the project in the designated path, otherwise, it uses the current directory.
 The language corresponds the language in which the function code would be written.
 
 This should create directoy structure with following content based on the language passed (assuming vscode as the IDE).:
@@ -95,7 +95,7 @@ This should create directoy structure with following content based on the langua
 * <function-code.extension> where the developer can write his logic to test. The `extension` is language specific.
 * `dependecies.extension` file with list of dependencies. eg. `package.json` for node and `go.mod and go.sum` for golang dependencies
 
->The templates generated should be placed a directory in the kyma cli. We should have templates for each language that can be supported. In the future if we are supporting more runtime we can move it to separate repo.
+>The templates generated should be placed a directory in the library for the functions. We should have templates for each language that can be supported. In the future if we are supporting more runtime we can move it to separate repo.
 
 ##### config.yaml
 
@@ -161,17 +161,23 @@ We should provide `index.js`(which would start the server and serve the handler 
 
 ###### readme
 
-We should also provide a readme.md which would consist of following:
+We should also provide a readme.md which would consist of following instructions:
 
-* Instructions how he can deploy the function into the cluster.
-* Instructions how he can run the function locally.
-* Instructions on how to use the `config.yaml` file
-* Instructions on various folder structure.
-* Instructions on how to test debug it locally like using telepresence.
+* How he can deploy the function into the cluster.
+* How he can run the function locally.
+* How to use the `config.yaml` file
+* Folder structure.
+* How to test debug it locally like using telepresence.
 
-##### Testing/debugging it locally
+##### Testing/Debugging
 
-We can introduce commands to test the function locally and also if the developer wants to debug the code. This is useful in case when we have some event payloads that are not easy to recreate.
+*Local*
+
+We can introduce commands to test the function locally and also if the developer wants to debug the code. These can be achieved through make file.
+
+*Using Events from remote cluster*
+
+Sometimes the event payloads can be complex to be created locally. For such cases its nice to have the events on remote cluster triggering the code on the workstation. This would enable the developer to debug his code on the workstation using events being sent to the remote cluster. We can introduce command for example below:
 
 `kyma function debug <function-name> -n <namespace>`
 
@@ -215,7 +221,7 @@ We should allow deployment of the functions on a k8s cluster. Following commands
 
 *Expose*
 
-`kyma function trigger <function-name> --http --secure(optional) -n <namespace>`
+`kyma function expose <function-name> --secure(optional) --actions <GET/POST> -n <namespace>`
 
 *Service Catalog*
 
@@ -247,7 +253,7 @@ We should allow deployment of the functions on a k8s cluster. Following commands
 
 *Logs*
 
-`kyma function <function-name> logs -n <namespace>`
+`kyma function logs <function-name> -n <namespace>`
 
 *function Status*
 
@@ -305,7 +311,6 @@ We should enable kyma cli to be able to configure service catalog too. We should
 `kyma service-binding delete <service-binding-name> -n <namespace>`
 
 `kyma service-binding get <service-binding-name> -n <namespace>`
-
 
 #### Service Binding Usage
 
