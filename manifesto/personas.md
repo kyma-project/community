@@ -56,7 +56,7 @@ The following personas are fictional characters that we defined in order to repr
 - :green_heart: I want a futureproof platform, based on references.
 - :green_heart: With Kyma, I want to connect to systems I know (public and internal ones).
 - :green_heart: I need a trial version of Kyma before I can recommend it.
-- :green_heart: I need agility in architecture designs - I want to replace individual modules if needed.
+- :green_heart: I need agility in architecture design. I want to replace individual modules if needed.
 - :green_heart: I want a painless upgrade path.
 - :green_heart: I want operational support.
 
