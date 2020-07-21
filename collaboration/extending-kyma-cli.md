@@ -25,7 +25,7 @@ The command structure used by cloud providers is following:
 #example aws s3 ls
 
 # Functions
-kyma lambda <action>
+kyma function <action>
 
 # Events
 kyma events <action>
@@ -68,18 +68,18 @@ This should create directoy structure with following content based on the langua
   ├── .vscode
   │   └── launch.json
   ├── deployment
-  │   └── deployment.yaml
+  │   └── function.yaml
   ├── local
   │   └── <server-code.extension>
   └── Readme.md
-  └── code
+  └── src
     ├── config.yaml
     ├── <function-code.extension>
     └── <dependecies.extension>
 ```
 
 * launch.json consists of settings for the local debugger on vscode
-* deployment.yaml consists of the yaml of the function cr that has been deployed on the kyma cluster. This would be generated once function has been deployed.
+* function.yaml consists of the yaml of the function cr that has been deployed on the kyma cluster. This would be generated once function has been deployed.
 * `<server-code.extension>` consists of the server code with handler pointing to <function-code.extension>. The `extension` of file and `server-code` is with repsect to the language passed in init command
 * config.yaml can be used as info file with current configurations like:
   * name
@@ -199,11 +199,8 @@ We should allow deployment of the functions on a k8s cluster. Following commands
 
 ##### Commands that use config
 
-`kyma function create -p <path-to-function-dir>`
-> This would create a function after reading the `config.yaml` from the path provided and to read the config like events, api etc.
-
-`kyma function update -p <path-to-function-dir>`
-> Update an existing function with the `config.yaml` present in the directory.
+`kyma function apply -p <path-to-function-dir>`
+> This would create/update a function after reading the `config.yaml` from the path provided and to read the config like events, api etc. For deletion we should use the delete method.
 
 ##### Expanded command with switches
 
@@ -277,10 +274,9 @@ Should display status
   labels: foo:bar
 ```
 
-`kyma function show <function-name> trigger`
-`kyma function show <function-name> trigger --events`
-`kyma function show <function-name> trigger --http`
-`kyma function show <function-name> service-instances`
+`kyma function show <function-name> events`
+`kyma function show <function-name> apis`
+`kyma function show <function-name> service-binding-usages`
 `kyma function show <function-name> labels`
 `kyma function show <function-name> replicas`
 
@@ -348,4 +344,3 @@ We should enable support for events in kyma cli too. We should have support for 
 ### Aplication Connector
 
 Application connector should also have a separate library invoked inside the kyma cli. It should also support following commands:
-
