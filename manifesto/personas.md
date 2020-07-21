@@ -51,7 +51,7 @@ The following personas are fictional characters that we defined in order to repr
 ### GAINS
 
 - :green_heart: I need to evaluate Kyma fast (within 1 day).
-- :green_heart: I love tutorials, sample code, recepies that refer to my use cases (i.e authentication/authorisation flows).
+- :green_heart: I love tutorials, sample code, recipes that refer to my use cases (i.e authentication/authorization flows).
 - :green_heart: I want to tick off on product (industry) standards for free (i.e security, accessibility, observability, tracing, etc).
 - :green_heart: I want future proof platform - based on references.
 - :green_heart: With Kyma I want to connect to systems I know (public and internal systems).
