@@ -53,7 +53,7 @@ The following personas are fictional characters that we defined in order to repr
 - :green_heart: I need to evaluate Kyma fast (within 1 day).
 - :green_heart: I love tutorials, sample code, recipes that refer to my use cases (i.e authentication/authorization flows).
 - :green_heart: I want to ensure product (industry) standards for free (i.e security, accessibility, observability, tracing, etc).
-- :green_heart: I want future proof platform - based on references.
+- :green_heart: I want a futureproof platform, based on references.
 - :green_heart: With Kyma I want to connect to systems I know (public and internal systems).
 - :green_heart: I need a trial version of Kyma before I can recommend it.
 - :green_heart: I need agility in architecture designs - I want to replace individual modules if needed.
