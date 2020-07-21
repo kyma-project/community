@@ -64,4 +64,4 @@ The following personas are fictional characters that we defined in order to repr
 
 - :broken_heart: I give up on a project if success stories and/or references are missing.
 - :broken_heart: I give up on a project if documentation (incl. tutorials) is missing.
-- :broken_heart: I don't want to take extra care about security/monitoring/tracing...
+- :broken_heart: I don't want to take extra care of security, monitoring, tracing, etc.
