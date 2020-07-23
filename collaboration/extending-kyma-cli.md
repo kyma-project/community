@@ -31,7 +31,7 @@ kyma function <action>
 kyma events <action>
 
 # Application Connector
-kyma application <events>
+kyma applications <events>
 
 # Apis
 kyma apis <events>
@@ -43,44 +43,44 @@ For the serverless component we should start with supporting following commands
 
 #### Local workspace setup
 
-For the local workspace setup developer should be provied with a project containing basic working function example. This should be deployable on to an existing kyma cluster using the kyma cli. It should also be possible to test this code locally by means of make files. User should be provded with some readme where he can understand the project structure and also the configuration examples. It should also contain commands to deploy and debug the function on to kyma cluster and also how to run locally.
+For the local workspace setup, a developer should be provided with a project containing basic working function example. This should be deployable on to an existing kyma cluster using the kyma cli. It should also be possible to test this code locally by means of make files. User should be provded with some readme where he can understand the project structure and also the configuration examples. It should also contain commands to deploy and debug the function on to kyma cluster and also how to run locally.
 
-##### Creation of project locally
+##### Creation of project locally (approach 1)
 
 This could be used for the user who is new to kyma and kubernetes in general. He should be able to have an example function created easily. We can have following commands.
 
 ```bash
-  kyma function init <function-name> --language <language-name>
+  kyma function init <function-name> --runtime <runtime-name>
 
-  kyma function init <function-name> --language <language-name> -n <namespace> -p <path>
-
-  kyma function init <function-name> --language <language-name> --from-git <path-to-function-code>
+  kyma function init <function-name> --runtime <runtime-name> -n <namespace> -p <path>
 ```
 
 > The namespace should be optional. When not passed it can be set to `default`. When the user has path to the function code (residing in git) we should generate the scaffolding around it (if its not existing already).
 When path `-p` is passed then it should create the project in the designated path, otherwise, it uses the current directory.
-The language corresponds the language in which the function code would be written.
+The runtime corresponds to the language in which the function code would be written.
 
-This should create directoy structure with following content based on the language passed (assuming vscode as the IDE).:
+This should create directoy structure with following content based on the runtime passed (assuming vscode as the IDE).:
 
 ```bash
   <function-name>
   ├── .vscode
   │   └── launch.json
-  ├── deployment
+  ├── resources
   │   └── function.yaml
+  |   └── api.yaml
+  |   └── subscription.yaml
   ├── local
   │   └── <server-code.extension>
   └── Readme.md
   └── src
     ├── config.yaml
     ├── <function-code.extension>
-    └── <dependecies.extension>
+    └── <dependencies.extension>
 ```
 
 * launch.json consists of settings for the local debugger on vscode
-* function.yaml consists of the yaml of the function cr that has been deployed on the kyma cluster. This would be generated once function has been deployed.
-* `<server-code.extension>` consists of the server code with handler pointing to <function-code.extension>. The `extension` of file and `server-code` is with repsect to the language passed in init command
+* resource folder consists of the yaml of the function cr that has been deployed on the kyma cluster. This would be generated before function is being deployed. It would be generated on every deployment.
+* `<server-code.extension>` consists of the server code with handler pointing to <function-code.extension>. The `extension` of file and `server-code` is with repsect to the runtime passed in init command
 * config.yaml can be used as info file with current configurations like:
   * name
   * namespace
@@ -92,10 +92,10 @@ This should create directoy structure with following content based on the langua
   * min/max cpu
   * runtime
   * debug command (to be used with telepresence. This can help if we want to have different runtimes)
-* <function-code.extension> where the developer can write his logic to test. The `extension` is language specific.
+* <function-code.extension> where the developer can write his logic to test. The `extension` is runtime specific.
 * `dependecies.extension` file with list of dependencies. eg. `package.json` for node and `go.mod and go.sum` for golang dependencies
 
->The templates generated should be placed a directory in the library for the functions. We should have templates for each language that can be supported. In the future if we are supporting more runtime we can move it to separate repo.
+>The generated templates should be placed in a directory in the library for the functions. We should have templates for each runtime that can be supported. In the future if we are supporting more runtime we can move it to separate repo.
 
 ##### config.yaml
 
@@ -107,7 +107,7 @@ Usually one does not change the config so often during development compared to c
 
 Having such a config file would help developers with limited or no kubernetes knowledge to get themselves aquainted with various configuration options for function and concentrate on the business logic for writing the functions.
 
-Additionally it can be used automated deployments of functions. As this file can be read by kyma cli to deloy function with required configurations.
+Additionally it can be used for automated deployments of functions. As this file can be read by kyma cli to deloy function with required configurations.
 
 Example structure of config.yaml
 
@@ -191,6 +191,38 @@ The function generated by `init` command should be deployable onto kyma cluster.
 
 For running/debugging it locally we should provide makefile. The running/debugging commands should be part of readme.
 
+##### Creation of project locally (approach 2)
+
+The other approach would include creation of the local project structure as shown before. But it would not contain any `config.yaml`. Rather after creation of the project structure the function could be deployed first time via the command `kyma function apply -p <path_to_function_dir>`. But for rest of the changes like modifying the mem/cpu or api rules (like verbs or security) or like events and service binding should be done via commands for each module as listerd [expanded commands with switches](#expanded_command_with_switches)
+
+##### Pros and Cons approach 1 vs approach 2
+
+*Pros Apprach 1*
+
+* `config.yaml` helps the user with no kuberenertes knowledge to easily on board kyma. One can write configuration and can deploy it. It provides a summary for the current configuration of the application
+
+* Since during the developement of function we dont change the config so many times `kyma function apply` is an easy command to use. Also if the config needs to be changed and re-applied then `kyma function apply` is stil small command to use.
+
+* It could be eventually used as a recipie for deployment of functions on to the production cluster using CI/CD pipeline
+
+* Special runtime specific info like `debug` flags when using with `telepresence` could be passed as field in the `config.yaml`
+
+*Cons Approach 1*
+
+* Once the function has been deployed and if the function has been modified on the cluster using commands listed at [expanded commands with switches](#expanded_command_with_switches), then the local `config.yaml` is out of sync. Re applying via `kyma function apply` can result in confusion.
+
+* The `config.yaml` might at the end look like a CRD.
+
+*Pros Approach 2*
+
+* We dont have a `config.yaml` so we dont need to sync states between local and remote on deployed functions.
+
+*Cons Approach 2*
+
+* One has to use lengthy commands to configure functions.
+* Difficult to have an overview of current state.
+* Need to figure out how to use debug commands (when using telepresence).
+
 #### Working with deployed kyma cluster
 
 We should allow deployment of the functions on a k8s cluster. Following commands should be supported
@@ -204,9 +236,27 @@ We should allow deployment of the functions on a k8s cluster. Following commands
 
 ##### Expanded command with switches
 
-`kyma function create <function-name> -n <namespace> --runtime <runtime> --min-mem <mb> --max-mem <mb> --min-cpu <cpu> --max-cpu <cpu> --min-replicas 1 --max-replicas 1 --src-code <path-to-src-code> --dependecies <path-to-dep-file>`
+```bash
+  kyma function create <function-name>
+     -n <namespace>
+     --runtime <runtime>  
+     --src-code <path-to-src-code>
+     --dependecies <path-to-dep-file>
+     [--min-mem <mb>] [--max-mem <mb>]
+     [--min-cpu <cpu>] [--max-cpu <cpu>]
+     [--min-replicas 1] [--max-replicas 1]
+```
 
-`kyma function update <function-name> -n <namespace> --runtime <runtime> --min-mem <mb> --max-mem <mb> --min-cpu <cpu> --max-cpu <cpu> --min-replicas 1 --max-replicas 1 --src-code <path-to-src-code> --dependecies <path-to-dep-file>`
+```bash
+kyma function update <function-name>
+     -n <namespace>
+     --runtime <runtime>  
+     --src-code <path-to-src-code>
+     --dependecies <path-to-dep-file>
+     [--min-mem <mb>] [--max-mem <mb>]
+     [--min-cpu <cpu>] [--max-cpu <cpu>]
+     [--min-replicas 1] [--max-replicas 1]
+```
 
 `kyma function delete <function-name> -n <namespace>`
 
@@ -218,7 +268,7 @@ We should allow deployment of the functions on a k8s cluster. Following commands
 
 *Expose*
 
-`kyma function expose <function-name> --secure(optional) --actions <GET/POST> -n <namespace>`
+`kyma function expose <function-name> [--secure] [--actions <GET/POST>] -n <namespace>`
 
 *Service Catalog*
 
@@ -230,8 +280,8 @@ We should allow deployment of the functions on a k8s cluster. Following commands
 
 *Bind to events*
 
-`kyma function trigger <function-name> --events [<event-name>,..] -n <namespace>`
-`kyma function trigger <function-name> --events [<event-name>,..] -n <namespace>`
+`kyma function bind <function-name> --events [<event-name>,..] -n <namespace>`
+`kyma function bind <function-name> --events [<event-name>,..] -n <namespace>`
 
 *Bind to environment variables*
 
@@ -240,7 +290,7 @@ We should allow deployment of the functions on a k8s cluster. Following commands
 
 *List all functions*
 
-`kyma function list -n <namespace>`
+`kyma function list -n <namespace> [--labels foo=bar]`
 
 > A detailed table view with function name, runtime, age, replicas and state
 
@@ -280,17 +330,27 @@ Should display status
 `kyma function show <function-name> labels`
 `kyma function show <function-name> replicas`
 
-#### Typical User flow
+#### Typical User flow (approach 1)
 
 This section details a typical development flow for the functions
 
 1. New User creating function from scratch or from existing github project as shown [here](#creation-of-project-locally). This would generate a function project for vscode. User is also provided with readme file to explain the structure of project and also the config.yaml. It should also explain how user can test it locally and also debugging.
 
-2. Once the project is initialized user can deploy the function onto an exisiting kyma cluster using command [here](#commands-that-use-config)
+2. Once the project is initialized user can deploy the function onto an exisiting kyma cluster using command [here](#commands-that-use-config). It would use the `config.yaml` to deploy all resources.
 
 3. User can change the code and test it locally by running a server locally on his workstation. User can make use of make file provided.
 
 4. For debugging purpose user can either run it locally and attach the debuger or for in-cluster debugging he can use the `kyma function debug` command which would use telepresence to redirect the event triggers for example to the local code and he can attach the debugger to debug.
+
+#### Typical User flow (approach 2)
+
+1. New User creating function from scratch or from existing github project as shown [here](#creation-of-project-locally). This would generate a function project for vscode. User is also provided with readme file to explain the structure of project and also the config.yaml. It should also explain how user can test it locally and also debugging.
+
+2. Once the project is initialized user can deploy the function onto an exisiting kyma cluster using command [here](#commands-that-use-config)
+
+3. Use the commands listed at [expanded commands with switches](#expanded_command_with_switches) to configure the functions
+
+4. Debugging ?
 
 ### Service catalog
 
@@ -335,6 +395,7 @@ We should enable support for events in kyma cli too. We should have support for 
 `kyma event list -n <namespace>`
 
 `kyma event create -n <namespace> subscriptions --topic {"foo":"bar"}`
+
 `kyma event update -n <namespace> subscriptions --topic {"foo":"bar"}`
 
 `kyma event list -n <namespace> subscriptions`
