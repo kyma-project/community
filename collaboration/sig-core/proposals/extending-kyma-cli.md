@@ -31,10 +31,10 @@ kyma function <action>
 kyma events <action>
 
 # Application Connector
-kyma applications <events>
+kyma applications <action>
 
 # Apis
-kyma apis <events>
+kyma apis <action>
 ```
 
 ### Functions
@@ -43,7 +43,7 @@ For the serverless component we should start with supporting following commands
 
 #### Local workspace setup
 
-For the local workspace setup, a developer should be provided with a project containing basic working function example. This should be deployable on to an existing kyma cluster using the kyma cli. It should also be possible to test this code locally by means of make files. User should be provded with some readme where he can understand the project structure and also the configuration examples. It should also contain commands to deploy and debug the function on to kyma cluster and also how to run locally.
+For the local workspace setup, a developer should be provided with a project containing a basic working function example. This should be deployable on to an existing kyma cluster using the kyma cli. It should also be possible to test this code locally by means of make files. User should be provded with some readme where he can understand the project structure and also the configuration examples. It should also contain commands to deploy and debug the function on to kyma cluster and also how to run locally.
 
 ##### Creation of project locally (approach 1)
 
@@ -273,6 +273,10 @@ kyma function update <function-name>
 `kyma function delete <function-name> -n <namespace>`
 
 `kyma function set-context --function-name <function-name> -n <namespace> --runtime <runtime>`
+
+`kyma function get <function-name> -n <namespace>`
+
+`kyma function get --label foo=bar -n <namespace>`
 
 *Labels*
 
