@@ -455,10 +455,6 @@ We should enable kyma cli to be able to configure service catalog too. We should
 
 `kyma service-binding-usage delete <sbu-name> -n namespace`
 
-`kyma service-binding-usage delete <sbu-name> -n namespace`
-
-`kyma service-binding-usage get <sbu-name> -n namespace`
-
 `kyma service-binding-usage get <sbu-name> -n namespace`
 
 ### Events
