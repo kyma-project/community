@@ -58,7 +58,7 @@ The following personas are fictional characters that we defined in order to repr
 - :green_heart: I need agility in architecture design. I want to replace individual modules if needed.
 - :green_heart: I want a painless upgrade path.
 - :green_heart: I want operational support.
-- :green_heart: I need to estimate total cost of ownership.
+- :green_heart: I need to estimate the total cost of ownership.
 
 ### PAINS
 
