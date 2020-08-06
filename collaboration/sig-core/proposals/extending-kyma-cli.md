@@ -1,14 +1,14 @@
 # Managing Kyma components using Kyma CLI
 
-Kyma cli has been used for cluster management. We should look into how we can introduce support for management of components on the kyma cluster. This would bring in following benefits:
+Kyma CLI has been used for cluster management. We should look into how we can introduce support for management of components on the Kyma cluster. This would bring in following benefits:
 
-* Enable users who have limited or no kuberenetes knowledge to use kyma.
+* Enable users who have limited or no Kuberenetes knowledge to use Kyma.
 * Provide an abstraction on complex kubectl command chains.
-* Could be easily used into CI/CD pipelines where they can have automated way of configuring kyma cluster to have functions deployed via CI/CD pipeline
+* Easy integration with CI/CD pipelines with an automated way of configuring the Kyma cluster to have functions deployed using the CI/CD pipeline.
 
 ## Architecture
 
-We should follow the modular approach with each component having its own library. This library can be used inside the kyma cli for acessing various components. The library contains all the implementation. The kyma cli should invoke this library. We can take inspiration from hydroform and implement it in similar way. Currently we have following modules in kyma:
+We should follow the modular approach with each component having its own library. This library can be used inside Kyma CLI to access various components. The library contains all the implementation. Kyma CLI should invoke this library. We can take inspiration from Hydroform and implement it in similar way. Currently we have following modules in Kyma:
 
   1. Functions
   2. Service Catalog
@@ -18,7 +18,7 @@ We should follow the modular approach with each component having its own library
 
 ## Command structure
 
-The command structure used by cloud providers is following:
+The command structure used by cloud providers is as follows:
 
 ```bash
 <cliName> <functionality> <action>
@@ -39,15 +39,15 @@ kyma apis <action>
 
 ### Functions
 
-For the serverless component we should start with supporting following commands
+For the serverless component we should start with supporting following commands:
 
 #### Local workspace setup
 
-For the local workspace setup, a developer should be provided with a project containing a basic working function example. This should be deployable on to an existing kyma cluster using the kyma cli. It should also be possible to test this code locally by means of make files. User should be provded with some readme where he can understand the project structure and also the configuration examples. It should also contain commands to deploy and debug the function on to kyma cluster and also how to run locally.
+For the local workspace setup, a developer should be provided with a project containing a basic working function example. This should be deployable on to an existing kyma cluster using Kyma CLI. It should also be possible to test this code locally by means of make files. The should be provided with a `README.md` file to understand the project structure and also the configuration examples. It should also contain commands to deploy and debug the function on to kyma cluster and also how to run locally.
 
 ##### Creation of project locally (approach 1)
 
-This could be used for the user who is new to kyma and kubernetes in general. He should be able to have an example function created easily. We can have following commands.
+This could be used for the user who is new to Kyma and Kubernetes in general. He should be able to have an example function created easily. We can have following commands.
 
 ```bash
   kyma function init <function-name> --runtime <runtime-name>
@@ -55,11 +55,11 @@ This could be used for the user who is new to kyma and kubernetes in general. He
   kyma function init <function-name> --runtime <runtime-name> -n <namespace> -p <path>
 ```
 
-> The namespace should be optional. When not passed it can be set to `default`. When the user has path to the function code (residing in git) we should generate the scaffolding around it (if its not existing already).
+The Namespace should be optional. When not passed it can be set to `default`. When the user has path to the function code (residing in git) we should generate the scaffolding around it (if its not existing already).
 When path `-p` is passed then it should create the project in the designated path, otherwise, it uses the current directory.
 The runtime corresponds to the language in which the function code would be written.
 
-This should create directoy structure with following content based on the runtime passed (assuming vscode as the IDE).:
+This should create directoy structure with following content based on the runtime passed (assuming vscode as the IDE):
 
 ```bash
   <function-name>
@@ -78,9 +78,9 @@ This should create directoy structure with following content based on the runtim
     └── <dependencies.extension>
 ```
 
-* launch.json consists of settings for the local debugger on vscode
+* launch.json consists of settings for the local debugger on vscode.
 * resource folder consists of the yaml of the function cr that has been deployed on the kyma cluster. This would be generated before function is being deployed. It would be generated on every deployment.
-* `<server-code.extension>` consists of the server code with handler pointing to <function-code.extension>. The `extension` of file and `server-code` is with repsect to the runtime passed in init command
+* `<server-code.extension>` consists of the server code with handler pointing to <function-code.extension>. The `extension` of file and `server-code` is with repsect to the runtime passed in init command.
 * config.yaml can be used as info file with current configurations like:
   * name
   * namespace
@@ -93,7 +93,7 @@ This should create directoy structure with following content based on the runtim
   * runtime
   * debug command (to be used with telepresence. This can help if we want to have different runtimes)
 * <function-code.extension> where the developer can write his logic to test. The `extension` is runtime specific.
-* `dependecies.extension` file with list of dependencies. eg. `package.json` for node and `go.mod and go.sum` for golang dependencies
+* `dependecies.extension` file with list of dependencies. eg. `package.json` for node and `go.mod and go.sum` for golang dependencies.
 
 >The generated templates should be placed in a directory in the library for the functions. We should have templates for each runtime that can be supported. In the future if we are supporting more runtime we can move it to separate repo.
 
@@ -109,7 +109,7 @@ Having such a config file would help developers with limited or no kubernetes kn
 
 Additionally it can be used for automated deployments of functions. As this file can be read by kyma cli to deloy function with required configurations.
 
-Example structure of config.yaml
+Example structure of `config.yaml`
 
 ```yaml
 name: <function_name>
@@ -141,7 +141,7 @@ debug-string:
 
 ###### <function-code.extension>
 
-  Out of the box from the init command we should give an easy example which can be extended by the developer later. The example should be possible to be deployed directly on the kyma cluster. Here below there is a node example
+Out of the box from the init command we should give an easy example which can be extended by the developer later. The example should be possible to be deployed directly on the kyma cluster. Here below there is a node example:
 
   ```js
     module.exports = {
@@ -471,6 +471,6 @@ We should enable support for events in kyma cli too. We should have support for 
 
 `kyma event trigger --topic {"foo":"bar"} --data {"foo": "bar"}`
 
-### Aplication Connector
+### Application Connector
 
 Application connector should also have a separate library invoked inside the kyma cli. It should also support following commands:
