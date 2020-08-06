@@ -13,8 +13,8 @@ This table lists all capabilities and links to their descriptions.
 | [API Gateway](api-gateway.md)| [@piotrmsc](https://github.com/piotrmsc) |
 | [Application Connectivity](application-connectivity.md) | [@janmedrek](https://github.com/janmedrek) |
 | [Console / Microfrontends](console-microfrontends.md) | [@kwiatekus](https://github.com/kwiatekus) |
-| [Core & Supporting](core-and-supporting.md) | [@michal-hudy](https://github.com/michal-hudy) |
+| [Core & Supporting](core-and-supporting.md) | [@kwiatekus](https://github.com/kwiatekus) |
 | [Eventing](eventing.md) | [@anishj0shi](https://github.com/anishj0shi) |
 | [Logging / Tracing / Monitoring](logging-tracing-monitoring.md) | [@a-thaler](https://github.com/a-thaler) |
-| [Serverless Runtime](runtime.md) | [@michal-hudy](https://github.com/michal-hudy) |
+| [Serverless Runtime](runtime.md) | [@kwiatekus](https://github.com/kwiatekus) |
 | [Service Management](service-management.md) | [@PK85](https://github.com/PK85) |
