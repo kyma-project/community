@@ -1,12 +1,12 @@
-apiVersion: cms.kyma-project.io/v1alpha1
-kind: ClusterDocsTopic
+apiVersion: rafter.kyma-project.io/v1beta1
+kind: ClusterAssetGroup
 metadata:
   name: governance
   labels:
-    cms.kyma-project.io/view-context: community
-    cms.kyma-project.io/group-name: governance
-    cms.kyma-project.io/order: "1"
-    cms.kyma-project.io/group-order: "3"
+    rafter.kyma-project.io/view-context: community
+    rafter.kyma-project.io/group-name: governance
+    rafter.kyma-project.io/order: "1"
+    rafter.kyma-project.io/group-order: "3"
 spec:
   displayName: "Governance"
   description: "Decision-making in Kyma"
