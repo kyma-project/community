@@ -359,10 +359,10 @@ Should display status
 
  # After testing apply to the kyma cluster.
  # update config.yaml as per requirements like events, service bindings, env variables and api rule
- kyma function apply -p path_to_function
+ kyma function apply -p path_to_function_folder
 
  # Update the function code
- kyma function apply -p path_to_function
+ kyma function apply -p path_to_function_folder
 ```
 
 #### Commands involved approach 2
@@ -372,7 +372,7 @@ Should display status
  kyma function init <function-name>
 
 # After testing apply to the kyma cluster
- kyma function apply -p path_to_function
+ kyma function apply -p path_to_function_folder --runtime foo-runtime -n <namespace>
 
 # Expose function via api rule
  kyma function expose <function-name> --host <host_name> [--secure] [--actions <GET/POST>] -n <namespace>
@@ -387,7 +387,7 @@ kyma function bind <function-name> --binding-instaces [<binding-instance-name>,.
 kyma function bind <function-name> --env [<foo=bar>,..] -n <namespace>
 
 # Change some code
- kyma function update foo --src-path path_to_foo --dependecies path_to_dependecies --runtime foo-runtime -n <namespace>
+ kyma function apply foo -p path_to_function_folder --runtime foo-runtime -n <namespace>
 
 # Similarily unbind command canbe used to unbind to existing events or service instances
  ```
@@ -400,8 +400,7 @@ kyma function bind <function-name> --env [<foo=bar>,..] -n <namespace>
  kyma function init <function-name>
 
 # After testing apply to the kyma cluster
- kyma function apply -p path_to_function
-
+ kyma function apply -p path_to_function_folder
 # Expose function via api rule
  kyma function expose --host <host_name> [--secure] [--actions <GET/POST>]
 
@@ -415,7 +414,7 @@ kyma function bind --binding-instaces [<binding-instance-name>,...]
 kyma function bind --env [<foo=bar>,..]
 
 # Change some code
- kyma function update foo --src-path path_to_foo --dependecies path_to_dependecies
+ kyma function apply path_to_function_folder
 
 # Similarily unbind command canbe used to unbind to existing events or service instances
  ```
