@@ -387,7 +387,7 @@ kyma function bind <function-name> --binding-instaces [<binding-instance-name>,.
 kyma function bind <function-name> --env [<foo=bar>,..] -n <namespace>
 
 # Change some code
- kyma function apply foo -p path_to_function_folder --runtime foo-runtime -n <namespace>
+ kyma function apply -p path_to_function_folder --runtime foo-runtime -n <namespace>
 
 # Similarily unbind command canbe used to unbind to existing events or service instances
  ```
@@ -401,6 +401,7 @@ kyma function bind <function-name> --env [<foo=bar>,..] -n <namespace>
 
 # After testing apply to the kyma cluster
  kyma function apply -p path_to_function_folder
+ 
 # Expose function via api rule
  kyma function expose --host <host_name> [--secure] [--actions <GET/POST>]
 
