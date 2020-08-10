@@ -2,7 +2,7 @@
 title: Add new documentation to the website
 ---
 ​
-This document explains how to render a new topic in the documentation on the [Kyma website](https://kyma-project.io) from various sources in repositories under the [`kyma-project`](https://github.com/kyma-project). It also describes how to modify an existing topic if you want OpenAPI specifications to show in a given topic's documentation.  
+This document explains how to render a new topic in the documentation on the [Kyma website](https://kyma-project.io) from various sources in repositories under [`kyma-project`](https://github.com/kyma-project). It also describes how to modify an existing topic if you want OpenAPI specifications to show in a given topic's documentation.  
 
 ## Add a new documentation topic
 
@@ -165,7 +165,7 @@ To add a new specification, follow these steps:
   
    - **{SPECIFICATION_TYPE}** defines a type of a given specification. Currently, only [OpenAPI](https://swagger.io/specification/) specifications are supported and they are defined under the `openapi` type.
    - **{SPECIFICATION_NAME}** defines a unique identifier of a given specification. This field defines the URL on https://kyma-project.io/docs under which the specification is displayed. For example, if the specification is added in the `commands` ClusterAssetGroup CR with the `provision` value in the **name** field, its URL is `https://kyma-project.io/docs/{VERSION_OF_DOCS}/cli/commands/specifications/provision/`.
-   - **{SPECIFICATION_URL}** defines the location of the specification. It may contain directives with values defined in `values.yaml` files.
+   - **{SPECIFICATION_URL}** defines the location of the specification. It may contain directives with values defined in `values.yaml` files:
 
    ``` yaml
    url: https://raw.githubusercontent.com/{{ .Values.global.kymaOrgName }}/cli/{VERSION_OF_DOCS}/docs/commands/assets/provision.yaml
@@ -187,7 +187,7 @@ To add a new specification, follow these steps:
   </details>
 </div>
 
-> **NOTE:** > **NOTE:** Before merging your PR, you can check if the specification you added is rendered properly on the website thanks to [`docs-preview`](#documentation-preview-documentation-preview) built on every PR.
+> **NOTE:** Before merging your PR, you can check if the specification you added is rendered properly on the website thanks to [`docs-preview`](#documentation-preview-documentation-preview) built on every PR.
 
 ## Add a new repository documentation
 
