@@ -2,7 +2,7 @@
 title: Add new documentation to the website
 ---
 ​
-This document explains how to add a new topic to the documentation of repository under Kyma Project to render it on the [Kyma website](https://kyma-project.io). It also describes how to modify an existing topic if you want OpenAPI specifications to show in a given topic's documentation and additionally what to do to display the documentation from a given Kyma's repository on the [documentation view](https://kyma-project.io/docs)
+This document explains how to render a new topic in the documentation on the [Kyma website](https://kyma-project.io) from various sources in repositories under the [`kyma-project`](https://github.com/kyma-project). It also describes how to modify an existing topic if you want OpenAPI specifications to show in a given topic's documentation.  
 
 ## Add a new documentation topic
 
@@ -16,7 +16,7 @@ Follow these steps:
 
 1. Create a pull request with `.md` files for the new documentation topic. Place the `.md` files under a new `docs` subfolder in the repository, such as `docs/serverless/`.
 
-2. In the same PR, create a `.yaml` file under the [`templates`](https://github.com/kyma-project/kyma/tree/master/resources/core/charts/docs/charts/content-ui/templates) folder to add a [ClusterAssetGroup CR](/components/rafter/#custom-resource-cluster-asset-group) for your topic. For example, if you add a ClusterAssetGroup CR for the Serverless component, name it `docs-components-serverless-cag.yaml`. ​
+2. In the same PR, create a `.yaml` file under the [`templates`](https://github.com/kyma-project/kyma/tree/master/resources/core/charts/docs/charts/content-ui/templates) folder to add a [ClusterAssetGroup CR](https://kyma-project.io/docs/components/rafter/#custom-resource-cluster-asset-group) for your topic. For example, if you add a ClusterAssetGroup CR for the Serverless component, name it `docs-components-serverless-cag.yaml`. ​
 
    See the example definition:
     ​
@@ -51,13 +51,13 @@ Follow these steps:
 
   </details>
   <details>
-  <summary label="other-repository">
-  Other repository
+  <summary label="other-repositories">
+  Other repositories
   </summary>
 
 1. Create a pull request with `.md` files for the new documentation topic. Place the `.md` files under a new `docs` subfolder in the repository, such as `docs/commands/`.
 
-2. In the same PR, create a `.yaml` file under the `.kyma-project-io` folder to add a [ClusterAssetGroup CR](/components/rafter/#custom-resource-cluster-asset-group) for your topic. Format of file name should be `{topic-name}-cag.yaml`.
+2. In the same PR, create a `.yaml` file under the `.kyma-project-io` folder in the same repository to add a [ClusterAssetGroup CR](https://kyma-project.io/docs/components/rafter/#custom-resource-cluster-asset-group) for your topic. Use the `{topic-name}-cag.yaml` format for the file name.
 
    See the example definition:
     ​
@@ -92,12 +92,12 @@ Follow these steps:
   </details>
 </div>
 
-> **NOTE:** Before merge, you can check that everything is good with your changes, checking rendered documentation thanks to [`docs-preview`](#documentation-preview-documentation-preview).
+> **NOTE:** Before merging your PR, you can check if the topic you added is rendered properly on the website thanks to [`docs-preview`](#documentation-preview-documentation-preview) built on every PR.
 
 ## Add a single OpenAPI specification
 
 In addition to documentation, there are also [OpenAPI](https://swagger.io/specification/) specifications rendered on the [Kyma website](https://kyma-project.io). You can find these specifications under the **API Consoles** type in the right navigation panel of a given documentation topic.
-​
+
 To add a new specification, follow these steps:
 
 <div tabs name="openapi-specification" group="new-documentation">
@@ -106,8 +106,8 @@ To add a new specification, follow these steps:
   Kyma repository
   </summary>
 
-1. Go to the [`templates`](https://github.com/kyma-project/kyma/tree/master/resources/core/charts/docs/charts/content-ui/templates) folder and locate an existing ClusterAssetGroup CR that you want to modify.
-​
+1. Go to the [`templates`](https://github.com/kyma-project/kyma/tree/master/resources/core/charts/docs/charts/content-ui/templates) folder and locate the ClusterAssetGroup CR that you want to modify.
+
 2. Add a new source entry in the **sources** field:
 
    ``` yaml
@@ -122,8 +122,8 @@ To add a new specification, follow these steps:
    where:
   
    - **{SPECIFICATION_TYPE}** defines a type of a given specification. Currently, only [OpenAPI](https://swagger.io/specification/) specifications are supported and they are defined under the `openapi` type.
-   - **{SPECIFICATION_NAME}** defines a unique identifier of a given specification. This field defines the URL on https://kyma-project.io/docs under which the specification is displayed. For example, if the specification is added in the `application-connector` ClusterAssetGroup CR with the `connectorapi` value of the **name** field, its URL is `https://kyma-project.io/docs/{VERSION_OF_DOCS}/components/application-connector/specifications/connectorapi/`.
-   - **{SPECIFICATION_URL}** defines the location of the specification. It may contain directives using values defined in `values.yaml` files. For internal specifications defined in the [`kyma`](https://github.com/kyma-project/kyma) repository, it is recommended to use the directive with a Kyma version and the organization name, such as:
+   - **{SPECIFICATION_NAME}** defines a unique identifier of a given specification. This field defines the URL on https://kyma-project.io/docs under which the specification is displayed. For example, if the specification is added in the `application-connector` ClusterAssetGroup CR with the `connectorapi` value in the **name** field, its URL is `https://kyma-project.io/docs/{VERSION_OF_DOCS}/components/application-connector/specifications/connectorapi/`.
+   - **{SPECIFICATION_URL}** defines the location of the specification. It may contain directives with values defined in `values.yaml` files. For internal specifications defined in the [`kyma`](https://github.com/kyma-project/kyma) repository, it is recommended to use the directive with a Kyma version and the organization name, such as:
 
    ``` yaml
    url: https://raw.githubusercontent.com/{{ .Values.global.kymaOrgName }}/kyma/{{ .Values.global.docs.clusterAssetGroupsVersion }}/docs/application-connector/assets/connectorapi.yaml
@@ -144,12 +144,12 @@ To add a new specification, follow these steps:
 
   </details>
   <details>
-  <summary label="other-repository">
-  Other repository
+  <summary label="other-repositories">
+  Other repositories
   </summary>
 
-1. Go to the `.kyma-project-io` folder in repository and locate an existing ClusterAssetGroup CR that you want to modify.
-​
+1. Go to the `.kyma-project-io` folder in the given repository and locate the ClusterAssetGroup CR that you want to modify.
+
 2. Add a new source entry in the **sources** field:
 
    ``` yaml
@@ -164,11 +164,11 @@ To add a new specification, follow these steps:
    where:
   
    - **{SPECIFICATION_TYPE}** defines a type of a given specification. Currently, only [OpenAPI](https://swagger.io/specification/) specifications are supported and they are defined under the `openapi` type.
-   - **{SPECIFICATION_NAME}** defines a unique identifier of a given specification. This field defines the URL on https://kyma-project.io/docs under which the specification is displayed. For example, if the specification is added in the `commands` ClusterAssetGroup CR with the `provision` value of the **name** field, its URL is `https://kyma-project.io/docs/{VERSION_OF_DOCS}/cli/commands/specifications/provision/`.
-   - **{SPECIFICATION_URL}** defines the location of the specification. It may contain directives using values defined in `values.yaml` files.
+   - **{SPECIFICATION_NAME}** defines a unique identifier of a given specification. This field defines the URL on https://kyma-project.io/docs under which the specification is displayed. For example, if the specification is added in the `commands` ClusterAssetGroup CR with the `provision` value in the **name** field, its URL is `https://kyma-project.io/docs/{VERSION_OF_DOCS}/cli/commands/specifications/provision/`.
+   - **{SPECIFICATION_URL}** defines the location of the specification. It may contain directives with values defined in `values.yaml` files.
 
    ``` yaml
-   url: https://raw.githubusercontent.com/kyma-project/cli/{VERSION_OF_DOCS}/docs/commands/assets/provision.yaml
+   url: https://raw.githubusercontent.com/{{ .Values.global.kymaOrgName }}/cli/{VERSION_OF_DOCS}/docs/commands/assets/provision.yaml
    ```
 
    See the example:
@@ -187,43 +187,48 @@ To add a new specification, follow these steps:
   </details>
 </div>
 
-> **NOTE:** Before merge, you can check that everything is good with your changes, checking rendered documentation thanks to [`docs-preview`](#documentation-preview-documentation-preview).
+> **NOTE:** > **NOTE:** Before merging your PR, you can check if the specification you added is rendered properly on the website thanks to [`docs-preview`](#documentation-preview-documentation-preview) built on every PR.
 
-## Add new repository to render its documentation
+## Add a new repository documentation
 
-Follow these steps:
+Follow these steps if you want the documentation from a repository under the [`kyma-project`](https://github.com/orgs/kyma-project/) or [`kyma-incubator`](https://github.com/kyma-incubator`) organization to be rendered on the website under the **Docs** view.
 
-1. Add in repository `.kyma-project-io` folder and appropriate [documentation topics](#add-new-documentation-to-the-website-add-new-documentation-to-the-website-add-a-new-documentation-topic) inside created directory.
+> **NOTE:** Documents should follow the [content strategy](https://kyma-project.io/community/guidelines/content/#content-strategy-content-strategy-documentation-types), have proper types, metadata, and numbering. See the [Kyma docs](https://github.com/kyma-project/kyma/tree/master/docs/kyma) for reference.  
+
+1. Create  the `.kyma-project-io` folder in the given repository and add appropriate [documentation topics](#add-new-documentation-to-the-website-add-new-documentation-to-the-website-add-a-new-documentation-topic) to this folder.
 
 2. Add the new entry in the **docs** field in [`config.json`](https://github.com/kyma-project/website/blob/master/config.json):
 
    ```json
-   "{REPOSITORY_NAME}": {
-      "displayName": "{DISPLAY_NAME}",
-      "organization": "{ORGANIZATION_NAME}",
-      "repository": "{REPOSITORY_NAME}",
-      "branches": {BRANCHES},
-      "lastReleases": {LAST_RELEASES},
-      "navPath": "{NAV_PATH}",
-      "rootPath": {
-        "docsType": "{DOCS_TYPE}",
-        "docsTopic": "{DOCS_TOPIC}"
+   docs: {
+   ...
+      "{REPOSITORY_NAME}": {
+          "displayName": "{DISPLAY_NAME}",
+          "organization": "{ORGANIZATION_NAME}",
+          "repository": "{REPOSITORY_NAME}",
+          "branches": {BRANCHES},
+          "lastReleases": {LAST_RELEASES},
+          "navPath": "{NAV_PATH}",
+          "rootPath": {
+            "docsType": "{DOCS_TYPE}",
+            "docsTopic": "{DOCS_TOPIC}"
+          }
       }
    }
    ```
 
    where:
 
-   - **{REPOSITORY_NAME}** - name of the repository.
-   - **{DISPLAY_NAME}** - name which will be visible under **DOCS** dropdown in main navigation in the [Kyma website](https://kyma-project.io).
-   - **{ORGANIZATION_NAME}** - name of the organization.
-   - **{BRANCHES}** - branch names that will be rendered. It should contains at least `master` branch.
-   - **{LAST_RELEASES}** - number of the last releases that will be rendered. If only branches should be displayed, the value should be 0.
-   - **{NAV_PATH}** - navigation path of the entry under **DOCS** dropdown in main navigation in the [Kyma website](https://kyma-project.io).
-   - **{DOCS_TYPE}** - documentation type which should be visible under navigation path.
-   - **{DOCS_TOPIC}** - documentation topic which should be visible under navigation path.
+   - **{REPOSITORY_NAME}** is the name of the repository with documentation sources.
+   - **{DISPLAY_NAME}** is the name you want to be visible under the **Docs** drop-down menu in the main navigation panel on the [Kyma website](https://kyma-project.io).
+   - **{ORGANIZATION_NAME}** is the name of the organization under which the repository sits. It can be either `kyma-project` or `kyma-incubator`.
+   - **{BRANCHES}** are the names of branches that will be rendered. It should contain at least the `master` branch.
+   - **{LAST_RELEASES}** is the number of the last release that will be rendered. If you only want to display branches, set the value to `0`.
+   - **{NAV_PATH}** is the URL path you want to assign to your docs entry under the **Docs** drop-down menu. For example, if you add CLI docs, specify `cli` as the path to be be redirected to `https://kyma-project.io/docs/cli` after selecting ** CLI** from the **Docs** drop-down menu.
+   - **{DOCS_TYPE}** is the document type that should be visible under the navigation path.
+   - **{DOCS_TOPIC}** is the documentation topic that should be visible under the navigation path.
 
-   Example:
+   See this example:
 
    ```json
    "{REPOSITORY_NAME}": {
@@ -240,4 +245,4 @@ Follow these steps:
    }
    ``` 
 
-3. Create the Pull Request, wait for review, merge the changes and wait until the website is rebuilt. New entry under **DOCS** dropdown in main navigation in the [Kyma website](https://kyma-project.io) should appear with new documentation.
+3. Create a PR, wait for the review, merge the changes, and wait for the website to be rebuilt. The new entry with the new documentation will appear under the **Docs** drop-down menu in the main navigation panel on the [Kyma website](https://kyma-project.io).
