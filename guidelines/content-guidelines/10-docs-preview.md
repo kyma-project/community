@@ -8,13 +8,17 @@ That is possible thanks to the **preview feature** supported by [Netlify](https:
 
 This feature is enabled on these Kyma repositories:
 
-- [`kyma`](https://github.com/kyma-project/kyma/tree/master/docs) for changes in the `/docs` folder that contains sources of the official Kyma documentation rendered in the [**Docs**](https://kyma-project.io/docs/) view.
+- [`kyma`](https://github.com/kyma-project/kyma) for changes in the `/docs` folder that contains sources of the official Kyma documentation rendered in the [**Docs**](https://kyma-project.io/docs/) view.
+
+- [`cli`](https://github.com/kyma-project/cli) for changes in the `/docs` folder that contains sources of the official Kyma CLI documentation rendered in the [**Docs**](https://kyma-project.io/docs/cli) view under the **CLI** subview.
+
+- [`control-plane`](https://github.com/kyma-project/control-plane) for changes in the `/docs` folder that contains sources of the official Kyma Control Plane documentation rendered in the [**Docs**](https://kyma-project.io/docs/cli) view under the **Control Plane** subview.
 
 - [`community`](https://github.com/kyma-project/community) for changes rendered in the [**Community**](https://kyma-project.io/community/) view.
 
 - [`website`](https://github.com/kyma-project/website) for changes rendered on the [landing page](https://kyma-project.io/) and in the [**Blog**](https://kyma-project.io/blog/) view.
 
-Previews are built for PRs containing changes made to any file within these repositories for both successful and failed builds. The only exception is the `kyma` repository where Netlify only builds previews for changes in the `/docs` folder and publishes notifications only for successful builds on such PRs.
+Previews are built for PRs containing changes made in all the mentioned paths within these repositories for both successful and failed builds. The only exception is the `kyma` repository. [Netlify](https://www.netlify.com/) publishes notifications only for successful builds on such PRs.
 
 ## Access previews
 
@@ -35,4 +39,17 @@ The website preview deployment is also visible on the list of jobs that need to 
 ![Job details](./assets/job-details.png)
 
 >**NOTE:** For the `kyma` repository, Netlify only attaches notifications for successful preview builds. Thus, if you make any changes in the `/docs` folder and there is no website preview attached to your PR, access failed build information through the link under **Details** available next to the preview job.
-  
+
+## Add the preview to a repository
+
+1. Make sure that the documentation of the given repository is rendered on the [Kyma website](https://kyma-project.io).
+
+2. Contact the maintainers of the [Kyma website](https://kyma-project.io) to configure [Netlify](https://www.netlify.com/) for the new repository.
+
+3. Copy the [`build-preview.sh`](https://github.com/kyma-project/cli/blob/master/.kyma-project-io/build-preview.sh) script to the `.kyma-project-io` folder in the new repository. In this script, change the name of the repository under the exported **APP_PREPARE_FOR_REPO** environment:
+
+    ```bash
+    export APP_PREPARE_FOR_REPO="{REPOSITORY_NAME}"
+    ```
+
+4. Merge changes and [Netlify](https://www.netlify.com/) will start generating website previews on PRs in the new repository.

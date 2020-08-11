@@ -1,12 +1,12 @@
-apiVersion: cms.kyma-project.io/v1alpha1
-kind: ClusterDocsTopic
+apiVersion: rafter.kyma-project.io/v1beta1
+kind: ClusterAssetGroup
 metadata:
   name: repository
   labels:
-    cms.kyma-project.io/view-context: community
-    cms.kyma-project.io/group-name: guidelines
-    cms.kyma-project.io/order: "3"
-    cms.kyma-project.io/group-order: "5"
+    rafter.kyma-project.io/view-context: community
+    rafter.kyma-project.io/group-name: guidelines
+    rafter.kyma-project.io/order: "3"
+    rafter.kyma-project.io/group-order: "5"
 spec:
   displayName: "Repository"
   description: "Kyma repository guidelines"

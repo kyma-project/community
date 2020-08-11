@@ -42,7 +42,7 @@ copy-website-repo() {
 }
 
 build-preview() {
-  export PREVIEW_SOURCE_DIR="${KYMA_PROJECT_IO_DIR}/.."
+  export APP_PREVIEW_SOURCE_DIR="${KYMA_PROJECT_IO_DIR}/.."
   make -C "${BUILD_DIR}" netlify-community-preview
 }
 

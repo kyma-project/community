@@ -1,12 +1,12 @@
-apiVersion: cms.kyma-project.io/v1alpha1
-kind: ClusterDocsTopic
+apiVersion: rafter.kyma-project.io/v1beta1
+kind: ClusterAssetGroup
 metadata:
   name: get-started
   labels:
-    cms.kyma-project.io/view-context: community
-    cms.kyma-project.io/group-name: get-started
-    cms.kyma-project.io/order: "1"
-    cms.kyma-project.io/group-order: "1"
+    rafter.kyma-project.io/view-context: community
+    rafter.kyma-project.io/group-name: get-started
+    rafter.kyma-project.io/order: "1"
+    rafter.kyma-project.io/group-order: "1"
 spec:
   displayName: "Get started"
   description: "Introduction to Kyma community"

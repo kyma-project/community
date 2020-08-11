@@ -1,12 +1,12 @@
-apiVersion: cms.kyma-project.io/v1alpha1
-kind: ClusterDocsTopic
+apiVersion: rafter.kyma-project.io/v1beta1
+kind: ClusterAssetGroup
 metadata:
   name: collaboration
   labels:
-    cms.kyma-project.io/view-context: community
-    cms.kyma-project.io/group-name: collaboration
-    cms.kyma-project.io/order: "1"
-    cms.kyma-project.io/group-order: "4"
+    rafter.kyma-project.io/view-context: community
+    rafter.kyma-project.io/group-name: collaboration
+    rafter.kyma-project.io/order: "1"
+    rafter.kyma-project.io/group-order: "4"
 spec:
   displayName: "Collaboration"
   description: "Collaboration in Kyma"
