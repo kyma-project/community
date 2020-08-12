@@ -24,7 +24,7 @@ Always add an alternative (alt) text that concisely describes the content or fun
 
 ## Tool
 
-Use [draw.io](https://www.draw.io) (aka [diagrams.net](https://(www.diagrams.net/index.html)) as a recommended tool. Export the diagram as an SVG and save it under the corresponding `assets` directory.
+Use [draw.io](https://www.draw.io) (aka [diagrams.net](www.diagrams.net/index.html)) as a recommended tool. Export the diagram as an SVG and save it under the corresponding `assets` directory.
 
 ## Size
 
