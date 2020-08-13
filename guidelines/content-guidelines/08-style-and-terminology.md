@@ -113,6 +113,7 @@ Don't use "e.g." in documentation. Use the words "for example" or "such as" inst
 * "custom resource," not "Custom Resource" nor "CustomResource"
 * "Application" to describe an external solution connected to Kyma through the Application Connector, "application" to describe software
 * "cloud-native" (adjective), not "cloud native"
+* "ProwJob" (resource) or "Prow job" (process), not "Prowjob/prowjob"
 
 > **NOTE:** Do not use words such as "currently" or "now" to indicate that something is in the transitional phase of development. Avoid promising anything and mention only those components and functionalities that are already in use.
 
@@ -144,6 +145,7 @@ This is the list of the Kubernetes resources capitalized in Kyma documentation. 
 - Node
 - PodPreset
 - Pod
+- ProwJob
 - Secret
 - ServiceBinding
 - ServiceClass
