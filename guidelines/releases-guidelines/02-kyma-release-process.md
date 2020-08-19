@@ -34,7 +34,7 @@ The table below includes placeholders used throughout this document. When execut
 Check if the master branch contains any PR-images:
    
    ```bash
-   git grep -e 'version:\s*[Pp][Rr]-.*' -e 'image:.*:[Pp][Rr]-.*' --before-context=2 -r resources
+   git grep -e 'version:\s.*[Pp][Rr]-.*' -e 'image:.*:[Pp][Rr]-.*' -e 'tag:\s.*[Pp][Rr]-.*' --before-context=2  resources tests
    ```
   
    Ask the teams for fixes if this command returns any output.
@@ -166,6 +166,7 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
             /test pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-integration
             /test pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-central-connector
             /test pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-upgrade
+            /test pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-compass-integration
             ```
 
 2. If you detect any problems with the release, such as failing tests, wait for the fix that can be either delivered on a PR or cherry-picked to the PR from the `master` branch. Prow triggers the jobs again. Rerun manual jobs as described in .
