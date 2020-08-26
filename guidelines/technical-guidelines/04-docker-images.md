@@ -36,6 +36,26 @@ Define labels as in the following example:
 source = git@github.com:kyma-project/examples.git
 ```
 
+### Third party images
+
+Kyma uses some docker images that originally were not build (and hosted) by us. 
+Because of security and reliability reasons we need to copy all external images 
+to our own docker registry.
+We have two solutions to this problem.
+
+### Third party repo
+
+If you want to rebuild the image from scratch use the [third-party-images](https://github.com/kyma-incubator/third-party-images) repository.
+For every  
+
+
+### Image syncer
+
+In case you want to "cache" a image from external registry use the [image-syncer
+](https://github.com/kyma-project/test-infra/tree/master/development/image-syncer)
+tool.
+
+
 ## Examples
 
 Go from scratch:
