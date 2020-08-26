@@ -36,29 +36,28 @@ Define labels as in the following example:
 source = git@github.com:kyma-project/examples.git
 ```
 
-## Third party images
+## Third-party images
 
-Kyma uses some docker images that originally were not build (and hosted) by us. 
-Because of security and reliability reasons we need to copy all external images 
-to our own docker registry.
-We have two solutions to this problem - third-party-images repo and image-syncer tool.
+Kyma uses some Docker images that originally were not built (and hosted) by us. 
+For security and reliability reasons, we need to copy all external images to our own Docker registry.
+We have two solutions to this problem: the third-party-images repository and the image-syncer tool.
 
-### Third party repo
+### Third-party repository
 
-If you want to rebuild the image from scratch use the [third-party-images](https://github.com/kyma-incubator/third-party-images) repository.
-For every component create a separate directory. You need to provide Dockerfile, Makefile and create prow job for building your images.
-See repository content for more information.
+If you want to rebuild the image from scratch, use the [third-party-images](https://github.com/kyma-incubator/third-party-images) repository.
+For every component, create a separate directory. You need to provide a Dockerfile, a Makefile, and create a ProwJob for building your images.
+See the repository content for more information.
 
 ### Image syncer
 
-In case you want to "cache" an image from external registry use the [image-syncer
+If you want to "cache" an image from an external registry, use the [image-syncer
 ](https://github.com/kyma-project/test-infra/tree/master/development/image-syncer)
 tool. 
 
-To copy image to our registry you need to modify the [external-images.yaml](https://github.com/kyma-project/test-infra/blob/master/development/image-syncer/external-images.yaml).
-After your change is merged to master branch you can check the new image URL in the logs of the [post-master-test-infra-image-syncer-run](https://status.build.kyma-project.io/job-history/kyma-prow-logs/logs/post-master-test-infra-image-syncer-run) job.
+To copy the image to our registry, you need to modify the [external-images.yaml](https://github.com/kyma-project/test-infra/blob/master/development/image-syncer/external-images.yaml) file.
+After your change is merged to the `master` branch, you can check the new image URL in the logs of the [post-master-test-infra-image-syncer-run](https://status.build.kyma-project.io/job-history/kyma-prow-logs/logs/post-master-test-infra-image-syncer-run) job.
 
-For example: source image `grafana/grafana:7.0.6` will be transformed to `eu.gcr.io/kyma-project/external/grafana/grafana:7.0.6"`.
+For example, the source image `grafana/grafana:7.0.6` will be transformed to `eu.gcr.io/kyma-project/external/grafana/grafana:7.0.6"`.
 This URL can then be used in your Helm charts.
 
 ## Examples
