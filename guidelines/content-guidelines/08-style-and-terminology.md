@@ -147,6 +147,7 @@ This is the list of the Kubernetes resources capitalized in Kyma documentation. 
 - Pod
 - ProwJob
 - Secret
+- Service
 - ServiceBinding
 - ServiceClass
 - ServiceInstance
