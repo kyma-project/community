@@ -81,13 +81,11 @@ Create a release branch in the `test-infra` repository
     git push -u upstream release-{RELEASE}
     ``` 
 
-
 ## Steps
 
 Follow these steps to release another Kyma version. Execute these steps for every patch release or release candidate.
 
 ### kyma-project/test-infra
-
 
 Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on a release branch contains the correct version to be created. If you define a release candidate version, a pre-release is created.  
 
@@ -96,11 +94,9 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
         ```bash
         echo -n {RELEASE_VERSION} > prow/RELEASE_VERSION
         ```
-    
+
 2. If you had to change the RELEASE_VERSION, create a PR to update it on the release branch.
 3. Once this PR is merged you can proceed.
-
-
 
 ### kyma-project/kyma
 
@@ -146,11 +142,10 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
 
 3. If `pre-release-pr-image-guard` fails, ask the owners to change PR-XXX images of the components to the master version.
 
-    
 #### Execute the tests for the release PR
 
 > **CAUTION:** Never use `/test all` as it might run tests that you do not want to execute.
-   
+
 1. Execute remaining tests. There are dependencies between jobs, so follow the provided order of steps.
 
     1.  Run `kyma-integration` by adding the `/test pre-rel{RELEASE_VERSION_SHORT}-kyma-integration` comment to the PR.
@@ -191,11 +186,11 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
    Follow [these](https://kyma-project.io/docs/#installation-install-kyma-with-your-own-domain-access-the-cluster) instructions to give Kyma teams access to start testing the release candidate.
 
 5. The Github release postsumbit job creates a tag in the `kyma-project/kyma` repository, which triggers the [`post-kyma-release-upgrade`](https://github.com/kyma-project/test-infra/blob/master/prow/jobs/kyma/kyma-release-upgrade.yaml) pipeline. The purpose of this job is to test upgradability between the previous Kyma release, i.e. the latest release that is not a release candidate, and the brand new release published by the release postsubmit job.
-    
+
     For example, if `1.7.0-rc2` is released, the pipeline will try to upgrade `1.6.0` to `1.7.0-rc2`.
-    
+
     If you detect any problems with the upgrade, contact the teams responsible for failing components.
-    
+
     > **CAUTION:** The job assumes no manual migration is involved. If the upgrade process requires any additional actions, the pipeline is likely to fail. In such case, the owners of the components concerned are responsible for running manual tests or modifying the pipeline.
 
 6. Update the `RELEASE_VERSION` file to contain the next patch RC1 version on the release branch. Do it immediately after the release, otherwise, any PR to a release branch overrides the previously published Docker images.
@@ -206,9 +201,9 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
 
 8. Update the release content manually with links to:
 
-   - Instructions on local Kyma installation
-   - Instructions on cluster Kyma installation
-   - Release notes
+   * Instructions on local Kyma installation
+   * Instructions on cluster Kyma installation
+   * Release notes
 
    For installation instructions, use the links from the previous release and update the version number in URLs. If contributors want you to change something in the instructions, they would address you directly. Contact technical writers for the link to release notes.
 
@@ -218,9 +213,10 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
    2. Click the **generate new sheet** button.
    3. You will be asked for a GitHub personal access token. This token does not need any additional scopes!
 
-
 > **NOTE:** After the Kyma release is complete, proceed with [releasing Kyma CLI](/guidelines/releases-guidelines/03-kyma-cli-release-process.md).
 
 ## Post-release tasks
 
-Update `prow/RELEAS_VERSION` in the `master` branch of the `test-infra` repository with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `1.4.2`, then change the version to `1.5.0-rc1`.
+1. Ask Huskies team to upgrade the Kyma Helm Chart on AppHub.
+
+2. Update `prow/RELEASE_VERSION` in the `master` branch of the `test-infra` repository with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `1.4.2`, then change the version to `1.5.0-rc1`.
