@@ -217,6 +217,6 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
 
 ## Post-release tasks
 
-1. Ask Huskies team to upgrade the Kyma Helm Chart on AppHub.
+1. Ask Huskies team to upgrade the Kyma Helm Chart on AppHub. (Because of a limitation on AppHub side, only a few people are allowed to create a PR, which currently includes the members of Huskies team.)
 
 2. Update `prow/RELEASE_VERSION` in the `master` branch of the `test-infra` repository with the name of the next minor release candidate and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `1.4.2`, then change the version to `1.5.0-rc1`.
