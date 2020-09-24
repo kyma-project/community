@@ -21,5 +21,5 @@ The goal of Serverless Runtime capability is to:
 - Allow managing FaaS workload via UI and CLI commands.
 - Integrate third-party serverless providers.
 - Integrate both Kyma and third-party FaaS solutions with other services provided by Kyma, such as Eventing, API Gateway, Service Catalog.
-- Provide an easy way to run containerized workloads inside and outside Kyme.
+- Provide an easy way to run containerized workloads inside and outside Kyma.
 - Provide helpers/sdk/utilities to eliminate boilerplate code.
