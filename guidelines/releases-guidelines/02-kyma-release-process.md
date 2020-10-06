@@ -175,7 +175,7 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
    * create a GitHub release and trigger documentation update on the official Kyma website
    * trigger provisioning of the cluster from the created release. Use the cluster to test the release candidate.
 
-   > **CAUTION**: The cluster is automatically generated for you, but removal is a manual action. The release cluster, the IP Addresses, and the DNS records must be deleted manually after tests on the given cluster are done.
+   > **CAUTION**: The cluster is automatically generated for you, and it is automatically removed after 7 days.
 
    If you don't have access to the GCP project, post a request in the Slack team channel.
 
