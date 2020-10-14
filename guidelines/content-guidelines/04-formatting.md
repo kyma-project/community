@@ -29,7 +29,7 @@ Endpoints                 | Send a POST request to the `/{tenant}/categories/{ca
 File names                | Open the `deployment.yaml` file.
 File extensions           | Modify all `.yaml` and `.json` files.
 Path names                | Save the file in the `\services\repository` folder.
-Repository names          | The file is located in the `Kyma` repository.
+Repository names          | The file is located in the `kyma` repository.
 Status and error codes    | A successful response includes a status code of `200 OK`.
 Parameter and value pairs | The controller adds the `env=true` label to all newly created Namespaces.
 Metadata names            | When you create a Markdown document, define its `title` and `type`.
