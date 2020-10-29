@@ -5,4 +5,4 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Adam Szecówka (**[@aszecowka](https://github.com/aszecowka)**) involved in `area/service-catalog`, `area/ci`, `area/quality`, and `area/management-plane`.
 * Paweł Kosiec (**[@pkosiec](https://github.com/pkosiec)**) involved in `area/core-and-supporting`, `area/console`, `area/management-plane` and `area/control-plane`.
 * Tomasz Papiernik (**[@tomekpapiernik](https://github.com/tomekpapiernik)**) involved in `area/documentation`.
-* Barbara Czyż (**[@bszwarc](https://github.com/bszwarc)**) involved in `area/documentation`, `area/blob-discovery`.
+* Barbara Czyż (**[@bszwarc](https://github.com/bszwarc)**) involved in `area/documentation`. 
