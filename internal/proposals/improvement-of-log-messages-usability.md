@@ -10,15 +10,16 @@ Users, developers, and maintainers want to have an easy way to track events happ
 
 Every mission-critical component (or a critical part of the component) must produce log entries in order to make the problem diagnosis process quick and effective
 
-Key facts about log entries:
+Key assumptions for the log messages:
 
-- Transparency - Entry must be as short as possible but containing all essential information about the process
-- Log traces - Must be easily possible to connect the following log entries with a sequence (in the scope of a whole business process). Log entries should contain some unique trace identifier. The trace identifier is useful only when it is known to the operator - can be easily obtained by him and then used to search the logs
-- GDPR-compliance - Must not contain any sensitive data (password, personal data in the meaning of GDPR)
+- Transparency - every entry must be as short as possible but containing all essential information about the process
+- Tracing - entries sequence must be connected so there is an easy way to filter logs concerning a specific operation
+- GDPR-compliance - entries must not contain any sensitive data (password, personal data in the meaning of GDPR)
+- Agile - log messages and their context should be refactored. If the log was useful while debugging the incident, make other also that useful. If there was something missing in the log, report it and refactor
 - No "responsibility overlapping" - Because there are other tools to help in diagnosis, logs, in general, should not contain the information which can be taken from that tools (i.e there's tracing which can be used for timings)
     > TODO: Ask Artur about the opinion on the log format. Ask also about the known tools used for such resposibilities
 
-Additionally, we need an approach to the "external" components used in Kyma (the ones not implemented in the Kyma team). We should have an idea on how to approach this problem and present the example solution
+Additionally, we need an approach to the "external" components used in Kyma (the ones not implemented in the Kyma team). We should have an idea on how to approach this problem and present the potential solution
 
 ## Log format
 
@@ -28,9 +29,9 @@ Additionally, we need an approach to the "external" components used in Kyma (the
     - error and fatal message: Past tense started with for example "Failed to...", after that the error wrapped with some meaningful context but without additional "failed to" or "error occurred". For example: "Failed to provision runtime: while fetching release: while validating relese: release does not contain installer yaml"
     - info message: Present Continuous tense for the things that are about to be done, for example "Starting processing..." or past tense for the things that are finished, like "Finished successfully!"
     - notice and warning message: A short explanation on what happened and what this can cause. For example: "Tiller configuration not found in the release artifacts. Proceeding to the Helm 3 installation..." or "Connection is not yet established. Retrying in 5 minutes..."
-- context - structure of a contextual information such as operation (for example: "starting workers"), handler/ resolver (for example: "ProvisionRuntime"), controller, resource namespaced name, operation ID, instance ID, operation stage and so on. User must be able to filter the logs that are needed so all the info provided here must be useful and be an unique minimal set for every operation. User must be able to find the needed resource in some store so provide here a name instead of an ID if it's easier to use later
+- context - structure of a contextual information such as operation (for example: "starting workers"), handler/ resolver (for example: "ProvisionRuntime"), controller, resource namespaced name (for example: "production/application1", operation ID, instance ID, operation stage and so on. User must be able to filter the logs that are needed so all the info provided here must be useful and be an unique minimal set for every operation. User must be able to find the needed resource in some store so provide here a name instead of an ID if it's easier to use later
 - traceID - 16-byte numeric value as Base16-encoded string. It'll be randomly generated for each request handling
-    > TODO: Check if trace ID is necessary and how it should be implemented in our case. Suleyman will check it 
+    > TODO: Check if trace ID is necessary and how it should be implemented in our case. Suleyman will check it. Andreas pointed out that we should have in mind [OpenTelemetry standards](https://github.com/open-telemetry/oteps/pull/114/files)
 
 ### Log format examples
 
@@ -63,7 +64,7 @@ Additionally, we need an approach to the "external" components used in Kyma (the
 - stdout: NOTICE and WARN levels
 - stderr: ERROR and FATAL levels
 
-TRACE, DEBUG and INFO levels should not be logged on production clusters. All the important context should be provided in the NOTICE and higher levels so there is no need to have a tone of simmilar INFO logs. On the other environments these three levels could be enabled for the debugging reason and put into the stdout
+TRACE, DEBUG and INFO levels should not be logged on production clusters. All the important context should be provided in the NOTICE and higher levels so there is no need to have a tone of similar INFO logs. On the other environments these three levels could be enabled for the debugging reason and put into the stdout
 
 In case of gathering metrics from the logs, INFO level logs could also be put into the stdout
 
@@ -80,13 +81,8 @@ In case of gathering metrics from the logs, INFO level logs could also be put in
 
 # Workspace - brainstorming
 
-- I assume that error level logs are presented when an action from a support is needed and warning level when the action is not needed yet but may be in the future. Therefore there should be a place where the suggestion on what to do as a support (or user that want to repair it on their own). Only if it is a known issue and there is probably one way to fix it
+- If there is a quick solution for an error or simple suggestion for a warning, add it to the message so the operator could use it while debugging
 - If operation will be retried, say when
-- Logs shouldn't rely on the previous logs because context may change. All the needed info should be in a single log entry.
+- JSON format should be enabled only on clusters where the monitoring is enabled. Text format is more readable for debugging purposes
 - In case of debug level add the error stack tracing
-- Errors could have a specific ID so their metrics could be easily tracked (where this ID will be created and stored?)
-- **Refactor the logs! If you took part in some incident debugging process, note down which logs were especially useful and what was missing**
 - Don't put redundant data into the logs. If something faild 10 times, say that it failes 10 times instead of printing the same error 10 times
-- Use context whereever it's possible. Add resource ID, tenant ID, operation ID. Everything YOU CAN FILTER with some base (ID that you cannot use is useless)
-- Logs should contain in their context the operation which was requested
-- Here is a document from Telemetry - https://github.com/open-telemetry/oteps/blob/a86472bac9a9695da438472aebc72d904a25b9e5/text/logs/0114-log-correlation.md
