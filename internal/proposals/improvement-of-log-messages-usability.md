@@ -1,5 +1,7 @@
 # Improvement of log messages usability
 
+> TODO: Ask TWs for a language review
+
 ## Motivation
 
 We want to provide a common, unified solution to logging across Kyma components, which will enable users and maintainers to easily track specific events happening in Kyma's ecosystem. The solution should be independent of the platform (AWS, Azure, GCP) and easy to introduce in existing components
@@ -23,17 +25,19 @@ Additionally, we need an approach to the "external" components used in Kyma (the
 
 ## Log format
 
+To unify the logs, therefore to make debugging process much easier and to make logs parsing also super easy, I'd like to propose a single log format so every service, job and all the components could follow:
+
 - timestamp - ISO 8601 Date and time with timezone. For example: "2020-12-08T10:33:45+00:00"
 - level - logging level. For example: "ERROR"
 - message - information with the presented format (notice that there no additional data that could be duplicated in the context structure):
     - error and fatal message: Past tense started with for example "Failed to...", after that the error wrapped with some meaningful context but without additional "failed to" or "error occurred". For example: "Failed to provision runtime: while fetching release: while validating relese: release does not contain installer yaml"
     - info message: Present Continuous tense for the things that are about to be done, for example "Starting processing..." or past tense for the things that are finished, like "Finished successfully!"
     - notice and warning message: A short explanation on what happened and what this can cause. For example: "Tiller configuration not found in the release artifacts. Proceeding to the Helm 3 installation..." or "Connection is not yet established. Retrying in 5 minutes..."
-- context - structure of a contextual information such as operation (for example: "starting workers"), handler/ resolver (for example: "ProvisionRuntime"), controller, resource namespaced name (for example: "production/application1", operation ID, instance ID, operation stage and so on. User must be able to filter the logs that are needed so all the info provided here must be useful and be an unique minimal set for every operation. User must be able to find the needed resource in some store so provide here a name instead of an ID if it's easier to use later
-- traceid - 16-byte numeric value as Base16-encoded string. It'll be passed through a header so the user can filter all the logs regarding the whole business operation in the whole system
+- context - structure of a text contextual information such as operation (for example: "starting workers"), handler/ resolver (for example: "ProvisionRuntime"), controller, resource namespaced name (for example: "production/application1", operation ID, instance ID, operation stage and so on. User must be able to filter the logs that are needed so all the info provided here must be useful and be an unique minimal set for every operation. User must be able to find the needed resource in some store so provide here a name instead of an ID if it's easier to use later
+- traceid - 16-byte numeric value as Base16-encoded string. It'll be passed through a header, so the user can filter all the logs regarding the whole business operation in the whole system
 - spanid - 16-byte numeric value as Base16-encoded string. It'll be randomly generated for each request handling so the user can filter the component logs for a specific operation handling
-> TODO: Ask Andreas for the review on the OpenTelemetry standards
 > traceid and spanid are required in the log to be compliant with the [OpenTelemetry standards](https://github.com/open-telemetry/oteps/pull/114/files)
+> TODO: Ask Andreas for the review on the OpenTelemetry standards
 
 ### Log format examples
 
@@ -62,7 +66,7 @@ Additionally, we need an approach to the "external" components used in Kyma (the
 
 ## Log streams and what to put inside of them
 
-> Damian will take care of this. He's working on his own proposal so we can merge them together later
+> Damian will take care of it. He's working on his own proposal so we can merge them together later
 
 - stdout: NOTICE and WARN levels
 - stderr: ERROR and FATAL levels
@@ -72,6 +76,8 @@ TRACE, DEBUG and INFO levels should not be logged on production clusters. All th
 In case of gathering metrics from the logs, INFO level logs could also be put into the stdout
 
 ## What should **not** be logged
+
+We should be careful about the information we put in logs. Every log should be easily connectable with the issue or the error but there should be no internal or confidential data provided in any log entry. Here is what should not be logged:
 
 > TODO: Consult it with the security experts
 
