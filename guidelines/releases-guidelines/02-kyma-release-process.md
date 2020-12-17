@@ -106,21 +106,7 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
 
    1. In `installation/resources/installer.yaml` replace `eu.gcr.io/kyma-project/develop/installer:{image_tag}` with `eu.gcr.io/kyma-project/kyma-installer:{RELEASE_VERSION}`
 
-   2. Find these lines in `tools/kyma-installer/kyma.Dockerfile`:
-
-        ```
-        ARG INSTALLER_VERSION="{kyma_operator_version}"
-        ARG INSTALLER_DIR={kyma_operator_path}
-        FROM $INSTALLER_DIR/kyma-operator:$INSTALLER_VERSION
-        ```
-
-      Replace them with:
-
-        ```
-        FROM {kyma_operator_path}/kyma-operator:master-{kyma_operator_version}
-        ```
-
-   3. In the `resources/core/values.yaml` file, find the `clusterAssetGroupsVersion`
+   2. In the `resources/core/values.yaml` file, find `clusterAssetGroupsVersion`.
 
         ```yaml
         docs:
@@ -193,7 +179,7 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
 
     > **CAUTION:** The job assumes no manual migration is involved. If the upgrade process requires any additional actions, the pipeline is likely to fail. In such case, the owners of the components concerned are responsible for running manual tests or modifying the pipeline.
 
-6. Update the `RELEASE_VERSION` file to contain the next patch RC1 version on the release branch. Do it immediately after the release, otherwise, any PR to a release branch overrides the previously published Docker images.
+6. On the release branch, update the `RELEASE_VERSION` file located in the `prow` folder of the [`kyma-project/test-infra`](https://github.com/kyma-project/test-infra) repository. It must contain the next release candidate version. Do it immediately after the release, otherwise, any PR to a release branch overrides the previously published Docker images.
 
    For example, if the `RELEASE_VERSION` file on the release branch contains `1.4.1`, change it to `1.4.2-rc1`.
 
