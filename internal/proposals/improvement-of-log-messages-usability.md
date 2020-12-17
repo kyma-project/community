@@ -17,7 +17,7 @@ Key assumptions for the log messages:
 - GDPR-compliance - entries must not contain any sensitive data (password, personal data in the meaning of GDPR)
 - Agile - log messages and their context should be refactored. If the log was useful while debugging the incident, make other also that useful. If there was something missing in the log, report it and refactor
 - No "responsibility overlapping" - Because there are other tools to help in diagnosis, logs, in general, should not contain the information which can be taken from that tools (i.e there's tracing which can be used for timings)
-    > TODO: Ask Artur about the opinion on the log format. Ask also about the known tools used for such resposibilities
+    > TODO: Ask Artur and Przemek for the review on the potential responsibility overlaping
 
 Additionally, we need an approach to the "external" components used in Kyma (the ones not implemented in the Kyma team). We should have an idea on how to approach this problem and present the potential solution
 
@@ -30,14 +30,16 @@ Additionally, we need an approach to the "external" components used in Kyma (the
     - info message: Present Continuous tense for the things that are about to be done, for example "Starting processing..." or past tense for the things that are finished, like "Finished successfully!"
     - notice and warning message: A short explanation on what happened and what this can cause. For example: "Tiller configuration not found in the release artifacts. Proceeding to the Helm 3 installation..." or "Connection is not yet established. Retrying in 5 minutes..."
 - context - structure of a contextual information such as operation (for example: "starting workers"), handler/ resolver (for example: "ProvisionRuntime"), controller, resource namespaced name (for example: "production/application1", operation ID, instance ID, operation stage and so on. User must be able to filter the logs that are needed so all the info provided here must be useful and be an unique minimal set for every operation. User must be able to find the needed resource in some store so provide here a name instead of an ID if it's easier to use later
-- traceID - 16-byte numeric value as Base16-encoded string. It'll be randomly generated for each request handling
-    > TODO: Check if trace ID is necessary and how it should be implemented in our case. Suleyman will check it. Andreas pointed out that we should have in mind [OpenTelemetry standards](https://github.com/open-telemetry/oteps/pull/114/files)
+- traceid - 16-byte numeric value as Base16-encoded string. It'll be passed through a header so the user can filter all the logs regarding the whole business operation in the whole system
+- spanid - 16-byte numeric value as Base16-encoded string. It'll be randomly generated for each request handling so the user can filter the component logs for a specific operation handling
+> TODO: Ask Andreas for the review on the OpenTelemetry standards
+> traceid and spanid are required in the log to be compliant with the [OpenTelemetry standards](https://github.com/open-telemetry/oteps/pull/114/files)
 
 ### Log format examples
 
 #### Key-Value Pairs
 ```text
-2020-12-15T07:26:45+00:00 WARNING Tiller configuration not found in the release artifacts. Proceeding to the Helm 3 installation... context.resolver=ProvisionRuntime context.operationID=92d5d8fd-cbdc-4b7a-9bc3-2b2eccfcb109 context.stage=InstallReleaseArtifacts context.shootName=c-3a38b3a context.runtimeId=19eb9335-6c13-4d40-8504-3cd07b18c12f traceID=0354af75138b12921
+2020-12-15T07:26:45+00:00 WARNING Tiller configuration not found in the release artifacts. Proceeding to the Helm 3 installation... context.resolver=ProvisionRuntime context.operationID=92d5d8fd-cbdc-4b7a-9bc3-2b2eccfcb109 context.stage=InstallReleaseArtifacts context.shootName=c-3a38b3a context.runtimeId=19eb9335-6c13-4d40-8504-3cd07b18c12f traceid=0354af75138b12921 spanid=14c902d73a
 ```
 
 #### JSON
@@ -53,13 +55,14 @@ Additionally, we need an approach to the "external" components used in Kyma (the
     "shootName": "c-3a38b3a",
     "runtimeID": "19eb9335-6c13-4d40-8504-3cd07b18c12f"
   },
-  "traceID": "0354af75138b12921"
+  "traceid": "0354af75138b12921",
+  "spanid": "14c902d73a"
 }
 ```
 
 ## Log streams and what to put inside of them
 
-> TODO: Check if we can distinquish the output streams in Kubernetes. Damian will check it
+> Damian will take care of this. He's working on his own proposal so we can merge them together later
 
 - stdout: NOTICE and WARN levels
 - stderr: ERROR and FATAL levels
@@ -72,15 +75,16 @@ In case of gathering metrics from the logs, INFO level logs could also be put in
 
 > TODO: Consult it with the security experts
 
-- authorization data such as passwords, usernames, certificates and tokens
-- personal identifiable information such as tenant names
+- authorization data such as passwords, usernames, certificates and tokens. Note that sometimes basic auth could be used in the url such as `http://username:password@example.com/` and other tokens like `http://www.example.com/api/v1/users/1?access_token=123` so you need to be extra careful in these cases
+- personal identifiable information such as tenant names, sub account IDs, global account IDs and so on
 
-## Ideas for external components
+## **Ideas** for external components
 
-> TODO: Brainstorm on it. Suleyman suggested that it could be done via adapter sidecars and FluentD. Check these
+> Suleyman will take care of it. FluentBit seems to be a promising solution
 
 # Workspace - brainstorming
 
+> TODO: Transform these ideas into the solutions
 - If there is a quick solution for an error or simple suggestion for a warning, add it to the message so the operator could use it while debugging
 - If operation will be retried, say when
 - JSON format should be enabled only on clusters where the monitoring is enabled. Text format is more readable for debugging purposes
