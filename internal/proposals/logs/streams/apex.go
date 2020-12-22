@@ -2,21 +2,17 @@ package main
 
 import (
 	"github.com/apex/log"
+	"github.com/apex/log/handlers/json"
+	"os"
 )
 
 func main() {
-
-	//log.Interface()
-
-	//log.SetLevel(log.ErrorLevel)
-	var dict map[string]string
-	log.WithField("len", len(dict)).WithField("dict is nil", dict == nil).Info("maps in go")
-	testApex()
+	log.SetHandler(json.New(os.Stderr))
+	log.ErrorLevel
+	testApexLogger(log.WithField("request_id", "dajdhaskj"))
 }
 
-
-
-func testApex() {
-	log.Infof("just normal log with msg: %s", "Hello From Zap")
-	log.Errorf("Error msg: %s", "some error occured")
+func testApexLogger(logEntry *log.Entry) {
+	logEntry.Infof("just normal log with msg: %s", "Hello From Zap")
+	logEntry.Errorf("Error msg: %s", "some error occured")
 }

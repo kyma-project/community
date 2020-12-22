@@ -3,49 +3,29 @@ package main
 import (
 	"context"
 	"github.com/rs/zerolog"
-	"github.com/rs/zerolog/log"
 	"os"
+	"time"
 )
 
 func main() {
-	errWriter := zerolog.ConsoleWriter{
-		Out: os.Stderr,
+	consoleWriter := zerolog.ConsoleWriter{
+		Out:     os.Stderr,
+		NoColor: true,
+
 	}
-	infoWriter := zerolog.ConsoleWriter{
-		Out: os.Stdout,
-		FormatLevel: func(i interface{}) string {
-			val, ok := i.(string)
-			if !ok {
-				return ""
-			}
-			lvl, err := zerolog.ParseLevel(val)
-			if err != nil {
-				panic(err)
-			}
-
-			if lvl == zerolog.ErrorLevel {
-				return "ERROR"
-			}
-			return ""
-		},
-	}
-
-	multi := zerolog.MultiLevelWriter(errWriter, infoWriter)
-
-	//zerolog.SyslogLevelWriter(multi)
-
-
-	logger := zerolog.New(multi).With().Timestamp().Logger()
+	zerolog.TimeFieldFormat = time.RFC3339
+	logger := zerolog.New(consoleWriter).With().Timestamp().Logger()
+	logger = zerolog.New(os.Stderr).Level(zerolog.ErrorLevel).With().Timestamp().Logger()
 	ctx := context.WithValue(context.TODO(), "request_id", "2137")
 
-	logger = log.Logger
-	logMessages(ctx, logger)
+	testZerolog(ctx, logger)
 }
 
-func logMessages(ctx context.Context, log zerolog.Logger) {
+func testZerolog(ctx context.Context, log zerolog.Logger) {
 	enchangeLog(ctx, log.Info()).Msg("log with context")
 	log.Info().Str("request_id", "adjhdashkjdas").Msgf("Message: %s", "connected")
 	log.Error().Msgf("something bad happen: %s", "log error")
+	log.Log().Msg("No log level")
 }
 
 func enchangeLog(ctx context.Context, logEvent *zerolog.Event) *zerolog.Event {

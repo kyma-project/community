@@ -4,7 +4,6 @@ In Unix systems we have 2 output stream: `stderr` and `stdout`. The purpose of t
 - stderr, to this stream should be printed diagnostic output.
 according to [GNU libc documentation](https://www.gnu.org/software/libc/manual/html_node/Standard-Streams.html)
 and [Posix](https://pubs.opengroup.org/onlinepubs/9699919799/functions/stderr.html)
-At first sight, those rules are very good for command line programs.
 
 In our case we have two options:
 - log errors, panics and fatals to stderr, log everything else to stdout 
@@ -30,35 +29,48 @@ Available Logging libraries for Go:
 - Zerolog
 - apex/log
 
-We shouldn't pick [logurs](https://github.com/sirupsen/logrus), because it's in maitainance mode.
+We shouldn't pick [logurs](https://github.com/sirupsen/logrus), because it's in maintenance mode.
 
 ## ZAP
 pros:
 - configuration of Zap looks very advanced
 - library can log in JSON or text format. It has the ability to be extended.
-- looks very fast (accroding to benchmark provided by zap)
+- looks very fast (according to benchmark provided by zap)
+- ability to chain loggers (add context)
+- api is very intuitive
+- configurable level of filtering
+- available log levels: ERROR, INFO, FATAL, DEBUG, PANIC, WARN, DPANIC(for development),  
 
 cons:
 - Direct dependency to library. Uses struct instead of interfaces.
 
-Basically, there are 4 important log levels:
-DEBUG, INFO, WARN and ERROR. It is possible to filter the log levels before logging.
-
 ## Zerolog
 
 pros:
-- accroding th their benchmarks, the fastest library
+- according th their benchmarks, the fastest library
+- ability to chain loggers (add context)
+- library can log in JSON or text format. It has the ability to be extended.
+- api is a little different, but it's intuitive.
+- possible to set date format
+- configurable level of filtering
+- available log levels: ERROR, INFO, FATAL, DEBUG, PANIC, WARN, TRACE, no level
+
 cons
 - it's not possible to log errors to stderr and other things to stdout, more [info](https://github.com/rs/zerolog/issues/150)
 
 ## apex/log
 pros:
-- 
+- ability to chain loggers (add context) using `entry` struct
+- library can log in JSON or text format. It has the ability to be extended.
+- configurable level of filtering
+- available log levels: ERROR, INFO, FATAL, DEBUG, WARN
 
 cons:
--
+- singleton
+- cannot set timestamp format. The default time format looks like this:  `2020-12-22T12:52:39.906885+01:00`
+- it's not possible to log errors to stderr and other things to stdout
 
-TODO: WRITE SOMETHING ABOUT API
+
 ## Run Examples
 run example :
 ```bash
@@ -68,9 +80,10 @@ where '$1' is the name of go main file.
 
 # Summary
 
-I would recommend to log eveything to stderr, because:
+I would recommend logging everything to stderr, because:
 - zap, zerolog and apex/log and I think other libraries can log everything to stderr 
-- it's possible to filter logs by level and it's not needed to filter the logs by stream.
+- it's possible to filter logs by level and it's not needed to filter the logs by stream
+- requires less work on current components
 
-It terms of logging library I think that we should use what fit for our case or we like.
-Keep the logging format consistently it's key for unified logging in all product.
+It terms of logging library I think that we should use what fit for our case, we prefer. or currently have.
+Keep the logging format consistently it's key for unified logging in Kyma.
