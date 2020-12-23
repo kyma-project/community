@@ -11,7 +11,7 @@ func main() {
 	filterLevel := zap.ErrorLevel
 	timeEncoder := zapcore.TimeEncoderOfLayout(time.RFC822)
 
-	consoleLog := zapcore.Lock(os.Stdout)
+	consoleLog := zapcore.Lock(os.Stderr)
 	logFilter := zap.LevelEnablerFunc(func(level zapcore.Level) bool {
 		return level <= filterLevel
 	})

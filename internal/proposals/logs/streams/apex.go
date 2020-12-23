@@ -8,7 +8,6 @@ import (
 
 func main() {
 	log.SetHandler(json.New(os.Stderr))
-	log.ErrorLevel
 	testApexLogger(log.WithField("request_id", "dajdhaskj"))
 }
 

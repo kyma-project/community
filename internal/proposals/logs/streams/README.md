@@ -2,7 +2,8 @@
 In Unix systems we have 2 output stream: `stderr` and `stdout`. The purpose of those streams are:
 - stdout, to this stream should be printed conventional output ( for example.: something which can be processed by other tool using piping)
 - stderr, to this stream should be printed diagnostic output.
-according to [GNU libc documentation](https://www.gnu.org/software/libc/manual/html_node/Standard-Streams.html)
+according to [GNU libc documentation](https://www.gnu.org/software/libc/manual/html_node/Standard-Streams.html),
+[When to Use STDERR and STDOUT](https://www.jstorimer.com/blogs/workingwithcode/7766119-when-to-use-stderr-instead-of-stdout)
 and [Posix](https://pubs.opengroup.org/onlinepubs/9699919799/functions/stderr.html)
 
 In our case we have two options:
@@ -23,8 +24,9 @@ Kubernetes stores the logs in `/var/log`. In those logs there is the information
 ## Golang
 Requirements for Library:
 - format the logs in JSON and text
+- ability to set timestamp format
 
-Available Logging libraries for Go:
+Considered Logging libraries for Go:
 - Zap
 - Zerolog
 - apex/log
@@ -39,10 +41,8 @@ pros:
 - ability to chain loggers (add context)
 - api is very intuitive
 - configurable level of filtering
+- possible to set date format
 - available log levels: ERROR, INFO, FATAL, DEBUG, PANIC, WARN, DPANIC(for development),  
-
-cons:
-- Direct dependency to library. Uses struct instead of interfaces.
 
 ## Zerolog
 
@@ -66,7 +66,6 @@ pros:
 - available log levels: ERROR, INFO, FATAL, DEBUG, WARN
 
 cons:
-- singleton
 - cannot set timestamp format. The default time format looks like this:  `2020-12-22T12:52:39.906885+01:00`
 - it's not possible to log errors to stderr and other things to stdout
 
@@ -85,5 +84,5 @@ I would recommend logging everything to stderr, because:
 - it's possible to filter logs by level and it's not needed to filter the logs by stream
 - requires less work on current components
 
-It terms of logging library I think that we should use what fit for our case, we prefer. or currently have.
+It terms of logging library I think that we should use what fit for our case, we prefer or currently have.
 Keep the logging format consistently it's key for unified logging in Kyma.
