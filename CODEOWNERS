@@ -5,7 +5,7 @@
 /manifesto-app/ @m00g3n @aerfio @magicmatatjahu
 
 # Owners of the collaboration folder
-/collaboration/ @PK85 @mszostok
+/collaboration/ @PK85
 
 # Owners of all .md files in the repository
 *.md @kazydek @klaudiagrz @mmitoraj @majakurcius @alexandra-simeonova @superojla
