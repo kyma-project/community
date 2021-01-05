@@ -2,7 +2,7 @@
 
 It must be possible to easily set a more verbose logging level of each component within the Kyma ecosystem while troubleshooting.
 
-We also have some "external" components (not implemented by the Kyma team) and we need an approach on how to change the logging level in them.
+We also have some "external" components (not implemented by the Kyma team) and we need an approach on how to change the logging level in them. For debugging reasons the level could be changed without any code and charts changes just with the in-cluster resource change.
 
 ## Setting up the log level
 
