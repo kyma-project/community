@@ -3,7 +3,6 @@ In Unix systems we have 2 output stream: `stderr` and `stdout`. The purpose of t
 - stdout, to this stream should be printed conventional output ( for example.: something which can be processed by other tool using piping)
 - stderr, to this stream should be printed diagnostic output.
 according to [GNU libc documentation](https://www.gnu.org/software/libc/manual/html_node/Standard-Streams.html),
-[When to Use STDERR and STDOUT](https://www.jstorimer.com/blogs/workingwithcode/7766119-when-to-use-stderr-instead-of-stdout)
 and [Posix](https://pubs.opengroup.org/onlinepubs/9699919799/functions/stderr.html)
 
 In our case we have two options:
