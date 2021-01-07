@@ -84,5 +84,8 @@ I would recommend logging everything to stderr, because:
 - it's possible to filter logs by level and it's not needed to filter the logs by stream
 - requires less work on current components
 
-It terms of logging library I think that we should use what fit for our case, we prefer or currently have.
+For new components, the recommendation is `Zap`.
+For already components, we should use what we currently have and unified log messages.
+In case of impossibility to fulfil the requirements, the exchange for `Zap`  is recommended.
+
 Keep the logging format consistently it's key for unified logging in Kyma.
