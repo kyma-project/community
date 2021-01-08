@@ -44,6 +44,8 @@ Check if the master branch contains any PR-images:
 >**NOTE:** a release branch needs to be created per new major / minor version. Patch releases and release candidates do not have a dedicated release branch.
 
 Create a release branch in the `kyma` repository. The name of this branch should follow the `release-{major}.{minor}` pattern, such as `release-1.4`.
+Creating a release branch will automatically trigger ProwJobs that build pre-release artifacts and spin-up RC cluster.
+
 
     ```bash
     git fetch upstream
@@ -87,12 +89,12 @@ Follow these steps to release another Kyma version. Execute these steps for ever
 
 ### kyma-project/test-infra
 
-Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on a release branch contains the correct version to be created. If you define a release candidate version, a pre-release is created.  
+Ensure that the `RELEASE_VERSION` file from the `kyma` repository on a release branch contains the correct version to be created. If you define a release candidate version, a pre-release is created.  
 
 1. Make sure the `RELEASE_VERSION` file includes just a single line, **without the newline character at the end**:  
 
         ```bash
-        echo -n {RELEASE_VERSION} > prow/RELEASE_VERSION
+        echo -n {RELEASE_VERSION} > RELEASE_VERSION
         ```
 
 2. If you had to change the RELEASE_VERSION, create a PR to update it on the release branch.
@@ -132,25 +134,17 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
 
 > **CAUTION:** Never use `/test all` as it might run tests that you do not want to execute.
 
-1. Execute remaining tests. There are dependencies between jobs, so follow the provided order of steps.
+1. Once you create Pull Request to the release branch the following tests will be triggered.
+   These jobs run in the same way as in the `master` branch:
+   ```
+   pre-rel{RELEASE_VERSION_SHORT}-kyma-artifacts
+   pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-integration
+   pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-central-connector
+   pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-upgrade
+   pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-compass-integration
+   ```
 
-    1.  Run `kyma-integration` by adding the `/test pre-rel{RELEASE_VERSION_SHORT}-kyma-integration` comment to the PR.
-
-        > **NOTE:** You don't have to wait until the `pre-rel{RELEASE_VERSION_SHORT}-kyma-integration` job finishes to proceed with further jobs.
-
-    2. Execute the next steps in the following order
-        1. Run `/test pre-rel{RELEASE_VERSION_SHORT}-kyma-installer` and wait until it finishes.
-        2. Run `/test pre-rel{RELEASE_VERSION_SHORT}-kyma-artifacts` and wait until it finishes.
-        3. Run the following tests in parallel and wait for them to finish:
-
-            ```
-            /test pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-integration
-            /test pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-central-connector
-            /test pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-upgrade
-            /test pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-compass-integration
-            ```
-
-2. If you detect any problems with the release, such as failing tests, wait for the fix that can be either delivered on a PR or cherry-picked to the PR from the `master` branch. Prow triggers the jobs again. Rerun manual jobs as described in .
+2. If you detect any problems with the release, such as failing tests, wait for the fix that can be either added to your PR or cherry-picked to the PR from the `master` branch. Prow will re-trigger jobs automatically.
 
 3. After all checks pass, merge the PR, using the `rebase and merge` option.
 
@@ -158,8 +152,13 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
 
 4. Merging the PR to the release branch runs the postsubmit jobs, which:
 
+   * create release artifacts for the given release in the `RELEASE_VERSION` file
+   * spin-up a release candidate cluster which uses latest artifacts generated in the previous job
+   
+5. Once the release process is finished and release branch is complete create a new tag in the repository that points to your release branch.
+Tag has to have the same name as in the `RELEASE_VERSION` file. Creating a new tag will trigger the following actions:
+   
    * create a GitHub release and trigger documentation update on the official Kyma website
-   * trigger provisioning of the cluster from the created release. Use the cluster to test the release candidate.
 
    > **CAUTION**: The cluster is automatically generated for you, and it is automatically removed after 7 days.
 
