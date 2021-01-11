@@ -4,12 +4,24 @@ It must be possible to easily set a more verbose logging level of each component
 
 We also have some "external" components (not implemented by the Kyma team) and we need an approach on how to change the logging level in them. For debugging reasons the level could be changed without any code and charts changes just with the in-cluster resource change.
 
+## What to put into each severity level
+
+As we decided to use Zap library as the logger I'll describe all the needed levels from this particular one:
+
+- FATAL - a component setup failed and need to be restarted,
+- ERROR - errors that break something, so request failures, reading memory failures, and so on,
+- WARN - things that do not break anything but suggest that potential setup should be changed, so resources are running low, optional config cannot be fetched, a request failed but will be retried, a connection is lost but will be reacquired, and so on,
+- INFO - requests handling, operating on resources, successes, information about operations in progress, and so on,
+- DEBUG - options with which the component is deployed, requests' paths, and other information that is useful while making sure that everything works as expected.
+
+No other severity will be used as it is not needed.
+
 ## Default severity levels for the environments
 
 To be consistent, we need to agree on what default level components will log in each environment:
 
-- PROD: `INFO` - this is a minimal severity needed for performing the audit logging,
-- STAGE: `INFO` - this is a minimal severity needed for performing the audit logging. It'd also be a good indicator on how the logs will look like on PROD environment,
+- PROD: `WARN` - this is a minimal severity needed for effective debugging of issues,
+- STAGE: `WARN` - this is a minimal severity needed for effective debugging of issues. It'd also be a good indicator on how the logs will look like on PROD environment,
 - DEV: `DEBUG` - this is a lowest possible logging level. It may be helpful for debugging issues while developing.
 
 In the current state we do log everything on every environment. Therefore, changing the logs severity could only decrease amount of the logs on some environments and there is no need to increase amount of needed resources for our components. A potential amount of the resources decreasement could be done while the next iteration of the evaluating Kyma profiles.
@@ -21,7 +33,7 @@ Setting up the log level should be easy, do not take much resources and should b
 In the `values.yaml` file of each Kyma component there will be:
 
 ```yaml
-logLevel: "info"
+logLevel: "warn"
 ```
 
 In the `deployment.yaml` or other component container specification there will be an environment variable, for example:
@@ -35,7 +47,7 @@ In the `deployment.yaml` or other component container specification there will b
           ...
 ```
 
-The default value for the `logLevel` could be `"info"` so there will be additional resources - overrides - present only on the DEV environment.
+The default value for the `logLevel` could be `"warn"` so there will be additional resources - overrides - present only on the DEV environment.
 
 In the application there will be an environment variable reader which will parse the value and set the proper logging level in the logger.
 
