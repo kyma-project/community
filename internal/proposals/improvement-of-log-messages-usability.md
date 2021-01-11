@@ -25,7 +25,7 @@ Additional assumptions:
 - In case of debug level add the error stack tracing
 - Don't put redundant data into the logs. If something failed 10 times, log that it failed 10 times instead of printing the same error 10 times
 
-## Log format
+## Log structure
 
 To unify the logs, therefore to make debugging process much easier and to make logs parsing also super easy, I'd like to propose a single log format so every service, job and all the components could follow:
 
@@ -40,14 +40,31 @@ To unify the logs, therefore to make debugging process much easier and to make l
 - span_id - 16-byte numeric value as Base16-encoded string. It'll be randomly generated for each request handling so the user can filter the component logs for a specific operation handling
 > trace_id and span_id are required in the log to be compliant with the [OpenTelemetry standards](https://github.com/open-telemetry/oteps/pull/114/files)
 
-### Log format examples
+### Log format
 
-#### Key-Value Pairs
+Log format should be configured and changeable. I'd like to propose a Helm Chart key `logFormat` which could have two values, `json` or `text`. For example:
+
+```yaml
+logFormat: "json"
+```
+
+In the `deployment.yaml` or other component container specification there will be an environment variable, for example:
+
+```yaml
+    spec:
+      containers:
+        - env:
+          - name: LOG_FORMAT
+            value: {{ .Values.global.logFormat }}
+          ...
+```
+
+#### Key-Value Pairs examples
 ```text
 2012-12-12T07:20:50.52Z WARNING Tiller configuration not found in the release artifacts. Proceeding to the Helm 3 installation... context.resolver=ProvisionRuntime context.operationID=92d5d8fd-cbdc-4b7a-9bc3-2b2eccfcb109 context.stage=InstallReleaseArtifacts context.shootName=c-3a38b3a context.runtimeId=19eb9335-6c13-4d40-8504-3cd07b18c12f trace_id=0354af75138b12921 span_id=14c902d73a
 ```
 
-#### JSON
+#### JSON examples
 ```json
 {
   "timestamp": "2012-12-12T07:20:50.52Z",
