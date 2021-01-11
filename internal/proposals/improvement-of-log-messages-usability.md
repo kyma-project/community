@@ -29,7 +29,7 @@ Additional assumptions:
 
 To unify the logs, therefore to make debugging process much easier and to make logs parsing also super easy, I'd like to propose a single log format so every service, job and all the components could follow:
 
-- timestamp - ISO 8601 (or RFC3339) Date and time with timezone. For example: "2020-12-08T10:33:45+00:00"
+- timestamp - RFC3339 Date and time with timezone. For example: "2012-12-12T07:20:50.52Z"
 - level - logging level. For example: "ERROR"
 - message - information with the presented format (notice that there no additional data that could be duplicated in the context structure):
     - error and fatal message: Past tense started with for example "Failed to...", after that the error wrapped with some meaningful context but without additional "failed to" or "error occurred". For example: "Failed to provision runtime: while fetching release: while validating relese: release does not contain installer yaml"
@@ -44,13 +44,13 @@ To unify the logs, therefore to make debugging process much easier and to make l
 
 #### Key-Value Pairs
 ```text
-2020-12-15T07:26:45+00:00 WARNING Tiller configuration not found in the release artifacts. Proceeding to the Helm 3 installation... context.resolver=ProvisionRuntime context.operationID=92d5d8fd-cbdc-4b7a-9bc3-2b2eccfcb109 context.stage=InstallReleaseArtifacts context.shootName=c-3a38b3a context.runtimeId=19eb9335-6c13-4d40-8504-3cd07b18c12f trace_id=0354af75138b12921 span_id=14c902d73a
+2012-12-12T07:20:50.52Z WARNING Tiller configuration not found in the release artifacts. Proceeding to the Helm 3 installation... context.resolver=ProvisionRuntime context.operationID=92d5d8fd-cbdc-4b7a-9bc3-2b2eccfcb109 context.stage=InstallReleaseArtifacts context.shootName=c-3a38b3a context.runtimeId=19eb9335-6c13-4d40-8504-3cd07b18c12f trace_id=0354af75138b12921 span_id=14c902d73a
 ```
 
 #### JSON
 ```json
 {
-  "timestamp": "2020-12-15T07:26:45+00:00",
+  "timestamp": "2012-12-12T07:20:50.52Z",
   "level": "WARNING",
   "message": "Tiller configuration not found in the release artifacts. Proceeding to the Helm 3 installation...",
   "context": {
@@ -70,5 +70,5 @@ To unify the logs, therefore to make debugging process much easier and to make l
 We should be careful about the information we put in logs. Every log should be easily connectable with the issue or the error but there should be no internal or confidential data provided in any log entry. Here is what should not be logged:
 
 - authorization data such as passwords, usernames, certificates and tokens. Note that sometimes basic auth could be used in the url such as `http://username:password@example.com/` and other tokens like `http://www.example.com/api/v1/users/1?access_token=123` so you need to be extra careful in these cases
-- personal identifiable information such as tenant names, sub account IDs, global account IDs and so on. If the personal identifiable information is required in the audit log it should be encrypted
+- personal identifiable information such as tenant names. If the personal identifiable information is required in the audit log it should be encrypted
 - user input to avoid Log Injection. If user input is required in the log, it should be parsed and validated
