@@ -23,7 +23,8 @@ Kubernetes stores the logs in `/var/log`. In those logs there is the information
 ## Golang
 Requirements for Library:
 - format the logs in JSON and text
-- ability to set timestamp format
+- ability to set timestamp format RFC3339
+- ability to suppress logs by level
 
 Considered Logging libraries for Go:
 - Zap
@@ -43,6 +44,8 @@ pros:
 - possible to set date format
 - available log levels: ERROR, INFO, FATAL, DEBUG, PANIC, WARN, DPANIC(for development),  
 
+cons: 
+-  method `With`, which accepts unlimited arguments but will print only pairs., eg.: `With("a","b","c")` will produce only `a:"b"`
 ## Zerolog
 
 pros:
@@ -50,6 +53,7 @@ pros:
 - ability to chain loggers (add context)
 - library can log in JSON or text format. It has the ability to be extended.
 - api is a little different, but it's intuitive.
+- have nice way to add fields to the log, e.g : `log.Info().Str("a", "b")`
 - possible to set date format
 - configurable level of filtering
 - available log levels: ERROR, INFO, FATAL, DEBUG, PANIC, WARN, TRACE, no level
@@ -66,8 +70,8 @@ pros:
 
 cons:
 - cannot set timestamp format. The default time format looks like this:  `2020-12-22T12:52:39.906885+01:00`
+According to Go (`apex/apex_test.go`) and python ` rfc3339-validator 0.1.2` this logged time is valid rfc3339 timestamp.
 - it's not possible to log errors to stderr and other things to stdout
-
 
 ## Run Examples
 run example :
@@ -77,14 +81,16 @@ go run $1.go 1>info.log 2>err.log
 where '$1' is the name of go main file.
 
 # Summary
+**The recommended library for logging is `Zap`.** 
+Easy to use, flexibility in configuration and good API.
 
 I would recommend logging everything to stderr, because:
 - zap, zerolog and apex/log and I think other libraries can log everything to stderr 
 - it's possible to filter logs by level and it's not needed to filter the logs by stream
 - requires less work on current components
 
-For new components, the recommendation is `Zap`.
-For already components, we should use what we currently have and unified log messages.
-In case of impossibility to fulfil the requirements, the exchange for `Zap`  is recommended.
+For already components, we should check if current logger pass the requirements.
+If yes, we can use it.
+In case of impossibility to fulfil the requirements, the exchange for `Zap`  is required.
 
 Keep the logging format consistently it's key for unified logging in Kyma.

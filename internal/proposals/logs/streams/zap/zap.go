@@ -28,7 +28,7 @@ func main() {
 }
 
 func testZapLogger(log *zap.SugaredLogger) {
-	log.With("context","a").Infof("just normal log with msg: %s", "Hello From Zap")
+	log.With("context","a","a").Infof("just normal log with msg: %s", "Hello From Zap")
 	log.Errorf("Error msg: %s", "some error occured")
 }
 
