@@ -59,6 +59,8 @@ kubectl -n compass-system edit deployment compass-runtime-agent
 ```
 Then editting the `APP_LOG_LEVEL` environment variable and hitting `:wq`. The pod will restart with the new logging level value and will be ready to debug.
 
+There are components that should not be restarted so this approach couldn't be performed. We should come up with some ideas on how to change their log severity level. A potential solution is to create a configmap, and a listener that would periodically read the value from this resource. [Here is a follow-up issue](https://github.com/kyma-project/community/issues/530).
+
 ## Setting up the log level in the external components
 
 > TODO: @dbadura, please, add the note about the external components
