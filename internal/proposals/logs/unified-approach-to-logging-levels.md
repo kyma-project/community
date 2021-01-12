@@ -63,4 +63,4 @@ There are components that should not be restarted so this approach couldn't be p
 
 ## Setting up the log level in the external components
 
-> TODO: @dbadura, please, add the note about the external components
+Currently, we do have a lot of external components that are set up in many ways. We decided that preparing solutions for all of them is out of scope of this proposal.
