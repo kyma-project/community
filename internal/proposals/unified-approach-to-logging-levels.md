@@ -8,7 +8,7 @@ We also have some "external" components (not implemented by the Kyma team) and w
 
 As we decided to use Zap library as the logger I'll describe all the needed levels from this particular one:
 
-- FATAL - a component setup failed and need to be restarted,
+- FATAL - a component reached a catastrophic error and cannot go further,
 - ERROR - errors that break something, so request failures, reading memory failures, and so on,
 - WARN - things that do not break anything but suggest that potential setup should be changed, so resources are running low, optional config cannot be fetched, a request failed but will be retried, a connection is lost but will be reacquired, and so on,
 - INFO - requests handling, operating on resources, successes, information about operations in progress, and so on,
