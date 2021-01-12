@@ -44,7 +44,7 @@ In the `deployment.yaml` or other component container specification there will b
     spec:
       containers:
         - env:
-          - name: LOG_LEVEL
+          - name: APP_LOG_LEVEL
             value: {{ .Values.global.log.level }}
           ...
 ```
@@ -57,7 +57,7 @@ While debugging there will be an easy option to change the logging level via kub
 ```bash
 kubectl -n compass-system edit deployment compass-runtime-agent
 ```
-Then editting the `LOG_LEVEL` environment variable and hitting `:wq`. The pod will restart with the new logging level value and will be ready to debug.
+Then editting the `APP_LOG_LEVEL` environment variable and hitting `:wq`. The pod will restart with the new logging level value and will be ready to debug.
 
 ## Setting up the log level in the external components
 
