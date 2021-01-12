@@ -36,16 +36,17 @@ To unify the logs, therefore to make debugging process much easier and to make l
     - info message: Present Continuous tense for the things that are about to be done, for example "Starting processing..." or past tense for the things that are finished, like "Finished successfully!"
     - notice and warning message: A short explanation on what happened and what this can cause. For example: "Tiller configuration not found in the release artifacts. Proceeding to the Helm 3 installation..." or "Connection is not yet established. Retrying in 5 minutes..."
 - context - structure of a text contextual information such as operation (for example: "starting workers"), handler/ resolver (for example: "ProvisionRuntime"), controller, resource namespaced name (for example: "production/application1", operation ID, instance ID, operation stage and so on. User must be able to filter the logs that are needed so all the info provided here must be useful and be an unique minimal set for every operation. User must be able to find the needed resource in some store so provide here a name instead of an ID if it's easier to use later
-- trace_id - 16-byte numeric value as Base16-encoded string. It'll be passed through a header, so the user can filter all the logs regarding the whole business operation in the whole system
-- span_id - 16-byte numeric value as Base16-encoded string. It'll be randomly generated for each request handling so the user can filter the component logs for a specific operation handling
-> trace_id and span_id are required in the log to be compliant with the [OpenTelemetry standards](https://github.com/open-telemetry/oteps/pull/114/files)
+- traceid - 16-byte numeric value as Base16-encoded string. It'll be passed through a header, so the user can filter all the logs regarding the whole business operation in the whole system
+- spanid - 16-byte numeric value as Base16-encoded string. It'll be randomly generated for each request handling so the user can filter the component logs for a specific operation handling
+> traceid and spanid are required in the log to be compliant with the [OpenTelemetry standards](https://github.com/open-telemetry/oteps/pull/114/files). Keep in mind that the standard is still in the development phase so we should keep eye on it and change it accordingly.
 
 ### Log format
 
-Log format should be configured and changeable. I'd like to propose a Helm Chart key `logFormat` which could have two values, `json` or `text`. For example:
+Log format should be configured and changeable. I'd like to propose a Helm Chart key `log.format` which could have two values, `json` or `text`. For example:
 
 ```yaml
-logFormat: "json"
+log:
+  format: "json"
 ```
 
 In the `deployment.yaml` or other component container specification there will be an environment variable, for example:
@@ -54,14 +55,14 @@ In the `deployment.yaml` or other component container specification there will b
     spec:
       containers:
         - env:
-          - name: LOG_FORMAT
-            value: {{ .Values.global.logFormat }}
+          - name: APP_LOG_FORMAT
+            value: {{ .Values.global.log.format }}
           ...
 ```
 
 #### Key-Value Pairs examples
 ```text
-2012-12-12T07:20:50.52Z WARNING Tiller configuration not found in the release artifacts. Proceeding to the Helm 3 installation... context.resolver=ProvisionRuntime context.operationID=92d5d8fd-cbdc-4b7a-9bc3-2b2eccfcb109 context.stage=InstallReleaseArtifacts context.shootName=c-3a38b3a context.runtimeId=19eb9335-6c13-4d40-8504-3cd07b18c12f trace_id=0354af75138b12921 span_id=14c902d73a
+2012-12-12T07:20:50.52Z WARNING Tiller configuration not found in the release artifacts. Proceeding to the Helm 3 installation... context.resolver=ProvisionRuntime context.operationID=92d5d8fd-cbdc-4b7a-9bc3-2b2eccfcb109 context.stage=InstallReleaseArtifacts context.shootName=c-3a38b3a context.runtimeId=19eb9335-6c13-4d40-8504-3cd07b18c12f traceid=0354af75138b12921 spanid=14c902d73a
 ```
 
 #### JSON examples
@@ -77,8 +78,8 @@ In the `deployment.yaml` or other component container specification there will b
     "shootName": "c-3a38b3a",
     "runtimeID": "19eb9335-6c13-4d40-8504-3cd07b18c12f"
   },
-  "trace_id": "0354af75138b12921",
-  "span_id": "14c902d73a"
+  "traceid": "0354af75138b12921",
+  "spanid": "14c902d73a"
 }
 ```
 
