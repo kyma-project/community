@@ -7,11 +7,11 @@ We have some "external" components too (not implemented by the Kyma team) and we
 
 ## What to put into each severity level
 
-As we decided to use Zap library as the logger I'll describe all the needed levels from this particular one:
+We decided to use the Zap library as the logger. Here is a description of all the needed levels:
 
 - `FATAL` - a component reached a catastrophic error and cannot go further,
-- `ERROR` - errors that break something, so request failures, reading memory failures, and so on,
-- `WARN` - things that do not break anything but suggest that potential setup should be changed, so resources are running low, optional config cannot be fetched, a request failed but will be retried, a connection is lost but will be reacquired, and so on,
+- `ERROR` - errors that break something, such as request failures, reading memory failures,
+- `WARN` - things that do not break anything but suggest that potential setup should be changed, for example: resources are running low, optional config cannot be fetched, a request failed but will be retried, a connection is lost but will be reacquired,
 - `INFO` - requests handling, operating on resources, successes, information about operations in progress, and so on,
 - `DEBUG` - options with which the component is deployed, requests' paths, and other information that is useful while making sure that everything works as expected.
 
@@ -25,11 +25,11 @@ To be consistent, we need to agree on what default level components will log in 
 - STAGE: `WARN` - this is a minimal severity needed for effective debugging of issues. It'd also be a good indicator on how the logs will look like on PROD environment,
 - DEV: `DEBUG` - this is a lowest possible logging level. It may be helpful for debugging issues while developing.
 
-In the current state we do log everything on every environment. Therefore, changing the logs severity could only decrease amount of the logs on some environments and there is no need to increase amount of needed resources for our components. A potential amount of the resources decreasement could be done while the next iteration of the evaluating Kyma profiles.
+In the current state we log everything on every environment. Therefore, changing the logs severity could only decrease amount of the logs on some environments, and there is no need to increase the amount of needed resources for our components. A potential amount of the resources decreasement could be done during the next iteration of evaluating the Kyma profiles.
 
 ## Setting up the log level
 
-Setting up the log level should be easy, do not take much resources and should be easily changeable. The log level will be set as a Helm Chart value. This solution will provide easy possibility to change the log level in every situation.
+Setting up the log level should be easy, shouldn't take much resources and should be easily changeable. The log level will be set as a Helm chart value. This solution will provide easy possibility to change the log level in every situation.
 
 In the `values.yaml` file of each Kyma component there will be:
 
@@ -57,9 +57,9 @@ While debugging there will be an easy option to change the logging level via kub
 ```bash
 kubectl -n compass-system edit deployment compass-runtime-agent
 ```
-Then editting the `APP_LOG_LEVEL` environment variable and hitting `:wq`. The pod will restart with the new logging level value and will be ready to debug.
+Then editing the `APP_LOG_LEVEL` environment variable and hitting `:wq`. The pod will restart with the new logging level value and will be ready to debug.
 
-There are components that should not be restarted so this approach couldn't be performed. We should come up with some ideas on how to change their log severity level. A potential solution is to create a configmap, and a listener that would periodically read the value from this resource. [Here is a follow-up issue](https://github.com/kyma-project/community/issues/530).
+There are components that should not be restarted, so this approach couldn't be used. We should come up with some ideas on how to change their log severity level. A potential solution is to create a configmap, and a listener that would periodically read the value from this resource. [Here is a follow-up issue](https://github.com/kyma-project/community/issues/530).
 
 ## Setting up the log level in the external components
 
