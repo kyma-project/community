@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: "stream-test"
+spec:
+  template:
+    spec:
+      containers: 
+        - name: "log"
+          image: "bash"
+          command:
+            - bash
+            - -c
+            - | 
+              echo \"ERROR\">&2
+              sleep 1
+              echo \"TEST\"
+              echo \"INFO\">&1
+              exit 0
+      restartPolicy: OnFailure
+
