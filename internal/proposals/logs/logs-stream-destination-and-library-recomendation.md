@@ -93,7 +93,7 @@ According to Go (`apex/apex_test.go`) and Python's `rfc3339-validator 0.1.2`, th
 Run the example in which `$1` is the name of the Go main file:
 
 ```bash
-go run $1/$1.go 1>info.log 2>err.log
+go run poc-streams-and-libraries/$1/$1.go 1>info.log 2>err.log
 ```
 
 ## Summary
