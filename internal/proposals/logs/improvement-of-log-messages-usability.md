@@ -61,7 +61,7 @@ In the `deployment.yaml` file or other component's container specification, ther
 
 ### Key-value pairs example
 ```text
-2012-12-12T07:20:50.52Z WARNING Tiller configuration not found in the release artifacts. Proceeding to the Helm 3 installation... context.resolver=ProvisionRuntime context.operationID=92d5d8fd-cbdc-4b7a-9bc3-2b2eccfcb109 context.stage=InstallReleaseArtifacts context.shootName=c-3a38b3a context.runtimeId=19eb9335-6c13-4d40-8504-3cd07b18c12f traceid=0354af75138b12921 spanid=14c902d73a
+2012-12-12T07:20:50.52Z WARNING Tiller configuration not found in the release artifacts. Proceeding to the Helm 3 installation... {"context":{"resolver":"ProvisionRuntime","operationID":"92d5d8fd-cbdc-4b7a-9bc3-2b2eccfcb109","stage":"InstallReleaseArtifacts","shootName":"c-3a38b3a","runtimeID":"19eb9335-6c13-4d40-8504-3cd07b18c12f"},"traceid":"0354af75138b12921","spanid":"14c902d73a"}
 ```
 
 ### JSON example
