@@ -1,6 +1,5 @@
 # Improvement of log messages usability
 
-## Motivation
 
 We want to provide a common, unified solution to logging across Kyma components, which will enable users and maintainers to easily track specific events happening in Kyma's ecosystem. The solution should be independent of the platform (AWS, Azure, GCP) and easy to introduce in existing components
 
