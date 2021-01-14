@@ -110,4 +110,4 @@ I would recommend logging everything to `stderr` because:
 
 For already components, we should check if the current logger meets the requirements. If yes, we can use it. In case of impossibility to fulfill the requirements, we would need to switch to Zap.
 
-Keep the logging format consistently as it's the key to unified logging in Kyma.
+Keep the logging format consistent as it's the key to unified logging in Kyma.
