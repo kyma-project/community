@@ -34,8 +34,8 @@ To unify the logs, which will make the debugging process and logs parsing much e
     - error and fatal message: past tense started with, for example, `Failed to...`, after that the error wrapped with some meaningful context. For example: `Failed to provision runtime: while fetching release: while validating release: release does not contain installer yaml`.
     - info message: present continuous tense for the things that are about to be done, for example, `Starting processing...`, or past tense for the things that are finished, such as `Finished successfully!`.
     - warning message: a short explanation of what happened and what this can cause. For example: `Tiller configuration not found in the release artifacts. Proceeding to the Helm 3 installation...` or `Connection is not yet established. Retrying in 5 minutes...`.
-    - obviously, all messages should be written in English, in order to preserve unified number/date formatting we suggest going with `en-us` locale
-    - the encoding should be `UTF-8`
+    - message language: English. To preserve unified number/date formatting, go with the `en-us` locale.
+    - encoding: `UTF-8`.
 - **context** - structure of the contextual information, such as operation (for example: `starting workers`), handler/ resolver (for example: `ProvisionRuntime`), controller, resource-namespaced name (for example: `production/application1`), operation ID, instance ID, operation stage, and so on. Users must be able to filter the logs so all the info provided here must be a useful and unique minimal set for every operation. Users must be able to find the needed resource in some store so provide here a name instead of an ID if it's easier to use later.
 - **traceid** - 16-byte numeric value as a base16-encoded string. It'll be passed through a header, so the user can filter all the logs regarding the whole business operation in the whole system.
 - **spanid** - 16-byte numeric value as a base16-encoded string. It'll be randomly generated for each request handling so the user can filter the component logs for a specific operation handling.
