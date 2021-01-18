@@ -15,7 +15,7 @@ We decided to use the Zap library as the logger. Here is a description of all th
 - `INFO` - requests handling, operating on resources, successes, information about operations in progress, and so on,
 - `DEBUG` - options with which the component is deployed, requests' paths, and other information that is useful while making sure that everything works as expected.
 
-No other severity will be used as it is not needed.
+No other severity will be used as it is not needed. Please note, that every further log level should include information from previous log levels. For example `DEBUG` log level should include all logs from `INFO` level.
 
 ## Default severity levels for the environments
 
@@ -63,4 +63,4 @@ There are components that should not be restarted, so this approach couldn't be 
 
 ## Setting up the log level in the external components
 
-Currently, we do have a lot of external components that are set up in many ways. We decided that preparing solutions for all of them is out of scope of this proposal.
+Currently, we do have a lot of external components that are set up in many ways. We decided that preparing solutions for all of them is out of scope of this proposal. Those configurations should be described in the documentation, preferrably in a single place, where everyone will have an easy access when needed.
