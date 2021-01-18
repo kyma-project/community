@@ -44,16 +44,12 @@ Check if the master branch contains any PR-images:
 >**NOTE:** a release branch needs to be created per new major / minor version. Patch releases and release candidates do not have a dedicated release branch.
 
 Create a release branch in the `kyma` repository. The name of this branch should follow the `release-{major}.{minor}` pattern, such as `release-1.4`.
-Creating a release branch will automatically trigger ProwJobs that build pre-release artifacts and spin-up RC cluster.
-
 
     ```bash
     git fetch upstream
     git checkout --no-track -b release-{RELEASE} upstream/master
     git push -u upstream release-{RELEASE}
     ```
-
->**CAUTION:** If you don't create the Kyma release branch at this point and add a  `post-rel{RELEASE_VERSION_SHORT}-kyma-release-candidate` post-submit job to the `test-infra` master, then pushing anything to the Kyma release branch, creating or rebasing the branch, triggers a new GitHub release.
 
 ### kyma-project/test-infra
 
@@ -89,12 +85,12 @@ Follow these steps to release another Kyma version. Execute these steps for ever
 
 ### kyma-project/test-infra
 
-Ensure that the `RELEASE_VERSION` file from the `kyma` repository on a release branch contains the correct version to be created. If you define a release candidate version, a pre-release is created.  
+Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on a release branch contains the correct version to be created. If you define a release candidate version, a pre-release is created.  
 
-1. Make sure the `RELEASE_VERSION` file includes just a single line, **without the newline character at the end**:  
+1. Make sure the `prow/RELEASE_VERSION` file includes just a single line, **without the newline character at the end**:  
 
         ```bash
-        echo -n {RELEASE_VERSION} > RELEASE_VERSION
+        echo -n {RELEASE_VERSION} > prow/RELEASE_VERSION
         ```
 
 2. If you had to change the RELEASE_VERSION, create a PR to update it on the release branch.
@@ -131,11 +127,9 @@ Ensure that the `RELEASE_VERSION` file from the `kyma` repository on a release b
 3. If `pre-release-pr-image-guard` fails, ask the owners to change PR-XXX images of the components to the master version.
 
 #### Execute the tests for the release PR
-
-> **CAUTION:** Never use `/test all` as it might run tests that you do not want to execute.
-
+   > **NOTE:** Steps 1-4 can be done by every developer that is introducing changes to the specific version.
 1. Once you create Pull Request to the release branch the following tests will be triggered.
-   These jobs run in the same way as in the `master` branch:
+   These jobs run in the same way as on a Pull Request to the `master` branch:
    ```
    pre-rel{RELEASE_VERSION_SHORT}-kyma-artifacts
    pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-integration
@@ -144,24 +138,22 @@ Ensure that the `RELEASE_VERSION` file from the `kyma` repository on a release b
    pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-compass-integration
    ```
 
-2. If you detect any problems with the release, such as failing tests, wait for the fix that can be either added to your PR or cherry-picked to the PR from the `master` branch. Prow will re-trigger jobs automatically.
+2. If you detect any problems with your PR fix the issues until your checks pass.
 
-3. After all checks pass, merge the PR, using the `rebase and merge` option.
-
-   > **CAUTION:** By default, the `rebase and merge` option is disabled. Contact one of the `kyma-project/kyma` repository admins to enable it.
-
-4. Merging the PR to the release branch runs the postsubmit jobs, which:
-
-   * create release artifacts for the given release in the `RELEASE_VERSION` file
-   * spin-up a release candidate cluster which uses latest artifacts generated in the previous job
+3. After all checks pass, merge your PR to the release branch. Merging the PR will trigger the post-submit integration tests automatically.
+The jobs' status will be visible on the Kyma [TestGrid](https://testgrid.k8s.io/kyma_integration) in the corresponding dashboard tab.
    
+4. If during the development process there will be need for additional changes in the release branch, open a new PR to the release branch with changes.
+Repeat steps 1-3 for this PR.
+
 5. Once the release process is finished and release branch is complete create a new tag in the repository that points to your release branch.
 Tag has to have the same name as in the `RELEASE_VERSION` file. Creating a new tag will trigger the following actions:
    
-   * create a GitHub release and trigger documentation update on the official Kyma website
+   * Create a GitHub release and trigger documentation update on the official Kyma website.
 
+   * Create a new release cluster for the given Kyma `RELEASE_VERSION`.
    > **CAUTION**: The cluster is automatically generated for you, and it is automatically removed after 7 days.
-
+   
    If you don't have access to the GCP project, post a request in the Slack team channel.
 
    ```bash
@@ -170,7 +162,7 @@ Tag has to have the same name as in the `RELEASE_VERSION` file. Creating a new t
 
    Follow [these](https://kyma-project.io/docs/#installation-install-kyma-with-your-own-domain-access-the-cluster) instructions to give Kyma teams access to start testing the release candidate.
 
-5. The Github release postsumbit job creates a tag in the `kyma-project/kyma` repository, which triggers the [`post-kyma-release-upgrade`](https://github.com/kyma-project/test-infra/blob/master/prow/jobs/kyma/kyma-release-upgrade.yaml) pipeline. The purpose of this job is to test upgradability between the previous Kyma release, i.e. the latest release that is not a release candidate, and the brand new release published by the release postsubmit job.
+5. The Github release postsumbit job creates a release in the `kyma-project/kyma` repository, which triggers the [`post-rel{RELEASE_VERSION_SHORT}kyma-release-upgrade`](https://github.com/kyma-project/test-infra/blob/master/prow/jobs/kyma/kyma-release-upgrade.yaml) pipeline. The purpose of this job is to test upgradability between the previous Kyma release, i.e. the latest release that is not a release candidate, and the brand new release published by the release postsubmit job.
 
     For example, if `1.7.0-rc2` is released, the pipeline will try to upgrade `1.6.0` to `1.7.0-rc2`.
 
