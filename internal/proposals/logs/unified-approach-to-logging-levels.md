@@ -21,8 +21,8 @@ No other severity will be used as it is not needed. Note that every further log 
 
 To be consistent, we need to agree on what default level components will log in each environment:
 
-- PROD: `WARN` - this is a minimal severity needed for effective debugging of issues,
-- STAGE: `WARN` - this is a minimal severity needed for effective debugging of issues. It'd also be a good indicator on how the logs will look like on PROD environment,
+- PROD: `INFO` - this is a minimal severity needed for effective debugging of issues,
+- STAGE: `INFO` - this is a minimal severity needed for effective debugging of issues. It'd also be a good indicator on how the logs will look like on PROD environment,
 - DEV: `DEBUG` - this is a lowest possible logging level. It may be helpful for debugging issues while developing.
 
 In the current state we log everything on every environment. Therefore, changing the logs severity could only decrease amount of the logs on some environments, and there is no need to increase the amount of needed resources for our components. A potential amount of the resources decreasement could be done during the next iteration of evaluating the Kyma profiles.
