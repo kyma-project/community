@@ -131,15 +131,11 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
    > **NOTE:** Steps 1-4 can be done by every developer that is introducing changes to the specific version.
 1. Create a feature-branch based on the given `release-{RELEASE}` branch you want to extend. Add your changes and create Pull Request.
    
-2. Once you create Pull Request to the release branch the following tests will be triggered.
-   These jobs run in the same way as on a Pull Request to the `master` branch:
-   ```
-   pre-rel{RELEASE_VERSION_SHORT}-kyma-artifacts
-   pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-integration
-   pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-central-connector
-   pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-upgrade
-   pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-compass-integration
-   ```
+2.
+Once you create Pull Request to the release branch the set of checks will be triggered.
+These jobs run in the same way as on a Pull Request to the `master` branch. 
+If you create a Pull Request that contains change in the components the component-building job will be triggered. 
+If you make any changes in the charts, the integration tests will be triggered.
 
 3. If you detect any problems with your PR fix the issues until your checks pass.
 
