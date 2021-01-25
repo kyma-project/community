@@ -125,10 +125,13 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
    ![PullRequest](./assets/release-PR.png)
 
 3. If `pre-release-pr-image-guard` fails, ask the owners to change PR-XXX images of the components to the master version.
+4. If the checks are green merge the PR and proceed to the next step.
 
-#### Execute the tests for the release PR
+#### Development process towards the release
    > **NOTE:** Steps 1-4 can be done by every developer that is introducing changes to the specific version.
-1. Once you create Pull Request to the release branch the following tests will be triggered.
+1. Create a feature-branch based on the given `release-{RELEASE}` branch you want to extend. Add your changes and create Pull Request.
+   
+2. Once you create Pull Request to the release branch the following tests will be triggered.
    These jobs run in the same way as on a Pull Request to the `master` branch:
    ```
    pre-rel{RELEASE_VERSION_SHORT}-kyma-artifacts
@@ -138,15 +141,22 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
    pre-rel{RELEASE_VERSION_SHORT}-kyma-gke-compass-integration
    ```
 
-2. If you detect any problems with your PR fix the issues until your checks pass.
+3. If you detect any problems with your PR fix the issues until your checks pass.
 
-3. After all checks pass, merge your PR to the release branch. Merging the PR will trigger the post-submit integration tests automatically.
+4. After all checks pass, merge your PR to the release branch. Merging the PR will trigger the post-submit integration tests automatically.
 The jobs' status will be visible on the Kyma [TestGrid](https://testgrid.k8s.io/kyma_integration) in the corresponding dashboard tab.
    
-4. If during the development process there will be need for additional changes in the release branch, open a new PR to the release branch with changes.
-Repeat steps 1-3 for this PR.
+5. If during the development process there will be need for additional changes in the release branch, open a new PR to the release branch with changes.
+Repeat steps 1-4 for this PR.
 
-5. Once the release process is finished and release branch is complete create a new tag in the repository that points to your release branch.
+#### Creating release
+1. Once the release process is finished and release branch is complete create a new tag in the repository that points to your release branch.
+> **CAUTION:** Make sure you are working on the most up-to-date `release-{RELEASE}` branch for a given release. 
+```shell
+git tag -a {RELEASE_VERSION} -m "Release {RELEASE_VERSION}"
+git push upstream {RELEASE_VERSION}
+```
+
 Tag has to have the same name as in the `RELEASE_VERSION` file. Creating a new tag will trigger the following actions:
    
    * Create a GitHub release and trigger documentation update on the official Kyma website.
@@ -183,12 +193,6 @@ Tag has to have the same name as in the `RELEASE_VERSION` file. Creating a new t
    * Release notes
 
    For installation instructions, use the links from the previous release and update the version number in URLs. If contributors want you to change something in the instructions, they would address you directly. Contact technical writers for the link to release notes.
-
-9. Create a new sheet in the [Release Testing](https://docs.google.com/spreadsheets/d/1ty3OciQzgzv0GagTG2Dku9os2AfMupbGNf8QxjHaO88)
-   >**NOTE:** Make sure that you are not signed in with your SAP Google Account
-   1. Open the **Main** sheet.
-   2. Click the **generate new sheet** button.
-   3. You will be asked for a GitHub personal access token. This token does not need any additional scopes!
 
 > **NOTE:** After the Kyma release is complete, proceed with [releasing Kyma CLI](/guidelines/releases-guidelines/03-kyma-cli-release-process.md).
 
