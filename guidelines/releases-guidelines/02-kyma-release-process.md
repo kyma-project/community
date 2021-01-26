@@ -129,6 +129,7 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
 
 #### Development process towards the release
    > **NOTE:** Every developer who is introducing changes to the specific version can perform steps 1-4.
+
 1. Create a feature-branch based on the given `release-{RELEASE}` branch you want to extend. Add your changes and create a Pull Request.
 
 2. Once you create a Pull Request to the release branch, the set of checks is triggered. 
