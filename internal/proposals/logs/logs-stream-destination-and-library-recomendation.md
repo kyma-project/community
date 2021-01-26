@@ -51,6 +51,7 @@ Pros:
 - Configurable level of filtering
 - Possibility to set the date format
 - Available log levels: `ERROR`, `INFO`, `FATAL`, `DEBUG`, `PANIC`, `WARN`, `DPANIC` (for development)
+- Support `Caller` field
 
 Cons:
 
@@ -68,6 +69,7 @@ Pros:
 - Possibility to set the date format
 - Configurable level of filtering
 - Available log levels: `ERROR`, `INFO`, `FATAL`, `DEBUG`, `PANIC`, `WARN`, `TRACE`, no level
+- Support `Caller` field
 
 Cons:
 
@@ -84,6 +86,7 @@ Pros:
 
 Cons:
 
+- Lack of `Caller` field
 - Cannot set the timestamp format. The default time format looks like this: `2020-12-22T12:52:39.906885+01:00`.
 According to Go (`apex/apex_test.go`) and Python's `rfc3339-validator 0.1.2`, this logged time is a valid RFC3339 timestamp.
 - It's not possible to log errors to `stderr` and other things to `stdout`.

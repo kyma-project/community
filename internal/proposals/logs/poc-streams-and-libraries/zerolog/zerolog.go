@@ -14,8 +14,8 @@ func main() {
 
 	}
 	zerolog.TimeFieldFormat = time.RFC3339
-	logger := zerolog.New(consoleWriter).With().Timestamp().Logger()
-	logger = zerolog.New(os.Stderr).Level(zerolog.ErrorLevel).With().Timestamp().Logger()
+	logger := zerolog.New(consoleWriter).With().Timestamp().Caller().Logger()
+	logger = zerolog.New(os.Stderr).Level(zerolog.ErrorLevel).With().Timestamp().Caller().Logger()
 	ctx := context.WithValue(context.TODO(), "request_id", "2137")
 
 	testZerolog(ctx, logger)

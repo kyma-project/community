@@ -22,7 +22,7 @@ func main() {
 
 	core := zapcore.NewTee(zapcore.NewCore(encoder, consoleLog, logFilter))
 
-	logger := zap.New(core).Sugar().With("APP_NAME", "MY_AWESOME_APP")
+	logger := zap.New(core, zap.AddCaller()).Sugar().With("APP_NAME", "MY_AWESOME_APP")
 
 	testZapLogger(logger)
 }

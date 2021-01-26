@@ -39,6 +39,7 @@ To unify the logs, which will make the debugging process and logs parsing much e
 - **context** - structure of the contextual information, such as operation (for example: `starting workers`), handler/ resolver (for example: `ProvisionRuntime`), controller, resource-namespaced name (for example: `production/application1`), operation ID, instance ID, operation stage, and so on. Users must be able to filter the logs so all the info provided here must be a useful and unique minimal set for every operation. Users must be able to find the needed resource in some store so provide here a name instead of an ID if it's easier to use later.
 - **traceid** - 16-byte numeric value as a base16-encoded string. It'll be passed through a header, so the user can filter all the logs regarding the whole business operation in the whole system.
 - **spanid** - 16-byte numeric value as a base16-encoded string. It'll be randomly generated for each request handling so the user can filter the component logs for a specific operation handling.
+- **caller** - string with information from where the log was created eg.: `"pkg/components/client.go:45"`. It's helpful to quickly track the log.  
 >**NOTE:** The **traceid** and **spanid** fields are required in the logs to be compliant with the [OpenTelemetry standards](https://github.com/open-telemetry/oteps/pull/114/files). The standard is still in the development phase, so we should keep an eye on it and change it accordingly.
 
 ## Log format
