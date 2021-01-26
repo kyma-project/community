@@ -30,10 +30,6 @@ The list of public SIGs in Kyma includes:
 
 * [Core SIG](#core-special-interest-group-core-special-interest-group)
 
-The list of public WGs in Kyma includes:
-
-* [Installation WG](https://github.com/kyma-project/community/tree/master/collaboration/wg-installation/README.md)
-
 ## Closed SIGs and WGs
 
 To see the list of closed SIGs and WGs, check the [`archive`](https://github.com/kyma-project/community/tree/master/collaboration/archive) folder.
