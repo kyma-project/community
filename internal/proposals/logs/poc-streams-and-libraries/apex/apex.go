@@ -12,6 +12,6 @@ func main() {
 }
 
 func testApexLogger(logEntry *log.Entry) {
-	logEntry.WithField("context", "a").Infof("just normal log with msg: %s", "Hello From Apex")
-	logEntry.Errorf("Error msg: %s", "some error occurred")
+	logEntry.WithField("context", "a").Infof("just a normal log entry with the msg: %s", "Hello From Apex")
+	logEntry.Errorf("Error msg: %s", "an error occurred")
 }
