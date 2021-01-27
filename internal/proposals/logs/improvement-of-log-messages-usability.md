@@ -37,6 +37,7 @@ To unify the logs, which will make the debugging process and logs parsing much e
     - message language: English. To preserve unified number/date formatting, go with the `en-us` locale.
     - encoding: `UTF-8`.
 - **context** - structure of the contextual information, such as operation (for example: `starting workers`), handler/ resolver (for example: `ProvisionRuntime`), controller, resource-namespaced name (for example: `production/application1`), operation ID, instance ID, operation stage, and so on. Users must be able to filter the logs so all the info provided here must be a useful and unique minimal set for every operation. Users must be able to find the needed resource in some store so provide here a name instead of an ID if it's easier to use later.
+- **caller** - string with information where in the code the log was created. For example: `"pkg/components/client.go:45"`.
 - **traceid** - 16-byte numeric value as a base16-encoded string. It'll be passed through a header, so the user can filter all the logs regarding the whole business operation in the whole system.
 - **spanid** - 16-byte numeric value as a base16-encoded string. It'll be randomly generated for each request handling so the user can filter the component logs for a specific operation handling.
 >**NOTE:** The **traceid** and **spanid** fields are required in the logs to be compliant with the [OpenTelemetry standards](https://github.com/open-telemetry/oteps/pull/114/files). The standard is still in the development phase, so we should keep an eye on it and change it accordingly.
@@ -63,7 +64,7 @@ In the `deployment.yaml` file or other component's container specification, ther
 
 ### Key-value pairs example
 ```text
-2012-12-12T07:20:50.52Z WARNING Tiller configuration not found in the release artifacts. Proceeding to the Helm 3 installation... {"context":{"resolver":"ProvisionRuntime","operationID":"92d5d8fd-cbdc-4b7a-9bc3-2b2eccfcb109","stage":"InstallReleaseArtifacts","shootName":"c-3a38b3a","runtimeID":"19eb9335-6c13-4d40-8504-3cd07b18c12f"},"traceid":"0354af75138b12921","spanid":"14c902d73a"}
+2012-12-12T07:20:50.52Z WARNING Tiller configuration not found in the release artifacts. Proceeding to the Helm 3 installation... {"context":{"resolver":"ProvisionRuntime","operationID":"92d5d8fd-cbdc-4b7a-9bc3-2b2eccfcb109","stage":"InstallReleaseArtifacts","shootName":"c-3a38b3a","runtimeID":"19eb9335-6c13-4d40-8504-3cd07b18c12f"},"traceid":"0354af75138b12921","spanid":"14c902d73a", "caller":"pkg/components/client.go:45"}
 ```
 
 ### JSON example
@@ -80,7 +81,8 @@ In the `deployment.yaml` file or other component's container specification, ther
     "runtimeID": "19eb9335-6c13-4d40-8504-3cd07b18c12f"
   },
   "traceid": "0354af75138b12921",
-  "spanid": "14c902d73a"
+  "spanid": "14c902d73a",
+  "caller": "pkg/components/client.go:45"
 }
 ```
 
