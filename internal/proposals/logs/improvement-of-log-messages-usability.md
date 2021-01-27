@@ -73,6 +73,7 @@ In the `deployment.yaml` file or other component's container specification, ther
   "timestamp": "2012-12-12T07:20:50.52Z",
   "level": "WARNING",
   "message": "Tiller configuration not found in the release artifacts. Proceeding to the Helm 3 installation...",
+  "caller": "pkg/components/client.go:45",
   "context": {
     "resolver": "ProvisionRuntime",
     "operationID": "92d5d8fd-cbdc-4b7a-9bc3-2b2eccfcb109",
