@@ -1,51 +1,11 @@
-white-list-external: ["localhost", "kyma.local", "kyma-system"]
 external-links-to-ignore: ["localhost", "kyma.local", "kyma-system"]
-white-list-internal: ["mailto:kyma-security@googlegroups.com", "/community/"]
-internal-links-to-ignore: ["mailto:kyma-security@googlegroups.com", "/community/"]
-black-list: ["/templates/","-template.md", "/.kyma-project-io/", "/collaboration/", "/contributing/", "/governance/", "/guidelines/content-guidelines/", "/guidelines/releases-guidelines/", "/guidelines/repository-guidelines/", "/guidelines/technical-guidelines/", "/guidelines/templates/README.md", "/guidelines/templates/templates-type.md"]
+interal-links-to-ignore: ["mailto:kyma-security@googlegroups.com", "/community/"]
 files-to-ignore: ["/templates/","-template.md", "/.kyma-project-io/", "/collaboration/", "/contributing/", "/governance/", "/guidelines/content-guidelines/", "/guidelines/releases-guidelines/", "/guidelines/repository-guidelines/", "/guidelines/technical-guidelines/", "/guidelines/templates/README.md", "/guidelines/templates/templates-type.md"]
 timeout: 60
 request-repeats: 5
 files:
   - path: "./community/.github/ISSUE_TEMPLATE/security-vulnerability.md"
     config:
-      white-list-internal: ["{CVSS"]
       internal-links-to-ignore: ["{CVSS"]
       #milv doesn't support that mysterious anchor
-      white-list-external: ["https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"]
       external-links-to-ignore: ["https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"]
-  - path: "./community/guidelines/content-guidelines/04-formatting.md"
-    config:
-      white-list-internal: ["./deployment.yaml"]
-      internal-links-to-ignore: ["./deployment.yaml"]
-  - path: "./community/guidelines/releases-guidelines/02-release-process.md"
-    config:
-      white-list-external: ["https://github.com/kyma-project/{repositoryname}/releases"]
-      external-links-to-ignore: ["https://github.com/kyma-project/{repositoryname}/releases"]
-  - path: "./community/contributing/03-git-workflow.md"
-    config:
-      white-list-external: ["https://github.com/{your-username}/{your-fork-name}.git"]
-      external-links-to-ignore: ["https://github.com/{your-username}/{your-fork-name}.git"]
-  - path: "./community/contributing/02-contributing.md"
-    config:
-      #milv doesn't support parenthesis in parenthesis in .md links yet
-      white-list-external: ["https://github.com/kyma-project/community/blob/master/docs/cla/SAP%20Corporate%20Contributor%20License%20Agreement%20(5-26-15"]
-      external-links-to-ignore: ["https://github.com/kyma-project/community/blob/master/docs/cla/SAP%20Corporate%20Contributor%20License%20Agreement%20(5-26-15"]
-  - path: "./community/collaboration/sig-core/proposals/common-libraries.md"
-    config:
-      #milv doesn't support anchors in links https://github.com/magicmatatjahu/milv/issues/9
-      white-list-external: ["https://github.com/kyma-project/kyma/blob/09b945ec0a897822b40666e518f2f258ae66e7e8/tests/acceptance/servicecatalog/wait/wait.go#L8-L24"]
-      external-links-to-ignore: ["https://github.com/kyma-project/kyma/blob/09b945ec0a897822b40666e518f2f258ae66e7e8/tests/acceptance/servicecatalog/wait/wait.go#L8-L24"]
-  - path: "./community/governance/01-governance.md"
-    config:
-      #milv doesn't support query parameters in .md links yet
-      white-list-external: ["https://github.com/kyma-project/community/issues/106#boards?labels=decision&activeFilters=labels&repos=139590666,151691065,139590577,139590641,139590616,139590701,147495537,139847219"]
-      external-links-to-ignore: ["https://github.com/kyma-project/community/issues/106#boards?labels=decision&activeFilters=labels&repos=139590666,151691065,139590577,139590641,139590616,139590701,147495537,139847219"]
-  - path: "./community/guidelines/content-guidelines/05-links-in-docs.md"
-    config:
-      white-list-internal:
-      - "./assets/mf-namespaced.yaml"
-      - "https://kyma-project.io/docs/root/kyma/#installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install"
-      internal-links-to-ignore:
-      - "./assets/mf-namespaced.yaml"
-      - "https://kyma-project.io/docs/root/kyma/#installation-install-kyma-on-a-cluster--provider-installation--gke--choose-the-release-to-install"
