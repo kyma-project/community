@@ -4,7 +4,7 @@ files-to-ignore: ["/templates/","-template.md", "/.kyma-project-io/", "/collabor
 timeout: 60
 request-repeats: 5
 files:
-  - path: "./community/.github/ISSUE_TEMPLATE/security-vulnerabilityy.md"
+  - path: "./community/.github/ISSUE_TEMPLATE/security-vulnerability.md"
     config:
       internal-links-to-ignore: ["{CVSS"]
       #milv doesn't support that mysterious anchor
