@@ -14,9 +14,9 @@ A Kyma release includes the following items:
 
 ## Definitions
 
-The table below includes placeholders used throughout this document. When executing the commands, replace each of them with a suitable release number or version. 
+The table below includes placeholders used throughout this document. When executing the commands, replace each of them with a suitable release number or version.
 
-| Placeholders | Description | Pattern | Example| 
+| Placeholders | Description | Pattern | Example|
 |-------|------------|---------|--------|
 | `RELEASE` | Release number| `{major}.{minor}` | `1.13`|
 | `RELEASE_VERSION` | Release version | `{major}.{minor}.{patch}` or `{major}.{minor}.{patch}-rc{candidate}` | `1.13.0` or `1.13.0-rc1` |
@@ -32,11 +32,11 @@ The table below includes placeholders used throughout this document. When execut
 #### Perform initial checks
 
 Check if the master branch contains any PR-images:
-   
+
    ```bash
    git grep -e 'version:\s.*[Pp][Rr]-.*' -e 'image:.*:[Pp][Rr]-.*' -e 'tag:\s.*[Pp][Rr]-.*' --before-context=2  resources tests
    ```
-  
+
    Ask the teams for fixes if this command returns any output.
 
 #### Create a release branch
@@ -77,7 +77,7 @@ Create a release branch in the `test-infra` repository
     git fetch upstream
     git checkout --no-track -b release-{RELEASE} upstream/master
     git push -u upstream release-{RELEASE}
-    ``` 
+    ```
 
 ## Steps
 
@@ -89,9 +89,9 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
 
 1. Make sure the `prow/RELEASE_VERSION` file includes just a single line, **without the newline character at the end**:  
 
-        ```bash
-        echo -n {RELEASE_VERSION} > prow/RELEASE_VERSION
-        ```
+    ```bash
+    echo -n {RELEASE_VERSION} > prow/RELEASE_VERSION
+    ```
 
 2. If you had to change the RELEASE_VERSION, create a PR to update it on the release branch.
 3. Once this PR is merged you can proceed.
@@ -132,22 +132,22 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
 
 1. Create a feature-branch based on the given `release-{RELEASE}` branch you want to extend. Add your changes and create a Pull Request.
 
-2. Once you create a Pull Request to the release branch, the set of checks is triggered. 
+2. Once you create a Pull Request to the release branch, the set of checks is triggered.
    These jobs run in the same way as jobs that run on every Pull Request to the `master` branch.
    If you create a Pull Request that contains changes to the components, the component-building job is triggered.
    If you make any changes in the charts, the integration tests are triggered.
 
 3. If you detect any problems with your PR, fix the issues until your checks pass.
 
-4. After all checks pass, merge your PR to the release branch. Merging the PR triggers the post-submit integration tests automatically. 
+4. After all checks pass, merge your PR to the release branch. Merging the PR triggers the post-submit integration tests automatically.
    The jobs' status will be visible on the Kyma [TestGrid](https://testgrid.k8s.io/kyma_integration) in the corresponding dashboard tab.
-   
+
 5. If there's a need for additional changes in the release branch during the development process, open a new PR to the release branch.
    Repeat steps 1-4 for this PR.
 
 #### Create a release
 1. Once the release process is finished and the release branch is complete, create a new tag in the repository that points to your release branch. To create a tag, run this command:
-> **CAUTION:** Make sure you are working on the most up-to-date `release-{RELEASE}` branch for a given release. 
+> **CAUTION:** Make sure you are working on the most up-to-date `release-{RELEASE}` branch for a given release.
 ```shell
 git tag -a {RELEASE_VERSION} -m "Release {RELEASE_VERSION}"
 git push upstream {RELEASE_VERSION}
