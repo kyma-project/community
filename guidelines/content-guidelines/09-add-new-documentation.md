@@ -120,7 +120,7 @@ To add a new specification, follow these steps:
    ```
 
    where:
-  
+
    - **{SPECIFICATION_TYPE}** defines a type of a given specification. Currently, only [OpenAPI](https://swagger.io/specification/) specifications are supported and they are defined under the `openapi` type.
    - **{SPECIFICATION_NAME}** defines a unique identifier of a given specification. This field defines the URL on https://kyma-project.io/docs under which the specification is displayed. For example, if the specification is added in the `application-connector` ClusterAssetGroup CR with the `connectorapi` value in the **name** field, its URL is `https://kyma-project.io/docs/{VERSION_OF_DOCS}/components/application-connector/specifications/connectorapi/`.
    - **{SPECIFICATION_URL}** defines the location of the specification. It may contain directives with values defined in `values.yaml` files. For internal specifications defined in the [`kyma`](https://github.com/kyma-project/kyma) repository, it is recommended to use the directive with a Kyma version and the organization name, such as:
@@ -162,7 +162,7 @@ To add a new specification, follow these steps:
    ```
 
    where:
-  
+
    - **{SPECIFICATION_TYPE}** defines a type of a given specification. Currently, only [OpenAPI](https://swagger.io/specification/) specifications are supported and they are defined under the `openapi` type.
    - **{SPECIFICATION_NAME}** defines a unique identifier of a given specification. This field defines the URL on https://kyma-project.io/docs under which the specification is displayed. For example, if the specification is added in the `commands` ClusterAssetGroup CR with the `provision` value in the **name** field, its URL is `https://kyma-project.io/docs/{VERSION_OF_DOCS}/cli/commands/specifications/provision/`.
    - **{SPECIFICATION_URL}** defines the location of the specification. It may contain directives with values defined in `values.yaml` files:
@@ -222,7 +222,7 @@ Follow these steps if you want the documentation from a repository under the [`k
    - **{REPOSITORY_NAME}** is the name of the repository with documentation sources.
    - **{DISPLAY_NAME}** is the name you want to be visible under the **Docs** drop-down menu in the main navigation panel on the [Kyma website](https://kyma-project.io).
    - **{ORGANIZATION_NAME}** is the name of the organization under which the repository sits. It can be either `kyma-project` or `kyma-incubator`.
-   - **{BRANCHES}** are the names of branches that will be rendered. It should contain at least the `master` branch.
+   - **{BRANCHES}** are the names of branches that will be rendered. It should contain at least the `main` branch.
    - **{LAST_RELEASES}** is the number of the last release that will be rendered. If you only want to display branches, set the value to `0`.
    - **{NAV_PATH}** is the URL path you want to assign to your docs entry under the **Docs** drop-down menu. For example, if you add CLI docs, specify `cli` as the path to be be redirected to `https://kyma-project.io/docs/cli` after selecting ** CLI** from the **Docs** drop-down menu.
    - **{DOCS_TYPE}** is the document type that should be visible under the navigation path.
@@ -235,7 +235,7 @@ Follow these steps if you want the documentation from a repository under the [`k
       "displayName": "CLI",
       "organization": "kyma-project",
       "repository": "cli",
-      "branches": ["master"],
+      "branches": ["main"],
       "lastReleases": 0,
       "navPath": "cli",
       "rootPath": {
@@ -243,6 +243,6 @@ Follow these steps if you want the documentation from a repository under the [`k
         "docsTopic": "overview"
       }
    }
-   ``` 
+   ```
 
 3. Create a PR, wait for the review, merge the changes, and wait for the website to be rebuilt. The new entry with the new documentation will appear under the **Docs** drop-down menu in the main navigation panel on the [Kyma website](https://kyma-project.io).

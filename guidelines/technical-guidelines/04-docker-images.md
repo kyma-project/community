@@ -38,7 +38,7 @@ source = git@github.com:kyma-project/examples.git
 
 ## Third-party images
 
-Kyma uses some Docker images that originally were not built (and hosted) by us. 
+Kyma uses some Docker images that originally were not built (and hosted) by us.
 For security and reliability reasons, we need to copy all external images to our own Docker registry.
 We have two solutions to this problem: the third-party-images repository and the image-syncer tool.
 
@@ -52,10 +52,10 @@ See the repository content for more information.
 
 If you want to "cache" an image from an external registry, use the [image-syncer
 ](https://github.com/kyma-project/test-infra/tree/master/development/image-syncer)
-tool. 
+tool.
 
 To copy the image to our registry, modify the [external-images.yaml](https://github.com/kyma-project/test-infra/blob/master/development/image-syncer/external-images.yaml) file.
-After your change is merged to the `master` branch, you can check the new image URL in the logs of the [post-master-test-infra-image-syncer-run](https://status.build.kyma-project.io/job-history/kyma-prow-logs/logs/post-master-test-infra-image-syncer-run) job.
+After your change is merged to the `main` branch, you can check the new image URL in the logs of the [post-master-test-infra-image-syncer-run](https://status.build.kyma-project.io/job-history/kyma-prow-logs/logs/post-master-test-infra-image-syncer-run) job.
 
 For example, the source image `grafana/grafana:7.0.6` will be transformed to `eu.gcr.io/kyma-project/external/grafana/grafana:7.0.6"`.
 This URL can then be used in your Helm charts.

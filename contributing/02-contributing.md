@@ -34,7 +34,7 @@ the [Corporate Contributor License Agreement](./assets/SAP%20Corporate%20Contrib
 
 If you are a contributor, follow these basic rules:
 
-* The contribution workflow in all Kyma repositories bases on the principles of the [GitHub flow](https://guides.github.com/introduction/flow/). Thus, the `master` branch is the most important one. Avoid working directly on it. When you work on new features or bug fixes, work on separate branches.
+* The contribution workflow in all Kyma repositories bases on the principles of the [GitHub flow](https://guides.github.com/introduction/flow/). Thus, the `main` branch is the most important one. Avoid working directly on it. When you work on new features or bug fixes, work on separate branches.
 * Work on forks of Kyma repositories.
 * You can merge a PR if you receive an approval from at least one code owner from each part of the repository to which you contribute in your PR.
 
@@ -56,12 +56,12 @@ To contribute code or content to a given Kyma repository, follow these steps:
 
 1. Make sure that the change is valid and approved. If you are an external contributor, **open a GitHub issue** before you make a contribution.
 2. Fork the Kyma repository that you want to contribute to.
-3. Clone it locally, add a remote upstream repository for the original repository, and set up the `master` branch to track the remote `master` branch from the upstream repository. See the [**Git Workflow**](#git-wokflow-git-wokflow) document to learn how to configure your fork.
-4. Create a new branch out of the local `master` branch of the forked repository.
+3. Clone it locally, add a remote upstream repository for the original repository, and set up the `main` branch to track the remote `main` branch from the upstream repository. See the [**Git Workflow**](#git-wokflow-git-wokflow) document to learn how to configure your fork.
+4. Create a new branch out of the local `main` branch of the forked repository.
 5. Commit and push changes to your new branch. Create a clear and descriptive commit message in which you specify what you have changed. See the [**Git workflow**](#git-wokflow-git-wokflow) document for commit message guidelines.
-6. Create a PR from your branch on the forked repository to the `master` branch of the original, upstream repository. Fill in the PR template according to instructions.
+6. Create a PR from your branch on the forked repository to the `main` branch of the original, upstream repository. Fill in the PR template according to instructions.
 7. Read and accept the Contributor Licence Agreement (CLA).
-8. If there are merge conflicts on your PR, squash your commits and rebase the `master` branch.
+8. If there are merge conflicts on your PR, squash your commits and rebase the `main` branch.
 9. In your PR:
 - Provide a reference to any related GitHub issue.
 - Make sure that the [**Allow edits from maintainers**](https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) option is selected to allow upstream repository maintainers, and those with the push access to the upstream repository, to commit to your forked branch.

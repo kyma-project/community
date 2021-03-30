@@ -32,11 +32,11 @@ Under the repository name, choose the **Settings** tab. The **Options** view ope
 
 ![Merge button](./assets/merge-button.png)
 
-Leave only the **Allow squash merging** option selected. This option combines all commits into one before merging the changes into the `master` branch.
+Leave only the **Allow squash merging** option selected. This option combines all commits into one before merging the changes into the `main` branch.
 
 ## Set branch protection rules
 
-Define branch protection rules that include enforcing obligatory review and approval of pull requests (PRs), and define which Prow jobs need to pass successfully before merging PR changes into the `master` branch.
+Define branch protection rules that include enforcing obligatory review and approval of pull requests (PRs), and define which Prow jobs need to pass successfully before merging PR changes into the `main` branch.
 
 To see these settings, go to **Branches** in the left menu, under repository **Settings**:
 

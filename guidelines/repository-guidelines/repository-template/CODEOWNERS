@@ -1,8 +1,8 @@
 # Overview
 
 # The CODEOWNERS file is a GitHub's feature which allows you to create an overview of the code ownership structure in your repository.
-# Specify the default owners of your repository and code owners of particular repository parts to define who is automatically requested for a review each time a contributor creates a pull request to the master branch.
-# Modify the default settings of the repository and select the "Require review from Code Owners" option on the protected master branch to require one approval from the owners of every part of the repository included in the pull request. For more details, read the following article on GitHub: https://help.github.com/articles/enabling-required-reviews-for-pull-requests/.
+# Specify the default owners of your repository and code owners of particular repository parts to define who is automatically requested for a review each time a contributor creates a pull request to the main branch.
+# Modify the default settings of the repository and select the "Require review from Code Owners" option on the protected main branch to require one approval from the owners of every part of the repository included in the pull request. For more details, read the following article on GitHub: https://help.github.com/articles/enabling-required-reviews-for-pull-requests/.
 
 # Details
 
