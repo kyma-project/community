@@ -56,16 +56,16 @@ Every code owner is expected to:
 ### When does a maintainer lose the maintainer status?
 
 - If a maintainer is no longer interested or cannot perform the maintainer duties listed above, he/she
-should volunteer to be transitioned to emeritus status. 
+should volunteer to be transitioned to emeritus status.
 - If a maintainer is unresponsive for at least 3 months, he/she can be removed from the maintainers list immediately.
 - In extreme cases, this can also occur by a vote of
 the maintainers per the voting process below.
 
 ### How to suggest a change in maintainers list?
 
-To suggest a change in the ownership of a given repository part, create a PR with the required changes in the `CODEOWNERS` file in the project's repository. The required number of code owners needs to approve the PR for the changes to take place. Read [here](https://github.com/kyma-project/community/blob/master/guidelines/repository-guidelines/repository-template/CODEOWNERS) on how to set up and modify owners of the given repository folders and files.
+To suggest a change in the ownership of a given repository part, create a PR with the required changes in the `CODEOWNERS` file in the project's repository. The required number of code owners needs to approve the PR for the changes to take place. Read [here](https://github.com/kyma-project/community/blob/main/guidelines/repository-guidelines/repository-template/CODEOWNERS) on how to set up and modify owners of the given repository folders and files.
 
-The name of the removed maintainer should be added to the [emeritus](https://github.com/kyma-project/community/blob/master/emeritus.md) file with short info about what areas were covered by this person.
+The name of the removed maintainer should be added to the [emeritus](https://github.com/kyma-project/community/blob/main/emeritus.md) file with short info about what areas were covered by this person.
 
 ### Conflict resolution and voting among maintainers
 
@@ -99,7 +99,7 @@ The SIG/WG decison-making process is as follows:
 
 [Create an issue](https://github.com/kyma-project/community/issues/new/choose) and choose the **Decision record** template. Provide the information as requested in the template and set the issue label to `decision`. The issue can contain all necessary information, reference a document, or an open pull request with a more detailed proposal. Additionally, set the corresponding WG or SIG label such as `sig/core`.
 
-> **NOTE:** In some cases, the `decision` label is set for an existing issue during the [triage](#issues-workflow-issues-workflow-issues-triage), which indicates the need for a decision. In this case, use the [**Decision record** template](https://github.com/kyma-project/community/blob/master/.github/ISSUE_TEMPLATE/decision-record.md) and copy it to the issue description accordingly.
+> **NOTE:** In some cases, the `decision` label is set for an existing issue during the [triage](#issues-workflow-issues-workflow-issues-triage), which indicates the need for a decision. In this case, use the [**Decision record** template](https://github.com/kyma-project/community/blob/main/.github/ISSUE_TEMPLATE/decision-record.md) and copy it to the issue description accordingly.
 
 ### Reach a consensus
 

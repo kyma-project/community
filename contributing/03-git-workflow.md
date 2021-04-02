@@ -9,7 +9,7 @@ This document is the best practice guide that contains the rules to follow when 
 Each contributor and maintainer in Kyma must follow this workflow:
 
 * Work on forked repositories.
-* Create branches on the fork and avoid working directly on the `master` branch.
+* Create branches on the fork and avoid working directly on the `main` branch.
 * Squash and rebase your commits before you merge your pull request.
 
 ### Benefits
@@ -24,7 +24,7 @@ The unified workflow has the following benefits:
 A fork is a copy of the repository from which you raise pull requests to propose changes to the original repository.
 The unified Kyma contribution workflow that bases on forks allows both the members of the Kyma organization and the external contributors to contribute code and content through the same process. This keeps the main repositories clean as contributors create branches only on the forked repositories.
 
->**NOTE:** This guide aims to explain how to work with forks on your local copy of the repository. In case you are a contributor who suggests minor changes using GitHub UI, it is recommended to use a [Pull bot](https://probot.github.io/apps/pull/). This bot keeps your fork up to date by creating and merging a pull request with latest changes into the master branch of your fork.
+>**NOTE:** This guide aims to explain how to work with forks on your local copy of the repository. In case you are a contributor who suggests minor changes using GitHub UI, it is recommended to use a [Pull bot](https://probot.github.io/apps/pull/). This bot keeps your fork up to date by creating and merging a pull request with latest changes into the `main` branch of your fork.
 
 ### Steps
 
@@ -87,20 +87,20 @@ upstream  https://github.com/{original-owner}/{original-repository}.git (push)
 ```
 4. Run the `git fetch --all` command to fetch all remote branches.
 
-5. Set up the local `master` branch to track the remote `master` branch from the upstream repository:
+5. Set up the local `main` branch to track the remote `main` branch from the upstream repository:
 
 ```
-git branch -u upstream/master master
+git branch -u upstream/main main
 ```
 
-Now, each time you rebase or check out the `master` branch, you refer to the `master` branch of the upstream repository.
+Now, each time you rebase or check out the `main` branch, you refer to the `main` branch of the upstream repository.
 
-To verify that your local `master` branch points to the `upstream/master`, run the `git branch -vv` command.
+To verify that your local `main` branch points to the `upstream/main`, run the `git branch -vv` command.
 
 The result is similar to the following:
 
 ```
-* master           c2226e0 [upstream/master] Update the README.md document
+* main           c2226e0 [upstream/main] Update the README.md document
 ```
 
 ## Contribute
@@ -119,7 +119,7 @@ Always provide clear commit messages to track commit changes easier.
 
 Push the changes to the remote forked repository. Use the Git GUI or the terminal.
 
->**NOTE:** Before you push local changes, make sure you are on the branch you are currently working on. Do not push any changes from the `master` branch.
+>**NOTE:** Before you push local changes, make sure you are on the branch you are currently working on. Do not push any changes from the `main` branch.
 
 If you push local changes from the terminal to your remote fork for the first time, use this command:
 ```
@@ -130,7 +130,7 @@ Use the `git push` command to push any further commits made on your local branch
 
 4. Open a pull request.
 
-Create a pull request from the branch of your forked repository to the `master` branch of the upstream repository and wait for the maintainers' review.
+Create a pull request from the branch of your forked repository to the `main` branch of the upstream repository and wait for the maintainers' review.
 
 In each pull request:
 
@@ -177,15 +177,15 @@ See how to squash your commits step-by-step in this video:
 
 ![Squash](./assets/squash.gif)
 
-6. Rebase the `master` branch.
+6. Rebase the `main` branch.
 
-After you squash commits on your branch into one commit, reapply it on the top of the `master` branch. Follow this process:
+After you squash commits on your branch into one commit, reapply it on the top of the `main` branch. Follow this process:
 
 ```
-$ git checkout master # Switch to the master branch.
-$ git pull # Update the master branch by pulling all changes.
+$ git checkout main # Switch to the main branch.
+$ git pull # Update the main branch by pulling all changes.
 $ git checkout {branch-name} # Switch back to your branch.
-$ git rebase master # Reapply commits on the top of the master branch.
+$ git rebase main # Reapply commits on the top of the main branch.
 $ git push -f # Update your remote branch with the local changes.
 ```
 
@@ -201,17 +201,17 @@ Use GitHub to merge the pull request. If you are an external contributor, contac
 
 Perform these actions if you work on a branch for a long period of time and you want to update it locally with changes from the upstream repository.
 
-Systematically incorporate changes from the master branch into your branch. To keep your branch up to date, use the `git rebase master` command as described in the following flow:
+Systematically incorporate changes from the `main` branch into your branch. To keep your branch up to date, use the `git rebase main` command as described in the following flow:
 
 ```
-$ git checkout master # Switch to the master branch.
-$ git pull # Update the master branch by pulling all changes.
+$ git checkout main # Switch to the main branch.
+$ git pull # Update the main branch by pulling all changes.
 $ git checkout {branch-name} # Switch back to your branch.
-$ git rebase master # Reapply commits on the top of the master branch.
+$ git rebase main # Reapply commits on the top of the main branch.
 ```
 
-See how to rebase the `master` branch step-by-step in this video:
+See how to rebase the `main` branch step-by-step in this video:
 
 ![Rebase](./assets/rebase.gif)
 
->**NOTE:** Do not merge the `master` branch into another branch as it can make latter rebase not feasible.
+>**NOTE:** Do not merge the `main` branch into another branch as it can make latter rebase not feasible.

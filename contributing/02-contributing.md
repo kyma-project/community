@@ -10,9 +10,9 @@ Go to the **Guidelines** section to read about rules and tips for providing [con
 
 ## Documentation types
 
-Read an [overview](/guidelines/templates/#overview-overview) of document templates used in specific Kyma repositories. The templates themselves are collected in the [`resources`](https://github.com/kyma-project/community/tree/master/guidelines/templates/resources/) subfolder in the `community` repository.
+Read an [overview](/guidelines/templates/#overview-overview) of document templates used in specific Kyma repositories. The templates themselves are collected in the [`resources`](https://github.com/kyma-project/community/tree/main/guidelines/templates/resources/) subfolder in the `community` repository.
 
-Extend the list whenever you define a new template for other document types. Make sure to update one of the tables in the [**Document types templates**](/guidelines/templates/#document-types-templates-document-types-templates) document after you add new templates to the [`resources`](https://github.com/kyma-project/community/tree/master/guidelines/templates/resources/) subfolder.
+Extend the list whenever you define a new template for other document types. Make sure to update one of the tables in the [**Document types templates**](/guidelines/templates/#document-types-templates-document-types-templates) document after you add new templates to the [`resources`](https://github.com/kyma-project/community/tree/main/guidelines/templates/resources/) subfolder.
 
 ## Agreements and licenses
 
@@ -34,7 +34,7 @@ the [Corporate Contributor License Agreement](./assets/SAP%20Corporate%20Contrib
 
 If you are a contributor, follow these basic rules:
 
-* The contribution workflow in all Kyma repositories bases on the principles of the [GitHub flow](https://guides.github.com/introduction/flow/). Thus, the `master` branch is the most important one. Avoid working directly on it. When you work on new features or bug fixes, work on separate branches.
+* The contribution workflow in all Kyma repositories bases on the principles of the [GitHub flow](https://guides.github.com/introduction/flow/). Thus, the `main` branch is the most important one. Avoid working directly on it. When you work on new features or bug fixes, work on separate branches.
 * Work on forks of Kyma repositories.
 * You can merge a PR if you receive an approval from at least one code owner from each part of the repository to which you contribute in your PR.
 
@@ -56,19 +56,19 @@ To contribute code or content to a given Kyma repository, follow these steps:
 
 1. Make sure that the change is valid and approved. If you are an external contributor, **open a GitHub issue** before you make a contribution.
 2. Fork the Kyma repository that you want to contribute to.
-3. Clone it locally, add a remote upstream repository for the original repository, and set up the `master` branch to track the remote `master` branch from the upstream repository. See the [**Git Workflow**](#git-wokflow-git-wokflow) document to learn how to configure your fork.
-4. Create a new branch out of the local `master` branch of the forked repository.
+3. Clone it locally, add a remote upstream repository for the original repository, and set up the `main` branch to track the remote `main` branch from the upstream repository. See the [**Git Workflow**](#git-wokflow-git-wokflow) document to learn how to configure your fork.
+4. Create a new branch out of the local `main` branch of the forked repository.
 5. Commit and push changes to your new branch. Create a clear and descriptive commit message in which you specify what you have changed. See the [**Git workflow**](#git-wokflow-git-wokflow) document for commit message guidelines.
-6. Create a PR from your branch on the forked repository to the `master` branch of the original, upstream repository. Fill in the PR template according to instructions.
+6. Create a PR from your branch on the forked repository to the `main` branch of the original, upstream repository. Fill in the PR template according to instructions.
 7. Read and accept the Contributor Licence Agreement (CLA).
-8. If there are merge conflicts on your PR, squash your commits and rebase the `master` branch.
+8. If there are merge conflicts on your PR, squash your commits and rebase the `main` branch.
 9. In your PR:
 - Provide a reference to any related GitHub issue.
 - Make sure that the [**Allow edits from maintainers**](https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) option is selected to allow upstream repository maintainers, and those with the push access to the upstream repository, to commit to your forked branch.
 - Choose at least one `area/{capability}` label from the available list and add it to your PR to categorize changes you made. Labels are required to include your PR in the `CHANGELOG.md` file and classify it accordingly.
 10. After you create a PR, relevant CI tests need to complete successfully.
 - If you are a Kyma organization member, all related CI tests run automatically after you create a PR. If a test fails, check the reason by clicking the **Details** button next to the given job on your PR. Make the required changes and the tests rerun. If you want to run a specific test, add the `/test {test-name}` or `/retest {test-name}` comment to your PR. To rerun all failed tests, add the `/retest` comment.
-- If you are an external contributor, contact the repository maintainers specified in the [`CODEOWNERS`](https://github.com/kyma-project/community/blob/master/CODEOWNERS) file to review your PR and add the `/test all` comment to your PR to trigger all tests. A Kyma organization member needs to rerun the tests manually each time you commit new changes to the PR.
+- If you are an external contributor, contact the repository maintainers specified in the [`CODEOWNERS`](https://github.com/kyma-project/community/blob/main/CODEOWNERS) file to review your PR and add the `/test all` comment to your PR to trigger all tests. A Kyma organization member needs to rerun the tests manually each time you commit new changes to the PR.
 
 11. Wait for the Kyma maintainers to review and approve your PR. The maintainers can approve it, request enhancements to your change, or reject it.
 
@@ -96,4 +96,4 @@ To learn more about maintainers' responsibilities and rules for appointing new m
 
 ## Maintainers
 
-To identify the maintainers of particular parts of your repository, see the [`CODEOWNERS`](https://github.com/kyma-project/community/blob/master/CODEOWNERS) file in the root directory of each Kyma repository.
+To identify the maintainers of particular parts of your repository, see the [`CODEOWNERS`](https://github.com/kyma-project/community/blob/main/CODEOWNERS) file in the root directory of each Kyma repository.

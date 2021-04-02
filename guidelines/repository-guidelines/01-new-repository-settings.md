@@ -9,11 +9,11 @@ All repositories in `kyma-project` and `kyma-incubator` organizations should be 
 
 ## Use the repository template
 
-After you create a new repository, copy the basic repository structure from the [`template`](https://github.com/kyma-project/community/tree/master/guidelines/repository-guidelines/repository-template) folder that is available in the `community` repository. It contains such files as the obligatory Apache license, the `CODEOWNERS` file that governs the review and approval flow in the repository, and the Stale Bot that handles inactive issues.
+After you create a new repository, copy the basic repository structure from the [`template`](https://github.com/kyma-project/community/tree/main/guidelines/repository-guidelines/repository-template) folder that is available in the `community` repository. It contains such files as the obligatory Apache license, the `CODEOWNERS` file that governs the review and approval flow in the repository, and the Stale Bot that handles inactive issues.
 
 After copying the folder's contents, modify these according to the instructions they contain:
-- [`CODEOWNERS`](https://github.com/kyma-project/community/tree/master/guidelines/repository-guidelines/repository-template/CODEOWNERS) to define who is responsible for the review and approval of specific repository parts
-- [`README.md`](https://github.com/kyma-project/community/tree/master/guidelines/repository-guidelines/repository-template/README.md) to describe the repository and explain how to use and develop it
+- [`CODEOWNERS`](https://github.com/kyma-project/community/tree/main/guidelines/repository-guidelines/repository-template/CODEOWNERS) to define who is responsible for the review and approval of specific repository parts
+- [`README.md`](https://github.com/kyma-project/community/tree/main/guidelines/repository-guidelines/repository-template/README.md) to describe the repository and explain how to use and develop it
 
 ## Adjust repository options
 
@@ -32,21 +32,21 @@ Under the repository name, choose the **Settings** tab. The **Options** view ope
 
 ![Merge button](./assets/merge-button.png)
 
-Leave only the **Allow squash merging** option selected. This option combines all commits into one before merging the changes into the `master` branch.
+Leave only the **Allow squash merging** option selected. This option combines all commits into one before merging the changes into the `main` branch.
 
 ## Set branch protection rules
 
-Define branch protection rules that include enforcing obligatory review and approval of pull requests (PRs), and define which Prow jobs need to pass successfully before merging PR changes into the `master` branch.
+Define branch protection rules that include enforcing obligatory review and approval of pull requests (PRs), and define which Prow jobs need to pass successfully before merging PR changes into the `main` branch.
 
 To see these settings, go to **Branches** in the left menu, under repository **Settings**:
 
 ![Branch protection rules](./assets/branch-protection-rules.png)
 
-In Kyma, the protection rules are defined in the Prow [`config.yaml`](https://github.com/kyma-project/test-infra/blob/master/prow/config.yaml) file generated from rules defined in the [`prow-config.yaml`](https://github.com/kyma-project/test-infra/blob/master/templates/templates/prow-config.yaml) file and handled by a Prow component called [Branch Protector](https://github.com/kyma-project/test-infra/blob/master/docs/prow/prow-architecture.md#branch-protector).
+In Kyma, the protection rules are defined in the Prow [`config.yaml`](https://github.com/kyma-project/test-infra/blob/main/prow/config.yaml) file generated from rules defined in the [`prow-config.yaml`](https://github.com/kyma-project/test-infra/blob/main/templates/templates/prow-config.yaml) file and handled by a Prow component called [Branch Protector](https://github.com/kyma-project/test-infra/blob/main/docs/prow/prow-architecture.md#branch-protector).
 
 If you add a new repository in:
-- `kyma-project`, you do not need to add a new entry to the Prow `config.yaml` file as the branch protection is already defined for [all repositories](https://github.com/kyma-project/test-infra/blob/master/prow/config.yaml#L380) within this organization. The only exception is if you want to specify additional rules that are not handled by Prow.
-- `kyma-incubator`, add a new repository entry to the Prow `config.yaml` file, under **branch-protection.orgs.kyma-incubator.repos**. [See](https://github.com/kyma-project/test-infra/blob/master/templates/templates/prow-config.yaml) an example of such an entry for the `marketplaces` repository.
+- `kyma-project`, you do not need to add a new entry to the Prow `config.yaml` file as the branch protection is already defined for [all repositories](https://github.com/kyma-project/test-infra/blob/main/prow/config.yaml#L380) within this organization. The only exception is if you want to specify additional rules that are not handled by Prow.
+- `kyma-incubator`, add a new repository entry to the Prow `config.yaml` file, under **branch-protection.orgs.kyma-incubator.repos**. [See](https://github.com/kyma-project/test-infra/blob/main/templates/templates/prow-config.yaml) an example of such an entry for the `marketplaces` repository.
 
 ## Add webhooks
 
@@ -87,7 +87,7 @@ Ask a [kyma-project owner](https://github.com/orgs/kyma-project/people) to add t
 
 ## Add a milv file
 
-If you define any governance-related [Prow job](https://github.com/kyma-project/test-infra/blob/master/prow/jobs/) for the new repository to validate documentation links, you must add a `milv.config.yaml` file at the root of the repository. [See](https://github.com/kyma-project/test-infra/blob/master/milv.config.yaml) an example of the milv file.
+If you define any governance-related [Prow job](https://github.com/kyma-project/test-infra/blob/main/prow/jobs/) for the new repository to validate documentation links, you must add a `milv.config.yaml` file at the root of the repository. [See](https://github.com/kyma-project/test-infra/blob/main/milv.config.yaml) an example of the milv file.
 
 ## Create labels
 

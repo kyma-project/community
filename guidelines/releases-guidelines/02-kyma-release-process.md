@@ -31,7 +31,7 @@ The table below includes placeholders used throughout this document. When execut
 
 #### Perform initial checks
 
-Check if the master branch contains any PR-images:
+Check if the `main` branch contains any PR-images:
 
    ```bash
    git grep -e 'version:\s.*[Pp][Rr]-.*' -e 'image:.*:[Pp][Rr]-.*' -e 'tag:\s.*[Pp][Rr]-.*' --before-context=2  resources tests
@@ -47,15 +47,15 @@ Create a release branch in the `kyma` repository. The name of this branch should
 
     ```bash
     git fetch upstream
-    git checkout --no-track -b release-{RELEASE} upstream/master
+    git checkout --no-track -b release-{RELEASE} upstream/main
     git push -u upstream release-{RELEASE}
     ```
 
 ### kyma-project/test-infra
 
-#### Update the jobs on master branch
+#### Update the jobs on the main branch
 
-1. Create a PR to `master` containing the following changes to create the new job definitions:
+1. Create a PR to `main` containing the following changes to create the new job definitions:
 
     1. Open `templates/config.yaml`
     2. Add the new release to `global.releases`. Remove the oldest release on the list.
@@ -65,7 +65,7 @@ Create a release branch in the `kyma` repository. The name of this branch should
       * For release tests using `GetKymaReleasesUntil` or `jobsuite.Until` with a release that is no longer supported, remove the part of the test which includes the method.
     5. If tests are green, commit all jobs.
 
-2. Once the PR is merged to master you can proceed.
+2. Once the PR is merged to `main`, you can proceed.
 
 #### Create a release branch
 
@@ -75,7 +75,7 @@ Create a release branch in the `test-infra` repository
 
     ```bash
     git fetch upstream
-    git checkout --no-track -b release-{RELEASE} upstream/master
+    git checkout --no-track -b release-{RELEASE} upstream/main
     git push -u upstream release-{RELEASE}
     ```
 
@@ -109,7 +109,7 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
         ```yaml
         docs:
         # (...) - truncated
-        clusterAssetGroupsVersion: master
+        clusterAssetGroupsVersion: main
         ```
 
       And replace the `clusterAssetGroupsVersion` value with the following:
@@ -124,7 +124,7 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
 
    ![PullRequest](./assets/release-PR.png)
 
-3. If `pre-release-pr-image-guard` fails, ask the owners to change PR-XXX images of the components to the master version.
+3. If `pre-release-pr-image-guard` fails, ask the owners to change PR-XXX images of the components to the `main` version.
 4. If the checks are green, merge the PR and proceed to the next step.
 
 #### Development process towards the release
@@ -133,7 +133,7 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
 1. Create a feature-branch based on the given `release-{RELEASE}` branch you want to extend. Add your changes and create a Pull Request.
 
 2. Once you create a Pull Request to the release branch, the set of checks is triggered.
-   These jobs run in the same way as jobs that run on every Pull Request to the `master` branch.
+   These jobs run in the same way as jobs that run on every Pull Request to the `main` branch.
    If you create a Pull Request that contains changes to the components, the component-building job is triggered.
    If you make any changes in the charts, the integration tests are triggered.
 
@@ -158,7 +158,7 @@ The tag must have the same name as in the `RELEASE_VERSION` file. Creating a new
      If you don't have access to the GCP project, post a request in the Slack team channel.
      > **CAUTION**: The cluster is automatically generated for you, and it is automatically removed after 7 days.
 
-2. The Github release post-submit job creates a release in the `kyma-project/kyma` repository, which triggers the [`post-rel{RELEASE_VERSION_SHORT}-kyma-release-upgrade`](https://github.com/kyma-project/test-infra/blob/master/prow/jobs/kyma/kyma-release-upgrade.yaml) pipeline. The purpose of this job is to test upgradability between the latest Kyma release that is not a release candidate and the brand new release published by the release post-submit job.
+2. The Github release post-submit job creates a release in the `kyma-project/kyma` repository, which triggers the [`post-rel{RELEASE_VERSION_SHORT}-kyma-release-upgrade`](https://github.com/kyma-project/test-infra/blob/main/prow/jobs/kyma/kyma-release-upgrade.yaml) pipeline. The purpose of this job is to test upgradability between the latest Kyma release that is not a release candidate and the brand new release published by the release post-submit job.
     For example, if `1.7.0-rc2` is released, the pipeline will try to upgrade `1.6.0` to `1.7.0-rc2`.
 
     If you detect any problems with the upgrade, contact the teams responsible for failing components.
@@ -187,4 +187,4 @@ The tag must have the same name as in the `RELEASE_VERSION` file. Creating a new
 
         > **NOTE:** Because of a limitation on the AppHub side, only a few people are allowed to create such a PR, which currently includes the members of the Huskies team.
 
-2. Update `prow/RELEASE_VERSION` in the `master` branch of the `test-infra` repository with the name of the next minor release candidate, and merge the pull request to `master`. For example, if the `RELEASE_VERSION` on the `master` branch is set to `1.4.2`, change the version to `1.5.0-rc1`.
+2. Update `prow/RELEASE_VERSION` in the `main` branch of the `test-infra` repository with the name of the next minor release candidate, and merge the pull request to `main`. For example, if the `RELEASE_VERSION` on the `main` branch is set to `1.4.2`, change the version to `1.5.0-rc1`.

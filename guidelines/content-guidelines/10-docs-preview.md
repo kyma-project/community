@@ -46,7 +46,7 @@ The website preview deployment is also visible on the list of jobs that need to 
 
 2. Contact the maintainers of the [Kyma website](https://kyma-project.io) to configure [Netlify](https://www.netlify.com/) for the new repository.
 
-3. Copy the [`build-preview.sh`](https://github.com/kyma-project/cli/blob/master/.kyma-project-io/build-preview.sh) script to the `.kyma-project-io` folder in the new repository. In this script, change the name of the repository under the exported **APP_PREPARE_FOR_REPO** environment:
+3. Copy the [`build-preview.sh`](https://github.com/kyma-project/cli/blob/main/.kyma-project-io/build-preview.sh) script to the `.kyma-project-io` folder in the new repository. In this script, change the name of the repository under the exported **APP_PREPARE_FOR_REPO** environment:
 
     ```bash
     export APP_PREPARE_FOR_REPO="{REPOSITORY_NAME}"
