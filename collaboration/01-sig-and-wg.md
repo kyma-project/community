@@ -32,7 +32,7 @@ The list of public SIGs in Kyma includes:
 
 ## Closed SIGs and WGs
 
-To see the list of closed SIGs and WGs, check the [`archive`](https://github.com/kyma-project/community/tree/master/collaboration/archive) folder.
+To see the list of closed SIGs and WGs, check the [`archive`](https://github.com/kyma-project/community/tree/main/collaboration/archive) folder.
 
 ## Organize new SIGs and WGs
 
@@ -50,9 +50,9 @@ The proposal revision process is as follows:
 
 Once the SIG or the WG receives an approval for the group creation, the authors of the proposal arrange the appropriate communication channels. The process is as follows:
  * Create a new folder in this directory following the `[sig|wg]-{shortname}` naming pattern.
- * Use the [template](https://github.com/kyma-project/community/blob/master/guidelines/templates/resources/sig-wg-readme-template.md) to create a given group's main `README.md` document.
+ * Use the [template](https://github.com/kyma-project/community/blob/main/guidelines/templates/resources/sig-wg-readme-template.md) to create a given group's main `README.md` document.
  * Add a new [label](https://github.com/kyma-project/community/labels) that follows the `[sig|wg]-{shortname}` naming pattern.
- * Use the [template](https://github.com/kyma-project/community/blob/master/guidelines/templates/resources/sig-wg-meeting-notes-template.md) to create a `meeting-notes.md` document in a given group's folder.
+ * Use the [template](https://github.com/kyma-project/community/blob/main/guidelines/templates/resources/sig-wg-meeting-notes-template.md) to create a `meeting-notes.md` document in a given group's folder.
  * Create a Slack channel that follows the `[sig|wg]-{shortname}` naming pattern.
  * Create a new team in the GitHub organization that follows the `[sig|wg]-{shortname}` naming pattern. Add all SIG participants as members of this team.
 
@@ -79,7 +79,7 @@ When you join a SIG or a WG, you perform at least one of the following roles:
 
 * **Group member** - The member is active in one or more areas of the project and can perform a wide variety of roles within the organization.
 
-* **Group leader** - SIGs and WGs must nominate at least two group leaders at any given time. Group leaders make sure that the group topics are relevant to the Kyma goal and [the roadmap](https://kyma-project.io/roadmap/). They facilitate group meetings, maintain, and communicate the meeting minutes. Group leaders record tasks identified by the group as issues in the respective issue tracker. They are responsible for smooth communication and coordination with other SIGs and the Kyma Steering Committee. If the SIG or WG members lack capability or there are no volunteers to deal with an urgent issue, leaders identify the affected component and contact the given [Capability Owner](https://github.com/kyma-project/community/blob/master/capabilities/README.md) to negotiate ownership of the issue for the next release.
+* **Group leader** - SIGs and WGs must nominate at least two group leaders at any given time. Group leaders make sure that the group topics are relevant to the Kyma goal and [the roadmap](https://kyma-project.io/roadmap/). They facilitate group meetings, maintain, and communicate the meeting minutes. Group leaders record tasks identified by the group as issues in the respective issue tracker. They are responsible for smooth communication and coordination with other SIGs and the Kyma Steering Committee. If the SIG or WG members lack capability or there are no volunteers to deal with an urgent issue, leaders identify the affected component and contact the given [Capability Owner](https://github.com/kyma-project/community/blob/main/capabilities/README.md) to negotiate ownership of the issue for the next release.
 
 * **Group representative** - It is a specific group member who represents the group to other groups or the Kyma Steering Committee. This is either the group's leader or any other group member. The choice depends on the topic and the place where the group is represented.
 
@@ -90,7 +90,7 @@ When a SIG or WG has completed its goals or there is an explicit request to conc
 * Close the remaining open issues of the group or reassign them accordingly, with appropriate comment.
 * [Delete the group label](https://help.github.com/en/articles/deleting-a-label) used on the issues or PRs.
 * Remove the group from the [list of SIGs](#list-of-sigs) or [list of WGs](#list-of-wgs) in this `README.md` file.
-* Move the group folder (together with all subfolders and files) to the [archive](https://github.com/kyma-project/community/tree/master/collaboration/archive) folder.
+* Move the group folder (together with all subfolders and files) to the [archive](https://github.com/kyma-project/community/tree/main/collaboration/archive) folder.
 * Add a `CLOSURE.md` file to the archived group folder. Write it in the form of a blog post that informs about the group's outcomes, achievements, challenges, and lessons learned. Remember to provide links to the relevant material. The PR undergoes a standard review by group members, the Kyma Steering Committee, and is subsequently closed.
 * Publish the content of the `CLOSURE.md` in the form of a blog post on the Kyma website or link to it.
 * Communicate the closure of a given SIG or WG through the Core SIG.

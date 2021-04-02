@@ -10,9 +10,9 @@ Go to the **Guidelines** section to read about rules and tips for providing [con
 
 ## Documentation types
 
-Read an [overview](/guidelines/templates/#overview-overview) of document templates used in specific Kyma repositories. The templates themselves are collected in the [`resources`](https://github.com/kyma-project/community/tree/master/guidelines/templates/resources/) subfolder in the `community` repository.
+Read an [overview](/guidelines/templates/#overview-overview) of document templates used in specific Kyma repositories. The templates themselves are collected in the [`resources`](https://github.com/kyma-project/community/tree/main/guidelines/templates/resources/) subfolder in the `community` repository.
 
-Extend the list whenever you define a new template for other document types. Make sure to update one of the tables in the [**Document types templates**](/guidelines/templates/#document-types-templates-document-types-templates) document after you add new templates to the [`resources`](https://github.com/kyma-project/community/tree/master/guidelines/templates/resources/) subfolder.
+Extend the list whenever you define a new template for other document types. Make sure to update one of the tables in the [**Document types templates**](/guidelines/templates/#document-types-templates-document-types-templates) document after you add new templates to the [`resources`](https://github.com/kyma-project/community/tree/main/guidelines/templates/resources/) subfolder.
 
 ## Agreements and licenses
 
@@ -68,7 +68,7 @@ To contribute code or content to a given Kyma repository, follow these steps:
 - Choose at least one `area/{capability}` label from the available list and add it to your PR to categorize changes you made. Labels are required to include your PR in the `CHANGELOG.md` file and classify it accordingly.
 10. After you create a PR, relevant CI tests need to complete successfully.
 - If you are a Kyma organization member, all related CI tests run automatically after you create a PR. If a test fails, check the reason by clicking the **Details** button next to the given job on your PR. Make the required changes and the tests rerun. If you want to run a specific test, add the `/test {test-name}` or `/retest {test-name}` comment to your PR. To rerun all failed tests, add the `/retest` comment.
-- If you are an external contributor, contact the repository maintainers specified in the [`CODEOWNERS`](https://github.com/kyma-project/community/blob/master/CODEOWNERS) file to review your PR and add the `/test all` comment to your PR to trigger all tests. A Kyma organization member needs to rerun the tests manually each time you commit new changes to the PR.
+- If you are an external contributor, contact the repository maintainers specified in the [`CODEOWNERS`](https://github.com/kyma-project/community/blob/main/CODEOWNERS) file to review your PR and add the `/test all` comment to your PR to trigger all tests. A Kyma organization member needs to rerun the tests manually each time you commit new changes to the PR.
 
 11. Wait for the Kyma maintainers to review and approve your PR. The maintainers can approve it, request enhancements to your change, or reject it.
 
@@ -96,4 +96,4 @@ To learn more about maintainers' responsibilities and rules for appointing new m
 
 ## Maintainers
 
-To identify the maintainers of particular parts of your repository, see the [`CODEOWNERS`](https://github.com/kyma-project/community/blob/master/CODEOWNERS) file in the root directory of each Kyma repository.
+To identify the maintainers of particular parts of your repository, see the [`CODEOWNERS`](https://github.com/kyma-project/community/blob/main/CODEOWNERS) file in the root directory of each Kyma repository.

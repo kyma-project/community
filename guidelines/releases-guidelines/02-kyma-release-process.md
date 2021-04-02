@@ -158,7 +158,7 @@ The tag must have the same name as in the `RELEASE_VERSION` file. Creating a new
      If you don't have access to the GCP project, post a request in the Slack team channel.
      > **CAUTION**: The cluster is automatically generated for you, and it is automatically removed after 7 days.
 
-2. The Github release post-submit job creates a release in the `kyma-project/kyma` repository, which triggers the [`post-rel{RELEASE_VERSION_SHORT}-kyma-release-upgrade`](https://github.com/kyma-project/test-infra/blob/master/prow/jobs/kyma/kyma-release-upgrade.yaml) pipeline. The purpose of this job is to test upgradability between the latest Kyma release that is not a release candidate and the brand new release published by the release post-submit job.
+2. The Github release post-submit job creates a release in the `kyma-project/kyma` repository, which triggers the [`post-rel{RELEASE_VERSION_SHORT}-kyma-release-upgrade`](https://github.com/kyma-project/test-infra/blob/main/prow/jobs/kyma/kyma-release-upgrade.yaml) pipeline. The purpose of this job is to test upgradability between the latest Kyma release that is not a release candidate and the brand new release published by the release post-submit job.
     For example, if `1.7.0-rc2` is released, the pipeline will try to upgrade `1.6.0` to `1.7.0-rc2`.
 
     If you detect any problems with the upgrade, contact the teams responsible for failing components.

@@ -36,7 +36,7 @@ Subscribe to our [YouTube channel](https://www.youtube.com/channel/UC8Q8bBtYe9gQ
 
 ## Blog
 
-Go the [Kyma blog](https://kyma-project.io/blog/) to read the latest news on our project, events, and teams. If you want to share your experience with Kyma, feel free to [write a blog post](https://github.com/kyma-project/website/blob/master/docs/write-blog-posts.md) on your own.
+Go the [Kyma blog](https://kyma-project.io/blog/) to read the latest news on our project, events, and teams. If you want to share your experience with Kyma, feel free to [write a blog post](https://github.com/kyma-project/website/blob/main/docs/write-blog-posts.md) on your own.
 
 # <img src="assets/community-support-icon.svg" width="120"> Community Support
 

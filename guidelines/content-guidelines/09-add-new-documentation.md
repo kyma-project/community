@@ -197,7 +197,7 @@ Follow these steps if you want the documentation from a repository under the [`k
 
 1. Create  the `.kyma-project-io` folder in the given repository and add appropriate [documentation topics](#add-new-documentation-to-the-website-add-new-documentation-to-the-website-add-a-new-documentation-topic) to this folder.
 
-2. Add the new entry in the **docs** field in [`config.json`](https://github.com/kyma-project/website/blob/master/config.json):
+2. Add the new entry in the **docs** field in [`config.json`](https://github.com/kyma-project/website/blob/main/config.json):
 
    ```json
    docs: {
