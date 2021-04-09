@@ -1,0 +1,29 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: otlc-sidecar
+spec:
+  mode: sidecar
+  config: |
+    receivers:
+      zipkin:
+        endpoint: 0.0.0.0:9412
+      otlp:
+        protocols:
+          grpc:
+          http:
+
+    exporters:
+      zipkin:
+        endpoint: "http://kyma-collector.kyma-system:9411/api/v2/spans"
+      otlp:
+        endpoint: kyma-collector.kyma-system:55680
+        insecure: true
+      logging:
+        loglevel: debug
+
+    service:
+      pipelines:
+        traces:
+          receivers: [otlp, zipkin]
+          exporters: [otlp, logging]
