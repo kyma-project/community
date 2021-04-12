@@ -125,7 +125,7 @@ The code renders on `kyma-project.io` as follows:
       From release
       </summary>
 
-      When you install Kyma locally from a release, follow the [guide](https://kyma-project.io/docs/main/root/kyma/#installation-install-kyma-locally).
+      When you install Kyma locally from a release, follow the [guide](https://kyma-project.io/docs/root/kyma/#installation-install-kyma-locally).
       Ensure that you created the local Kubernetes cluster with `10240Mb` memory and `30Gb` disk size.
 
       ```bash

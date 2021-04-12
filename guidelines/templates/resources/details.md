@@ -16,4 +16,4 @@ type: Details
 > * Follow the `03-{00}-{document-title}.md` convention to name the document. The title must summarize what the document is about.
 > * If there is only one document of a certain type, remove the `type` metadata completely so that the document displays well on the UI.
 >
-> For reference, see the existing **Details** document concerning the [Application Connector security](https://kyma-project.io/docs/main/components/application-connector/#details-security).
+> For reference, see the existing **Details** document concerning the [Application Connector security](https://kyma-project.io/docs/components/application-connector/#details-security).
