@@ -11,7 +11,7 @@ type: Tutorials
 > * Start with the introductory sentence presented in this template.
 > * Follow the `08-{00}-{document-title}.md` convention to name the document. The title must summarize what it is about.
 >
-> For reference, see the existing **Tutorials** document concerning the [Sample service deployment on local machine](https://kyma-project.io/docs/master/root/kyma/#tutorials-sample-service-deployment-on-a-cluster).
+> For reference, see the existing **Tutorials** document concerning the [Sample service deployment on local machine](https://kyma-project.io/docs/main/root/kyma/#tutorials-sample-service-deployment-on-a-cluster).
 
 
 This tutorial shows {describe the purpose of the tutorial}.

@@ -17,4 +17,4 @@ type: Overview
 > * Follow the `01-{00}-{component-name}.md` convention to name the document.
 > * In the metadata section, follow the `{Component name} overview` convention for the `title` if there is more than one Overview document in a repository. If there is only one document of a certain type, remove the `type` metadata completely so that the document displays well on the UI.
 >
-> For reference, see the existing **Overview** document for the [Application Connector](https://kyma-project.io/docs/master/components/application-connector/#overview-overview).
+> For reference, see the existing **Overview** document for the [Application Connector](https://kyma-project.io/docs/main/components/application-connector/#overview-overview).

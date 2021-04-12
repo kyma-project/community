@@ -1,7 +1,7 @@
 # Component folder consolidation
 
 ## Introduction
-The [`components`](https://github.com/kyma-project/kyma/tree/master/components) folder of the `kyma-project` contains all Kyma components which are not related to the Kyma Console. A Kyma component is a project based on source code or scripts, always resulting in docker images which are then referenced in Kyma modules/charts.
+The [`components`](https://github.com/kyma-project/kyma/tree/main/components) folder of the `kyma-project` contains all Kyma components which are not related to the Kyma Console. A Kyma component is a project based on source code or scripts, always resulting in docker images which are then referenced in Kyma modules/charts.
 Each subfolder in the `components` directory defines one component.
 
 ## Problem
@@ -88,7 +88,7 @@ Going the extra mile we should also have a look at the `tools` folder. Currently
 - **module** A Kyma module is a helm chart installed by the installer. It is located in the `kyma/resources` folder. A module can be optional for a Kyma installation. For example,  `service-catalog` is a module consisting mainly of 3rd party images but also leveraging some Kyma components, such as the `binding-usage-controller`.
 - **component** A Kyma component is any Pod/container/image deployed with a Kyma module to provide its functionality. A component is made of sources located in the `kyma/components` folder.
 
-An image which adds functionality to Kyma,  but does not prevent it from working properly with it's absent, is a **tool**. For example, the watch-pods container which is used for testing/monitoring. Without it, Kyma works as well. 
+An image which adds functionality to Kyma,  but does not prevent it from working properly with it's absent, is a **tool**. For example, the watch-pods container which is used for testing/monitoring. Without it, Kyma works as well.
 
 Having that definition in mind, there are tools listed in the `tools` folder which can be treated as components and should be moved:
 

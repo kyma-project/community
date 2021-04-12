@@ -1,4 +1,4 @@
-> **NOTE:** The chart's `README.md` document should be concise and focus on the chart's structure and configuration. If you want to add any extensive component description, consider moving it to the official [Kyma documentation](https://github.com/kyma-project/kyma/tree/master/docs) as one of the approved [Document types](../../content-guidelines/content-strategy.md#documentation-types).
+> **NOTE:** The chart's `README.md` document should be concise and focus on the chart's structure and configuration. If you want to add any extensive component description, consider moving it to the official [Kyma documentation](https://github.com/kyma-project/kyma/tree/main/docs) as one of the approved [Document types](../../content-guidelines/content-strategy.md#documentation-types).
 
 # {Chart Name}
 

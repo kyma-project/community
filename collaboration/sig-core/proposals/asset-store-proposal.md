@@ -123,7 +123,7 @@ spec:
 ```
 
 The optional information is:
-- A ConfigMap reference that points to the ConfigMap that introduces [a new file](https://github.com/kyma-project/kyma/blob/master/resources/service-catalog-addons/charts/instances-ui/templates/configmap.yaml) which is also sent to the bucket along with other files.
+- A ConfigMap reference that points to the ConfigMap that introduces [a new file](https://github.com/kyma-project/kyma/blob/main/resources/service-catalog-addons/charts/instances-ui/templates/configmap.yaml) which is also sent to the bucket along with other files.
 - An Asset validation webhook reference to a service that performs the validation of fetched assets before they are uploaded to the bucket. It can be a list of several different validation webhooks and all of them should be processed even if one is failing. The use cases are:
   - Validation of a specific file against some specification.
   - Security validation

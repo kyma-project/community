@@ -2,7 +2,7 @@
 title: Kyma components
 ---
 
-The [`components`](https://github.com/kyma-project/kyma/tree/master/components) directory contains the sources of all Kyma components. A Kyma component is any Pod, container, or image deployed with and referenced in a Kyma module or chart to provide the module's functionality. Each subdirectory in the `components` directory defines one component.
+The [`components`](https://github.com/kyma-project/kyma/tree/main/components) directory contains the sources of all Kyma components. A Kyma component is any Pod, container, or image deployed with and referenced in a Kyma module or chart to provide the module's functionality. Each subdirectory in the `components` directory defines one component.
 
 ## Details
 
@@ -24,4 +24,4 @@ This table lists the available types:
 
 ## Development
 
-Follow the [development guide](https://github.com/kyma-project/kyma/blob/master/resources/README.md) when you add a new component to the `kyma` repository.
+Follow the [development guide](https://github.com/kyma-project/kyma/blob/main/resources/README.md) when you add a new component to the `kyma` repository.

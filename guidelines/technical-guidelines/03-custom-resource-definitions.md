@@ -16,20 +16,20 @@ To differentiate CRDs from other types of Kubernetes resource files, end the fil
 
 ## CRD ConfigMaps
 
-During the initial phase of installation or upgrade, all CRDs from the `files` subdirectory are bundled by and mounted into [ConfigMaps](https://github.com/kyma-project/kyma/blob/master/resources/cluster-essentials/templates/crd-install-config-map.yaml). Those ConfigMaps are located under [`resources/cluster-essentials/templates`](https://github.com/kyma-project/kyma/tree/master/resources/cluster-essentials/templates), in the same location as the installation and upgrade Job, the ServiceAccount that the Job uses to apply CRDs, and the ClusterRoleBinding which binds the ServiceAccount with the proper ClusterRole for adequate permissions. The number of ConfigMaps depends on the number of CRDs located under [`resources/cluster-essentials/files`](https://github.com/kyma-project/kyma/tree/master/resources/cluster-essentials/files) but is not equal to their number. One ConfigMap cannot exceed the maximum size limit of 1 MB so can hold only a limited number of CRDs. That is why, the number of ConfigMaps that Helm creates during Kyma upgrade and installation tightly depends on the overall number of CRDs to apply.
+During the initial phase of installation or upgrade, all CRDs from the `files` subdirectory are bundled by and mounted into [ConfigMaps](https://github.com/kyma-project/kyma/blob/main/resources/cluster-essentials/templates/crd-install-config-map.yaml). Those ConfigMaps are located under [`resources/cluster-essentials/templates`](https://github.com/kyma-project/kyma/tree/main/resources/cluster-essentials/templates), in the same location as the installation and upgrade Job, the ServiceAccount that the Job uses to apply CRDs, and the ClusterRoleBinding which binds the ServiceAccount with the proper ClusterRole for adequate permissions. The number of ConfigMaps depends on the number of CRDs located under [`resources/cluster-essentials/files`](https://github.com/kyma-project/kyma/tree/main/resources/cluster-essentials/files) but is not equal to their number. One ConfigMap cannot exceed the maximum size limit of 1 MB so can hold only a limited number of CRDs. That is why, the number of ConfigMaps that Helm creates during Kyma upgrade and installation tightly depends on the overall number of CRDs to apply.
 
 ## CRD installation and upgrade
 
 To make the installation process more efficient and maintainable, we decoupled CRDs from charts and now store them in the `cluster-essentials` component.
 
-All Kyma CRDs are installed or updated at the very beginning by the [Kubernetes Job](https://github.com/kyma-project/kyma/blob/master/resources/cluster-essentials/templates/crd-install-job.yaml) that is triggered by Helm's [pre-install and pre-upgrade](https://helm.sh/docs/topics/charts_hooks/#the-available-hooks) hooks.
+All Kyma CRDs are installed or updated at the very beginning by the [Kubernetes Job](https://github.com/kyma-project/kyma/blob/main/resources/cluster-essentials/templates/crd-install-job.yaml) that is triggered by Helm's [pre-install and pre-upgrade](https://helm.sh/docs/topics/charts_hooks/#the-available-hooks) hooks.
 
 There is one unified Job for all components. Its name starts with the `crd-install-` prefix, like all other Kubernetes objects that participate in the process of CRD installation and upgrade:
 
-- [`crd-install-cluster-role-binding.yaml`](https://github.com/kyma-project/kyma/blob/master/resources/cluster-essentials/templates/crd-install-cluster-role-binding.yaml)
-- [`crd-install-config-map.yaml`](https://github.com/kyma-project/kyma/blob/master/resources/cluster-essentials/templates/crd-install-config-map.yaml)
-- [`crd-install-job.yaml`](https://github.com/kyma-project/kyma/blob/master/resources/cluster-essentials/templates/crd-install-job.yaml)
-- [`crd-install-service-account.yaml`](https://github.com/kyma-project/kyma/blob/master/resources/cluster-essentials/templates/crd-install-service-account.yaml)
+- [`crd-install-cluster-role-binding.yaml`](https://github.com/kyma-project/kyma/blob/main/resources/cluster-essentials/templates/crd-install-cluster-role-binding.yaml)
+- [`crd-install-config-map.yaml`](https://github.com/kyma-project/kyma/blob/main/resources/cluster-essentials/templates/crd-install-config-map.yaml)
+- [`crd-install-job.yaml`](https://github.com/kyma-project/kyma/blob/main/resources/cluster-essentials/templates/crd-install-job.yaml)
+- [`crd-install-service-account.yaml`](https://github.com/kyma-project/kyma/blob/main/resources/cluster-essentials/templates/crd-install-service-account.yaml)
 
 ## Consideration
 

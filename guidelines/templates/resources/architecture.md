@@ -15,4 +15,4 @@ type: Architecture
 > * Follow the `02-{00}-{component-name}.md` convention to name the document.
 > * In the metadata section, follow the `{Component name} architecture` convention for the `title` if there is more than one Architecture document in a repository. If there is only one document of a certain type, remove the `type` metadata completely so that the document displays well on the UI.
 >
-> For reference, see the existing **Architecture** document for the [Service Catalog](https://kyma-project.io/docs/master/components/service-catalog/#architecture-architecture).
+> For reference, see the existing **Architecture** document for the [Service Catalog](https://kyma-project.io/docs/main/components/service-catalog/#architecture-architecture).

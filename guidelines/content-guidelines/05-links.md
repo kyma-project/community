@@ -15,7 +15,7 @@ Linking is a great tool to use to incorporate a lot of content into your documen
 
 To create cross-reference links between documents in the `kyma/docs` folder, follow the guidelines below.
 
->**NOTE:** Cross-reference linking works only on the [Kyma website](https://kyma-project.io/docs). Currently, linking between [GitHub documents](https://github.com/kyma-project/kyma/tree/master/docs) is not available.
+>**NOTE:** Cross-reference linking works only on the [Kyma website](https://kyma-project.io/docs). Currently, linking between [GitHub documents](https://github.com/kyma-project/kyma/tree/main/docs) is not available.
 
 ## Links between documents in the same topic
 
