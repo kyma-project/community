@@ -16,4 +16,4 @@ type: Troubleshooting
 >   - Explain the problem's possible cause, if needed.
 >   - Provide a solution.
 >
-> For reference, see the existing **Troubleshooting** [documents](https://kyma-project.io/docs/master/root/kyma/#troubleshooting-troubleshooting) for Kyma.
+> For reference, see the existing **Troubleshooting** [documents](https://kyma-project.io/docs/root/kyma/#troubleshooting-troubleshooting) for Kyma.

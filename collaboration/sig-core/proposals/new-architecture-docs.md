@@ -39,7 +39,7 @@ Implement the below proposal on top of the new [Asset Store](https://github.com/
 apiVersion: documentation.kyma-project.io/v1alpha1
 kind: ClusterDocsTopic
 metadata:
-  name: service-catalog #example based on current documentation topic https://github.com/kyma-project/kyma/tree/master/docs/service-catalog
+  name: service-catalog #example based on current documentation topic https://github.com/kyma-project/kyma/tree/main/docs/service-catalog
   labels:
     viewContext: docs-view
 spec:

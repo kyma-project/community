@@ -30,7 +30,7 @@ During the asynchronous provisioning of a Service Instance, the Application Brok
 3. Labels user namespace in order to let the Knative Namespace controller create the `Knative Broker`.
 4. Creates `Istio Policy` (allows Prometheus - which is outside the Service Mesh - to scrape metrics from the Knative Broker Pods).
 
-For more details on how Application Broker is involved in Knative Eventing Mesh, see [this document](https://kyma-project.io/docs/master/components/knative-eventing-mesh/#architecture-architecture-component-dependencies).
+For more details on how Application Broker is involved in Knative Eventing Mesh, see [this document](https://github.com/kyma-project/kyma/blob/release-1.11/docs/knative-eventing-mesh/02-01-knative-eventing-mesh.md#component-dependencies).
 
 
 ## Motivation/Problems
@@ -92,7 +92,7 @@ How would we solve the above mentioned problems with this solution:
 
 Status of EventFlow could be based on the following objects:
 - the HTTP Source Adapter (Knative Service) - if the HTTP Source is down, no events are entering the event-mesh
-- the Knative Broker - if the Broker is down, the events will not be dispatched to the final sink (e.g. a Lambda) 
+- the Knative Broker - if the Broker is down, the events will not be dispatched to the final sink (e.g. a Lambda)
 - Knative Subscription - if the subscription is unready, the events won't be forwarded to the Broker
 
 ```yaml
@@ -127,14 +127,14 @@ status:
 #### Implementation
 
 1. Use `knative.dev/pkg/controller` to implement the controller - similar to [HTTP Source controller](https://github.com/kyma-project/kyma/blob/bb5810fdb969035617bb0fd70f0d1d1d91bea58b/components/event-sources/reconciler/httpsource/controller.go#L63)
-1. Remove steps 2-4 from Application Broker. Instead create/delete EventFlow CR when Application Broker receives provisioning/deprovisiong request. 
+1. Remove steps 2-4 from Application Broker. Instead create/delete EventFlow CR when Application Broker receives provisioning/deprovisiong request.
 1. Implement combined status of Service Instance & EventFlow in UI
 1. Add EventFlow controller component to Kyma resources folder, therefore creating a new Kyma installer image
 1. Bump Application Broker image
 1. Bump UI image
 
 
-*UI Changes*: 
+*UI Changes*:
 
 Currently the status of the ServiceInstance can be one of the following:
 1. `Provisioning`
@@ -143,7 +143,7 @@ Currently the status of the ServiceInstance can be one of the following:
 1. `Deprovisioning`
 
 We have two options to display the status of both resources in the UI:
-1. Combined status of both resources in one string. 
+1. Combined status of both resources in one string.
    The following table illustrates how we can create the combined status based on the status of the ServiceInstance and the EventFlow:
 
    | Combined Status | Service Instance           | EventFlow      |
@@ -152,20 +152,20 @@ We have two options to display the status of both resources in the UI:
    | Running         | Status ready and           | Status ready   |
    | Failed          | Status unready or          | Status unready |
    | Deprovisioning  | Status.CurrentOperation and| any            |
-   
+
    `Provisioning`  : is the case then the `Status.CurrentOperation` field of the ServiceInstance is equal to `Provision`
    `Running`       : is the case then the status of the ServiceInstance and the EventFlow is ready
    `Failed`        : is the case then the status of the ServiceInstance or the EventFlow is unready
    `Deprovisioning`: is the case then the `Status.CurrentOperation` field of the ServiceInstance is equal to `Deprovision`
-   
+
     Advantage: Easier to understand for the user
-    
+
     Disadvantage: More changes in UI required
 
 1. Show status of both resources instead of a single status
 
    Advantage: Easier to implement
-   
+
    Disadvantage: Harder for the user to understand
 
 In both cases the tooltips for the status need to be revisited. Currently it is based on the ServiceInstance status conditions only.
@@ -173,13 +173,13 @@ If the EventFlow CR is in unready state, the tooltip has to be taken from the Ev
 
 #### Migration/Upgrade
 
-In order to upgrade Kyma to a new version with EventFlow controller in place, we need to 
+In order to upgrade Kyma to a new version with EventFlow controller in place, we need to
 - recreate all Service Instances belong to Application Broker (similar to [event-mesh-migration](https://github.com/kyma-project/kyma/blob/ed5c61f07e2e22172fcaf045fb55c7bc10336f55/components/event-bus/cmd/mesh-namespaces-migration/main.go#L68))
    - this will delete all objects created in steps 2-4
    - create EventFlow CR
    - EventFlow controller will create objects from steps 2-4
 
-If we don't perform the migration, we won't have an EventFlow CR for old Service Instances and can't implement the deprovision correctly. 
+If we don't perform the migration, we won't have an EventFlow CR for old Service Instances and can't implement the deprovision correctly.
 
 Also, the upgrade test has to be modified to wait for the readiness of the EventFlow CR [here](https://github.com/kyma-project/kyma/blob/a60d814eb91ea1e97f7fb1516f78227b73fe1e3a/tests/end-to-end/upgrade/pkg/tests/eventmesh-migration/migrate-eventmesh/eventmesh.go#L59) and [here](https://github.com/kyma-project/kyma/blob/a60d814eb91ea1e97f7fb1516f78227b73fe1e3a/tests/end-to-end/upgrade/pkg/tests/eventmesh-migration/migrate-eventmesh/eventmesh.go#L86)
 
@@ -203,7 +203,7 @@ Kyma Environment Broker implements retries as follows, we could do the same for 
 *Problem 1*: Fixes the problem.
 
 *Problem 2*: In theory possible to solve, see (*).
-             We could use the database to remember which Service Instance uses the Knative Broker. 
+             We could use the database to remember which Service Instance uses the Knative Broker.
 
 *Problem 3*: Feature can be implemented, but when the status of the Broker changes, it won't be reflected in the Service Instance unless we have an Informer for the Broker.
 
@@ -214,7 +214,7 @@ Disadvantage: We would need to store some state to keep track of provisioning op
 
 Implement retries for failed Service Instances in Application Broker:
 
-- We could use an `Informer` for `Service Instances` and trigger an update of the failed Service Instances (only the ones which belong to Application Broker). 
+- We could use an `Informer` for `Service Instances` and trigger an update of the failed Service Instances (only the ones which belong to Application Broker).
 - OSB API mentions an [update REST endpoint](https://github.com/kyma-project/kyma/blob/f2c3b3498f91c22250ddbc7a6a4449b679a40263/components/application-broker/internal/broker/server.go#L143).
   Unfortunately, Application Broker does not implement the endpoint yet. See code endpoints [here](https://github.com/kyma-project/kyma/blob/f2c3b3498f91c22250ddbc7a6a4449b679a40263/components/application-broker/internal/broker/server.go#L143)
 
@@ -237,7 +237,7 @@ A simple retry loop would be enough to delay the creation of the Knative Subscri
 *Problem 1*: Improves the situation by adding at least retries for a reasonable time.
              But this solution will need to have a good compromise on the timeout for the retry.
              If timeout is too low, it might not solve the problem, if timeout is too high we block goroutines too long.
-             
+
 *Problem 2*: In theory possible to solve, see (*).
 
 *Problem 3*: Feature can be implemented, but when the status of the Broker changes, it won't be reflected in the Service Instance unless we have an Informer for the Broker.

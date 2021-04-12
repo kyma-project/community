@@ -16,7 +16,7 @@ Follow these steps:
 
 1. Create a pull request with `.md` files for the new documentation topic. Place the `.md` files under a new `docs` subfolder in the repository, such as `docs/serverless/`.
 
-2. In the same PR, create a `.yaml` file under the [`templates`](https://github.com/kyma-project/kyma/tree/master/resources/core/charts/docs/charts/content-ui/templates) folder to add a [ClusterAssetGroup CR](https://kyma-project.io/docs/components/rafter/#custom-resource-cluster-asset-group) for your topic. For example, if you add a ClusterAssetGroup CR for the Serverless component, name it `docs-components-serverless-cag.yaml`. ​
+2. In the same PR, create a `.yaml` file under the [`templates`](https://github.com/kyma-project/kyma/tree/main/resources/core/charts/docs/charts/content-ui/templates) folder to add a [ClusterAssetGroup CR](https://kyma-project.io/docs/components/rafter/#custom-resource-cluster-asset-group) for your topic. For example, if you add a ClusterAssetGroup CR for the Serverless component, name it `docs-components-serverless-cag.yaml`. ​
 
    See the example definition:
     ​
@@ -106,7 +106,7 @@ To add a new specification, follow these steps:
   Kyma repository
   </summary>
 
-1. Go to the [`templates`](https://github.com/kyma-project/kyma/tree/master/resources/core/charts/docs/charts/content-ui/templates) folder and locate the ClusterAssetGroup CR that you want to modify.
+1. Go to the [`templates`](https://github.com/kyma-project/kyma/tree/main/resources/core/charts/docs/charts/content-ui/templates) folder and locate the ClusterAssetGroup CR that you want to modify.
 
 2. Add a new source entry in the **sources** field:
 
@@ -193,7 +193,7 @@ To add a new specification, follow these steps:
 
 Follow these steps if you want the documentation from a repository under the [`kyma-project`](https://github.com/orgs/kyma-project/) or [`kyma-incubator`](https://github.com/kyma-incubator`) organization to be rendered on the website under the **Docs** view.
 
-> **NOTE:** Documents should follow the [content strategy](https://kyma-project.io/community/guidelines/content/#content-strategy-content-strategy-documentation-types), have proper types, metadata, and numbering. See the [Kyma docs](https://github.com/kyma-project/kyma/tree/master/docs/kyma) for reference.  
+> **NOTE:** Documents should follow the [content strategy](https://kyma-project.io/community/guidelines/content/#content-strategy-content-strategy-documentation-types), have proper types, metadata, and numbering. See the [Kyma docs](https://github.com/kyma-project/kyma/tree/main/docs/kyma) for reference.  
 
 1. Create  the `.kyma-project-io` folder in the given repository and add appropriate [documentation topics](#add-new-documentation-to-the-website-add-new-documentation-to-the-website-add-a-new-documentation-topic) to this folder.
 

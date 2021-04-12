@@ -21,7 +21,7 @@ Go directly to the section that you are most interested in:
 
 Kyma is a cloud-native application runtime which allows you to connect and extend products in a quick and modern way, using serverless computing and microservice architecture. To get a better idea of what Kyma is and what it does, go [here](manifesto/README.md). To learn what types of users might be most interested in Kyma, see the [Kyma personas](manifesto/personas.md).
 
-To learn more about the product, see the [Kyma repository](https://github.com/kyma-project/kyma/blob/master/README.md).
+To learn more about the product, see the [Kyma repository](https://github.com/kyma-project/kyma/blob/main/README.md).
 
 Kyma is also on social media. Visit the [website](https://kyma-project.io/) and follow Kyma on [Twitter](https://twitter.com/kymaproject), and [LinkedIn](https://www.linkedin.com/company/kyma-project/).
 

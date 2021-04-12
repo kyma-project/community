@@ -1,7 +1,7 @@
 # Test folder consolidation
 
 ## Introduction
-The [tests](https://github.com/kyma-project/kyma/tree/master/tests) folder of the kyma-project contains tests executed against a running Kyma cluster to assure integrity and functional correctness of the cluster with all modules installed.
+The [tests](https://github.com/kyma-project/kyma/tree/main/tests) folder of the kyma-project contains tests executed against a running Kyma cluster to assure integrity and functional correctness of the cluster with all modules installed.
 These are acceptance tests.
 All subfolders in the `tests` directory define one test suite, usually focusing on one component.
 
@@ -26,7 +26,7 @@ Propose a name pattern using specific information to distinguish between the fol
 **one component per folder** As long as a test suite focuses on a specific component, the test suite should be named accordingly. This way the component and its maintainers can be identified quicker.
 The `acceptance` folder currently contains test suites for 3 different components. These suites share some few common scripts. The best practice is to have a dedicated folder per component, including a docker image. That's why the `acceptance` folder should be converted into three dedicated component folders with their own docker images. Common scripts can be still shared on the root level or in a `common` folder.
 
-**docker images** Each subfolder produces a docker image using the folder name for the image name. If no prefix/suffix is used, the folder and image names can be conflicting. Introducing a subfolder for the image could solve this problem. 
+**docker images** Each subfolder produces a docker image using the folder name for the image name. If no prefix/suffix is used, the folder and image names can be conflicting. Introducing a subfolder for the image could solve this problem.
 
 ## Proposal
 
