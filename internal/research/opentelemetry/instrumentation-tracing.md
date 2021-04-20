@@ -1,8 +1,8 @@
 # OpenTelemetry SDK Usage for Distributed Tracing in Golang Applications
 
-OpenTelemetry is a project to handle telemetry data (logs, metrics and traces) in a vendor neutral way. It provides SDKs to instrument applications, APIs and processing tools (collector).
+OpenTelemetry is a project to handle telemetry data (logs, metrics and traces) in a vendor-neutral way. It provides SDKs to instrument applications, APIs and processing tools (collector).
 
-This document describes our findings with using the OpenTelemetry Golang SDK for distributed tracing. To evaluate the functionality of the SDK, a Golang implementation for the reviews service of the [Istio Bookinfo](https://istio.io/latest/docs/examples/bookinfo/) example was extended.
+This document describes our findings using the OpenTelemetry Golang SDK for distributed tracing. To evaluate the functionality of the SDK, a Golang implementation for the reviews service of the [Istio Bookinfo](https://istio.io/latest/docs/examples/bookinfo/) example was extended.
 
 ## Tracing Capabilities of the OpenTelemetry SDK
 
@@ -12,7 +12,7 @@ Traces can be exported to external backends (e.g., Jaeger) using the OpenTelemet
 
 ## Code Instrumentation
 
-To instrument a Golang application, a `tracer` has to be created first. The following function initializes a tracer that exports spans to an OpenTelemetry collector using the GRPC protocol.
+To instrument a Golang application, first, a `tracer` must be created. The following function initializes a tracer that exports spans to an OpenTelemetry collector using the GRPC protocol:
 
 ```
 func initTracer() (trace.Tracer, error) {
