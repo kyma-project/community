@@ -84,7 +84,7 @@ OpenTelemetry provides a list of [packages](https://github.com/open-telemetry/op
 
 ## Findings
 
-* The trace context propagation feature lacks documentation. We were not able to propagate the B3 context that has been injected by Istio to the OpenTelemetry SDK to the own span.
+* The trace context propagation feature lacks documentation. We were not able to propagate the B3 context that has been injected by Istio to spans that were created by the OpenTelemetry SDK for the current request.
 * Automatic instrumentation of the `net/http` packages did not generate any traces.
 * Documentation for the metrics API and logs API yet. In particular, the enhancement of trace spans with metrics is not available.
 * Traces were exported to the collector unreliably. Needs further investigation.
