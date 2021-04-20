@@ -80,7 +80,7 @@ mutex.Lock()
 
 ## Automatic Instrumentation
 
-OpenTelemetry provides a list of [packages](https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation) that can instrument specific Golang packages automatically. E.g., `net/http`.
+OpenTelemetry provides a list of [packages](https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation) that can instrument specific Golang packages automatically, for example, `net/http`.
 
 ## Findings
 
