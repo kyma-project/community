@@ -70,7 +70,7 @@ defer span.End()
 ...
 ```
 
-Spans can be enhanced with additional events. Events can contain custom attributes. E.g.:
+Spans can be enhanced with additional events. Events can contain custom attributes, for example:
 
 ```
 ...
