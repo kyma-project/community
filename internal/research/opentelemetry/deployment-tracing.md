@@ -2,7 +2,7 @@
 
 OpenTelemetry is a project to handle telemetry data (logs, metrics and traces) in a vendor-neutral way. It provides SDKs to instrument applications, APIs and processing tools (collector).
 
-This document describes different ways to deploy the OpenTelemetry collector to handle traces and findings from a PoC. To showcase the functionality of OpenTelemetry, we deployed the [Istio Bookinfo](https://istio.io/latest/docs/examples/bookinfo/) example and forwarded the Istio generated traces to OpenTelemetry.
+This document describes different ways to deploy the OpenTelemetry collector to handle traces and findings from a PoC. To demonstrate the functionality of OpenTelemetry, we deployed the [Istio Bookinfo](https://istio.io/latest/docs/examples/bookinfo/) example and forwarded the Istio-generated traces to OpenTelemetry.
 
 ## Collector Services
 
