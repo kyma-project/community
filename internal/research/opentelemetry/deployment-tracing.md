@@ -6,7 +6,7 @@ This document describes different ways to deploy the OpenTelemetry collector to 
 
 ## Collector Services
 
-The collector consists of telemetry receivers, processors and exporters, which can be combined to processing pipelines in services. E.g., the following configuration can receive traces via the Zipkin and OTLP API, batch them and forwards the batches to another Zipkin service and writing to STDOUT.
+The collector consists of telemetry receivers, processors and exporters, which can be combined to processing pipelines in services. For example, the following configuration receives traces using the Zipkin and OTLP API and batches them. Then, it forwards the batches to another Zipkin service and writes the output to STDOUT.
 
 ```
 receivers:
