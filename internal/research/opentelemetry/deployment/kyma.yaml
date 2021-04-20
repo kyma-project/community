@@ -1,0 +1,34 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: kyma
+  namespace: kyma-system
+spec:
+  config: |
+    receivers:
+      zipkin:
+      otlp:
+        protocols:
+          grpc:
+          http:
+
+    processors:
+      # Data sources: traces, metrics, logs
+      batch:
+
+    exporters:
+      zipkin:
+        endpoint: "http://zipkin.kyma-system:9411/api/v2/spans"
+      logging:
+        loglevel: debug
+
+    extensions:
+      health_check:
+      zpages:
+
+    service:
+      extensions: [health_check, zpages]
+      pipelines:
+        traces:
+          receivers: [otlp, zipkin]
+          exporters: [zipkin, logging]
