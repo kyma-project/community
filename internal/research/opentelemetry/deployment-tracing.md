@@ -50,7 +50,7 @@ Traces can be exported using the same APIs, and can be written to STDOUT and fil
 
 ### Collector Deployment
 
-The collector can be deployed as a central service, a DaemonSet or sidecar container to each pod. Telemetry data can be forwarded by an exporter to another collector or an external service (e.g., Jaeger).
+The collector must be deployed as a central service, a DaemonSet or sidecar container to each pod. Telemetry data can be either forwarded by an exporter to another collector or an external service (e.g., Jaeger).
 
 We built an OpenTelemetry collector deployment for this PoC, where each pod has a sidecar collector that can receive traces using the Zipkin and OTLP API. The sidecar collector forwards the traces to a central collector. The central collector sends all traces in batches to the Zipkin endpoint of the Jaeger service.
 For details about the configuration, see [deployment](deployment/). To integrate this setup with Istio, set `defaultConfig.tracing.zipkin.address` to `localhost` in Istio's mesh configuration.
