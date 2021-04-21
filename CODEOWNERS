@@ -8,7 +8,7 @@
 /collaboration/ @PK85
 
 # Owners of all .md files in the repository
-*.md @kazydek @klaudiagrz @mmitoraj @majakurcius @alexandra-simeonova @superojla
+*.md @kazydek @klaudiagrz @mmitoraj @majakurcius @alexandra-simeonova @superojla @nhingerl
 
 # Owners of the .kyma-project-io folder
 /.kyma-project-io/ @m00g3n @aerfio @magicmatatjahu
