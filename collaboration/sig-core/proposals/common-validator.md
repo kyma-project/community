@@ -34,10 +34,10 @@ APP_NAME = ui-api-layer
 IMG = $(DOCKER_PUSH_REPOSITORY)$(DOCKER_PUSH_DIRECTORY)/$(APP_NAME)
 TAG = $(DOCKER_TAG)
 
-.PHONY: ci-pr ci-master ci-release resolve build-and-test build-image push-image
+.PHONY: ci-pr ci-main ci-release resolve build-and-test build-image push-image
 
 ci-pr: resolve build-and-test build-image push-image
-ci-master: resolve build-and-test build-image push-image
+ci-main: resolve build-and-test build-image push-image
 ci-release: resolve build-and-test build-image push-image
 
 resolve:
@@ -54,7 +54,7 @@ push-image:
 Only the `ci-*` targets are unified in the `kyma-project` organization because they are required by the CI system. Other targets can have different names because they are not unified and not required by any system. For example, `ui-api-layer` has the `build-and-test` target, while `binding-usage-controller` has `build`. Both targets execute the `before-commit.sh` script. In such a case, the contributor doesn't know how to work with components in one repository.
 
 As a solution to that, I would like to unify these targets:
- - `ci-pr`, `ci-master`, `ci-release` which are required by the CI system
+ - `ci-pr`, `ci-main`, `ci-release` which are required by the CI system
  - `validate` that executes the whole validation
  - `resolve` that downloads dependencies
  - `build` that executes component builds
@@ -73,11 +73,11 @@ APP_NAME = ui-api-layer
 IMG = $(DOCKER_PUSH_REPOSITORY)$(DOCKER_PUSH_DIRECTORY)/$(APP_NAME)
 TAG = $(DOCKER_TAG)
 
-.PHONY: ci-pr ci-master ci-release validate resolve build test format lint build-image push-image
+.PHONY: ci-pr ci-main ci-release validate resolve build test format lint build-image push-image
 
 ci-pr: validate build-image push-image
-ci-master: ci-pr
-ci-release: ci-master
+ci-main: ci-pr
+ci-release: ci-main
 
 validate: resolve build test format lint
 
@@ -119,11 +119,11 @@ The content of the `template.go.mk` file will look as follows:
 IMG = $(DOCKER_PUSH_REPOSITORY)$(DOCKER_PUSH_DIRECTORY)/$(APP_NAME)
 TAG = $(DOCKER_TAG)
 
-.PHONY: ci-pr ci-master ci-release validate resolve build test format lint build-image push-image
+.PHONY: ci-pr ci-main ci-release validate resolve build test format lint build-image push-image
 
 ci-pr: validate build-image push-image
-ci-master: ci-pr
-ci-release: ci-master
+ci-main: ci-pr
+ci-release: ci-main
 
 validate: resolve build test format lint
 
@@ -305,7 +305,7 @@ COMPONENT_REL_PATH=$(shell echo $(shell pwd) | sed 's,$(REPOSITORY_PATH)/,,g')
 .PHONY: ci-pr ci-main ci-release resolve validate build clean test format validate-format lint docker-build docker-push
 
 ci-pr: validate build-image push-image
-ci-master: ci-pr
+ci-main: ci-pr
 ci-release: ci-main
 
 validate: resolve build test validate-format lint clean
