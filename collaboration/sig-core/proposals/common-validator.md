@@ -171,11 +171,11 @@ After introducing `template definition`, the makefiles will look as follows:
 DOCKER_REPOSITORY = $(DOCKER_PUSH_REPOSITORY)$(DOCKER_PUSH_DIRECTORY) # provided by CI system
 COMPONENT_REL_PATH=$(shell echo $(shell pwd) | sed 's,$(REPOSITORY_PATH)/,,g')
 
-.PHONY: ci-pr ci-master ci-release resolve validate build clean test format validate-format lint docker-build docker-push
+.PHONY: ci-pr ci-main ci-release resolve validate build clean test format validate-format lint docker-build docker-push
 
 ci-pr: validate build-image push-image
-ci-master: ci-pr
-ci-release: ci-master
+ci-main: ci-pr
+ci-release: ci-main
 
 validate: resolve build test validate-format lint clean
 resolve:
@@ -229,11 +229,11 @@ To achieve that, we need to update `template.go.mk` and the makefile for a given
 DOCKER_REPOSITORY = $(DOCKER_PUSH_REPOSITORY)$(DOCKER_PUSH_DIRECTORY) # provided by the CI system
 COMPONENT_REL_PATH=$(shell echo $(shell pwd) | sed 's,$(REPOSITORY_PATH)/,,g')
 
-.PHONY: ci-pr ci-master ci-release resolve validate build clean test format validate-format lint docker-build docker-push
+.PHONY: ci-pr ci-main ci-release resolve validate build clean test format validate-format lint docker-build docker-push
 
 ci-pr: validate build-image push-image
-ci-master: ci-pr
-ci-release: ci-master
+ci-main: ci-pr
+ci-release: ci-main
 
 validate: resolve build test validate-format lint clean
 resolve:
@@ -302,11 +302,11 @@ See `template.go.mk` that supports multiple artifacts:
 DOCKER_REPOSITORY = $(DOCKER_PUSH_REPOSITORY)$(DOCKER_PUSH_DIRECTORY) # provided by CI system
 COMPONENT_REL_PATH=$(shell echo $(shell pwd) | sed 's,$(REPOSITORY_PATH)/,,g')
 
-.PHONY: ci-pr ci-master ci-release resolve validate build clean test format validate-format lint docker-build docker-push
+.PHONY: ci-pr ci-main ci-release resolve validate build clean test format validate-format lint docker-build docker-push
 
 ci-pr: validate build-image push-image
 ci-master: ci-pr
-ci-release: ci-master
+ci-release: ci-main
 
 validate: resolve build test validate-format lint clean
 resolve:

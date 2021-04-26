@@ -43,7 +43,7 @@ This proposal tries to provide ideas how to solve them.
 TL;DR:
 - Application Broker does not implement retries for failed provisioning requests. The creation of a Knative Subscription can fail, if the Application Channel has not been created yet.
   If that happens, the Service Instance will stay in failed status forever => **No Eventing!**
-- According to the _Open Service Broker API_, it is the Service Broker's responsibility ³ to implement retries. In contrast to [Kyma Environment Broker (KEB)](https://github.com/kyma-incubator/compass/blob/master/docs/kyma-environment-broker/02-01-architecture.md), Application Broker does not implement retries.
+- According to the _Open Service Broker API_, it is the Service Broker's responsibility ³ to implement retries. In contrast to Kyma Environment Broker (KEB), Application Broker does not implement retries.
 - Platform retry behavior may be part of OSB API v3.
 
 2: [Deprovision Knative Broker #6342](https://github.com/kyma-project/kyma/issues/6342)
@@ -264,5 +264,3 @@ Disadvantage: Every provisioning/deprovisioning request is executed in a gorouti
 7: <https://github.com/kyma-project/community/pull/386/files>
 
 8: <https://kyma-project.io/docs/components/event-bus/#details-knative-eventing-mesh-alpha>
-
-9: <https://github.com/kyma-incubator/compass/blob/master/docs/kyma-environment-broker/03-03-add-provisioning-step.md>
