@@ -6,10 +6,14 @@ This document describes different ways to deploy the OpenTelemetry collector to 
 
 ## Collector Services
 
-The collector consists of telemetry receivers, processors and exporters, which can be combined to processing pipelines in services. For example, the following configuration receives metrics by scraping a Prometheus compatible HTTP endpoint. Then, it forwards the metrics to another central collector via the OTLP protocol. Scraping Prometheus metrics requires a [Prometheus scrape config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config) for the receiver.
+The collector consists of telemetry receivers, processors and exporters, which can be combined to processing pipelines in services. For example, the following configuration pulls metrics by scraping a Prometheus compatible HTTP endpoint and can receive metrics that are pushed by the OTLP protocol. Then, it forwards the metrics to another central collector via the OTLP protocol. Scraping Prometheus metrics requires a [Prometheus scrape config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config) for the receiver.
 
 ```
 receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
   prometheus:
     config:
       scrape_configs:
@@ -26,7 +30,7 @@ exporters:
 service:
   pipelines:
     metrics:
-      receivers: [prometheus]
+      receivers: [otlp, prometheus]
       exporters: [otlp]
 ```
 
