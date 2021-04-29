@@ -9,7 +9,8 @@ The outcome has been documented in sub-documents for each topic.
 * [Instrumentation](instrumentation-tracing.md)
 
 ## Metrics
-* TBD
+* [Deployment](deployment-metrics.md)
+* [Instrumentation](instrumentation-metrics.md)
 
 ## Logging
 * TBD

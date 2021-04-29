@@ -12,6 +12,13 @@ spec:
         protocols:
           grpc:
           http:
+      prometheus:
+        config:
+          scrape_configs:
+            - job_name: "reviews"
+              scrape_interval: 5s
+              static_configs:
+                - targets: ["localhost:9080"]
 
     exporters:
       zipkin:
@@ -26,4 +33,7 @@ spec:
       pipelines:
         traces:
           receivers: [otlp, zipkin]
+          exporters: [otlp, logging]
+        metrics:
+          receivers: [prometheus]
           exporters: [otlp, logging]

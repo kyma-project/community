@@ -21,6 +21,10 @@ spec:
         endpoint: "http://zipkin.kyma-system:9411/api/v2/spans"
       logging:
         loglevel: debug
+      prometheusremotewrite:
+        endpoint: "https://cortex.example.io/api/v1/push"
+        headers:
+          - Authorization: "Basic ..."
 
     extensions:
       health_check:
@@ -32,3 +36,6 @@ spec:
         traces:
           receivers: [otlp, zipkin]
           exporters: [zipkin, logging]
+        metrics:
+          receivers: [otlp]
+          exporters: [prometheusremotewrite, logging]
