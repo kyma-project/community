@@ -1,6 +1,6 @@
 # OpenTelemetry SDK Usage for Metrics in Golang Applications
 
-OpenTelemetry is a project to handle telemetry data (logs, metrics and traces) in a vendor-neutral way. It provides SDKs to instrument applications, APIs and processing tools (collector).
+OpenTelemetry is a project to handle telemetry data (logs, metrics and traces) in a vendor-neutral way. It provides SDKs to instrument applications, APIs and processing tools ([Collector](https://opentelemetry.io/docs/collector/)).
 
 This document describes our findings using the OpenTelemetry Golang SDK for metrics export in a microservice. To evaluate the functionality of the SDK, a Golang implementation for the reviews service of the [Istio Bookinfo](https://istio.io/latest/docs/examples/bookinfo/) example was extended.
 
@@ -42,7 +42,7 @@ The OpenTelemetry [API specification](https://github.com/open-telemetry/opentele
 * Metric types in the Golang SDK abstract from the wire protocol. For instance `measure` vs `Int64ValueRecorder`.
 * Access to histograms that are derived from a `Int64ValueRecorder` metric do via Grafana does not show any values.
 * Other than the Prometheus Golang client, the OpenTelemetry SDK does not provide process and runtime metrics.
-* The OpenTelemetry SDK does not include automated request handler instrumentation as Prometheus does with the `promhttp` package. This can potentially solved by [third party projects](https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation).
+* The OpenTelemetry SDK does not include automated request handler instrumentation as Prometheus does with the `promhttp` package. This can potentially be solved by [third party projects](https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation).
 * The asynchronous instrumentation is described in the API specification, but not implemented in the Golang SDK yet.
 
 ## Conclusions

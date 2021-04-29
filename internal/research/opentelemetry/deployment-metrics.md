@@ -1,12 +1,12 @@
 # OpenTelemetry Collector Usage for Metrics
 
-OpenTelemetry is a project to handle telemetry data (logs, metrics and traces) in a vendor-neutral way. It provides SDKs to instrument applications, APIs and processing tools (collector).
+OpenTelemetry is a project to handle telemetry data (logs, metrics and traces) in a vendor-neutral way. It provides SDKs to instrument applications, APIs and processing tools ([Collector](https://opentelemetry.io/docs/collector/)).
 
-This document describes different ways to deploy the OpenTelemetry collector to handle metrics and findings from a PoC. To demonstrate the functionality of OpenTelemetry, we deployed an application that exports metrics via the Prometheus `/metrics` HTTP path.
+This document describes different ways to deploy the OpenTelemetry Collector to handle metrics and findings from a PoC. To demonstrate the functionality of OpenTelemetry, we deployed an application that exports metrics via the Prometheus `/metrics` HTTP path.
 
 ## Collector Services
 
-The collector consists of telemetry receivers, processors and exporters, which can be combined to processing pipelines in services. For example, the following configuration pulls metrics by scraping a Prometheus compatible HTTP endpoint and can receive metrics that are pushed by the OTLP protocol. Then, it forwards the metrics to another central collector via the OTLP protocol. Scraping Prometheus metrics requires a [Prometheus scrape config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config) for the receiver.
+The Collector consists of telemetry receivers, processors and exporters, which can be combined to processing pipelines in services. For example, the following configuration pulls metrics by scraping a Prometheus compatible HTTP endpoint and can receive metrics that are pushed by the OTLP protocol. Then, it forwards the metrics to another central collector via the OTLP protocol. Scraping Prometheus metrics requires a [Prometheus scrape config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config) for the receiver.
 
 ```
 receivers:
@@ -36,20 +36,20 @@ service:
 
 ### Supported APIs
 
-The collector can receive metrics from the following APIs:
+The Collector can receive metrics from the following APIs:
 
 * Host metrics (similar to [Prometheus Node Exporter](https://github.com/prometheus/node_exporter))
 * OpenCensus
 * OTLP
 * Prometheus
 
-Metrics can be exported using the same APIs, the Prometheus remote write interface, and can be written to STDOUT and files.
+Metrics can be exported using the same APIs or the Prometheus remote write interface, and can be written to STDOUT and files.
 
 ### Collector Deployment
 
-The collector must be deployed as a central service, a DaemonSet or sidecar container to each pod. Telemetry data can be either forwarded by an exporter to another collector or an external service (e.g., Prometheus or Cortex). The Collector can use the full set of Prometheus configuration options for scraping. For instance the Kubernetes service discovery.
+The Collector must be deployed as a central service, a DaemonSet or sidecar container to each pod. Telemetry data can be either forwarded by an exporter to another Collector or an external service (e.g., Prometheus or Cortex). The Collector can use the full set of Prometheus configuration options for scraping, for example, the Kubernetes service discovery.
 
-We built an OpenTelemetry collector deployment for this PoC, where a pod that exports Prometheus metrics gets an OpenTelemetry Collector sidecar container injected to scrapes them. The sidecar collector forwards the traces to a central collector. The central Collector sends all metrics to a [Cortex](https://github.com/cortexproject/cortex) service via the Prometheus remote write endpoint.
+We built an OpenTelemetry Collector deployment for this PoC, where a pod that exports Prometheus metrics gets an OpenTelemetry Collector sidecar container injected to scrapes them. The sidecar collector forwards the traces to a central collector. The central Collector sends all metrics to a [Cortex](https://github.com/cortexproject/cortex) service via the Prometheus remote write endpoint.
 For details about the configuration, see [deployment](deployment/).
 
 ### Findings
