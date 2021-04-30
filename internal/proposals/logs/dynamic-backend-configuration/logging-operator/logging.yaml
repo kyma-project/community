@@ -1,0 +1,14 @@
+apiVersion: logging.banzaicloud.io/v1beta1
+kind: Logging
+metadata:
+  name: default-logging-simple
+spec:
+  fluentd: {}
+  fluentbit:
+    inputTail:
+       Refresh_Interval: "60"
+       Rotate_Wait: "5"
+    filterKubernetes:
+       Kube_URL: "https://kubernetes.default.svc:443"
+       Match: "kube.*"
+  controlNamespace: logging

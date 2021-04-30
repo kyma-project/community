@@ -1,0 +1,11 @@
+apiVersion: logging.banzaicloud.io/v1beta1
+kind: Output
+metadata:
+  name: loki-output
+spec:
+  loki:
+    url: http://logging-loki.kyma-system:3100
+    buffer:
+      timekey: 1m
+      timekey_wait: 30s
+      timekey_use_utc: true

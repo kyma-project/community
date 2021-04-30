@@ -1,0 +1,23 @@
+apiVersion: logging.kubesphere.io/v1alpha2
+kind: Filter
+metadata:
+  name: kubernetes
+  namespace: kubesphere-logging-system
+  labels:
+    logging.kubesphere.io/enabled: "true"
+    logging.kubesphere.io/component: logging
+spec:
+  match: "*"
+  filters:
+  - kubernetes:
+      kubeURL: https://kubernetes.default.svc:443
+      mergeLog: true
+      keepLog: true
+      mergeLogTrim: true
+      k8sLoggingParser: true
+      k8sLoggingExclude: true
+      bufferSize: 32k
+      kubeTagPrefix: kube.var.log.containers.
+      useJournal: false
+      labels: true
+      annotations: true

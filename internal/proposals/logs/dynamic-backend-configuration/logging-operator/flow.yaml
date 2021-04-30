@@ -1,0 +1,20 @@
+apiVersion: logging.banzaicloud.io/v1beta1
+kind: ClusterFlow
+metadata:
+  name: loki-flow
+  namespace: logging
+spec:
+  filters:
+  - stdout: {}
+  - tag_normaliser: {}
+  - parser:
+      parse:
+        type: nginx
+      remove_key_name_field: true
+      reserve_data: true
+  globalOutputRefs:
+  - loki-output
+  match:
+  - select:
+      labels:
+        app.kubernetes.io/name: log-generator
