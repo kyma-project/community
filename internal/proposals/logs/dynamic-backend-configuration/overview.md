@@ -69,5 +69,59 @@ kubectl create -f https://raw.githubusercontent.com/skhalash/community/logging-b
 Inspect the logs of one of the Fluent Bit pods. Make sure that the logs are augmented with Kubernetes metadata.
 
 ## Logging Operator from Banzai Cloud
+Logging Operator automates the deployment and configuration of a Kubernetes logging pipeline. The operator deploys and configures a Fluent Bit daemonset on every node to collect container and application logs from the node file system. Fluent Bit queries the Kubernetes API and enriches the logs with metadata about the pods, and transfers both the logs and the metadata to Fluentd. Fluentd receives, filters, and transfer logs to multiple outputs. Your logs will always be transferred on authenticated and encrypted channels.
 
+You can define outputs (destinations where you want to send your log messages, for example, Elasticsearch, or and Amazon S3 bucket), and flows that use filters and selectors to route log messages to the appropriate outputs. You can also define cluster-wide outputs and flows, for example, to use a centralized output that namespaced users cannot modify.
 
+You can configure the Logging operator using the following Custom Resource Descriptions.
+
+* `Logging`: Represents a logging system. Includes Fluentd and Fluent-bit configuration. Specifies the controlNamespace. Fluentd and Fluent Bit will be deployed in the controlNamespace
+* `Output`: Defines an Output for a logging flow. This is a namespaced resource. See also `ClusterOutput`.
+* `Flow`: Defines a logging flow with filters and outputs. You can specify selectors to filter logs by labels. Outputs can be output or `ClusterOutput`. This is a namespaced resource. See also `ClusterFlow`.
+* `ClusterOutput`: Defines an output without namespace restriction. Only effective in controlNamespace.
+* `ClusterFlow`: Defines a logging flow without namespace restriction.
+
+### Configuration checks
+When Fluentd aggregates logs, it shares the configurations of different log flows. To prevent a bad configuration from failing the Fluentd process, a configuration check validates these first. The new settings only go live after a successful check.
+
+### Secret definition
+https://banzaicloud.com/docs/one-eye/logging-operator/configuration/plugins/outputs/secret/
+Secrets can be used in Logging Operator Output definitions.
+
+### Demo
+https://banzaicloud.com/docs/one-eye/logging-operator/quickstarts/loki-nginx
+
+Execute the following commands:
+```bash
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo add loki https://grafana.github.io/loki/charts
+helm repo add banzaicloud-stable https://kubernetes-charts.banzaicloud.com
+helm repo update
+
+kubectl create ns logging
+kubectl label namespace logging istio-injection=disabled
+helm upgrade --install --namespace logging loki loki/loki
+helm upgrade --install --namespace logging grafana grafana/grafana \
+ --set "datasources.datasources\\.yaml.apiVersion=1" \
+ --set "datasources.datasources\\.yaml.datasources[0].name=Loki" \
+ --set "datasources.datasources\\.yaml.datasources[0].type=loki" \
+ --set "datasources.datasources\\.yaml.datasources[0].url=http://loki:3100" \
+ --set "datasources.datasources\\.yaml.datasources[0].access=proxy"
+helm upgrade --install --wait --namespace logging logging-operator banzaicloud-stable/logging-operator \
+  --set "createCustomResource=false"
+helm upgrade --install --wait --namespace logging logging-demo banzaicloud-stable/logging-demo \
+  --set "loki.enabled=True"
+
+```
+
+Use the following command to retrieve the password of the Grafana admin user:
+```bash
+kubectl get secret --namespace logging grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+```
+
+Enable port forwarding to the Grafana Service:
+```bash
+kubectl -n logging port-forward svc/grafana 3000:80
+```
+
+Open the Grafana Dashboard: http://localhost:3000 and log in. Select Menu > Explore, select Data source > Loki, then select Log labels > namespace > logging. A list of logs should appear.
