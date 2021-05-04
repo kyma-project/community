@@ -53,7 +53,7 @@ Let's assume that you work on an issue that requires changes in the `helm-broker
 1. Create a branch.
 2. Introduce changes to the `helm-broker`. Write or update unit tests.
 3. Create a pull request to test the introduced changes (let's assume that the pull request has number `1234`). As only the `helm-broker` code was modified,
-the `pre-master-kyma-component-helm-broker` job is executed. All the other jobs are skipped.
+the `pre-main-kyma-component-helm-broker` job is executed. All the other jobs are skipped.
 If the job is successful, the component's image is published under `eu.grc.io/kyma-project/pr/helm-broker:PR-1234`.
 4. Test your changes locally on Minikube. In order to use the newly created image, edit [this](https://github.com/kyma-project/kyma/blob/main/resources/helm-broker/values.yaml) `values.yaml` file:
     ```
@@ -65,15 +65,15 @@ If the job is successful, the component's image is published under `eu.grc.io/ky
     ```
     If everything is fine, commit the changes you have made to the `values.yaml` file.
 5. The following Prowjobs are triggered:
-    - `pre-master-kyma-component-helm-broker` - even though component was not changed in this commit, Prow triggers all jobs
+    - `pre-main-kyma-component-helm-broker` - even though component was not changed in this commit, Prow triggers all jobs
 according to the changes introduced in the PR.
-    - All pre-master integration jobs, such as `pre-master-kyma-integration`, `pre-master-kyma-gke-integration`, `pre-master-kyma-gke-upgrade`, etc.
+    - All pre-main integration jobs, such as `pre-main-kyma-integration`, `pre-main-kyma-gke-integration`, `pre-main-kyma-gke-upgrade`, etc.
 All these jobs are triggered because the file in the `resources` directory was modified. All integration jobs have a Guard step that waits
-until `pre-master-kyma-component-helm-broker` is completed.
-6. If all jobs are successful, you can merge changes to the `master` branch. The following jobs are triggered:
-    - `post-master-kyma-component-helm-broker` which creates the `eu.grc.io/kyma-project/develop/helm-broker:{commit-id}` image.
+until `pre-main-kyma-component-helm-broker` is completed.
+6. If all jobs are successful, you can merge changes to the `main` branch. The following jobs are triggered:
+    - `post-main-kyma-component-helm-broker` which creates the `eu.grc.io/kyma-project/develop/helm-broker:{commit-id}` image.
 This image is not used.
-    - All post-master integration jobs, such as `post-master-kyma-integration`, `post-master-kyma-gke-integration`, `post-master-kyma-gke-upgrade`, etc.
+    - All post-main integration jobs, such as `post-main-kyma-integration`, `post-main-kyma-gke-integration`, `post-main-kyma-gke-upgrade`, etc.
 These jobs do not have to wait for any other jobs because images that they use already exist.
 
 
@@ -87,7 +87,7 @@ Most of these checks are sent by Prow and represent statuses of jobs execution.
 The Guard workflow looks as follows:
 1. Fetch all required checks sent by Prow for a given PR and commit SHA that represent components build.
 Guard filters checks by their names. In Kyma Prow configuration, there is a convention for
-job names. For example, every component job name for the `main` branch starts with `pre-master-kyma-components-`.
+job names. For example, every component job name for the `main` branch starts with `pre-main-kyma-components-`.
 2. If any status is marked as failed, the integration job fails to reduce the number of provisioned clusters and VMs.
 3. If all checks are successful, the integration job execution is continued.
 4. If waiting for checks takes more than the defined timeout (10min), the integration job fails.
