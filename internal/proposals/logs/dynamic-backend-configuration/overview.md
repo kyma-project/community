@@ -33,7 +33,6 @@ Each Input, Parser, Filter, Output represents a Fluent Bit config section, which
 Note that the operator works with kubesphere/fluent-bit, a fork of fluent/fluent-bit. Due to [the known issue](https://github.com/fluent/fluent-bit/issues/365), the original Fluent Bit doesn't support dynamic configuration. To address that, kubesphere/fluent-bit incorporates a configuration reloader into the original. See kubesphere/fluent-bit documentation for more information.
 
 ### Demo
-
 Execute the following commands:
 
 ```bash
@@ -69,6 +68,7 @@ kubectl create -f https://raw.githubusercontent.com/skhalash/community/logging-b
 Inspect the logs of one of the Fluent Bit pods. Make sure that the logs are augmented with Kubernetes metadata.
 
 ## Logging Operator from Banzai Cloud
+https://banzaicloud.com/blog/logging-operator-v3/
 Logging Operator automates the deployment and configuration of a Kubernetes logging pipeline. The operator deploys and configures a Fluent Bit daemonset on every node to collect container and application logs from the node file system. Fluent Bit queries the Kubernetes API and enriches the logs with metadata about the pods, and transfers both the logs and the metadata to Fluentd. Fluentd receives, filters, and transfer logs to multiple outputs. Your logs will always be transferred on authenticated and encrypted channels.
 
 You can define outputs (destinations where you want to send your log messages, for example, Elasticsearch, or and Amazon S3 bucket), and flows that use filters and selectors to route log messages to the appropriate outputs. You can also define cluster-wide outputs and flows, for example, to use a centralized output that namespaced users cannot modify.
@@ -125,3 +125,16 @@ kubectl -n logging port-forward svc/grafana 3000:80
 ```
 
 Open the Grafana Dashboard: http://localhost:3000 and log in. Select Menu > Explore, select Data source > Loki, then select Log labels > namespace > logging. A list of logs should appear.
+
+# Feature comparison matrix
+Feature | Kubesphere Operator | Banzai Cloud Operator
+--- | --- | ---
+License | [Apache 2.0](https://github.com/kubesphere/fluentbit-operator/blob/master/LICENSE)| [Apache 2.0](https://github.com/banzaicloud/logging-operator/blob/master/LICENSE)
+Underlying technology | FluentBit | Fluent Bit for log collection and Fluentd for filtering and sending out to backends
+Dynamic configuration | CRDs are directly translatable to Fluent Bit config sections in the most straightforward way. | CRDs provide a level of abstraction translatable to Fluent Bit/FluentD configurations (label matching, namespace matching vs cluster scope, secret injection)
+Validation | CRD schema validation | CRD schema validation and Fluentd configuration checking
+Config reloading | Custom Fluent Bit image with a bootstrapper that starts a child Fluent Bit process and restarts it if the config changes | Fluentd config reloading sidecar
+Passing sensitive info as Secrets | Not implemented | Secrets can be used in `Output` definitions: https://banzaicloud.com/docs/one-eye/logging-operator/configuration/plugins/outputs/secret/
+Debugging | Fluent Bit logs | FluentBit/Fluentd logs (for some reason Fluentd stores logs to a file)
+Rollback | Not implemented | A config is applied if the checker run succeeds
+Customization | Custom Fluent Bit parser plugins supported. Inputs, filters, and outputs are planned to be supported | No custom Fluentd plugins supported
