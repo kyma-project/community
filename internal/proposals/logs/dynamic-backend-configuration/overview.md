@@ -119,7 +119,7 @@ helm upgrade --install --wait --namespace logging logging-demo banzaicloud-stabl
 kubectl get secret --namespace logging grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 ```
 
-Enable port forwarding to the Grafana Service:
+3. Enable port forwarding to the Grafana Service:
 ```bash
 kubectl -n logging port-forward svc/grafana 3000:80
 ```
