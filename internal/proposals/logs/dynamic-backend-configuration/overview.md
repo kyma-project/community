@@ -60,7 +60,7 @@ Inspect the logs of one of the Fluent Bit pods. It should print out raw logs col
 [17] kube.var.log.containers.fluent-bit-lcgh6_kubesphere-logging-system_fluent-bit-44cbdf54098e1cbb370215b18dca2a4f8f8660c08858756b4520d2c793c746a3.log: [1620154486.937270488, {"log"=>"{"log":"[3] kube.var.log.containers.ory-hydra-68f975fb7f-whfll_kyma-system_hydra-699cdccd54bf8589fc661d9011eb0f99f6fc27456e09b732efe333c4ba926cca.log: [1620154471.894581175, {\"log\"=\u003e\"{\"log\":\"time=\\\"2021-05-04T18:54:31Z\\\" level=info msg=\\\"completed handling request\\\" measure#hydra/admin: http://127.0.0.1:4444/.latency=160000 method=GET remote=\\\"127.0.0.1:59574\\\" request=/health/alive status=200 text_status=OK took=\\\"160µs\\\"\\n\",\"stream\":\"stderr\",\"time\":\"2021-05-04T18:54:31.563787749Z\"}\"}]\n","stream":"stdout","time":"2021-05-04T18:54:36.840279882Z"}"}]
 ```
 
-Add a Kubernetes filter by executing the following command:
+3. Add a Kubernetes filter by executing the following command:
 ```bash
 kubectl create -f https://raw.githubusercontent.com/skhalash/community/logging-backend-dynamic-configuration/internal/proposals/logs/dynamic-backend-configuration/fluent-bit-operator/kubernetes-filter.yaml
 ```
