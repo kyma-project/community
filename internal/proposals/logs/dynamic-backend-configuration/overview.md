@@ -75,7 +75,7 @@ You can define outputs (destinations where you want to send your log messages, f
 
 You can configure the Logging operator using the following Custom Resource Descriptions:
 
-* `Logging`: Represents a logging system. Includes Fluentd and Fluent-bit configuration. Specifies the controlNamespace. Fluentd and Fluent Bit will be deployed in the controlNamespace
+* `Logging`: Represents a logging system. Includes Fluentd and Fluent Bit configuration. Specifies the controlNamespace. Fluentd and Fluent Bit will be deployed in the controlNamespace
 * `Output`: Defines an Output for a logging flow. This is a namespaced resource. See also `ClusterOutput`.
 * `Flow`: Defines a logging flow with filters and outputs. You can specify selectors to filter logs by labels. Outputs can be output or `ClusterOutput`. This is a namespaced resource. See also `ClusterFlow`.
 * `ClusterOutput`: Defines an output without namespace restriction. Only effective in controlNamespace.
