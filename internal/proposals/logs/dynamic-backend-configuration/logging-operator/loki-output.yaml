@@ -1,0 +1,15 @@
+apiVersion: logging.banzaicloud.io/v1beta1
+kind: ClusterOutput
+metadata:
+  name: loki-output
+  namespace: logging
+spec:
+  loki:
+    buffer:
+      timekey: 1m
+      timekey_use_utc: true
+      timekey_wait: 30s
+    configure_kubernetes_labels: true
+    url: http://logging-loki.kyma-system:3100
+status:
+  active: true

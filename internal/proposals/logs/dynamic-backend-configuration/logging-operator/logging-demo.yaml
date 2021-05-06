@@ -1,0 +1,22 @@
+apiVersion: logging.banzaicloud.io/v1beta1
+kind: Logging
+metadata:
+  annotations:
+    meta.helm.sh/release-name: logging-demo
+    meta.helm.sh/release-namespace: logging
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: logging-demo
+spec:
+  controlNamespace: logging
+  fluentbit:
+    tls:
+      enabled: true
+      secretName: logging-demo-fluentbit-tls
+      sharedKey: ""
+  fluentd:
+    logLevel: trace
+    tls:
+      enabled: true
+      secretName: logging-demo-fluentd-tls
+      sharedKey: ""
