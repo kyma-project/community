@@ -30,7 +30,7 @@ Fluent Bit Operator defines the following custom resources:
 * `Output`: Defines output config sections.
 Each Input, Parser, Filter, Output represents a Fluent Bit config section, which are selected by FluentBitConfig using label selectors. The operator watches those objects, makes the final config data, and creates a Secret to store it, which will be mounted onto Fluent Bit instances owned by Fluent Bit.
 
-Note that the operator works with kubesphere/fluent-bit, a fork of fluent/fluent-bit. Due to [the known issue](https://github.com/fluent/fluent-bit/issues/365), the original Fluent Bit doesn't support dynamic configuration. To address that kubesphere/fluent-bit incorporates a configuration reloader into the original. See kubesphere/fluent-bit documentation for more information.
+Note that the operator works with kubesphere/fluent-bit, a fork of fluent/fluent-bit. Due to [the known issue](https://github.com/fluent/fluent-bit/issues/365), the original Fluent Bit doesn't support dynamic configuration. To address that, kubesphere/fluent-bit incorporates a configuration reloader into the original. See kubesphere/fluent-bit documentation for more information.
 
 ### Demo
 Execute the following commands:
