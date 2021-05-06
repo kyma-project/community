@@ -65,7 +65,7 @@ Inspect the logs of one of the Fluent Bit pods. It should print out raw logs col
 kubectl create -f https://raw.githubusercontent.com/skhalash/community/logging-backend-dynamic-configuration/internal/proposals/logs/dynamic-backend-configuration/fluent-bit-operator/kubernetes-filter.yaml
 ```
 
-Inspect the logs of one of the Fluent Bit pods. Make sure that the logs are augmented with Kubernetes metadata.
+4. Inspect the logs of one of the Fluent Bit pods. Make sure that the logs are augmented with Kubernetes metadata.
 
 ## Banzai Cloud Operator
 https://banzaicloud.com/blog/logging-operator-v3/
