@@ -2,7 +2,7 @@
 Kyma uses Fluent Bit as a log collection solution. Fluent Bit is configured with one or more plain text files and does not support dynamic configuration.
 It poses the following problems:
 
-1. Static configuration should be provided upon Kyma installation and cannot be changed afterward.
+1. Static configuration must be provided upon Kyma installation and cannot be changed afterward.
 2. It's impossible to separate the Kyma system configuration from the customer one.
 3. Every time we change the system configuration in managed Kyma, we have to touch Kyma Environment Broker's code.
 
