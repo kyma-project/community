@@ -73,7 +73,7 @@ Logging Operator automates the deployment and configuration of a Kubernetes logg
 
 You can define outputs (destinations where you want to send your log messages, for example, Elasticsearch, or and Amazon S3 bucket), and flows that use filters and selectors to route log messages to the appropriate outputs. You can also define cluster-wide outputs and flows, for example, to use a centralized output that namespaced users cannot modify.
 
-You can configure the Logging operator using the following Custom Resource Descriptions.
+You can configure the Logging operator using the following Custom Resource Descriptions:
 
 * `Logging`: Represents a logging system. Includes Fluentd and Fluent-bit configuration. Specifies the controlNamespace. Fluentd and Fluent Bit will be deployed in the controlNamespace
 * `Output`: Defines an Output for a logging flow. This is a namespaced resource. See also `ClusterOutput`.
