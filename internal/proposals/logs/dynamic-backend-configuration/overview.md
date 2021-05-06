@@ -114,7 +114,7 @@ helm upgrade --install --wait --namespace logging logging-demo banzaicloud-stabl
 
 ```
 
-Use the following command to retrieve the password of the Grafana admin user:
+2. Use the following command to retrieve the password of the Grafana admin user:
 ```bash
 kubectl get secret --namespace logging grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 ```
