@@ -1,5 +1,5 @@
 # Motivation
-Kyma uses Fluent Bit as a log collection solution. Fluent Bit is configured with a plain text file (or multiple files) and does not support dynamic configuration.
+Kyma uses Fluent Bit as a log collection solution. Fluent Bit is configured with one or more plain text files and does not support dynamic configuration.
 It poses the following problems:
 
 1. Static configuration should be provided upon Kyma installation and cannot be changed afterward.
