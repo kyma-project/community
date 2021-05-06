@@ -33,7 +33,7 @@ Each Input, Parser, Filter, Output represents a Fluent Bit config section, which
 Note that the operator works with kubesphere/fluent-bit, a fork of fluent/fluent-bit. Due to [the known issue](https://github.com/fluent/fluent-bit/issues/365), the original Fluent Bit doesn't support dynamic configuration. To address that, kubesphere/fluent-bit incorporates a configuration reloader into the original. See kubesphere/fluent-bit documentation for more information.
 
 ### Demo
-Execute the following commands:
+1. Run the following commands:
 
 ```bash
 // operator
