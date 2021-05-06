@@ -22,7 +22,7 @@ After some investigation, the following open source solutions have been found:
 
 ## Kubesphere Operator
 Fluent Bit Operator defines the following custom resources:
-* `FluentBit`: Defines Fluent Bit instances and its associated config. (it requires kubesphere/fluent-bit for dynamic configuration.)
+* `FluentBit`: Defines Fluent Bit instances and its associated config. It requires kubesphere/fluent-bit for dynamic configuration.
 * `FluentBitConfig`: Select input/filter/output plugins and generates the final config into a Secret.
 * `Input`: Defines input config sections.
 * `Parser`: Defines parser config sections.
