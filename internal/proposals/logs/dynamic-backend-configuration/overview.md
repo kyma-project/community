@@ -91,7 +91,7 @@ Secrets can be used in Logging Operator Output definitions.
 ### Demo
 https://banzaicloud.com/docs/one-eye/logging-operator/quickstarts/loki-nginx
 
-Execute the following commands:
+1. Run the following commands:
 ```bash
 helm repo add grafana https://grafana.github.io/helm-charts
 helm repo add loki https://grafana.github.io/loki/charts
