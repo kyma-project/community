@@ -20,17 +20,17 @@ After some investigation, the following open source solutions have been found:
 - Fluent Bit Operator from Kubesphere: https://github.com/kubesphere/fluentbit-operator
 - Logging Operator from Banzai Cloud: https://github.com/banzaicloud/logging-operator
 
-## Fluent Bit Operator from Kubesphere
-Fluent Bit Operator defines following custom resources:
-* `FluentBit`: Defines Fluent Bit instances and its associated config. (It requires to work with kubesphere/fluent-bit for dynamic configuration.)
+## Kubesphere Operator
+Fluent Bit Operator defines the following custom resources:
+* `FluentBit`: Defines Fluent Bit instances and its associated config. (it requires kubesphere/fluent-bit for dynamic configuration.)
 * `FluentBitConfig`: Select input/filter/output plugins and generates the final config into a Secret.
 * `Input`: Defines input config sections.
 * `Parser`: Defines parser config sections.
 * `Filter`: Defines filter config sections.
 * `Output`: Defines output config sections.
-Each Input, Parser, Filter, Output represents a Fluent Bit config section, which are selected by FluentBitConfig via label selectors. The operator watches those objects, make the final config data and creates a Secret for store, which will be mounted onto Fluent Bit instances owned by FluentBit.
+Each Input, Parser, Filter, Output represents a Fluent Bit config section, which are selected by FluentBitConfig via label selectors. The operator watches those objects, makes the final config data, and creates a Secret to store it, which will be mounted onto Fluent Bit instances owned by Fluent Bit.
 
-Note that the operator works with kubesphere/fluent-bit, a fork of fluent/fluent-bit. Due to [the known issue](https://github.com/fluent/fluent-bit/issues/365), the original Fluent Bit doesn't support dynamic configuration. To address that, kubesphere/fluent-bit incorporates a configuration reloader into the original. See kubesphere/fluent-bit documentation for more information.
+Note that the operator works with kubesphere/fluent-bit, a fork of fluent/fluent-bit. Due to [the known issue](https://github.com/fluent/fluent-bit/issues/365), the original Fluent Bit doesn't support dynamic configuration. To address that kubesphere/fluent-bit incorporates a configuration reloader into the original. See kubesphere/fluent-bit documentation for more information.
 
 ### Demo
 Execute the following commands:
@@ -67,7 +67,7 @@ kubectl create -f https://raw.githubusercontent.com/skhalash/community/logging-b
 
 Inspect the logs of one of the Fluent Bit pods. Make sure that the logs are augmented with Kubernetes metadata.
 
-## Logging Operator from Banzai Cloud
+## Banzai Cloud Operator
 https://banzaicloud.com/blog/logging-operator-v3/
 Logging Operator automates the deployment and configuration of a Kubernetes logging pipeline. The operator deploys and configures a Fluent Bit daemonset on every node to collect container and application logs from the node file system. Fluent Bit queries the Kubernetes API and enriches the logs with metadata about the pods, and transfers both the logs and the metadata to Fluentd. Fluentd receives, filters, and transfer logs to multiple outputs. Your logs will always be transferred on authenticated and encrypted channels.
 
@@ -130,11 +130,20 @@ Open the Grafana Dashboard: http://localhost:3000 and log in. Select Menu > Expl
 Feature | Kubesphere Operator | Banzai Cloud Operator
 --- | --- | ---
 License | [Apache 2.0](https://github.com/kubesphere/fluentbit-operator/blob/master/LICENSE)| [Apache 2.0](https://github.com/banzaicloud/logging-operator/blob/master/LICENSE)
-Underlying technology | FluentBit | Fluent Bit for log collection and Fluentd for filtering and sending out to backends
+Underlying technology | Fluent Bit | Fluent Bit for log collection and Fluentd for filtering and sending out to backends
 Dynamic configuration | CRDs are directly translatable to Fluent Bit config sections in the most straightforward way. | CRDs provide a level of abstraction translatable to Fluent Bit/FluentD configurations (label matching, namespace matching vs cluster scope, secret injection)
 Validation | CRD schema validation | CRD schema validation and Fluentd configuration checking
 Config reloading | Custom Fluent Bit image with a bootstrapper that starts a child Fluent Bit process and restarts it if the config changes | Fluentd config reloading sidecar
 Passing sensitive info as Secrets | Not implemented | Secrets can be used in `Output` definitions: https://banzaicloud.com/docs/one-eye/logging-operator/configuration/plugins/outputs/secret/
-Debugging | Fluent Bit logs | FluentBit/Fluentd logs (for some reason Fluentd stores logs to a file)
+Debugging | Fluent Bit logs | Fluent Bit/Fluentd logs (for some reason Fluentd stores logs to a file)
 Rollback | Not implemented | A config is applied if the checker run succeeds
 Customization | Custom Fluent Bit parser plugins supported. Inputs, filters, and outputs are planned to be supported | No custom Fluentd plugins supported
+
+# Conclusion
+
+Kubesphere Operator is a very basic implementation and lacks some crucial features (secret injection, config check, bad config rollback, etc.).
+We can not use it as-is, but it can be a good starting point if we decide to go with a custom logging operator.
+
+Banzai Cloud Operator is feature-rich, but also based heavily on Fluentd. We don't have a lot of experience configuring and operating Fluentd. Furthermore, complicating the logging setup doesn't align well with the idea of making Kyma more simple and lightweight. We could reuse some of the ideas, but would also like to stick with plain Fluent Bit (without Fluentd).
+
+Another solution would be to write a custom operator, which will manage Fluent Bit, but also implement all the required features. Even though there is an implementtion and maintainance cost, it seems to the most optimal solution so far.
