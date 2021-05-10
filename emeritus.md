@@ -8,4 +8,4 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Barbara Czyż (**[@bszwarc](https://github.com/bszwarc)**) involved in `area/documentation` and creating docs for `area/eventing`, `area/logging`, `area/monitoring`, and `area/cli`.
 * Maciej Urbańczyk (**[@magicmatatjahu](https://github.com/magicmatatjahu)**) involved in `area/core-and-supporting`, `area/serverless`, and `area/console`.
 * Mateusz Szostok (**[@mszostok](https://github.com/mszostok)**) involved in `area/service-catalog`, `area/quality`, and `area/management-plane`, and `area/control-plane`.
-* Mateusz Puczyński (**[@aerfio](https://github.com/aerfio)**) involved in involved in `area/core-and-supporting`, `area/serverless`, `area/console` and `area/quality`.
+* Mateusz Puczyński (**[@aerfio](https://github.com/aerfio)**) involved in `area/core-and-supporting`, `area/serverless`, `area/console` and `area/quality`.
