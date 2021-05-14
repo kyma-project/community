@@ -9,3 +9,6 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Maciej Urbańczyk (**[@magicmatatjahu](https://github.com/magicmatatjahu)**) involved in `area/core-and-supporting`, `area/serverless`, and `area/console`.
 * Mateusz Szostok (**[@mszostok](https://github.com/mszostok)**) involved in `area/service-catalog`, `area/quality`, and `area/management-plane`, and `area/control-plane`.
 * Mateusz Puczyński (**[@aerfio](https://github.com/aerfio)**) involved in `area/core-and-supporting`, `area/serverless`, `area/console`, and `area/quality`.
+* Karol Jaksik (**[@kjaksik](https://github.com/kjaksik)**) involved in `area/service-catalog`, `area/management-plane`, and `area/control-plane`.
+* Michał Kempski (**[@polskikiel](https://github.com/polskikiel)**) involved in `area/service-catalog` and `area/control-plane`.
+* Justyna Sztyper (**[@superojla](https://github.com/superojla)**) involved in `area/documentation` and creating docs for `area/service-mesh`, `area/installation`, and `area/api-gateway`.
