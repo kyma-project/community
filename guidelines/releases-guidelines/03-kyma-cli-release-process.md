@@ -27,9 +27,9 @@ A Kyma CLI release consists of:
 
 2. Ensure that the `KYMA_VERSION` variables in the `Makefile` and `.goreleaser.yml` files from the `cli` repository on the release branch contain the latest Kyma version.
 
-3. In `Makefile` set `IS_RELEASE=true`
+3. In `Makefile`, set `IS_RELEASE=true`
 
-4. Create a PR to `cli/release-x.y` which triggers the presubmit job for `cli`.
+4. Create a PR to `cli/release-x.y` that triggers the presubmit job for `cli`.
 
 5. After merging the PR, create a tag on the release branch that has the same version name as Kyma. If you define a release candidate version, a pre-release is created.  
 
@@ -39,7 +39,7 @@ A Kyma CLI release consists of:
 
     where {RELEASE_VERSION} could be `1.4.0-rc1`, `1.4.0-rc2` or `1.4.0`.
 
-5. Create the new version
+6. Create the new version
    1. Push the tag to trigger a postsubmit job that creates the GitHub release. Validate if the release is available under [releases](https://github.com/kyma-project/cli/releases).
 
       ```bash
