@@ -13,7 +13,7 @@ To achieve a valid solution for the PoC we need to come up with a design for the
 
 ```
 // Define type for go-code-snippets
-type fn func() err 
+type snippet func() err 
 
 // Implement code-snippets for configuration/migration/etc.
 func myfn1() err {
@@ -23,24 +23,34 @@ func myfn2() err {
     return errors.New("Sample Error")
 }
 
-
-type funcExecPair struct {
-    f fn,
-    exec string,
+type SnippetManager struct {
+    preSnippetMap map[string][]snippet
+    postSnippetMap map[string][]snippet
 }
-
-var componentsList map[string][]funcExecPair
 
 // Register function for code-snippets
-func registerConfiguration(f fn, component string, exec string) {
-    // TODO
+func (sm *SnippetManager) Register(f snippet, component string, exec string) {
+    // TODO: Build up Maps with the given code-snippets
 }
 
-//Example usage
-func main() {
-    registerConfiguration(myfn1, "kiali", before)
-    registerConfiguration(myfn2, "", after)
+// Function should be called before compoent is being deployed/upgraded
+func (sm * SnippetManager) ExecutePre(component string) {
+  // TODO: Executes the registered functions for given component
+}
 
+// Function should be called after compoent is being deployed/upgraded
+func (sm * SnippetManager) ExecutePost(component string) {
+  // TODO: Executes the registered functions for given component
+}
+
+// Initializes SnippetManager and return pointer
+func NewSnippetManager() *SnippetManager {
+    sm := &SnippetManager{}
+    
+    sm.Register(myfn1, "kiali", "before")
+    sm.Register(myfn2, "", "after")
+
+    return sm
 }
 ```
 
@@ -48,7 +58,7 @@ func main() {
 |-----|-----|-----|
 | fn | func |Function with migration code-snippet|
 | component | string |Componenet the code-snippet belongs to, if empty then its generic|
-| exec | "before", "after"| Decides when the code-snippet should run, before or after the kyma/component deployment |
+| exec | "pre", "post"| Decides when the code-snippet should run, before or after the kyma/component deployment |
 |||
 |||
 
@@ -61,14 +71,16 @@ After a short discussion with the inlcuded Teams (Goats, Huskies) we decided to 
 ```
 hydroform
 │   ...
-└───migration
-│   │   main.go // Register functions
-│   │   logic.go // Main logic
-│   └───config
-│       │   component1.go
-│       │   component2.go
-│       │   ...
-│      ...
+└───parallel-install 
+│     │   ...
+│     └───migration
+│     │     │   core.go // Register functions
+│     │     │   logic.go // Outsource main logic, if needed
+│     │     └───snippets
+│     │           │   component1.go
+│     │           │   component2.go
+│     │           │   ...
+│    ...         ...
 ...
 ```
 
