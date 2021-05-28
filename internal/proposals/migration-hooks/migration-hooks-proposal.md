@@ -5,16 +5,12 @@ In the following the term `code-snippets` will be used for the Go-Code snippets 
 
 To achieve a valid solution for the PoC we need to come up with a design for the following:
 
-- [JobManager (Migration Logic)](#jobmanager-migration-logic)
-  - [Work-Flow / General mechanism](#work-flow--general-mechanism)
-    - [Requirements](#requirements)
-    - [Possible Solution](#possible-solution)
-  - [Draft for Golang Implementation](#draft-for-golang-implementation)
-    - [Hook for generic jobs in `hydroform/parallel-install/deployment.go`; Pre/Post Generic Jobs - Deploy](#hook-for-generic-jobs-in-hydroformparallel-installdeploymentgo-prepost-generic-jobs---deploy)
-    - [Hook for component jobs in `hydroform/parallel-install/engine.go`; Pre/Post Component Jobs - Deploy and Deletion](#hook-for-component-jobs-in-hydroformparallel-installenginego-prepost-component-jobs---deploy-and-deletion)
-    - [Hook for generic jobs in `hydroform/parallel-install-deletion.go`; Pre/Post Generic Jobs - Deletion](#hook-for-generic-jobs-in-hydroformparallel-install-deletiongo-prepost-generic-jobs---deletion)
-  - [Placement of logic and actual jobs](#placement-of-logic-and-actual-jobs)
-  - [Additions](#additions)
+- [Work-Flow / General mechanism](#work-flow--general-mechanism)
+  - [Requirements](#requirements)
+  - [Possible Solution](#possible-solution)
+- [Draft for Golang Implementation](#draft-for-golang-implementation)
+- [Placement of logic and actual jobs](#placement-of-logic-and-actual-jobs)
+- [Additions](#additions)
 
 ## Work-Flow / General mechanism
 
