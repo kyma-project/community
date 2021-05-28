@@ -10,6 +10,9 @@ To achieve a valid solution for the PoC we need to come up with a design for the
     - [Requirements](#requirements)
     - [Possible Solution](#possible-solution)
   - [Draft for Golang Implementation](#draft-for-golang-implementation)
+    - [Hook for generic jobs in `hydroform/parallel-install/deployment.go`; Pre/Post Generic Jobs - Deploy](#hook-for-generic-jobs-in-hydroformparallel-installdeploymentgo-prepost-generic-jobs---deploy)
+    - [Hook for component jobs in `hydroform/parallel-install/engine.go`; Pre/Post Component Jobs - Deploy and Deletion](#hook-for-component-jobs-in-hydroformparallel-installenginego-prepost-component-jobs---deploy-and-deletion)
+    - [Hook for generic jobs in `hydroform/parallel-install-deletion.go`; Pre/Post Generic Jobs - Deletion](#hook-for-generic-jobs-in-hydroformparallel-install-deletiongo-prepost-generic-jobs---deletion)
   - [Placement of logic and actual jobs](#placement-of-logic-and-actual-jobs)
   - [Additions](#additions)
 
@@ -19,7 +22,7 @@ To achieve a valid solution for the PoC we need to come up with a design for the
 
 - Only support single linear upgrade: A &#8594; B && B &#8594; C; NOT A &#8594; C. This is due to the fact that Kyma only supports single linear upgrades.
 - Mechanism should only trigger for one specific Kyma version, this could be: The Kyma version which wants to be installed on an empty cluster, Kyma version to upgrade to, or the Kyma version which should be uninstalled from the cluster.
-- This mechanism supports code-snippets for two different main use-cases: The __component based__ snippets and the __generic/non-component based__ snippets
+- This mechanism supports code-snippets/jobs for two different main use-cases: The __component based__ snippets and the __generic/non-component based__ snippets
   - __Component based__:
     - Check it component is installed on cluster, or if it wants to be newly installed, and only trigger if yes
     - It should be possible to trigger code-snippets before and after an deployment of a component
@@ -115,7 +118,9 @@ func init() {
 }
 
 ```
-Hook for generic jobs in `hydroform/parallel-install/deployment.go`; Pre/Post Generic Jobs - Deploy
+
+### Hook for generic jobs in `hydroform/parallel-install/deployment.go`; Pre/Post Generic Jobs - Deploy
+Pre- and post-jobs will be executed before and after Kyma deploy.
 ```go
 import "hydroform/parallel-install/jobs"
 func (i *Deployment) deployComponents(ctx context.Context, cancelFunc context.CancelFunc, phase InstallationPhase, eng *engine.Engine, cancelTimeout time.Duration, quitTimeout time.Duration) error {
@@ -129,7 +134,8 @@ func (i *Deployment) deployComponents(ctx context.Context, cancelFunc context.Ca
 }
 ```
 
-Hook for component jobs in `hydroform/parallel-install/engine.go`; Pre/Post Component Jobs - Deploy and Deletion 
+### Hook for component jobs in `hydroform/parallel-install/engine.go`; Pre/Post Component Jobs - Deploy and Deletion 
+Pre- and post-jobs will be executed before and after each Kyma component. In this way only the componentns which will be installed/upgraded will be considered by the JobManager &#8594; Other will just not be executed. Furthermore, since the pre-requisites of components are deployed using the `worker` function of an `engine` as well, the JobManager handles them automatically.
 ```go
 import "hydroform/parallel-install/jobs"
 ...
@@ -156,7 +162,8 @@ import "hydroform/parallel-install/jobs"
 }
 ```
 
-Hook for generic jobs in `hydroform/parallel-install-deletion.go`; Pre/Post Generic Jobs - Deletion
+### Hook for generic jobs in `hydroform/parallel-install-deletion.go`; Pre/Post Generic Jobs - Deletion
+Pre- and post-jobs will be executed before and after Kyma deletion.
 ```go
 import "hydroform/parallel-install/jobs"
 ...
