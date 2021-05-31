@@ -17,7 +17,7 @@ To achieve a valid solution for the PoC we need to come up with a design for the
 
 - Only support single linear upgrade: A &#8594; B && B &#8594; C; NOT A &#8594; C. This is due to the fact that Kyma only supports single linear upgrades.
 - The mechanism should only trigger for one specific Kyma version, this could be: The Kyma version that you want to install on an empty cluster, the Kyma version you want to upgrade to, or the Kyma version you want to uninstall from the cluster.
-- This mechanism supports jobs for two different main use cases: The __component-based__ jobs and the __global/component-independent__ jobs
+- This mechanism supports jobs for two different use cases: The __component-based__ jobs and the __global/component-independent__ jobs
   - __Component-based__:
     - Check whether the component is installed on the cluster or must be newly installed; and only trigger if it must be installed.
     - It should be possible to trigger jobs before and after a deployment of a component.
@@ -28,7 +28,7 @@ To achieve a valid solution for the PoC we need to come up with a design for the
 
 ### Possible Solution
 
-To fulfill the requirements, a new package, called `JobManager`, is introduced, which registers, manages, and triggers certain jobs to have a fully-automated installation, migration, or deletion. This package has four (hash)maps to manage the main workload: Two for `pre`-jobs (deploy and deletion) and two for `post`-jobs (deploy and deletion). Keys of the maps are the names of the component they belong to, and the value is a slice of jobs.
+To fulfill the requirements, a new package, called `JobManager`, is introduced, which registers, manages, and triggers certain jobs to have a fully-automated installation, migration, or deletion. This package has four (hash)maps to manage the workload: Two for `pre`-jobs (deploy and deletion) and two for `post`-jobs (deploy and deletion). Keys of the maps are the names of the component they belong to, and the value is a slice of jobs.
 Furthermore, the `JobManager`package has a `duration` variable for benchmarking, and a `targetVersion` variable to know which jobs should be triggered at a certain deploy.
 
 Jobs are implemented within the `JobManager` package in `go`-files, one for each component, using the specific `job`-interface. Then, the implemented interface is registered using `register(job)` in the same file. This function queues the jobs into a slice, because until then the value of the targetVersion is unknown. 
