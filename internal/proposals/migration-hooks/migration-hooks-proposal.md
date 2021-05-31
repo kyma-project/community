@@ -28,7 +28,7 @@ To achieve a valid solution for the PoC we need to come up with a design for the
 
 ### Possible Solution
 
-To fulfill the requirements, a new package, called `JobManager`, is introduced, which registers, manages, and triggers certain jobs to have a fully-automated installation, migration, or deletion. This package has four (hash)maps to manage the workload: Two for `pre`-jobs (deploy and deletion) and two for `post`-jobs (deploy and deletion). Keys of the maps are the names of the component they belong to, and the value is a slice of jobs.
+To fulfill the requirements, a new package, called `JobManager`, is introduced, which registers, manages, and triggers certain jobs to have a fully-automated installation, migration, or deletion. This package has four (hash)maps to manage the workload: Two for `pre`-jobs (deploy and deletion) and two for `post`-jobs (deploy and deletion). In the (hash)maps, the key is the name of the component the jobs belong to, and the value is a slice of the jobs.
 Furthermore, the `JobManager`package has a `duration` variable for benchmarking, and a `targetVersion` variable to know which jobs should be triggered at a certain deploy.
 
 Jobs are implemented within the `JobManager` package in `go`-files, one for each component, using the specific `job`-interface. Then, the implemented interface is registered using `register(job)` in the same file. This function queues the jobs into a slice, because until then the value of the targetVersion is unknown. 
