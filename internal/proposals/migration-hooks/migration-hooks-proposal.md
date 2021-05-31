@@ -1,43 +1,43 @@
 # JobManager (Migration Logic)
 
-This PoC is used to come up with a valid design for the new __JobManager__, needed to have a fully automated Kyma deploy possible. It will be used to configure the cluster and the components during the deployment of Kyma. The term `Deployment`/`Deploy` is being used in the context of installing Kyma on an empty cluster or to upgrade Kyma from an older to a newer version.
+This PoC investigates a valid design for the new __JobManager__, which is needed to enable a fully-automated Kyma deploy. It will be used to configure the cluster and the components during the deployment of Kyma. The terms "Deployment" and "Deploy" are used in the context of installing Kyma on an empty cluster, or to upgrade Kyma from an older to a newer version.
 
 To achieve a valid solution for the PoC we need to come up with a design for the following:
 
-- [Work-Flow / General mechanism](#work-flow--general-mechanism)
+- [WorkFlow / General mechanism](#workflow--general-mechanism)
   - [Requirements](#requirements)
   - [Possible Solution](#possible-solution)
 - [Draft for Golang Implementation](#draft-for-golang-implementation)
 - [Placement of logic and actual jobs](#placement-of-logic-and-actual-jobs)
 - [Additions](#additions)
 
-## Work-Flow / General mechanism
+## Workflow / General mechanism
 
 ### Requirements
 
 - Only support single linear upgrade: A &#8594; B && B &#8594; C; NOT A &#8594; C. This is due to the fact that Kyma only supports single linear upgrades.
-- Mechanism should only trigger for one specific Kyma version, this could be: The Kyma version which wants to be installed on an empty cluster, Kyma version to upgrade to, or the Kyma version which should be uninstalled from the cluster.
-- This mechanism supports jobs for two different main use-cases: The __component based__ jobs and the __global/non-component based__ jobs
-  - __Component based__:
-    - Check if component is installed on cluster, or if it wants to be newly installed, and only trigger if yes
-    - It should be possible to trigger jobs before and after an deployment of a component
-  - __global / Component independent__:
-    - Always trigger logic when installing, upgrading, or uninstalling Kyma
-    - It should be possible to trigger jobs before and after the deployment, deletion of Kyma
-    - We call them `global` jobs to stick to the naming convention of our helm charts
+- The mechanism should only trigger for one specific Kyma version, this could be: The Kyma version that you want to install on an empty cluster, the Kyma version you want to upgrade to, or the Kyma version you want to uninstall from the cluster.
+- This mechanism supports jobs for two different main use cases: The __component-based__ jobs and the __global/component-independent__ jobs
+  - __Component-based__:
+    - Check whether the component is installed on the cluster or must be newly installed; and only trigger if it must be installed.
+    - It should be possible to trigger jobs before and after a deployment of a component.
+  - __Global / Component-independent__:
+    - Always trigger the logic when installing, upgrading, or uninstalling Kyma.
+    - It should be possible to trigger jobs before and after the deployment or deletion of Kyma.
+    - Call component-independent jobs `global` jobs to stick to the naming convention of our helm charts.
 
 ### Possible Solution
 
-To fulfill the requirements a new package, called `JobManager`, will be introduced, which is capable to register, manage, and trigger certain jobs to have a fully automated install/migration/deletion. This package has four (hash)maps to manage the main workload: Two for `pre`-jobs (deploy and deletion) and two for `post`-jobs (deploy and deletion). Key of the maps are the names of the component they belong to, and the value will be a slice of jobs.
-Furthermore, it has a `duration` var for benchmarking, and a `targetersion` var to know which jobs should be triggered at a certain deploy.
+To fulfill the requirements, a new package, called `JobManager`, is introduced, which registers, manages, and triggers certain jobs to have a fully-automated installation, migration, or deletion. This package has four (hash)maps to manage the main workload: Two for `pre`-jobs (deploy and deletion) and two for `post`-jobs (deploy and deletion). Keys of the maps are the names of the component they belong to, and the value is a slice of jobs.
+Furthermore, the `JobManager`package has a `duration` variable for benchmarking, and a `targetVersion` variable to know which jobs should be triggered at a certain deploy.
 
-Jobs will be implemented inside of the `JobManager` package in `go`-files, one for each component, using the specific `job`-interface. Then the implemented interface will be registered using `register(job)` in the same file. This function queues the jobs into a slice, this is due to the reason that we do not know what the value of the targetVersion is until now. 
+Jobs are implemented within the `JobManager` package in `go`-files, one for each component, using the specific `job`-interface. Then, the implemented interface is registered using `register(job)` in the same file. This function queues the jobs into a slice, because until then the value of the targetVersion is unknown. 
 
-The JobManager will be used by the `deployment` package in the `deployment.go` and the `deletion.go` file. Inside of the `NewDeployment` or `NewDeletion` functions, the `SetKymaVersion` function of the JobManager will be called to set the targetVersion and thus to build the needed maps. Doing it in this way, we only have the requireed jobs registered in the maps and save some checks later on (&#8594; everything pre-calculated).Then at the hooks, during the deployment/deletion-phase, each hook just has to check if the key for the wanted component is present in the pre/post-map, if yes the jobs in the map will be trigged, if no nothing has to be done.
+The JobManager is used by the `deployment` package in the `deployment.go` and the `deletion.go` file. Within the `NewDeployment` or `NewDeletion` functions, the `SetKymaVersion` function of the JobManager is called to set the targetVersion, and thus to build the needed maps. Doing it in this way, we only have the required jobs registered in the maps and save some checks later on (&#8594; everything pre-calculated). Then, at the hooks, during the deployment or deletion phase, each hook only has to check if the key for the wanted component is present in the pre/post-map. If it's present, the jobs in the map are trigged, if not, nothing must be done.
 
-To benchmark the jobs, a timer will be used in the pre and post job triggers.
+To benchmark the jobs, a timer is used in the pre- and post-job triggers.
 
-Retries for the jobs will not be handled by the JobManager. Retries should be implemented by the jobs themself. This is due to the reason to have a better flexability and a simple to manage interface.
+Retries for the jobs are not handled by the JobManager. Retries should be implemented by the jobs themselves, because it's more flexible and the interface is easy to manage.
 
 <img src="./migration-logic-diagram.png?raw=true">
 
@@ -137,7 +137,7 @@ func GetDuration() time.Duration {
 ```go
 package jobManager
 
-// Register job using implemented Interface
+// Register job using implemented interface
 register(job1)
 type job1 struct{}
 
@@ -172,7 +172,7 @@ func (i *Deployment) deployComponents(ctx context.Context, cancelFunc context.Ca
 
 ### Hook for component jobs in `hydroform/parallel-install/engine.go`; Pre/Post Component Jobs - Deploy and Deletion 
 
-Pre- and post-jobs will be executed before and after each Kyma component. In this way only the componentns which will be installed/upgraded will be considered by the JobManager &#8594; Other will just not be executed. Furthermore, since the pre-requisites of components are deployed using the `worker` function of an `engine` as well, the JobManager handles them automatically.
+Pre- and post-jobs will be executed before and after each Kyma component. In this way, only the components that will be installed or upgraded are considered by the JobManager &#8594; others are not executed. Furthermore, since the prerequisites of components are deployed using the `worker` function of an `engine` as well, the JobManager handles them automatically.
 
 ```go
 import "hydroform/parallel-install/jobs"
@@ -209,7 +209,7 @@ func (i *Deletion) uninstallComponents(ctx context.Context, cancelFunc context.C
 
 ## Placement of logic and actual jobs
 
-After a short discussion with the included Teams (Goats, Huskies) we decided to implement the logic and jobs for the jobManager in the installer library (hydroform repository) as a package, to keep it simple, clean, and easy to access.
+After a short discussion with the included Teams (Goats, Huskies), we decided to implement the logic and jobs for the jobManager in the installer library (hydroform repository) as a package, to keep it simple, clean, and easy to access.
 
 The jobManager will be placed as a package inside of the `parallel-install` module.
 ```
@@ -230,4 +230,4 @@ hydroform
 
 ## Additions
 
-- To have a consistent output, we will use the Unified Logging library
+- To have a consistent output, we will use the Unified Logging library.
