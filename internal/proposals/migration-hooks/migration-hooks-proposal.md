@@ -19,6 +19,7 @@ To achieve a valid solution for the PoC we need to come up with a design for the
 - "Smart checks" if job should run its main logic, should be placed inside of job, since implementing an interface which covers all possible scenarios would be to much overengineering. &#8594; If logic of jobs should run depends on the cluster state and not on the target Kyma version.
 - It should be easy to mark a job at which certain point it should be deprecated. Written "by hand" or using some techonology to let pipelines fail, if some jobs exist which should be deprecated.
 - JobManager only supports Kyma deploy and not uninstall, to avoid the situation in which developer misuse jobs to clean up dirty left-overs from `kyma uninstall`.
+
 - This mechanism supports jobs for two different use cases: The __component-based__ jobs and the __global/component-independent__ jobs
   - __Component-based__:
     - Check whether the component is installed on the cluster or must be newly installed; and only trigger if it must be installed.
@@ -68,6 +69,7 @@ import (
 )
 
 type component string
+
 type executionTime int
 
 const (
@@ -80,12 +82,14 @@ var duration time.Duration = 0.00
 var preJobMap map[component][]job
 var postJobMap map[component][]job
 
+
 var jobs []jobs
 
 // Define type for jobs
 type job interface {
 	execute(*config.Config, kubernetes.Interface) error
 	when() (component, executionTime)
+
 }
 
 // Register job
@@ -130,6 +134,7 @@ register(job1)
 type job1 struct{}
 
 func (j job1) execute(cfg *config.Config, kubeClient kubernetes.Interface) {
+
 	// Do something
   ...
   return nil
@@ -202,3 +207,4 @@ hydroform
 ## Additions
 
 - To have a consistent output, we will use the Unified Logging library. The logs should be sent back to the caller (aka CLI).
+
