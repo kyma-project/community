@@ -24,6 +24,7 @@ To achieve a valid solution for the PoC we need to come up with a design for the
 - Jobs should run async to each other
 - CancelContext should be propagated to give deevelopers opportunity to cancel deploy
 
+
 - This mechanism supports jobs for two different use cases: The __component-based__ jobs and the __global/component-independent__ jobs
   - __Component-based__:
     - Check whether the component is installed on the cluster or must be newly installed; and only trigger if it must be installed.
