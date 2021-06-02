@@ -45,6 +45,8 @@ Provide "how-to" instructions that enable users to accomplish a task. Each task 
 With regards to structure, it’s nice to have an **introductory paragraph** ("why would I want to do this task?"), **prerequisites** if needed, then the **steps**, and finally the expected **result** that shows the operation was successful.
 It's good practice to have 5-9 steps; anything longer can probably be split.
 
+>**NOTE:** For longer code blocks, consider using an expandable section as described [here](https://gist.github.com/pierrejoubert73/902cc94d79424356a8d20be2b382e1ab).
+
 > A task information type answers the "How do I?" question by providing precise step-by-step instructions detailing the requirements that must be fulfilled, the actions that must be performed, and the order in which the actions must be performed. The task topic includes sections for describing the context, prerequisites, expected results, and other aspects of a task. [- Dita Task Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-task-topic.html)
 
 ### Reference topics
