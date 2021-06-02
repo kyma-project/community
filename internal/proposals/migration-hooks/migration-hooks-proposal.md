@@ -19,6 +19,11 @@ To achieve a valid solution for the PoC we need to come up with a design for the
 - Inside the job we need "smart checks" to determine whether the job should run its main logic, because implementing an interface that covers all possible scenarios would be overengineering. &#8594; The cluster state, not the target Kyma version is decisive whether logic of jobs should run.
 - It should be easy to tag a job at which certain point it should be deprecated. Written "by hand" or using some techonology to let pipelines fail, if some jobs exist which should be deprecated.
 - JobManager only supports Kyma `deploy` and not `uninstall`, to prevent that developers misuse jobs to clean up dirty left-overs from `kyma uninstall`.
+- When the deploy of Kyma fails, the global post-jobs should not run
+- When the deploy of a component fails, the component-based post-jobs should not run
+- Jobs should run async to each other
+- CancelContext should be propagated to give deevelopers opportunity to cancel deploy
+
 
 - This mechanism supports jobs for two different use cases: The __component-based__ jobs and the __global/component-independent__ jobs
   - __Component-based__:
