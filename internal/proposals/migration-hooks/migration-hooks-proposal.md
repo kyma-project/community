@@ -22,6 +22,7 @@ To achieve a valid solution for the PoC we need to come up with a design for the
 - When the deploy of Kyma fails, the global post-jobs should not run
 - When the deploy of a component fails, the component-based post-jobs should not run
 - Jobs should run async to each other
+- CancelContext should be propagated to give deevelopers opportunity to cancel deploy
 
 - This mechanism supports jobs for two different use cases: The __component-based__ jobs and the __global/component-independent__ jobs
   - __Component-based__:
