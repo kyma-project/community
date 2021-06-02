@@ -16,9 +16,9 @@ To achieve a valid solution for the PoC we need to come up with a design for the
 ### Requirements
 
 - Only support single linear upgrade: A &#8594; B && B &#8594; C; NOT A &#8594; C. This is due to the fact that Kyma only supports single linear upgrades.
-- "Smart checks" if job should run its main logic, should be placed inside of job, since implementing an interface which covers all possible scenarios would be to much overengineering. &#8594; If logic of jobs should run depends on the cluster state and not on the target Kyma version.
+- Inside the job we need "smart checks" to determine whether the job should run its main logic, because implementing an interface that covers all possible scenarios would be overengineering. &#8594; The cluster state, not the target Kyma version is decisive whether logic of jobs should run.
 - It should be easy to tag a job at which certain point it should be deprecated. Written "by hand" or using some techonology to let pipelines fail, if some jobs exist which should be deprecated.
-- JobManager only supports Kyma deploy and not uninstall, to avoid the situation in which developer misuse jobs to clean up dirty left-overs from `kyma uninstall`.
+- JobManager only supports Kyma `deploy` and not `uninstall`, to prevent that developers misuse jobs to clean up dirty left-overs from `kyma uninstall`.
 
 - This mechanism supports jobs for two different use cases: The __component-based__ jobs and the __global/component-independent__ jobs
   - __Component-based__:
@@ -31,11 +31,12 @@ To achieve a valid solution for the PoC we need to come up with a design for the
 
 ### Possible Solution
 
-To fulfill the requirements, a new package, called `JobManager`, is introduced, which registers, manages, and triggers certain jobs to have a fully-automated installation, or migration. This package has two (hash)maps to manage the workload: One for `pre`-jobs and one for `post`-jobs. In the (hash)maps, the key is the name of the component the jobs belong to, and the value is a slice of the jobs.
+To fulfill the requirements, a new package, called `JobManager`, is introduced, which registers, manages, and triggers certain jobs to have a fully-automated installation or migration. This package has two (hash)maps to manage the workload: One for `pre`-jobs and one for `post`-jobs. In the (hash)maps, the key is the name of the component the jobs belong to, and the value is a slice of the jobs.
 
 Furthermore, the `JobManager` package has a `duration` variable for benchmarking.
 
-Jobs are implemented within the `JobManager` package in `go`-files, one for each component, using the specific `job`-interface. Then, the implemented interface is registered using `register(job)` in the same file. To implement the `job`-interface, the newly created jobs need to implement the `execute(*config.Config, kubernetes.Interface)` function, which takes the installation config and an kubernetes interface as input, so that the jobs can interact with the cluster. The return value needs to be an error. Additionally the `when()` function needs to be implemented, which returns the component the job is bound to and if it should run pre or post the deployment. And if the active solution for tagging jobs as deprecated is choosen, then the `deprecate` function also needs to be implemented - more in the next section.
+Jobs are implemented within the `JobManager` package in `go`-files, one for each component, using the specific `job` interface. Then, the implemented interface is registered using `register(job)` in the same file.
+To implement the `job` interface, the newly created jobs must implement the `execute(*config.Config, kubernetes.Interface)` function, which takes the installation config and a kubernetes interface as input, so that the jobs can interact with the cluster. The return value must be an error. Additionally, the `when()` function must be implemented, which returns the component the job is bound to and whether it should run pre or post the deployment. If the active solution for tagging jobs as deprecated is chosen, then the `deprecate` function also must be implemented - more in the next section.
 
 The JobManager is used by the `deployment` package in the `deployment.go` file. At the hooks, during the deployment phase, each hook only has to check if the key for the wanted component is present in the pre/post-map. If it's present, the jobs in the map are trigged, if not, nothing must be done.
 
@@ -46,11 +47,11 @@ Retries for the jobs are not handled by the JobManager. Retries should be implem
 ### Deprecation of Jobs
 
 Passive:
-- Tag at which certain Kyma version jobs should be deprecated as a comment above the register call.
+- Tag (as a comment above the register call) at which defined Kyma version the jobs should be deprecated.
 
 Active:
-- Go-Build-Tags cannot be used for this usecase.
-- Add `deprecation` function to job-interface, which returns at which Kyma-version job should be deprecated. Before job is executed, deprecation fucntion is called to check if it is already deprecaded, if yes an Error should be thrown to block the CI.
+- Go-Build-Tags cannot be used for this use case.
+- Add `deprecation` function to job-interface, which returns at which Kyma version the job should be deprecated. Before the job is executed, the deprecation function is called to check whether it is already deprecated. If deprecated, an Error should be thrown to block the CI.
 
 <img src="./migration-logic-diagram.png?raw=true">
 
@@ -207,4 +208,3 @@ hydroform
 ## Additions
 
 - To have a consistent output, we will use the Unified Logging library. The logs should be sent back to the caller (aka CLI).
-
