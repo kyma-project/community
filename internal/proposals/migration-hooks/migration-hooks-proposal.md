@@ -160,12 +160,12 @@ Pre- and post-jobs will be executed before and after Kyma deploy.
 import "hydroform/parallel-install/jobs"
 func (i *Deployment) deployComponents(ctx context.Context, cancelFunc context.CancelFunc, phase InstallationPhase, eng *engine.Engine, cancelTimeout time.Duration, quitTimeout time.Duration) error {
   ...
-  deploymentJobs.ExecutePre("global", jobManager.Deploy)
+  deploymentJobs.ExecutePre("global")
   statusChan, err := eng.Deploy(ctx)
   ...
   // for-Loop for component install
   ...
-  deploymentJobs.ExecutePost("global", jobManager.Deploy) 
+  deploymentJobs.ExecutePost("global") 
 }
 ```
 
@@ -181,11 +181,11 @@ import "hydroform/parallel-install/jobs"
     ...
     case component, ok := <-jobChan:
     ...
-    jobManager.ExecutePre(component.Name, installationType)
+    jobManager.ExecutePre(component.Name)
     
     component.deploy(ctx)
     
-    jobManager.ExecutePost(component.Name, installationType)
+    jobManager.ExecutePost(component.Name)
     ...
 }
 ```
