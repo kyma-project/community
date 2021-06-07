@@ -47,7 +47,7 @@ Do not use fill that is other than **white** in boxes or similar shapes unless y
 
 ## Outlines
 
-Use **grey** (HEX: #666666) for the shape outlines. Set the outlines of the shapes to 1pt.  
+Use **grey** (HEX: #666666) for the shape outlines. Set the outlines of the shapes to 1pt. Do not use any outlines for actors, steps, and secondary backgrounds. 
 
 ## Text
 
