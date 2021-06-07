@@ -1,14 +1,16 @@
 ---
-title: Content Strategy
+title: Content Strategy K2.0 
 ---
 
 ## Table of contents
 
+- [Purpose and Target Group](#purpose-and-target-group)
 - [Information types](#information-types)
   - [Concept Topics](#concept-topics)
   - [Task (tutorial) topics](#task-(tutorial)-topics)
   - [Reference topics](#reference-topics)
   - [Troubleshooting topics](#troubleshooting-topics)
+  - [Release Notes](#release-notes)
 - [Graphics](#graphics)
   - [Architecture and Flow Diagrams](#architecture-and-flow-diagrams)
   - [Screenshots](#screenshots)
@@ -21,8 +23,13 @@ title: Content Strategy
    - [Glossary](#glossary)
  - [Content Source](#content-source)
 
+## Purpose and target group
+
 This content strategy focuses on the publicly available documentation under <https://kyma-project.io/docs/>.
 More documentation may be found in the Kyma Github repositories.
+
+The assumed reader of this guide has some basic knowledge of technical writing. To learn more, read the excellent [Istio document about adding documentation](https://istio.io/latest/docs/releases/contribute/add-content/).
+
 
 ## Information types
 
@@ -32,11 +39,13 @@ We follow a topic-based documentation approach, with one file per topic. Every d
 
 ### Concept topics
 
-Answer "what-is" questions and provide essential background information that users must know.
+Answer "what-is" questions and provide essential background information that users must know. 
+You'll find most concept topics in the Overview section, but they can be useful elsewhere too. 
 
 *Not sure we need much predefined structure here; it may depend on the content.*
 
-> Conceptual information might explain the nature and components of a product and describe how it fits into a category of products. Conceptual information helps readers to map their knowledge and understanding to the tasks they need to perform and to provide other essential information about a product, process, or system. [- DITA Concept Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-concept-topic.html)
+> [- DITA Concept Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-concept-topic.html)
+> Conceptual information might explain the nature and components of a product and describe how it fits into a category of products. Conceptual information helps readers to map their knowledge and understanding to the tasks they need to perform and to provide other essential information about a product, process, or system.
 
 ### Task (tutorial) topics
 
@@ -45,9 +54,11 @@ Provide "how-to" instructions that enable users to accomplish a task. Each task 
 With regards to structure, it’s nice to have an **introductory paragraph** ("why would I want to do this task?"), **prerequisites** if needed, then the **steps**, and finally the expected **result** that shows the operation was successful.
 It's good practice to have 5-9 steps; anything longer can probably be split.
 
->**NOTE:** For longer code blocks, consider using an expandable section as described [here](https://gist.github.com/pierrejoubert73/902cc94d79424356a8d20be2b382e1ab).
+*For longer code blocks, I'd like to use an expandable section as described [here](https://gist.github.com/pierrejoubert73/902cc94d79424356a8d20be2b382e1ab) - but not sure whether our website supports this.*
 
-> A task information type answers the "How do I?" question by providing precise step-by-step instructions detailing the requirements that must be fulfilled, the actions that must be performed, and the order in which the actions must be performed. The task topic includes sections for describing the context, prerequisites, expected results, and other aspects of a task. [- Dita Task Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-task-topic.html)
+
+> [- Dita Task Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-task-topic.html)
+> A task information type answers the "How do I?" question by providing precise step-by-step instructions detailing the requirements that must be fulfilled, the actions that must be performed, and the order in which the actions must be performed. The task topic includes sections for describing the context, prerequisites, expected results, and other aspects of a task. 
 
 ### Reference topics
 
@@ -55,7 +66,8 @@ Typically organized into one or more sections containing a list or table with da
 
 *In our case, architecture diagrams could fall into this category – we could also choose to define them as a separate type – TBD.*
 
-> Reference topics provide quick access to fact-based information. In technical information, reference topics are used to list product specifications and parameters, provide essential data, and provide detailed information on subjects such as the commands in a programming language. [- DITA Reference Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-reference-topic.html)
+> [- DITA Reference Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-reference-topic.html)
+> Reference topics provide quick access to fact-based information. In technical information, reference topics are used to list product specifications and parameters, provide essential data, and provide detailed information on subjects such as the commands in a programming language. 
 
 ### Troubleshooting topics
 
@@ -63,6 +75,7 @@ Provide a condition that the reader may want to correct, followed by one or more
 
 It's good practice to use three standard headlines (like “Condition”, “Cause”, “Remedy”), each might have just one sentence or more as needed. For remedy, use a numbered list if there are multiple steps to follow, and a bullet list if there are several equally valid solutions.
 
+> [- DITA Troubleshooting Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-troubleshooting-topic.html)
 > In its simplest form, troubleshooting information follows this pattern:
 >
 > 1. A condition or symptom. Usually the condition or symptom is an undesirable state in a system, a product, or a service that a reader wants to correct.
@@ -80,7 +93,13 @@ It's good practice to use three standard headlines (like “Condition”, “Cau
 > * A remedy with no known cause
 > * A cause with no known remedy
 > The troubleshooting information type also can be used to document alarm clearing strategies.
-> [- DITA Troubleshooting Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-troubleshooting-topic.html)
+
+### Release Notes
+
+Announce what's new in Kyma. 
+
+After an introductory paragraph that outlines the city that's the namesake of the current release, a list briefly presents the new and changed features. Links lead to longer paragraphs that describe the changes in more detail.
+
 
 ## Graphics
 
