@@ -8,6 +8,7 @@ To convey the intended message effectively in a diagram, follow these basic prin
 - Everything that means the same should look the same.
 - Limit visual noise.
 - Keep it simple but descriptive.
+- Follow the left-to-right direction when depicting the workflow.
 
 For details on how to format diagrams and their elements in Kyma documents, see the particular document sections.
 
@@ -24,7 +25,7 @@ Always add an alternative (alt) text that concisely describes the content or fun
 
 ## Tool
 
-Use [draw.io](https://www.draw.io) or [diagrams.net](https://www.diagrams.net/index.html) as a recommended tool. Export the diagram as an SVG and save it under the corresponding `assets` directory.
+Use [diagrams.net](https://www.diagrams.net/index.html) as a recommended tool. Export the diagram as an SVG and save it under the corresponding `assets` directory.
 
 ## Size
 
@@ -34,7 +35,9 @@ Keep your diagram reasonable in size. Preview the image at full size to see how 
 
 ## Background
 
-Keep the background of the diagram **white** as it renders well both on Github and in the UI.
+Keep the background of the diagram **white** as it renders well both on Github and in the UI. Do not use transparent background as it doesn't display well in dark mode.
+
+Always add secondary backgrounds to indicate the environment in which the workflow takes place. Use **mild blue** (HEX: #F0F6FF) to indicate the main environment, such as a cluster, and **mint green** (HEX: #DEF2DD) to indicate subsidiary environments, such as Namespaces.
 
 ## Shapes
 
@@ -44,41 +47,35 @@ Do not use fill that is other than **white** in boxes or similar shapes unless y
 
 ## Outlines
 
-Use **grey** (HEX: #D2D5D9) for the shape outlines. Set the outlines of the main shapes to 2pt and the outlines of the secondary shapes to 1pt.  
-
-If you need color differentiation for shape outlines, use **turquoise** (HEX: #24CACC) or **green** (HEX: #ACD62F).
-
-> **NOTE:** Do not overuse colors. Use them only when you need to differentiate one shape from another. Explain the meaning of different colors in the legend under the diagram.
+Use **grey** (HEX: #666666) for the shape outlines. Set the outlines of the shapes to 1pt.  
 
 ## Text
 
 Use **black** both for the primary and secondary texts.
 Use the following **Helvetica** font sizes:
-- 15pt for headings
-- 13pt for the primary text, such as secondary shape names
+- 15pt **bold** for headings
+- 13pt for the primary text, such as shape names
 - 12pt for the secondary text, such as the description text for connectors
 
-Bold the headings. Position the text horizontally in a text box or shape.
+Position the text horizontally in a text box or shape.
 When you add a title to the main shape, put the text inside the shape.
 
 ## Steps
 
-Mark multiple areas or steps on the diagram using **blue** (HEX: #0A6ED1) round stamps with white numbers.
+Mark multiple areas or steps on the diagram using **blue** (HEX: #0A6EC7) round stamps with white numbers.
 
 Explain the steps under the diagram with the ordered list.
 
 ## Connectors
 
-Use 1pt, **rounded**, **grey** (HEX: #959CA4) lines to connect shapes.
+Use 2pt, **rounded**, **grey** (HEX: #666666) lines to connect shapes.
+
+## Reference key
+
+Whenever you introduce an element that is different from other objects located in the diagram, always include a reference key below the diagram to briefly explain the difference between the objects.
 
 ## Examples
 
-See the exemplary diagrams for reference.
+See the exemplary diagram for reference.
 
-* Example 1
-
-![Example 1](./assets/example-1.png)
-
-* Example 2
-
-![Example 2](./assets/example-2.png)
+![Diagram example](./assets/diagram-example.svg)
