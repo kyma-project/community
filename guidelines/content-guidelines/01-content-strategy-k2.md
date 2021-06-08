@@ -42,6 +42,8 @@ We follow a topic-based documentation approach, with one file per topic. Every d
 Answer "what-is" questions and provide essential background information that users must know. 
 You'll find most concept topics in the Overview section, but they can be useful elsewhere too. 
 
+Use nominal style for the title, for example, "Security" or "Security Concept".
+
 *Not sure we need much predefined structure here; it may depend on the content.*
 
 > [- DITA Concept Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-concept-topic.html)
@@ -50,6 +52,8 @@ You'll find most concept topics in the Overview section, but they can be useful 
 ### Task (tutorial) topics
 
 Provide "how-to" instructions that enable users to accomplish a task. Each task topic should tell how to perform a single, specific procedure.
+
+Select a title that describes the task that's accomplished, not the documented software feature - for example, "Define ressource consumption", not "Select a profile". You can use gerund form "Selecting...", imperative "Select...", or "How to select...".
 
 With regards to structure, it’s nice to have an **introductory paragraph** ("why would I want to do this task?"), **prerequisites** if needed, then the **steps**, and finally the expected **result** that shows the operation was successful.
 It's good practice to have 5-9 steps; anything longer can probably be split.
@@ -64,6 +68,8 @@ It's good practice to have 5-9 steps; anything longer can probably be split.
 
 Typically organized into one or more sections containing a list or table with data that is typically “looked up” rather than memorized.
 
+Use nominal style for the title, for example, "Configuration Parameters".
+
 *In our case, architecture diagrams could fall into this category – we could also choose to define them as a separate type – TBD.*
 
 > [- DITA Reference Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-reference-topic.html)
@@ -72,6 +78,8 @@ Typically organized into one or more sections containing a list or table with da
 ### Troubleshooting topics
 
 Provide a condition that the reader may want to correct, followed by one or more descriptions of its cause and suggested remedies.
+
+As title, mention the symptom that needs fixing ("Cannot access...") or the error message, not the symptom "Incompatible version".
 
 It's good practice to use three standard headlines (like “Condition”, “Cause”, “Remedy”), each might have just one sentence or more as needed. For remedy, use a numbered list if there are multiple steps to follow, and a bullet list if there are several equally valid solutions.
 
