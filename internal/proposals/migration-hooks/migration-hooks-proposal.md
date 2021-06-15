@@ -19,10 +19,10 @@ To achieve a valid solution for the PoC we need to come up with a design for the
 - Inside the job we need "smart checks" to determine whether the job should run its main logic, because implementing an interface that covers all possible scenarios would be overengineering. &#8594; The cluster state, not the target Kyma version is decisive whether logic of jobs should run.
 - It should be easy to tag a job at which certain point it should be deprecated. Written "by hand" or using some techonology to let pipelines fail, if some jobs exist which should be deprecated.
 - JobManager only supports Kyma `deploy` and not `uninstall`, to prevent that developers misuse jobs to clean up dirty left-overs from `kyma uninstall`.
-- When the deploy of Kyma fails, the global post-jobs should not run
-- When the deploy of a component fails, the component-based post-jobs should not run
-- Jobs should run async to each other
-- CancelContext should be propagated to give developers the opportunity to cancel deploy
+- When the deploy of Kyma fails, the global post-jobs should not run.
+- When the deploy of a component fails, the component-based post-jobs should not run.
+- Jobs should run async to each other.
+- CancelContext should be propagated to give developers the opportunity to cancel deploy.
 
 
 - This mechanism supports jobs for two different use cases: The __component-based__ jobs and the __global/component-independent__ jobs
@@ -236,22 +236,21 @@ hydroform
 The pre-described PoC was implemented on [this branch](https://github.com/JeremyHarisch/hydroform/tree/jobManager), and tested using [this](https://github.com/kyma-project/kyma/pull/11132) as an [example pre-job](https://github.com/JeremyHarisch/hydroform/blob/jobManager/parallel-install/pkg/jobmanager/sampleJob.go) for the `logging` component.
 In the draft implementation, the Unified Logging Library was not used, but can be used in the final implementation.
 
-In general, it can be said that it works in the way we want to, but with some tradeoffs. The mechanism was tested using a loacl `k3d` cluster, as well as on a `Azure` cluster provisioned by Gardener.
+In general, it can be said that it works in the way we want to, but with some tradeoffs. The mechanism was tested using a local k3d cluster, as well as on an Azure cluster provisioned by Gardener.
 
 #### Trade-Offs
-The jobs cannot handle every situation which will come up in the cluster, since we do not know how the setup/usage of the cluster from the customer looks like (i.e. which provisioner is used, what access right does the customer have, etc.). Especially, in regards of which access rights the user has which is deploying kyma. Thus, an additional migration guide will be needed in the future as before. Let us show this on the [example job](https://github.com/JeremyHarisch/hydroform/blob/jobManager/parallel-install/pkg/jobmanager/sampleJob.go):
-- It has to be made sure that the option `allowVolumeExpansion` is set to true, if not it should be changed, but to do this the provided kubeconfig needs to have admin rights. Furthermore, this also needs to be allowed by the hypervisor
-  - __k3d:__ Using a local cluster to deploy Kyma on the sample job fails, since k3d is missing a plugin to expand existing volumes. 
+The jobs cannot handle every situation which will come up in the cluster, since we do not know what the setup/usage of the customer's cluster looks like (i.e. which provisioner is used, what access right the customer has, etc.), especially with regard to the access rights the user that is deploying Kyma has. Thus, an additional migration guide will be needed in the future, as before. Let us show this on the [example job](https://github.com/JeremyHarisch/hydroform/blob/jobManager/parallel-install/pkg/jobmanager/sampleJob.go):
+- The option `allowVolumeExpansion` must be set to true. If it's not, it should be changed, but to do this, the provided kubeconfig must have admin rights. Furthermore, this also needs to be allowed by the hypervisor:
+   - __k3d:__ Using a local cluster to deploy Kyma on the sample job fails, since k3d is missing a plugin to expand existing volumes. 
 
-```
-  Ignoring the PVC: didn't find a plugin capable of expanding the volume; waiting for an external controller to process this PVC.
-```
+      ```
+      Ignoring the PVC: didn't find a plugin capable of expanding the volume; waiting for an external controller to process this PVC.
+      ```
 
-  - __Azure:__  When kyma wants to be deployed on an Azure cluster, the disk expand is only allowed on an unattached disk - But due to some GitHub Issues, this feature will be added in the future.
+   - __Azure:__  When Kyma wants to be deployed on an Azure cluster, the disk expand is only allowed on an unattached disk. Due to some GitHub Issues, this feature will be added in the future.
 
-```console
-error expanding volume "kyma-system/storage-logging-loki-0" of plugin "kubernetes.io/azure-disk": azureDisk - disk resize is only supported on Unattached disk, current disk state: Attached, already attached to /subscriptions/68266e60-bb03-40e0-935d-531fac39f8c1/resourceGroups/shoot--berlin--jh-02/providers/Microsoft.Compute/virtualMachines/shoot--berlin--jh-02-worker-jz1n6-z1-6d9c5-cvn2b
-```
+      ```console
+      error expanding volume "kyma-system/storage-logging-loki-0" of plugin "kubernetes.io/azure-disk": azureDisk - disk resize is only supported on Unattached disk, current disk state: Attached, already attached to /subscriptions/68266e60-bb03-40e0-935d-531fac39f8c1/resourceGroups/shoot--berlin--jh-02/providers/Microsoft.Compute/virtualMachines/shoot--berlin--jh-02-worker-jz1n6-z1-6d9c5-cvn2b
+      ```
 
-As before, during deploy some hints will be given to the customer when upgrading their cluster, to make sure the deploy of kyma works for them. For the rest of the situations the jobManager works as a `go`-based solution instead of using certain helm features or shell scripts.
-
+As before, during deploy some hints will be given to the customer when upgrading their cluster, to make sure the deploy of Kyma works for them. In other cases, the jobManager works as a Go-based solution instead of using certain Helm features or shell scripts.
