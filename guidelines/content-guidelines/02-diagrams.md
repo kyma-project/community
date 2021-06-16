@@ -47,7 +47,7 @@ Do not use fill that is other than **white** in boxes or similar shapes unless y
 
 ## Outlines
 
-Use **grey** (HEX: #666666) for the shape outlines. Set the outlines of the shapes to 1pt. Do not use any outlines for actors, steps, and secondary backgrounds. 
+Use **grey** (HEX: #666666) for the shape outlines. Set the outlines of the shapes to 1pt. Do not use any outlines for actors, steps, and secondary backgrounds.
 
 ## Text
 
@@ -68,7 +68,7 @@ Explain the steps under the diagram with the ordered list.
 
 ## Connectors
 
-Use 2pt, **rounded**, **grey** (HEX: #666666) lines to connect shapes.
+Use 1pt, **rounded**, **grey** (HEX: #666666) lines to connect shapes.
 
 ## Reference key
 
