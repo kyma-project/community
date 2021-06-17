@@ -43,7 +43,7 @@ Furthermore, the `jobManager` package has a `duration` variable for benchmarking
 Jobs are implemented within the `jobManager` package in `go`-files, one for each component, using the specific `job` interface. Then, the implemented interface is registered using `register(job)` in the same file.
 To implement the `job` interface, the newly created jobs must implement the `execute(*config.Config, kubernetes.Interface)` function, which takes the installation config and a kubernetes interface as input, so that the jobs can interact with the cluster. The return value must be an error. Additionally, the `when()` function must be implemented, which returns the component the job is bound to and whether it should run pre or post the deployment. The `identify()` function also needs to be implemented to have a unique identifier for each job. If the active solution for tagging jobs as deprecated is chosen, then the `deprecate` function also must be implemented - more in the next section.
 
-The jobManager is used by the `deployment` package and in the `engine` package . At the hooks, during the deployment phase, each hook only has to check if the key for the wanted component is present in the pre/post-map. If it's present, the jobs in the map are trigged, if not, nothing must be done.
+The jobManager is used by the `deployment` package and in the `engine` package . At the hooks, during the deployment phase, each hook only has to check if the key for the wanted component is present in the pre- or post-map. If it's present, the jobs in the map are trigged, if not, nothing must be done.
 
 To benchmark the jobs, a timer is used in the pre- and post-job triggers.
 
@@ -236,11 +236,11 @@ hydroform
 The pre-described PoC was implemented on [this branch](https://github.com/JeremyHarisch/hydroform/tree/jobManager), and tested using [this](https://github.com/kyma-project/kyma/pull/11132) as an [example pre-job](https://github.com/JeremyHarisch/hydroform/blob/jobManager/parallel-install/pkg/jobmanager/sampleJob.go) for the `logging` component.
 In the draft implementation, the Unified Logging Library was not used, but can be used in the final implementation.
 
-In general, it can be said that it works in the way we want to, but with some tradeoffs. The mechanism was tested using a local k3d cluster, as well as on an Azure cluster provisioned by Gardener.
+In general, it works in the way we want to, but with some tradeoffs. The mechanism was tested using a local k3d cluster, as well as on an Azure cluster provisioned by Gardener.
 
 #### Trade-Offs
-The jobs cannot handle every situation which will come up in the cluster, since we do not know what the setup/usage of the customer's cluster looks like (i.e. which provisioner is used, what access right the customer has, etc.), especially with regard to the access rights the user that is deploying Kyma has. Thus, an additional migration guide will be needed in the future, as before. Let us show this on the [example job](https://github.com/JeremyHarisch/hydroform/blob/jobManager/parallel-install/pkg/jobmanager/sampleJob.go):
-- The option `allowVolumeExpansion` must be set to true. If it's not, it should be changed, but to do this, the provided kubeconfig must have admin rights. Furthermore, this also needs to be allowed by the hypervisor:
+The jobs cannot handle every situation that may come up in the cluster, because we do not know what the setup/usage of the customer's cluster looks like - for example, which provisioner is used, and especially regarding the access rights of the user  who is deploying Kyma. Thus, an additional migration guide will be needed in the future, as before. Let us demonstrate this on the [example job](https://github.com/JeremyHarisch/hydroform/blob/jobManager/parallel-install/pkg/jobmanager/sampleJob.go):
+- The option `allowVolumeExpansion` must be set to `true`. If it's not, it must be changed. To do this, the provided kubeconfig must have admin rights, and the hypervisor must allow it:
    - __k3d:__ Using a local cluster to deploy Kyma on the sample job fails, since k3d is missing a plugin to expand existing volumes. 
 
       ```
@@ -253,4 +253,4 @@ The jobs cannot handle every situation which will come up in the cluster, since 
       error expanding volume "kyma-system/storage-logging-loki-0" of plugin "kubernetes.io/azure-disk": azureDisk - disk resize is only supported on Unattached disk, current disk state: Attached, already attached to /subscriptions/68266e60-bb03-40e0-935d-531fac39f8c1/resourceGroups/shoot--berlin--jh-02/providers/Microsoft.Compute/virtualMachines/shoot--berlin--jh-02-worker-jz1n6-z1-6d9c5-cvn2b
       ```
 
-As before, during deploy some hints will be given to the customer when upgrading their cluster, to make sure the deploy of Kyma works for them. In other cases, the jobManager works as a Go-based solution instead of using certain Helm features or shell scripts.
+As before, during the deploy upgrading the cluster, the user gets the necessary information to make sure the deploy of Kyma works for them. In other cases, the jobManager works as a Go-based solution instead of using certain Helm features or shell scripts.
