@@ -239,7 +239,7 @@ In the draft implementation, the Unified Logging Library was not used, but can b
 In general, it can be said that it works in the way we want to, but with some tradeoffs. The mechanism was tested using a loacl `k3d` cluster, as well as on a `Azure` cluster provisioned by Gardener.
 
 #### Trade-Offs
-The jobs cannot handle every situation which will come up in the cluster, since we do not know how the setup/usage of the cluster from the customer looks like (i.e. which provisioner is used, what access right does the customer have, etc.). Especially, in regards of which access rights the user has which is deploying kyma. Thus, an additional migration guide will be needed in the future as before. Let us show this on the [example job](https://github.com/JeremyHarisch/hydroform/blob/jobManager/parallel-install/pkg/jobmanager/sampleJob.go):
+The jobs cannot handle every situation which will come up in the cluster, since we do not know how the setup/usage of the cluster from the customer looks like (i.e. which provisioner is used, what access right does the customer have, etc.). Especially, in regards of which access rights the user has which is deploying kyma. Thus, an additional migration guide will be needed in the future as before. Let us show this on the [example job](https://github.com/JeremyHarisch/hydroform/blob/jobManager/parallel-install/pkg/jobmanager/loggingJobs.go):
 - It has to be made sure that the option `allowVolumeExpansion` is set to true, if not it should be changed, but to do this the provided kubeconfig needs to have admin rights. Furthermore, this also needs to be allowed by the hypervisor
   - __k3d:__ Using a local cluster to deploy Kyma on the sample job fails, since k3d is missing a plugin to expand existing volumes. 
 
