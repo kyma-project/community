@@ -4,7 +4,7 @@
 
 Welcome to the Kyma community. Here you can find information on how to join the community, get involved, and improve Kyma code and documentation.
 
-Before you proceed, review the [Code of Conduct](./contributing/01-code-of-conduct.md) and contact us on [Slack](http://slack.kyma-project.io/) for any questions or concerns.
+Before you proceed, review the [Code of Conduct](./docs/01-contributing/01-code-of-conduct.md) and contact us on [Slack](http://slack.kyma-project.io/) for any questions or concerns.
 
 Go directly to the section that you are most interested in:
 - [Kyma Community](#kyma-community)
@@ -31,9 +31,9 @@ We are an open-source community and the number of contributors is growing. Meet 
 
 ### Process
 
-Before you start to contribute, review the [contribution rules](./contributing/02-contributing.md). To understand better the way the Kyma community works, read about the [working model](./governance/01-governance.md) and learn about the [Special Interest Groups and Working Groups](./collaboration/01-sig-and-wg.md) in Kyma.
+Before you start to contribute, review the [contribution rules](./docs/01-contributing/02-contributing.md). To understand better the way the Kyma community works, read about the [working model](./docs/02-governance/01-governance.md) and learn about the [Special Interest Groups and Working Groups](./docs/04-collaboration/01-sig-and-wg.md) in Kyma.
 
-All contributors follow the recommended [Git workflow](./contributing/03-git-workflow.md) that relies on forks, branches, rebasing, and squashing. Review it to ensure that you contribute high-quality code and content to the project.
+All contributors follow the recommended [Git workflow](./docs/01-contributing/03-git-workflow.md) that relies on forks, branches, rebasing, and squashing. Review it to ensure that you contribute high-quality code and content to the project.
 
 ### Issues
 
@@ -48,14 +48,14 @@ Feel invited to join the public [Core SIG meetings](https://kyma-community.slack
 
 You can also find these guidelines and templates in the `community` repository:
 
-- [Naming](./guidelines/technical-guidelines/01-naming.md) conventions
-- Document [templates](./guidelines/templates)
-- Overview of the [content strategy](./guidelines/content-guidelines/01-content-strategy.md) and [content guidelines](./guidelines/content-guidelines)
-- [Release process](./guidelines/releases-guidelines) details
-- [Decisions](./collaboration/sig-core/decisions) made by Kyma team members and the Core SIG.
-- [Coding standards](./guidelines/technical-guidelines)
+- [Naming](./docs/03-guidelines/technical/01-naming.md) conventions
+- Document [templates](./docs/03-guidelines/templates)
+- Overview of the [content strategy](./docs/03-guidelines/content/01-content-strategy.md) and [content guidelines](./guidelines/content-guidelines)
+- [Release process](./docs/03-guidelines/releases) details
+- [Decisions](./docs/04-collaboration/02-sig-core.md) made by Kyma team members and the Core SIG.
+- [Coding standards](./docs/03-guidelines/technical)
 
-There are also [repository guidelines](./guidelines/repository-guidelines) for the Kyma team members. The guidelines contain a folder, file, and document structure required for a [skeleton Kyma repository](./guidelines/repository-guidelines/repository-template).
+There are also [repository guidelines](./docs/03-guidelines/repository/02-repository-template.md) for the Kyma team members. The guidelines contain a folder, file, and document structure required for a [skeleton Kyma repository](./docs/03-guidelines/repository/02-repository-template.md).
 
 ## Security
 

@@ -54,4 +54,4 @@ The purpose of this working group is to:
 
 * Working Group proposal PR : https://github.com/kyma-project/community/issues/464
 
-* Read the [**Special Interest Group & Working Group**](../01-sig-and-wg.md) document to learn about the structure of Kyma SIGs and WGs.
+* Read the [**Special Interest Group & Working Group**](../../../docs/04-collaboration/01-sig-and-wg.md) document to learn about the structure of Kyma SIGs and WGs.

@@ -1,11 +1,28 @@
-external-links-to-ignore: ["localhost", "kyma.local", "kyma-system"]
-internal-links-to-ignore: ["mailto:kyma-security@googlegroups.com"]
-files-to-ignore: ["/templates/","-template.md", "/.kyma-project-io/", "/collaboration/", "/contributing/", "/governance/", "/guidelines/content-guidelines/", "/guidelines/releases-guidelines/", "/guidelines/repository-guidelines/", "/guidelines/technical-guidelines/", "/guidelines/templates/README.md", "/guidelines/templates/templates-type.md"]
+external-links-to-ignore: ["localhost", "kyma.local", "kyma-system","https://github.com/{your-username}/{your-fork-name}.git","{group-name}@googlegroups.com", "https://www.youtube.com/{channel-address}", "https://github.com/{github","https://github.com/kyma-project/{repository"]
+internal-links-to-ignore: ["mailto:kyma-security@googlegroups.com","./assets/SAP%20Corporate%20Contributor%20License%20Agreement%20(5-26-15"]
 timeout: 60
 request-repeats: 5
 files:
-  - path: "./community/.github/ISSUE_TEMPLATE/security-vulnerability.md"
+  - path: "./community/templates/repository-template/.github/ISSUE_TEMPLATE/security-vulnerability.md"
     config:
       internal-links-to-ignore: ["{CVSS"]
       #milv doesn't support that mysterious anchor
       external-links-to-ignore: ["https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"]
+  - path: "./community/docs/03-guidelines/content/02-diagrams.md"
+    config:
+      internal-links-to-ignore: [ "./assets/create-bucket.svg" ]
+  - path: "./community/docs/03-guidelines/content/07-screenshots.md"
+    config:
+      internal-links-to-ignore: [ "./assets/create-bucket.png", "./assets/create-bucket.svg"]
+  - path: "./community/docs/03-guidelines/content/05-links.md"
+    config:
+      internal-links-to-ignore: [ "./assets/mf-namespaced.yaml" ]
+  - path: "./community/docs/03-guidelines/content/04-formatting.md"
+    config:
+      internal-links-to-ignore: [ "./deployment.yaml" ]
+  - path: "./community/templates/resources/release-notes.md"
+    config:
+      ignore-internal: true
+  - path: "./community/templates/resources/sig-wg-readme-template.md"
+    config:
+      internal-links-to-ignore: [ "{Put"]

@@ -33,4 +33,4 @@ Regular WG Meeting: Friday at 13:00 CEST, weekly. [Convert to your timezone](htt
 
 ## Reference
 
-Read the main [`README.md`](../../README.md) document to learn about the structure of Kyma SIGs and WGs.
+Read the main [`README.md`](../../../docs/04-collaboration/README.md) document to learn about the structure of Kyma SIGs and WGs.

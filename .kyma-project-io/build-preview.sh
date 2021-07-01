@@ -13,7 +13,7 @@ trap on_error ERR
 readonly KYMA_PROJECT_IO_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 readonly WEBSITE_DIR="website"
-readonly WEBSITE_REPO="https://github.com/kyma-project/website"
+readonly WEBSITE_REPO="https://github.com/dbadura/website"
 
 readonly BUILD_DIR="${KYMA_PROJECT_IO_DIR}/${WEBSITE_DIR}"
 
@@ -33,16 +33,29 @@ step() {
   echo -e "\\n${YELLOW}${message}${NC}"
 }
 
+
+merge() {
+  git config --global user.email "CI@kyma.project"
+  git config --global user.name "CI"
+  git checkout -B pull-request
+
+  git checkout main
+  step "Last commit from main"
+  git log --max-count=1
+
+  git merge pull-request
+}
 remove-cached-content() {
   ( rm -rf "${BUILD_DIR}" ) || true
 }
 
 copy-website-repo() {
-  git clone -b "main" --single-branch "${WEBSITE_REPO}" "${WEBSITE_DIR}"
+  git clone -b "new-navigation-tree" --single-branch "${WEBSITE_REPO}" "${WEBSITE_DIR}"
 }
 
 build-preview() {
-  export APP_PREVIEW_SOURCE_DIR="${KYMA_PROJECT_IO_DIR}/.."
+  export APP_COMMUNITY_SOURCE_DIR="${KYMA_PROJECT_IO_DIR}"/../docs
+  export APP_PREVIEW_SOURCE_DIR="${BUILD_DIR}/content/community"
   make -C "${BUILD_DIR}" netlify-community-preview
 }
 
@@ -51,12 +64,27 @@ main() {
   remove-cached-content
   pass "Removed"
 
+  step "Merge with main branch"
+  merge
+  step "Merge done"
+
   step "Copying kyma/website repo"
   copy-website-repo
   pass "Copied"
 
+  step "Delete old Content directory from website"
+  rm -rf "${BUILD_DIR}"/content/community
+  step "Deleted"
+
   step "Building preview"
   build-preview
   pass "Builded"
+
+  step "Add Redirect rule"
+  echo "/ /community/" > "${BUILD_DIR}"/public/_redirects
+  step "Added"
+
+  tree "${BUILD_DIR}"/content/community
+  ls -l "${KYMA_PROJECT_IO_DIR}/.."
 }
 main

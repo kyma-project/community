@@ -211,7 +211,7 @@ The third apporach would include creation of local project structure as shown be
 
 *Cons Approach 1*
 
-* Once the function has been deployed and if the function has been modified on the cluster using commands listed at [expanded commands with switches](#expanded_command_with_switches), then the local `config.yaml` is out of sync. Re applying via `kyma function apply` can result in confusion.
+* Once the function has been deployed and if the function has been modified on the cluster using commands listed at [expanded commands with switches](#expanded-command-with-switches), then the local `config.yaml` is out of sync. Re applying via `kyma function apply` can result in confusion.
 
 * The `config.yaml` might at the end look like a CRD.
 
