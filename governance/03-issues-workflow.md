@@ -57,7 +57,7 @@ There are eight different stages of the triage:
 
 ## Backlog
 
-The [Kyma backlog]((https://github.com/kyma-project/kyma/issues)) contains issues that went through the triage, are not closed, and have labels added (except for the issues with the `question` label). Backlog prioritization is realized by assigning issues to Kyma milestones and assigning the `priority/critical` label. Critical issues assigned to the current milestone have the highest priority.
+The [Kyma backlog](https://github.com/kyma-project/kyma/issues) contains issues that went through the triage, are not closed, and have labels added (except for the issues with the `question` label). Backlog prioritization is realized by assigning issues to Kyma milestones and assigning the `priority/critical` label. Critical issues assigned to the current milestone have the highest priority.
 
 >**NOTE**: Issues are taken from the main Kyma backlog by different teams that are responsible for specific areas of Kyma. This is the actual workflow in Kyma which allows distinguishing which team works on a specific issue. This approach allows easy work in team sprints using Github Issues. We are aware that our teams' names may be cryptic for the external community, but at the moment we are not able to provide any better solution. If you have a better idea, your feedback would be highly appreciated. Sorry for the inconvenience.
 
