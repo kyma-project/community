@@ -18,8 +18,9 @@ To build the operator, we use an SDK for a quick and easy start-up, besides vari
 
 An alternative for `kubebuilder` would be the [`Operator-SDK`](https://github.com/operator-framework/operator-sdk) from `Red Hat`. This has similar features to the kubebuilder, with some additions like the integration of [`operatorhub`](https://operatorhub.io/) - but such features aren't needed for our purpose. Furthermore, this isn't an upstream project of Kubernetes.
 
-To have a simple API, one `CRD` for Fluent Bit configuration is created. This includes a field to determine the type of the configuration (`FILTER` or `OUTPUT`). A list of maps for the Fluent Bit configuration code, and a status field to keep track of the status of the later created CR.
-Using a list of maps for the actual configuration, enables the possibility to support the full Fluent Bit syntax without having the need to maintain new features of various plugins. Furthermore, this gives the users the ability to have a good overview of their sequence of applied filters and outputs. Using the Kyma documentation, we could also lead the users to think more in a way of pipelines, in such that they create one CR for each Fluent Bit pipeline.
+To have a simple API, one `CRD` for Fluent Bit configuration is created. This CRD has a field which holds the status of the CR, called `Status`, as well as a struct of the type `LoggingConfigurationSpec`, called `Spec`, holding a list of configuration sections, called `Sections`. Each `Section` determines the type of the configuration (`FILTER` or `OUTPUT`) and hold a list for configuration entries, called `Entries`. Each `Entry` has tree values: The `Name`, determining the key for the value, the `Value`, and the `SecretValue`. Eather the `Value` or the `SecretValue` should be used by the users for one `Name`. If no `Secret` needs to be stated for a `Name`, then `Value` should be choosen. If a `Secret` needs to be state, i.e. for an API key, then a name, the namespace of the key, and the key itself needs to be stated.
+
+Using this structure enables the possibility to support the full Fluent Bit syntax without having the need to maintain new features of various plugins. Furthermore, this gives the users the ability to have a good overview of their sequence of applied filters and outputs. Using the Kyma documentation, we could also lead the users to think more in a way of pipelines, in such that they create one CR for each Fluent Bit pipeline.
 
 One constraint of this operator is, that it doesn't support dynamic plugins, which require to be loaded into the Fluent Bit image. Another constraint is, that not all available plugins for filters and outputs can be configured by this operator (i.e. `Lua`), because such plugins need to have certain files mounted into the container, which isn't possible. If users still want to use such, they need to configure an output plugin of their choice and process the logs with another log processor (i.e. another instance of Fluent Bit). The operator has a list of unsupported plugins, to achieve that such plugins can't be configured. Thus, every time users create a CR, the list is checked if it contains a wanted plugin, if it does users are informed that they aren't able to create such CR.
 
@@ -42,7 +43,7 @@ To actually apply the changes of the users, the operator creates/adapts the Conf
 To make sure, that the configuration by the users won't be overwritten by the Reconciler, the basic configuration (`kubernetes` filter, `rewrite_tag`, etc.) is written into a ConfigMap. This ConfigMap is embedded by an `@INCLUDE` statement in the chart of this operator.
 
 <details>
-  <summary><b>CRD Definition (go code) </b>- Click to expand</summary>
+  <summary><b>CustomResourceDefinition (go code) </b>- Click to expand</summary>
 
 ```go
 package v1alpha1
@@ -111,7 +112,7 @@ func init() {
 
 
 <details>
-  <summary><b>CRD Definition (yaml file, created using kubebuilder SDK)</b> - Click to expand</summary>
+  <summary><b>CustomResourceDefinition (yaml file, created using kubebuilder SDK)</b> - Click to expand</summary>
 
 ```yaml
 ---
