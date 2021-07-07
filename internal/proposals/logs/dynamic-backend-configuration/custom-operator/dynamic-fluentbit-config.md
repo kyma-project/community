@@ -30,7 +30,7 @@ Using this structure enables the possibility to support the full Fluent Bit synt
 
 We're evaluating the following constraints of this custom operator: 
 - It doesn't support dynamic plugins, which must be loaded into the Fluent Bit image. 
-- Not all available plugins for filters and outputs can be configured by this operator (for example, `Lua`), because such plugins need certain files mounted into the container, which isn't possible. However, this can be mitigated: Users can configure an output plugin of their choice and process the logs with another log processor (for example, another instance of Fluent Bit). If users create a CR, `kubebuilder` checks it against a list of unsupported plugins, and if there is a match, informs the users that they cannot create that CR.
+- Not all available plugins for filters and outputs can be configured by this operator (for example, `Lua`), because such plugins need certain files mounted into the container, which isn't possible. However, this can be mitigated: Users can configure an output plugin of their choice and process the logs with another log processor (for example, another instance of Fluent Bit). If users create a CR, the operator checks it against a list of unsupported plugins, and if there is a match, informs the users that they cannot create that CR.
 
 ![Fluent Bit Pipeline Architecture](images/fluentbit_dynamic_config.svg)
 
@@ -41,7 +41,7 @@ We're evaluating the following constraints of this custom operator:
    - Users can use the new copy with another tag and configure new filters and outputs with the provided CRD.
 
 Using this approach, we avoid having an unused INPUT or other overhead.
-If users want to use more than one pipeline for the log processing, they can use the 'rewrite_tag' filter on their pipeline to create more pipelines. Or they can configure an output plugin to process them with another log processor, as mentioned before.
+If users want to use more than one pipeline for the log processing, they can use the 'rewrite_tag' filter on their pipeline to create more pipelines. Alternatively, they can configure an output plugin to process them with another log processor, as mentioned before.
 
 Additionally, when creating a `CR`, a [webhook](https://book.kubebuilder.io/cronjob-tutorial/webhook-implementation.html) validates the correctness of the Fluent Bit configuration based on the Fluent Bit `dry-run` feature.
 
@@ -208,4 +208,4 @@ status:
 
 ### Workflow for the User
 
-To configure Fluent Bit, the user must create a new CR regarding to the CRD of this operator. Then, `kubebuilder` will notice the new or changed CR, and will create or update a ConfigMap for Fluent Bit. Before the ConfigMap is applied, the operator uses the `dry-run` feature of Fluent Bit to validate the new configuration. If the check was successful, the new ConfigMap is applied and Fluent Bit is restarted.
+To configure Fluent Bit, the user must create a new CR regarding to the CRD of this operator. Then, this operator will notice the new or changed CR, and will create or update a ConfigMap for Fluent Bit. Before the ConfigMap is applied, the operator uses the `dry-run` feature of Fluent Bit to validate the new configuration. If the check was successful, the new ConfigMap is applied and Fluent Bit is restarted.
