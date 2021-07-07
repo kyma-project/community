@@ -2,7 +2,7 @@
 title: Issues workflow
 ---
 
-In the Kyma project, we use [GitHub Issues](https://github.com/features/issues/) for both tracking the development process and manage the issues on a team and sprint level.
+In the Kyma project, we use [GitHub Issues](https://github.com/features/issues/) for both tracking the development process and managing the issues on a team and sprint level.
 
 This document explains:
 
