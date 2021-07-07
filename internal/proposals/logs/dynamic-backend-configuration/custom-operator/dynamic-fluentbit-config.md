@@ -1,26 +1,32 @@
 # Dynamic Fluent Bit Configuration
 
-This document investigates a valid design for a custom operator, which is needed to enable a dynamic in-cluster logging configuration with `Fluent Bit`. The regarding issue can be found [here](https://github.com/kyma-project/kyma/issues/11105).
+This document proposes and evaluates a valid design for a custom operator. It is needed to enable a dynamic in-cluster logging configuration with `Fluent Bit`, as outlined in [Spike: Dynamic configuration of logging backend #11105](https://github.com/kyma-project/kyma/issues/11105).
 
 ## Criteria
 - Customers can place fluent-bit config snippets as k8s resource in a specific or in any namespace.
-- Have in mind that the central configuration can be overwritten at any time by reconciliation, which shouldn't reset customers configuration.
-- A new config gets picked up dynamically without any further interaction (like pod restart by the user).
-- Have basic validation to give early feedback on errors -> Debugging a startup problem.
-- OpenTelemetry collector has the same problem to solve thus this proposal should be extensible.
+- The customers' configuration must not be reset during reconciliation, even though the central configuration might be overwritten at any time.
+- A new configuration is picked up dynamically without any user interaction (for example, no need that users restart pods).
+- Have basic validation to give early feedback on errors, which supports debugging a startup problem.
+- The proposal should be extensible to solve the same issue for OpenTelemetry collector.
 - There's a way to provide the auth details for a backend config in a secure way.
 
 ## Proposal
 
 ### Architecture
 
-To build the operator, we use an SDK for a quick and easy start-up, besides various other reasons. For this, we decided to use [`kubebuilder`](https://github.com/kubernetes-sigs/kubebuilder). `kubebuilder` is an upstream project of `Kubernetes`. It provides us with features we need for our operator with the smallest overhead. In addition, this SDK is also used in other parts of Kyma, and thus we've a more consistent picture.
+To build the operator, we use an SDK for a quick and easy start-up, among other reasons. We decided to use [`kubebuilder`](https://github.com/kubernetes-sigs/kubebuilder), an upstream project of `Kubernetes`. `kubebuilder` provides the required features for our operator with the smallest overhead. In addition, this `kubebuilder` is also used in other parts of Kyma, ensuring consistent design.
 
-An alternative for `kubebuilder` would be the [`Operator-SDK`](https://github.com/operator-framework/operator-sdk) from `Red Hat`. This has similar features to the kubebuilder, with some additions like the integration of [`operatorhub`](https://operatorhub.io/) - but such features aren't needed for our purpose. Furthermore, this isn't an upstream project of Kubernetes.
+An alternative for `kubebuilder` is the [`Operator-SDK`](https://github.com/operator-framework/operator-sdk) from `Red Hat`. `Operator-SDK` has similar features to the `kubebuilder`, with some additions like the integration of [`operatorhub`](https://operatorhub.io/). We decided against it because such features aren't needed for our purpose, and because it isn't an upstream project of Kubernetes.
 
 To have a simple API, one `CRD` for Fluent Bit configuration is created. This CRD has a field which holds the status of the CR, called `Status`, as well as a struct of the type `LoggingConfigurationSpec`, called `Spec`, holding a list of configuration sections, called `Sections`. Each `Section` determines the type of the configuration (`FILTER` or `OUTPUT`) and hold a list for configuration entries, called `Entries`. Each `Entry` has tree values: The `Name`, determining the key for the value, the `Value`, and the `SecretValue`. Eather the `Value` or the `SecretValue` should be used by the users for one `Name`. If no `Secret` needs to be stated for a `Name`, then `Value` should be choosen. If a `Secret` needs to be state, i.e. for an API key, then a name, the namespace of the key, and the key itself needs to be stated.
 
 Using this structure enables the possibility to support the full Fluent Bit syntax without having the need to maintain new features of various plugins. Furthermore, this gives the users the ability to have a good overview of their sequence of applied filters and outputs. Using the Kyma documentation, we could also lead the users to think more in a way of pipelines, in such that they create one CR for each Fluent Bit pipeline.
+
+<details>
+<summary><b>Pipeline Overview</b> for User - Click to expand</summary>
+
+![Thank you](images/fluentbit_CR_overview.svg)
+</details> 
 
 We're evaluating the following constraints of this custom operator: 
 - It doesn't support dynamic plugins, which must be loaded into the Fluent Bit image. 
@@ -34,21 +40,14 @@ We're evaluating the following constraints of this custom operator:
    - The original logs are forwarded to the Kyma Loki backend.
    - Users can use the new copy with another tag and configure new filters and outputs with the provided CRD.
 
-
-<details>
-<summary><b>Pipeline Overview</b> for User - Click to expand</summary>
-
-![Thank you](images/fluentbit_CR_overview.svg)
-</details>  
-
 Using this approach, we avoid having an unused INPUT or other overhead.
 If users want to use more than one pipeline for the log processing, they can use the 'rewrite_tag' filter on their pipeline to create more pipelines. Or they can configure an output plugin to process them with another log processor, as mentioned before.
 
-Additionally, when creating a `CR` a [webhook](https://book.kubebuilder.io/cronjob-tutorial/webhook-implementation.html) is used to validate the correctness of the Fluent Bit configuration based on the Fluent Bit `dry-run` feature.
+Additionally, when creating a `CR`, a [webhook](https://book.kubebuilder.io/cronjob-tutorial/webhook-implementation.html) validates the correctness of the Fluent Bit configuration based on the Fluent Bit `dry-run` feature.
 
-To actually apply the changes of the users, the operator creates/adapts the ConfigMap for FluentBit and restart Fluent Bit by deleting the pods of the Fluent Bit deployment.
+To actually apply the changes of the users, the operator creates or adapts the ConfigMap for FluentBit and restarts Fluent Bit by deleting the pods of the Fluent Bit deployment.
 
-To make sure, that the configuration by the users won't be overwritten by the Reconciler, the basic configuration (`kubernetes` filter, `rewrite_tag`, etc.) is written into a ConfigMap. This ConfigMap is embedded by an `@INCLUDE` statement in the chart of this operator.
+To make sure that the configuration by the users won't be overwritten by reconciliation, the basic configuration (`kubernetes` filter, `rewrite_tag`, etc.) is written into a ConfigMap. This ConfigMap is embedded by an `@INCLUDE` statement in the chart of this operator.
 
 <details>
   <summary><b>CustomResourceDefinition (go code) </b>- Click to expand</summary>
@@ -209,4 +208,4 @@ status:
 
 ### Workflow for the User
 
-To configure Fluent Bit the user has to create a new CR regarding to the CRD of this operator. The operator then will notice the newly created or changed CR, and will create or update a ConfigMap for Fluent Bit. Before the ConfigMap gets applied, the operator uses the `dry-run` feature of Fluent Bit to validate the new configuration. If the check was successfull, the new ConfigMap will be applied and Fluent Bit will be restarted.
+To configure Fluent Bit, the user must create a new CR regarding to the CRD of this operator. Then, `kubebuilder` will notice the new or changed CR, and will create or update a ConfigMap for Fluent Bit. Before the ConfigMap is applied, the operator uses the `dry-run` feature of Fluent Bit to validate the new configuration. If the check was successful, the new ConfigMap is applied and Fluent Bit is restarted.
