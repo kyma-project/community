@@ -3,7 +3,7 @@
 This document proposes and evaluates a valid design for a custom operator. It is needed to enable a dynamic in-cluster logging configuration with `Fluent Bit`, as outlined in [Spike: Dynamic configuration of logging backend #11105](https://github.com/kyma-project/kyma/issues/11105).
 
 ## Criteria
-- Customers can place fluent-bit config snippets as k8s resource in a specific or in any namespace.
+- Customers can place fluent-bit config snippets as k8s resource in any namespace.
 - The customers' configuration must not be reset during reconciliation, even though the central configuration might be overwritten at any time.
 - A new configuration is picked up dynamically without any user interaction (for example, no need that users restart pods).
 - Have basic validation to give early feedback on errors, which supports debugging a startup problem.
