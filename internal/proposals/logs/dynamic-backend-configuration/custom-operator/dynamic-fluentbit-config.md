@@ -18,7 +18,7 @@ To build the operator, we use an SDK for a quick and easy start-up, among other 
 
 An alternative for `kubebuilder` is the [`Operator-SDK`](https://github.com/operator-framework/operator-sdk) from `Red Hat`. `Operator-SDK` has similar features to the `kubebuilder`, with some additions like the integration of [`operatorhub`](https://operatorhub.io/). We decided against it because such features aren't needed for our purpose, and because it isn't an upstream project of Kubernetes.
 
-To have a simple API, one `CRD` for Fluent Bit configuration is created. This CRD has a field which holds the status of the CR, called `Status`, as well as a struct of the type `LoggingConfigurationSpec`, called `Spec`, holding a list of configuration sections, called `Sections`. Each `Section` determines the type of the configuration (`FILTER` or `OUTPUT`) and hold a list for configuration entries, called `Entries`. Each `Entry` has tree values: The `Name`, determining the key for the value, the `Value`, and the `SecretValue`. Eather the `Value` or the `SecretValue` should be used by the users for one `Name`. If no `Secret` needs to be stated for a `Name`, then `Value` should be choosen. If a `Secret` needs to be state, i.e. for an API key, then a name, the namespace of the key, and the key itself needs to be stated.
+To have a simple API, one `CRD` for Fluent Bit configuration is created. This CRD has a field which holds the status of the CR, called `Status`, as well as a struct of the type `LoggingConfigurationSpec`, called `Spec`, holding a list of configuration sections, called `Sections`. Each `Section` determines the type of the configuration (`FILTER` or `OUTPUT`) and holds a list for configuration entries, called `Entries`. Each `Entry` has three values: The `Name`, determining the key for the value, the `Value`, and the `SecretValue`. Either the `Value` or the `SecretValue` should be used by the users for the `Name`: If a `Secret` must be stated, for example, for an API key, then a name, the namespace of the key, and the key itself must be stated. If no `Secret` is needed for a `Name`, then `Value` should be chosen.
 
 Using this structure enables the possibility to support the full Fluent Bit syntax without having the need to maintain new features of various plugins. Furthermore, this gives the users the ability to have a good overview of their sequence of applied filters and outputs. Using the Kyma documentation, we could also lead the users to think more in a way of pipelines, in such that they create one CR for each Fluent Bit pipeline.
 
@@ -28,8 +28,8 @@ Using this structure enables the possibility to support the full Fluent Bit synt
 ![Thank you](images/fluentbit_CR_overview.svg)
 </details> 
 
-We're evaluating the following constraints of this custom operator: 
-- It doesn't support dynamic plugins, which must be loaded into the Fluent Bit image. 
+We're proposing the following constraints for the custom operator: 
+- It doesn't support dynamic plugins that must be loaded into the Fluent Bit image. 
 - Not all available plugins for filters and outputs can be configured by this operator (for example, `Lua`), because such plugins need certain files mounted into the container, which isn't possible. However, this can be mitigated: Users can configure an output plugin of their choice and process the logs with another log processor (for example, another instance of Fluent Bit). If users create a CR, the operator checks it against a list of unsupported plugins, and if there is a match, informs the users that they cannot create that CR.
 
 ![Fluent Bit Pipeline Architecture](images/fluentbit_dynamic_config.svg)
