@@ -2,7 +2,7 @@
 title: Issues workflow
 ---
 
-In the Kyma project, we use [GitHub Issues](https://github.com/features/issues/) for tracking development process and manage the issues on a team and sprint level.
+In the Kyma project, we use [GitHub Issues](https://github.com/features/issues/) for both tracking the development process and manage the issues on a team and sprint level.
 
 This document explains:
 
@@ -61,7 +61,7 @@ The [Kyma backlog](https://github.com/kyma-project/kyma/issues) contains issues 
 
 ### Team sprints
 
-Team Sprint is modeled as a GitHub Projects/Boards. During the planning, a team selects issues from the backlog considering:
+Team Sprints are modeled as GitHub Projects. During the planning, a team selects issues from the backlog considering:
 - priority (high priority first)
 - area (default capability of the team first)
 - dependencies (unblock others)
