@@ -45,31 +45,66 @@ To make sure, that the configuration by the users won't be overwritten by the Re
   <summary><b>CRD Definition (go code) </b>- Click to expand</summary>
 
 ```go
-// ConfigSectionSpec defines the desired state of ConfigSection
-type ConfigSectionSpec struct {
-	Type string `json:"type,omitempty"`
-	Entries map[string]string `json:"entries,omitempty"`
+package v1alpha1
+
+import (
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+)
+
+// EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
+// NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
+
+// LoggingConfigurationSpec defines the desired state of LoggingConfiguration
+type LoggingConfigurationSpec struct {
+	Sections []Section `json:"sections,omitempty"`
 }
-// ConfigSectionStatus defines the observed state of ConfigSection
-type ConfigSectionStatus struct {
+
+type Section struct {
+	Type    string  `json:"type,omitempty"`
+	Entries []Entry `json:"entries,omitempty"`
+}
+
+type Entry struct {
+	Name        string      `json:"name,omitempty"`
+	Value       string      `json:"value,omitempty"`
+	SecretValue SecretValue `json:"secretValue,omitempty"`
+}
+
+type SecretValue struct {
+	Name      string `json:"name,omitempty"`
+	Namespace string `json:"namespace,omitempty"`
+	Key       string `json:"key,omitempty"`
+}
+
+// LoggingConfigurationStatus defines the observed state of LoggingConfiguration
+type LoggingConfigurationStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 }
+
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
-// ConfigSection is the Schema for the configsections API
-type ConfigSection struct {
+
+// LoggingConfiguration is the Schema for the loggingconfigurations API
+type LoggingConfiguration struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec   ConfigSectionSpec   `json:"spec,omitempty"`
-	Status ConfigSectionStatus `json:"status,omitempty"`
+
+	Spec   LoggingConfigurationSpec   `json:"spec,omitempty"`
+	Status LoggingConfigurationStatus `json:"status,omitempty"`
 }
+
 //+kubebuilder:object:root=true
-// ConfigSectionList contains a list of ConfigSection
-type ConfigSectionList struct {
+
+// LoggingConfigurationList contains a list of LoggingConfiguration
+type LoggingConfigurationList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []ConfigSection `json:"items"`
+	Items           []LoggingConfiguration `json:"items"`
+}
+
+func init() {
+	SchemeBuilder.Register(&LoggingConfiguration{}, &LoggingConfigurationList{})
 }
 ```
 </details>
@@ -86,20 +121,21 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.4.1
   creationTimestamp: null
-  name: configsections.logging.kyma-project.io
+  name: loggingconfigurations.telemetry.kyma-project.io
 spec:
-  group: logging.kyma-project.io
+  group: telemetry.kyma-project.io
   names:
-    kind: ConfigSection
-    listKind: ConfigSectionList
-    plural: configsections
-    singular: configsection
+    kind: LoggingConfiguration
+    listKind: LoggingConfigurationList
+    plural: loggingconfigurations
+    singular: loggingconfiguration
   scope: Namespaced
   versions:
   - name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: ConfigSection is the Schema for the configsections API
+        description: LoggingConfiguration is the Schema for the loggingconfigurations
+          API
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation
@@ -114,17 +150,37 @@ spec:
           metadata:
             type: object
           spec:
-            description: ConfigSectionSpec defines the desired state of ConfigSection
+            description: LoggingConfigurationSpec defines the desired state of LoggingConfiguration
             properties:
-              entries:
-                additionalProperties:
-                  type: string
-                type: object
-              type:
-                type: string
+              sections:
+                items:
+                  properties:
+                    entries:
+                      items:
+                        properties:
+                          name:
+                            type: string
+                          secretValue:
+                            properties:
+                              key:
+                                type: string
+                              name:
+                                type: string
+                              namespace:
+                                type: string
+                            type: object
+                          value:
+                            type: string
+                        type: object
+                      type: array
+                    type:
+                      type: string
+                  type: object
+                type: array
             type: object
           status:
-            description: ConfigSectionStatus defines the observed state of ConfigSection
+            description: LoggingConfigurationStatus defines the observed state of
+              LoggingConfiguration
             type: object
         type: object
     served: true
@@ -137,7 +193,6 @@ status:
     plural: ""
   conditions: []
   storedVersions: []
-
 ```
 </details>
 
