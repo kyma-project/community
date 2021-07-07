@@ -2,7 +2,7 @@
 title: Issues workflow
 ---
 
-In the Kyma project, we use [GitHub Issues](https://github.com/features/issues/) for tracking development process and manage the issues on a team and sprint level.
+In the Kyma project, we use [GitHub Issues](https://github.com/features/issues/) for both tracking the development process and managing the issues on a team and sprint level.
 
 This document explains:
 
@@ -29,7 +29,7 @@ Here are the custom labels introduced by the Kyma team. The labels colors are pr
 * `WIP` (#ECF44F) indicates that an issue is not ready for further processing.
 * `decision` (#ED635E) indicates that an issue is related to a decision.
 * `priority/critical` (#FB0104) indicates the top-priority of a given issue.
-* `area/{CAPABILITY_NAME}` (#3CB913) indicates which capabilities are related to a given issue. You can assign more than one `area` label an issue.
+* `area/{CAPABILITY_NAME}` (#3CB913) indicates which capabilities are related to a given issue. You can assign more than one `area` label to an issue.
 * `area/quality` (#3CB913) indicates that an issue is related to a quality topic.
 * `area/performance` (#3CB913) indicates that an issue is related to a performance topic.
 * `security/{SEVERITY}` (#2D51F9) indicates a security issue based on its [CVSSv3](https://www.first.org/cvss/calculator/3.0) severity, either `low`, `medium`, `high`, or `critical`.
@@ -61,7 +61,7 @@ The [Kyma backlog](https://github.com/kyma-project/kyma/issues) contains issues 
 
 ### Team sprints
 
-Team Sprint is modeled as a GitHub Projects/Boards. During the planning, a team selects issues from the backlog considering:
+Team Sprints are modeled as GitHub Projects. During the planning, a team selects issues from the backlog considering:
 - priority (high priority first)
 - area (default capability of the team first)
 - dependencies (unblock others)
