@@ -18,7 +18,7 @@ To build the operator, we use an SDK for a quick and easy start-up, among other 
 
 An alternative for `kubebuilder` is the [`Operator-SDK`](https://github.com/operator-framework/operator-sdk) from `Red Hat`. `Operator-SDK` has similar features to the `kubebuilder`, with some additions like the integration of [`operatorhub`](https://operatorhub.io/). We decided against it because such features aren't needed for our purpose, and because it isn't an upstream project of Kubernetes.
 
-To have a simple API, one `CRD` for Fluent Bit configuration is created. This CRD has a field which holds the status of the CR, called `Status`, as well as a struct of the type `LoggingConfigurationSpec`, called `Spec`, holding a list of configuration sections, called `Sections`. Each `Section` has a `configuration` attribute that holds a raw Fluent Bit configuration section. A `Section` can have optional `Files` and an `Environment`. `Files` will be mounted into the Fluent Bit pods and can be referenced in configurations. For instance in Lua filters. The environment is a list of Kubernetes secret references.
+To have a simple API, one `CRD` for Fluent Bit configuration is created. This CRD has a field which holds the status of the CR, called `Status`, as well as a struct of the type `LoggingConfigurationSpec`, called `Spec`, holding a list of configuration sections, called `Sections`. Each `Section` has a `content` attribute that holds a raw Fluent Bit configuration section. A `Section` can have optional `Files` and an `Environment`. `Files` will be mounted into the Fluent Bit pods and can be referenced in configurations. For instance in Lua filters. The environment is a list of Kubernetes secret references.
 
 Using this structure supports the full Fluent Bit syntax without needing to maintain new features of various plugins. Furthermore, the users get a clear overview of their sequence of applied filters and outputs. Using the Kyma documentation, we could also lead the users to think more in a way of pipelines, in such that they create one CR for each Fluent Bit pipeline.
 
@@ -68,9 +68,9 @@ type LoggingConfigurationSpec struct {
 
 // Section describes a Fluent Bit configuration section
 type Section struct {
-	Configuration string            `json:"configuration,omitempty"`
-	Environment   []SecretReference `json:"environment,omitempty"`
-	Files         []FileMount       `json:"files,omitempty"`
+	Content     string            `json:"content,omitempty"`
+	Environment []SecretReference `json:"environment,omitempty"`
+	Files       []FileMount       `json:"files,omitempty"`
 }
 
 // FileMount provides file content to be consumed by a Section configuration
@@ -165,7 +165,7 @@ spec:
                 items:
                   description: Section describes a Fluent Bit configuration section
                   properties:
-                    configuration:
+                    content:
                       type: string
                     environment:
                       items:
