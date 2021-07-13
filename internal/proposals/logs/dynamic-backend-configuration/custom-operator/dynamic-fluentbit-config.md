@@ -18,7 +18,7 @@ To build the operator, we use an SDK for a quick and easy start-up, among other 
 
 An alternative for `kubebuilder` is the [`Operator-SDK`](https://github.com/operator-framework/operator-sdk) from `Red Hat`. `Operator-SDK` has similar features to the `kubebuilder`, with some additions like the integration of [`operatorhub`](https://operatorhub.io/). We decided against it because such features aren't needed for our purpose, and because it isn't an upstream project of Kubernetes.
 
-To have a simple API, one `CRD` for Fluent Bit configuration is created. This CRD has a field which holds the status of the CR, called `Status`, as well as a struct of the type `LoggingConfigurationSpec`, called `Spec`, holding a list of configuration sections, called `Sections`. Each `Section` determines the type of the configuration (`FILTER` or `OUTPUT`) and holds a list for configuration entries, called `Entries`. Each `Entry` has three values: The `Name`, determining the key for the value, the `Value`, and the `SecretValue`. Either the `Value` or the `SecretValue` should be used by the users for the `Name`: If a `Secret` must be stated, for example, for an API key, then a name, the namespace of the key, and the key itself must be stated. If no `Secret` is needed for a `Name`, then `Value` should be chosen.
+To have a simple API, one `CRD` for Fluent Bit configuration is created. This CRD has a field that holds the status of the CR, called `Status`, as well as a struct of the type `LoggingConfigurationSpec`, called `Spec`, holding a list of configuration sections, called `Sections`. Each `Section` has a `content` attribute that holds a raw Fluent Bit configuration section. A `Section` can have optional `Files` and an `Environment`. `Files` are mounted into the Fluent Bit pods and can be referenced in configurations, for example, in Lua filters. The environment is a list of Kubernetes secret references.
 
 Using this structure supports the full Fluent Bit syntax without needing to maintain new features of various plugins. Furthermore, the users get a clear overview of their sequence of applied filters and outputs. Using the Kyma documentation, we could also lead the users to think more in a way of pipelines, in such that they create one CR for each Fluent Bit pipeline.
 
@@ -26,16 +26,15 @@ Using this structure supports the full Fluent Bit syntax without needing to main
 <summary><b>Pipeline Overview</b> for User - Click to expand</summary>
 
 ![Thank you](images/fluentbit_CR_overview.svg)
-</details> 
+</details>
 
-We're proposing the following constraints for the custom operator: 
-- It doesn't support dynamic plugins that must be loaded into the Fluent Bit image. 
-- Not all available plugins for filters and outputs can be configured by this operator (for example, `Lua`), because such plugins need certain files mounted into the container, which isn't possible. However, this can be mitigated: Users can configure an output plugin of their choice and process the logs with another log processor (for example, another instance of Fluent Bit). If users create a CR, the operator checks it against a list of unsupported plugins, and if there is a match, informs the users that they cannot create that CR.
+We're proposing the following constraints for the custom operator:
+- It doesn't support dynamic plugins that must be loaded into the Fluent Bit image.
 
 ![Fluent Bit Pipeline Architecture](images/fluentbit_dynamic_config.svg)
 
-1. The logs are fetched using a Fluent Bit, which is created by this custom operator. This INPUT tags all logs with the following tag scheme: `kube.<namespace_name>.<pod_name>.<container_name>`. 
-2. The logs are enriched with Kubernetes information using the `kubernetes` filter of Fluent Bit. 
+1. The logs are fetched using a Fluent Bit, which is created by this custom operator. This INPUT tags all logs with the following tag scheme: `kube.<namespace_name>.<pod_name>.<container_name>`.
+2. The logs are enriched with Kubernetes information using the `kubernetes` filter of Fluent Bit.
 3. The filter `rewrite_tag` is used to split the pipeline:
    - The original logs are forwarded to the Kyma Loki backend.
    - Users can use the new copy with another tag and configure new filters and outputs with the provided CRD.
@@ -67,21 +66,23 @@ type LoggingConfigurationSpec struct {
 	Sections []Section `json:"sections,omitempty"`
 }
 
+// Section describes a Fluent Bit configuration section
 type Section struct {
-	Type    string  `json:"type,omitempty"`
-	Entries []Entry `json:"entries,omitempty"`
+	Content     string            `json:"content,omitempty"`
+	Environment []SecretReference `json:"environment,omitempty"`
+	Files       []FileMount       `json:"files,omitempty"`
 }
 
-type Entry struct {
-	Name        string      `json:"name,omitempty"`
-	Value       string      `json:"value,omitempty"`
-	SecretValue SecretValue `json:"secretValue,omitempty"`
+// FileMount provides file content to be consumed by a Section configuration
+type FileMount struct {
+	Name    string `json:"name,omitempty"`
+	Content string `json:"content,omitempty"`
 }
 
-type SecretValue struct {
+// SecretReference is a pointer to a Kubernetes secret that should be provided as environment to Fluent Bit
+type SecretReference struct {
 	Name      string `json:"name,omitempty"`
 	Namespace string `json:"namespace,omitempty"`
-	Key       string `json:"key,omitempty"`
 }
 
 // LoggingConfigurationStatus defines the observed state of LoggingConfiguration
@@ -162,27 +163,33 @@ spec:
             properties:
               sections:
                 items:
+                  description: Section describes a Fluent Bit configuration section
                   properties:
-                    entries:
+                    content:
+                      type: string
+                    environment:
                       items:
+                        description: SecretReference is a pointer to a Kubernetes
+                          secret that should be provided as environment to Fluent
+                          Bit
                         properties:
                           name:
                             type: string
-                          secretValue:
-                            properties:
-                              key:
-                                type: string
-                              name:
-                                type: string
-                              namespace:
-                                type: string
-                            type: object
-                          value:
+                          namespace:
                             type: string
                         type: object
                       type: array
-                    type:
-                      type: string
+                    files:
+                      items:
+                        description: FileMount provides file content to be consumed
+                          by a Section configuration
+                        properties:
+                          content:
+                            type: string
+                          name:
+                            type: string
+                        type: object
+                      type: array
                   type: object
                 type: array
             type: object
@@ -204,7 +211,7 @@ status:
 ```
 </details>
 
- 
+
 
 ### Workflow for the User
 
