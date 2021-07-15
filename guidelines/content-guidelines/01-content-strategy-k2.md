@@ -79,7 +79,7 @@ Use nominal style for the title, for example, "Configuration Parameters".
 
 Provide a condition that the reader may want to correct, followed by one or more descriptions of its cause and suggested remedies.
 
-As title, mention the symptom that needs fixing ("Cannot access...") or the error message, not the symptom "Incompatible version".
+As title, mention the symptom that needs fixing ("Cannot access...") or the error message, not the cause "Incompatible version".
 
 It's good practice to use three standard headlines (like “Condition”, “Cause”, “Remedy”), each might have just one sentence or more as needed. For remedy, use a numbered list if there are multiple steps to follow, and a bullet list if there are several equally valid solutions.
 
