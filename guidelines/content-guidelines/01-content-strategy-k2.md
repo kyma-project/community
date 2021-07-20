@@ -79,7 +79,7 @@ Use nominal style for the title, for example, "Configuration Parameters".
 
 Provide a condition that the reader may want to correct, followed by one or more descriptions of its cause and suggested remedies.
 
-As title, mention the symptom that needs fixing ("Cannot access...") or the error message, not the cause "Incompatible version".
+As title, mention the symptom that needs fixing ("Cannot access...") or the error message. Do not use the cause as title ("Incompatible version").
 
 It's good practice to use three standard headlines (like “Condition”, “Cause”, “Remedy”), each might have just one sentence or more as needed. For remedy, use a numbered list if there are multiple steps to follow, and a bullet list if there are several equally valid solutions.
 
@@ -135,7 +135,7 @@ Contains a quick overview of the idea behind Kyma, a diagram of the main areas w
 ### Getting Started
 
 Target Group: Software Developers who quickly want to see what they can do with Kyma.
-Contains a guide/tutorial designed by PB.
+Contains a guide/tutorial that covers typical steps you need to get started.
 
 ### Deep Dive/Tutorials
 
