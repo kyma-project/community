@@ -14,14 +14,14 @@ title: Content Strategy K2.0
 - [Graphics](#graphics)
   - [Architecture and Flow Diagrams](#architecture-and-flow-diagrams)
   - [Screenshots](#screenshots)
- - [Documentation Structure and Target Groups](#documentation-structure-and-target-groups)
-   - [Overview](#overview)
-   - [Getting Started](#getting-started)
-   - [Deep Dive/Tutorials](#deep-dive/tutorials)
-   - [Operations](#operations)
-   - [Technical References](#technical-references)
-   - [Glossary](#glossary)
- - [Content Source](#content-source)
+- [Documentation Structure and Target Groups](#documentation-structure-and-target-groups)
+  - [Overview](#overview)
+  - [Getting Started](#getting-started)
+  - [Deep Dive/Tutorials](#deep-dive/tutorials)
+  - [Operations](#operations)
+  - [Technical References](#technical-references)
+  - [Glossary](#glossary)
+- [Content Source](#content-source)
 
 ## Purpose and target group
 
@@ -29,7 +29,6 @@ This content strategy focuses on the publicly available documentation under <htt
 More documentation may be found in the Kyma Github repositories.
 
 The assumed reader of this guide has some basic knowledge of technical writing. To learn more, read the excellent [Istio document about adding documentation](https://istio.io/latest/docs/releases/contribute/add-content/).
-
 
 ## Information types
 
@@ -39,8 +38,8 @@ We follow a topic-based documentation approach, with one file per topic. Every d
 
 ### Concept topics
 
-Answer "what-is" questions and provide essential background information that users must know. 
-You'll find most concept topics in the Overview section, but they can be useful elsewhere too. 
+Answer "what-is" questions and provide essential background information that users must know.
+You'll find most concept topics in the Overview section, but they can be useful elsewhere too.
 
 Use nominal style for the title, for example, "Security" or "Security Concept".
 
@@ -60,9 +59,8 @@ It's good practice to have 5-9 steps; anything longer can probably be split.
 
 *For longer code blocks, I'd like to use an expandable section as described [here](https://gist.github.com/pierrejoubert73/902cc94d79424356a8d20be2b382e1ab) - but not sure whether our website supports this.*
 
-
 > [- Dita Task Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-task-topic.html)
-> A task information type answers the "How do I?" question by providing precise step-by-step instructions detailing the requirements that must be fulfilled, the actions that must be performed, and the order in which the actions must be performed. The task topic includes sections for describing the context, prerequisites, expected results, and other aspects of a task. 
+> A task information type answers the "How do I?" question by providing precise step-by-step instructions detailing the requirements that must be fulfilled, the actions that must be performed, and the order in which the actions must be performed. The task topic includes sections for describing the context, prerequisites, expected results, and other aspects of a task.
 
 ### Reference topics
 
@@ -73,13 +71,13 @@ Use nominal style for the title, for example, "Configuration Parameters".
 *In our case, architecture diagrams could fall into this category – we could also choose to define them as a separate type – TBD.*
 
 > [- DITA Reference Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-reference-topic.html)
-> Reference topics provide quick access to fact-based information. In technical information, reference topics are used to list product specifications and parameters, provide essential data, and provide detailed information on subjects such as the commands in a programming language. 
+> Reference topics provide quick access to fact-based information. In technical information, reference topics are used to list product specifications and parameters, provide essential data, and provide detailed information on subjects such as the commands in a programming language.
 
 ### Troubleshooting topics
 
 Provide a condition that the reader may want to correct, followed by one or more descriptions of its cause and suggested remedies.
 
-As title, mention the symptom that needs fixing ("Cannot access...") or the error message. Do not use the cause as title ("Incompatible version").
+As title, mention the symptom that needs fixing ("Cannot access...") or the error message. To quote an error message, start and end with `'` to escape `"`. for example, `title: '"FAILED" status for created ServiceInstances'`. Do not use the cause as title ("Incompatible version"), because we also want to help users who have no idea about the cause and only know something's not working as expected.
 
 It's good practice to use three standard headlines (like “Condition”, “Cause”, “Remedy”), each might have just one sentence or more as needed. For remedy, use a numbered list if there are multiple steps to follow, and a bullet list if there are several equally valid solutions.
 
@@ -96,10 +94,10 @@ It's good practice to use three standard headlines (like “Condition”, “Cau
 >
 > Cause and remedy might occur in combinations other than pairs. It is possible to have:
 >
-> * Multiple causes with the same remedy
-> * A single cause with more than one remedy
-> * A remedy with no known cause
-> * A cause with no known remedy
+> - Multiple causes with the same remedy
+> - A single cause with more than one remedy
+> - A remedy with no known cause
+> - A cause with no known remedy
 > The troubleshooting information type also can be used to document alarm clearing strategies.
 
 ### Release Notes
@@ -107,7 +105,6 @@ It's good practice to use three standard headlines (like “Condition”, “Cau
 Announce what's new in Kyma. 
 
 After an introductory paragraph that outlines the city that's the namesake of the current release, a list briefly presents the new and changed features. Links lead to longer paragraphs that describe the changes in more detail.
-
 
 ## Graphics
 
