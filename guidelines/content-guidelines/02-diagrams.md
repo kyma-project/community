@@ -35,41 +35,41 @@ Keep your diagram reasonable in size. Preview the image at full size to see how 
 
 ## Background
 
-Keep the background of the diagram **white** as it renders well both on Github and in the UI. Do not use transparent background as it doesn't display well in dark mode.
+Keep the background of the diagram **white** as it renders well in both GitHub and the `kyma-project.io` website. Do not use transparent background as it doesn't display well in dark mode.
 
-Always add **rounded** secondary backgrounds to indicate the environment in which the workflow takes place. Use **mild blue** (HEX: #F0F6FF) to indicate the main environment, such as a cluster, and **mint green** (HEX: #DEF2DD) to indicate subsidiary environments, such as Namespaces.
+Always add **rounded** secondary backgrounds to indicate the environment in which the workflow takes place. Use **mild blue** (HEX: `#F0F6FF`) to indicate the main environment, such as a cluster, and **mint green** (HEX: `#DEF2DD`) to indicate subsidiary environments, such as Namespaces.
 
 ## Shapes
 
-Use **white** fill for main shapes, such as boxes. For actors, apply **blue** (HEX: #0A6EC7) fill.
+Use **white** fill for main shapes, such as boxes. For actors, apply **blue** (HEX: `#0A6EC7`) fill.
 
 > **NOTE:** Same as in the Unified Modeling Language (UML), the term **actor** refers to a role played by a human user, external hardware, or any other entity.
 
 ## Outlines
 
-Use **grey** (HEX: #666666) for outlines. Set the outlines of the shapes to 1pt. Do not use any outlines for actors, steps, and secondary backgrounds.
+Use **grey** (HEX: `#666666`) for outlines. Set the outlines of the shapes to 1pt. Do not use any outlines for actors, steps, and secondary backgrounds.
 
 ## Text
 
-Use **black** both for the primary and secondary texts.
+Use **black** for both the primary and secondary texts.
 Use the following **Helvetica** font sizes:
 - 15pt **bold** for headings
-- 13pt for primary texts, such as a shape names
+- 13pt for primary texts, such as shape names
 - 12pt for secondary texts, such as connector descriptions
 
-Always position the text horizontally. When you add a title to the shape, put the text inside the shape. Whenever possible, place the text in the central place of the shape and in the upper-central part of the background.
+Always position the text horizontally. When you add a title to a shape, put the text inside the shape. Whenever possible, place the text in the central place of the shape and in the upper-central part of the background.
 
 ## Steps
 
-Mark multiple areas or steps on the diagram using **blue** (HEX: #0A6EC7) round stamps with white numbers. Explain the steps under the diagram with the ordered list.
+Mark multiple areas or steps on the diagram using **blue** (HEX: `#0A6EC7`) round stamps with white numbers. Explain the steps under the diagram with an ordered list.
 
 ## Connectors
 
-Use 1pt, **rounded**, **grey** (HEX: #666666) lines to connect shapes.
+Use 1pt, **rounded**, **grey** (HEX: `#666666`) lines to connect shapes.
 
 ## Reference key
 
-Whenever you introduce an element that is different from other objects located in the diagram, always include a reference key below the diagram to briefly explain the difference between the objects.
+Whenever you introduce an element that is different from other objects located in the diagram, include a reference key below the diagram to briefly explain the difference between the objects.
 
 ## Examples
 
