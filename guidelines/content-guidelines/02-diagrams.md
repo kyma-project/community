@@ -31,40 +31,37 @@ Use [diagrams.net](https://www.diagrams.net/index.html) as a recommended tool. E
 
 Keep your diagram reasonable in size. Preview the image at full size to see how it fits into the whole document. The diagram should be large enough to be legible and convey the intended message, but should not dominate the whole document. To demonstrate large concepts, simplify the diagram or divide it into a few smaller ones.
 
->**NOTE:** The diagrams keep their original aspect ratio on both the Console UI and the `kyma-project.io` website. However, the maximum width on the website is 860px. Any diagram that exceeds that limit is resized to the maximum width.
+>**NOTE:** The diagrams keep their original aspect ratio on the `kyma-project.io` website. However, the maximum width on the website is 860px. Any diagram that exceeds that limit is resized to the maximum width.
 
 ## Background
 
 Keep the background of the diagram **white** as it renders well both on Github and in the UI. Do not use transparent background as it doesn't display well in dark mode.
 
-Always add secondary backgrounds to indicate the environment in which the workflow takes place. Use **mild blue** (HEX: #F0F6FF) to indicate the main environment, such as a cluster, and **mint green** (HEX: #DEF2DD) to indicate subsidiary environments, such as Namespaces.
+Always add **rounded** secondary backgrounds to indicate the environment in which the workflow takes place. Use **mild blue** (HEX: #F0F6FF) to indicate the main environment, such as a cluster, and **mint green** (HEX: #DEF2DD) to indicate subsidiary environments, such as Namespaces.
 
 ## Shapes
 
-Do not use fill that is other than **white** in boxes or similar shapes unless you add an actor to the diagram. Apply **blue** (HEX: #0A6EC7) fill for the shape that refers to a given actor.
+Use **white** fill for main shapes, such as boxes. For actors, apply **blue** (HEX: #0A6EC7) fill.
 
 > **NOTE:** Same as in the Unified Modeling Language (UML), the term **actor** refers to a role played by a human user, external hardware, or any other entity.
 
 ## Outlines
 
-Use **grey** (HEX: #666666) for the shape outlines. Set the outlines of the shapes to 1pt. Do not use any outlines for actors, steps, and secondary backgrounds.
+Use **grey** (HEX: #666666) for outlines. Set the outlines of the shapes to 1pt. Do not use any outlines for actors, steps, and secondary backgrounds.
 
 ## Text
 
 Use **black** both for the primary and secondary texts.
 Use the following **Helvetica** font sizes:
 - 15pt **bold** for headings
-- 13pt for the primary text, such as shape names
-- 12pt for the secondary text, such as the description text for connectors
+- 13pt for primary texts, such as a shape names
+- 12pt for secondary texts, such as connector descriptions
 
-Position the text horizontally in a text box or shape.
-When you add a title to the main shape, put the text inside the shape.
+Always position the text horizontally. When you add a title to the shape, put the text inside the shape. Whenever possible, place the text in the central place of the shape and in the upper-central part of the background.
 
 ## Steps
 
-Mark multiple areas or steps on the diagram using **blue** (HEX: #0A6EC7) round stamps with white numbers.
-
-Explain the steps under the diagram with the ordered list.
+Mark multiple areas or steps on the diagram using **blue** (HEX: #0A6EC7) round stamps with white numbers. Explain the steps under the diagram with the ordered list.
 
 ## Connectors
 
@@ -76,6 +73,6 @@ Whenever you introduce an element that is different from other objects located i
 
 ## Examples
 
-See the exemplary diagram for reference.
+See the exemplary diagram for reference:
 
 ![Diagram example](./assets/diagram-example.svg)
