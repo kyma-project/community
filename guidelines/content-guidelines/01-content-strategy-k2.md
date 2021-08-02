@@ -7,7 +7,7 @@ title: Content Strategy K2.0
 - [Purpose and Target Group](#purpose-and-target-group)
 - [Information types](#information-types)
   - [Concept Topics](#concept-topics)
-  - [Task (tutorial) topics](#task-(tutorial)-topics)
+  - [Task (tutorial) topics](#task-tutorial-topics)
   - [Reference topics](#reference-topics)
   - [Troubleshooting topics](#troubleshooting-topics)
   - [Release Notes](#release-notes)
@@ -17,7 +17,7 @@ title: Content Strategy K2.0
 - [Documentation Structure and Target Groups](#documentation-structure-and-target-groups)
   - [Overview](#overview)
   - [Getting Started](#getting-started)
-  - [Deep Dive/Tutorials](#deep-dive/tutorials)
+  - [Deep Dive/Tutorials](#deep-divetutorials)
   - [Operations](#operations)
   - [Technical References](#technical-references)
   - [Glossary](#glossary)
@@ -120,7 +120,26 @@ For more information, see:
 • <https://www.techsmith.com/blog/simplified-user-interface/>
 • <https://www.tcworld.info/e-magazine/technical-writing/simplified-graphics-and-screenshots-in-software-documentation-1102/>
 
-## Documentation Structure and Target Groups
+## Target Groups
+
+<!-- Information about generic target groups is based on the SAP Styleguide: https://help.sap.com/viewer/DRAFT/e33c591ae4494a659a3f5f983c9d1161/PROD/en-US/546dfb06e80c4005aabc4795d548fe35.html -->
+
+### Decision maker
+
+**Tasks**: Assess the software to make sure that it will meet the company's needs. Needs the facts – not just marketing spin – before signing on the dotted line.
+**Goal**: Purchase the right solution for the company, and ensure stakeholders back this decision.
+
+### Software Developer
+
+**Tasks**: Interested in technical topics. Solid knowledge of programming languages. Experienced in programming and development projects. Expert in the technical or business area. Uses and contributes to community content.
+**Goal**: Develop and enhance software.
+
+### Admin/Operations
+
+**Tasks**: Deals with installation, upgrades, system troubleshooting.
+**Goal**: Support the ongoing operations and evolution of the Kyma implementation.
+
+## Documentation Structure
 
 On the Kyma website, we’ll have five main tabs containing multiple documents each, plus a glossary.
 
