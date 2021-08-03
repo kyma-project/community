@@ -4,7 +4,7 @@ title: Content Strategy K2.0
 
 ## Table of contents
 
-- [Purpose and Target Group](#purpose-and-target-group)
+- [Purpose and Audience](#purpose-and-audience)
 - [Information types](#information-types)
   - [Concept Topics](#concept-topics)
   - [Task (tutorial) topics](#task-tutorial-topics)
@@ -14,7 +14,11 @@ title: Content Strategy K2.0
 - [Graphics](#graphics)
   - [Architecture and Flow Diagrams](#architecture-and-flow-diagrams)
   - [Screenshots](#screenshots)
-- [Documentation Structure and Target Groups](#documentation-structure-and-target-groups)
+- [Target Groups](#target-groups)
+  - [Decision maker](#decision-maker)
+  - [Software developer](#software-developer)
+  - [Admin/Operations](#adminoperations)
+- [Documentation Structure](#documentation-structure)
   - [Overview](#overview)
   - [Getting Started](#getting-started)
   - [Deep Dive/Tutorials](#deep-divetutorials)
@@ -23,7 +27,7 @@ title: Content Strategy K2.0
   - [Glossary](#glossary)
 - [Content Source](#content-source)
 
-## Purpose and target group
+## Purpose and Audience
 
 This content strategy focuses on the publicly available documentation under <https://kyma-project.io/docs/>.
 More documentation may be found in the Kyma Github repositories.
@@ -32,7 +36,7 @@ The assumed reader of this guide has some basic knowledge of technical writing. 
 
 ## Information types
 
-We follow a topic-based documentation approach, with one file per topic. Every documentation file has a clearly defined purpose, which is reflected in the title. The content must be able to stand on its own, but links should point to other documents as needed.
+We follow a topic-based documentation approach, with one file per topic. Every documentation file has a clearly defined purpose, which is reflected in the title. The content must be able to stand on its own, but links should point to other documents as needed. 
 
 *For the structure within topics, I suggest to follow the DITA standard – because it’s pretty simple, it’s well-established, and it’s what is used in SKR documentation. Instead of currently 12-13 content types, we should thus be able to get away with just four (or five) types:*
 
@@ -48,6 +52,8 @@ Use nominal style for the title, for example, "Security" or "Security Concept".
 > [- DITA Concept Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-concept-topic.html)
 > Conceptual information might explain the nature and components of a product and describe how it fits into a category of products. Conceptual information helps readers to map their knowledge and understanding to the tasks they need to perform and to provide other essential information about a product, process, or system.
 
+You can use the [concept topic template](/templates/resources/concept.md).
+
 ### Task (tutorial) topics
 
 Provide "how-to" instructions that enable users to accomplish a task. Each task topic should tell how to perform a single, specific procedure.
@@ -61,6 +67,8 @@ It's good practice to have 5-9 steps; anything longer can probably be split.
 
 > [- Dita Task Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-task-topic.html)
 > A task information type answers the "How do I?" question by providing precise step-by-step instructions detailing the requirements that must be fulfilled, the actions that must be performed, and the order in which the actions must be performed. The task topic includes sections for describing the context, prerequisites, expected results, and other aspects of a task.
+
+You can use the [task topic template](/templates/resources/task.md).
 
 ### Reference topics
 
@@ -100,6 +108,9 @@ It's good practice to use three standard headlines (like “Condition”, “Cau
 > - A cause with no known remedy
 > The troubleshooting information type also can be used to document alarm clearing strategies.
 
+You can use the [troubleshooting topic template](/templates/resources/troubleshooting.md).
+
+
 ### Release Notes
 
 Announce what's new in Kyma. 
@@ -129,7 +140,7 @@ For more information, see:
 **Tasks**: Assess the software to make sure that it will meet the company's needs. Needs the facts – not just marketing spin – before signing on the dotted line.
 **Goal**: Purchase the right solution for the company, and ensure stakeholders back this decision.
 
-### Software Developer
+### Software developer
 
 **Tasks**: Interested in technical topics. Solid knowledge of programming languages. Experienced in programming and development projects. Expert in the technical or business area. Uses and contributes to community content.
 **Goal**: Develop and enhance software.
