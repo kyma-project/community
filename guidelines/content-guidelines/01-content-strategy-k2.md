@@ -36,7 +36,7 @@ The assumed reader of this guide has some basic knowledge of technical writing. 
 
 ## Information types
 
-We follow a topic-based documentation approach, with one file per topic. Every documentation file has a clearly defined purpose, which is reflected in the title. The content must be able to stand on its own, but links should point to other documents as needed. 
+We follow a topic-based documentation approach, with one file per topic. Every documentation file has a clearly defined purpose, which is reflected in the title. The content must be able to stand on its own, but links should point to other documents as needed.
 
 *For the structure within topics, I suggest to follow the DITA standard – because it’s pretty simple, it’s well-established, and it’s what is used in SKR documentation. Instead of currently 12-13 content types, we should thus be able to get away with just four (or five) types:*
 
@@ -52,7 +52,7 @@ Use nominal style for the title, for example, "Security" or "Security Concept".
 > [- DITA Concept Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-concept-topic.html)
 > Conceptual information might explain the nature and components of a product and describe how it fits into a category of products. Conceptual information helps readers to map their knowledge and understanding to the tasks they need to perform and to provide other essential information about a product, process, or system.
 
-You can use the [concept topic template](/templates/resources/concept.md).
+You can use the [concept topic template](../templates/resources/concept.md).
 
 ### Task (tutorial) topics
 
@@ -68,7 +68,7 @@ It's good practice to have 5-9 steps; anything longer can probably be split.
 > [- Dita Task Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-task-topic.html)
 > A task information type answers the "How do I?" question by providing precise step-by-step instructions detailing the requirements that must be fulfilled, the actions that must be performed, and the order in which the actions must be performed. The task topic includes sections for describing the context, prerequisites, expected results, and other aspects of a task.
 
-You can use the [task topic template](/templates/resources/task.md).
+You can use the [task topic template](../templates/resources/task.md).
 
 ### Reference topics
 
@@ -108,12 +108,11 @@ It's good practice to use three standard headlines (like “Condition”, “Cau
 > - A cause with no known remedy
 > The troubleshooting information type also can be used to document alarm clearing strategies.
 
-You can use the [troubleshooting topic template](/templates/resources/troubleshooting.md).
-
+You can use the [troubleshooting topic template](../templates/resources/troubleshooting.md).
 
 ### Release Notes
 
-Announce what's new in Kyma. 
+Announce what's new in Kyma.
 
 After an introductory paragraph that outlines the city that's the namesake of the current release, a list briefly presents the new and changed features. Links lead to longer paragraphs that describe the changes in more detail.
 
@@ -121,7 +120,7 @@ After an introductory paragraph that outlines the city that's the namesake of th
 
 ### Architecture and Flow Diagrams
 
-*Klaudia is preparing the new diagram style, see <https://github.com/kyma-project/community/issues/542>.*
+For information about our diagram style, see [Diagrams](../02-diagrams.md).
 
 ### Screenshots
 
@@ -132,6 +131,11 @@ For more information, see:
 • <https://www.tcworld.info/e-magazine/technical-writing/simplified-graphics-and-screenshots-in-software-documentation-1102/>
 
 ## Target Groups
+
+The general assumption is that the audience is familiar with the following terms and does not require the explanation of technical concepts behind them:
+
+- Kubernetes
+- Docker and containers
 
 <!-- Information about generic target groups is based on the SAP Styleguide: https://help.sap.com/viewer/DRAFT/e33c591ae4494a659a3f5f983c9d1161/PROD/en-US/546dfb06e80c4005aabc4795d548fe35.html -->
 
