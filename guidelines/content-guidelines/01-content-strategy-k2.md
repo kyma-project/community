@@ -125,7 +125,7 @@ After an introductory paragraph that outlines the city that's the namesake of th
 
 ### Screenshots
 
-Wherever possible, present screenshots as SUI (simplified user interfaces). Basically, this means to blur out all UI elements that aren't essential for the task at hand.
+Wherever possible, present screenshots as simplified user interfaces (SUI). Basically, this means to blur out all UI elements that aren't essential for the task at hand.
 
 For more information, see:
 • <https://www.techsmith.com/blog/simplified-user-interface/>
