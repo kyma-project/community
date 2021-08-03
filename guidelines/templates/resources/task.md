@@ -2,7 +2,9 @@
 title: {Document title}
 ---
 
-<!-- Use this template to write step-by-step "how-to" instructions that enable users to accomplish a task. Each task topic should tell how to perform a single, specific procedure.
+<!-- Use this template to write "how-to" instructions that enable users to accomplish a task. Each task topic should tell how to perform a single, specific procedure. 
+
+You can use this template for any step-by-step instruction, no matter whether it's a task during the getting started guide, a tutorial for software developers, or an operational guide.
 
 As document file name, follow the pattern {COMPONENT_ABBRV}-{NUMBER_PER_COMPONENT}-{FILE_NAME}.md}.
 
