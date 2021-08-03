@@ -167,7 +167,7 @@ Contains a guide/tutorial that covers typical steps you need to get started.
 ### Deep Dive/Tutorials
 
 Target Group: Software Developers leveraging all the Kyma functionalities.
-Under this tab, there will be subtabs according to main areas (except UI – Busola and CLI are mentioned as needed within the instructions of the respective main area.)
+Under this tab, there are subtabs according to main areas (except UI – Busola and CLI are mentioned as needed within the instructions of the respective main area). Documents in the subtabs contain "how-to" instructions that enable users to accomplish a task
 
 ### Operations
 
