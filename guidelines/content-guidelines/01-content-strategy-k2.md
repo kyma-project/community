@@ -152,7 +152,7 @@ For more information, see:
 
 ## Documentation Structure
 
-On the Kyma website, we’ll have five main tabs containing multiple documents each, plus a glossary.
+On the Kyma website, we have five main tabs containing multiple documents each, plus a glossary.
 
 ### Overview
 
