@@ -38,7 +38,7 @@ In consequence there is no pre-configured auth model for Grafana/Kiali/Jaeger ex
 The benefits:
 - faster installation and lower resource consumption (6 components less),
 - reduced complexity of authentication and authorization flow
-- improved security (e.g. removed service accounts with powerful roles)
+- improved security (e.g. removed service accounts with powerful roles),
 - faster development and easier maintenance of the Console UI.
 
 As a result of this decision, the following decisions are invalidated:
