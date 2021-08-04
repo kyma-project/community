@@ -16,7 +16,7 @@ Conceptual information might explain the nature and components of a product and 
 For example, start with a brief introduction.
 -->
 
-## Headline 2
+## {Headline 2}
 
 <!-- If possible, split the content into sections so that the users can easily jump to a relevant paragraph with the right-hand navigation.
 
