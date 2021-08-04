@@ -1,6 +1,7 @@
-# DR 008: DEX as an OIDC authenticator
+# DR 008: (INVALID) DEX as an OIDC authenticator
 
 Created on 2018-03-01 by Damian Pacierpnik (@damianpacierpnikatsap).
+Invalidated on 2021-08-04 by [DR 021: Remove components proxying requests to Kubernetes API server](dr-021-Remove-k8s-api-server-proxies.md)
 
 ## Context
 
