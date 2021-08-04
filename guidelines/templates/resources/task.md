@@ -6,7 +6,7 @@ title: {Document title}
 
 You can use this template for any step-by-step instruction, no matter whether it's a task during the getting started guide, a tutorial for software developers, or an operational guide.
 
-As document file name, follow the pattern {COMPONENT_ABBRV}-{NUMBER_PER_COMPONENT}-{FILE_NAME}.md}.
+For the document file name, follow the pattern `{COMPONENT_ABBRV}-{NUMBER_PER_COMPONENT}-{FILE_NAME}.md`.
 
 Select a title that describes the task that's accomplished, not the documented software feature - for example, "Define ressource consumption", not "Select a profile". You can use gerund form "Selecting...", imperative "Select...", or "How to select...".
 
