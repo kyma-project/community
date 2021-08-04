@@ -160,7 +160,7 @@ On the Kyma website, we have five main tabs containing multiple documents each, 
 
 ### Overview
 
-Target Group: Decision Makers (Tech Leads) and newbies.
+**Target Group**: Decision Makers (Tech Leads) and newbies.
 Contains a quick overview of the idea behind Kyma, a diagram of the main areas with a brief explanation, and, as needed, longer documents going into the details of each main area.
 
 ### Getting Started
