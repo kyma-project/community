@@ -185,7 +185,7 @@ Contains the architecture diagrams, configuration charts, etc,; no explanation o
 
 ### Glossary
 
-Target Group: Anyone who wants to look up terms they’re not familiar with.
+**Target Group**: Anyone who wants to look up terms they’re not familiar with.
 Explains basic terms, with a focus on terms specific to Kyma.
 
 ## Content Source
