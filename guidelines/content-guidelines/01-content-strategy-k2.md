@@ -72,7 +72,7 @@ You can use the [task topic template](../templates/resources/task.md).
 
 ### Reference topics
 
-Typically organized into one or more sections containing a list or table with data that is typically “looked up” rather than memorized.
+Typically organized into one or more sections containing a list or table with data that is usually “looked up” rather than memorized.
 
 Use nominal style for the title, for example, "Configuration Parameters".
 
