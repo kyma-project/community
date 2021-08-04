@@ -141,7 +141,7 @@ The general assumption is that the audience is familiar with the following terms
 
 ### Decision maker
 
-**Tasks**: Assess the software to make sure that it will meet the company's needs. Needs the facts – not just marketing spin – before signing on the dotted line.
+**Tasks**: Assesses the software to make sure that it meets the company's needs. Requires the facts – not just marketing spin – before signing on the dotted line.
 **Goal**: Purchase the right solution for the company, and ensure stakeholders back this decision.
 
 ### Software developer
