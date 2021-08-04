@@ -36,7 +36,7 @@ For example, specify the authorizations the user must have and which software (a
 Use a numbered list with one number for each action that the users must take. 
 
 It's good practice to describe the result of the procedure so that the users can see they accomplished the task successfully. 
-Sometimes it's also very helpful to describe the result of a specific step (don't use a number for step results, just a new line below the step).
+Sometimes it's also very helpful to describe the result of a specific step (don't use a number for step results, just a new line below the step). Remember about appropriate indentation for this line.
 
 If the task at hand is typically followed by another one, you can add a link to that other document as "Next Steps".
 -->
