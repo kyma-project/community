@@ -26,7 +26,7 @@ Remove the following components from Kyma:
 - uaa-activator
 - dex
 
-The replacement is to use directly Kubernetes API server and its features for authentication and authorization, i.e.:
+To replace the removed components, use the Kubernetes API server and its features for authentication and authorization, i.e.:
 - [Authentication with OpenId Connect Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#openid-connect-tokens)
 - [Role-based access control (RBAC) Authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
 
