@@ -16,8 +16,7 @@ The decision is to use GraphQL as API facade for the Console UI.
 
 ## Status
 
-Accepted on 2018-01-18.
-Invalid
+Invalidated on 2021-08-04.
 
 ## Consequences
 
