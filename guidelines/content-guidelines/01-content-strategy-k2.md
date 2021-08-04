@@ -181,7 +181,7 @@ Contains installation and configuration instructions, backup info, troubleshooti
 ### Technical References
 
 **Target Group**: Users who want to look up specific detailed information.
-Contains the architecture diagrams, configuration charts, etc,; no explanation of concepts or instructions.
+Contains the architecture diagrams, configuration charts, etc.; no explanation of concepts or instructions.
 
 ### Glossary
 
