@@ -4,7 +4,7 @@ title: {Document title}
 
 <!-- Use this template to write Troubleshooting instructions. You can also use it to document alarm clearing strategies.
 
-As document file name, follow the pattern {COMPONENT_ABBRV}-{NUMBER_PER_COMPONENT}-{FILE_NAME}.md}.
+For the document file name, follow the pattern `{COMPONENT_ABBRV}-{NUMBER_PER_COMPONENT}-{FILE_NAME}.md`.
 
 As document title, mention the symptom that needs fixing ("Cannot access...") or the error message. To quote an error message, start and end with `'` to escape `"`. for example, `title: '"FAILED" status for created ServiceInstances'`. Do not use the cause as title ("Incompatible version"), because we also want to help users who have no idea about the cause and only know something's not working as expected.
 
