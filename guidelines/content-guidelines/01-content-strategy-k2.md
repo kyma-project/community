@@ -127,8 +127,8 @@ For information about our diagram style, see [Diagrams](../02-diagrams.md).
 Wherever possible, present screenshots as simplified user interfaces (SUI). Basically, this means blurring out all UI elements that aren't essential for the task at hand.
 
 For more information, see:
-• <https://www.techsmith.com/blog/simplified-user-interface/>
-• <https://www.tcworld.info/e-magazine/technical-writing/simplified-graphics-and-screenshots-in-software-documentation-1102/>
+• https://www.techsmith.com/blog/simplified-user-interface/
+• https://www.tcworld.info/e-magazine/technical-writing/simplified-graphics-and-screenshots-in-software-documentation-1102/
 
 ## Target Groups
 
