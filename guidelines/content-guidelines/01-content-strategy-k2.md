@@ -58,7 +58,7 @@ You can use the [concept topic template](../templates/resources/concept.md).
 
 Provide "how-to" instructions that enable users to accomplish a task. Each task topic should tell how to perform a single, specific procedure.
 
-Select a title that describes the task that's accomplished, not the documented software feature - for example, "Define ressource consumption", not "Select a profile". You can use gerund form "Selecting...", imperative "Select...", or "How to select...".
+Select a title that describes the task that's accomplished, not the documented software feature. For example, use "Define resource consumption", not "Select a profile". You can use the gerund form "Selecting...", imperative "Select...", or "How to select...".
 
 With regards to structure, it’s nice to have an **introductory paragraph** ("why would I want to do this task?"), **prerequisites** if needed, then the **steps**, and finally the expected **result** that shows the operation was successful.
 It's good practice to have 5-9 steps; anything longer can probably be split.
