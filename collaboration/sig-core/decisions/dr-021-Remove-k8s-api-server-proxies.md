@@ -41,7 +41,7 @@ The benefits:
 - improved security (e.g. removed service accounts with powerful roles)
 - faster development and easier maintenance of Console UI 
 
-As a result of this decision following decisions are invalidated:
+As a result of this decision, the following decisions are invalidated:
 - [DR 007: GraphQL as API facade for UI](https://github.com/kyma-project/community/blob/main/collaboration/sig-core/decisions/dr-007-GraphQL_as_API_facade_for_UI.md)
 - [DR 015: Authorization for GraphQL](https://github.com/kyma-project/community/blob/main/collaboration/sig-core/decisions/dr-015-Authorization_for_GraphQL.md)
 - [DR 008: DEX as an OIDC authenticator](https://github.com/kyma-project/community/blob/main/collaboration/sig-core/decisions/dr-008-Dex_as_an_OIDC_authenticator.md)
