@@ -8,7 +8,7 @@ You can use this template for any step-by-step instruction, no matter whether it
 
 For the document file name, follow the pattern `{COMPONENT_ABBRV}-{NUMBER_PER_COMPONENT}-{FILE_NAME}.md`.
 
-Select a title that describes the task that's accomplished, not the documented software feature - for example, "Define ressource consumption", not "Select a profile". You can use gerund form "Selecting...", imperative "Select...", or "How to select...".
+Select a title that describes the task that's accomplished, not the documented software feature. For example, use "Define resource consumption", not "Select a profile". You can use the gerund form "Selecting...", imperative "Select...", or "How to select...".
 
 With regards to structure, it’s nice to have an **introductory paragraph** ("why would I want to do this task?"), **prerequisites** if needed, then the **steps**, and finally the expected **result** that shows the operation was successful.
 It's good practice to have 5-9 steps; anything longer can probably be split.
