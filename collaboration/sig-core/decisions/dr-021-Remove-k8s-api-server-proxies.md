@@ -36,7 +36,7 @@ To replace the removed components, use the Kubernetes API server and its feature
 In consequence, there is no pre-configured Auth model for Grafana, Kiali, or Jaeger exposure. We decided to have an [OAuth2 Proxy](https://github.com/oauth2-proxy/oauth2-proxy) in front of all these UIs with a default configuration that points to documentation. Here port-forwarding is described as well as a guide on how to configure the proxy with OIDC, see also https://github.com/kyma-project/kyma/issues/11181
 
 The benefits:
-- faster installation and lower resource consumption (6 components less),
+- faster installation and lower resource consumption (6 components removed),
 - reduced complexity of the authentication and authorization flow,
 - improved security (e.g. removed service accounts with powerful roles),
 - faster development and easier maintenance of the Console UI.
