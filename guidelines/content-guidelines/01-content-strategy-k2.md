@@ -175,7 +175,7 @@ Under this tab, there are subtabs according to main areas (except UI – Busola 
 
 ### Operations
 
-Target Group: Admins/Operators who make sure the Kyma cluster is configured as needed and keeps running in a healthy and secure way.
+**Target Group**: Admins/Operators who make sure the Kyma cluster is configured as needed and keeps running in a healthy and secure way.
 Contains installation and configuration instructions, backup info, troubleshooting guides…
 
 ### Technical References
