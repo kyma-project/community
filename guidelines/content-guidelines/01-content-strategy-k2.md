@@ -29,7 +29,7 @@ title: Content Strategy K2.0
 
 ## Purpose and Audience
 
-This content strategy focuses on the publicly available documentation under <https://kyma-project.io/docs/>.
+This content strategy focuses on the publicly available documentation under https://kyma-project.io/docs/.
 More documentation may be found in the [Kyma](https://github.com/kyma-project/kyma) GitHub repositories.
 
 The assumed reader of this guide has some basic knowledge of technical writing. To learn more, read the excellent [Istio document about adding documentation](https://istio.io/latest/docs/releases/contribute/add-content/).
