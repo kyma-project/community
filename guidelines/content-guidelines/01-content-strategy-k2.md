@@ -36,7 +36,7 @@ The assumed reader of this guide has some basic knowledge of technical writing. 
 
 ## Information types
 
-We follow a topic-based documentation approach, with one file per topic. Every documentation file has a clearly defined purpose, which is reflected in the title. The content must be able to stand on its own, but links should point to other documents as needed.
+We follow a topic-based documentation approach, with one file per topic. Every documentation file has a clearly defined purpose, which is reflected in the title. The content must be able to stand on its own, but you may use links to point to other documents as needed.
 
 *For the structure within topics, I suggest to follow the DITA standard – because it’s pretty simple, it’s well-established, and it’s what is used in SKR documentation. Instead of currently 12-13 content types, we should thus be able to get away with just four (or five) types:*
 
