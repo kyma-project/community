@@ -21,9 +21,9 @@ It's good practice to have 5-9 steps; anything longer can probably be split.
 
 ## Prerequisites
 
-<!-- Describes information that the user needs to know or do before starting the immediate task. 
+<!-- Describes information that the user needs to know or things they need to do or have before starting the immediate task. 
 If it's more than one prerequisite, use an unordered list.
-For example, specify the authorizations the user must have and which software (and versions) must be installed already.
+For example, specify the authorizations the user must have and what software (and versions) must be installed already.
  -->
 
 - 
