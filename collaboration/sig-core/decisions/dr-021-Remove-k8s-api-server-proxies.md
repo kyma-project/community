@@ -1,6 +1,6 @@
 # DR 021: Remove components proxying requests to Kubernetes API server
 
-Created on 2021-07-12 by Piotr Bochyński (@pbochynski)}.
+Created on 2021-07-12 by Piotr Bochyński (@pbochynski).
 
 ## Decision log
 
