@@ -39,7 +39,7 @@ The benefits:
 - faster installation and lower resource consumption (6 components less),
 - reduced complexity of authentication and authorization flow
 - improved security (e.g. removed service accounts with powerful roles)
-- faster development and easier maintenance of Console UI 
+- faster development and easier maintenance of the Console UI.
 
 As a result of this decision, the following decisions are invalidated:
 - [DR 007: GraphQL as API facade for UI](https://github.com/kyma-project/community/blob/main/collaboration/sig-core/decisions/dr-007-GraphQL_as_API_facade_for_UI.md)
