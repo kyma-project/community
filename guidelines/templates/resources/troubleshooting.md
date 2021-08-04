@@ -13,7 +13,7 @@ It's good practice to use three standard headlines (like “Condition”, “Cau
 
 ## Symptom
 
-<!-- Describe the problem from the user's perspective. Provide an undesirable condition or symptom that the user may want to correct. This could be an error message or an undesirable state.
+<!-- Describe the problem from the user's perspective. Provide the undesirable condition or symptom that the user may want to correct. This could be an error message or an undesirable state.
 If the document title fully explains the problem, you don't need this section.
 -->
 
