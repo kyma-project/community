@@ -6,7 +6,7 @@ Created on 2021-07-12 by Piotr Bochyński (@pbochynski)}.
 
 | Name | Description |
 |-----------------------|------------------------------------------------------------------------------------|
-| Title | Remove components proxying requests to Kubernetes API server |
+| Title | Remove components proxying requests to the Kubernetes API server |
 | Due date | 2021-07-19 |
 | Status | Proposed on 2021-07-12, Accepted on 2021-08-04|
 | Decision type | Binary |
@@ -45,4 +45,3 @@ As a result of this decision following decisions are invalidated:
 - [DR 007: GraphQL as API facade for UI](https://github.com/kyma-project/community/blob/main/collaboration/sig-core/decisions/dr-007-GraphQL_as_API_facade_for_UI.md)
 - [DR 015: Authorization for GraphQL](https://github.com/kyma-project/community/blob/main/collaboration/sig-core/decisions/dr-015-Authorization_for_GraphQL.md)
 - [DR 008: DEX as an OIDC authenticator](https://github.com/kyma-project/community/blob/main/collaboration/sig-core/decisions/dr-008-Dex_as_an_OIDC_authenticator.md)
-
