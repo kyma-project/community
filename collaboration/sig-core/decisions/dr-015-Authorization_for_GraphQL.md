@@ -45,7 +45,7 @@ will be implemented.
 
 ## Status
 
-Proposed on 2018-06-15.
+Invalidated on 2021-08-04.
 
 ## Consequences
 

@@ -28,7 +28,7 @@ The decision is to use [Dex](https://github.com/coreos/dex) as an authentication
 
 ## Status
 
-Accepted on 2018-03-01.
+Invalidated on 2021-08-04.
 
 ## Consequences
 
