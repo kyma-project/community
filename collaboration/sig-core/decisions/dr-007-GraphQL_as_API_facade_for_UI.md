@@ -1,6 +1,7 @@
-# DR 007: GraphQL as API facade for UI
+# DR 007: (INVALID) GraphQL as API facade for UI 
 
 Created on 2018-01-18 by Łukasz Górnicki (@derberg).
+Invalidated on 2021-08-04 by [DR 021: Remove components proxying requests to the Kubernetes API server](dr-021-Remove-k8s-api-server-proxies.md).
 
 ## Context
 
@@ -16,7 +17,7 @@ The decision is to use GraphQL as API facade for the Console UI.
 
 ## Status
 
-Accepted on 2018-01-18.
+Invalidated on 2021-08-04.
 
 ## Consequences
 

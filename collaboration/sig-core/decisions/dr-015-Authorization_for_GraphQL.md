@@ -1,6 +1,7 @@
-# DR 015: Authorization for GraphQL
+# DR 015: (INVALID) Authorization for GraphQL
 
 Created on 2018-06-15 by Damian Pacierpnik (@damianpacierpnikatsap).
+Invalidated on 2021-08-04 by [DR 021: Remove components proxying requests to the Kubernetes API server](dr-021-Remove-k8s-api-server-proxies.md).
 
 ## Context
 
@@ -44,7 +45,7 @@ will be implemented.
 
 ## Status
 
-Proposed on 2018-06-15.
+Invalidated on 2021-08-04.
 
 ## Consequences
 
