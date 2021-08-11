@@ -13,7 +13,7 @@ trap on_error ERR
 readonly KYMA_PROJECT_IO_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 readonly WEBSITE_DIR="website"
-readonly WEBSITE_REPO="https://github.com/kyma-project/website"
+readonly WEBSITE_REPO="https://github.com/dbadura/website"
 
 readonly BUILD_DIR="${KYMA_PROJECT_IO_DIR}/${WEBSITE_DIR}"
 
@@ -38,12 +38,16 @@ remove-cached-content() {
 }
 
 copy-website-repo() {
-  git clone -b "main" --single-branch "${WEBSITE_REPO}" "${WEBSITE_DIR}"
+  git clone -b "new-navigation-tree" --single-branch "${WEBSITE_REPO}" "${WEBSITE_DIR}"
 }
 
 build-preview() {
   export APP_PREVIEW_SOURCE_DIR="${KYMA_PROJECT_IO_DIR}/.."
   make -C "${BUILD_DIR}" netlify-community-preview
+}
+
+add-redirect() {
+  echo "/ /community/" > "${BUILD_DIR}"/public/_redirects
 }
 
 main() {
@@ -58,5 +62,9 @@ main() {
   step "Building preview"
   build-preview
   pass "Builded"
+
+  step "Add redirect"
+  add-redirect
+  pass "Added"
 }
 main
