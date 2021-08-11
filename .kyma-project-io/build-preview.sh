@@ -46,6 +46,10 @@ build-preview() {
   make -C "${BUILD_DIR}" netlify-community-preview
 }
 
+add-redirect() {
+  echo "/ /community/" > "${BUILD_DIR}"/public/_redirects
+}
+
 main() {
   step "Remove website cached content"
   remove-cached-content
@@ -58,5 +62,9 @@ main() {
   step "Building preview"
   build-preview
   pass "Builded"
+
+  step "Add redirect"
+  add-redirect
+  pass "Added"
 }
 main
