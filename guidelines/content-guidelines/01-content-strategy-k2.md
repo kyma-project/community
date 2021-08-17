@@ -12,7 +12,7 @@ title: Content Strategy K2.0
   - [Troubleshooting topics](#troubleshooting-topics)
   - [Release Notes](#release-notes)
 - [Graphics](#graphics)
-  - [Architecture and Flow Diagrams](#architecture-and-flow-diagrams)
+  - [Architecture and flow diagrams](#architecture-and-flow-diagrams)
   - [Screenshots](#screenshots)
 - [Target Groups](#target-groups)
   - [Decision maker](#decision-maker)
