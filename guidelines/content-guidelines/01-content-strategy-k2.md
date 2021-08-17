@@ -135,7 +135,7 @@ Contains a quick overview of the idea behind Kyma, a diagram of the main areas w
 **Target Group**: Software Developers who quickly want to see what they can do with Kyma.
 Contains a guide/tutorial that covers typical steps you need to perform to get started.
 
-### Deep Dive/Tutorials
+### Tutorials
 
 **Target Group**: Software Developers leveraging all the Kyma functionalities.
 Under this tab, there are subtabs according to main areas (except UI – user interfaces are mentioned as needed within the instructions of the respective main area). Documents in the subtabs contain "how-to" instructions that enable users to accomplish a task
