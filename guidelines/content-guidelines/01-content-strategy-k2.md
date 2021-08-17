@@ -75,7 +75,7 @@ Learn more about [Reference Topics](http://docs.oasis-open.org/dita/dita/v1.3/er
 
 ### Troubleshooting topics
 
-Provide a condition that the reader may want to correct, followed by one or more descriptions of its cause and suggested remedies.
+Troubleshooting topics provide a condition that the reader may want to correct, followed by one or more descriptions of its cause and suggested remedies.
 
 In the title, mention the symptom that needs fixing ("Cannot access...") or the error message. To quote an error message, start and end with `'` to escape `"` (because quotation marks `"` themselves do not display correctly on the website), for example, `title: '"FAILED" status for created ServiceInstances'`. Do not use the cause as title ("Incompatible version"), because we also want to help users who have no idea about the cause and only know something's not working as expected.
 
