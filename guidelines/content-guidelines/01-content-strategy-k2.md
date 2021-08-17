@@ -18,7 +18,7 @@ title: Content Strategy K2.0
   - [Decision maker](#decision-maker)
   - [Software developer](#software-developer)
   - [Admin/Operations](#adminoperations)
-- [Documentation Structure](#documentation-structure)
+- [Documentation structure](#documentation-structure)
   - [Overview](#overview)
   - [Getting Started](#getting-started)
   - [Deep Dive/Tutorials](#deep-divetutorials)
