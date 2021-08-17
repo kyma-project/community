@@ -86,7 +86,7 @@ Learn more about [Troubleshooting Topics](http://docs.oasis-open.org/dita/dita/v
 
 ### Release notes
 
-Announce what's new in Kyma.
+Release notes announce what's new in Kyma.
 
 After an introductory paragraph that outlines the city that's the namesake of the current release, a list briefly presents the new and changed features. Links lead to longer paragraphs that describe the changes in more detail.
 
