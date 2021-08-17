@@ -1,5 +1,5 @@
 # Default owners of the repository
-* @kazydek @klaudiagrz @mmitoraj @majakurcius @alexandra-simeonova @superojla @nhingerl
+* @klaudiagrz @mmitoraj @majakurcius @alexandra-simeonova @NHingerl
 
 # Owners of the manifesto-app folder
 /manifesto-app/ @m00g3n
@@ -8,7 +8,7 @@
 /collaboration/ @PK85
 
 # Owners of all .md files in the repository
-*.md @kazydek @klaudiagrz @mmitoraj @majakurcius @alexandra-simeonova @superojla @nhingerl
+*.md @klaudiagrz @mmitoraj @majakurcius @alexandra-simeonova @NHingerl
 
 # Owners of the .kyma-project-io folder
 /.kyma-project-io/ @m00g3n
