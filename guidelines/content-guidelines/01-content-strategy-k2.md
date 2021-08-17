@@ -42,7 +42,7 @@ Here are the content types that we use in Kyma documentation:
 
 ### Concept topics
 
-Answer "what-is" questions and provide essential background information that users must know.
+Concept topics answer "what-is" questions and provide essential background information that users must know.
 You'll find most concept topics in the Overview section, but they can be useful elsewhere too.
 
 Use nominal style for the title, for example, "Security" or "Security Concept".
