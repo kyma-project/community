@@ -140,7 +140,7 @@ Contains a guide/tutorial that covers typical steps you need to perform to get s
 **Target Group**: Software Developers leveraging all the Kyma functionalities.
 Under this tab, there are subtabs according to main areas (except UI – user interfaces are mentioned as needed within the instructions of the respective main area). Documents in the subtabs contain "how-to" instructions that enable users to accomplish a task
 
-### Operations
+### Operation guides
 
 **Target Group**: Admins/Operators who make sure the Kyma cluster is configured as needed and keeps running in a healthy and secure way.
 Contains installation and configuration instructions, backup info, troubleshooting guides…
