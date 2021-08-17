@@ -12,16 +12,16 @@ title: Content Strategy K2.0
   - [Troubleshooting topics](#troubleshooting-topics)
   - [Release Notes](#release-notes)
 - [Graphics](#graphics)
-  - [Architecture and Flow Diagrams](#architecture-and-flow-diagrams)
+  - [Architecture and flow diagrams](#architecture-and-flow-diagrams)
   - [Screenshots](#screenshots)
 - [Target Groups](#target-groups)
   - [Decision maker](#decision-maker)
   - [Software developer](#software-developer)
   - [Admin/Operations](#adminoperations)
-- [Documentation Structure](#documentation-structure)
+- [Documentation structure](#documentation-structure)
   - [Overview](#overview)
   - [Getting Started](#getting-started)
-  - [Deep Dive/Tutorials](#deep-divetutorials)
+  - [Tutorials](#tutorials)
   - [Operations](#operations)
   - [Technical References](#technical-references)
   - [Glossary](#glossary)
@@ -29,8 +29,8 @@ title: Content Strategy K2.0
 
 ## Purpose and audience
 
-This content strategy focuses on the publicly available documentation under https://kyma-project.io/docs/.
-More documentation may be found in the [Kyma](https://github.com/kyma-project/kyma) GitHub repositories.
+This content strategy focuses on the publicly available documentation for the open-source [Kyma project](https://kyma-project.io/docs/).
+The source of the documentation displayed on the website is stored in [GitHub](https://github.com/kyma-project/kyma).
 
 The assumed reader of this guide has some basic knowledge of technical writing.
 
@@ -42,7 +42,7 @@ Here are the content types that we use in Kyma documentation:
 
 ### Concept topics
 
-Answer "what-is" questions and provide essential background information that users must know.
+Concept topics answer "what-is" questions and provide essential background information that users must know.
 You'll find most concept topics in the Overview section, but they can be useful elsewhere too.
 
 Use nominal style for the title, for example, "Security" or "Security Concept".
@@ -63,7 +63,7 @@ For all step instructions, use the [task topic template](../templates/resources/
 
 ### Reference topics
 
-Typically organized into one or more sections containing a list or table with data that is usually “looked up” rather than memorized.
+Reference topics are typically organized into one or more sections containing a list or table with data that is usually looked up rather than memorized.
 
 Use nominal style for the title, for example, "Configuration Parameters".
 
@@ -75,7 +75,7 @@ Learn more about [Reference Topics](http://docs.oasis-open.org/dita/dita/v1.3/er
 
 ### Troubleshooting topics
 
-Provide a condition that the reader may want to correct, followed by one or more descriptions of its cause and suggested remedies.
+Troubleshooting topics provide a condition that the reader may want to correct, followed by one or more descriptions of its cause and suggested remedies.
 
 In the title, mention the symptom that needs fixing ("Cannot access...") or the error message. To quote an error message, start and end with `'` to escape `"` (because quotation marks `"` themselves do not display correctly on the website), for example, `title: '"FAILED" status for created ServiceInstances'`. Do not use the cause as title ("Incompatible version"), because we also want to help users who have no idea about the cause and only know something's not working as expected.
 
@@ -86,7 +86,7 @@ Learn more about [Troubleshooting Topics](http://docs.oasis-open.org/dita/dita/v
 
 ### Release notes
 
-Announce what's new in Kyma.
+Release notes announce what's new in Kyma.
 
 After an introductory paragraph that outlines the city that's the namesake of the current release, a list briefly presents the new and changed features. Links lead to longer paragraphs that describe the changes in more detail.
 
@@ -137,13 +137,13 @@ Contains a quick overview of the idea behind Kyma, a diagram of the main areas w
 
 Contains a guide/tutorial that covers typical steps you need to perform to get started.
 
-### Deep Dive/Tutorials
+### Tutorials
 
 **Target Group**: Software Developers leveraging all the Kyma functionalities.
 
 Under this tab, there are subtabs according to main areas (except UI – user interfaces are mentioned as needed within the instructions of the respective main area). Documents in the subtabs contain "how-to" instructions that enable users to accomplish a task
 
-### Operations
+### Operation guides
 
 **Target Group**: Admins/Operators who make sure the Kyma cluster is configured as needed and keeps running in a healthy and secure way.
 
