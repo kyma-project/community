@@ -45,6 +45,10 @@ If the task at hand is typically followed by another one, you can add a link to 
 2. 
 3. 
 
-Result: 
+Result:
 
-Next Steps: 
+<!-- not mandatory, but recommended. Help the reader to be sure they accomplished the task successfully. -->
+
+Next Steps:
+
+<!-- optional - might be useful if another activity typically follows this one -->

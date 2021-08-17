@@ -27,7 +27,7 @@ title: Content Strategy K2.0
   - [Glossary](#glossary)
 - [Content Source](#content-source)
 
-## Purpose and Audience
+## Purpose and audience
 
 This content strategy focuses on the publicly available documentation under https://kyma-project.io/docs/.
 More documentation may be found in the [Kyma](https://github.com/kyma-project/kyma) GitHub repositories.
@@ -38,7 +38,7 @@ The assumed reader of this guide has some basic knowledge of technical writing. 
 
 We follow a topic-based documentation approach, with one file per topic. Every documentation file has a clearly defined purpose, which is reflected in the title. The content must be able to stand on its own, but you may use links to point to other documents as needed.
 
-*For the structure within topics, I suggest to follow the DITA standard – because it’s pretty simple, it’s well-established, and it’s what is used in SKR documentation. Instead of currently 12-13 content types, we should thus be able to get away with just four (or five) types:*
+Here are the content types that we use in Kyma documentation:
 
 ### Concept topics
 
@@ -47,12 +47,8 @@ You'll find most concept topics in the Overview section, but they can be useful 
 
 Use nominal style for the title, for example, "Security" or "Security Concept".
 
-*Not sure we need much predefined structure here; it may depend on the content.*
-
-> [- DITA Concept Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-concept-topic.html)
-> Conceptual information might explain the nature and components of a product and describe how it fits into a category of products. Conceptual information helps readers to map their knowledge and understanding to the tasks they need to perform and to provide other essential information about a product, process, or system.
-
-You can use the [concept topic template](../templates/resources/concept.md).
+For all concept topics, use the [concept topic template](../templates/resources/concept.md).
+Learn more about [Concept Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-concept-topic.html).
 
 ### Task (tutorial) topics
 
@@ -60,15 +56,10 @@ Provide "how-to" instructions that enable users to accomplish a task. Each task 
 
 Select a title that describes the task that's accomplished, not the documented software feature. For example, use "Define resource consumption", not "Select a profile". You can use the gerund form "Selecting...", imperative "Select...", or "How to select...".
 
-With regards to structure, it’s nice to have an **introductory paragraph** ("why would I want to do this task?"), **prerequisites** if needed, then the **steps**, and finally the expected **result** that shows the operation was successful.
+With regards to structure, it’s nice to have an **introductory paragraph** ("why would I want to do this task?"), **prerequisites** if needed, then the **steps** in a numbered list, and finally the expected **result** that shows the operation was successful.
 It's good practice to have 5-9 steps; anything longer can probably be split.
 
-*For longer code blocks, I'd like to use an expandable section as described [here](https://gist.github.com/pierrejoubert73/902cc94d79424356a8d20be2b382e1ab) - but not sure whether our website supports this.*
-
-> [- Dita Task Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-task-topic.html)
-> A task information type answers the "How do I?" question by providing precise step-by-step instructions detailing the requirements that must be fulfilled, the actions that must be performed, and the order in which the actions must be performed. The task topic includes sections for describing the context, prerequisites, expected results, and other aspects of a task.
-
-You can use the [task topic template](../templates/resources/task.md).
+For all step instructions, use the [task topic template](../templates/resources/task.md) and learn more about [Task Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-task-topic.html).
 
 ### Reference topics
 
@@ -78,39 +69,22 @@ Use nominal style for the title, for example, "Configuration Parameters".
 
 *In our case, architecture diagrams could fall into this category – we could also choose to define them as a separate type – TBD.*
 
-> [- DITA Reference Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-reference-topic.html)
-> Reference topics provide quick access to fact-based information. In technical information, reference topics are used to list product specifications and parameters, provide essential data, and provide detailed information on subjects such as the commands in a programming language.
+Reference topics provide quick access to fact-based information. In technical information, reference topics are used to list product specifications and parameters, provide essential data, and provide detailed information on subjects such as the commands in a programming language.
+
+Learn more about [Reference Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-reference-topic.html).
 
 ### Troubleshooting topics
 
 Provide a condition that the reader may want to correct, followed by one or more descriptions of its cause and suggested remedies.
 
-As title, mention the symptom that needs fixing ("Cannot access...") or the error message. To quote an error message, start and end with `'` to escape `"`. for example, `title: '"FAILED" status for created ServiceInstances'`. Do not use the cause as title ("Incompatible version"), because we also want to help users who have no idea about the cause and only know something's not working as expected.
+In the title, mention the symptom that needs fixing ("Cannot access...") or the error message. To quote an error message, start and end with `'` to escape `"` (because quotation marks `"` themselves do not display correctly on the website), for example, `title: '"FAILED" status for created ServiceInstances'`. Do not use the cause as title ("Incompatible version"), because we also want to help users who have no idea about the cause and only know something's not working as expected.
 
-It's good practice to use three standard headlines (like “Condition”, “Cause”, “Remedy”), each might have just one sentence or more as needed. For remedy, use a numbered list if there are multiple steps to follow, and a bullet list if there are several equally valid solutions.
+It's good practice to use three standard headlines (like “Condition”, “Cause”, “Remedy”), each might have just one sentence or more as needed. For remedy, use a numbered list if there are multiple steps to follow, and a bullet list or sub-headlines if there are several equally valid solutions.
 
-> [- DITA Troubleshooting Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-troubleshooting-topic.html)
-> In its simplest form, troubleshooting information follows this pattern:
->
-> 1. A condition or symptom. Usually the condition or symptom is an undesirable state in a system, a product, or a service that a reader wants to correct.
-> 2. A cause for the condition or symptom.
-> 3. A remedy for the condition or symptom.
->
-> The troubleshooting topic provides sections for describing the condition, causes, and remedies needed to restore a system, a product, or a service to normal.
->
-> For some conditions there could be more than one cause-remedy pair. The troubleshooting topic accommodates this. Typically, a cause is immediately followed by its remedy. Multiple cause-remedy pairs can provide a series of successive fall-backs for resolving a condition.
->
-> Cause and remedy might occur in combinations other than pairs. It is possible to have:
->
-> - Multiple causes with the same remedy
-> - A single cause with more than one remedy
-> - A remedy with no known cause
-> - A cause with no known remedy
-> The troubleshooting information type also can be used to document alarm clearing strategies.
+For all troubleshooting topics, use the [troubleshooting topic template](../templates/resources/troubleshooting.md).
+Learn more about [Troubleshooting Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-troubleshooting-topic.html).
 
-You can use the [troubleshooting topic template](../templates/resources/troubleshooting.md).
-
-### Release Notes
+### Release notes
 
 Announce what's new in Kyma.
 
@@ -118,19 +92,15 @@ After an introductory paragraph that outlines the city that's the namesake of th
 
 ## Graphics
 
-### Architecture and Flow Diagrams
+### Architecture and flow diagrams
 
 For information about our diagram style, see [Diagrams](../02-diagrams.md).
 
 ### Screenshots
 
-Wherever possible, present screenshots as simplified user interfaces (SUI). Basically, this means blurring out all UI elements that aren't essential for the task at hand.
+For information about Screenshots, see [Screenshots](../07-diagrams.md).
 
-For more information, see:
-• https://www.techsmith.com/blog/simplified-user-interface/
-• https://www.tcworld.info/e-magazine/technical-writing/simplified-graphics-and-screenshots-in-software-documentation-1102/
-
-## Target Groups
+## Target groups
 
 The general assumption is that the audience is familiar with the following terms and does not require the explanation of technical concepts behind them:
 
@@ -141,20 +111,17 @@ The general assumption is that the audience is familiar with the following terms
 
 ### Decision maker
 
-**Tasks**: Assesses the software to make sure that it meets the company's needs. Requires the facts – not just marketing spin – before signing on the dotted line.
-**Goal**: Purchase the right solution for the company, and ensure stakeholders back this decision.
+Assesses the software to make sure that it meets the company's needs. Requires the facts – not just marketing spin – before signing on the dotted line. Wants to purchase the right solution for the company, and ensure stakeholders back this decision.
 
 ### Software developer
 
-**Tasks**: Interested in technical topics. Solid knowledge of programming languages. Experienced in programming and development projects. Expert in the technical or business area. Uses and contributes to community content.
-**Goal**: Develop and enhance software.
+Interested in technical topics. Solid knowledge of programming languages. Experienced in programming and development projects. Expert in the technical or business area. Uses and contributes to community content. Wants to develop, maintain, and enhance software.
 
 ### Admin/Operations
 
-**Tasks**: Deals with installation, upgrades, system troubleshooting.
-**Goal**: Support the ongoing operations and evolution of the Kyma implementation.
+Deals with installation, upgrades, system troubleshooting. Wants to support the ongoing operations and evolution of the Kyma implementation.
 
-## Documentation Structure
+## Documentation structure
 
 On the Kyma website, we have five main tabs containing multiple documents each, plus a glossary.
 
@@ -171,7 +138,7 @@ Contains a guide/tutorial that covers typical steps you need to perform to get s
 ### Deep Dive/Tutorials
 
 **Target Group**: Software Developers leveraging all the Kyma functionalities.
-Under this tab, there are subtabs according to main areas (except UI – Busola and CLI are mentioned as needed within the instructions of the respective main area). Documents in the subtabs contain "how-to" instructions that enable users to accomplish a task
+Under this tab, there are subtabs according to main areas (except UI – user interfaces are mentioned as needed within the instructions of the respective main area). Documents in the subtabs contain "how-to" instructions that enable users to accomplish a task
 
 ### Operations
 
@@ -188,6 +155,6 @@ Contains the architecture diagrams, configuration charts, etc.; no explanation o
 **Target Group**: Anyone who wants to look up terms they’re not familiar with.
 Explains basic terms, with a focus on terms specific to Kyma.
 
-## Content Source
+## Content source
 
 We write the content in [Markdown](https://daringfireball.net/projects/markdown/) and store it in [Git](https://git-scm.com/) repositories.
