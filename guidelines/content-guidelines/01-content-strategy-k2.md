@@ -63,7 +63,7 @@ For all step instructions, use the [task topic template](../templates/resources/
 
 ### Reference topics
 
-Typically organized into one or more sections containing a list or table with data that is usually “looked up” rather than memorized.
+Reference topics are typically organized into one or more sections containing a list or table with data that is usually looked up rather than memorized.
 
 Use nominal style for the title, for example, "Configuration Parameters".
 
