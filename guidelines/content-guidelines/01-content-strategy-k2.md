@@ -32,7 +32,7 @@ title: Content Strategy K2.0
 This content strategy focuses on the publicly available documentation under https://kyma-project.io/docs/.
 More documentation may be found in the [Kyma](https://github.com/kyma-project/kyma) GitHub repositories.
 
-The assumed reader of this guide has some basic knowledge of technical writing. To learn more, read the excellent [Istio document about adding documentation](https://istio.io/latest/docs/releases/contribute/add-content/).
+The assumed reader of this guide has some basic knowledge of technical writing.
 
 ## Information types
 
@@ -50,9 +50,9 @@ Use nominal style for the title, for example, "Security" or "Security Concept".
 For all concept topics, use the [concept topic template](../templates/resources/concept.md).
 Learn more about [Concept Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-concept-topic.html).
 
-### Task (tutorial) topics
+### Task topics
 
-Provide "how-to" instructions that enable users to accomplish a task. Each task topic should tell how to perform a single, specific procedure.
+Task topics provide "how-to" instructions that enable users to accomplish a task. Each task topic should tell how to perform a single, specific procedure.
 
 Select a title that describes the task that's accomplished, not the documented software feature. For example, use "Define resource consumption", not "Select a profile". You can use the gerund form "Selecting...", imperative "Select...", or "How to select...".
 
@@ -128,31 +128,37 @@ On the Kyma website, we have five main tabs containing multiple documents each, 
 ### Overview
 
 **Target Group**: Decision Makers (Tech Leads) and newbies.
+
 Contains a quick overview of the idea behind Kyma, a diagram of the main areas with a brief explanation, and, as needed, longer documents going into the details of each main area.
 
 ### Getting Started
 
 **Target Group**: Software Developers who quickly want to see what they can do with Kyma.
+
 Contains a guide/tutorial that covers typical steps you need to perform to get started.
 
 ### Deep Dive/Tutorials
 
 **Target Group**: Software Developers leveraging all the Kyma functionalities.
+
 Under this tab, there are subtabs according to main areas (except UI – user interfaces are mentioned as needed within the instructions of the respective main area). Documents in the subtabs contain "how-to" instructions that enable users to accomplish a task
 
 ### Operations
 
 **Target Group**: Admins/Operators who make sure the Kyma cluster is configured as needed and keeps running in a healthy and secure way.
-Contains installation and configuration instructions, backup info, troubleshooting guides…
+
+Contains installation and configuration instructions, backup info, security documentation, troubleshooting guides…
 
 ### Technical References
 
 **Target Group**: Users who want to look up specific detailed information.
+
 Contains the architecture diagrams, configuration charts, etc.; no explanation of concepts or instructions.
 
 ### Glossary
 
 **Target Group**: Anyone who wants to look up terms they’re not familiar with.
+
 Explains basic terms, with a focus on terms specific to Kyma.
 
 ## Content source
