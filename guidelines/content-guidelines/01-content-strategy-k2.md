@@ -14,7 +14,7 @@ title: Content Strategy K2.0
 - [Graphics](#graphics)
   - [Architecture and flow diagrams](#architecture-and-flow-diagrams)
   - [Screenshots](#screenshots)
-- [Target Groups](#target-groups)
+- [Target groups](#target-groups)
   - [Decision maker](#decision-maker)
   - [Software developer](#software-developer)
   - [Admin/Operations](#adminoperations)
