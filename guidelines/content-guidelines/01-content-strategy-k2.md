@@ -25,7 +25,7 @@ title: Content Strategy K2.0
   - [Operations](#operations)
   - [Technical References](#technical-references)
   - [Glossary](#glossary)
-- [Content Source](#content-source)
+- [Content source](#content-source)
 
 ## Purpose and audience
 
