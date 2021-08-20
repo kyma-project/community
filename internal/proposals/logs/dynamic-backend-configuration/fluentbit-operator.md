@@ -27,6 +27,7 @@ In addition, it supports dynamic reloading, which means it updates the configura
 | Support setting imagePullSecrets for both [operator](https://github.com/fluent/fluentbit-operator/pull/93/files) and [fluentbit](https://github.com/fluent/fluentbit-operator/pull/94/files) | Nice to have. | Not implemented.
 | Add switch to input.tail.memBufLimit in helm chart |  | Implemented. |
 | Add [fluent-bit-watcher](https://github.com/fluent/fluentbit-operator/pull/62/files). | Kinda does what the basic-function of kubebuilder operator does (restart pods, cheks if FluentBit is running, etc.), but maybe this works more efficient |
+
 **Enhancements:**
 
 * Use hostpath instead of emptydir to store position db #72
