@@ -15,3 +15,5 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Karolina Zydek (**[@kazydek](https://github.com/kazydek)**) contributing as a Technical Writer to `area/serverless`, `area/core-and-supporting`, and the overall Kyma documentation.
 * Julia Iskierka (**[@colunira](https://github.com/colunira)**) involved in `area/installation`, `area/service-mesh`, `area/security`, and `area/api-gateway`.
 * Piotr Mścichowski (**[@piotrmsc](https://github.com/piotrmsc)**) involved in `area/installation`, `area/service-mesh`, `area/security`, and `area/api-gateway`.
+* Michał Budzyn (**[@everesio](https://github.com/everesio)**) involved in `area/application-connector`.
+* Jan Sudczak (**[@parostatkiem](https://github.com/parostatkiem)**) involved in `area/console`, `area/ci`.
