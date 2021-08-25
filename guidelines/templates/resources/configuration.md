@@ -13,7 +13,8 @@ To configure the {Component name} {sub-}chart, override the default values of it
 
 <!-- Use the tip feature to provide links to the documentation about Kyma configuration. Also add a link to examples of either top-level charts overrides for charts configuration documents or sub-charts overrides for sub-chart configuration documents.-->
 
-**TIP:** To learn how to override configuration values in Kyma, see [Helm overrides for Kyma installation](/root/kyma/#configuration-helm-overrides-for-kyma-installation)
+**TIP:** To learn how to override configuration values in Kyma, see [Change Kyma settings
+]((https://kyma-project.io/docs/04-operation-guides/operations/03-change-kyma-config-values.md)
 
 ## Configurable parameters
 
