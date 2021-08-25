@@ -54,7 +54,7 @@ Learn more about [Concept Topics](http://docs.oasis-open.org/dita/dita/v1.3/erra
 
 Task topics provide "how-to" instructions that enable users to accomplish a task. Each task topic should tell how to perform a single, specific procedure.
 
-Select a title that describes the task that's accomplished, not the documented software feature. For example, use "Define resource consumption", not "Select a profile". You can use the gerund form "Selecting...", imperative "Select...", or "How to select...".
+Select a title that describes the task that's accomplished, not the documented software feature. For example, use "Define resource consumption", not "Select a profile". Use the imperative "Select...", rather than gerund form "Selecting..." or "How to select...".
 
 With regards to structure, it’s nice to have an **introductory paragraph** ("why would I want to do this task?"), **prerequisites** if needed, then the **steps** in a numbered list, and finally the expected **result** that shows the operation was successful.
 It's good practice to have 5-9 steps; anything longer can probably be split.
@@ -67,9 +67,9 @@ Reference topics are typically organized into one or more sections containing a 
 
 Use nominal style for the title, for example, "Configuration Parameters".
 
-*In our case, architecture diagrams could fall into this category – we could also choose to define them as a separate type – TBD.*
-
 Reference topics provide quick access to fact-based information. In technical information, reference topics are used to list product specifications and parameters, provide essential data, and provide detailed information on subjects such as the commands in a programming language.
+
+Use the templates for [architecture documents](../templates/resources/architecture.md), [configuration parameter charts](../templates/resources/configuration.md), and [Custom Resources](../templates/resources/custom-resource.md).
 
 Learn more about [Reference Topics](http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/archSpec/technicalContent/dita-reference-topic.html).
 
@@ -88,7 +88,7 @@ Learn more about [Troubleshooting Topics](http://docs.oasis-open.org/dita/dita/v
 
 Release notes announce what's new in Kyma.
 
-After an introductory paragraph that outlines the city that's the namesake of the current release, a list briefly presents the new and changed features. Links lead to longer paragraphs that describe the changes in more detail.
+After an introductory paragraph, a list briefly presents the new and changed features. Links lead to longer paragraphs that describe the changes in more detail.
 
 ## Graphics
 
@@ -107,8 +107,6 @@ The general assumption is that the audience is familiar with the following terms
 - Kubernetes
 - Docker and containers
 
-<!-- Information about generic target groups is based on the SAP Styleguide: https://help.sap.com/viewer/DRAFT/e33c591ae4494a659a3f5f983c9d1161/PROD/en-US/546dfb06e80c4005aabc4795d548fe35.html -->
-
 ### Decision maker
 
 Assesses the software to make sure that it meets the company's needs. Requires the facts – not just marketing spin – before signing on the dotted line. Wants to purchase the right solution for the company, and ensure stakeholders back this decision.
@@ -117,7 +115,7 @@ Assesses the software to make sure that it meets the company's needs. Requires t
 
 Interested in technical topics. Solid knowledge of programming languages. Experienced in programming and development projects. Expert in the technical or business area. Uses and contributes to community content. Wants to develop, maintain, and enhance software.
 
-### Admin/Operations
+### Admin/Operators
 
 Deals with installation, upgrades, system troubleshooting. Wants to support the ongoing operations and evolution of the Kyma implementation.
 
