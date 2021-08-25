@@ -147,11 +147,11 @@ Under this tab, there are subtabs according to main areas (except UI – user in
 
 Contains installation and configuration instructions, backup info, security documentation, troubleshooting guides…
 
-### Technical References
+### Technical references
 
 **Target Group**: Users who want to look up specific detailed information.
 
-Contains the architecture diagrams, configuration charts, etc.; no explanation of concepts or instructions.
+Contains the architecture diagrams, configuration charts, etc.; note that the CLI command documentats are generated automatically.
 
 ### Glossary
 
