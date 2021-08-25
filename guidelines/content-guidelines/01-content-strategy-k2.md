@@ -161,4 +161,4 @@ Explains basic terms, with a focus on terms specific to Kyma.
 
 ## Content source
 
-We write the content in [Markdown](https://daringfireball.net/projects/markdown/) and store it in [Git](https://git-scm.com/) repositories.
+We write the content in [Markdown](https://daringfireball.net/projects/markdown/) and store it in Git repositories.
