@@ -68,7 +68,7 @@ See the exemplary screenshots for reference:
 
 - Example 1
 
-![Example 1](./assets/screenshot-example1.png)    
+![Example 1](./assets/screenshot-example1.png)
 
 - Example 2
 
