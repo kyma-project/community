@@ -4,7 +4,7 @@ title: Architecture
 
 <!-- Use this template to describe in detail the architecture of a given Kyma component. This document should include, among others, the diagram that illustrates all components and sub-components involved, a description of the functions they perform, and a step-by-step description of the workflow. 
 
-* For the name, follow the `{COMPONENT/AREA}-{NUMBER}-{TITLE}.md` convention.
+* For the filename, follow the `{COMPONENT/AREA}-{NUMBER}-{TITLE}.md` convention.
 * For the title metadata, follow the `{Component name} architecture` convention.
 
 For reference, see the existing [**Architecture** documents](https://kyma-project.io/docs/05-technical-reference/03-architecture).-->
