@@ -4,7 +4,7 @@ title: Content Strategy
 
 ## Table of contents
 
-- [Purpose and Audience](#purpose-and-audience)
+- [Purpose and audience](#purpose-and-audience)
 - [Information types](#information-types)
   - [Concept Topics](#concept-topics)
   - [Task (tutorial) topics](#task-tutorial-topics)
