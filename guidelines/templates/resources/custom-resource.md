@@ -4,7 +4,7 @@ title: {CRD kind}
 
 <!-- Use this template for a custom resource (CR) document that provides a sample custom resource and description of its elements. Additionally, the document points to the CustomResourceDefinition (CRD) used to create CRs of the given kind.
 
-For the name, follow the `{COMPONENT/AREA}-{NUMBER}-{TITLE}.md` convention.
+For the filename, follow the `{COMPONENT/AREA}-{NUMBER}-{TITLE}.md` convention.
 
 For reference, see the existing [CR documents](https://kyma-project.io/docs/05-technical-reference/05-custom-resources).-->
 
