@@ -4,7 +4,7 @@ title: "{Component name} {sub-}chart"
 
 <!-- Use this template to provide technical details about configuration of a Kyma chart or sub-chart. 
 
-For the name, follow the `{COMPONENT/AREA}-{NUMBER}-{TITLE}.md` convention.
+For the filename, follow the `{COMPONENT/AREA}-{NUMBER}-{TITLE}.md` convention.
 Make sure that the configuration document for the main chart displays first on the list.
 
 For reference, see the existing [**Configuration** documents](https://kyma-project.io/docs/05-technical-reference/05-configuration-parameters).-->
