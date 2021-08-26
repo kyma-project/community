@@ -25,7 +25,6 @@ title: Content Strategy
   - [Operations](#operations)
   - [Technical References](#technical-references)
   - [Glossary](#glossary)
-- [Content source](#content-source)
 
 ## Purpose and audience
 
