@@ -47,7 +47,7 @@ If the task at hand is typically followed by another one, you can add a link to 
 
 Result:
 
-<!-- not mandatory, but recommended. Help the reader to be sure they accomplished the task successfully. -->
+<!-- Not mandatory, but recommended. Help the reader to be sure they accomplished the task successfully. -->
 
 Next Steps:
 
