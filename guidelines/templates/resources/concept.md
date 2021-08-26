@@ -4,9 +4,9 @@ title: {Document title}
 
 <!-- Answer "what-is" questions and provide essential background information that users must know.
 
-Use nominal style for the title, for example, "Security" or "Security Concept".
-
 Conceptual information might explain the nature and components of a product and describe how it fits into a category of products. Conceptual information helps readers to map their knowledge and understanding to the tasks they need to perform and to provide other essential information about a product, process, or system.
+
+Use nominal style for the title, for example, "Security" or "Security Concept".
 -->
 
 ## {Headline 1}
