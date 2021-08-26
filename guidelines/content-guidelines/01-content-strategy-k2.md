@@ -5,9 +5,9 @@ title: Content Strategy
 ## Purpose and audience
 
 This content strategy focuses on the publicly available documentation for the open-source [Kyma project](https://kyma-project.io/docs/).
-The source of the documentation displayed on the website is stored in [GitHub](https://github.com/kyma-project/kyma), it's written in [Markdown](https://daringfireball.net/projects/markdown/).
+The source of the documentation displayed on the website is stored in [GitHub](https://github.com/kyma-project/kyma) and it's written in [Markdown](https://daringfireball.net/projects/markdown/).
 
-The assumed readers of this guide, contributors to the documentation, have some basic knowledge of technical writing.
+The assumed readers of this guide and contributors to the documentation have some basic knowledge of technical writing.
 
 ## Information types
 
@@ -114,19 +114,19 @@ Contains a guide/tutorial that covers typical steps you need to perform to get s
 
 **Target Group**: Software Developers leveraging all the Kyma functionalities.
 
-Under this tab, there are subtabs according to main areas (except UI – user interfaces are mentioned as needed within the instructions of the respective main area). Documents in the subtabs contain "how-to" instructions that enable users to accomplish a task
+Under this tab, there are subtabs according to main areas (except UI – user interfaces are mentioned as needed within the instructions of the respective main area). Documents in the subtabs contain "how-to" instructions that enable users to accomplish a task.
 
 ### Operation guides
 
 **Target Group**: Admins/Operators who make sure the Kyma cluster is configured as needed and keeps running in a healthy and secure way.
 
-Contains installation and configuration instructions, backup info, security documentation, troubleshooting guides…
+Contains installation and configuration instructions, backup info, security documentation, and troubleshooting guides.
 
 ### Technical references
 
 **Target Group**: Users who want to look up specific detailed information.
 
-Contains the architecture diagrams, configuration charts, etc.; note that the CLI command documentats are generated automatically.
+Contains detailed information, such as architecture diagrams, configuration charts, etc.; note that the CLI command documents are generated automatically.
 
 ### Glossary
 
