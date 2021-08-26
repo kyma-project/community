@@ -10,7 +10,7 @@ title: Content Strategy
   - [Task (tutorial) topics](#task-tutorial-topics)
   - [Reference topics](#reference-topics)
   - [Troubleshooting topics](#troubleshooting-topics)
-  - [Release Notes](#release-notes)
+  - [Release notes](#release-notes)
 - [Graphics](#graphics)
   - [Architecture and flow diagrams](#architecture-and-flow-diagrams)
   - [Screenshots](#screenshots)
