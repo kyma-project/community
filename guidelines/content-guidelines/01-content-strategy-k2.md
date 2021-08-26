@@ -2,30 +2,6 @@
 title: Content Strategy
 ---
 
-## Table of contents
-
-- [Purpose and audience](#purpose-and-audience)
-- [Information types](#information-types)
-  - [Concept topics](#concept-topics)
-  - [Task topics](#task-topics)
-  - [Reference topics](#reference-topics)
-  - [Troubleshooting topics](#troubleshooting-topics)
-  - [Release notes](#release-notes)
-- [Graphics](#graphics)
-  - [Architecture and flow diagrams](#architecture-and-flow-diagrams)
-  - [Screenshots](#screenshots)
-- [Target groups](#target-groups)
-  - [Decision maker](#decision-maker)
-  - [Software developer](#software-developer)
-  - [Admin/Operations](#adminoperations)
-- [Documentation structure](#documentation-structure)
-  - [Overview](#overview)
-  - [Getting Started](#getting-started)
-  - [Tutorials](#tutorials)
-  - [Operations](#operations)
-  - [Technical References](#technical-references)
-  - [Glossary](#glossary)
-
 ## Purpose and audience
 
 This content strategy focuses on the publicly available documentation for the open-source [Kyma project](https://kyma-project.io/docs/).
