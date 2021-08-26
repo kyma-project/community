@@ -51,4 +51,4 @@ Result:
 
 Next Steps:
 
-<!-- optional - might be useful if another activity typically follows this one -->
+<!-- Optional - might be useful if another activity typically follows this one -->
