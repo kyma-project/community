@@ -6,7 +6,7 @@ title: Content Strategy
 
 - [Purpose and audience](#purpose-and-audience)
 - [Information types](#information-types)
-  - [Concept Topics](#concept-topics)
+  - [Concept topics](#concept-topics)
   - [Task (tutorial) topics](#task-tutorial-topics)
   - [Reference topics](#reference-topics)
   - [Troubleshooting topics](#troubleshooting-topics)
