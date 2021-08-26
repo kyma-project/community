@@ -84,7 +84,7 @@ The general assumption is that the readers of the documentation is familiar with
 
 ### Decision maker
 
-Assesses the software to make sure that it meets the company's needs. Requires the facts – not just marketing spin – before signing on the dotted line. Wants to purchase the right solution for the company, and ensure stakeholders back this decision.
+Assesses the software to make sure that it meets the company's needs. Requires the facts – not just marketing spin – before signing on the dotted line. Wants to choose the right solution for the company, and ensure stakeholders back this decision.
 
 ### Software developer
 
@@ -102,7 +102,7 @@ On the Kyma website, we have five main tabs containing multiple documents each, 
 
 **Target Group**: Decision Makers (Tech Leads) and newbies.
 
-Contains a quick overview of the idea behind Kyma, a diagram of the main areas with a brief explanation, and, as needed, longer documents going into the details of each main area.
+Contains a quick overview of the idea behind Kyma, presents the main areas with a brief explanation, and, as needed, longer documents going into the details of each main area.
 
 ### Getting Started
 
