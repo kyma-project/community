@@ -1,5 +1,5 @@
 ---
-title: Content Strategy K2.0 
+title: Content Strategy
 ---
 
 ## Table of contents
@@ -30,13 +30,13 @@ title: Content Strategy K2.0
 ## Purpose and audience
 
 This content strategy focuses on the publicly available documentation for the open-source [Kyma project](https://kyma-project.io/docs/).
-The source of the documentation displayed on the website is stored in [GitHub](https://github.com/kyma-project/kyma).
+The source of the documentation displayed on the website is stored in [GitHub](https://github.com/kyma-project/kyma), it's written in [Markdown](https://daringfireball.net/projects/markdown/).
 
-The assumed reader of this guide has some basic knowledge of technical writing.
+The assumed readers of this guide, contributors to the documentation, have some basic knowledge of technical writing.
 
 ## Information types
 
-We follow a topic-based documentation approach, with one file per topic. Every documentation file has a clearly defined purpose, which is reflected in the title. The content must be able to stand on its own, but you may use links to point to other documents as needed.
+We follow a topic-based documentation approach, with one file per topic. Every documentation file has a clearly defined purpose, which is reflected in the title. The content must be able to stand on its own, but you link to other documents as needed.
 
 Here are the content types that we use in Kyma documentation:
 
@@ -94,15 +94,15 @@ After an introductory paragraph, a list briefly presents the new and changed fea
 
 ### Architecture and flow diagrams
 
-For information about our diagram style, see [Diagrams](../02-diagrams.md).
+For information about our diagram style, see [Diagrams](./02-diagrams.md).
 
 ### Screenshots
 
-For information about Screenshots, see [Screenshots](../07-diagrams.md).
+For information about Screenshots, see [Screenshots](./07-screenshots.md).
 
 ## Target groups
 
-The general assumption is that the audience is familiar with the following terms and does not require the explanation of technical concepts behind them:
+The general assumption is that the readers of the documentation is familiar with the following terms and does not need the explanation of technical concepts behind them:
 
 - Kubernetes
 - Docker and containers
@@ -115,7 +115,7 @@ Assesses the software to make sure that it meets the company's needs. Requires t
 
 Interested in technical topics. Solid knowledge of programming languages. Experienced in programming and development projects. Expert in the technical or business area. Uses and contributes to community content. Wants to develop, maintain, and enhance software.
 
-### Admin/Operators
+### Admin/Operator
 
 Deals with installation, upgrades, system troubleshooting. Wants to support the ongoing operations and evolution of the Kyma implementation.
 
@@ -159,6 +159,3 @@ Contains the architecture diagrams, configuration charts, etc.; note that the CL
 
 Explains basic terms, with a focus on terms specific to Kyma.
 
-## Content source
-
-We write the content in [Markdown](https://daringfireball.net/projects/markdown/) and store it in Git repositories.
