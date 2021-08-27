@@ -26,7 +26,7 @@ In addition, it supports dynamic reloading, which means it updates the configura
 | Add runtimeClassName support to FluentBit CRD. | (Not needed for our usecase, not quite sure) | Not implemented. Needs to be adapted in FluentBit Chart if wanted. |
 | Support setting imagePullSecrets for both [operator](https://github.com/fluent/fluentbit-operator/pull/93/files) and [fluentbit](https://github.com/fluent/fluentbit-operator/pull/94/files) | Nice to have. | Not implemented.
 | Add switch to input.tail.memBufLimit in helm chart |  | Implemented. |
-| Add [fluent-bit-watcher](https://github.com/fluent/fluentbit-operator/pull/62/files). | Kinda does what the basic-function of kubebuilder operator does (restart pods, cheks if FluentBit is running, etc.), but maybe this works more efficient |
+| Add [fluent-bit-watcher](https://github.com/fluent/fluentbit-operator/pull/62/files). | Watches for new fluent-bit config changes. Restarts fluent-bit process instead of pod to apply config. This way the fluent-bit pod needn't be restarted to reload the new config. The fluent-bit config is reloaded in this way because there is no reload interface in fluent-bit itself. |
 
 **Enhancements:**
 
