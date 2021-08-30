@@ -37,6 +37,29 @@ remove-cached-content() {
   ( rm -rf "${BUILD_DIR}" ) || true
 }
 
+merge-community() {
+  git config --global user.email "ci-website@kyma-project.io"
+  git config --global user.name "CI/CD"
+  step "Newest commit"
+  git log --max-count=1
+
+  # TODO: After merging adding origin is not needed, because main branch is available
+  if [[ -z $(git remote | grep origin ) ]]; then
+    git remote add origin https://github.com/kyma-project/kyma.git
+    git fetch origin
+    git remote -vv
+  fi
+
+
+  git checkout -B pull-request
+  # TODO: After merging kyna-2.0-docu to main, change it origin/kyma-2.0-docu to main
+  git checkout -B main origin/kyma2
+  step "Last commit from main"
+  git log --max-count=1
+
+  git merge pull-request
+}
+
 copy-website-repo() {
   git clone -b "website-2.0" --single-branch "${WEBSITE_REPO}" "${WEBSITE_DIR}"
 }
@@ -54,6 +77,10 @@ main() {
   step "Remove website cached content"
   remove-cached-content
   pass "Removed"
+
+  step "Merge changes from PR with main branch"
+  merge-community
+  step "Merged"
 
   step "Copying kyma/website repo"
   copy-website-repo
