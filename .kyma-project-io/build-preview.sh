@@ -66,7 +66,7 @@ copy-website-repo() {
 }
 
 build-preview() {
-  export APP_COMMUNITY_SOURCE_DIR="${KYMA_PROJECT_IO_DIR}/.."
+  export APP_COMMUNITY_SOURCE_DIR="${KYMA_PROJECT_IO_DIR}/../docs"
   make -C "${BUILD_DIR}" netlify-community-preview
 }
 
