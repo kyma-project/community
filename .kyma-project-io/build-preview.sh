@@ -57,6 +57,7 @@ merge-community() {
   step "Last commit from main"
   git log --max-count=1
 
+  step "merging changes from pull request to main"
   git merge pull-request
 }
 
@@ -65,7 +66,7 @@ copy-website-repo() {
 }
 
 build-preview() {
-  export APP_PREVIEW_SOURCE_DIR="${KYMA_PROJECT_IO_DIR}/.."
+  export APP_COMMUNITY_SOURCE_DIR="${KYMA_PROJECT_IO_DIR}/.."
   make -C "${BUILD_DIR}" netlify-community-preview
 }
 
