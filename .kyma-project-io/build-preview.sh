@@ -45,14 +45,14 @@ merge-community() {
 
   # TODO: After merging adding origin is not needed, because main branch is available
   if [[ -z $(git remote | grep origin ) ]]; then
-    git remote add origin https://github.com/kyma-project/kyma.git
+    git remote add origin https://github.com/kyma-project/community.git
     git fetch origin
     git remote -vv
   fi
 
 
   git checkout -B pull-request
-  # TODO: After merging kyna-2.0-docu to main, change it origin/kyma-2.0-docu to main
+  # TODO: After merging kyna2 to main, change it origin/kyma2 to main
   git checkout -B main origin/kyma2
   step "Last commit from main"
   git log --max-count=1
