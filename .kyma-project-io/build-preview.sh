@@ -86,6 +86,10 @@ main() {
   copy-website-repo
   pass "Copied"
 
+  step "Remove old content from community"
+  rm -rf "${BUILD_DIR}"/content/community
+  step "Removed"
+
   step "Building preview"
   build-preview
   pass "Builded"
