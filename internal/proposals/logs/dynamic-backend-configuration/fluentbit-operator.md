@@ -68,7 +68,7 @@ The interface will be specific to the logging use case always (fluent-bit opens 
 * Having a custom operator to keep the independence in the user-facing interface and additional have the advantage of the fluent-bit operator as internal mechanism will increase the dependencies heavy, and adds another component to maintain from all kind of aspects like for example security scanning.
 
 ## Chances custom operator
-* The custom operator will be written as part of the kyma team and will be in full control, especially it's interface can be designed so that it fits 100% into the usage scenarios. Furthermore, it must not be specific to the logging scenario, it can be extended to any other observability related usage and has the chance of providing an unified and consistent approach to the users.
+* The custom operator will be written as part of the kyma team and will be in full control, especially it's interface can be designed so that it fits 100% into the usage scenarios. Furthermore, it does not have to be specific to the logging scenario, it can be extended to any other observability related usage and has the chance of providing an unified and consistent approach to the users.
 * The Kyma Telemetry Operator is a very simple implementation of a FluentBit Operator, which supports all official configurations of the currently used FluentBit version in Kyma, as it relies on a free-form interface without specific syntax validation (**less indirection** which saves maintenance). Thus, kyma do not have to rely on anyone to have new fluent-bit features usable.
 
 ## Risks custom operator
