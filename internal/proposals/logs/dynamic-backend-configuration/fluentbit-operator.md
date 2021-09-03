@@ -10,7 +10,7 @@ Fluent Bit Operator defines the following custom resources:
 * `Filter`: Defines filter config sections.
 * `Output`: Defines output config sections.
 
-Each Input, Parser, Filter, Output represents a Fluent Bit config section, which are selected by FluentBitConfig via label selectors. The operator watches those objects, constructs the final config, and finally creates a Secret to store the config. This secret will be mounted into the Fluent Bit DaemonSet. 
+Each Input, Parser, Filter, or Output represents a Fluent Bit config section selected by FluentBitConfig via label selectors. The operator watches those objects, constructs the final config, and finally creates a Secret to store the config. This secret will be mounted into the Fluent Bit DaemonSet. 
 In addition, it supports dynamic reloading, which means it updates the configuration without rebooting the Fluent Bit pods.
 
 ## Features/Enhancement added since comparison (May 2021)
@@ -50,17 +50,17 @@ Input, Filter, and Output support | Not all features of inputs, filters, and out
 Customization | Custom Fluent Bit parser plugins supported. Inputs, filters, and outputs are planned to be supported | No custom Fluentd plugins supported, user needs to forward the logs using a custom output to another log processor.
 | Daemonset Management | The Daemonset definition is managed by the operator, incl. potential migration logic | Daemonset will only be restarted but the actual definition is un-managed |
 
-# Chances and Risks
+# Chances and Risks of Fluent Bit Operator
 
-## Chances Fluent-Bit Operator
-* Going with the Fluent-Bit operator will allow Kyma to **save investment** and maintenance. The logging configuration will be changeable at runtime without being forced to touch the fluent-bit system parts (main goal of the story). Furthermore it will maintain the Daemonset and might reduce **maintenace efforts on upgrades**.
+## Chances 
+* Going with the Fluent-Bit operator will allow Kyma to **save investment** and maintenance. The logging configuration will be changeable at runtime without being forced to touch the fluent-bit system parts (main goal of the story). Furthermore it will maintain the Daemonset and might **reduce maintenance efforts on upgrades**.
 * Furthermore, users will use **well known resource definitions** for the configuration with existing documentation (to be proven) and an existing community behind.
-* The software will be **battle proven** and mostly likely will have a higher quality then a custom solution
+* The software will be **battle proven** and mostly likely will have a higher quality than a custom solution.
 
-## Risks Fluent-Bit Operator 
-* On the other hand, using the fluent-bit operator as the direct interface to the user will **prevent kyma to interfer with the configuration options** of the user. So if the kyma use case is different or will develop in a different direction, it will not be possible to modify the interface (CRDs). That problem is exposed already by having the Daemonset and fluentbit service section configurable via the CRDs. That must be shielded from the user in order to have the actual operations of the component configurable by the reconcilation logic while the actual configuration should be doable outside of the reconcilation scope. **-> Strategic risk**
-The interface will be specific to the logging use case always (fluent-bit opens up to metrics nowadays, still it does not seem to be as multi-purpose as the otel-collector). As kyma is planning to provide interface for configuration of tracing and monitoring as well, these configurations will always be different by design starting by the CRD apigroup already. **-> Strategic risk**
-* Another risk is the **indirection on top of fluent-bit** not being in control of the kyma project. Assuming fluent-bit requires a patch which needs to be activated by some Daemonset config, then the time till that option will be available get prolonged by additionally waiting to get the operator fixed and released. **-> Investment risk**
+## Risks 
+* On the other hand, using the fluent-bit operator as the direct interface to the user will **prevent Kyma to interfere with the configuration options** of the user. So if the Kyma use case is different or will develop in a different direction, it will not be possible to modify the interface (CRDs). That problem is exposed already by having the Daemonset and fluentbit service section configurable via the CRDs. That must be shielded from the user in order to have the actual operations of the component configurable by the reconciliation logic while the actual configuration should be doable outside of the reconciliation scope. **-> Strategic risk**
+* The interface will be specific to the logging use case always (fluent-bit opens up to metrics nowadays, still it does not seem to be as multi-purpose as the otel-collector). As Kyma is planning to provide interface for configuration of tracing and monitoring as well, these configurations will always be different by design starting by the CRD APIgroup already. **-> Strategic risk**
+* Another risk is the **indirection on top of fluent-bit** not being in control of the Kyma project. Assuming fluent-bit requires a patch which needs to be activated by some Daemonset config, then the time until that option will be available will get prolonged by additionally waiting to get the operator fixed and released. **-> Investment risk**
 * The **strictness of the CRD definitions** might become another challenge, if there is some bug in the translation of the CRD into the actual configuration (a very specific field of a plugin configuration has a wrong validation rule), a fix must be created in the community first and released. Having a free-form plugin definition with a non strict-validation (but a dry-run) might be way more flexible from a dependency perspective. Furthermore all standard features are not supported yet. Means, when new features to a filter are added, then these features have to be added to the FluentBit Operator as well, which is a downside relating to time. **-> Investment risk**
 * Furthermore, the FluentBit Operator **lacks important features** (secret injection, config check, bad config rollback, etc.), on which no concrete plans are published. Adding these features will require cooperation with the project and potential investments **-> Strategic risk**
 * The operator is too early (no stable release even), it is not obvious if it will find adoption and the project will have an active community long-term **-> Strategic risk**
@@ -68,15 +68,15 @@ The interface will be specific to the logging use case always (fluent-bit opens 
 * Having a custom operator to keep the independence in the user-facing interface and additional have the advantage of the fluent-bit operator as internal mechanism will increase the dependencies heavy, and adds another component to maintain from all kind of aspects like for example security scanning.
 
 ## Chances custom operator
-* The custom operator will be written as part of the kyma team and will be in full control, especially it's interface can be designed so that it fits 100% into the usage scenarios. Furthermore, it does not have to be specific to the logging scenario, it can be extended to any other observability related usage and has the chance of providing an unified and consistent approach to the users.
-* The Kyma Telemetry Operator is a very simple implementation of a FluentBit Operator, which supports all official configurations of the currently used FluentBit version in Kyma, as it relies on a free-form interface without specific syntax validation (**less indirection** which saves maintenance). Thus, kyma do not have to rely on anyone to have new fluent-bit features usable.
+* The custom operator will be written as part of the Kyma team and will be in full control, especially its interface which can be designed so that it fits 100% into the usage scenarios. Furthermore, it does not have to be specific to the logging scenario, it can be extended to any other observability related usage and has the chance of providing an unified and consistent approach to the users.
+* The Kyma Telemetry Operator is a very simple implementation of a FluentBit Operator, which supports all official configurations of the currently used FluentBit version in Kyma, as it relies on a free-form interface without specific syntax validation (**less indirection** which saves maintenance). Thus, Kyma does not have to rely on anyone to have new fluent-bit features usable.
 
 ## Risks custom operator
 * If the custom operator develops in a similar direction as the fluent-bit operator, then Kyma could have used simply that operator and **could have saved investment**, seeing development and maintenance efforts. Potentially the fluent-bit operator will have a much bigger community and with that feature richness and stability in long-term. **-> Investment risk**
 * Users might complain why it is so hard to configure fluent-bit while there is an accepted way out there available. So there must be a good differentiation so that users immediately see the value of the different approach. **-> Publicity/Strategic risk**
 
 # Conclusion
-Both operators are quite trivial from the functional aspects and code base (at least for now). Introducing the maintenance effort for a full external component for that relatively small functionality seems not woth of. Furthermore, kyma will loose the flexibility of changing the user interface to its need and cannot come up with a consistent solution across the other domains (tracing, monitoring).
+Both operators are quite trivial from the functional aspects and code base (at least for now). Introducing the maintenance effort for a full external component for that relatively small functionality does not seem worthwhile. Furthermore, Kyma will lose the flexibility of changing the user interface as needed and cannot come up with a consistent solution across the other domains (tracing, monitoring).
 
-For now decision is to go with the custom operator, but the decision should be re-evaluated periodical to not miss the point in time where the investment on our side should be stopped
+For now, the decision is to go with the custom operator, but the decision should be re-evaluated periodically so as not to miss the point in time where the investment on our side should be stopped.
 
