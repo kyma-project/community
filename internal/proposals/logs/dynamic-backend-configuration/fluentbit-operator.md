@@ -1,5 +1,6 @@
 # Motivation
-In [this document](https://github.com/kyma-project/community/blob/main/internal/proposals/logs/dynamic-backend-configuration/overview.md) we compared different solutions for a dynamic logging configuration setup. As a result, we decided to come up with a custom operator written and maintained by the kyma team. Since then the operator written by `kubesphere` has been contributed to `FluentBit`. Thus, the project now has more active contributors and got further developed. In this document we want to have a look at the changes/improvements since the last comparision, and want to see if it is worth switching to the (now) official fluentbit operator.
+
+In [this document](https://github.com/kyma-project/community/blob/main/internal/proposals/logs/dynamic-backend-configuration/overview.md), we compared different solutions for a dynamic logging configuration setup. As a result, we decided to come up with a custom operator written and maintained by the Kyma team. Since then, the operator written by `kubesphere` has been contributed to `FluentBit`. Thus, the project now has more active contributors and has developed further. In this document, we want to have a look at the changes/improvements since the last comparison, and want to see if it is worth switching to the (now) official FluentBit operator.
 
 # FluentBit Operator (former Kubesphere)
 Fluent Bit Operator defines the following custom resources:
