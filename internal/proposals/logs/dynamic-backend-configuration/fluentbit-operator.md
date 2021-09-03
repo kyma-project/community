@@ -30,11 +30,11 @@ In addition, it supports dynamic reloading, which means it updates the configura
 
 **Enhancements:**
 
-* Use hostpath instead of emptydir to store position db #72
-* Improve fluent-bit-watcher synchronization mechanism #74
-* Terminate the fluent-bit process in a more elegant way in fluent-bit-watcher #90
-* fluent-bit-watcher: goroutine synchronization improvements. #74
-* Add support for plugin alias property in input and output specs. #64.
+* Use hostpath instead of emptydir to store position db
+* Improve fluent-bit-watcher synchronization mechanism
+* Terminate the fluent-bit process in a more elegant way in fluent-bit-watcher
+* fluent-bit-watcher: goroutine synchronization improvements.
+* Add support for plugin alias property in input and output specs.
 
 # Feature comparison matrix
 Feature | FluentBit Operator | Kyma Telemetry Operator
