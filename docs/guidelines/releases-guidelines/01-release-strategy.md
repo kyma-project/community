@@ -146,15 +146,13 @@ The Product Lead coordinates the product planning, following the planning cycles
 
 After completing the planning process, the theme and expected scope of the release is clear. All maintainers know what they have to work on for the release.
 
-At this time, the Release Manager publicly communicates the planned release schedule for Kyma. This communication should include key features or fixes expected to fall within the scope of the release. Possible communication channels include blog posts, social media, and Core SIG meetings.
+At this time, the Release Manager publicly communicates the planned release schedule for Kyma. This communication should include key features or fixes expected to fall within the scope of the release. Possible communication channels include blog posts, social media, and Slack channels.
 
 ### Development start
 
 After completing the planning, the Product Lead explicitly hands over the release to the engineering teams during the handover meeting. At this point, the development phase of the new release officially starts.
 
 During the development phase, the Release Manager keeps track of the development and takes early actions required to keep the release on track. When closer to the release date, the Release Manager and the Product Lead discuss the status of the release and decide if there are any additional checkpoints or actions to address.
-
-The Core SIG leaders include the external communication regarding the progress and status of each release to the agenda of the Core SIG bi-weekly meetings.
 
 ### Development end
 
@@ -180,7 +178,7 @@ The final release is available in the GitHub releases, including the installatio
 
 A Technical Writer publishes the blog post on the public Kyma website to announce the release. The post includes release notes that describe new features, as well as resolved and known issues.
 
-You can learn about the new release from additional notifications published on social media, Slack channels, or announcements made during the Core SIG meetings. Alternatively, you can [subscribe](#subscription-to-releases-subscription-to-releases) to GitHub notifications and receive updates each time a new release is available.
+You can learn about the new release from additional notifications published on social media and Slack channels. Alternatively, you can [subscribe](#subscription-to-releases-subscription-to-releases) to GitHub notifications and receive updates each time a new release is available.
 
 ## Release scope
 

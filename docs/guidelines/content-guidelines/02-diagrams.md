@@ -2,8 +2,6 @@
 title: Diagrams
 ---
 
->**NOTE:** These guidelines apply starting from Kyma 2.0.
-
 Same as with the screenshots, diagrams are worth a thousand words. Therefore, rather than pile up a block of text to describe a given concept, use a diagram to visualize it instead.
 
 To convey the intended message effectively in a diagram, follow these basic principles:
