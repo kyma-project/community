@@ -66,13 +66,9 @@ For more information, see [tcworld: Simplified graphics and screenshots in softw
 
 See the exemplary screenshots for reference:
 
-- Example 1
+- Example
 
-![Example 1](./assets/screenshot-example1.png)
-
-- Example 2
-
-![Example 2](./assets/screenshot-example2.png)
+![Example](./assets/screenshot-example1.png)
 
 - Example SUI
 

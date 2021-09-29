@@ -126,7 +126,7 @@ After reaching the end of the development cycle, the Kyma developers create a re
 - two working days for minor releases
 - one week for major releases
 
-All release candidates must always be fully tested by all defined automated and manual tests, following the [test strategy](/guidelines/technical-guidelines/07-test-strategy.md). Manual tests are tracked in [this sheet](https://docs.google.com/spreadsheets/d/1ty3OciQzgzv0GagTG2Dku9os2AfMupbGNf8QxjHaO88/edit) for each release candidate.
+All release candidates must always be fully tested by all defined automated and manual tests, following the [test strategy](../technical-guidelines/07-test-strategy.md). Manual tests are tracked in [this sheet](https://docs.google.com/spreadsheets/d/1ty3OciQzgzv0GagTG2Dku9os2AfMupbGNf8QxjHaO88/edit) for each release candidate.
 
 During the release process, only [critical issues](#critical-issues) will be considered for cherry-picking. The Release Manager approves the final release to be prepared and published only when all tests have passed, and no critical issues are blocking the release.
 
@@ -178,7 +178,7 @@ The final release is available in the GitHub releases, including the installatio
 
 A Technical Writer publishes the blog post on the public Kyma website to announce the release. The post includes release notes that describe new features, as well as resolved and known issues.
 
-You can learn about the new release from additional notifications published on social media and Slack channels. Alternatively, you can [subscribe](#subscription-to-releases-subscription-to-releases) to GitHub notifications and receive updates each time a new release is available.
+You can learn about the new release from additional notifications published on social media and Slack channels. Alternatively, you can [subscribe](./06-release-subscription.md) to GitHub notifications and receive updates each time a new release is available.
 
 ## Release scope
 
