@@ -4,8 +4,7 @@ title: Content Strategy
 
 ## Purpose and audience
 
-This content strategy focuses on the publicly available documentation for the open-source [Kyma project](https://kyma-project.io/docs/).
-The source of the documentation displayed on the website is stored in [GitHub](https://github.com/kyma-project/kyma) and it's written in [Markdown](https://daringfireball.net/projects/markdown/).
+This content strategy focuses on the publicly available documentation for the open-source [Kyma project](https://kyma-project.io/docs/). The source of the documentation displayed on the website is stored in [GitHub](https://github.com/kyma-project/kyma) and it's written in [Markdown](https://daringfireball.net/projects/markdown/).
 
 The assumed readers of this guide and contributors to the documentation have some basic knowledge of technical writing.
 
@@ -22,7 +21,7 @@ You'll find most concept topics in the Overview section, but they can be useful 
 
 Use nominal style for the title, for example, "Security" or "Security Concept".
 
-For all concept topics, use the [concept topic template](../templates/resources/concept.md).
+For all concept topics, use the [concept topic template](../../../templates/resources/concept.md).
 
 ### Task topics
 
@@ -33,7 +32,7 @@ Select a title that describes the task that's accomplished, not the documented s
 With regards to structure, it’s nice to have an **introductory paragraph** ("why would I want to do this task?"), **prerequisites** if needed, then the **steps** in a numbered list, and finally the expected **result** that shows the operation was successful.
 It's good practice to have 5-9 steps; anything longer can probably be split.
 
-For all step instructions, use the [task topic template](../templates/resources/task.md).
+For all step instructions, use the [task topic template](../../../templates/resources/task.md).
 
 ### Reference topics
 
@@ -43,7 +42,7 @@ Reference topics provide quick access to fact-based information. In technical in
 
 Use nominal style for the title, for example, "Configuration Parameters".
 
-Use the templates for [architecture documents](../templates/resources/architecture.md), [configuration parameter charts](../templates/resources/configuration.md), and [Custom Resources](../templates/resources/custom-resource.md).
+Use the templates for [architecture documents](../../../templates/resources/architecture.md), [configuration parameter charts](../../../templates/resources/configuration.md), and [Custom Resources](../../../templates/resources/custom-resource.md).
 
 ### Troubleshooting topics
 
@@ -53,7 +52,7 @@ In the title, mention the symptom that needs fixing ("Cannot access...") or the 
 
 It's good practice to use three standard headlines (like “Condition”, “Cause”, “Remedy”), each might have just one sentence or more as needed. For remedy, use a numbered list if there are multiple steps to follow, and a bullet list or sub-headlines if there are several equally valid solutions.
 
-For all troubleshooting topics, use the [troubleshooting topic template](../templates/resources/troubleshooting.md).
+For all troubleshooting topics, use the [troubleshooting topic template](../../../templates/resources/troubleshooting.md).
 
 ### Release notes
 
@@ -61,7 +60,7 @@ Release notes announce what's new in Kyma.
 
 After an introductory paragraph, a list briefly presents the new and changed features. Links lead to longer paragraphs that describe the changes in more detail.
 
-For release notes, use the [release note template](../templates/resources/release-notes.md).
+For release notes, use the [release note template](../../../templates/resources/release-notes.md).
 
 ## Target groups
 

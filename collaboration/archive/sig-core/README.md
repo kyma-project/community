@@ -1,8 +1,7 @@
----
-title: Core Special Interest Group
----
+# Core Special Interest Group
 
 The purpose of the Core SIG is to:
+
 * Publicly represent Kyma.
 * Facilitate collaboration with external contributors.
 * Communicate the Kyma project vision and roadmap to the community.
@@ -41,3 +40,6 @@ The Core SIG owns all code repositories in the Kyma organization.
 ## Reference
 
 Read the [**Special Interest Group & Working Group**](#special-interest-group-working-group-special-interest-group-working-group) document to learn about the structure of Kyma SIGs and WGs.
+# Core Special Interest Group
+
+This directory contains decisions made and proposal created in the scope of work of the Core SIG.
