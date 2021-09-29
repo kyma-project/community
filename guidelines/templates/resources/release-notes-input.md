@@ -1,6 +1,6 @@
 > This template is dedicated to Product Owners. Use it to provide input for release notes for your Kyma component. See the template for [release notes](./release-notes.md) to see how your input fits into the whole release notes picture.
 
-## {Component Name}
+## {Area Name}
 
 ### {Feature or fix name}
 
