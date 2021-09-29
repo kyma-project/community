@@ -24,10 +24,10 @@ A Kyma CLI release consists of:
    git checkout --no-track -b {RELEASE_NAME} upstream/main
    git push upstream {RELEASE_NAME}
    ```
+2. Ensure that the `DefaultKymaVersion` variable in the `pkg/installation/opts.go` file from the `cli` repository on the release branch contain the latest Kyma 1 version (`1.x.x`).
 
-2. Ensure that the `KYMA_VERSION` variables in the `Makefile` and `.goreleaser.yml` files from the `cli` repository on the release branch contain the latest Kyma version.
-
-3. In `Makefile`, set `IS_RELEASE=true`
+3. Ensure that the `KYMA_VERSION` variables in the `Makefile` and `.goreleaser.yml` files from the `cli` repository on the release branch contain the latest Kyma 2 version (`2.x.x`).
+   >**NOTE:** This step applies only if at least Kyma 2.0.0 is already released.
 
 4. Create a PR to `cli/release-x.y` that triggers the presubmit job for `cli`.
 
