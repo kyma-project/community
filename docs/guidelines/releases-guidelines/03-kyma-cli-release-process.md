@@ -47,7 +47,7 @@ A Kyma CLI release consists of:
       ```
 
    2. Verify the [Prow Status](https://status.build.kyma-project.io/?repo=kyma-project%2Fcli&type=postsubmit) of the matching revision ({RELEASE_VERSION}).
-   3. If the post submit job failed, you can re-trigger it by removing the tag from upstream and pushing it again.
+   3. If the postsubmit job failed, you can re-trigger it by removing the tag from upstream and pushing it again.
 
       ```bash
       git push --delete upstream {RELEASE_VERSION}
