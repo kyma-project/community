@@ -53,7 +53,7 @@ merge-community() {
 }
 
 copy-website-repo() {
-  git clone -b "website-2.0" --single-branch "${WEBSITE_REPO}" "${WEBSITE_DIR}"
+  git clone -b "main" --single-branch "${WEBSITE_REPO}" "${WEBSITE_DIR}"
 }
 
 build-preview() {
