@@ -44,7 +44,6 @@ merge-community() {
   git log --max-count=1
 
   git checkout -B pull-request
-  git branch
   git checkout main
   step "Last commit from main"
   git log --max-count=1
