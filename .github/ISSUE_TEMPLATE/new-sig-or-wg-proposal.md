@@ -5,7 +5,7 @@ about: Propose a new SIG or WG
 
 <!-- Thank you for your contribution. Before you submit the issue:
 1. Search other groups for relevance of your topics.
-2. Read the governance model (https://github.com/kyma-project/community/blob/main/governance/01-governance.md).
+2. Read the governance model (https://kyma-project.io/community/governance).
 3. Collect at least five candidates for this group.
 -->
 
