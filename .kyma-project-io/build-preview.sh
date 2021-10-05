@@ -16,6 +16,7 @@ readonly WEBSITE_DIR="website"
 readonly WEBSITE_REPO="https://github.com/kyma-project/website"
 
 readonly BUILD_DIR="${KYMA_PROJECT_IO_DIR}/${WEBSITE_DIR}"
+readonly COMMUNITY_DIR="$( cd "${KYMA_PROJECT_IO_DIR}/.." && pwd )"
 
 # Colors
 readonly RED='\033[0;31m'
@@ -53,11 +54,11 @@ merge-community() {
 }
 
 copy-website-repo() {
-  git clone -b "website-2.0" --single-branch "${WEBSITE_REPO}" "${WEBSITE_DIR}"
+  git clone -b "main" --single-branch "${WEBSITE_REPO}" "${WEBSITE_DIR}"
 }
 
 build-preview() {
-  export APP_COMMUNITY_SOURCE_DIR="${KYMA_PROJECT_IO_DIR}/../docs"
+  export APP_COMMUNITY_SOURCE_DIR="${COMMUNITY_DIR}"
   make -C "${BUILD_DIR}" netlify-community-preview
 }
 
@@ -78,7 +79,7 @@ main() {
   copy-website-repo
   pass "Copied"
 
-  step "Remove old content from community"
+  step "Remove old content from website"
   rm -rf "${BUILD_DIR}"/content/community
   step "Removed"
 
