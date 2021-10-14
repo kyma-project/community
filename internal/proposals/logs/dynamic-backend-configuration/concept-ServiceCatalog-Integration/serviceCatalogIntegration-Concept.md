@@ -1,25 +1,14 @@
 
-
-secret rotation wenn secret alt bitte neues erstellen und rotieren
-
-ddotting scripte in cls doku 
-
-lua script und dann weiter auf http output
-
-Konzept:
-
-User erstellt "mapping" und referenziert auf service, secret, und welches template
-
-No need to check if ServiceBinding is valid
-
 # Concept
 
-Goal: Telemetry operator should be extended to a kind of templating to be used in combination with the ServiceCatalog.
+Goal: Telemetry operator should be extended to a kind of automatic templating to be used in combination with the ServiceCatalog.
 
 
-The orginal workflow of a user creating a ServiceBinding is not being adapted, to have an easier workflow for the user plus there are no real upside of why we should change this flow. We also though of changing the workflow to have a more automated setup, but this would require more knowledge of the user to actually perform the ServiceBinding with the automated Fluentbit Configuration.
+The orginal workflow of a user creating a ServiceBinding is not being adapted, to have an easier workflow for the user plus there are no real upside of why we should change the user workflow. We also though of changing the workflow to have a more automated setup, but this would require more knowledge of the user to actually perform the ServiceBinding with the automated FluentBit Configuration.
+Instead, the workflow will be expanded by one additional step to create the FluentBit configuration for the corresponding ServiceBinding.
 
-Instead, the workflow will be expanded by one additional step to create the Fluentbit configuration.
+This concept covers the basic requirements with a minimal setup and reusing the Telemetry Operator for this purpose. At a later point, the Telemetry Operator could be split up to have a cleaner operator architecture, but this needs to be discussed further in the future.
+
 
 ## General Architecture / Workflow:
 
@@ -39,42 +28,11 @@ To map the key-value-pairs given by the referenced secret, we need a CRD which m
 - Which filter and output plugins of FluentBit need to be used
 - Configuration of these filters and outputs
 
-Kyma will then have pre-defined Template-CRs which the customer can us to create a FluentBit configuration based on the customer's created ServiceBinding. In this way, the users does not have to take care about maintaining `Lua` scripts, etc.
+Kyma will then have pre-defined Template-CRs which the customer can us to create a FluentBit configuration based on the customer's created ServiceBinding. In this way, the users does not have to take care about maintaining filters (i.e. `Lua` scripts), configuration of outputs (i.e. `http`-Plugin), etc.
 
 
 ## Secret Rotation
 
-<details>
-<summary><b>ServiceBinding CR</b> needs to be implemented in Telemetry Operator - Click to expand</summary>
+In this concept the user refers to the secret created by the BTP-Operator, which is then mounted by the Telemetry-Operator in the corresponding container. Therefore, the secret rotation will happen automatically by the general function of the Telemetry Operator.
 
-```yaml
-apiVersion: apiextensions.k8s.io/v1
-kind: CustomResourceDefinition
-metadata:
-  name: binding.fluentbit.kyma-project.io
-spec:
-  group: fluentbit.kyma-project.io
-  names:
-    kind: FluentBitBinding
-    listKind: fluentBitBindingList
-    plural: fluentBitBindings
-    singular: fluentBitBinding
-  scope: Namespaced
-  versions:
-    - name: v1alpha1
-      schema:
-        description: FluentbitBinding is the Schema for the FluentbitBindings
-          API.
-        properties:
-          [...]
-          spec:
-            description: FluentbitBindingSpec defines the desired state of FluentbitBinding.
-            properties:
-              servicePlanName: 
-                description: '...'
-                type: string
-              secretName:
-                description: '...'
-                type: string
-```
-</details>
+> **NOTE:** The secret rotation is not implemented in the Telemetry Operator until now (as of today; 14.20.2021).
