@@ -12,7 +12,7 @@ This concept covers the basic requirements with a minimal setup and reusing the 
 
 ## General Architecture / Workflow:
 
-The following Workflow is explained in the context of the BTP operator's ServiceBinding. The user can also refer to a secret which is created by another instance or by the user. In this case, step one and two are skipped and in step three the user refers to a custom secret.
+The following Workflow is explained in the context of the BTP Operator's ServiceBinding. The user can also refer to a Secret which is created by another instance or by the user. In this case, step one and two are skipped, and in step three the user refers to a custom Secret.
 
 1. User creates ServiceBinding using CLI, BTP, or Busola.
 2. BTP Operator watches ServiceBinding-CRs and creates corresponding Secret.
