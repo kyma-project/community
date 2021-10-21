@@ -1,5 +1,5 @@
-external-links-to-ignore: ["localhost", "kyma.local", "kyma-system"]
-internal-links-to-ignore: ["mailto:kyma-security@googlegroups.com", "http://slack.kyma-project.io", "http://slack.kyma-project.io/"]
+external-links-to-ignore: ["localhost", "kyma.local", "kyma-system", "http://slack.kyma-project.io", "http://slack.kyma-project.io/"]
+internal-links-to-ignore: ["mailto:kyma-security@googlegroups.com"]
 files-to-ignore: ["/templates/","-template.md", "/.kyma-project-io/", "/collaboration/", "/contributing/", "/governance/", "/guidelines/content-guidelines/", "/guidelines/releases-guidelines/", "/guidelines/repository-guidelines/", "/guidelines/technical-guidelines/", "/guidelines/templates/README.md", "/guidelines/templates/templates-type.md"]
 timeout: 60
 request-repeats: 5
