@@ -4,17 +4,17 @@
 
 ### {Feature or fix name}
 
-> List other component features or fixes that you want to include in the release notes. Add each feature or fix as a separate heading and describe it in a short paragraph. The paragraph should not only provide details of the feature or fix but also explain its benefits to the Kyma users. Include screenshots to illustrate the changes better.
+> List other area features or fixes that you want to include in the release notes. Add each feature or fix as a separate heading and describe it in a short paragraph. The paragraph should not only provide details of the feature or fix but also explain its benefits to the Kyma users. Include screenshots to illustrate the changes better.
 
 ### Known issues
 
-> List the known issues affecting the component. Add a short description of the issue and a workaround for it, if there is any.
+> List the known issues affecting the area. Add a short description of the issue and a workaround for it, if there is any.
 - {Known issue} - {Short description}
     - {Workaround} - {Workaround description}
 
 ### Migrations and upgrades
 
-> If you changed the way your component works or removed any of its subcomponents, clearly explain those changes and reasons behind them to the users. If users need to perform any steps to migrate, describe these steps in a separate migration guide and place it under `kyma/docs/migration-guides`.
+> If you changed the way your area works or removed any of its components, clearly explain those changes and reasons behind them to the users. If users need to perform any steps to migrate, describe these steps in a separate migration guide and place it under `kyma/docs/migration-guides`.
 
 ### Security vulnerabilities fixed
 

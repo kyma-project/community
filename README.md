@@ -16,7 +16,7 @@ We are an open-source community and the number of contributors is growing. Meet 
 
 ### Process
 
-Before you start to contribute, review the [contribution rules](./docs/contributing/02-contributing.md). To understand better the way the Kyma community works, read about the [working model](./docs/governance/01-governance.md) and learn about the [Special Interest Groups and Working Groups](./collaboration/01-sig-and-wg.md) in Kyma.
+Before you start to contribute, review the [contribution rules](./docs/contributing/02-contributing.md). To understand better the way the Kyma community works, read about the [working model](./docs/governance/01-governance.md) and learn about the [Special Interest Groups and Working Groups](collaboration/01-sig-and-wg.md) in Kyma.
 
 All contributors follow the recommended [Git workflow](./docs/contributing/03-git-workflow.md) that relies on forks, branches, rebasing, and squashing. Review it to ensure that you contribute high-quality code and content to the project.
 
