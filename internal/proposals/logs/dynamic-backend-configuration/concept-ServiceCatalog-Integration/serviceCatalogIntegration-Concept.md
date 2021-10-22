@@ -16,21 +16,21 @@ The following Workflow is explained in the context of the BTP Operator's Service
 
 1. User creates ServiceBinding using CLI, BTP, or Busola.
 2. BTP Operator watches ServiceBinding-CRs and creates corresponding Secret.
-3. User Creates LoggingConfigurationInstance-CR and references to the Secret created by the BTP Operator. Furthermore, the user must specify which LoggingConfigurationTemplate should be used.
-4. Telemetry Operator watches LoggingConfigurationInstance-CRs. If a new CR is created, it creates a new LoggingConfiguration-CR, using the LoggingConfigurationTemplate and the information given by the referenced Secret.
+3. User Creates Pipeline-CR and references to the Secret created by the BTP Operator. Furthermore, the user must specify which Preset should be used.
+4. Telemetry Operator watches Pipeline-CRs. If a new CR is created, it creates a new LoggingConfiguration-CR, using the Preset and the information given by the referenced Secret.
 5. Telemetry operator creates new FluentBitConfig based on LoggingConfiguration-CR.
 
 ![Workflow Architecture](images/workflow-overview.svg)
 
 ## Templating
 
-To map the key-value pairs given by the referenced Secret, we need a CRD that maps the keys of the Secret to the corresponding FluentBit Output keys. Thus, the `LoggingConfigurationTemplate`-CRD is needed. This CRD is defined by:
+To map the key-value pairs given by the referenced Secret, we need a CRD that maps the keys of the Secret to the corresponding FluentBit Output keys. Thus, the `Preset`-CRD is needed. This CRD is defined by:
 - Name
 - Mapping from Secret keys to FluentBit keys
 - The filter and output plugins of FluentBit that are to be used
 - Configuration of these filters and outputs
 
-Kyma will then have predefined LoggingConfigurationTemplate-CRs, which the customer can use to create a FluentBit configuration based on the customer's created ServiceBinding. In this way, the users does not have to care about maintaining filters (i.e. `Lua` scripts), configuration of outputs (i.e. `http`-Plugin), etc.
+Kyma will then have predefined Preset-CRs, which the customer can use to create a FluentBit configuration based on the customer's created ServiceBinding. In this way, the users does not have to care about maintaining filters (i.e. `Lua` scripts), configuration of outputs (i.e. `http`-Plugin), etc.
 
 
 ## Secret Rotation
