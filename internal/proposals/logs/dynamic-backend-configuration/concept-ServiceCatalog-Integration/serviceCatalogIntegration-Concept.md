@@ -63,3 +63,80 @@ The upstream [OpenTelemetry Operator](https://github.com/open-telemetry/opentele
 
 The OpenTelemetry Collector configuration should be a second sub-resource (besides the logging configuration) in the Preset.
 This allows services to consume different types of telemetry. For example, an Elastic stack could consume both logs and traces.
+
+## Example
+
+A commercial provider might offer an ElasticSearch-based service that can receive logs using the FluentD protocol and traces using the OpenTelemetry GRPC protocol. Kyma might contain a preset for this `ElasticService` that contains all necessary configurations.
+
+```YAML
+kind: Preset
+apiVersion: telemetry.kyma-project.io/v1alpha1
+metadata:
+  name: ElasticService
+spec:
+  LoggingConfiguration:
+    sections:
+      - content: |
+         [Output]
+           ...
+  TelemetryConfiguration:
+    ...
+```
+
+1. The user creates a Kubernetes Secret with their credentials and service endpoint. This can happen either manually or by creating a ServiceBinding:
+
+```YAML
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-elastic-credentials
+  namespace: default
+type: Opaque
+data:
+  ...
+```
+
+2. The user creates a `Pipeline` CR that indicates the usage of their Secret for the `ElasticService`:
+
+```YAML
+kind: Pipeline
+apiVersion: telemetry.kyma-project.io/v1alpha1
+metadata:
+  name: ElasticService
+spec:
+  presetRef: ElasticService
+  secretRef:
+    - name: my-elastic-credentials
+      namespace: default
+```
+
+3. The Telemetry Operator generates the low-level CRs based on this pipeline:
+
+```YAML
+kind: LoggingConfiguration
+apiVersion: telemetry.kyma-project.io/v1alpha1
+metadata:
+  name: ElasticService-instanceXYZ
+spec:
+  sections:
+    - content: |
+        [Output]
+           ...
+      secretRefs:
+        - name: my-elastic-credentials
+          namespace: default
+
+```
+
+```YAML
+kind: TelemetryConfiguration
+apiVersion: telemetry.kyma-project.io/v1alpha1
+metadata:
+  name: ElasticService-instanceXYZ
+spec:
+  secretRefs:
+    - name: my-elastic-credentials
+      namespace: default
+  ...
+```
+
