@@ -66,7 +66,7 @@ This allows services to consume different types of telemetry. For example, an El
 
 ## Example
 
-A commercial provider might offer an ElasticSearch based service that can receive logs via the FluentD protocol and traces via the OpenTelemetry GRPC protocol. Kyma might contain a preset for this `ElasticService` that contains all necessary configurations.
+A commercial provider might offer an ElasticSearch-based service that can receive logs using the FluentD protocol and traces using the OpenTelemetry GRPC protocol. Kyma might contain a preset for this `ElasticService` that contains all necessary configurations.
 
 ```YAML
 kind: Preset
@@ -83,7 +83,7 @@ spec:
     ...
 ```
 
-The user creates a Kubernetes Secret with with his credentials and service endpoint. This can happen either manually or by creating a ServincBinding.
+1. The user creates a Kubernetes Secret with their credentials and service endpoint. This can happen either manually or by creating a ServiceBinding:
 
 ```YAML
 apiVersion: v1
@@ -96,7 +96,7 @@ data:
   ...
 ```
 
-The user creates a `Pipeline` CR that indicates the usage of his Secret for the `ElasticService`
+2. The user creates a `Pipeline` CR that indicates the usage of their Secret for the `ElasticService`:
 
 ```YAML
 kind: Pipeline
@@ -110,7 +110,7 @@ spec:
       namespace: default
 ```
 
-The Telemetry Operator generates the low-level CRs out of this pipeline
+3. The Telemetry Operator generates the low-level CRs based on this pipeline:
 
 ```YAML
 kind: LoggingConfiguration
