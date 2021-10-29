@@ -78,8 +78,7 @@ Suppose that it is only the part containing the certificate information that is 
 
 ## Panels
 
-Panels are colorful containers that call out important or additional information within a topic. To call attention to a specific note, a word of caution or a tip, use the `>**{TYPE}:**`format, where `{TYPE}` is **NOTE**, **TIP**, or **CAUTION**.
-Use:
+Panels are colorful containers that call out important or additional information within a topic. To call attention to a specific note, a word of caution or a tip, use the  **NOTE**, **TIP**, and **CAUTION** panels. Use:
 - The blue **NOTE** panel to point to something specific, usually relating to the topic.
 - The red **CAUTION** panel to call attention to something critical that can cause inoperable behavior.
 - The green **TIP** panel to share helpful advice, such as a shortcut to save time.
