@@ -4,15 +4,11 @@ title: Links
 
 Linking is a great tool to use to incorporate a lot of content into your document with fewer words. That being said, overuse of linking can cause "link rot" when links break, and if a page has more links than content, it is not very pleasant to read. Make sure to use links correctly by adhering to these best practices:
 
-- Use **relative links** to link to documents or files located in the same repository, and **absolute links** to link to other repositories and external sources.
+- Use **relative links** to link to documents or files located in the same repository. For example:
+  ```Read the [contributing rules](../../contributing/02-contributing.md) before you contribute to the project.```
 
-    See the example:  
-    - Relative link:
-        ```Read the [contributing rules](../../contributing/02-contributing.md) before you contribute to the project.```
-    - Absolute link:
-      ```To learn more about the project, visit the [kyma-poject.io](https://kyma-project.io/) website.```
-
-> **NOTE:** All variables must consist of lowercase characters separated with dashes (-).
+- Use **absolute links** to link to other repositories and external sources. For example:
+  ```To learn more about the project, visit the [kyma-poject.io](https://kyma-project.io/) website.```
 
 - Every link has the potential to go bad over time and the more links you include, the higher the chance that one will break. If something is not central to the subject at hand, is well-known by your audience, or can be found with a simple search, there is no point in linking.
 - Choose the link text carefully. Use descriptive text for the search engines to understand your content. Do not link entire phrases which become overemphatic. Avoid certain [vague words](https://web.dev/link-text/#how-the-lighthouse-link-text-audit-fails) like `this`, `that`, or `here`.
@@ -24,6 +20,7 @@ Linking is a great tool to use to incorporate a lot of content into your documen
 ## Links to headings
 
 Within a relative link, it's possible to link to the heading of a document. To do so, add `#{name-of-the-heading}` after the document's filepath. See the example:
+
 ```Read the guidelines about [headings formatting](./04-formatting.md#headings).```      
 
 ## Links to the assets folder
