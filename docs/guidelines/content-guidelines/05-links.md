@@ -4,12 +4,10 @@ title: Links
 
 Linking is a great tool to use to incorporate a lot of content into your document with fewer words. That being said, overuse of linking can cause "link rot" when links break, and if a page has more links than content, it is not very pleasant to read. Make sure to use links correctly by adhering to these best practices:
 
-- Use **relative links** to link to documents or files located in the same repository. For example:
-
+- Use **relative links** to link to documents or files located in the same repository. For example:<br>
   ```Read the [contributing rules](../../contributing/02-contributing.md) before you contribute to the project.```
 
-- Use **absolute links** to link to other repositories and external sources. For example:
-
+- Use **absolute links** to link to other repositories and external sources. For example:<br>
   ```To learn more about the project, visit the [kyma-poject.io](https://kyma-project.io/) website.```
 
 - Every link has the potential to go bad over time and the more links you include, the higher the chance that one will break. If something is not central to the subject at hand, is well-known by your audience, or can be found with a simple search, there is no point in linking.
