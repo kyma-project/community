@@ -19,8 +19,7 @@ Linking is a great tool to use to incorporate a lot of content into your documen
 
 ## Links to headings
 
-Within a relative link, it's possible to link to the heading of a document. To do so, add `#{name-of-the-heading}` after the document's filepath. See the example:
-
+Within a relative link, it's possible to link to the heading of a document. To do so, add `#{name-of-the-heading}` after the document's filepath. See the example:<br>
 ```Read the guidelines about [headings formatting](./04-formatting.md#headings).```      
 
 ## Links to the assets folder
