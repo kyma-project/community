@@ -1,5 +1,5 @@
 ---
-title: Special Interest Group & Working Group
+title: Special Interest Groups & Working Groups
 ---
 
 This section describes SIGs and WGs, and their place in the Kyma organization. In the following sections you will find details on how to set up and close such groups.
@@ -22,7 +22,7 @@ The cross-project activities can require the creation of a new WG to address the
 
 The Kyma project is open-source and is available on [GitHub](https://github.com/kyma-project). Although external contributions to the Kyma open-source project are welcome through the public GitHub project, the Kyma teams within the organization largely drive the Kyma development.
 
-To ensure the continuous growth and the "scale-as-you-go-and-need" approach when extending the community, the current structure and governance bodies of Kyma SIGs and WGs are very simple. However, the structure of the community can change depending on the community needs. The [Kyma Steering Committee](../docs/governance/02-steering-committee.md) supports the governance of Kyma.
+To ensure the continuous growth and the "scale-as-you-go-and-need" approach when extending the community, the current structure and governance bodies of Kyma SIGs and WGs are very simple. However, the structure of the community can change depending on the community needs. The [Kyma Steering Committee](../governance/02-steering-committee.md) supports the governance of Kyma.
 
 ## Organize new SIGs and WGs
 
