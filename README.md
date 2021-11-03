@@ -1,38 +1,54 @@
 # Kyma Community
 
-Welcome to the Kyma community. Here you can find information on how to join the community, get involved, and improve Kyma code and documentation.
+Welcome to the Kyma community page!
 
-Before you proceed, review the [Code of Conduct](./docs/contributing/01-code-of-conduct.md) and contact us on [Slack](http://slack.kyma-project.io/) for any questions or concerns.
+If you are looking for information on how to join us, you are in the right place. Read on to find out how you can get involved, contribute to Kyma code and documentation, and stay in touch with the latest Kyma news. Let's get started!
 
-## Product information
+# <img src="assets/contribution-collaboration-icon.svg" width="120"> Contribution & Collaboration
 
-To get a general idea of what Kyma is and what it does, read [Kyma elevator pitch](manifesto/README.md). Read about the [Kyma personas](manifesto/personas.md) to learn what types of users might be most interested in Kyma. To learn more about the product, visit the [Kyma website](https://kyma-project.io/) or its sources kept in the [GitHub repository](https://github.com/kyma-project/kyma/blob/main/README.md).
+## Contribution rules
 
-Kyma is also on social media. Follow Kyma on [Twitter](https://twitter.com/kymaproject) and [LinkedIn](https://www.linkedin.com/company/kyma-project/) to keep updated.
+Before you start contributing, read our [Code of Conduct](docs/contributing/01-code-of-conduct.md) and learn about our [working model](docs/governance/01-governance.md) to understand the way Kyma community works. Get familiar with the [contributing rules](docs/contributing/02-contributing.md), recommended [Git workflow](docs/contributing/03-git-workflow.md), and [issues workflow](docs/governance/03-issues-workflow.md) we use in Kyma so you can apply them later in practice as an active contributor.
 
-## Contribution
+## Guidelines
 
-We are an open-source community and the number of contributors is growing. Meet the [Kyma team members](https://github.com/orgs/kyma-project/people) who are the regular contributors and the Kyma founders.
+Follow guidelines for writing [content](docs/guidelines/content-guidelines) and [code](docs/guidelines/technical-guidelines). See how to create a [new repository](docs/guidelines/repository-guidelines), read about our [release process](docs/guidelines/releases-guidelines), and use [templates](./guidelines/templates/templates-type.md) for various document types.
 
-### Process
+## Issues & features
 
-Before you start to contribute, review the [contribution rules](./docs/contributing/02-contributing.md). To understand better the way the Kyma community works, read about the [working model](./docs/governance/01-governance.md) and learn about the [Special Interest Groups and Working Groups](collaboration/01-sig-and-wg.md) in Kyma.
+Create an issue on [GitHub](https://github.com/kyma-project) to report a bug or request a feature. Go to the given repository's issue tracker and raise an issue using one of the available templates. The owners of the repository will review your issue and provide you with their feedback. If you are not certain which repository your issue refers to, open it in the [`kyma`](https://github.com/kyma-project/kyma) repository. For more information on how issues are handled within the Kma organization, read about the [issues workflow](docs/governance/03-issues-workflow.md).
 
-All contributors follow the recommended [Git workflow](./docs/contributing/03-git-workflow.md) that relies on forks, branches, rebasing, and squashing. Review it to ensure that you contribute high-quality code and content to the project.
+## Special Interest Groups & Working Groups
 
-### Issues
+The Kyma community collaborates through Special Interest Groups and Working Groups ([SIGs and WGs](docs/contributing/04-sig-and-wg.md)). By joining the SIGs and WGs, you can meet other community members, exchange information on Kyma, provide feedback, raise interest, ask questions, and learn about the product. Join the SIGs or WGs meeting to learn more what each group works on.
 
-To request a feature or report a bug, go to the given repository's issue tracker and raise an issue using one of the available templates. The owners of the repository will review your issue and provide you with their feedback. If you are not certain which repository your issue refers to, open it in the `kyma` repository.
+# <img src="assets/stay-informed-icon.svg" width="120"> Stay Informed
 
-## Guidelines and templates
+## Social media
 
-You can also find these guidelines and templates in the `community` repository:
+We're on [Twitter](https://twitter.com/kymaproject) and [LinkedIn](https://www.linkedin.com/company/kyma-project/). Stay tuned for the news and spread the good word about Kyma among your followers.
 
-- [Content guidelines](./docs/guidelines/content-guidelines) that include the overview of the [content strategy](./docs/guidelines/content-guidelines/01-content-strategy.md) and the general guidelines on how to write and format documentation and graphics.
-- [Release guidelines](./docs/guidelines/releases-guidelines) that contain the details regarding Kyma releases
-- [Repository guidelines](./docs/guidelines/repository-guidelines) that contain folder, file, and document structure required for a [skeleton Kyma repository](./templates/repository-template)
-- [Technical guidelines](./docs/guidelines/technical-guidelines/) that contain coding standards used in the Kyma project
-- Document [templates](./templates/resources) for different document types that are used in Kyma
+## YouTube
+
+Subscribe to our [YouTube channel](https://www.youtube.com/channel/UC8Q8bBtYe9gQN-dQ-_L8JvQ) to see all recordings from  SIGs and WGs meetings. You will also find there some other interesting videos, such as Kyma in non-English, Kyma Capabilities Demos, and many more.
+
+## Blog
+
+Go the [Kyma blog](https://kyma-project.io/blog/) to read the latest news on our project, events, and teams. If you want to share your experience with Kyma, feel free to [write a blog post](https://github.com/kyma-project/website/blob/main/docs/write-blog-posts.md) on your own.
+
+# <img src="assets/community-support-icon.svg" width="120"> Community Support
+
+## Slack
+
+If you prefer even more direct contact, use one of the available [Slack channels](http://slack.kyma-project.io/). Feel free to write to us with any questions, concerns, or ideas for improvement. Any constructive feedback or criticism is welcome.
+
+# <img src="assets/technical-support-icon.svg" width="120"> Technical Support
+
+## Stack Overflow
+
+If you have a code-level question and need some expert advice, contact us on [Stack Overflow](https://stackoverflow.com/questions/tagged/kyma). Read through the existing questions tagged with `kyma` or ask your own if you don't find the answer you were looking for.
+
+Thank you for your interest in Kyma. Hope you'll stay with us for a while.
 
 ## Security
 

@@ -24,7 +24,7 @@ The purpose of this Working Group (WG) is to build a Unified Demo Project with a
 
 * [Thursday at 16:00 CEST](https://calendar.google.com/calendar/ical/3abtp9lh0mn3iiov5772jftccc%40group.calendar.google.com/public/basic.ics)
 * [Slack](https://kyma-community.slack.com/archives/C01C40T8CKD)
-* Frequency: weekly 
+* Frequency: weekly
 * [Meeting notes and agenda](https://docs.google.com/document/d/1XO7_lWlcJiJLA7ZX_vQv9_0jyIrWNafWdJRwgQwC_y4/edit)
 * Meeting recordings - To be discussed
 
@@ -53,4 +53,4 @@ The purpose of this Working Group (WG) is to build a Unified Demo Project with a
 
 * Working Group proposal issue: https://github.com/kyma-project/community/issues/509
 
-* Read the [**Special Interest Group & Working Group**](../01-sig-and-wg.md) document to learn about the structure of Kyma SIGs and WGs.
+* Read the [**Special Interest Group & Working Group**](../../../docs/contributing/04-sig-and-wg.md) document to learn about the structure of Kyma SIGs and WGs.
