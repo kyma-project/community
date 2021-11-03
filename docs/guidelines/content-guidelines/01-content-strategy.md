@@ -21,7 +21,7 @@ You'll find most concept topics in the Overview section, but they can be useful 
 
 Use nominal style for the title, for example, "Security" or "Security Concept".
 
-For all concept topics, use the [concept topic template](../../../templates/resources/concept.md).
+For all concept topics, use the [concept topic template](https://github.com/kyma-project/community/blob/main/templates/resources/concept.md).
 
 ### Task topics
 
@@ -32,7 +32,7 @@ Select a title that describes the task that's accomplished, not the documented s
 With regards to structure, it’s nice to have an **introductory paragraph** ("why would I want to do this task?"), **prerequisites** if needed, then the **steps** in a numbered list, and finally the expected **result** that shows the operation was successful.
 It's good practice to have 5-9 steps; anything longer can probably be split.
 
-For all step instructions, use the [task topic template](../../../templates/resources/task.md).
+For all step instructions, use the [tutorial  template](https://github.com/kyma-project/community/blob/main/templates/resources/tutorial.md).
 
 ### Reference topics
 
@@ -42,7 +42,7 @@ Reference topics provide quick access to fact-based information. In technical in
 
 Use nominal style for the title, for example, "Configuration Parameters".
 
-Use the templates for [architecture documents](../../../templates/resources/architecture.md), [configuration parameter charts](../../../templates/resources/configuration.md), and [Custom Resources](../../../templates/resources/custom-resource.md).
+Use the templates for [architecture documents](https://github.com/kyma-project/community/blob/main/templates/resources/architecture.md), [configuration parameter charts](https://github.com/kyma-project/community/blob/main/templates/resources/configuration.md), and [Custom Resources](https://github.com/kyma-project/community/blob/main/templates/resources/custom-resource.md).
 
 ### Troubleshooting topics
 
@@ -52,7 +52,7 @@ In the title, mention the symptom that needs fixing ("Cannot access...") or the 
 
 It's good practice to use three standard headlines (like “Condition”, “Cause”, “Remedy”), each might have just one sentence or more as needed. For remedy, use a numbered list if there are multiple steps to follow, and a bullet list or sub-headlines if there are several equally valid solutions.
 
-For all troubleshooting topics, use the [troubleshooting topic template](../../../templates/resources/troubleshooting.md).
+For all troubleshooting topics, use the [troubleshooting topic template](https://github.com/kyma-project/community/blob/main/templates/resources/troubleshooting.md).
 
 ### Release notes
 
@@ -60,7 +60,7 @@ Release notes announce what's new in Kyma.
 
 After an introductory paragraph, a list briefly presents the new and changed features. Links lead to longer paragraphs that describe the changes in more detail.
 
-For release notes, use the [release note template](../../../templates/resources/release-notes.md).
+For release notes, use the [release note template](https://github.com/kyma-project/community/blob/main/templates/resources/release-notes.md).
 
 ## Target groups
 
@@ -93,13 +93,13 @@ On the Kyma website, we have five main tabs containing multiple documents each, 
 
 Contains a quick overview of the idea behind Kyma, presents the main areas with a brief explanation, and, as needed, longer documents going into the details of each main area.
 
-### Getting Started
+### Get Started
 
 **Target Group**: Software Developers who quickly want to see what they can do with Kyma.
 
 Contains a guide/tutorial that covers typical steps you need to perform to get started.
 
-### Tutorials
+### Developer Tutorials
 
 **Target Group**: Software Developers leveraging all the Kyma functionalities.
 

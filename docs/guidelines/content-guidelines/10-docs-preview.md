@@ -10,10 +10,6 @@ This feature is enabled on these Kyma repositories:
 
 - [`kyma`](https://github.com/kyma-project/kyma) for changes in the `/docs` folder that contains sources of the official Kyma documentation rendered in the [**Docs**](https://kyma-project.io/docs/) view.
 
-- [`cli`](https://github.com/kyma-project/cli) for changes in the `/docs` folder that contains sources of the official Kyma CLI documentation rendered in the [**Docs**](https://kyma-project.io/docs/cli) view under the **CLI** subview.
-
-- [`control-plane`](https://github.com/kyma-project/control-plane) for changes in the `/docs` folder that contains sources of the official Kyma Control Plane documentation rendered in the [**Docs**](https://kyma-project.io/docs/cli) view under the **Control Plane** subview.
-
 - [`community`](https://github.com/kyma-project/community) for changes rendered in the [**Community**](https://kyma-project.io/community/) view.
 
 - [`website`](https://github.com/kyma-project/website) for changes rendered on the [landing page](https://kyma-project.io/) and in the [**Blog**](https://kyma-project.io/blog/) view.

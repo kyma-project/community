@@ -36,5 +36,5 @@ Whenever a user must perform some manual steps in order to use the newly release
 
 ## Templates
 Here are all the release notes-related templates you may find useful:
-- [Release notes](../../../templates/resources/release-notes.md)
-- [Release notes input](../../../templates/resources/release-notes-input.md)
+- [Release notes](https://github.com/kyma-project/community/blob/main/templates/resources/release-notes.md)
+- [Release notes input](https://github.com/kyma-project/community/blob/main/templates/resources/release-notes-input.md)
