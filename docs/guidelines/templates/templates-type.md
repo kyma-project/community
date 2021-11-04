@@ -17,17 +17,9 @@ This table contains templates for general documents, such as `NOTES.txt` and `RE
 | [`examples`](https://github.com/kyma-project/examples) | [`README.md`](https://github.com/kyma-project/community/blob/main/templates/resources/example_README.md) | Use the template for examples. | All contributors |
 | All | [`README.md`](https://github.com/kyma-project/community/blob/main/guidelines/repository-guidelines/repository-template/README.md) | Use the template for the `README.md` document in any repository, directory, or subdirectory within the Kyma organization. | All contributors |
 
-## Official Kyma graphics and logo
+## Document types for Kyma areas and components
 
-See the following table to find a template of Kyma graphics and logo.
-
-| Repository | Template | Usage | Author |
-|---|---|---|---|
-| No specific repository | [`Official Kyma graphics and logo`](https://github.com/kyma-project/community/tree/main/templates/resources/assets) | Use these graphics for any Kyma-related communication. | All contributors |
-
-## Document types for Kyma components
-
-This table lists all document types used to fully describe a Kyma component.
+This table lists all document types used to fully describe a Kyma area and/or component.
 
 | Repository | Template | Usage | Author |
 |---|---|---|---|
@@ -41,14 +33,13 @@ This table lists all document types used to fully describe a Kyma component.
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/main/docs) | [`troubleshooting.md`](https://github.com/kyma-project/community/blob/main/templates/resources/troubleshooting.md) | Use the template to explain all details needed for Kyma and its components' troubleshooting. | All contributors |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/main/docs) | [`metrics.md`](https://github.com/kyma-project/community/blob/main/templates/resources/metrics.md) | Use the template to describe custom and default metrics for services or controllers. | All contributors |
 
-## Special Interest Group and Working Group
+## Official Kyma graphics and logo
 
-In the table you can find `README.md` and meeting notes templates for SIGs and WGs.
+See the following table to find a template of Kyma graphics and logo.
 
 | Repository | Template | Usage | Author |
 |---|---|---|---|
-| [`community/collaboration`](https://github.com/kyma-project/community/tree/main/collaboration) | [`sig-wg-readme-template.md`](https://github.com/kyma-project/community/blob/main/templates/resources/sig-wg-readme-template.md) | Use the template for the main `README.md` document in a given SIG or WG folder. | SIG and WG members |
-| [`community/collaboration`](https://github.com/kyma-project/community/tree/main/collaboration) | [`sig-wg-meeting-notes-template.md`](https://github.com/kyma-project/community/blob/main/templates/resources/sig-wg-meeting-notes-template.md) | Use the template to document meeting notes of a given SIG or WG. | SIG and WG members |
+| No specific repository | [`Official Kyma graphics and logo`](https://github.com/kyma-project/community/tree/main/templates/resources/assets) | Use these graphics for any Kyma-related communication. | All contributors |
 
 ## Release notes
 
@@ -62,3 +53,12 @@ See the templates for providing input and writing release notes.
 ## Repository templates
 
 Go to the [`repository-templates`](https://github.com/kyma-project/community/tree/main/templates/repository-template) directory for the template of an exemplary Kyma repository.
+
+## Special Interest Group and Working Group
+
+In the table you can find `README.md` and meeting notes templates for SIGs and WGs.
+
+| Repository | Template | Usage | Author |
+|---|---|---|---|
+| [`community/collaboration`](https://github.com/kyma-project/community/tree/main/collaboration) | [`sig-wg-readme-template.md`](https://github.com/kyma-project/community/blob/main/templates/resources/sig-wg-readme-template.md) | Use the template for the main `README.md` document in a given SIG or WG folder. | SIG and WG members |
+| [`community/collaboration`](https://github.com/kyma-project/community/tree/main/collaboration) | [`sig-wg-meeting-notes-template.md`](https://github.com/kyma-project/community/blob/main/templates/resources/sig-wg-meeting-notes-template.md) | Use the template to document meeting notes of a given SIG or WG. | SIG and WG members |
