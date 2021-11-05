@@ -22,6 +22,7 @@ redirectFrom:
 
 > After the introductory paragraph, list the highlights of the release as bullet points and provide relative links to their corresponding sections.
 
+- [API exposure](#api-exposure) - {List of other features and fixes}
 - [Application Connectivity](#application-connectivity) - {List of other features and fixes}
 - [CLI](#CLI) - {List of other features and fixes}
 - [Console](#console) - {List of other features and fixes}

@@ -60,7 +60,7 @@ Release notes announce what's new in Kyma.
 
 After an introductory paragraph, a list briefly presents the new and changed features. Links lead to longer paragraphs that describe the changes in more detail.
 
-For release notes, use the [release note template](https://github.com/kyma-project/community/blob/main/templates/resources/release-notes.md).
+For release notes, use the [release notes template](https://github.com/kyma-project/community/blob/main/templates/resources/release-notes.md).
 
 ## Target groups
 

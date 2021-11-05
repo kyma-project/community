@@ -10,7 +10,7 @@ The purpose of the Kyma Steering Committee is to:
 
 ## The size of the committee
 
-To make sure the committee can always make a majority decision, we have three members. The ultimate goal is to have five members (at least two [individual](../contributing/02-contributing.md#agreements-and-licenses) ones) and never four.
+To make sure the committee can always make a majority decision, we have three members. The ultimate goal is to have five members (at least two individual ones) and never four.
 
 ## Decision-making
 
@@ -28,7 +28,7 @@ We are aware that at the moment Kyma is steered by a single company, SAP. Our go
 
 ## How to become a member of the committee?
 
-The committee is open for any contributors, [individual or corporate](../contributing/02-contributing.md#agreements-and-licenses). These are the rules we apply:
+The committee is open for any contributors, individual or corporate. These are the rules we apply:
 
 * In case of individual contributors, you need to be an active [Kyma maintainer](01-governance.md#process-for-becoming-a-codeowner) for at least 2 major components.
 * A single company can have only one employee in the committee. It is up to the company to suggest a candidate that will acts as a representative of active maintainers for the given company. The representative, however, does not have to be an active maintainer himself/herself.

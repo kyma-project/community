@@ -15,7 +15,7 @@ This table contains templates for general documents, such as `NOTES.txt` and `RE
 | [`kyma`](https://github.com/kyma-project/kyma)| [`NOTES.txt`](https://github.com/kyma-project/community/blob/main/templates/resources/NOTES.txt) | Use the template for charts. | All contributors |
 | [`kyma`](https://github.com/kyma-project/kyma)| [`README.md`](https://github.com/kyma-project/community/blob/main/templates/resources/chart_README.md) | Use the template only for internal charts with in-house components. | All contributors |
 | [`examples`](https://github.com/kyma-project/examples) | [`README.md`](https://github.com/kyma-project/community/blob/main/templates/resources/example_README.md) | Use the template for examples. | All contributors |
-| All | [`README.md`](https://github.com/kyma-project/community/blob/main/guidelines/repository-guidelines/repository-template/README.md) | Use the template for the `README.md` document in any repository, directory, or subdirectory within the Kyma organization. | All contributors |
+| All | [`README.md`](https://github.com/kyma-project/community/blob/main/templates/repository-template/README.md) | Use the template for the `README.md` document in any repository, directory, or subdirectory within the Kyma organization. | All contributors |
 
 ## Document types for Kyma areas and components
 
@@ -25,13 +25,10 @@ This table lists all document types used to fully describe a Kyma area and/or co
 |---|---|---|---|
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/main/docs) | [`concept.md`](https://github.com/kyma-project/community/blob/main/templates/resources/concept.md) | Use the template to introduce a given concept. | All contributors |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/main/docs) | [`architecture.md`](https://github.com/kyma-project/community/blob/main/templates/resources/architecture.md) | Use the template to describe the architecture of a Kyma component. | All contributors |
-| [`kyma/docs`](https://github.com/kyma-project/kyma/tree/main/docs) | [`details.md`](https://github.com/kyma-project/community/blob/main/templates/resources/details.md) | Use the template to provide more details about a Kyma component. | All contributors |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/main/docs) | [`configuration.md`](https://github.com/kyma-project/community/blob/main/templates/resources/configuration.md) | Use the template to describe configuration options for a Kyma chart or sub-chart. | All contributors |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/main/docs) | [`custom-resource.md`](https://github.com/kyma-project/community/blob/main/templates/resources/custom-resource.md) | Use the template to describe a custom resource (CR) and its elements. | All contributors |
-| [`kyma/docs`](https://github.com/kyma-project/kyma/tree/main/docs) | [`cli-reference.md`](https://github.com/kyma-project/community/blob/main/templates/resources/cli-reference.md) | Use the template to describe the syntax and the use of CLI commands for a given component. | All contributors |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/main/docs) | [`tutorials.md`](https://github.com/kyma-project/community/blob/main/templates/resources/tutorial.md) | Use the template to provide a clear step-by-step instruction that helps the user to understand a given concept better. | All contributors |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/main/docs) | [`troubleshooting.md`](https://github.com/kyma-project/community/blob/main/templates/resources/troubleshooting.md) | Use the template to explain all details needed for Kyma and its components' troubleshooting. | All contributors |
-| [`kyma/docs`](https://github.com/kyma-project/kyma/tree/main/docs) | [`metrics.md`](https://github.com/kyma-project/community/blob/main/templates/resources/metrics.md) | Use the template to describe custom and default metrics for services or controllers. | All contributors |
 
 ## Official Kyma graphics and logo
 
@@ -60,5 +57,5 @@ In the table you can find `README.md` and meeting notes templates for SIGs and W
 
 | Repository | Template | Usage | Author |
 |---|---|---|---|
-| [`community/collaboration`](https://github.com/kyma-project/community/tree/main/collaboration) | [`sig-wg-readme-template.md`](https://github.com/kyma-project/community/blob/main/templates/resources/sig-wg-readme-template.md) | Use the template for the main `README.md` document in a given SIG or WG folder. | SIG and WG members |
-| [`community/collaboration`](https://github.com/kyma-project/community/tree/main/collaboration) | [`sig-wg-meeting-notes-template.md`](https://github.com/kyma-project/community/blob/main/templates/resources/sig-wg-meeting-notes-template.md) | Use the template to document meeting notes of a given SIG or WG. | SIG and WG members |
+| [`community/sigs-and-wgs`](https://github.com/kyma-project/community/tree/main/sigs-and-wgs) | [`sig-wg-readme-template.md`](https://github.com/kyma-project/community/blob/main/templates/resources/sig-wg-readme-template.md) | Use the template for the main `README.md` document in a given SIG or WG folder. | SIG and WG members |
+| [`community/sigs-and-wgs`](https://github.com/kyma-project/community/tree/main/sigs-and-wgs) | [`sig-wg-meeting-notes-template.md`](https://github.com/kyma-project/community/blob/main/templates/resources/sig-wg-meeting-notes-template.md) | Use the template to document meeting notes of a given SIG or WG. | SIG and WG members |

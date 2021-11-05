@@ -80,11 +80,11 @@ When a SIG or WG has completed its goals or there is an explicit request to conc
 * Create an issue and accompanying pull request (PR) to close a SIG or WG and add the **decision** label to them.
 * Close the remaining open issues of the group or reassign them accordingly, with appropriate comment.
 * [Delete the group label](https://help.github.com/en/articles/deleting-a-label) used on the issues or PRs.
-* Move the group folder (together with all subfolders and files) to the [archive](https://github.com/kyma-project/community/tree/main/collaboration/archive) folder.
+* Move the group folder (together with all subfolders and files) to the [archive](https://github.com/kyma-project/community/tree/main/sigs-and-wgs/archive) folder.
 * Add a `CLOSURE.md` file to the archived group folder. Write it in the form of a blog post that informs about the group's outcomes, achievements, challenges, and lessons learned. Remember to provide links to the relevant material. The PR undergoes a standard review by group members, the Kyma Steering Committee, and is subsequently closed.
 * Publish the content of the `CLOSURE.md` in the form of a [blog post](https://github.com/kyma-project/website/blob/main/docs/write-blog-posts.md) on the Kyma website or link to it.
 * Communicate the closure of a given SIG or WG.
 
 ### Closed SIGs and WGs
 
-To see the list of closed SIGs and WGs, check the [`archive`](https://github.com/kyma-project/community/tree/main/collaboration/archive) folder.
+To see the list of closed SIGs and WGs, check the [`archive`](https://github.com/kyma-project/community/tree/main/sigs-and-wgs/archive) folder.

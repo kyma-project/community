@@ -16,9 +16,9 @@ Before you start contributing, read our [Code of Conduct](./contributing/01-code
 
 Follow guidelines for writing [content](./guidelines/content-guidelines) and [code](./guidelines/technical-guidelines). See how to create a [new repository](./guidelines/repository-guidelines) or a [new release](./guidelines/releases-guidelines), and use [templates](./guidelines/templates/templates-type.md) for various document types.
 
-## Issues & features
+## Issues
 
-Create an issue on [GitHub](https://github.com/kyma-project) to report a bug or request a feature. Go to the given repository's issue tracker and raise an issue using one of the available templates. The owners of the repository will review your issue and provide you with their feedback. If you are not certain which repository your issue refers to, open it in the [`kyma`](https://github.com/kyma-project/kyma) repository. For more information on how issues are handled within the Kma organization, read about the [issues workflow](governance/03-issues-workflow.md).
+Create an issue on [GitHub](https://github.com/kyma-project) to report a bug or request a feature. Go to the given repository's issue tracker and raise an issue using one of the available templates. The owners of the repository will review your issue and provide you with their feedback. If you are not certain which repository your issue refers to, open it in the [`kyma`](https://github.com/kyma-project/kyma) repository. For more information on how issues are handled within the Kyma organization, read about the [issues workflow](governance/03-issues-workflow.md).
 
 ## Special Interest Groups & Working Groups
 
