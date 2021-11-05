@@ -1,5 +1,5 @@
 ---
-title: Toggle
+title: Documentation toggle
 ---
 
 The documentation toggle is a feature that allows you to render several versions of a given section in one document or have several versions of one document.

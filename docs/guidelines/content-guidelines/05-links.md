@@ -20,7 +20,7 @@ Linking is a great tool to use to incorporate a lot of content into your documen
 ## Links to headings
 
 Within a relative link, it's possible to link to the heading of a document. To do so, add `#{name-of-the-heading}` after the document's filepath. See the example:<br>
-```Read the guidelines about [headings formatting](./04-formatting.md#headings).```      
+```Read the guidelines about [headings formatting](./03-formatting.md#headings).```      
 
 ## Links to the assets folder
 
@@ -28,7 +28,7 @@ To add a reference to a YAML, JSON, SVG, PNG, or JPG file located in the `assets
 
 ## Links in documentation toggles
 
-To link to a document in a documentation toggle, the toggle must start with the `<div tabs name="{toggle-name}">` tag and end with the `</div>` tag, where **name** is a distinctive ID used for linking. For more information, read a separate [document on toggles](./03-documentation-toggle.md).
+To link to a document in a documentation toggle, the toggle must start with the `<div tabs name="{toggle-name}">` tag and end with the `</div>` tag, where **name** is a distinctive ID used for linking. For more information, read a separate [document on toggles](./04-documentation-toggle.md).
 
 ## Links to the archived documentation
 
