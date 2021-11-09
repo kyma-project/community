@@ -3,7 +3,7 @@ title: Repository template
 label: internal
 ---
 
-The [`repository-template`](https://github.com/kyma-project/community/tree/main/guidelines/repository-guidelines/repository-template) folder offers a unified file, document, and folder structure. Use it for every new repository that you create in Kyma. It helps you to ensure that the project is consistent and standardized.
+The [`repository-template`](https://github.com/kyma-project/community/tree/main/templates/repository-template) folder offers a unified file, document, and folder structure. Use it for every new repository that you create in Kyma. It helps you to ensure that the project is consistent and standardized.
 
 ## Usage
 
@@ -15,11 +15,11 @@ The `repository-template` folder consists of:
 
 * [`docs`](https://github.com/kyma-project/community/tree/main/templates/repository-template/docs) - In this folder, put the repository-specific documentation only. Store any architectural decisions or documents applicable to all Kyma repositories in the `community` repository.
 
-* [CODE_OF_CONDUCT.md](https://github.com/kyma-project/community/tree/main/templates/repository-template/docs/CODE_OF_CONDUCT.md) - This document is a ready-to-use template which provides a link to the general `CODE_OF_CONDUCT.md` document from the `community` repository. Copy the template into your own repository.
+* [CODE_OF_CONDUCT.md](https://github.com/kyma-project/community/blob/main/templates/repository-template/CODE_OF_CONDUCT.md) - This document is a ready-to-use template which provides a link to the general `CODE_OF_CONDUCT.md` document from the `community` repository. Copy the template into your own repository.
 
 * [CODEOWNERS](https://github.com/kyma-project/community/tree/main/templates/repository-template/CODEOWNERS) - In this document, specify the owners of particular parts of your repository. The owners are automatically added as reviewers when you open a pull request that modifies the code and content they own. If you additionally [modify the settings](https://help.github.com/articles/enabling-required-reviews-for-pull-requests/) of the `main` branch and select the **Require review from Code Owners** option, their approvals become obligatory to merge the pull request. Configure the `CODEOWNERS` document and adjust your `main` branch. The `CODEOWNERS` document contains instructions on how to do both properly.
 
-* [CONTRIBUTING.md](https://github.com/kyma-project/community/tree/main/templates/repository-template/CONTRIBUTING.nd) - This template makes a reference to the [contributing rules](../../contributing/02-contributing.md) that contain the general guidance from the `community` repository and describes the rules for contributing to all Kyma repositories. If there is any additional, project-specific information that you want to add to your project's `CONTRIBUTING.md` document, add them under the same sections as in the general contributing guide.
+* [CONTRIBUTING.md](https://github.com/kyma-project/community/blob/main/templates/repository-template/CONTRIBUTING.md) - This template makes a reference to the [contributing rules](../../contributing/02-contributing.md) that contain the general guidance from the `community` repository and describes the rules for contributing to all Kyma repositories. If there is any additional, project-specific information that you want to add to your project's `CONTRIBUTING.md` document, add them under the same sections as in the general contributing guide.
 
 * [LICENSE](https://github.com/kyma-project/community/tree/main/templates/repository-template/LICENSE) - It is an obligatory element of every open-source repository. Copy the template into your repository.
 

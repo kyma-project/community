@@ -6,13 +6,13 @@ As a Kyma contributor, you must follow certain guidelines and rules.
 
 ## Guidelines
 
-Go to the **Guidelines** section to read about rules and tips for providing [content](../guidelines/content-guidelines) and [code](../guidelines/technical-guidelines) to the Kyma repositories. Also, learn how to create a new [repository](../guidelines/repository-guidelines), and how the [release process](../guidelines/releases-guidelines) looks in Kyma. Make your life easier using various document types [templates](../../templates/resources) prepared for those who would like to contribute.
+Go to the **Guidelines** section to read about rules and tips for providing [content](../guidelines/content-guidelines) and [code](../guidelines/technical-guidelines) to the Kyma repositories. Also, learn how to create a new [repository](../guidelines/repository-guidelines), and how the [release process](../guidelines/releases-guidelines) looks in Kyma. Make your life easier using various document types [templates](https://github.com/kyma-project/community/tree/main/templates) prepared for those who would like to contribute.
 
 ## Documentation types
 
 Read about [template types](../guidelines/templates/templates-type.md) used in specific Kyma repositories. The templates themselves are collected in the [`templates/resources`](https://github.com/kyma-project/community/tree/main/templates/resources) subfolder in the `community` repository.
 
-Extend the list whenever you define a new template for other document types. Make sure to update one of the tables in the [**Document types templates**](../guidelines/templates/templates-type.md) document after you add new templates to the [`templates/resources`](https://github.com/kyma-project/community/tree/main/templates/resources) subfolder.
+Extend the list whenever you define a new template for other document types. Make sure to update one of the tables in the [**Document types templates**](../guidelines/templates/templates-type.md) document after you add new templates to the `templates/resources` subfolder.
 
 ## Agreements and licenses
 
@@ -74,7 +74,7 @@ To contribute code or content to a given Kyma repository, follow these steps:
 
 > **NOTE:** The reviewer must check if all related CI tests have completed successfully before approving the PR.
 
-13. When the maintainers approve your change, merge the PR. If you are an external contributor, contact the repository maintainers specified in the `CODEOWNERS` file to merge the PR for you.
+12. When the maintainers approve your change, merge the PR or wait until the Kyma Bot merges it for you.
 
 ### Report an issue
 

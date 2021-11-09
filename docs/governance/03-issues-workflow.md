@@ -33,8 +33,8 @@ Here are the custom labels introduced by the Kyma team. The labels colors are pr
 * `area/quality` (#3CB913) indicates that an issue is related to a quality topic.
 * `area/performance` (#3CB913) indicates that an issue is related to a performance topic.
 * `security/{SEVERITY}` (#2D51F9) indicates a security issue based on its [CVSSv3](https://www.first.org/cvss/calculator/3.0) severity, either `low`, `medium`, `high`, or `critical`.
-* `sig/{SIG_NAME}` (#E99694) indicates which [Special interest group (SIG)](/collaboration/#overview-overview) identified the issue and is responsible for further follow-up on the issue.
-* `wg/{WG_NAME}` (#E99694) indicates which [Working group (WG)](/collaboration/#overview-overview) identified the issue and is responsible for further follow-up on the issue.
+* `sig/{SIG_NAME}` (#E99694) indicates which [Special interest group (SIG)](../contributing/04-sig-and-wg.md#sig-special-interest-group) identified the issue and is responsible for further follow-up on the issue.
+* `wg/{WG_NAME}` (#E99694) indicates which [Working group (WG)](../contributing/04-sig-and-wg.md#wg-working-group) identified the issue and is responsible for further follow-up on the issue.
 
 ## Issues triage
 

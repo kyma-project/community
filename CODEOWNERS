@@ -4,8 +4,8 @@
 # Owners of the manifesto-app folder
 /manifesto-app/ @m00g3n
 
-# Owners of the collaboration folder
-/collaboration/ @PK85
+# Owners of the sigs-and-wgs folder
+/sigs-and-wgs/ @PK85
 
 # Owners of all .md files in the repository
 *.md @klaudiagrz @mmitoraj @majakurcius @alexandra-simeonova @NHingerl

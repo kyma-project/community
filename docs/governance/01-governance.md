@@ -14,17 +14,19 @@ Create a GitHub issue in the [community](https://github.com/kyma-project/communi
 
 ## Ownership policy
 
-Kyma repositories are owned by code owners who are a group of people with special privileges in the repositories of the [Kyma](https://github.com/kyma-project) organization. Each repository has a separate `CODEOWNERS` file located at its root. The file specifies persons who have the ability to approve contribution to the part of the repository they own, after a detailed review of the related pull requests (PRs). Although the name suggests only the code ownership, the `CODEOWNERS` file is not only about the code but the content in general. Apart from the developers, you can define any relevant parties as code owners. For example, technical writers are set up as the owners of all `.md` documents in the Kyma repositories and SIG/WG members are the owners of their SIG/WG's folders' content.
+Kyma repositories are owned by codeowners who are a group of people with special privileges in the repositories of the [Kyma](https://github.com/kyma-project) organization. Each repository has a separate `CODEOWNERS` file located at its root. The file specifies persons who have the ability to approve contribution to the part of the repository they own, after a detailed review of the related pull requests (PRs). Although the name suggests only the code ownership, the `CODEOWNERS` file is not only about the code but the content in general. Apart from the developers, you can define any relevant parties as codeowners. For example, technical writers are set up as the owners of all `.md` documents in the Kyma repositories and SIG/WG members are the owners of their SIG/WG's folders' content.
 
-### Code owners (aka maintainers) responsibilities
+>**NOTE:** Within this document, words "codeowner" and "maintainer" are used interchangeably.
+
+### Codeowners responsibilities
 
 With great power comes great responsibility. Maintainers not only review and approve PRs but also truly care about their projects.
 
-Every code owner is expected to:
+Every codeowner is expected to:
 
 * Contribute high-quality code and content
 * Communicate and collaborate with other code owners to improve the ownership process
-* Perform a thorough review of incoming PRs and make sure he/she follows the [contributing rules](CONTRIBUTING.md)
+* Perform a thorough review of incoming PRs and make sure he/she follows the [contributing rules](../contributing/02-contributing.md)
 * Approve only those PRs in which the contributor made the requested improvements
 * Check if the related CI tests have completed successfully before approving the PR
 * Make sure that the PR approval flow runs smoothly
@@ -32,10 +34,10 @@ Every code owner is expected to:
 * Perform maintenance tasks for his/her projects
 * As an assignee, treat issues assigned to a current release with priority
 * Monitor [Slack](http://slack.kyma-project.io)
-* Triage GitHub issues and perform pull request reviews for other maintainers and the community. Follow the [labels workflow](/governance/#issues-workflow-issues-workflow) document
+* Triage GitHub issues and perform pull request reviews for other maintainers and the community.
 * In general, continue to be willing to spend at least 50% of his/her time working on Kyma (~2.5 business days per week).
 
-### Process for becoming a maintainer (aka codeowner)
+### Process for becoming a codeowner
 
 * Express interest to the existing maintainers that you or your organization are interested in becoming a
   maintainer. Depending on whether you are an individual or a corporate contributor/maintainer, a different contributor license agreement applies.
@@ -63,7 +65,7 @@ the maintainers per the voting process below.
 
 ### How to suggest a change in maintainers list?
 
-To suggest a change in the ownership of a given repository part, create a PR with the required changes in the `CODEOWNERS` file in the project's repository. The required number of code owners needs to approve the PR for the changes to take place. Read [here](https://github.com/kyma-project/community/blob/main/guidelines/repository-guidelines/repository-template/CODEOWNERS) on how to set up and modify owners of the given repository folders and files.
+To suggest a change in the ownership of a given repository part, create a PR with the required changes in the `CODEOWNERS` file in the project's repository. The required number of codeowners needs to approve the PR for the changes to take place. Read the [CODEOWNERS  file template](https://github.com/kyma-project/community/blob/main/templates/repository-template/CODEOWNERS) to learn how to set up and modify owners of the given repository folders and files.
 
 The name of the removed maintainer should be added to the [emeritus](https://github.com/kyma-project/community/blob/main/emeritus.md) file with short info about what areas were covered by this person.
 
@@ -75,11 +77,11 @@ called in to decide an issue. If the maintainers themselves cannot decide an iss
 be resolved by voting. The voting process is a simple majority in which each maintainer
 receives one vote.
 
-For complex cases when there is a situation that we need a decision that affects more than just one group of maintainers, the [Decision Making](/governance/#kyma-working-model-kyma-working-model-decision-making) process applies.
+For complex cases when there is a situation that we need a decision that affects more than just one group of maintainers, the decision making process applies.
 
-## Decision-making
+## Decision making
 
-In general, the Special Interest Groups (SIGs) and Working Groups (WGs) make decisions that affect the project, including its structure, functionalities, components, or work of the project teams. However, the organizational decisions and those that relate to the product strategy are made by the [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee).
+In general, the Special Interest Groups (SIGs) and Working Groups (WGs) make decisions that affect the project, including its structure, functionalities, components, or work of the project teams. However, the organizational decisions and those that relate to the product strategy are made by the [Kyma Steering Committee](02-steering-committee.md).
 
 SIGs and WGs follow the **lazy consensus** approach to decision-making which assumes that:
 
@@ -88,8 +90,6 @@ SIGs and WGs follow the **lazy consensus** approach to decision-making which ass
 * Any objections are good opportunities for healthy and constructive discussions.
 
 > **NOTE:** The described approach only concerns the decisions made by SIGs and WGs. It does not affect any Kyma decisions made during daily team activities.
-
-To see the current state of processed decisions in the Kyma project, go to the project's [decision board](https://app.zenhub.com/workspaces/kyma---all-repositories-5b6d5985084045741e744dea/board?labels=decision&repos=151691065,157188288,169101295,139590666,186589820,139590577,167399060,139590641,139590616,171673731,165843160,170300585,167146343,147495537,139847219,150745068&showPRs=false&showClosed=false).
 
 The SIG/WG decison-making process is as follows:
 
@@ -127,7 +127,7 @@ Once you reach the consensus:
 
 ### Lack of consensus
 
-Engage the [Kyma Steering Committee](/governance/#kyma-steering-committee-kyma-steering-committee) if necessary to reach the final decision as soon as possible and close the issue.
+Engage the Kyma Steering Committee if necessary to reach the final decision as soon as possible and close the issue.
 
 ### Revisit a decision
 
