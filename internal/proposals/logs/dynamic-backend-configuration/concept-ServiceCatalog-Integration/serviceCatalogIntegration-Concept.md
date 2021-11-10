@@ -107,15 +107,15 @@ spec:
     - content: |
         Name    grep
         Match   *
-        Regex   $kubernetes['labels']['app'] ${INCLUDE_NAMESPACES}
+        Regex   $kubernetes['namespace_name'] ${INCLUDE_NAMESPACES}
   outputs:
     - content: |
         Name               es
         Alias              es-output
         Match              *
-        Host               ${ES_ENDPOINT} # Defined in loki-credentials Secret
-        HTTP_User          ${ES_USER} # Defined in loki-credentials Secret
-        HTTP_Password      ${ES_PASSWORD} # Defined in loki-credentials Secret
+        Host               ${ES_ENDPOINT} # Defined in Secret
+        HTTP_User          ${ES_USER} # Defined in Secret
+        HTTP_Password      ${ES_PASSWORD} # Defined in Secret
         LabelMapPath       /files/labelmap.json
   files:
     - name: labelmap.json
@@ -179,13 +179,16 @@ spec:
     - content: |
         Name    grep
         Match   *
-        Regex   $kubernetes['labels']['app'] ${INCLUDE_NAMESPACES}
+        Regex   $kubernetes['namespace_name'] ${INCLUDE_NAMESPACES}
   outputs:
+    - content: |
     - content: |
         Name               es
         Alias              es-output
         Match              *
-        Url                ${LOKI_ENDPOINT} # Defined in loki-credentials Secret
+        Host               ${ES_ENDPOINT} # Defined in Secret
+        HTTP_User          ${ES_USER} # Defined in Secret
+        HTTP_Password      ${ES_PASSWORD} # Defined in Secret
         LabelMapPath       /files/labelmap.json
   files:
     - name: labelmap.json
