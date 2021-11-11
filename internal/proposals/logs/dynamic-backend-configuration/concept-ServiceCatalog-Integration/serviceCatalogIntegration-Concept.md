@@ -103,11 +103,28 @@ metadata:
   name: ElasticService
 spec:
   parsers: {}
+  multilineParsers:
+    - content: |
+        # Example from https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
+        name          multiline-custom-regex
+        type          regex
+        flush_timeout 1000
+        rule      "start_state"   "/(Dec \d+ \d+\:\d+\:\d+)(.*)/"  "cont"
+        rule      "cont"          "/^\s+at.*/"                     "cont"
   filters:
+    - content: |
+        name                  multiline
+        match                 *
+        multiline.key_content log
+        multiline.parser      go, multiline-custom-regex
     - content: |
         Name    grep
         Match   *
         Regex   $kubernetes['namespace_name'] ${INCLUDE_NAMESPACES}
+    - content: |
+        Name    record_modifier
+        Match   *
+        Record  cluster_identifier ${KUBERNETES_SERVICE_HOST}
   outputs:
     - content: |
         Name               es
@@ -134,6 +151,8 @@ spec:
       description: Elastic user
     - name: ES_PASSWORD
       description: Elastic password
+    - name: KUBERNETES_SERVICE_HOST
+      description: Cluster identifier
     - name: INCLUDE_NAMESPACES
       description: Include Kubernetes namespaces
       default: *
@@ -149,10 +168,12 @@ metadata:
   namespace: default
 type: Opaque
 data:
-  ...
+  ES_ENDPOINT: aG9zdAo=
+  ES_USER: Zm9vCg==
+  ES_PASSWORD: YmFyCg==
 ```
 
-2. The user creates a `LogPresetBinding` CR that indicates the usage of their Secret for the `ElasticService`:
+2. The user creates a `LogPresetBinding` CR that indicates the usage of their Secret for the `ElasticService`. Values that are not provided by the Secret can be configured explicitly in the bindings section. The operator will try to attempt an automatic binding for all other placeholders:
 
 ```YAML
 kind: LogPresetBinding
@@ -164,9 +185,16 @@ spec:
   secretRef:
     - name: my-elastic-credentials
       namespace: default
+  bindings:
+    - placeholder: KUBERNETES_SERVICE_HOST
+      staticValue: cluster-123
+  selector:
+    namespaces: {}
+    matchLabels:
+      app: my-deployment
 ```
 
-3. The Telemetry Operator generates the low-level CRs based on the preset and the secret:
+3. The Telemetry Operator generates the low-level CRs based on the preset and the secret. The filters section is enhanced by filters that are generated from the selectors of the LogPresetBinding:
 
 ```YAML
 kind: LogPipeline
@@ -175,13 +203,30 @@ metadata:
   name: ElasticService-instanceXYZ
 spec:
   parsers: {}
+  multilineParsers:
+    - content: |
+        # Example from https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
+        name          multiline-custom-regex
+        type          regex
+        flush_timeout 1000
+        rule      "start_state"   "/(Dec \d+ \d+\:\d+\:\d+)(.*)/"  "cont"
+        rule      "cont"          "/^\s+at.*/"                     "cont"
   filters:
     - content: |
+        name                  multiline
+        match                 *
+        multiline.key_content log
+        multiline.parser      go, multiline-custom-regex
+    - content: |
+        # Generated from selector in LogPresetBinding
         Name    grep
         Match   *
-        Regex   $kubernetes['namespace_name'] ${INCLUDE_NAMESPACES}
-  outputs:
+        Regex   $kubernetes['labels']['app'] my-deployment
     - content: |
+        Name    record_modifier
+        Match   *
+        Record  cluster_identifier ${KUBERNETES_SERVICE_HOST}
+  outputs:
     - content: |
         Name               es
         Alias              es-output
@@ -203,4 +248,8 @@ spec:
   secretRefs:
     - name: my-elastic-credentials
       namespace: default
+    - name: ElasticService-static # Created by the Telemetry Operator to store static values from the LogPresetBinding
+      namespace: default
 ```
+
+> **_NOTE:_**   The example should primarily demonstrate the concept for the CRD and might not be semantically correct in all aspects.
