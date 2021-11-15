@@ -118,10 +118,6 @@ spec:
         multiline.key_content log
         multiline.parser      go, multiline-custom-regex
     - content: |
-        Name    grep
-        Match   *
-        Regex   $kubernetes['namespace_name'] ${INCLUDE_NAMESPACES}
-    - content: |
         Name    record_modifier
         Match   *
         Record  cluster_identifier ${KUBERNETES_SERVICE_HOST}
@@ -149,13 +145,11 @@ spec:
       description: endpoint URL
     - name: ES_USER
       description: Elastic user
+      default: admin
     - name: ES_PASSWORD
       description: Elastic password
     - name: KUBERNETES_SERVICE_HOST
       description: Cluster identifier
-    - name: INCLUDE_NAMESPACES
-      description: Include Kubernetes namespaces
-      default: *
 ```
 
 1. The user creates a Kubernetes Secret with their credentials and service endpoint. This can happen either manually or by creating a ServiceBinding:
