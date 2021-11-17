@@ -48,170 +48,65 @@ To actually apply the changes of the users, the operator creates or adapts the C
 
 To make sure that the configuration by the users won't be overwritten by reconciliation, the basic configuration (`kubernetes` filter, `rewrite_tag`, etc.) is written into a ConfigMap. This ConfigMap is embedded by an `@INCLUDE` statement in the chart of this operator.
 
-<details>
-  <summary><b>CustomResourceDefinition (go code) </b>- Click to expand</summary>
+The following example demonstrates the CRD that will be used by the telemetry operator:
 
-```go
-package v1alpha1
-
-import (
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-)
-
-// EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
-// NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
-
-// LoggingConfigurationSpec defines the desired state of LoggingConfiguration
-type LoggingConfigurationSpec struct {
-	Sections []Section `json:"sections,omitempty"`
-}
-
-// Section describes a Fluent Bit configuration section
-type Section struct {
-	Content     string            `json:"content,omitempty"`
-	Environment []SecretReference `json:"environment,omitempty"`
-	Files       []FileMount       `json:"files,omitempty"`
-}
-
-// FileMount provides file content to be consumed by a Section configuration
-type FileMount struct {
-	Name    string `json:"name,omitempty"`
-	Content string `json:"content,omitempty"`
-}
-
-// SecretReference is a pointer to a Kubernetes secret that should be provided as environment to Fluent Bit
-type SecretReference struct {
-	Name      string `json:"name,omitempty"`
-	Namespace string `json:"namespace,omitempty"`
-}
-
-// LoggingConfigurationStatus defines the observed state of LoggingConfiguration
-type LoggingConfigurationStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-}
-
-//+kubebuilder:object:root=true
-//+kubebuilder:subresource:status
-
-// LoggingConfiguration is the Schema for the loggingconfigurations API
-type LoggingConfiguration struct {
-	metav1.TypeMeta   `json:",inline"`
-	metav1.ObjectMeta `json:"metadata,omitempty"`
-
-	Spec   LoggingConfigurationSpec   `json:"spec,omitempty"`
-	Status LoggingConfigurationStatus `json:"status,omitempty"`
-}
-
-//+kubebuilder:object:root=true
-
-// LoggingConfigurationList contains a list of LoggingConfiguration
-type LoggingConfigurationList struct {
-	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []LoggingConfiguration `json:"items"`
-}
-
-func init() {
-	SchemeBuilder.Register(&LoggingConfiguration{}, &LoggingConfigurationList{})
-}
-```
-</details>
-
-
-<details>
-  <summary><b>CustomResourceDefinition (yaml file, created using kubebuilder SDK)</b> - Click to expand</summary>
-
-```yaml
----
-apiVersion: apiextensions.k8s.io/v1
-kind: CustomResourceDefinition
+```YAML
+kind: LogPipeline
+apiVersion: telemetry.kyma-project.io/v1alpha1
 metadata:
-  annotations:
-    controller-gen.kubebuilder.io/version: v0.4.1
-  creationTimestamp: null
-  name: loggingconfigurations.telemetry.kyma-project.io
+  name: ElasticService-instanceXYZ
 spec:
-  group: telemetry.kyma-project.io
-  names:
-    kind: LoggingConfiguration
-    listKind: LoggingConfigurationList
-    plural: loggingconfigurations
-    singular: loggingconfiguration
-  scope: Namespaced
-  versions:
-  - name: v1alpha1
-    schema:
-      openAPIV3Schema:
-        description: LoggingConfiguration is the Schema for the loggingconfigurations
-          API
-        properties:
-          apiVersion:
-            description: 'APIVersion defines the versioned schema of this representation
-              of an object. Servers should convert recognized schemas to the latest
-              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
-            type: string
-          kind:
-            description: 'Kind is a string value representing the REST resource this
-              object represents. Servers may infer this from the endpoint the client
-              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
-            type: string
-          metadata:
-            type: object
-          spec:
-            description: LoggingConfigurationSpec defines the desired state of LoggingConfiguration
-            properties:
-              sections:
-                items:
-                  description: Section describes a Fluent Bit configuration section
-                  properties:
-                    content:
-                      type: string
-                    environment:
-                      items:
-                        description: SecretReference is a pointer to a Kubernetes
-                          secret that should be provided as environment to Fluent
-                          Bit
-                        properties:
-                          name:
-                            type: string
-                          namespace:
-                            type: string
-                        type: object
-                      type: array
-                    files:
-                      items:
-                        description: FileMount provides file content to be consumed
-                          by a Section configuration
-                        properties:
-                          content:
-                            type: string
-                          name:
-                            type: string
-                        type: object
-                      type: array
-                  type: object
-                type: array
-            type: object
-          status:
-            description: LoggingConfigurationStatus defines the observed state of
-              LoggingConfiguration
-            type: object
-        type: object
-    served: true
-    storage: true
-    subresources:
-      status: {}
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []
+  parsers: {}
+  multilineParsers:
+    - content: |
+        # Example from https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
+        name          multiline-custom-regex
+        type          regex
+        flush_timeout 1000
+        rule      "start_state"   "/(Dec \d+ \d+\:\d+\:\d+)(.*)/"  "cont"
+        rule      "cont"          "/^\s+at.*/"                     "cont" 
+  filters:
+    - content: |
+        name                  multiline
+        match                 *
+        multiline.key_content log
+        multiline.parser      go, multiline-custom-regex
+    - content: |
+        # Generated from selector in LogPresetBinding
+        Name    grep
+        Match   *
+        Regex   $kubernetes['labels']['app'] my-deployment 
+    - content: |
+        Name    record_modifier
+        Match   *
+        Record  cluster_identifier ${KUBERNETES_SERVICE_HOST}
+  outputs:
+    - content: |
+        Name               es
+        Alias              es-output
+        Match              *
+        Host               ${ES_ENDPOINT} # Defined in Secret
+        HTTP_User          ${ES_USER} # Defined in Secret
+        HTTP_Password      ${ES_PASSWORD} # Defined in Secret
+        LabelMapPath       /files/labelmap.json
+  files:
+    - name: labelmap.json
+      content: |
+      {
+          "kubernetes": {
+            "namespace_name": "namespace",
+            "pod_name": "pod"
+          },
+          "stream": "stream"
+      }
+  secretRefs:
+    - name: my-elastic-credentials
+      namespace: default
+    - name: ElasticService-static # Created by the Telemetry Operator to store static values from the LogPresetBinding
+      namespace: default
 ```
-</details>
 
-
+The CRD contains a separate section for the different parts for the Fluent Bit configuration. The operator validates the configuration and merges static parts like predefined inputs, parsers or filters.
 
 ### Workflow for the User
 
