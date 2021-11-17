@@ -27,7 +27,7 @@ The following Workflow is explained in the context of the BTP Operator's Service
 To map the key-value pairs given by the referenced Secret, we need a CRD that maps the keys of the Secret to the corresponding FluentBit Output keys. Thus, the `Preset`-CRD is needed. This CRD is defined by:
 - Name
 - Mapping from Secret keys to FluentBit keys
-- The filter, parser and output plugins of FluentBit that are to be used
+- The filter, parser, and output plugins of FluentBit that are to be used
 - Configuration of these filters and outputs
 
 Kyma will then have predefined Preset-CRs, which the customer can use to create a FluentBit configuration based on the customer's created ServiceBinding. In this way, the users does not have to care about maintaining filters (i.e. `Lua` scripts), configuration of outputs (i.e. `http`-Plugin), etc.
