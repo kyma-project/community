@@ -87,11 +87,6 @@ spec:
       namespace: default
 ```
 
-## Unified Templating for Logging and OpenTelemetry
-
-The OpenTelemetry Collector configuration should be a second sub-resource (besides the logging configuration) in the Preset.
-This allows services to consume different types of telemetry. For example, an Elastic stack could consume both logs and traces.
-
 ## Example
 
 A commercial provider might offer an ElasticSearch-based service that can receive logs using the ElasticSearch protocol. Kyma might contain a preset for this `ElasticService` that contains all necessary configurations.
@@ -183,6 +178,7 @@ spec:
     - placeholder: KUBERNETES_SERVICE_HOST
       staticValue: cluster-123
   selector:
+    excludeSystemNamespaces: true
     namespaces: {}
     matchLabels:
       app: my-deployment
@@ -216,6 +212,11 @@ spec:
         Name    grep
         Match   *
         Regex   $kubernetes['labels']['app'] my-deployment
+    - content: |
+        # Generated from selector excludeSystemNamespaces property in LogPresetBinding
+        Name    grep
+        Match   *
+        Exclude $kubernetes['namespace_name'] kyma-system|kube-system|kyma-integration|istio-system
     - content: |
         Name    record_modifier
         Match   *
