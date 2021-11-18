@@ -20,7 +20,7 @@ The following Workflow is explained in the context of the BTP Operator's Service
 4. Telemetry Operator watches PresetBinding-CRs. If a new CR is created, Telemetry Operator creates a new LogPipeline-CR, using the Preset and the information given by the referenced Secret.
 5. Telemetry operator creates new FluentBitConfig based on LogPipeline-CR.
 
-![Workflow Architecture](images/workflow-overview.svg)
+![Workflow Architecture](./assets/workflow-overview.drawio.svg)
 
 ## Templating
 
