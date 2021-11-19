@@ -1,6 +1,6 @@
-# jobManager (Migration Logic)
+# Installer Migration Hooks aka jobManager (Migration Logic)
 
-This PoC investigates a valid design for the new __JobManager__, which is needed to enable a clean automated Kyma deploy. It will be used to configure the cluster and the components during the deployment of Kyma. The terms "Deployment" and "Deploy" are used in the context of installing Kyma on an empty cluster, or to upgrade Kyma from an older to a newer version.
+This PoC investigates a valid design for the new __JobManager__, which is needed to enable a clean automated `kyma deploy` command. It will be used to configure the cluster and the components during the deployment of Kyma. The terms "Deployment" and "Deploy" are used in the context of installing Kyma on an empty cluster, or to upgrade Kyma from an older to a newer version.
 
 To achieve a valid solution for the PoC we need to come up with a design for the following:
 
