@@ -7,7 +7,7 @@
 ## Overview
 
 > Provide a description of the project's functionality.
-
+>
 > If it is an example README.md, describe what the example illustrates.
 
 ## Prerequisites
@@ -17,9 +17,9 @@
 ## Installation
 
 > Explain the steps to install your project.
-
+>
 > If it is an example README.md, describe how to build, run locally, and deploy the example. Format the example as code blocks and specify the language, highlighting where possible. Explain how you can validate that the example ran successfully. For example, define the expected output or commands to run which check a successful deployment.
-
+>
 > Add subsections (H3) for better readability.
 
 ## Usage
