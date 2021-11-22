@@ -1,10 +1,10 @@
 > **NOTE:** It is a general template that can be used for a project README.md, example README.md, or any other README.md type in all Kyma repositories in the Kyma organization. Not all the sections are mandatory. Use only those that suit your use case but keep the proposed section order.
 
-# {Project Title}
+# {Project Title} (mandatory)
 
 > Modify the title and insert the name of your project. Use Heading 1 (H1).
 
-## Overview
+## Overview (mandatory)
 
 > Provide a description of the project's functionality.
 >
@@ -16,7 +16,7 @@
 
 ## Installation
 
-> Explain the steps to install your project.
+> Explain the steps to install your project. Create an ordered list for each installation task.
 >
 > If it is an example README.md, describe how to build, run locally, and deploy the example. Format the example as code blocks and specify the language, highlighting where possible. Explain how you can validate that the example ran successfully. For example, define the expected output or commands to run which check a successful deployment.
 >
@@ -32,4 +32,8 @@
 
 ## Troubleshooting
 
-> List potential issues and provide tips on how to avoid or solve them.
+> List potential issues and provide tips on how to avoid or solve them. To structure the content, use the following sections:
+>
+> - **Symptom**
+> - **Cause**
+> - **Remedy**
