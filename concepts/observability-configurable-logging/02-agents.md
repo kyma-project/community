@@ -18,7 +18,7 @@ The most prominent technology nowadays is the `otel-collector` of the `OpenTelem
 It is quite new but already has a big community behind as it is covering the community of OpenCensus and OpenTracing. With that the ecosystem is already good enough and the majority of vendor-specific backends are supported (seeing the available exporters on the contrib repo) being based on a new vendor-neutral protocol.
 It is most probably the only real vendor-neutral project covering really all three aspects of logs, traces and metrics.
 Bigger companies are actively planning to use it at least for the trace and metrics aspects. Here, the configuration specification is still not in a stable state. For logging, the whole feature is still in a beta stadium.
-See also [more detailed here](../observability-opentelemtry/README.md)
+See also [more detailed here](../observability-opentelemetry/README.md)
 
 **Logs - Fluent-Bit**
 It is the traditional log collector used in Kyma already, being part of CNCF and widely adopted on K8S. It is vendor-neutral and supports a variety of generic outputs being capable of integrating with quite some backends. If a backend is not supported, you can use the fluent specific Forward protocol to connect a FluentD providing a even more richer ecosystem. It will scale-out perfect by running on every node with a minimalistic resource footprint.
