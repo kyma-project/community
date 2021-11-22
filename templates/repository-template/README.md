@@ -6,7 +6,7 @@
 
 ## Overview
 
-> Provide a description of the project's functionality. 
+> Provide a description of the project's functionality.
 
 > If it is an example README.md, describe what the example illustrates.
 
