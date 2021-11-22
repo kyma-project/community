@@ -1,5 +1,5 @@
 # Motivation
-Kyma is and want to continue using Fluent Bit as a log collection solution. Fluent Bit is configured with one or more plain text files and does not support dynamic configuration.
+Kyma is using and want to continue using Fluent Bit as a log collection solution. Fluent Bit is configured with one or more plain text files and does not support dynamic configuration.
 It poses the following problems:
 
 1. Static configuration must be provided upon Kyma installation and cannot be changed afterward.
@@ -10,7 +10,7 @@ It poses the following problems:
 Come up with a way to dynamically configure Fluent Bit (no manual pod restarting required). It should be possible to apply additional configuration snippets, which are not resettable by the Kyma upgrade process (reconciliation).
 
 # Possible solutions
-What immediately comes to mind is Prometheus Operator, which solves very similar problems. 
+What immediately comes to mind is something similar to Prometheus Operator, which solves very similar problems. 
 Prometheus, same as Fluent Bit, is configured with a plain text file (possibly, very long and complex). Configuring Prometheus by hand is not a trivial task.
 Prometheus Operator simplifies the configuration by introducing a bunch of custom resources translatable in a Prometheus config.
 It also makes it possible to dynamically update different parts of a Prometheus config without restarting any pods.
