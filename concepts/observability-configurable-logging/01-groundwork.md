@@ -35,11 +35,11 @@ This concept proposes how to open up to those new scenarios by making integratio
 
 # Proposed Solution
 
-The idea of the proposal is to introduce a pre-configured agent layer being responsible for collecting all telemetry data. That agents can be dynamically configured at runtime with different configuration scenarios so that the agents will start shipping the data to the configured backends. The dynamic configuration and management of the agent will happen by a new operator which can be configured via k8s resources. The agents and the new operator will be bundled in a new core package called `telemetry`. The bundled backends and UIs will become just one possible solution which can be installed optional and will stay in the existing modules like `logging`.
+The idea of the proposal is to introduce a preconfigured agent layer that's responsible for collecting all telemetry data. Those agents can be configured dynamically at runtime with different configuration scenarios, so that the agents start shipping the data to the configured backends. The dynamic configuration and management of the agent is handled by a new operator, which is configured using Kubernetes resources. The agents and the new operator are bundled in a new core package called `telemetry`. The existing Kyma backends and UIs will be just one possible solution that can be installed optionally and will stay in the existing modules like `logging`.
 
 ![b](./assets/future_all.drawio.svg)
 
 # Focus on Logging
 
-While the section above was more general, in the following it will be focused on the logging aspect only. This is mainly to have an emerging approach and solving the most urgent topics first. As logs have the longest tradition, everyone is used and expects to have solutions for logging place.
-The following documents will outline what agent technology gets used, what operator gets used and how the general API will look like.
+While the section above was more general, the following proposal focuses on the logging aspect only. This is mainly to have an emerging approach and solve the most urgent topics first. Because logs have the longest tradition, everyone is used and expects to have solutions for logging in place.
+The following documents outline which agent technology and which operator are used, and how the general API will look like.
