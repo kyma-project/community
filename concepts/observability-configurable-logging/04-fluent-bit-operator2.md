@@ -1,6 +1,6 @@
 # Motivation
 
-In [this document](./03-fluent-bit-operator1.md), we compared different solutions for a dynamic logging configuration setup. As a result, we decided to come up with a custom operator written and maintained by the Kyma team. Since then, the operator written by `kubesphere` has been contributed to `FluentBit`. Thus, the project now has more active contributors and has developed further. In this document, we want to have a look at the changes/improvements since the last comparison, and want to see if it is worth switching to the (now) official FluentBit operator.
+In [the first document about Fluent-Bit Operator](./03-fluent-bit-operator1.md), we compared different solutions for a dynamic logging configuration setup. As a result, we decided to come up with a custom operator written and maintained by the Kyma team. Since then, the operator written by `kubesphere` has been contributed to `Fluent-Bit`. Thus, the project now has more active contributors and has developed further. In this document, we want to have a look at the changes and improvements since the last comparison, and want to see if it is worth switching to the (now) official Fluent-Bit Operator.
 
 # FluentBit Operator (former Kubesphere)
 Fluent Bit Operator defines the following custom resources:

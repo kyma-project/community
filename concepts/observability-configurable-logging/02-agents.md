@@ -30,27 +30,34 @@ Written in Ruby and being more resource-extensive than Fluent-Bit, FluentD prese
 Rsyslog also supports a variety of inputs and outputs. Here, mainly the built-in Kubernetes support is missing.
 
 ### Logs - Logstash
-Logstash is a popular project with a rich ecosystem with built-in Kubernetes support. It's developed under the Elastic umbrella and has a clear addiction to use ElasticSearch as a backend.
+Logstash is a popular project with a rich ecosystem with built-in Kubernetes support. It's developed under the Elastic umbrella and is mostly seen in usage of ElasticSearch as a backend.
 
-**Logs - Promtail**
-Is not vendor-neutral on the output side, mainly designed for the Loki backend
+Logs - Promtail
+Promtail is not vendor-neutral on the output side. It's mainly designed for the Loki backend.
 
-**Logs - Flume**
-Seems to have no active community anymore
+### Logs - Flume
+Flume seems to have no active community anymore.
 
-**Traces - OpenCensus/Jaeger Agent**
+### Traces - OpenCensus/Jaeger Agent
 Both agents are deprecated in favor of using otel-collector.
 
-**Metrics - Prometheus**
-Prometheus is a collector and backend at the same time. While you could reduce the backend settings to a minimum and mainly use the metrics forwarding to act as a collector/forwarder, the solution will still be not flexible. Only prometheus compatible backends will be supported.
+### Metrics - Prometheus
+Prometheus is a collector and backend at the same time. While you could reduce the backend settings to a minimum and mainly use the metrics forwarding to act as a collector/forwarder, the solution still isn't flexible. Only prometheus-compatible backends are supported.
 
-**Metrics - Telegraf**
-Has a broad community, supports various input/outputs and supports kubernetes
+### Metrics - Telegraf
+Telegraf has a broad community, supports various input and outputs, and supports Kubernetes
+
+
 ## Conclusion
 
-Seeing the wide adoption of OpenTelemetry and the grow of the Community, seeing that it will cover all three data kind in a consistent way, seeing it fully vendor-neutral, seeing it written in a resource-efficient and scalable way, then the `otel-collector` is the way to go. It covers all requirements and brings the consistency on top.
-However, only in the trace dimension it already gets classified as mature enough, see also recent [announcement](https://www.jaegertracing.io/docs/1.21/opentelemetry/) of jaeger. In the metrics and log dimension it might be good to still stay on some alternative solution, being ready to switch to `otel-collector` when ready.
+The `otel-collector` is the way to go because of the following reasons:
+- OpenTelemetry is widely adopted and the community is growing.
+- It covers all three kinds of telemetry data in a consistent way.
+- It's fully vendor-neutral. 
+- It's written in a resource-efficient and scalable way.
+The `otel-collector` covers all requirements and on top, it brings consistency.
+However, only in the trace dimension it is already classified as mature enough (see also recent [Jaeger announcement](https://www.jaegertracing.io/docs/1.21/opentelemetry/)). In the metrics and log dimension, it might be good to still stay on some alternative solution, being prepared to switch to `otel-collector` when it's mature.
 
-For logs, the only real vendor-neutral solution which is supporting kubernetes natively is `fluent-bit` (with optional combination with `FluentD`). As Kyma has good experience with the project already, we should stay with it till the otel-collector is ready.
+For logs, the only real vendor-neutral solution that supports Kubernetes natively is Fluent Bit (optionally combined with `FluentD`). Because Kyma has good experience with the project already, we should stay with it till the otel-collector is mature.
 
-For metrics, telegraf sounds like a good intermediate candidate however the transition from prometheus to it and then forward to the otel-collector sounds cumbersome. Maybe we should stay for now on prometheus.
+For metrics, Telegraf sounds like a good intermediate candidate. However, the transition from Prometheus to it and then forward to the otel-collector seems to be cumbersome. Maybe we should stay on Prometheus for now.
