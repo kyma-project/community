@@ -30,7 +30,7 @@ This concept proposes how to open up to those new scenarios by making integratio
 
 ### Template instantiation
 - A template is instantiated by binding it to a secret that provides input for placeholders like URL and credentials. Alternatively, placeholders can be filled out with configMaps and static values.
-  - It validates fullfilment of placeholders
+  - The template validates whether all placeholders will be replaced with values.
 - A template can be instantiated for a specific workload and/or namespaces only.
 
 # Proposed Solution
