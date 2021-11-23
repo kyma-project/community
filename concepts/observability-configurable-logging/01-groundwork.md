@@ -1,39 +1,37 @@
 # Current Situation and Motivation
 
-In the current shape of Kyma in year 2021, the observability stack is focussing on providing oppinionated solutions, working out of the box, to solve basic requirements for application operators. By that, it is not focussing on integration aspects in order to cover a broader and richer usage scenario.
+In the current shape of Kyma in 2021, the observability stack is focussing on providing opinionated solutions, working out of the box, to solve basic requirements for application operators. Consequently, it is not focussing on integration aspects in order to cover a broader and richer usage scenario.
 
 ![a](./assets/current_all.drawio.svg)
 
-In the diagram you see that all three observability aspects (log, trace, metric) are providing a pre-configured backend with visualizations. However, they are not providing a neutral and unified way of integration of backends outside of the cluster. The tracing stack provides no way to centrally push trace data to the outside. Logging can be configured much more flexible and neutral, however, the configuration needs to be done at installation time to not get lost at the next kyma upgrade process. Furthermore it is not easy to use to mix and match different integrations as you need to deal with one centralized configuration (the fluent-bit config).
+In the diagram, you see that all three observability aspects (log, trace, metric) provide a preconfigured backend with visualisations. However, they don't provide a neutral and unified way to integrate backends outside of the cluster. The tracing stack provides no way to centrally push trace data to the outside. Logging can be configured much more flexibly and neutrally, however, the configuration must be done during installation so it isn't lost at the next Kyma upgrade process. Furthermore, it is not easy to use to mix and match different integrations, because you need to deal with one centralized configuration (the fluent-bit config).
 
-Integration (and with that changing the focus away from in-cluster backends) is the key to open up the stack for a broad range of use cases. Users can simply bring there own backends as they already use a commercial offering or run own infrastructure. The data can be stored outside of the cluster in a managed offering, shared with the data of multiple clusters, away from any tampering/deletion attempt of a hacker, ...
+Integration (and with that, changing the focus away from in-cluster backends) is the key to open up the stack for a broad range of use cases. Users can simply bring their own backends if they already use a commercial offering or run their own infrastructure. The data can be stored outside the cluster in a managed offering, shared with the data of multiple clusters, away from any tampering or deletion attempt of a hacker, to name just a few.
 
-This concept proposes how to open up to that new scenarios by making integration possible at runtime in a convenient way. For that it will focus on the logging scenario only being ready to include the other data types at a later time.
+This concept proposes how to open up to those new scenarios by making integration possible at runtime in a convenient way. For that, it focuses on the logging scenario. The other data types will be included at a later time.
 
 # Requirements
 
-The basic requirements can be condensed to this list:
 
-- Basic backend configuration
-  - Have a vendor-neutral agent layer being responsible for collecting and shipping the telemetry data, but not permanently storing it (as a backend)
-  - Support configuration of the selected agent at runtime (no need to run a kyma upgrade process) in a scenario focused approach
-  - Support multiple configurations at the same time in individual resources to enable easy activation of dedicated scenarios
-  - one vendor-neutral input and output support is enough as a minimum, it should be possible to chain your custom agent for specific conversions (like for traces, supporting the OLTP protocol will support most of the vendors already. Chaining a custom otel-collector can do custom conversion to a specific protocol)
-  - all typical settings for supported outputs of the used agent are supported (do not hide/abstract them)
-  - the agent should run stable at anytime, bad configuration should be pre-validated and rejected, fast feedback is welcome
-  - secrets must be kept secret
+### Basic backend configuration
+- Have a vendor-neutral agent layer that collects and ships the telemetry data, but does not permanently store it (as a backend)
+- Support configuration of the selected agent at runtime (no need to run a Kyma upgrade process) in a scenario-focused approach
+- Support multiple configurations at the same time in individual resources to enable easy activation of dedicated scenarios
+- As a minimum, support one vendor-neutral input and output. It should be possible to chain your custom agent for specific conversions. For example, for traces, supporting the OLTP protocol will support most of the vendors already. Chaining a custom OpenTelemetry  Collector can do custom conversion to a specific protocol.
+- Support all typical settings for the supported outputs of the used agent, do not hide or abstract them
+- The agent must run stable at any time. Bad configuration must be prevalidated and rejected. Fast feedback is welcome.
+- Secrets must be kept secret.
 
-- Template definitions
-  - Have a mechanism to provide templates/best practices for typical scenarios which can be innstantiated at runtime
-  - Such template provides same feature-richness as a configuration scenario
-  - If specific templates are bundled with kyma, updates of a template in use should propogate to the actual agent configuration
-  - Supports placeholder definitions with default values and descriptions
+### Template definitions
+- Have a mechanism to provide templates and best practices for typical scenarios, which can be instantiated at runtime
+- Such template provides the same feature-richness as a configuration scenario
+- If specific templates are bundled with Kyma, updates of a template in use must propagate to the actual agent configuration
+  - Support placeholder definitions with default values and descriptions
 
-- Template instantiation
-  - A template gets instantiated by usually binding it to a secret, fullfilling placeholders like URL and credentials
-  - Placeholders can be satisfied with configMaps and static values as well
+### Template instantiation
+- A template is instantiated by binding it to a secret that provides input for placeholders like URL and credentials. Alternatively, placeholders can be filled out with configMaps and static values.
   - It validates fullfilment of placeholders
-  - A template can be instantiated for specific workload and/or namespaces only
+- A template can be instantiated for a specific workload and/or namespaces only.
 
 # Proposed Solution
 
