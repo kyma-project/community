@@ -47,7 +47,8 @@ Prometheus is a collector and backend at the same time. While you could reduce t
 ### Metrics - Telegraf
 Telegraf has a broad community, supports various input and outputs, and supports Kubernetes
 
-
+### Metrics - VictoriaMetrics Agent
+The VictoriaMetrics project provides an agent that can receive metrics via different protocols and forward to a Prometheus compatible backend using the remote write protocol. The project claims to be more resource friendly than a full Prometheus instance. Their Kubernetes operator can consume Prometheus-Operator objects. 
 ## Conclusion
 
 The `otel-collector` is the way to go because of the following reasons:
