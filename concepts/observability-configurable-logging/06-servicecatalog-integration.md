@@ -3,12 +3,10 @@
 
 Goal: Telemetry operator should be extended to a kind of automatic templating to be used in combination with the ServiceCatalog.
 
-
 The original workflow for a user creating a ServiceBinding remains unchanged, which keeps the user workflow easier. There is no advantage of changing the user workflow. We also thought of changing the workflow to have a more automated setup, but this would require more knowledge of the user to actually perform the ServiceBinding with the automated FluentBit Configuration.
 Instead, the workflow will be expanded by one additional step to create the FluentBit configuration for the corresponding ServiceBinding.
 
 This concept covers the basic requirements with a minimal setup and reusing the Telemetry Operator for this purpose. At a later point, the Telemetry Operator could be split up to have a cleaner operator architecture, but this needs to be discussed further in the future.
-
 
 ## General Architecture / Workflow:
 
@@ -20,7 +18,7 @@ The following Workflow is explained in the context of the BTP Operator's Service
 4. Telemetry Operator watches PresetBinding-CRs. If a new CR is created, Telemetry Operator creates a new LogPipeline-CR, using the Preset and the information given by the referenced Secret.
 5. Telemetry operator creates new FluentBitConfig based on LogPipeline-CR.
 
-![Workflow Architecture](images/workflow-overview.svg)
+![Workflow Architecture](./assets/workflow-overview.drawio.svg)
 
 ## Templating
 

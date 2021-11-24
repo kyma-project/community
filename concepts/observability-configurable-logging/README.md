@@ -1,7 +1,11 @@
 # Dynamic Logging Backend Configuration
 
-This folder contains documentation about different approaches to make logging backends in a Kyma cluster configurable:
+This folder contains pages for evaluating and proposing a concept for having the logging backends (and general telemetry backends) in a Kyma cluster configurable. It mainly tries to propose a concept for [Configurable logging #11236](https://github.com/kyma-project/kyma/issues/11236).
 
-* [Comparison of FluentBit operators](./fluentbit-operator.md)
-* [Design proposal for a custom FluentBit operator](./custom-operator/dynamic-fluentbit-config.md)
-* [Concept](./concept-ServiceCatalog-Integration/serviceCatalogIntegration-Concept.md) to enhance the Kyma [telemetry-operator](https://github.com/kyma-project/kyma/tree/main/components/telemetry-operator) to consume from service catalogs
+For that, the following pages guide you through the different steps of the proposal:
+* [Ground work - current state, requirements, goal](./01-groundwork.md)
+* [Comparison of existing log agents](./02-agents.md)
+* [Comparison of existing FluentBit operators](./03-fluent-bit-operator1.md)
+* [Another Comparison of existing FluentBit operators](./04-fluent-bit-operator2.md)
+* [Proposal for a custom FluentBit operator](./05-custom-fluentbit-operator.md)
+* [Templating Concept](./06-servicecatalog-integration.md) to enhance the operator with bindings to ServiceCatalog instances
