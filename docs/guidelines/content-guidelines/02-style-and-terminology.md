@@ -43,12 +43,10 @@ Use the second person and the pronouns "you," "your," and "yours" to speak direc
 
 ### Contractions
 
-Do not use contractions in the documentation. They may be difficult for non-native English speakers to understand. Specifically, do not use the following:
+It's okay to use contractions in the documentation from time to time. However, do not overuse it. Otherwise, your text will become messy and hard to read.
 
-⛔️ Any "will" contractions, such as "you’ll" or "we’ll."  
-⛔️ Any "would" contractions, such as "we’d" or "you’d."   
-⛔️ Any contractions that sound like other words, such as "they’re" (there), "it’s" (its), or "you’re" (your).   
-⛔️ Avoid using contractions for negative imperatives such as "don’t." Instead, use "do not," which has more power.
+✅ It's okay to use contractions.
+✅ It is okay to not use them as well.
 
 ### Articles
 
@@ -132,25 +130,25 @@ In such a case, explain the context in the document.
 
 ## Capitalized terms
 
-This is the list of the Kubernetes resources capitalized in Kyma documentation. However, if these words are not used in relation to Kubernetes resources, do not capitalize them.
+This is the list of the Kubernetes resources capitalized in Kyma documentation. However, if these words are not used in relation to Kubernetes resources, do not capitalize them. Use natural language when referring to Kubernetes resources. Do not use CamelCase. 
 
-- ConfigMap
+- Config Map
 - CronJob
-- CustomResourceDefinition
+- Custom Resource Definition
 - Deployment
 - Function
 - Event
 - Ingress
 - Namespace
 - Node
-- PodPreset
+- Pod Preset
 - Pod
-- ProwJob
+- Prow Job
 - Secret
 - Service
-- ServiceBinding
-- ServiceClass
-- ServiceInstance
+- Service Binding
+- Service Class
+- Service Instance
 
 All of the Kyma components, such as the Service Catalog or Service Brokers, are capitalized as well. Whenever you point to the outside sources, do some search to check whether the name of the source starts with a capital letter or not.
 
