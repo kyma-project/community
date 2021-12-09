@@ -59,7 +59,7 @@ Every codeowner is expected to:
 
 - If a maintainer is no longer interested or cannot perform the maintainer duties listed above, he/she
 should volunteer to be transitioned to emeritus status.
-- If a maintainer is unresponsive for at least 3 months, he/she can be removed from the maintainers list immediately.
+- If a maintainer is unresponsive for at least one month, he/she can be removed from the maintainers list immediately.
 - In extreme cases, this can also occur by a vote of
 the maintainers per the voting process below.
 
