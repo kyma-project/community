@@ -51,7 +51,7 @@ Every codeowner is expected to:
   of the existing maintainers.
 * We may ask you to do some PRs from our backlog.
 * As you gain experience with the code base and our standards, we will ask you to do code reviews for incoming PRs (i.e., all maintainers are expected to shoulder a proportional share of community reviews).
-* After working together and making sure you deeply understand the code base, and are comfortable with submitting reviews, the existing codeowners can make a decision to add you to the maintainers list. A candidate for maintainer should create an issue in the [community](https://github.com/kyma-project/community) repository with a list of his/her current contributions. The existing maintainers will confer and decide whether to grant the maintainer status or not.
+* After working together and making sure you deeply understand the code base, and are comfortable with submitting reviews, the existing codeowners can make a decision to add you to the maintainers list. To request approval, the candidate creates an issue in the [community](https://github.com/kyma-project/community) repository with a list of his/her current contributions. The existing maintainers will confer and decide whether to grant the maintainer status or not.
 
 >**NOTE:** To be accepted as a maintainer and be added to Kyma GitHub organizations, you need to have [two-factor authentication](https://help.github.com/en/articles/about-two-factor-authentication) enabled on your GitHub account.
 
