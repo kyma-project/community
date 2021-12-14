@@ -51,7 +51,7 @@ Every codeowner is expected to:
   of the existing maintainers.
 * We may ask you to do some PRs from our backlog.
 * As you gain experience with the code base and our standards, we will ask you to do code reviews for incoming PRs (i.e., all maintainers are expected to shoulder a proportional share of community reviews).
-* After a period of approximately 3 months of working together and making sure we see eye to eye, a candidate for maintainer should create an issue in the [community](https://github.com/kyma-project/community) repository with a list of his/her current contributions. The existing maintainers will confer and decide whether to grant the maintainer status or not. While we make no guarantees on the length of time this will take, we expect it to be no longer than 3 months.
+* After working together and making sure you deeply understand the code base, and are comfortable with submitting reviews, the existing codeowners can make a decision to add you to the maintainers list. A candidate for maintainer should create an issue in the [community](https://github.com/kyma-project/community) repository with a list of his/her current contributions. The existing maintainers will confer and decide whether to grant the maintainer status or not.
 
 >**NOTE:** To be accepted as a maintainer and be added to Kyma GitHub organizations, you need to have [two-factor authentication](https://help.github.com/en/articles/about-two-factor-authentication) enabled on your GitHub account.
 
@@ -59,7 +59,7 @@ Every codeowner is expected to:
 
 - If a maintainer is no longer interested or cannot perform the maintainer duties listed above, he/she
 should volunteer to be transitioned to emeritus status.
-- If a maintainer is unresponsive for at least one month, he/she can be removed from the maintainers list immediately.
+- If a maintainer is unresponsive, the existing codeowners can decide he/she can be removed from the maintainers list immediately.
 - In extreme cases, this can also occur by a vote of
 the maintainers per the voting process below.
 
