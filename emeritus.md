@@ -17,3 +17,5 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Piotr Mścichowski (**[@piotrmsc](https://github.com/piotrmsc)**) involved in `area/installation`, `area/service-mesh`, `area/security`, and `area/api-gateway`.
 * Michał Budzyn (**[@everesio](https://github.com/everesio)**) involved in `area/application-connector`.
 * Jan Sudczak (**[@parostatkiem](https://github.com/parostatkiem)**) involved in `area/console`, `area/ci`.
+* Piotr Jasiak (**[@jasiu001](https://github.com/jasiu001)**) involved in `area/service-catalog`,  `area/control-plane`, and `area/installation`.
+* Krystian Cieślik (**[@crabtree](https://github.com/crabtree)**) involved in `area/service-catalog`,  `area/control-plane`, `area/management-plane`, `area/quality` and `area/installation`.
