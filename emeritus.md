@@ -4,6 +4,7 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Michał Hudy (**[@hudymi](https://github.com/hudymi)**) involved in `area/core-and-supporting`, `area/serverless`, and the overall Kyma architecture.
 * Adam Szecówka (**[@aszecowka](https://github.com/aszecowka)**) involved in `area/service-catalog`, `area/ci`, `area/quality`, and `area/management-plane`.
 * Paweł Kosiec (**[@pkosiec](https://github.com/pkosiec)**) involved in `area/core-and-supporting`, `area/console`, `area/management-plane`, and `area/control-plane`.
+* Szymon Gibała(**[@Szymongib](https://github.com/Szymongib)**) involved in `area/application-connector`, `area/management-plane`.
 * Tomasz Papiernik (**[@tomekpapiernik](https://github.com/tomekpapiernik)**) involved in `area/documentation` and creating docs for `area/service-mesh`, `area/installation`, and `area/api-gateway`.
 * Barbara Czyż (**[@bszwarc](https://github.com/bszwarc)**) involved in `area/documentation` and creating docs for `area/eventing`, `area/logging`, `area/monitoring`, and `area/cli`.
 * Maciej Urbańczyk (**[@magicmatatjahu](https://github.com/magicmatatjahu)**) involved in `area/core-and-supporting`, `area/serverless`, and `area/console`.
@@ -19,3 +20,6 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Jan Sudczak (**[@parostatkiem](https://github.com/parostatkiem)**) involved in `area/console`, `area/ci`.
 * Piotr Jasiak (**[@jasiu001](https://github.com/jasiu001)**) involved in `area/service-catalog`,  `area/control-plane`, and `area/installation`.
 * Krystian Cieślik (**[@crabtree](https://github.com/crabtree)**) involved in `area/service-catalog`,  `area/control-plane`, `area/management-plane`, `area/quality` and `area/installation`.
+* Tomasz Gorgol (**[@tgorgol](https://github.com/tgorgol)**) involved in `area/serverless`, `area/core-and-supporting`, `area/management-plane`, `area-console`.
+* Rafał Jankowski (**[@rJankowski93](https://github.com/rJankowski93)**) involved in `area/reconciler`, `area/serverless`.
+
