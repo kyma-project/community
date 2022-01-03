@@ -21,5 +21,5 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Piotr Jasiak (**[@jasiu001](https://github.com/jasiu001)**) involved in `area/service-catalog`,  `area/control-plane`, and `area/installation`.
 * Krystian Cieślik (**[@crabtree](https://github.com/crabtree)**) involved in `area/service-catalog`,  `area/control-plane`, `area/management-plane`, `area/quality` and `area/installation`.
 * Tomasz Gorgol (**[@tgorgol](https://github.com/tgorgol)**) involved in `area/serverless`, `area/core-and-supporting`, `area/management-plane`, `area-console` .
-* Rafał Jankowski (**[@rJankowski93](https://github.com/rJankowski93)**) involved in `area/reconciler`, `area/serverless` .
+* Rafał Jankowski (**[@rJankowski93](https://github.com/rJankowski93)**) involved in `area/reconciler`, `area/serverless`.
 
