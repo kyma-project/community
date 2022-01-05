@@ -152,9 +152,18 @@ This is the list of the Kubernetes resources capitalized in Kyma documentation. 
 
 All of the Kyma components, such as the Service Catalog or Service Brokers, are capitalized as well. Whenever you point to the outside sources, do some search to check whether the name of the source starts with a capital letter or not.
 
->**NOTE:** Kubernetes itself is also capitalized. Do not write it in lowercase or in the abbreviated version.       
+>**NOTE:** Kubernetes itself is also capitalized. Do not write it in lowercase or in the abbreviated version.
   ✅ Kubernetes  
-  ⛔️ kubernetes   
+  ⛔️ kubernetes
   ⛔️ k8s
+
+### Custom resources
+
+Use the natural language as default when talking about custom resources.
+
+✅ API Gateway is a Kubernetes controller, which operates on API Rule custom resources.
+⛔️ API Gateway is a Kubernetes controller, which operates on APIRule custom resources.
+
+Use the CamelCase-spelled custom resource proper name if you want to refer to the code specifically, and in that case, format it as code. For example, `APIRule`.
 
 In case of any further doubts concerning the style and standards of writing, see [Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/style-guide/welcome/).
