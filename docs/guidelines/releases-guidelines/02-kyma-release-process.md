@@ -83,42 +83,15 @@ Create a release branch in the `test-infra` repository
 
 Follow these steps to release another Kyma version. Execute these steps for every patch release or release candidate.
 
-### kyma-project/test-infra
-
-Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on a release branch contains the correct version to be created. If you define a release candidate version, a pre-release is created.  
-
-1. Make sure the `prow/RELEASE_VERSION` file includes just a single line, **without the newline character at the end**:  
-
-    ```bash
-    echo -n {RELEASE_VERSION} > prow/RELEASE_VERSION
-    ```
-
-2. If you had to change the RELEASE_VERSION, create a PR to update it on the release branch.
-3. Once this PR is merged you can proceed.
-
 ### kyma-project/kyma
 
 #### Create a PR to the release branch
 
-1. Inside the release branch do the following changes.
+1. Change the `RELEASE_VERSION`. Make sure the `VERSION` file includes just a single line, **without the newline character at the end**:  
 
-   1. In `installation/resources/installer.yaml` replace `eu.gcr.io/kyma-project/develop/installer:{image_tag}` with `eu.gcr.io/kyma-project/kyma-installer:{RELEASE_VERSION}`
-
-   2. In the `resources/core/values.yaml` file, find `clusterAssetGroupsVersion`.
-
-        ```yaml
-        docs:
-        # (...) - truncated
-        clusterAssetGroupsVersion: main
-        ```
-
-      And replace the `clusterAssetGroupsVersion` value with the following:
-
-        ```yaml
-        docs:
-        # (...)
-        clusterAssetGroupsVersion: release-{RELEASE}
-        ```
+    ```bash
+    echo -n {RELEASE_VERSION} > VERSION
+    ```
 
 2. Create a pull request with your changes to the release branch.
 
@@ -146,15 +119,15 @@ Ensure that the `prow/RELEASE_VERSION` file from the `test-infra` repository on 
    Repeat steps 1-4 for this PR.
 
 #### Create a release
-1. Once the release process is finished and the release branch is complete, create a new tag in the repository that points to your release branch. To create a tag, run this command:
-> **CAUTION:** Make sure you are working on the most up-to-date `release-{RELEASE}` branch for a given release.
-```shell
-git tag -a {RELEASE_VERSION} -m "Release {RELEASE_VERSION}"
-git push upstream {RELEASE_VERSION}
-```
-The tag must have the same name as in the `RELEASE_VERSION` file. Creating a new tag triggers the following actions:
-   * Create a GitHub release and trigger documentation update on the official Kyma website.
-   * Create a new release cluster for the given Kyma `RELEASE_VERSION`.
+
+1. Once the preparation for the release is finished, trigger the [Release Kyma](https://github.com/kyma-project/kyma/actions/workflows/github-release.yaml) GitHub action. 
+   Choose the branch that corresponds to the release that you want to trigger. The exact release version is taken from the `VERSION` file.
+   When you click the **Run workflow** button, the release process waits for the approval from reviewers. 
+   The reviewers list is defined in the ["release" Github Environment](https://github.com/kyma-project/kyma/settings/environments). 
+   After it is approved, the following will happen:
+   * GitHub release is triggered.
+   * Documentation update on the official Kyma website is triggered.
+   * New release cluster is created for the given Kyma `RELEASE_VERSION`.
      If you don't have access to the GCP project, post a request in the Slack team channel.
      > **CAUTION**: The cluster is automatically generated for you, and it is automatically removed after 7 days.
 
@@ -165,13 +138,9 @@ The tag must have the same name as in the `RELEASE_VERSION` file. Creating a new
 
     > **CAUTION:** The job assumes no manual migration is involved. If the upgrade process requires any additional actions, the pipeline is likely to fail. In such case, the owners of the components concerned are responsible for running manual tests or modifying the pipeline.
 
-3. On the release branch, update the `RELEASE_VERSION` file located in the `prow` folder of the [`kyma-project/test-infra`](https://github.com/kyma-project/test-infra) repository. It must contain the next release candidate version. Do it immediately after the release, otherwise, any PR to a release branch overrides the previously published Docker images.
+3. Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
 
-   For example, if the `RELEASE_VERSION` file on the release branch contains `1.4.1`, change it to `1.4.2-rc1`.
-
-4. Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
-
-5. Update the release content manually with links to:
+4. Update the release content manually with links to:
 
    * Instructions on local Kyma installation
    * Instructions on cluster Kyma installation
@@ -187,4 +156,3 @@ The tag must have the same name as in the `RELEASE_VERSION` file. Creating a new
 
         > **NOTE:** Because of a limitation on the AppHub side, only a few people are allowed to create such a PR, which currently includes the members of the Huskies team.
 
-2. Update `prow/RELEASE_VERSION` in the `main` branch of the `test-infra` repository with the name of the next minor release candidate, and merge the pull request to `main`. For example, if the `RELEASE_VERSION` on the `main` branch is set to `1.4.2`, change the version to `1.5.0-rc1`.
