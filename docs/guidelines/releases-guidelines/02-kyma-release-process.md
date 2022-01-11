@@ -87,7 +87,7 @@ Follow these steps to release another Kyma version. Execute these steps for ever
 
 #### Create a PR to the release branch
 
-1. Change the `RELEASE_VERSION`, make sure the `VERSION` file includes just a single line, **without the newline character at the end**:  
+1. Change the `RELEASE_VERSION`. Make sure the `VERSION` file includes just a single line, **without the newline character at the end**:  
 
     ```bash
     echo -n {RELEASE_VERSION} > VERSION
@@ -120,13 +120,14 @@ Follow these steps to release another Kyma version. Execute these steps for ever
 
 #### Create a release
 
-1. Once the preparation for release is finished, trigger the [Release Kyma](https://github.com/kyma-project/kyma/actions/workflows/github-release.yaml) github action 
-   Choose the branch that corresponds to the release that you want to trigger. The exact release version is taken from the VERSION file.
-   When you click the `Run workflow` button, the release process waits for approval from reviewers. 
-   Reviewers list is defined in the ["release" Github Environment](https://github.com/kyma-project/kyma/settings/environments) 
-   After it is approved the following things will happen:
-   * a GitHub release is triggered and trigger documentation update on the official Kyma website.
-   * a new release cluster is created for the given Kyma `RELEASE_VERSION`.
+1. Once the preparation for the release is finished, trigger the [Release Kyma](https://github.com/kyma-project/kyma/actions/workflows/github-release.yaml) GitHub action. 
+   Choose the branch that corresponds to the release that you want to trigger. The exact release version is taken from the `VERSION` file.
+   When you click the **Run workflow** button, the release process waits for the approval from reviewers. 
+   The reviewers list is defined in the ["release" Github Environment](https://github.com/kyma-project/kyma/settings/environments). 
+   After it is approved, the following will happen:
+   * GitHub release is triggered.
+   * Documentation update on the official Kyma website is triggered.
+   * New release cluster is created for the given Kyma `RELEASE_VERSION`.
      If you don't have access to the GCP project, post a request in the Slack team channel.
      > **CAUTION**: The cluster is automatically generated for you, and it is automatically removed after 7 days.
 
