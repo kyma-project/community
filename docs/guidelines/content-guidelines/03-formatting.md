@@ -36,7 +36,7 @@ Metadata names            | When you create a Markdown document, define its `tit
 Flags                     | Add the `--tls` flag to every Helm command you run.
 GraphQL queries and mutations   | The `requestOneTimeTokenForApplication` mutation calls the internal GraphQL API to get a one-time token. |
 Rights                    | The preset gives multiple resource cleaners the `list` and `delete` rights in GCP.
-Custom resources (if you want to refer to the code specifically) | In the exposed `APIRule`, use the following Kyma Gateway: `kyma-gateway.kyma-system.svc.cluster.local`. |
+Custom resources (if you want to refer to the code specifically) | Define the **namespace** parameter in the `APIRule` **metadata**.
 
 >**NOTE:** When you mention specific configuration files in your documents, consider linking to them instead of just mentioning their names. When you link to a file, use its name without the format extension. See the following example:
 > `To adjust the number of Pods in your Deployment, edit the [deployment](./deployment.yaml) file.`

@@ -159,7 +159,7 @@ All of the Kyma components, such as the Service Catalog or Service Brokers, are 
 
 ### Custom resources
 
-Use the natural language as default when wrtiring about custom resources.
+Use the natural language by default when writing about custom resources.
 
 ✅ API Gateway is a Kubernetes controller, which operates on API Rule custom resources.   
 ⛔️ API Gateway is a Kubernetes controller, which operates on APIRule custom resources.
