@@ -21,6 +21,10 @@ This concept proposes how to open up to those new scenarios by making integratio
 - Support all typical settings for the supported outputs of the used agent, do not hide or abstract them
 - The agent must run stable at any time. Bad configuration must be prevalidated and rejected. Fast feedback is welcome.
 - Secrets must be kept secret.
+- Scenarios/Pipelines need to be isolated and have it's own buffer management. If a backend is in a bad shape and cannot process any data anymore, data should still continue to be pushed to other backends
+- Typical auth mechanisms for the integration must be support, especially also client certificate based solutions
+- For logging: de-dotting for elasticsearch must be possible
+- Filtering of unrelevant data (like dropping logs of kyma-system namespace) must be possible
 
 ### Template definitions
 - Have a mechanism to provide templates and best practices for typical scenarios, which can be instantiated at runtime
