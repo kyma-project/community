@@ -31,7 +31,7 @@ A Kyma CLI release consists of:
 
 3. Create a PR to `cli/release-x.y` that triggers the presubmit job for `cli`.
 
-5. After merging the PR, create a tag on the release branch that has the value of the new `cli` release version. If you define a release candidate version, a pre-release is created.  
+5. After merging the PR, create a tag on the release branch that has the value of the new `cli` release version. If you define a release candidate version, a pre-release is created.
 
    ```bash
    git tag -a {RELEASE_VERSION} -m "Release {RELEASE_VERSION}"
@@ -53,3 +53,11 @@ A Kyma CLI release consists of:
       git push --delete upstream {RELEASE_VERSION}
       git push upstream {RELEASE_VERSION}
       ```
+7. Update Homebrew formula.
+    1. Create a PR to the [kyma-cli Homebrew formula](https://github.com/Homebrew/homebrew-core/blob/master/Formula/kyma-cli.rb) after the release tarball is available on Github.  If no changes to the build command are required, this can be done automatically by the Homebrew CLI.
+
+       ```bash
+       brew bump-formula-pr --strict kyma-cli --url https://github.com/kyma-project/cli/archive/{RELEASE_VERSION}.tar.gz
+       ```
+
+    2. Wait until your PR gets approved by a Homebrew maintainer.
