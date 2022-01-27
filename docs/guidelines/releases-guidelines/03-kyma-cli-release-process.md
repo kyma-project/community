@@ -53,11 +53,13 @@ A Kyma CLI release consists of:
       git push --delete upstream {RELEASE_VERSION}
       git push upstream {RELEASE_VERSION}
       ```
-7. Update Homebrew formula.
-    1. Create a PR to the [kyma-cli Homebrew formula](https://github.com/Homebrew/homebrew-core/blob/master/Formula/kyma-cli.rb) after the release tarball is available on Github.  If no changes to the build command are required, this can be done automatically by the Homebrew CLI.
+7. After the release tarball is available on Github, update the Homebrew formula, either automatically or manually:
+    - If no changes to the build command are needed, this can be done automatically by the Homebrew CLI:
 
        ```bash
        brew bump-formula-pr --strict kyma-cli --url https://github.com/kyma-project/cli/archive/{RELEASE_VERSION}.tar.gz
        ```
 
-    2. Wait until your PR gets approved by a Homebrew maintainer.
+    - Alternatively, create a PR to the [kyma-cli Homebrew formula](https://github.com/Homebrew/homebrew-core/blob/master/Formula/kyma-cli.rb).
+
+    When a Homebrew maintainer approves your PR, the formula is updated.
