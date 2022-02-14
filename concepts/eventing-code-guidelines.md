@@ -308,10 +308,7 @@ WithProtocolBEB // configures the Protocol to be BEB
 ```go
 // source: https://github.com/kyma-project/kyma/pull/13242/files#diff-2f168bb71c1ca8d2f5781bac737393acd9bc3a1f829bdbe91093b7db54972433L130
 func WithExemptHandshakeBefore(p *eventingv1alpha1.ProtocolSettings) {
-	p.ExemptHandshake = func() *bool { // yes this could be refactored to utils.BoolPtr(true)
-		exemptHandshake := true
-		return &exemptHandshake
-	}()
+		p.ExemptHandshake = utils.BoolPtr(true)
 }
 
 subscription.Spec.ProtocolSettings = reconcilertesting.NewProtocolSettings(
@@ -328,10 +325,7 @@ In contrast to `WithExemptHandshakeBefore`, `WithExemptHandshakeAfter` returns a
 ```go
 func WithExemptHandshakeAfter() ProtoOpt {
 	return func(p *eventingv1alpha1.ProtocolSettings) { // instead return a function here
-		p.ExemptHandshake = func() *bool {
-			exemptHandshake := true
-			return &exemptHandshake
-		}()
+		p.ExemptHandshake = utils.BoolPtr(true)
 	}
 }
 
