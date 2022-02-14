@@ -73,7 +73,7 @@ Use [stretchr/testify/mock](https://github.com/stretchr/testify#mock-package) fo
 ### Structured Logging
 
 Both [logrus](https://github.com/sirupsen/logrus) and [zap](https://github.com/uber-go/zap) are widely used. logrus has the `advantage` and `disadvantage` at the same time of being a `drop-in` replacement for the `stdlib`. 
-logrus does not enforce you to use structured logging but you can use it. 
+logrus does not enforce using structured logging but you can use it. 
 Citing from the logrus github page it is clear that zap is the modern alternative to logrus:
 > Logrus is in maintenance-mode. We will not be introducing new features. It’s simply too hard to do in a way that won’t break many people’s projects, which is the last thing you want from your Logging library (again...).
 
@@ -432,8 +432,8 @@ MarkReady(apiRuleNew) // instead consider using another function which explicitl
 ## Testing Pyramid in Kyma
 
 The following describes the different testing levels for Kyma. These levels are usually seen as a [pyramid](https://en.wikipedia.org/wiki/Test_automation#Testing_at_different_levels):
-- at the `lower end` of the pyramid you should have the `most` test cases because they are usually very `fast`, however you are limited in what you can test because external dependencies are `mocked`. Unit tests are an example of this.
-- at the `higher` end of the pyramid there are usually `less` tests because these tests take `longer`. However these tests are a more realistic scenario of how the end user will use our product. E2E tests are an example of this.
+- at the `lower end` of the pyramid, you should have the `most` test cases because they are usually very `fast`, however, you are limited in what you can test because external dependencies are `mocked`. Unit tests are an example of this.
+- at the `higher` end of the pyramid, there are usually `less` tests because these tests take `longer`. However, these tests are a more realistic scenario of how the end-user will use our product. E2E tests are an example of this.
 
 ### Controller Integration Tests (kubebuilder)
 
@@ -564,7 +564,7 @@ type TestEnvironment struct {
 </details>
 
 The struct contains the NATS server, a client to send messages to NATS and the connection to NATS as well as a context and a logger.  
-In addition to the scruct we need a helper method to setup the actual environment:
+In addition to the struct we need a helper method to setup the actual environment:
 
 <details>
   <summary>setupTestEnvironment()</summary>
@@ -583,8 +583,8 @@ func setupTestEnvironment(t *testing.T, connectionOpts ...pkgnats.BackendConnect
 }
 ```
 
-A common problem when having this kind of helper method to setup some test environment is what the caller (the test) has to do the cleanup.
-We can however shift the cleanup to the helper method as well using `testing.CleanUp`:
+A common problem with this approach is that the caller (the test) has to do the cleanup.
+However, we can  shift the cleanup to the helper method as well using `testing.CleanUp`:
 
 <details>
   <summary>setupTestEnvironment() with t.Cleanup</summary>
