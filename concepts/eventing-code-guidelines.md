@@ -14,7 +14,7 @@ For now the guidelines shall be applied to new code (PRs). There is no need to r
 <!-- generate me with markdown-toc 
 ```bash
 // source: https://github.com/jonschlinkert/markdown-toc
-markdown-toc -i --maxdepth 2 guidelines.md
+markdown-toc -i --maxdepth 2 eventing-code-guidelines.md
 Do NOT TOUCH anything between the toc comments because this is used as a `marker` where to place the toc for markdown-toc.
 ```
 -->
@@ -27,7 +27,6 @@ Do NOT TOUCH anything between the toc comments because this is used as a `marker
 - [Coding Guidelines](#coding-guidelines)
 - [Testing Pyramid in Kyma](#testing-pyramid-in-kyma)
 - [Testing Guidelines](#testing-guidelines)
-- [Style Guidelines](#style-guidelines)
 
 <!-- tocstop -->
 
