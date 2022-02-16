@@ -73,7 +73,7 @@ Use [stretchr/testify/mock](https://github.com/stretchr/testify#mock-package) in
 
 Both [logrus](https://github.com/sirupsen/logrus) and [zap](https://github.com/uber-go/zap) are widely used. logrus has the `advantage` and `disadvantage` at the same time of being a `drop-in` replacement for the `stdlib`. 
 logrus supports structured logging but does not enforce using it. 
-Citing from the logrus github page it is clear that zap is the modern alternative to logrus:
+Citing from the [logrus github page](https://github.com/sirupsen/logrus), it is clear that zap is the modern alternative to logrus:
 > Logrus is in maintenance-mode. We will not be introducing new features. It’s simply too hard to do in a way that won’t break many people’s projects, which is the last thing you want from your Logging library (again...).
 
 > Many fantastic alternatives have sprung up. Logrus would look like those, had it been re-designed with what we know about structured logging in Go today. Check out, for example, Zerolog, Zap, and Apex.
@@ -556,7 +556,7 @@ type TestEnvironment struct {
 ```
 </details>
 
-The struct contains the NATS server, a client to send messages to NATS and the connection to NATS as well as a context and a logger.  
+The struct contains the NATS server, a client to send messages to NATS, and the connection to NATS, as well as a context and a logger.  
 In addition to the struct, create a helper method to setup the actual environment:
 
 <details>
@@ -938,7 +938,7 @@ func TestNatsHandlerForCloudEvents(t *testing.T) {
   <summary>Don't</summary>
 
 The following example shows two nearly identical tests. The only difference is that `TestSendCloudEventWithReconnect` additionally `closes` the `connection` before sending the event, in contrast to `TestSendCloudEvent`.
-The test `TestSendCloudEventWithReconnect` has another problem which prevents us from rewriting both tests as a table test. It does send an event twice. Once with an open connection, second with a closed connection. The `main concern` of the test is to ensure that the `connection` gets `re-established` then it is in closed state.
+The test `TestSendCloudEventWithReconnect` has another problem that prevents rewriting both tests as a table test: It sends an event twice. Once with an open connection, then with a closed connection. The `main concern` of the test is to ensure that the `connection` is `re-established`. Then it is in closed state.
 However, it is enough to close the connection before sending the first event. There is no need to send the event twice. Reducing the test to the `bare minimum` allows us to rewrite it as a table-driven test.
 
 ```go 
