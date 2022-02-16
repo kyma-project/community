@@ -59,15 +59,14 @@ Use [`gomega`](https://github.com/onsi/gomega) for writing test `assertions` in 
 
 **Mocking Libraries**:
 
-Use [stretchr/testify/mock](https://github.com/stretchr/testify#mock-package) for generating mocks or create your own mock by implementing the corresponding interface.
+Use [stretchr/testify/mock](https://github.com/stretchr/testify#mock-package) in combination with [vektra/mockery](https://github.com/vektra/mockery) for generating mocks or create your own mock by implementing the corresponding interface.
 
 <!-- voting options:
-1. [stretchr/testify](https://github.com/stretchr/testify#mock-package) // proposed by guidelines and already used by eventing-controller
+1. [stretchr/testify](https://github.com/stretchr/testify#mock-package) with [vektra/mockery](https://github.com/vektra/mockery) // proposed by guidelines and already used by eventing-controller
 2. gomock aka [golang/mock](https://github.com/golang/mock)
-3. [vektra/mockery](https://github.com/vektra/mockery)
-4. [ernesto-jimenez/goautomock](https://github.com/ernesto-jimenez/goautomock)
-5. [MarvinJWendt/testza](https://github.com/MarvinJWendt/testza)
-6. [gojuno/minimock](https://github.com/gojuno/minimock)
+3. [ernesto-jimenez/goautomock](https://github.com/ernesto-jimenez/goautomock)
+4. [MarvinJWendt/testza](https://github.com/MarvinJWendt/testza)
+5. [gojuno/minimock](https://github.com/gojuno/minimock)
 -->
 
 ### Structured Logging
@@ -120,13 +119,13 @@ $ godoc -http=:8080
 
 ### Bad Practice
 
-**Example1**: Using backticks when referring to arguments in the method siganture
+**Example1**: Using backticks when referring to arguments in the method signature
 
 <details>
 	<summary>Don't</summary>
 
 In the example `w` is the first argument to the function `Fprint`.
-It is not necessary to put p in backticks. Goland supports jumping to the element defintion (at least sometimes :-D). Using backticks however breaks the feature.
+It is not necessary to put w in backticks. Goland supports jumping to the element defintion (at least sometimes :-D). Using backticks however breaks the feature.
 
 ```go
 // Fprint formats using the default formats for its operands and writes to `w`.
