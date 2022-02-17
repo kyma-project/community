@@ -45,10 +45,10 @@ Use [`t.Testing`](https://pkg.go.dev/testing) for `unit` tests and for controlle
 1. [ginkgo](https://github.com/onsi/ginkgo)
 -->
 
-**Assertion librariers**:
+**Assertion libraries**:
 
 <!-- voting options for assertion libraries in unit tests:
-Right now we use both: testing.T and gomega. We should reach a consens here to have consistency.
+Right now we use both: testing.T and gomega. We should reach a consensus here to have consistency.
 
 1. testing.T
 2. [stretchr/testify](https://github.com/stretchr/testify)
@@ -111,7 +111,7 @@ Code is read many times but sometimes only written once. Therefore you should al
 func Fprint(w io.Writer, a ...interface{}) (n int, err error) {
 ```
 
-If you are in doubt how to write the godoc properly, run `godoc` and check the genrated documentation:
+If you are in doubt how to write the godoc properly, run `godoc` and check the generated documentation:
 ```bash
 $ go install golang.org/x/tools/cmd/godoc@latest
 $ godoc -http=:8080
@@ -125,7 +125,7 @@ $ godoc -http=:8080
 	<summary>Don't</summary>
 
 In the example, `w` is the first argument to the function `Fprint`.
-It is not necessary to put w in backticks. Goland supports jumping to the element defintion (at least sometimes :-D). Using backticks however breaks the feature.
+It is not necessary to put w in backticks. Goland supports jumping to the element definition (at least sometimes :-D). Using backticks however breaks the feature.
 
 ```go
 // Fprint formats using the default formats for its operands and writes to `w`.
@@ -457,9 +457,9 @@ The following section describes ugly tests or problems that we discovered in our
 The guides should be used whenever possible but are not set in stone. There might be cases where the proposed solution does not fit and that is ok.
 
 **Best Practices**:
-- Find a `balance` between [`KISS`](https://en.wikipedia.org/wiki/KISS_principle) (keep it simple stupid) and [`DRY`](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) (don't repeat yourself). Tests should be easily `understandable`. At the same time, you should `avoid` code `duplication` because it gets un`maintaineable` very fast.
+- Find a `balance` between [`KISS`](https://en.wikipedia.org/wiki/KISS_principle) (keep it simple stupid) and [`DRY`](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) (don't repeat yourself). Tests should be easily `understandable`. At the same time, you should `avoid` code `duplication` because it gets `unmaintainable` very fast.
 - `Split` heavy test `setup` from actual test.
-- Test `one thing` at a time. This alignes with the KISS principle as well. Focus on the `main concern` of a test and don't test more than what you need. Comments on tests are welcome, but might also be an indication for a test that is either (1) too complex or (2) tests too many things simultaneously. 
+- Test `one thing` at a time. This aligns with the KISS principle as well. Focus on the `main concern` of a test and don't test more than what you need. Comments on tests are welcome, but might also be an indication for a test that is either (1) too complex or (2) tests too many things simultaneously. 
 Concentraing on the main concern makes the individual tests shorter, easier to understand, better to maintain and expresses the intention of the test better. If multiple things are tested at the same time, there is `no guarantuee` that someone will take this secondary thing out of the test. If there are multiple tests however, you can easily see that a test case was removed and argue whether this is ok or not.
 - `Don't` test the `unforeseen`. Instead, think about the code and derive useful test scenarios (best and worst case). Think about what is the `happy path` ? What is the `unhappy path` ?
 - Especially complex tests need `documentation` so that the reader understands them better.
