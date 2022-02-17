@@ -433,7 +433,7 @@ The following section describes the different testing levels for Kyma. These lev
 **Test Setup**
 Controllers using the kubebuilder framework bootstrap integration tests using `Ginkgo` (for testing) and `Gomega` (for assertions).
 Using the `controller-runtime/pkg/envtest` package, a kubernetes `control-plane` (`API server` and `etcd`) is started locally once before the first test runs (`BeforeSuite`).
-You can also use a custom Kubernetes cluster (see `USE_EXISTING_CLUSTER` environment variable).
+You can also use a custom Kubernetes cluster (see [USE_EXISTING_CLUSTER](https://book.kubebuilder.io/reference/envtest.html) environment variable).
 
 **Goal**
 The goal of a controller integration test is to test the Kubernetes controller in a `limited` Kubernetes `environment`. That means that dependencies of the controller - such as other controllers (APIRule controller) or external eventing system - are not present. These systems are only present in higher hierarchies of the testing pyramid.
