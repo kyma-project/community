@@ -21,12 +21,12 @@ Do NOT TOUCH anything between the toc comments because this is used as a `marker
 
 <!-- toc -->
 
-- [Recommended Libraries](#recommended-libraries)
-- [Documentation Guidelines](#documentation-guidelines)
-- [Dockerfile Guidelines](#dockerfile-guidelines)
-- [Coding Guidelines](#coding-guidelines)
-- [Testing Pyramid in Kyma](#testing-pyramid-in-kyma)
-- [Testing Guidelines](#testing-guidelines)
+- [Recommended libraries](#recommended-libraries)
+- [Documentation guidelines](#documentation-guidelines)
+- [Dockerfile guidelines](#dockerfile-guidelines)
+- [Coding guidelines](#coding-guidelines)
+- [Testing pyramid in Kyma](#testing-pyramid-in-kyma)
+- [Testing guidelines](#testing-guidelines)
 
 <!-- tocstop -->
 
