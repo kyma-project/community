@@ -282,7 +282,7 @@ func main() {
 </details>
 
 **Advantage**:
-The benefit of this pattern is that with functional options it is easy to omit unnecessary arguments. For example, omitting "info" in the classic way would require explicitly creating a new function to do this, or requires the user to explicitly pass "info" as an empty string. In the second implementation, you just omit the call to `WithInfo`. 
+The benefit of this pattern is that with Functional Options it is easy to omit unnecessary arguments. For example, omitting "info" in the classic way would require explicitly creating a new function to do this, or requires the user to explicitly pass "info" as an empty string. In the second implementation, you just omit the call to `WithInfo`. 
 Fundamentally, this pattern can increase readability and allows reducing configurations to the necessary information.
 
 The pattern works very well in tests where similar objects must be constructed multiple times. Here, it is essential that the developer quickly sees what the important configuration of these objects for a given test case is.
@@ -334,7 +334,7 @@ subscription.Spec.ProtocolSettings = reconcilertesting.NewProtocolSettings(
 ```
 </details>
 
-**Example 2**: Usage of functional options pattern outside of factory
+**Example 2**: Usage of Functional Options pattern outside of factory
 <details>
 	<summary>Don't</summary>
 
