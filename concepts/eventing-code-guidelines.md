@@ -38,7 +38,7 @@ The following section describes the `desired choice` of `libraries` for testing,
 
 **Testing frameworks**:
 
-Use [`t.Testing`](https://pkg.go.dev/testing) for `unit` tests and for controller integration tests.
+Use [`t.Testing`](https://pkg.go.dev/testing) for unit tests and for controller integration tests.
 
 <!-- voting options for testing framework in controller integration tests:
 1. testing.T // proposed by guidelines
