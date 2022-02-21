@@ -20,13 +20,14 @@ Do NOT TOUCH anything between the toc comments because this is used as a `marker
 -->
 
 <!-- toc -->
-
+<!-- the table of contents are disabled until this bug is fixed: https://github.com/kyma-incubator/milv/issues/20 
 - [Recommended libraries](#recommended-libraries)
 - [Documentation guidelines](#documentation-guidelines)
 - [Dockerfile guidelines](#dockerfile-guidelines)
 - [Coding guidelines](#coding-guidelines)
 - [Testing pyramid in Kyma](#testing-pyramid-in-kyma)
 - [Testing guidelines](#testing-guidelines)
+-->
 
 <!-- tocstop -->
 
