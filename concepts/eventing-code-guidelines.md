@@ -100,11 +100,11 @@ Code is read many times but sometimes only written once. Therefore you should al
 1. Assume that there is a generated html `version` of our `docs` on <https://pkg.go.dev>, for example [here](https://pkg.go.dev/github.com/kyma-project/kyma/components/eventing-controller/api/v1alpha1) for the eventing-controller.
 1. Comments on exported functions, variables, or types shall `start` with the name of the element and `end` with a dot (`.`). Write real sentences.
 
-**Example**:
+### Good Practice
+
+The following example from [go.dev](https://go.dev/blog/godoc) shows how you should write documentation:
 
 ```go
-// source: https://go.dev/blog/godoc
-
 // Fprint formats using the default formats for its operands and writes to w.
 // Spaces are added between operands when neither is a string.
 // It returns the number of bytes written and any write error encountered.
