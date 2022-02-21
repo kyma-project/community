@@ -1,4 +1,4 @@
-# Eventing Team Code Guidelines
+# Eventing team code guidelines
 
 **Document Intention** 
 
@@ -30,7 +30,7 @@ Do NOT TOUCH anything between the toc comments because this is used as a `marker
 
 <!-- tocstop -->
 
-## Recommended Libraries
+## Recommended libraries
 
 The following section describes the `desired choice` of `libraries` for testing, logging, etc.
 
@@ -57,7 +57,7 @@ Right now we use both: testing.T and gomega. We should reach a consensus here to
 
 Use [`gomega`](https://github.com/onsi/gomega) for writing test `assertions` in controller integration tests. Do not use [stretchr/testify](https://github.com/stretchr/testify) unless you have a reason for it.
 
-**Mocking Libraries**:
+**Mocking libraries**:
 
 Use [stretchr/testify/mock](https://github.com/stretchr/testify#mock-package) in combination with [vektra/mockery](https://github.com/vektra/mockery) for generating mocks or create your own mock by implementing the corresponding interface.
 
@@ -87,11 +87,11 @@ Furthermore, consider using `github.com/kyma-project/kyma/common/logging/logger`
 2. [logrus](https://github.com/sirupsen/logrus) 
 -->
 
-#### See Also
+#### See also
 
 - [Kyma Logging Proposal](https://github.com/kyma-project/community/blob/main/concepts/observability-consistent-logging/improvement-of-log-messages-usability.md)
 
-## Documentation Guidelines
+## Documentation guidelines
 
 Code is read many times but sometimes only written once. Therefore you should always make sure that you follow these guidelines.
 
@@ -100,7 +100,7 @@ Code is read many times but sometimes only written once. Therefore you should al
 1. Assume that there is a generated html `version` of our `docs` on <https://pkg.go.dev>, for example [here](https://pkg.go.dev/github.com/kyma-project/kyma/components/eventing-controller/api/v1alpha1) for the eventing-controller.
 1. Comments on exported functions, variables, or types shall `start` with the name of the element and `end` with a dot (`.`). Write real sentences.
 
-### Good Practice
+### Good practice
 
 The following example from [go.dev](https://go.dev/blog/godoc) shows how you should write documentation:
 
@@ -117,7 +117,7 @@ $ go install golang.org/x/tools/cmd/godoc@latest
 $ godoc -http=:8080
 ```
 
-### Bad Practice
+### Bad practice
 
 **Example 1**: Using backticks when referring to arguments in the method signature
 
@@ -137,7 +137,7 @@ func Fprint(w io.Writer, a ...interface{}) (n int, err error) {
 </details>
 
 
-### See Also
+### See also
 
 - [Tutorial on writing go doc using godoc itself](https://pkg.go.dev/github.com/natefinch/godocgo#hdr-Formatting)
 
@@ -145,13 +145,13 @@ func Fprint(w io.Writer, a ...interface{}) (n int, err error) {
 
 - [Go doc finder - Kyma eventing-controller example](https://pkg.go.dev/github.com/kyma-project/kyma/components/eventing-controller@v0.0.0-20220204130403-a0b8b10f369d)
 
-## Dockerfile Guidelines 
+## Dockerfile guidelines 
 
 - no shell in container
 - do not run as root user if not necessary
 - use [multi-stage](https://docs.docker.com/develop/develop-images/multistage-build/) build pattern
 
-## Coding Guidelines 
+## Coding guidelines 
 
 ### Single-line arguments vs multiline arguments
 
@@ -178,7 +178,7 @@ subWithGivenWebhookAuth.Spec.ProtocolSettings = reconcilertesting.NewProtocolSet
 </details>
 
 
-### Functional Options Pattern
+### Functional Options pattern
 
 **Summary**: Functional Options is a pattern to simplify configuration of objects and at the same time make this configuration more expressive.
 
@@ -298,7 +298,7 @@ WithSinkFromSVC // configures a sink. The values are taken from a service
 WithProtocolBEB // configures the Protocol to be BEB
 ```
 
-#### Bad Practice
+#### Bad practice
 
 **Example 1**: Return function from WithSomething method
 <details>
@@ -422,7 +422,7 @@ MarkReady(apiRuleNew) // instead consider using another function that explicitly
 ```
 </details>
 
-## Testing Pyramid in Kyma
+## Testing pyramid in Kyma
 
 The following section describes the different testing levels for Kyma. These levels are usually seen as a [pyramid](https://en.wikipedia.org/wiki/Test_automation#Testing_at_different_levels):
 - At the bottom of the pyramid, you should have the `most` test cases because they are usually very `fast`. However, you are limited in what you can test because external dependencies are `mocked`. Unit tests are an example of this.
@@ -451,12 +451,12 @@ Unit tests provide a very fast `feedback cycle` and help discovering bugs in a v
 The advantage of unit testing is that "[Code can be impossible or difficult to unit test if poorly written, thus unit testing can force developers to structure functions and objects in better ways.](https://en.wikipedia.org/wiki/Unit_testing)"
 The big disadvantage of unit tests is that they are tightly coupled to the code, so rewriting the code may require new or modified unit tests.
 
-## Testing Guidelines 
+## Testing guidelines 
 
 The following section describes ugly tests or problems that we discovered in our code base. The testing guidelines provide suggestions how the tests can be written instead.
 The guides should be used whenever possible but are not set in stone. There might be cases where the proposed solution does not fit and that is ok.
 
-**Best Practices**:
+**Best practice**:
 - Find a `balance` between [`KISS`](https://en.wikipedia.org/wiki/KISS_principle) (keep it simple stupid) and [`DRY`](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) (don't repeat yourself). Tests should be easily `understandable`. At the same time, you should `avoid` code `duplication` because it gets `unmaintainable` very fast.
 - `Split` heavy test `setup` from actual test.
 - Test `one thing` at a time. This aligns with the KISS principle as well. Focus on the `main concern` of a test and don't test more than what you need. Comments on tests are welcome, but might also be an indication for a test that is either (1) too complex or (2) tests too many things simultaneously. 
@@ -752,7 +752,7 @@ func TestSomething(t *testing.T) {
 </details>
 
 
-#### Bad Practice
+#### Bad practice
 
 **Example 1**: Test case struct initialized without setting field name
 
@@ -1094,7 +1094,7 @@ func TestSendCloudEventsToNats(t *testing.T) {
 ```
 </details>
 
-#### See Also
+#### See also
 - [Table-driven test basics](https://go.dev/blog/subtests)
 
 ### Provide test documentation on package level
@@ -1115,7 +1115,7 @@ With this approach, no godoc is generated for the package `sender` because it is
 
 ### Consistency
 
-#### Assertion Library
+#### Assertion library
 
 The following example is from the event-publisher-proxy. The tests mostly use the `testify/assert` package for writing test assertions, but sometimes `testing.T` is used as well.
 
