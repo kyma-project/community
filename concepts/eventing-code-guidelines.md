@@ -97,7 +97,7 @@ Code is read many times but sometimes only written once. Therefore you should al
 
 **Guidelines**:
 1. Add `documentation` to `all exported` functions, variables, types etc. Comments on private elements are also welcome because they help the reader.
-1. Assume that there is a generated html `version` of our `docs` on <https://pkg.go.dev>, for example [here](https://pkg.go.dev/github.com/kyma-project/kyma/components/eventing-controller@v0.0.0-20220204130403-a0b8b10f369d#section-readme) for the eventing-controller.
+1. Assume that there is a generated html `version` of our `docs` on <https://pkg.go.dev>, for example [here](https://pkg.go.dev/github.com/kyma-project/kyma/components/eventing-controller/api/v1alpha1) for the eventing-controller.
 1. Comments on exported functions, variables, or types shall `start` with the name of the element and `end` with a dot (`.`). Write real sentences.
 
 **Example**:
@@ -119,7 +119,7 @@ $ godoc -http=:8080
 
 ### Bad Practice
 
-**Example1**: Using backticks when referring to arguments in the method signature
+**Example 1**: Using backticks when referring to arguments in the method signature
 
 <details>
 	<summary>Don't</summary>
@@ -183,7 +183,7 @@ subWithGivenWebhookAuth.Spec.ProtocolSettings = reconcilertesting.NewProtocolSet
 **Summary**: Functional Options is a pattern to simplify configuration of objects and at the same time make this configuration more expressive.
 
 <details>
-	<summary>classic way</summary>
+	<summary>Classic way</summary>
 	
 ```golang
 package main
@@ -467,7 +467,7 @@ Concentrating on the main concern makes the individual tests shorter, easier to 
 **Goals**:
 - Avoid regression: Whenever you close a bug, make sure that this bug will not get reintroduced. 
 <!-- voting question:
-does it makse sense to:
+does it make sense to:
 1. use regression in the test name to indicate whether a test is a regression test ?
 1. link a PR or issue to the test so that you can understand even two years later, what the problem was at the time ?
 -->
@@ -642,7 +642,7 @@ cleanup: 1
 After the refactoring, the test looks like this:
 
 <details>
-  <summary>Refactored Test</summary>
+  <summary>Refactored test</summary>
 
 
 ```go
@@ -1063,7 +1063,7 @@ func TestSendCloudEventsToNats(t *testing.T) {
 
 			// subscribe to subject
 			subject := fmt.Sprintf(`"%s"`, testingutils.CloudEventData)
-			// NOTE: we are using the testEnv.natsRecvConnection instead of testEnv.natsSendConnection because the latter will get reconnected based on wantClosedConnectionBeforeSending, this will fail the test when trying to receive a message.
+			// NOTE: we are using the testEnv.natsRecvConnection instead of testEnv.natsSendConnection because the latter will get reconnected based on wantClosedConnectionBeforeSending. This will fail the test when trying to receive a message.
 			done := subscribeToSubject(t, testEnv.natsRecvConnection, subject)
 
 			// create cloudevent with default data (testing.CloudEventData)
