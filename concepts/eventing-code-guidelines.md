@@ -3,7 +3,7 @@
 **Document Intention** 
 
 The intention of this document is to provide style, testing, and code guidelines for components of the **eventing** team. Other teams in Kyma may follow different guidelines.
-The document is supposed to be a **living** document that can be changed by anyone in the team. However the team majority (50%) must agree on changes for this guideline. 
+The document is supposed to be a **living** document that can be changed by anyone in the team. However, the team majority (50%) must agree on changes for this guideline. 
 
 This guide shall be publicly available so that it can be referenced when reviewing pull requests. The agreements of this guide shall not affect **external collaborators**. If an external PR does not align with our guidelines, we should accept the PR as it is and apply the guidelines ourselves in a follow-up PR so we don't block external contributors. Of course, also external PRs shall meet our quality standards but we shouldn't be too nitpicky.
 
@@ -48,11 +48,11 @@ Right now we use both: testing.T and gomega. We should reach a consensus here to
 3. [onsi/gomega](https://github.com/onsi/gomega)
 -->
 
-Use [`gomega`](https://github.com/onsi/gomega) for writing test **assertions** in controller integration tests. Do not use [stretchr/testify](https://github.com/stretchr/testify) unless you have a reason for it.
+Use [`gomega`](https://github.com/onsi/gomega) for writing test **assertions** in controller integration tests. Do not use [stretchr/testify](https://github.com/stretchr/testify) unless you can justify it.
 
 **Mocking libraries**:
 
-Use [stretchr/testify/mock](https://github.com/stretchr/testify#mock-package) in combination with [vektra/mockery](https://github.com/vektra/mockery) for generating mocks or create your own mock by implementing the corresponding interface.
+Use [stretchr/testify/mock](https://github.com/stretchr/testify#mock-package) in combination with [vektra/mockery](https://github.com/vektra/mockery) for generating mocks, or create your own mock by implementing the corresponding interface.
 
 <!-- voting options:
 1. [stretchr/testify](https://github.com/stretchr/testify#mock-package) with [vektra/mockery](https://github.com/vektra/mockery) // proposed by guidelines and already used by eventing-controller
@@ -425,7 +425,7 @@ The following section describes the different testing levels for Kyma. These lev
 
 **Test Setup**
 Controllers using the kubebuilder framework bootstrap integration tests using `Ginkgo` (for testing) and `Gomega` (for assertions).
-Using the `controller-runtime/pkg/envtest` package, a kubernetes **control-plane** (**API server** and **etcd**) is started locally once before the first test runs (`BeforeSuite`).
+Using the `controller-runtime/pkg/envtest` package, a Kubernetes **control-plane** (**API server** and **etcd**) is started locally once before the first test runs (`BeforeSuite`).
 You can also use a custom Kubernetes cluster (see [USE_EXISTING_CLUSTER](https://book.kubebuilder.io/reference/envtest.html) environment variable).
 
 **Goal**
@@ -453,7 +453,7 @@ The guides should be used whenever possible but are not set in stone. There migh
 - Find a **balance** between [KISS](https://en.wikipedia.org/wiki/KISS_principle) (keep it simple stupid) and [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) (don't repeat yourself). Tests should be easily `understandable`. At the same time, you should **avoid** code **duplication** because it gets **unmaintainable** very fast.
 - **Split** heavy test **setup** from actual test.
 - Test **one thing** at a time. This aligns with the KISS principle as well. Focus on the **main concern** of a test and don't test more than what you need. Comments on tests are welcome, but might also be an indication for a test that is either (1) too complex or (2) tests too many things simultaneously. 
-Concentrating on the main concern makes the individual tests shorter, easier to understand, better to maintain and expresses the intention of the test better. If multiple things are tested at the same time, there is **no guarantee** that someone will take this secondary thing out of the test. If there are multiple tests however, you can easily see that a test case was removed and argue whether this is ok or not.
+Concentrating on the main concern makes the individual tests shorter, easier to understand, better to maintain and expresses the intention of the test better. If multiple things are tested at the same time, there is **no guarantee** that someone will remove this secondary thing from the test. However, if there are multiple tests, you can easily see that a test case was removed and argue whether this is ok or not.
 - **Don't** test the **unforeseen**. Instead, think about the code and derive useful test scenarios (best and worst case). Think about what is the **happy path** ? What is the **unhappy path** ?
 - Especially complex tests need **documentation** so that the reader understands them better.
 
@@ -811,7 +811,7 @@ The following example shows a version of a **two-dimensional** **table test**. T
 
 The second dimension of the test is visible in the `t.Run` command, which creates a subtest for each entry in `handlertest.TestCasesForCloudEvents`.
 
-Technically, you can use it this way. However, it is better to use a **pure two dimensional table test** instead.
+Technically, you can use it this way. However, it is better to use a **pure two-dimensional table test** instead.
 
 ```go
 // source: https://github.com/nachtmaar/kyma/blob/13029-retry-fail-publish/components/event-publisher-proxy/pkg/handler/nats/handler_test.go
@@ -932,7 +932,7 @@ func TestNatsHandlerForCloudEvents(t *testing.T) {
 
 The following example shows two nearly identical tests. The only difference is that `TestSendCloudEventWithReconnect` additionally **closes** the **connection** before sending the event, in contrast to `TestSendCloudEvent`.
 The test `TestSendCloudEventWithReconnect` has another problem that prevents rewriting both tests as a table test: It sends an event twice. Once with an open connection, then with a closed connection. The **main concern** of the test is to ensure that the **connection** is **re-established**. Then it is in closed state.
-However, it is enough to close the connection before sending the first event. There is no need to send the event twice. Reducing the test to the **bare minimum** allows us to rewrite it as a table-driven test.
+However, it is enough to close the connection before sending the first event. There is no need to send the event twice. Reducing the test to the **bare minimum** enables us to rewrite it as a table-driven test.
 
 ```go 
 // source: https://github.com/kyma-project/kyma/blob/d6662ab956c18cfc9b3e0c7deebd26da3a56ae77/components/event-publisher-proxy/pkg/sender/nats_test.go#L58 
