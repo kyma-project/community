@@ -178,7 +178,7 @@ subWithGivenWebhookAuth.Spec.ProtocolSettings = reconcilertesting.NewProtocolSet
 <details>
 	<summary>Classic way</summary>
 	
-```golang
+```go
 package main
 
 import "fmt"
@@ -219,7 +219,7 @@ The pattern changes this code to
 <details>
 	<summary>With pattern</summary>
 	
-```golang
+```go
 package main
 
 import "fmt"
@@ -778,7 +778,7 @@ func TestSomething(t *testing.T) {
   <summary>Do</summary>
 // TODO: use golang as markdown lang everywhere
 
-```golang
+```go
 func TestSomething(t *testing.T) {
 	testCases := []struct {
 		name           string
