@@ -751,7 +751,6 @@ func TestSomething(t *testing.T) {
 
 <details>
   <summary>Do</summary>
-// TODO: use golang as markdown lang everywhere
 
 ```go
 func TestSomething(t *testing.T) {
