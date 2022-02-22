@@ -25,7 +25,7 @@ Do NOT TOUCH anything between the toc comments because this is used as a `marker
 
 ## Recommended libraries
 
-The following section describes the **desired choice** of **libraries** for testing, logging, etc.
+The following section describes the desired choice of libraries for testing, logging, etc.
 
 ### Testing
 
@@ -89,9 +89,9 @@ Furthermore, consider using `github.com/kyma-project/kyma/common/logging/logger`
 Code is read many times but sometimes only written once. Therefore you should always make sure that you follow these guidelines.
 
 **Guidelines**:
-1. Add **documentation** to **all exported** functions, variables, types etc. Comments on private elements are also welcome because they help the reader.
-1. Assume that there is a generated html **version** of our **docs** on <https://pkg.go.dev>, for example [here](https://pkg.go.dev/github.com/kyma-project/kyma/components/eventing-controller/api/v1alpha1) for the eventing-controller.
-1. Comments on exported functions, variables, or types shall **start** with the name of the element and **end** with a dot (".") Write real sentences.
+- Add **documentation** to **all exported** functions, variables, types etc. Comments on private elements are also welcome because they help the reader.
+- Assume that there is a generated html **version** of our **docs** on <https://pkg.go.dev>, for example [here](https://pkg.go.dev/github.com/kyma-project/kyma/components/eventing-controller/api/v1alpha1) for the eventing-controller.
+- Comments on exported functions, variables, or types shall **start** with the name of the element and **end** with a dot (".") Write real sentences.
 
 ### Good practice
 
@@ -424,7 +424,7 @@ The following section describes the different testing levels for Kyma. These lev
 ### Controller Integration Tests (kubebuilder)
 
 **Test Setup**
-Controllers using the kubebuilder framework bootstrap integration tests using `Ginkgo` (for testing) and `Gomega` (for assertions).
+Controllers which are bootsprapped by the kubebuilder framework use `Ginkgo` (for testing) and `Gomega` (for assertions).
 Using the `controller-runtime/pkg/envtest` package, a Kubernetes **control-plane** (**API server** and **etcd**) is started locally once before the first test runs (`BeforeSuite`).
 You can also use a custom Kubernetes cluster (see [USE_EXISTING_CLUSTER](https://book.kubebuilder.io/reference/envtest.html) environment variable).
 
@@ -671,9 +671,9 @@ func TestSendCloudEvent(t *testing.T) {
 </details>
 </details>
 
-### GWT (given-when-then) pattern
+### GWT (Given-When-Then) pattern
 
-The [Given-when-then](https://en.wikipedia.org/wiki/Given-When-Then) pattern is a good way to structure code inside a test by adding comments so that the following intentions are made clear:
+The [Given-When-Then](https://en.wikipedia.org/wiki/Given-When-Then) pattern is a good way to structure code inside a test by adding comments so that the following intentions are made clear:
 1. Given: The **preconditions** which are required for the test.
 1. When: This is usually the time when you want to call the `functionUnderTest`.
 1. Then: This is the part where you make sure that the `functionUnderTest` is working as expected by using **assertions**.
