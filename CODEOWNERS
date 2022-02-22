@@ -7,6 +7,9 @@
 # Owners of the sigs-and-wgs folder
 /sigs-and-wgs/ @PK85
 
+# Eventing concepts are owned by the eventing team
+/concepts/eventing* @k15r @lilitgh @marcobebway @nachtmaar @radufa @pxsalehi @mfaizanse @friedrichwilken @vladislavpaskar
+
 # Owners of all .md files in the repository
 *.md @klaudiagrz @mmitoraj @majakurcius @alexandra-simeonova @NHingerl @grego952
 
