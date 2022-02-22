@@ -433,14 +433,25 @@ Concentrating on the main concern makes the individual tests shorter, easier to 
 
 **Goals**:
 - Avoid regression: Whenever you close a bug, make sure that this bug will not get reintroduced. 
-<!-- voting question:
-does it make sense to:
-1. use regression in the test name to indicate whether a test is a regression test ?
-1. link a PR or issue to the test so that you can understand even two years later, what the problem was at the time ?
--->
 - Express intent of code: Code should be self-explanatory and documented. In addition, tests help in understanding the intention of the code by providing test cases where you can easily see the (1) input to the code and (2) the expected outcome.
 - Drive development: Yes, tests can help drive development. They enable you to run code that is otherwise hard to run because it needs a complex setup. Imagine that in order to test a Kubernetes controller, you need to build a Docker image, push the image, and deploy the controller. This is a very time-consuming approach. You should always aim for a **short feedback cycle**.
 <!-- inspired by https://fossa.com/blog/golang-best-practices-testing-go/#Why -->
+
+
+### Regression Tests
+
+Whenever you close a bug, add a test which prevents the bug from getting re-introduced (*regression*).
+In order to understand at any time why the tests exists, you must **link** it to an **issue** to provide further context (if an issue exists).
+
+The following example shows how the issue must be linked to the test:
+
+```go
+// TestBugIsFixed ensures something.
+// issue: https://github.com/kyma-project/kyma/issues/12979
+func TestBugIsFixed(t *testing.T) {
+  // test goes here ...
+}
+```
 
 ### Separate test setup from actual test 
 
