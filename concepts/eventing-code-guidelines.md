@@ -2,10 +2,10 @@
 
 **Document Intention** 
 
-The intention of this document is to provide style, testing, and code guidelines for components of the `eventing` team. Other teams in Kyma may follow different guidelines.
-The document is supposed to be a `living` document that can be changed by anyone in the team. However the team majority (50%) must agree on changes for this guideline. 
+The intention of this document is to provide style, testing, and code guidelines for components of the **eventing** team. Other teams in Kyma may follow different guidelines.
+The document is supposed to be a **living** document that can be changed by anyone in the team. However the team majority (50%) must agree on changes for this guideline. 
 
-This guide shall be publicly available so that it can be referenced when reviewing pull requests. The agreements of this guide shall not affect `external collaborators`. If an external PR does not align with our guidelines, we should accept the PR as it is and apply the guidelines ourselves in a follow-up PR so we don't block external contributors. Of course, also external PRs shall meet our quality standards but we shouldn't be too nitpicky.
+This guide shall be publicly available so that it can be referenced when reviewing pull requests. The agreements of this guide shall not affect **external collaborators**. If an external PR does not align with our guidelines, we should accept the PR as it is and apply the guidelines ourselves in a follow-up PR so we don't block external contributors. Of course, also external PRs shall meet our quality standards but we shouldn't be too nitpicky.
 
 For now, the guidelines shall be applied to new code (PRs). There is no need to rewrite our entire code base now. This will gradually happen over time. As soon as the code reflects our guidelines, the need to look into this guide will decrease more and more.
 
@@ -25,7 +25,7 @@ Do NOT TOUCH anything between the toc comments because this is used as a `marker
 
 ## Recommended libraries
 
-The following section describes the `desired choice` of `libraries` for testing, logging, etc.
+The following section describes the **desired choice** of **libraries** for testing, logging, etc.
 
 ### Testing
 
@@ -48,7 +48,7 @@ Right now we use both: testing.T and gomega. We should reach a consensus here to
 3. [onsi/gomega](https://github.com/onsi/gomega)
 -->
 
-Use [`gomega`](https://github.com/onsi/gomega) for writing test `assertions` in controller integration tests. Do not use [stretchr/testify](https://github.com/stretchr/testify) unless you have a reason for it.
+Use [`gomega`](https://github.com/onsi/gomega) for writing test **assertions** in controller integration tests. Do not use [stretchr/testify](https://github.com/stretchr/testify) unless you have a reason for it.
 
 **Mocking libraries**:
 
@@ -64,16 +64,16 @@ Use [stretchr/testify/mock](https://github.com/stretchr/testify#mock-package) in
 
 ### Structured Logging
 
-Both [logrus](https://github.com/sirupsen/logrus) and [zap](https://github.com/uber-go/zap) are widely used. logrus has the `advantage` and `disadvantage` at the same time of being a `drop-in` replacement for the `stdlib`. 
+Both [logrus](https://github.com/sirupsen/logrus) and [zap](https://github.com/uber-go/zap) are widely used. logrus has the **advantage** and **disadvantage** at the same time of being a **drop-in** replacement for the **stdlib**.
 logrus supports structured logging but does not enforce using it. 
 Citing from the [logrus github page](https://github.com/sirupsen/logrus), it is clear that zap is the modern alternative to logrus:
 > Logrus is in maintenance-mode. We will not be introducing new features. It’s simply too hard to do in a way that won’t break many people’s projects, which is the last thing you want from your Logging library (again...).
 
 > Many fantastic alternatives have sprung up. Logrus would look like those, had it been re-designed with what we know about structured logging in Go today. Check out, for example, Zerolog, Zap, and Apex.
 
-For these reasons, `uber-go/zap` is the `preferred` structured logging library.
+For these reasons, `uber-go/zap` is the **preferred** structured logging library.
 
-Furthermore, consider using `github.com/kyma-project/kyma/common/logging/logger`, which provides further `abstraction` over `uber-go/zap`.
+Furthermore, consider using `github.com/kyma-project/kyma/common/logging/logger`, which provides further **abstraction** over `uber-go/zap`.
 
 <!-- voting options:
 1. [ueber-go/zap](https://github.com/uber-go/zap) // proposed by guidelines
@@ -89,9 +89,9 @@ Furthermore, consider using `github.com/kyma-project/kyma/common/logging/logger`
 Code is read many times but sometimes only written once. Therefore you should always make sure that you follow these guidelines.
 
 **Guidelines**:
-1. Add `documentation` to `all exported` functions, variables, types etc. Comments on private elements are also welcome because they help the reader.
-1. Assume that there is a generated html `version` of our `docs` on <https://pkg.go.dev>, for example [here](https://pkg.go.dev/github.com/kyma-project/kyma/components/eventing-controller/api/v1alpha1) for the eventing-controller.
-1. Comments on exported functions, variables, or types shall `start` with the name of the element and `end` with a dot (`.`). Write real sentences.
+1. Add **documentation** to **all exported** functions, variables, types etc. Comments on private elements are also welcome because they help the reader.
+1. Assume that there is a generated html **version** of our **docs** on <https://pkg.go.dev>, for example [here](https://pkg.go.dev/github.com/kyma-project/kyma/components/eventing-controller/api/v1alpha1) for the eventing-controller.
+1. Comments on exported functions, variables, or types shall **start** with the name of the element and **end** with a dot (".") Write real sentences.
 
 ### Good practice
 
@@ -117,7 +117,7 @@ $ godoc -http=:8080
 <details>
 	<summary>Don't</summary>
 
-In the example, `w` is the first argument to the function `Fprint`.
+In the example, **w** is the first argument to the function `Fprint`.
 It is not necessary to put w in backticks. Goland supports jumping to the element definition (at least sometimes :-D). Using backticks however breaks the feature.
 
 ```go
@@ -271,7 +271,7 @@ func main() {
 
 }
 ```
-	
+
 </details>
 
 **Advantage**:
@@ -312,7 +312,7 @@ subscription.Spec.ProtocolSettings = reconcilertesting.NewProtocolSettings(
 <details>
 	<summary>Do</summary>
 
-In contrast to `WithExemptHandshakeBefore`, `WithExemptHandshakeAfter` returns a function of type `ProtoOpt`. However, `WithExemptHandshakeBefore` itself is of type `ProtoOpt`. For simplicity and consistency, you should `always` return a `ProtoOpt` from `inside` the `With` function.
+In contrast to `WithExemptHandshakeBefore`, `WithExemptHandshakeAfter` returns a function of type `ProtoOpt`. However, `WithExemptHandshakeBefore` itself is of type `ProtoOpt`. For simplicity and consistency, you should **always** return a `ProtoOpt` from **inside** the `With` function.
 
 ```go
 func WithExemptHandshakeAfter() ProtoOpt {
@@ -331,7 +331,7 @@ subscription.Spec.ProtocolSettings = reconcilertesting.NewProtocolSettings(
 <details>
 	<summary>Don't</summary>
 
-`WithServiceBefore` is used outside of `NewAPIRule`. Moreover, it is used to apply a `side-effect` (setting apiRule.Spec.Service). This is `weird` because it misuses the `WithServiceBefore`, which shall only be used as an argument to a function that supports an APIRuleOption.
+`WithServiceBefore` is used outside of `NewAPIRule`. Moreover, it is used to apply a **side-effect** (setting apiRule.Spec.Service). This is **weird** because it misuses the `WithServiceBefore`, which shall only be used as an argument to a function that supports an APIRuleOption.
 
 ```go
 // source: https://github.com/kyma-project/kyma/pull/13242/files#diff-2f168bb71c1ca8d2f5781bac737393acd9bc3a1f829bdbe91093b7db54972433L130
@@ -388,7 +388,7 @@ apiRule = NewAPIRule(
   <summary>Don't</summary>
 
 `WithStatusReady` is not used inside a function that accepts a functional option as input.
-As a reader, you would not expect that it performs a `side-effect` on the `apiRuleNew`.
+As a reader, you would not expect that it performs a **side-effect** on the `apiRuleNew`.
 
 ```go
 // source: https://github.com/kyma-project/kyma/blob/a84f76f674babfc63e369bbba44de76499cf475d/components/eventing-controller/controllers/subscription/beb/reconciler_test.go#L592
@@ -418,18 +418,18 @@ MarkReady(apiRuleNew) // instead consider using another function that explicitly
 ## Testing pyramid in Kyma
 
 The following section describes the different testing levels for Kyma. These levels are usually seen as a [pyramid](https://en.wikipedia.org/wiki/Test_automation#Testing_at_different_levels):
-- At the bottom of the pyramid, you should have the `most` test cases because they are usually very `fast`. However, you are limited in what you can test because external dependencies are `mocked`. Unit tests are an example of this.
-- At the top of the pyramid, there are usually `fewer` tests because these tests take `longer`. However, these tests are a more realistic scenario of how the end user will use our product. E2E tests are an example of this.
+- At the bottom of the pyramid, you should have the **most** test cases because they are usually very **fast**. However, you are limited in what you can test because external dependencies are **mocked**. Unit tests are an example of this.
+- At the top of the pyramid, there are usually **fewer** tests because these tests take **longer**. However, these tests are a more realistic scenario of how the end user will use our product. E2E tests are an example of this.
 
 ### Controller Integration Tests (kubebuilder)
 
 **Test Setup**
 Controllers using the kubebuilder framework bootstrap integration tests using `Ginkgo` (for testing) and `Gomega` (for assertions).
-Using the `controller-runtime/pkg/envtest` package, a kubernetes `control-plane` (`API server` and `etcd`) is started locally once before the first test runs (`BeforeSuite`).
+Using the `controller-runtime/pkg/envtest` package, a kubernetes **control-plane** (**API server** and **etcd**) is started locally once before the first test runs (`BeforeSuite`).
 You can also use a custom Kubernetes cluster (see [USE_EXISTING_CLUSTER](https://book.kubebuilder.io/reference/envtest.html) environment variable).
 
 **Goal**
-The goal of a controller integration test is to test the Kubernetes controller in a `limited` Kubernetes `environment`. That means that dependencies of the controller - such as other controllers (APIRule controller) or external eventing system - are not present. These systems are only present in higher hierarchies of the testing pyramid.
+The goal of a controller integration test is to test the Kubernetes controller in a **limited** Kubernetes **environment**. That means that dependencies of the controller - such as other controllers (APIRule controller) or external eventing system - are not present. These systems are only present in higher hierarchies of the testing pyramid.
 
 Controller integration tests should be reserved for cases when we care about the eventual state of the object or need a Kubernetes cluster.
 
@@ -439,8 +439,8 @@ Controller integration tests should be reserved for cases when we care about the
 
 ### Unit Tests
 
-[Unit tests](https://en.wikipedia.org/wiki/Unit_testing) are used to test individual `units` of the code. To test the unit in an `isolated` fashion, external `dependencies` are typically `mocked`.
-Unit tests provide a very fast `feedback cycle` and help discovering bugs in a very `early stage`.
+[Unit tests](https://en.wikipedia.org/wiki/Unit_testing) are used to test individual **units** of the code. To test the unit in an **isolated** fashion, external **dependencies** are typically **mocked**.
+Unit tests provide a very fast **feedback cycle** and help discovering bugs in a very **early stage**.
 The advantage of unit testing is that "[Code can be impossible or difficult to unit test if poorly written, thus unit testing can force developers to structure functions and objects in better ways.](https://en.wikipedia.org/wiki/Unit_testing)"
 The big disadvantage of unit tests is that they are tightly coupled to the code, so rewriting the code may require new or modified unit tests.
 
@@ -450,12 +450,12 @@ The following section describes ugly tests or problems that we discovered in our
 The guides should be used whenever possible but are not set in stone. There might be cases where the proposed solution does not fit and that is ok.
 
 **Best practice**:
-- Find a `balance` between [`KISS`](https://en.wikipedia.org/wiki/KISS_principle) (keep it simple stupid) and [`DRY`](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) (don't repeat yourself). Tests should be easily `understandable`. At the same time, you should `avoid` code `duplication` because it gets `unmaintainable` very fast.
-- `Split` heavy test `setup` from actual test.
-- Test `one thing` at a time. This aligns with the KISS principle as well. Focus on the `main concern` of a test and don't test more than what you need. Comments on tests are welcome, but might also be an indication for a test that is either (1) too complex or (2) tests too many things simultaneously. 
-Concentrating on the main concern makes the individual tests shorter, easier to understand, better to maintain and expresses the intention of the test better. If multiple things are tested at the same time, there is `no guarantee` that someone will take this secondary thing out of the test. If there are multiple tests however, you can easily see that a test case was removed and argue whether this is ok or not.
-- `Don't` test the `unforeseen`. Instead, think about the code and derive useful test scenarios (best and worst case). Think about what is the `happy path` ? What is the `unhappy path` ?
-- Especially complex tests need `documentation` so that the reader understands them better.
+- Find a **balance** between [KISS](https://en.wikipedia.org/wiki/KISS_principle) (keep it simple stupid) and [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) (don't repeat yourself). Tests should be easily `understandable`. At the same time, you should **avoid** code **duplication** because it gets **unmaintainable** very fast.
+- **Split** heavy test **setup** from actual test.
+- Test **one thing** at a time. This aligns with the KISS principle as well. Focus on the **main concern** of a test and don't test more than what you need. Comments on tests are welcome, but might also be an indication for a test that is either (1) too complex or (2) tests too many things simultaneously. 
+Concentrating on the main concern makes the individual tests shorter, easier to understand, better to maintain and expresses the intention of the test better. If multiple things are tested at the same time, there is **no guarantee** that someone will take this secondary thing out of the test. If there are multiple tests however, you can easily see that a test case was removed and argue whether this is ok or not.
+- **Don't** test the **unforeseen**. Instead, think about the code and derive useful test scenarios (best and worst case). Think about what is the **happy path** ? What is the **unhappy path** ?
+- Especially complex tests need **documentation** so that the reader understands them better.
 
 **Goals**:
 - Avoid regression: Whenever you close a bug, make sure that this bug will not get reintroduced. 
@@ -465,7 +465,7 @@ does it make sense to:
 1. link a PR or issue to the test so that you can understand even two years later, what the problem was at the time ?
 -->
 - Express intent of code: Code should be self-explanatory and documented. In addition, tests help in understanding the intention of the code by providing test cases where you can easily see the (1) input to the code and (2) the expected outcome.
-- Drive development: Yes, tests can help drive development. They enable you to run code that is otherwise hard to run because it needs a complex setup. Imagine that in order to test a Kubernetes controller, you need to build a Docker image, push the image, and deploy the controller. This is a very time-consuming approach. You should always aim for a `short` `feedback cycle`.
+- Drive development: Yes, tests can help drive development. They enable you to run code that is otherwise hard to run because it needs a complex setup. Imagine that in order to test a Kubernetes controller, you need to build a Docker image, push the image, and deploy the controller. This is a very time-consuming approach. You should always aim for a **short feedback cycle**.
 <!-- inspired by https://fossa.com/blog/golang-best-practices-testing-go/#Why -->
 
 ### Separate test setup from actual test 
@@ -526,7 +526,7 @@ func TestSendCloudEvent(t *testing.T) {
 
 </details>
 
-The test `TestSendCloudEventWithReconnect` contains a lot of code only to setup the test environment (see `test setup start` and `test setup end` markers). To make the test itself `shorter` and `cleaner`, extract the test setup code.  
+The test `TestSendCloudEventWithReconnect` contains a lot of code only to setup the test environment (see `test setup start` and `test setup end` markers). To make the test itself **shorter** and **cleaner**, extract the test setup code.
 
 The idea is to move all parts of the test setup into a struct and create a helper method to start and stop the environment.
 
@@ -549,7 +549,7 @@ type TestEnvironment struct {
 ```
 </details>
 
-The struct contains the NATS server, a client to send messages to NATS, and the connection to NATS, as well as a context and a logger.  
+The struct contains the NATS server, a client to send messages to NATS, and the connection to NATS, as well as a context and a logger.
 In addition to the struct, create a helper method to setup the actual environment:
 
 <details>
@@ -630,13 +630,11 @@ cleanup: 1
 
 ```
 </details>
-</details>
 
 After the refactoring, the test looks like this:
 
 <details>
   <summary>Refactored test</summary>
-
 
 ```go
 func TestSendCloudEvent(t *testing.T) {
@@ -671,26 +669,27 @@ func TestSendCloudEvent(t *testing.T) {
 }
 ```
 </details>
+</details>
 
 ### GWT (given-when-then) pattern
 
 The [Given-when-then](https://en.wikipedia.org/wiki/Given-When-Then) pattern is a good way to structure code inside a test by adding comments so that the following intentions are made clear:
-1. Given: The `preconditions` which are required for the test.
+1. Given: The **preconditions** which are required for the test.
 1. When: This is usually the time when you want to call the `functionUnderTest`.
-1. Then: This is the part where you make sure that the `functionUnderTest` is working as expected by using `assertions`.
+1. Then: This is the part where you make sure that the `functionUnderTest` is working as expected by using **assertions**.
 
 ```go
-	// given
-	// create a subscription using the mocked client
-	sub, err := client.Create(subscription)
-	g.Expect(err).ToNot(BeNil())
-	
-	// when
-	// call the testable function
-	functionToTest(sub)
-	
-	// then
-	g.Expect(sub).To(BeNil())
+// given
+// create a subscription using the mocked client
+sub, err := client.Create(subscription)
+g.Expect(err).ToNot(BeNil())
+
+// when
+// call the function
+functionUnderTest(sub)
+
+// then
+g.Expect(sub).To(BeNil())
 ```
 
 Sometimes you need to add more comments to the tests (in addition to the GWT comments). We recommend to add them underneath the GWT comments.
@@ -699,7 +698,7 @@ Especially when the test code is very long, the GWT comment pattern improves the
 
 ### Table-driven tests
 
-[Table-driven tests](https://go.dev/blog/subtests) are a very common way of expressing `multiple` `test cases` while `sharing` the same test setup, thus avoiding test duplication. 
+[Table-driven tests](https://go.dev/blog/subtests) are a very common way of expressing **multiple test cases** while **sharing** the same test setup, thus avoiding test duplication. 
 They also provide context and meaning to the test cases.
 
 **Conventions**:
@@ -714,8 +713,8 @@ They also provide context and meaning to the test cases.
 2. expect
 3. expected
 -->
-- Keep the `name` short. For example, use `event order.created received` instead of `test that event order.created was received` or `ensure that event order.created was received`.
-- To improve readability, always set the `field names` when initializing the test case struct.
+  - Keep the `name` short. For example, use **"event order.created received"** instead of "test that event order.created was received" or "ensure that event order.created was received".
+- To improve readability, always set the **field names** when initializing the test case struct.
 
 <details>
   <summary>Example</summary>
@@ -777,8 +776,9 @@ func TestSomething(t *testing.T) {
 
 <details>
   <summary>Do</summary>
+// TODO: use golang as markdown lang everywhere
 
-```go
+```golang
 func TestSomething(t *testing.T) {
 	testCases := []struct {
 		name           string
@@ -807,11 +807,11 @@ func TestSomething(t *testing.T) {
 <details>
   <summary>Don't</summary>
 
-The following example shows a version of a `two-dimensional` `table test`. The test is encapsulated in a function named `exec` and called multiple times with different arguments. This is the `first dimension` of the test.
+The following example shows a version of a **two-dimensional** **table test**. The test is encapsulated in a function named **exec** and called multiple times with different arguments. This is the **first dimension** of the test.
 
 The second dimension of the test is visible in the `t.Run` command, which creates a subtest for each entry in `handlertest.TestCasesForCloudEvents`.
 
-Technically, you can use it this way. However, it is better to use a `pure` `two dimensional` `table test` instead.
+Technically, you can use it this way. However, it is better to use a **pure two dimensional table test** instead.
 
 ```go
 // source: https://github.com/nachtmaar/kyma/blob/13029-retry-fail-publish/components/event-publisher-proxy/pkg/handler/nats/handler_test.go
@@ -925,14 +925,14 @@ func TestNatsHandlerForCloudEvents(t *testing.T) {
 
 </details>
 
-**Example 3:** Don't repeat yourself (`DRY`) and consider a table-driven test instead.
+**Example 3:** Don't repeat yourself (**DRY**) and consider a table-driven test instead.
 
 <details>
   <summary>Don't</summary>
 
-The following example shows two nearly identical tests. The only difference is that `TestSendCloudEventWithReconnect` additionally `closes` the `connection` before sending the event, in contrast to `TestSendCloudEvent`.
-The test `TestSendCloudEventWithReconnect` has another problem that prevents rewriting both tests as a table test: It sends an event twice. Once with an open connection, then with a closed connection. The `main concern` of the test is to ensure that the `connection` is `re-established`. Then it is in closed state.
-However, it is enough to close the connection before sending the first event. There is no need to send the event twice. Reducing the test to the `bare minimum` allows us to rewrite it as a table-driven test.
+The following example shows two nearly identical tests. The only difference is that `TestSendCloudEventWithReconnect` additionally **closes** the **connection** before sending the event, in contrast to `TestSendCloudEvent`.
+The test `TestSendCloudEventWithReconnect` has another problem that prevents rewriting both tests as a table test: It sends an event twice. Once with an open connection, then with a closed connection. The **main concern** of the test is to ensure that the **connection** is **re-established**. Then it is in closed state.
+However, it is enough to close the connection before sending the first event. There is no need to send the event twice. Reducing the test to the **bare minimum** allows us to rewrite it as a table-driven test.
 
 ```go 
 // source: https://github.com/kyma-project/kyma/blob/d6662ab956c18cfc9b3e0c7deebd26da3a56ae77/components/event-publisher-proxy/pkg/sender/nats_test.go#L58 
@@ -1095,7 +1095,7 @@ func TestSendCloudEventsToNats(t *testing.T) {
 It is very useful to have some documentation in the test file, describing how the test works from a bird's-eye view.
 
 Put this documentation directly at the beginning of the file, before the `package` declaration and before the `imports`.
-See the following example of the file `components/event-publisher-proxy/pkg/sender/nats_test.go`:
+See the following example of the file *components/event-publisher-proxy/pkg/sender/nats_test.go*:
 
 ```go
 // Tests in this file are integration tests.
@@ -1104,7 +1104,7 @@ See the following example of the file `components/event-publisher-proxy/pkg/send
 package sender
 ```
 
-With this approach, no godoc is generated for the package `sender` because it is a test file (ending with `_test` prefix).
+With this approach, no godoc is generated for the package `sender` because it is a test file (ending with **_test** prefix).
 
 ### Consistency
 
