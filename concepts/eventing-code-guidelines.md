@@ -440,8 +440,8 @@ Concentrating on the main concern makes the individual tests shorter, easier to 
 
 ### Regression Tests
 
-Whenever you close a bug, add a test which prevents the bug from getting re-introduced (*regression*).
-In order to understand at any time why the tests exist, you must **link** the test to an **issue** to provide further context (if an issue exists).
+Whenever you close a bug, add a test that prevents the bug from getting re-introduced (*regression*).
+Provide context to help understanding the purpose of the test. For example, if a test is based on an issue, you must **link** the test to the **issue**.
 
 The following example shows how the issue must be linked to the test:
 
