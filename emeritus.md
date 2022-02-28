@@ -25,3 +25,4 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Sayan Hazra (**[@sayanh](https://github.com/sayanh)**) involved in `area/eventing`, `area/serverless`.
 * Suleyman Akbas (**[@suleymanakbas91](https://github.com/suleymanakbas91)**) involved in `area/cli`, `area/logging`, `area/tracing`, `area/monitoring`, `area/performance`. 
 * Adam Wałach (**[@adamwalach](https://github.com/adamwalach)**) involved in `area/ci`.
+* Jose Cortina (**[@jose-cortina](https://github.com/jose-cortina)**) involved in `area/community`.
