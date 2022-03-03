@@ -31,36 +31,15 @@ The following section describes the desired choice of libraries for testing, log
 
 **Testing frameworks**:
 
-Use [`t.Testing`](https://pkg.go.dev/testing) for unit tests and for controller integration tests.
-
-<!-- voting options for testing framework in controller integration tests:
-1. testing.T // proposed by guidelines
-1. [ginkgo](https://github.com/onsi/ginkgo)
--->
+Use [t.Testing](https://pkg.go.dev/testing) for unit tests and for controller integration tests.
 
 **Assertion libraries**:
 
-<!-- voting options for assertion libraries in unit tests:
-Right now we use both: testing.T and gomega. We should reach a consensus here to have consistency.
-
-1. testing.T
-2. [stretchr/testify](https://github.com/stretchr/testify)
-3. [onsi/gomega](https://github.com/onsi/gomega)
--->
-
-Use [`gomega`](https://github.com/onsi/gomega) for writing test **assertions** in controller integration tests. Do not use [stretchr/testify](https://github.com/stretchr/testify) unless you can justify it.
+Use [stretchr/testify](https://github.com/stretchr/testify) as assertion library.
 
 **Mocking libraries**:
 
 Use [stretchr/testify/mock](https://github.com/stretchr/testify#mock-package) in combination with [vektra/mockery](https://github.com/vektra/mockery) for generating mocks, or create your own mock by implementing the corresponding interface.
-
-<!-- voting options:
-1. [stretchr/testify](https://github.com/stretchr/testify#mock-package) with [vektra/mockery](https://github.com/vektra/mockery) // proposed by guidelines and already used by eventing-controller
-2. gomock aka [golang/mock](https://github.com/golang/mock)
-3. [ernesto-jimenez/goautomock](https://github.com/ernesto-jimenez/goautomock)
-4. [MarvinJWendt/testza](https://github.com/MarvinJWendt/testza)
-5. [gojuno/minimock](https://github.com/gojuno/minimock)
--->
 
 ### Structured Logging
 
@@ -74,11 +53,6 @@ Citing from the [logrus github page](https://github.com/sirupsen/logrus), it is 
 For these reasons, `uber-go/zap` is the **preferred** structured logging library.
 
 Furthermore, consider using `github.com/kyma-project/kyma/common/logging/logger`, which provides further **abstraction** over `uber-go/zap`.
-
-<!-- voting options:
-1. [ueber-go/zap](https://github.com/uber-go/zap) // proposed by guidelines
-2. [logrus](https://github.com/sirupsen/logrus) 
--->
 
 #### See also
 
@@ -459,14 +433,25 @@ Concentrating on the main concern makes the individual tests shorter, easier to 
 
 **Goals**:
 - Avoid regression: Whenever you close a bug, make sure that this bug will not get reintroduced. 
-<!-- voting question:
-does it make sense to:
-1. use regression in the test name to indicate whether a test is a regression test ?
-1. link a PR or issue to the test so that you can understand even two years later, what the problem was at the time ?
--->
 - Express intent of code: Code should be self-explanatory and documented. In addition, tests help in understanding the intention of the code by providing test cases where you can easily see the (1) input to the code and (2) the expected outcome.
 - Drive development: Yes, tests can help drive development. They enable you to run code that is otherwise hard to run because it needs a complex setup. Imagine that in order to test a Kubernetes controller, you need to build a Docker image, push the image, and deploy the controller. This is a very time-consuming approach. You should always aim for a **short feedback cycle**.
 <!-- inspired by https://fossa.com/blog/golang-best-practices-testing-go/#Why -->
+
+
+### Regression Tests
+
+Whenever you close a bug, add a test that prevents the bug from getting re-introduced (*regression*).
+Provide context to help understanding the purpose of the test. For example, if a test is based on an issue, you must **link** the test to the **issue**.
+
+The following example shows how the issue must be linked to the test:
+
+```go
+// TestBugIsFixed ensures something.
+// issue: https://github.com/kyma-project/kyma/issues/12979
+func TestBugIsFixed(t *testing.T) {
+  // test goes here ...
+}
+```
 
 ### Separate test setup from actual test 
 
@@ -703,16 +688,6 @@ They also provide context and meaning to the test cases.
 
 **Conventions**:
 - Every test must have a `name`. Input variables to the test are prefixed with `given`, and expected output is prefixed with `want`.
-<!-- voting options for test input:
-1. given // currently suggested
-2. give
-3. provide
--->
-<!-- voting options for test output:
-1. want // currently suggested
-2. expect
-3. expected
--->
   - Keep the `name` short. For example, use **"event order.created received"** instead of "test that event order.created was received" or "ensure that event order.created was received".
 - To improve readability, always set the **field names** when initializing the test case struct.
 
@@ -776,7 +751,6 @@ func TestSomething(t *testing.T) {
 
 <details>
   <summary>Do</summary>
-// TODO: use golang as markdown lang everywhere
 
 ```go
 func TestSomething(t *testing.T) {
