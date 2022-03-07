@@ -3,7 +3,7 @@
 **Document Intention** 
 
 The intention of this document is to provide style, testing, and code guidelines for components of the **eventing** team. Other teams in Kyma may follow different guidelines.
-The document is supposed to be a **living** document that can be changed by anyone in the team. However, the team majority (50%) must agree on changes for this guideline. 
+The document is supposed to be a **living** document that can be changed by anyone in the team. However, the team majority (> 50%) must agree on changes for this guideline.
 
 This guide shall be publicly available so that it can be referenced when reviewing pull requests. The agreements of this guide shall not affect **external collaborators**. If an external PR does not align with our guidelines, we should accept the PR as it is and apply the guidelines ourselves in a follow-up PR so we don't block external contributors. Of course, also external PRs shall meet our quality standards but we shouldn't be too nitpicky.
 
@@ -35,7 +35,7 @@ Use [t.Testing](https://pkg.go.dev/testing) for unit tests and for controller in
 
 **Assertion libraries**:
 
-Use [stretchr/testify](https://github.com/stretchr/testify) as assertion library.
+Use [stretchr/testify](https://github.com/stretchr/testify) as assertion library. The controller integration tests are an exception to this. Use [onsi/gomega](https://github.com/onsi/gomega) as an assertion library for them instead.
 
 **Mocking libraries**:
 
