@@ -35,7 +35,7 @@ Use [t.Testing](https://pkg.go.dev/testing) for unit tests and for controller in
 
 **Assertion libraries**:
 
-Use [stretchr/testify](https://github.com/stretchr/testify) as assertion library. The controller integration tests are an exception to this and use [onsi/gomega](https://github.com/onsi/gomega) as an assertion library instead.
+Use [stretchr/testify](https://github.com/stretchr/testify) as assertion library. The controller integration tests are an exception to this. Use [onsi/gomega](https://github.com/onsi/gomega) as an assertion library for them instead.
 
 **Mocking libraries**:
 
