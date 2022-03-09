@@ -867,7 +867,7 @@ var (
 <details>
   <summary>Do</summary>
 
-This is the same test as before, but each `exec` function was replaced with an entry in the `testCases` list. For each entry in `testCases` and `handlertest.TestCasesForCloudEvents`, a subtest is started using `t.Run`. The name of each subtest is combined using input from both dimensions.
+This is the same test as before, but each `exec` function was replaced with an entry in the `testCases` list. For each entry in `testCases` and `handlertest.TestCasesForCloudEvents`, a subtest is started using `t.Run`.
 
 ```go
 func TestNatsHandlerForCloudEvents(t *testing.T) {
@@ -887,15 +887,77 @@ func TestNatsHandlerForCloudEvents(t *testing.T) {
 		},
 	}
 	for _, tc := range testCases {
+	  t.Run(tc.name, func(t *testing.T) {
 		for _, ceTestCase := range handlertest.TestCasesForCloudEvents {
-			t.Run(tc.name+" - "+ceTestCase.Name, func(t *testing.T) {
+			t.Run(ceTestCase.Name, func(t *testing.T) {
 			// other code is unchanged
 			})
 		}
-	}
+	})
 }
-
 ```
+
+<details>
+  <summary>Reason for using nested t.Run</summary>
+
+Let us assume that `tc.name` is equal to `parent test name` and `ceTestCase.Name` is equal to `child test name`.
+
+When you look at the output that both examples produce, you can see that the test name is different (`parent_test_name_-_child_test_name` vs `parent_test_name/child_test_name`). Each subtest will add `/<test_name>` to the test name.
+The **advantage** of using t.Run in a nested way is that:
+1. The test name is easier to read (`parent_test_name/child_test_name`).
+2. There is no need to use a combined name (`tc.name+" - "+ceTestCase.name`).
+3. The nesting of t.Run is displayed in a nicer way (in IDEs this is used to group tests and make them collapsable).
+
+<details>
+  <summary>Example using one t.Run</summary>
+
+```shell
+# for _, tc := range testCases {
+# 	for _, ceTestCase := range testCases {
+# 		t.Run(tc.name+" - "+ceTestCase.name, func(t *testing.T) {
+# 		})
+# 	}
+# }
+
+$ go test -v
+=== RUN   TestNatsHandlerForCloudEvents
+=== RUN   TestNatsHandlerForCloudEvents/parent_test_name_-_child_test_name
+--- PASS: TestNatsHandlerForCloudEvents (0.00s)
+    --- PASS: TestNatsHandlerForCloudEvents/parent_test_name_-_child_test_name (0.00s)
+PASS
+ok      test    0.199s
+```
+
+</details>
+
+<details>
+  <summary>Example using nested t.Run</summary>
+
+```shell
+# for _, tc := range testCases {
+# 	t.Run(tc.name, func(t *testing.T) {
+# 		for _, ceTestCase := range testCases {
+# 			t.Run(ceTestCase.name, func(t *testing.T) {
+# 			})
+# 		}
+# 	})
+# }
+
+$ go test -v
+=== RUN   TestNatsHandlerForCloudEvents
+=== RUN   TestNatsHandlerForCloudEvents/parent_test_name
+=== RUN   TestNatsHandlerForCloudEvents/parent_test_name/child_test_name
+--- PASS: TestNatsHandlerForCloudEvents (0.00s)
+    --- PASS: TestNatsHandlerForCloudEvents/parent_test_name (0.00s)
+        --- PASS: TestNatsHandlerForCloudEvents/parent_test_name/child_test_name
+ (0.00s)
+PASS
+ok      test    0.182s
+```
+
+</details>
+
+</details>
 
 </details>
 
