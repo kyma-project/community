@@ -667,14 +667,14 @@ The [Given-When-Then](https://en.wikipedia.org/wiki/Given-When-Then) pattern is 
 // given
 // create a subscription using the mocked client
 sub, err := client.Create(subscription)
-g.Expect(err).ToNot(BeNil())
+assert.NotNil(t, err)
 
 // when
 // call the function
 functionUnderTest(sub)
 
 // then
-g.Expect(sub).To(BeNil())
+assert.Nil(t, sub)
 ```
 
 Sometimes you need to add more comments to the tests (in addition to the GWT comments). We recommend to add them underneath the GWT comments.
