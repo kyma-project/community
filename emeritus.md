@@ -27,3 +27,4 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Adam Wałach (**[@adamwalach](https://github.com/adamwalach)**) involved in `area/ci` and `area/service-catalog`.
 * Jose Cortina (**[@jose-cortina](https://github.com/jose-cortina)**) involved in `area/community`.
 * Kamil Sputo (**[@ksputo](https://github.com/ksputo)**) involved in `area/service-catalog` and  `area/control-plane`
+* Mostafa Shorim (**[@shorim](https://github.com/shorim)**) involved in `area/cli`, `area/logging`, `area/tracing`, `area/monitoring`
