@@ -8,6 +8,7 @@ Reconciler is a framework to install, update and repair Kyma components in manag
 - produce kubeconfig for provisioned clusters (can be rotated)
 - support bring your own cluster models (BYOC) - cluster is ready and we got cluster-admin kubeconfig 
 - trigger reconciliation on configuration or cluster state change
+- register the Kyma Runtime within the CMP
 
 # Proposed changes
 
@@ -20,6 +21,9 @@ Reconciliation is currently time based (triggered in regular intervals). It is k
 - configuration change (e.g. network reconciler can add vnet name to the cluster inventory what should trigger shoot reconciler)
 - resource in the cluster modified (e.g. connectivity service instance created in the cluster should trigger connectivity proxy reconciler)
 
+Restoring managed resources accidentally (or intentionally) deleted by user is not a main goal of watchers. They should be used rather to monitor resources like service instances that should trigger some integration tasks in the Kyma Control Plane.
+
+Watchers and triggers can be more selective to limit the number of unnecessary invocations. Component reconcilers can specify which Cluster Inventory fields changes they want to be triggered with (i.e. Istio reconciler subscribing to the kubeconfig field). 
 
 ## No sequences or dependency management
 Reconciler tries to manage dependencies in the simple way. The prerequisites group installed first and then other components. Introducing infrastructure reconciler will make dependency management more complex. Moreover, dependencies are valid mainly for the first installation phase, and later on are not so important (in the second reconciliation eventing reconciler can be invoked before network reconciler). It should be responsibility of component reconciler to figure out if all dependencies exist and the reconciliation can be completed. If dependencies are not ready component reconciler should return the information that it is not ready and wait for the next trigger (time or event).
@@ -30,6 +34,6 @@ Reconciler tries to manage dependencies in the simple way. The prerequisites gro
 
 Mothership reconciler should provide common functionality related to watching changes and triggering component reconcilers in response to events or with time based schedule. Such aspects like queueing reconciliation requests, consolidating them, updating reconciliation status, retries and back-off strategy should be implemented once (in the mothership). 
 
-Worker pool implementation has to be revisited. Mothership should not manage dependencies - component reconciler should be written in the way that can recognize missing dependencies and can fail fast. The next reconciliation invocation should happen when the configuration (cluster inventory) is updated (dependency)
+Worker pool implementation has to be revisited. Mothership should not manage dependencies - component reconciler should be written in the way that can recognize missing dependencies and can fail fast. The next reconciliation invocation should happen when the configuration (cluster inventory) is updated (dependency). 
 
-Cluster Inventory should be extracted from the mothership and should have more flexible content. Component reconcilers should be able to read and update the content (TODO - access control). 
+Cluster Inventory should be extracted from the mothership and should have more flexible content. Component reconcilers should be able to read and update the content. Access control should be also established as we would need access to cluster inventory also from external components (e.g. Central Management Plane).
