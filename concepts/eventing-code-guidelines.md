@@ -716,6 +716,121 @@ func TestSomething(t *testing.T) {
 }
 ```
 
+<details>
+  <summary>Reason for variable reassignment (tc := tc)</summary>
+//TODO(nils):
+
+</details>
+
+</details>
+
+<details>
+  <summary>2-dimensional table-driven test</summary>
+
+You may encounter a situation where a table-driven test requires more than one  dimension. The following is a template/best practice for a 2-dimensional table-driven test.
+
+```go
+func TestTwoDimensions(t *testing.T) {
+	// first dimension
+	testCases := []struct {
+		name               string
+		givenSender        *CESender
+		wantHTTPStatusCode int
+	}{
+		{
+			name:              "binary cloud event sender",
+			givenSender        *myCEBinarySender,
+		},
+	}
+	// second dimension
+	cloudEvents := []struct {
+		name, givenCEType string
+	}{
+		{
+			name:        "proper cloud event",
+			givenCEType: "order.created.v1",
+			wantHTTPStatusCode: http.StatusOK.
+		},
+	}
+	for _, tc := range testCases {
+		tc := tc
+		t.Run(tc.name, func(t *testing.T) {
+			for _, ce := range ce {
+ 				ce := ce
+				t.Run(ce.name, func(t *testing.T) {
+					t.Parallel()
+					res := functionUnderTest(tc.givenSender, ce.givenCEType)
+					// check res == ce.wantHTTPStatusCode
+				})
+			}
+		})
+	}
+}
+```
+
+<details>
+  <summary>Reason for using nested t.Run</summary>
+
+//TODO(nils): context needs to be rewritten to new example
+Let us assume that `tc.name` is equal to `parent test name` and `ceTestCase.Name` is equal to `child test name`.
+
+When you look at the output that both examples produce, you can see that the test name is different (`parent_test_name_-_child_test_name` vs `parent_test_name/child_test_name`). Each subtest will add `/<test_name>` to the test name.
+The **advantage** of using t.Run in a nested way is that:
+- The test name is easier to read (`parent_test_name/child_test_name`).
+- There is no need to use a combined name (`tc.name+" - "+ceTestCase.name`).
+- The nesting of t.Run is displayed in a nicer way (in IDEs, this is used to group tests and make them collapsable).
+
+<details>
+  <summary>Example using one t.Run</summary>
+
+```shell
+# for _, tc := range testCases {
+# 	for _, ceTestCase := range testCases {
+# 		t.Run(tc.name+" - "+ceTestCase.name, func(t *testing.T) {
+# 		})
+# 	}
+# }
+
+$ go test -v
+=== RUN   TestNatsHandlerForCloudEvents
+=== RUN   TestNatsHandlerForCloudEvents/parent_test_name_-_child_test_name
+--- PASS: TestNatsHandlerForCloudEvents (0.00s)
+    --- PASS: TestNatsHandlerForCloudEvents/parent_test_name_-_child_test_name (0.00s)
+PASS
+ok      test    0.199s
+```
+
+</details>
+
+<details>
+  <summary>Example using nested t.Run</summary>
+
+```shell
+# for _, tc := range testCases {
+# 	t.Run(tc.name, func(t *testing.T) {
+# 		for _, ceTestCase := range testCases {
+# 			t.Run(ceTestCase.name, func(t *testing.T) {
+# 			})
+# 		}
+# 	})
+# }
+
+$ go test -v
+=== RUN   TestNatsHandlerForCloudEvents
+=== RUN   TestNatsHandlerForCloudEvents/parent_test_name
+=== RUN   TestNatsHandlerForCloudEvents/parent_test_name/child_test_name
+--- PASS: TestNatsHandlerForCloudEvents (0.00s)
+    --- PASS: TestNatsHandlerForCloudEvents/parent_test_name (0.00s)
+        --- PASS: TestNatsHandlerForCloudEvents/parent_test_name/child_test_name
+ (0.00s)
+PASS
+ok      test    0.182s
+```
+
+</details>
+
+</details>
+
 </details>
 
 
@@ -896,69 +1011,6 @@ func TestNatsHandlerForCloudEvents(t *testing.T) {
 	})
 }
 ```
-
-<details>
-  <summary>Reason for using nested t.Run</summary>
-
-Let us assume that `tc.name` is equal to `parent test name` and `ceTestCase.Name` is equal to `child test name`.
-
-When you look at the output that both examples produce, you can see that the test name is different (`parent_test_name_-_child_test_name` vs `parent_test_name/child_test_name`). Each subtest will add `/<test_name>` to the test name.
-The **advantage** of using t.Run in a nested way is that:
-- The test name is easier to read (`parent_test_name/child_test_name`).
-- There is no need to use a combined name (`tc.name+" - "+ceTestCase.name`).
-- The nesting of t.Run is displayed in a nicer way (in IDEs, this is used to group tests and make them collapsable).
-
-<details>
-  <summary>Example using one t.Run</summary>
-
-```shell
-# for _, tc := range testCases {
-# 	for _, ceTestCase := range testCases {
-# 		t.Run(tc.name+" - "+ceTestCase.name, func(t *testing.T) {
-# 		})
-# 	}
-# }
-
-$ go test -v
-=== RUN   TestNatsHandlerForCloudEvents
-=== RUN   TestNatsHandlerForCloudEvents/parent_test_name_-_child_test_name
---- PASS: TestNatsHandlerForCloudEvents (0.00s)
-    --- PASS: TestNatsHandlerForCloudEvents/parent_test_name_-_child_test_name (0.00s)
-PASS
-ok      test    0.199s
-```
-
-</details>
-
-<details>
-  <summary>Example using nested t.Run</summary>
-
-```shell
-# for _, tc := range testCases {
-# 	t.Run(tc.name, func(t *testing.T) {
-# 		for _, ceTestCase := range testCases {
-# 			t.Run(ceTestCase.name, func(t *testing.T) {
-# 			})
-# 		}
-# 	})
-# }
-
-$ go test -v
-=== RUN   TestNatsHandlerForCloudEvents
-=== RUN   TestNatsHandlerForCloudEvents/parent_test_name
-=== RUN   TestNatsHandlerForCloudEvents/parent_test_name/child_test_name
---- PASS: TestNatsHandlerForCloudEvents (0.00s)
-    --- PASS: TestNatsHandlerForCloudEvents/parent_test_name (0.00s)
-        --- PASS: TestNatsHandlerForCloudEvents/parent_test_name/child_test_name
- (0.00s)
-PASS
-ok      test    0.182s
-```
-
-</details>
-
-</details>
-
 </details>
 
 **Example 3:** Don't repeat yourself (**DRY**) and consider a table-driven test instead.
@@ -1181,3 +1233,5 @@ err = testingutils.WaitForChannelOrTimeout(done, time.Second*3)
 require.NoError(t, err, "Subscriber did not receive the message") // <= the custom message can be supplied to the testify assertion, there is no need for t.Fatalf anymore
 ```
 </details>
+
+
