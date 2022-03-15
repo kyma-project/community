@@ -772,11 +772,10 @@ func TestTwoDimensions(t *testing.T) {
   <summary>Reason for using nested t.Run</summary>
 
 //TODO(nils): context needs to be rewritten to new example
-Let us assume that `tc.name` is equal to `parent test name` and `ceTestCase.Name` is equal to `child test name`.
 
-When you look at the output that both examples produce, you can see that the test name is different (`parent_test_name_-_child_test_name` vs `parent_test_name/child_test_name`). Each subtest will add `/<test_name>` to the test name.
+When you look at the output that both examples produce, you can see that the test name is different (`binary_cloud_event_sender_-_proper_cloud_event` vs `binary_cloud_event_sender/proper_cloud_event`). Each subtest will add `/<test_name>` to the test name.
 The **advantage** of using t.Run in a nested way is that:
-- The test name is easier to read (`parent_test_name/child_test_name`).
+- The test name is easier to read (`binary_cloud_event_sender/proper_cloud_event`).
 - There is no need to use a combined name (`tc.name+" - "+ceTestCase.name`).
 - The nesting of t.Run is displayed in a nicer way (in IDEs, this is used to group tests and make them collapsable).
 
@@ -793,9 +792,9 @@ The **advantage** of using t.Run in a nested way is that:
 
 $ go test -v
 === RUN   TestNatsHandlerForCloudEvents
-=== RUN   TestNatsHandlerForCloudEvents/parent_test_name_-_child_test_name
+=== RUN   TestNatsHandlerForCloudEvents/binary_cloud_event_sender_-_proper_cloud_event
 --- PASS: TestNatsHandlerForCloudEvents (0.00s)
-    --- PASS: TestNatsHandlerForCloudEvents/parent_test_name_-_child_test_name (0.00s)
+    --- PASS: TestNatsHandlerForCloudEvents/binary_cloud_event_sender_-_proper_cloud_event (0.00s)
 PASS
 ok      test    0.199s
 ```
@@ -817,11 +816,11 @@ ok      test    0.199s
 
 $ go test -v
 === RUN   TestNatsHandlerForCloudEvents
-=== RUN   TestNatsHandlerForCloudEvents/parent_test_name
-=== RUN   TestNatsHandlerForCloudEvents/parent_test_name/child_test_name
+=== RUN   TestNatsHandlerForCloudEvents/binary_cloud_event_sender
+=== RUN   TestNatsHandlerForCloudEvents/binary_cloud_event_sender/proper_cloud_event
 --- PASS: TestNatsHandlerForCloudEvents (0.00s)
-    --- PASS: TestNatsHandlerForCloudEvents/parent_test_name (0.00s)
-        --- PASS: TestNatsHandlerForCloudEvents/parent_test_name/child_test_name
+    --- PASS: TestNatsHandlerForCloudEvents/binary_cloud_event_sender (0.00s)
+        --- PASS: TestNatsHandlerForCloudEvents/binary_cloud_event_sender/proper_cloud_event
  (0.00s)
 PASS
 ok      test    0.182s
