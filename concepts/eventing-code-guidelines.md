@@ -691,6 +691,8 @@ They also provide context and meaning to the test cases.
   - Keep the `name` short. For example, use **"event order.created received"** instead of "test that event order.created was received" or "ensure that event order.created was received".
 - To improve readability, always set the **field names** when initializing the test case struct.
 
+#### Best practice
+
 <details>
   <summary>Normal table-driven test</summary>
 
