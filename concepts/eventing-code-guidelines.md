@@ -692,7 +692,7 @@ They also provide context and meaning to the test cases.
 - To improve readability, always set the **field names** when initializing the test case struct.
 
 <details>
-  <summary>Example</summary>
+  <summary>Normal table-driven test</summary>
 
 ```go
 func TestSomething(t *testing.T) {
@@ -716,12 +716,6 @@ func TestSomething(t *testing.T) {
 	}
 }
 ```
-
-<details>
-  <summary>Reason for variable reassignment (tc := tc)</summary>
-//TODO(nils):
-
-</details>
 
 </details>
 
@@ -768,6 +762,21 @@ func TestTwoDimensions(t *testing.T) {
 	}
 }
 ```
+
+<details>
+  <summary>Reason for variable reassignment (tc := tc)</summary>
+
+The loop iteration variable in Go is a single variable. The closure for the second t.Run is executed inside a goroutine. 
+If there are multiple entries in the `cloudEvents` struct, `ce` will reference the last entry in `cloudEvents` in every iteration. The problem only occurs because the closure referring to `tc` and `ce` is not executed in **sync** with the **for loop** (because of t.parallel).
+To prevent this problem, `ce` and `tc` need to be copied (`ce := ce`).
+The linter [scopelint](https://github.com/golangci/golangci-lint/blob/master/pkg/golinters/scopelint.go) warns about the possible problem whenever `ce` or `testCase` is used.
+Adding `// nolint:scopelint` to silence scopelint has to be used with caution.
+
+**See Also**:
+- [Go Wiki - Common Mistakes](https://github.com/golang/go/wiki/CommonMistakes#using-goroutines-on-loop-iterator-variables)
+- [Example when using t.Parallel and for loops in table-driven tests](https://gist.github.com/posener/92a55c4cd441fc5e5e85f27bca008721) 
+
+</details>
 
 <details>
   <summary>Reason for using nested t.Run</summary>
