@@ -904,9 +904,9 @@ Let us assume that `tc.name` is equal to `parent test name` and `ceTestCase.Name
 
 When you look at the output that both examples produce, you can see that the test name is different (`parent_test_name_-_child_test_name` vs `parent_test_name/child_test_name`). Each subtest will add `/<test_name>` to the test name.
 The **advantage** of using t.Run in a nested way is that:
-1. The test name is easier to read (`parent_test_name/child_test_name`).
-2. There is no need to use a combined name (`tc.name+" - "+ceTestCase.name`).
-3. The nesting of t.Run is displayed in a nicer way (in IDEs this is used to group tests and make them collapsable).
+- The test name is easier to read (`parent_test_name/child_test_name`).
+- There is no need to use a combined name (`tc.name+" - "+ceTestCase.name`).
+- The nesting of t.Run is displayed in a nicer way (in IDEs, this is used to group tests and make them collapsable).
 
 <details>
   <summary>Example using one t.Run</summary>
