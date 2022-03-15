@@ -708,6 +708,7 @@ func TestSomething(t *testing.T) {
 		},
 	}
 	for _, tc := range testCases {
+		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
 			res := functionUnderTest(tc.givenAttribute)
 			// check res == tc.wantAttribute
@@ -749,7 +750,7 @@ func TestTwoDimensions(t *testing.T) {
 		{
 			name:               "proper cloud event",
 			givenCEType:        "order.created.v1",
-			wantHTTPStatusCode: http.StatusOK.
+			wantHTTPStatusCode: http.StatusOK,
 		},
 	}
 	for _, tc := range testCases {
@@ -991,13 +992,16 @@ func TestNatsHandlerForCloudEvents(t *testing.T) {
 		},
 	}
 	for _, tc := range testCases {
-	  t.Run(tc.name, func(t *testing.T) {
-		for _, ceTestCase := range handlertest.TestCasesForCloudEvents {
-			t.Run(ceTestCase.Name, func(t *testing.T) {
-			// other code is unchanged
-			})
-		}
-	})
+		tc := tc
+		t.Run(tc.name, func(t *testing.T) {
+			for _, ceTestCase := range handlertest.TestCasesForCloudEvents {
+				ceTestCase := ceTestCase  
+				t.Run(ceTestCase.Name, func(t *testing.T) {
+					// other code is unchanged
+				})
+			}
+		})
+	}
 }
 ```
 </details>
