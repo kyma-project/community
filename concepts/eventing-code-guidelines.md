@@ -727,19 +727,19 @@ func TestSomething(t *testing.T) {
 <details>
   <summary>2-dimensional table-driven test</summary>
 
-You may encounter a situation where a table-driven test requires more than one  dimension. The following is a template/best practice for a 2-dimensional table-driven test.
+You may encounter a situation where a table-driven test requires more than one  dimension. The following shows a best practice for a 2-dimensional table-driven test.
 
 ```go
 func TestTwoDimensions(t *testing.T) {
 	// first dimension
 	testCases := []struct {
 		name               string
-		givenSender        *CESender
+		givenSender        CESender
 		wantHTTPStatusCode int
 	}{
 		{
-			name:              "binary cloud event sender",
-			givenSender        *myCEBinarySender,
+			name:        "binary cloud event sender",
+			givenSender: myCEBinarySender,
 		},
 	}
 	// second dimension
@@ -747,8 +747,8 @@ func TestTwoDimensions(t *testing.T) {
 		name, givenCEType string
 	}{
 		{
-			name:        "proper cloud event",
-			givenCEType: "order.created.v1",
+			name:               "proper cloud event",
+			givenCEType:        "order.created.v1",
 			wantHTTPStatusCode: http.StatusOK.
 		},
 	}
@@ -771,62 +771,52 @@ func TestTwoDimensions(t *testing.T) {
 <details>
   <summary>Reason for using nested t.Run</summary>
 
-//TODO(nils): context needs to be rewritten to new example
+In order to understand the reasoning for using t.Run in a nested way, we need to see the output that both tests produce.
+When not using t.Run in a nested way, the test could look like this:
 
-When you look at the output that both examples produce, you can see that the test name is different (`binary_cloud_event_sender_-_proper_cloud_event` vs `binary_cloud_event_sender/proper_cloud_event`). Each subtest will add `/<test_name>` to the test name.
-The **advantage** of using t.Run in a nested way is that:
-- The test name is easier to read (`binary_cloud_event_sender/proper_cloud_event`).
-- There is no need to use a combined name (`tc.name+" - "+ceTestCase.name`).
-- The nesting of t.Run is displayed in a nicer way (in IDEs, this is used to group tests and make them collapsable).
-
-<details>
-  <summary>Example using one t.Run</summary>
-
-```shell
-# for _, tc := range testCases {
-# 	for _, ceTestCase := range testCases {
-# 		t.Run(tc.name+" - "+ceTestCase.name, func(t *testing.T) {
-# 		})
-# 	}
-# }
+```go
+// ...
+for _, tc := range testCases {
+	tc := tc
+	for _, ce := range ce {
+		ce := ce
+		t.Run(tc.name + " - " + ce.name, func(t *testing.T) { // only this line changed
+			t.Parallel()
+			res := functionUnderTest(tc.givenSender, ce.givenCEType)
+			// check res == ce.wantHTTPStatusCode
+		})
+	}
+}
 
 $ go test -v
-=== RUN   TestNatsHandlerForCloudEvents
-=== RUN   TestNatsHandlerForCloudEvents/binary_cloud_event_sender_-_proper_cloud_event
---- PASS: TestNatsHandlerForCloudEvents (0.00s)
-    --- PASS: TestNatsHandlerForCloudEvents/binary_cloud_event_sender_-_proper_cloud_event (0.00s)
+=== RUN   TestTwoDimensions
+=== RUN   TestTwoDimensions/binary_cloud_event_sender_-_proper_cloud_event
+--- PASS: TestTwoDimensions (0.00s)
+    --- PASS: TestTwoDimensions/binary_cloud_event_sender_-_proper_cloud_event (0.00s)
 PASS
 ok      test    0.199s
 ```
 
-</details>
-
-<details>
-  <summary>Example using nested t.Run</summary>
+The output of the test with nested t.Run looks like this:
 
 ```shell
-# for _, tc := range testCases {
-# 	t.Run(tc.name, func(t *testing.T) {
-# 		for _, ceTestCase := range testCases {
-# 			t.Run(ceTestCase.name, func(t *testing.T) {
-# 			})
-# 		}
-# 	})
-# }
-
 $ go test -v
-=== RUN   TestNatsHandlerForCloudEvents
-=== RUN   TestNatsHandlerForCloudEvents/binary_cloud_event_sender
-=== RUN   TestNatsHandlerForCloudEvents/binary_cloud_event_sender/proper_cloud_event
---- PASS: TestNatsHandlerForCloudEvents (0.00s)
-    --- PASS: TestNatsHandlerForCloudEvents/binary_cloud_event_sender (0.00s)
-        --- PASS: TestNatsHandlerForCloudEvents/binary_cloud_event_sender/proper_cloud_event
+=== RUN   TestTwoDimensions
+=== RUN   TestTwoDimensions/binary_cloud_event_sender
+=== RUN   TestTwoDimensions/binary_cloud_event_sender/proper_cloud_event
+--- PASS: TestTwoDimensions (0.00s)
+    --- PASS: TestTwoDimensions/binary_cloud_event_sender (0.00s)
+        --- PASS: TestTwoDimensions/binary_cloud_event_sender/proper_cloud_event
  (0.00s)
 PASS
 ok      test    0.182s
 ```
 
-</details>
+When you look at the output that both examples produce, you can see that the test name is different (`binary_cloud_event_sender_-_proper_cloud_event` vs `binary_cloud_event_sender/proper_cloud_event`). Each subtest will add `/<test_name>` to the test name.
+The **advantage** of using t.Run in a nested way is that:
+- The test name is easier to read (`binary_cloud_event_sender/proper_cloud_event`).
+- There is no need to use a combined name (`tc.name+" - "+ce.name`).
+- The nesting of t.Run is displayed in a nicer way (in IDEs, this is used to group tests and make them collapsable).
 
 </details>
 
