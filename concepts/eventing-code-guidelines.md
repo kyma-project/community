@@ -882,6 +882,7 @@ func TestSomething(t *testing.T) {
 		},
 	}
 	for _, tc := range testCases {
+		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
 			res := functionUnderTest(tc.givenAttribute)
 			fmt.Println(res)
