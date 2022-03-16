@@ -752,7 +752,7 @@ func TestTwoDimensions(t *testing.T) {
 	for _, tc := range testCases {
 		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
-			for _, ce := range ce {
+			for _, ce := range cloudEvents {
 				ce := ce
 				t.Run(ce.name, func(t *testing.T) {
 					t.Parallel()
@@ -771,7 +771,7 @@ func TestTwoDimensions(t *testing.T) {
 The loop iteration variable in Go is a single variable. The closure for the second t.Run is executed inside a goroutine. 
 If there are multiple entries in the `cloudEvents` struct, `ce` references the last entry in `cloudEvents` in every iteration. The problem occurs because the closure referring to `tc` and `ce` is not executed in **sync** with the **for loop** (because of t.parallel).
 To prevent this problem, `ce` and `tc` must be copied (`ce := ce`).
-The linter [scopelint](https://github.com/golangci/golangci-lint/blob/master/pkg/golinters/scopelint.go) warns about the possible problem whenever `ce` or `testCase` is used.
+The linter [scopelint](https://github.com/golangci/golangci-lint/blob/master/pkg/golinters/scopelint.go) warns about the possible problem whenever `ce` or `tc` is used.
 Adding `// nolint:scopelint` to silence scopelint must be used with caution.
 
 **See Also**:
@@ -825,7 +825,7 @@ ok      test    0.182s
 ```
 
 When you look at the output of both examples, you can see that the test name is different: (`binary_cloud_event_sender_-_proper_cloud_event` vs `binary_cloud_event_sender/proper_cloud_event`). Each subtest adds `/<test_name>` to the test name.
-The **advantages** of using t.Run in a nested way are that:
+The **advantages** of using t.Run in a nested way are:
 - The test name is easier to read (`binary_cloud_event_sender/proper_cloud_event`).
 - There is no need to use a combined name (`tc.name+" - "+ce.name`).
 - The nesting of t.Run is displayed in a nicer way (in IDEs, this is used to group tests and make them collapsable).
