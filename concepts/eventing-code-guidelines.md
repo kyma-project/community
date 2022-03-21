@@ -724,7 +724,7 @@ func TestSomething(t *testing.T) {
 <details>
   <summary>2-dimensional table-driven test</summary>
 
-There may be situation when you need a table-driven test with more than one dimension. The following shows a best practice example for a 2-dimensional table-driven test.
+There may be situations when you need a table-driven test with more than one dimension. See the following best practice example for a 2-dimensional table-driven test:
 
 ```go
 func TestTwoDimensions(t *testing.T) {
