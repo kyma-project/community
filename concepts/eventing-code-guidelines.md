@@ -667,14 +667,14 @@ The [Given-When-Then](https://en.wikipedia.org/wiki/Given-When-Then) pattern is 
 // given
 // create a subscription using the mocked client
 sub, err := client.Create(subscription)
-g.Expect(err).ToNot(BeNil())
+assert.NotNil(t, err)
 
 // when
 // call the function
 functionUnderTest(sub)
 
 // then
-g.Expect(sub).To(BeNil())
+assert.Nil(t, sub)
 ```
 
 Sometimes you need to add more comments to the tests (in addition to the GWT comments). We recommend to add them underneath the GWT comments.
@@ -691,8 +691,10 @@ They also provide context and meaning to the test cases.
   - Keep the `name` short. For example, use **"event order.created received"** instead of "test that event order.created was received" or "ensure that event order.created was received".
 - To improve readability, always set the **field names** when initializing the test case struct.
 
+#### Best practice
+
 <details>
-  <summary>Example</summary>
+  <summary>Normal table-driven test</summary>
 
 ```go
 func TestSomething(t *testing.T) {
@@ -708,6 +710,7 @@ func TestSomething(t *testing.T) {
 		},
 	}
 	for _, tc := range testCases {
+		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
 			res := functionUnderTest(tc.givenAttribute)
 			// check res == tc.wantAttribute
@@ -715,6 +718,120 @@ func TestSomething(t *testing.T) {
 	}
 }
 ```
+
+</details>
+
+<details>
+  <summary>2-dimensional table-driven test</summary>
+
+There may be situations when you need a table-driven test with more than one dimension. See the following best practice example for a 2-dimensional table-driven test:
+
+```go
+func TestTwoDimensions(t *testing.T) {
+	// first dimension
+	testCases := []struct {
+		name               string
+		givenSender        CESender
+		wantHTTPStatusCode int
+	}{
+		{
+			name:        "binary cloud event sender",
+			givenSender: myCEBinarySender,
+		},
+	}
+	// second dimension
+	cloudEvents := []struct {
+		name, givenCEType string
+	}{
+		{
+			name:               "proper cloud event",
+			givenCEType:        "order.created.v1",
+			wantHTTPStatusCode: http.StatusOK,
+		},
+	}
+	for _, tc := range testCases {
+		tc := tc
+		t.Run(tc.name, func(t *testing.T) {
+			for _, ce := range cloudEvents {
+				ce := ce
+				t.Run(ce.name, func(t *testing.T) {
+					t.Parallel()
+					res := functionUnderTest(tc.givenSender, ce.givenCEType)
+					// check res == ce.wantHTTPStatusCode
+				})
+			}
+		})
+	}
+}
+```
+
+<details>
+  <summary>Reason for variable reassignment (tc := tc)</summary>
+
+The loop iteration variable in Go is a single variable. The closure for the second t.Run is executed inside a goroutine. 
+If there are multiple entries in the `cloudEvents` struct, `ce` references the last entry in `cloudEvents` in every iteration. The problem occurs because the closure referring to `tc` and `ce` is not executed in **sync** with the **for loop** (because of t.parallel).
+To prevent this problem, `ce` and `tc` must be copied (`ce := ce`).
+The linter [scopelint](https://github.com/golangci/golangci-lint/blob/master/pkg/golinters/scopelint.go) warns about the possible problem whenever `ce` or `tc` is used.
+
+>**CAUTION:** If you add `// nolint:scopelint` to silence scopelint, you might not notice when `ce` or `tc` references the wrong entry in the test case list.
+
+**See Also**:
+- [Go Wiki - Common Mistakes](https://github.com/golang/go/wiki/CommonMistakes#using-goroutines-on-loop-iterator-variables)
+- [Example when using t.Parallel and for loops in table-driven tests](https://gist.github.com/posener/92a55c4cd441fc5e5e85f27bca008721) 
+
+</details>
+
+<details>
+  <summary>Reason for using nested t.Run</summary>
+
+To understand why we use t.Run in a nested way, look at the output that both tests produce.
+When not using t.Run in a nested way, the test could look like this:
+
+```go
+// ...
+for _, tc := range testCases {
+	tc := tc
+	for _, ce := range ce {
+		ce := ce
+		t.Run(tc.name + " - " + ce.name, func(t *testing.T) { // only this line changed
+			t.Parallel()
+			res := functionUnderTest(tc.givenSender, ce.givenCEType)
+			// check res == ce.wantHTTPStatusCode
+		})
+	}
+}
+
+$ go test -v
+=== RUN   TestTwoDimensions
+=== RUN   TestTwoDimensions/binary_cloud_event_sender_-_proper_cloud_event
+--- PASS: TestTwoDimensions (0.00s)
+    --- PASS: TestTwoDimensions/binary_cloud_event_sender_-_proper_cloud_event (0.00s)
+PASS
+ok      test    0.199s
+```
+
+The output of the test with nested t.Run looks like this:
+
+```shell
+$ go test -v
+=== RUN   TestTwoDimensions
+=== RUN   TestTwoDimensions/binary_cloud_event_sender
+=== RUN   TestTwoDimensions/binary_cloud_event_sender/proper_cloud_event
+--- PASS: TestTwoDimensions (0.00s)
+    --- PASS: TestTwoDimensions/binary_cloud_event_sender (0.00s)
+        --- PASS: TestTwoDimensions/binary_cloud_event_sender/proper_cloud_event
+ (0.00s)
+PASS
+ok      test    0.182s
+```
+
+When you look at the output of both examples, you can see that the test name is different: (`binary_cloud_event_sender_-_proper_cloud_event` vs `binary_cloud_event_sender/proper_cloud_event`). Each subtest adds `/<test_name>` to the test name.
+The **advantages** of using t.Run in a nested way are:
+- The test name is easier to read (`binary_cloud_event_sender/proper_cloud_event`).
+- There is no need to use a combined name (`tc.name+" - "+ce.name`).
+- The nesting of t.Run is displayed in a nicer way (in IDEs, this is used to group tests and make them collapsable).
+
+</details>
 
 </details>
 
@@ -766,6 +883,7 @@ func TestSomething(t *testing.T) {
 		},
 	}
 	for _, tc := range testCases {
+		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
 			res := functionUnderTest(tc.givenAttribute)
 			fmt.Println(res)
@@ -867,7 +985,7 @@ var (
 <details>
   <summary>Do</summary>
 
-This is the same test as before, but each `exec` function was replaced with an entry in the `testCases` list. For each entry in `testCases` and `handlertest.TestCasesForCloudEvents`, a subtest is started using `t.Run`. The name of each subtest is combined using input from both dimensions.
+This is the same test as before, but each `exec` function was replaced with an entry in the `testCases` list. For each entry in `testCases` and `handlertest.TestCasesForCloudEvents`, a subtest is started using `t.Run`.
 
 ```go
 func TestNatsHandlerForCloudEvents(t *testing.T) {
@@ -887,16 +1005,18 @@ func TestNatsHandlerForCloudEvents(t *testing.T) {
 		},
 	}
 	for _, tc := range testCases {
-		for _, ceTestCase := range handlertest.TestCasesForCloudEvents {
-			t.Run(tc.name+" - "+ceTestCase.Name, func(t *testing.T) {
-			// other code is unchanged
-			})
-		}
+		tc := tc
+		t.Run(tc.name, func(t *testing.T) {
+			for _, ceTestCase := range handlertest.TestCasesForCloudEvents {
+				ceTestCase := ceTestCase  
+				t.Run(ceTestCase.Name, func(t *testing.T) {
+					// other code is unchanged
+				})
+			}
+		})
 	}
 }
-
 ```
-
 </details>
 
 **Example 3:** Don't repeat yourself (**DRY**) and consider a table-driven test instead.
@@ -1119,3 +1239,5 @@ err = testingutils.WaitForChannelOrTimeout(done, time.Second*3)
 require.NoError(t, err, "Subscriber did not receive the message") // <= the custom message can be supplied to the testify assertion, there is no need for t.Fatalf anymore
 ```
 </details>
+
+
