@@ -69,9 +69,9 @@ Since the review process in Kyma is based on Prow, our flow is the same as descr
 Prow provides GitHub automations and ChatOps using `/foo` styled slash-commands. You can use these commands by adding a comment under a GitHub issue or pull request.
 
 
-Below there is a basic set of commands that need to be known by every person that wants to contribute to Kyma:
+This is a basic set of commands you need to know to manage issues and PRs in Kyma:
 
-|command|example|description|used by|plugin|
+|Command|Example|Description|Used by|Plugin|
 |---|---|---|---|---|
 |`/close`|`/close`|Close an issue or PR.|Authors and members of the organization |lifecycle|
 |`/reopen`|`/reopen`|Reopen an issue or PR.|Authors and members of the organization |lifecycle|
