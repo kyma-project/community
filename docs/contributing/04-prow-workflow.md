@@ -37,12 +37,12 @@ labels: # optional
 
 Having the same set of reviewers and approvers is considered a bad practice and should be avoided!
 - Reviewers look for general code quality, correctness, sane software engineering, style, etc.
-Approvers look for holistic acceptance criteria, including dependencies with other features, forwards/backwards compatibility, API and flag definitions, etc.
-When a person is in both reviewers and approvers groups, their Approving review is also considered as an approve and marks the PR as `approved`. That behaviour skips the requirement for a second review and immediately allows the PR to be merged.
+- Approvers look for holistic acceptance criteria, including dependencies with other features, forwards/backwards compatibility, API and flag definitions, etc.
+When a person is in both reviewers and approvers groups, their approving review marks the PR as `approved`, which skips the requirement for a second review and immediately allows the PR to be merged.
 
 You can use multiple OWNERS files across the entire repository to diversify the ownership of specific directories between multiple people.
 
-For more information, refer to the [Kubernetes documentation](https://github.com/kubernetes/community/blob/master/contributors/guide/owners.md) regarding OWNERS file as well as the [ANNOUNCEMENTS.md](https://github.com/kubernetes/test-infra/blob/master/prow/ANNOUNCEMENTS.md) file on the kubernetes/test-infra repository.
+For more information, refer to the [Kubernetes documentation](https://github.com/kubernetes/community/blob/master/contributors/guide/owners.md) regarding the OWNERS file as well as the [ANNOUNCEMENTS.md](https://github.com/kubernetes/test-infra/blob/master/prow/ANNOUNCEMENTS.md) file in the `kubernetes/test-infra` repository.
 
 ## OWNERS_ALIASES file
 
