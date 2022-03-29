@@ -131,7 +131,7 @@ Use the `git push` command to push any further commits made on your local branch
 4. Open a pull request.
 
 Create a pull request from the branch of your forked repository to the `main` branch of the upstream repository and wait for the maintainers' review.
-If the Pull Request is still in work-in-progress state, open a Pull Request as a Draft, or add *WIP:* at the beginning of the title.
+If the pull request is still in the work-in-progress state, open a pull request as a Draft, or add **WIP:** at the beginning of the title.
 In each pull request:
 
 - Include a description or a reference to a detailed description of the steps that the maintainer goes through to check if the pull request works and does not break any other functionality.
