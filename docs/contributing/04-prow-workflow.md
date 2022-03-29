@@ -67,7 +67,6 @@ Since the review process in Kyma is based on Prow, our flow is the same as descr
 ## Commands
 
 Prow provides GitHub automations and ChatOps using `/foo` styled slash-commands. You can use these commands by adding a comment under a GitHub issue or pull request.
-This flow can be extended by various built-in plugins and can be further extended with external integrations with Prow API that it provides. 
 
 
 Below there is a basic set of commands that need to be known by every person that wants to contribute to Kyma:
