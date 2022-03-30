@@ -8,7 +8,7 @@ If you are looking for information on how to join us, you are in the right place
 
 ## Contribution rules
 
-Before you start contributing, read our [Code of Conduct](docs/contributing/01-code-of-conduct.md) and learn about our [working model](docs/governance/01-governance.md) to understand the way Kyma community works. Get familiar with the [contributing rules](docs/contributing/02-contributing.md), recommended [Git workflow](docs/contributing/03-git-workflow.md), and [issues workflow](docs/governance/03-issues-workflow.md) we use in Kyma so you can apply them later in practice as an active contributor.
+Before you start contributing, read our [Code of Conduct](docs/contributing/01-code-of-conduct.md) and learn about our [working model](docs/governance/01-governance.md) to understand the way Kyma community works. Get familiar with the [contributing rules](docs/contributing/02-contributing.md), recommended [Git workflow](docs/contributing/03-git-workflow.md), [Prow workflow](docs/contributing/04-prow-workflow.md), and [issues workflow](docs/governance/03-issues-workflow.md) we use in Kyma so you can apply them later in practice as an active contributor.
 
 ## Guidelines
 
@@ -20,7 +20,7 @@ Create an issue on [GitHub](https://github.com/kyma-project) to report a bug or 
 
 ## Special Interest Groups & Working Groups
 
-The Kyma community collaborates through Special Interest Groups and Working Groups ([SIGs and WGs](docs/contributing/04-sig-and-wg.md)). By joining the SIGs and WGs, you can meet other community members, exchange information on Kyma, provide feedback, raise interest, ask questions, and learn about the product. Join the SIGs or WGs meeting to learn more what each group works on.
+The Kyma community collaborates through Special Interest Groups and Working Groups ([SIGs and WGs](docs/contributing/05-sig-and-wg.md)). By joining the SIGs and WGs, you can meet other community members, exchange information on Kyma, provide feedback, raise interest, ask questions, and learn about the product. Join the SIGs or WGs meeting to learn more what each group works on.
 
 # <img src="assets/stay-informed-icon.svg" width="120"> Stay Informed
 
