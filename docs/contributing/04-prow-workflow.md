@@ -5,15 +5,12 @@ title: Prow workflow
 This document describes the Prow workflow that we use across all Kyma repositories. This includes basic principles, explanations, and commands that interact with [@kyma-bot](https://github.com/kyma-bot).
 
 Prow is a Kubernetes-based CI/CD system.
-In addition to job execution, Prow provides GitHub automation in the form of policy enforcement, ChatOps through the `/foo` style commands, and automatic merging of pull requests (PRs).
-
-Prow defines the ownership of a repository and its directories based on the mandatory OWNERS file and the optional OWNER_ALIASES file. Read the [OWNERS file](#owners-file) and [OWNER_ALIASES file](#owner_aliases-file) sections to learn more.
-The Prow bot checks if issues have the required labels assigned, automatically assigns the labels to pull requests,
+In addition to job execution, Prow provides GitHub automation in the form of policy enforcement, ChatOps through the `/foo` style commands, and automatic merging of pull requests (PRs). The Prow bot checks if issues have the required labels assigned, automatically assigns the labels to pull requests,
 ensures that pull requests follow the two-person approval flow, automatically merges PRs with approved state, and many more.
 
-You can find the configuration of the production Prow instance in the [`test-infra/prow`](https://github.com/kyma-project/test-infra/tree/main/prow) directory.
+Prow defines the ownership of a repository and its directories based on the mandatory OWNERS file and the optional OWNER_ALIASES file. Read the [OWNERS file](#owners-file) and [OWNER_ALIASES file](#owner_aliases-file) sections to learn more.
 
-If you see any misbehavior in Prow, [create an issue](https://github.com/kyma-project/test-infra/issues/new) in the `test-infra` repository, or contact the repository maintainers.
+You can find the configuration of the production Prow instance in the [`test-infra/prow`](https://github.com/kyma-project/test-infra/tree/main/prow) directory. If you see any misbehavior in Prow, [create an issue](https://github.com/kyma-project/test-infra/issues/new) in the `test-infra` repository, or contact the repository maintainers.
 
 ## OWNERS file
 
