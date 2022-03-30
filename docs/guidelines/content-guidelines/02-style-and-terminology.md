@@ -111,7 +111,7 @@ Don't use "e.g." in documentation. Use the words "for example" or "such as" inst
 * "custom resource," not "Custom Resource" nor "CustomResource"
 * "Application" to describe an external solution connected to Kyma through Application Connector, "application" to describe a microservice deployed on Kyma or other kind of software
 * "cloud-native" (adjective), not "cloud native"
-* "ProwJob" (resource) or "Prow job" (process), not "Prowjob/prowjob"
+* "Prow Job" (resource) or "Prow job" (process), not "Prowjob/prowjob/ProwJob"
 
 > **NOTE:** Do not use words such as "currently" or "now" to indicate that something is in the transitional phase of development. Avoid promising anything and mention only those components and functionalities that are already in use.
 
@@ -133,7 +133,7 @@ In such a case, explain the context in the document.
 This is the list of the Kubernetes resources capitalized in Kyma documentation. However, if these words are not used in relation to Kubernetes resources, do not capitalize them. Use natural language when referring to Kubernetes resources. Do not use CamelCase. 
 
 - Config Map
-- CronJob
+- Cron Job
 - Custom Resource Definition
 - Deployment
 - Function
@@ -149,7 +149,7 @@ This is the list of the Kubernetes resources capitalized in Kyma documentation. 
 - Service Class
 - Service Instance
 
-All of the Kyma components, such as Application Connector or API Gateway Controller, are capitalized as well. Whenever you point to the outside sources, do some research to check whether the name of the source starts with a capital letter or not.
+All Kyma components, such as Application Connector or API Gateway Controller, are capitalized as well. Whenever you point to the outside sources, do some research to check whether the name of the source starts with a capital letter or not.
 
 >**NOTE:** Kubernetes itself is also capitalized. Do not write it in lowercase or in the abbreviated version.   
   ✅ Kubernetes  
