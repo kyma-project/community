@@ -8,7 +8,7 @@ Prow is a Kubernetes-based CI/CD system.
 In addition to job execution, Prow provides GitHub automation in the form of policy enforcement, ChatOps through the `/foo` style commands, and automatic merging of pull requests (PRs). The Prow bot checks if issues have the required labels assigned, automatically assigns the labels to pull requests,
 ensures that pull requests follow the two-person approval flow, automatically merges PRs with approved state, and many more.
 
-Prow defines the ownership of a repository and its directories based on the mandatory OWNERS file and the optional OWNER_ALIASES file. Read the [OWNERS file](#owners-file) and [OWNER_ALIASES file](#owner_aliases-file) sections to learn more.
+Prow defines the ownership of a repository and its directories based on the mandatory OWNERS file and the optional OWNER_ALIASES file. Read the [OWNERS file](#owners-file) and [OWNER_ALIASES file](#owner-aliases-file) sections to learn more.
 
 You can find the configuration of the production Prow instance in the [`test-infra/prow`](https://github.com/kyma-project/test-infra/tree/main/prow) directory. If you see any misbehavior in Prow, [create an issue](https://github.com/kyma-project/test-infra/issues/new) in the `test-infra` repository, or contact the repository maintainers.
 
