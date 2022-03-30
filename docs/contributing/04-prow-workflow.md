@@ -81,7 +81,7 @@ This is a basic set of commands you need to know to manage issues and PRs in Kym
 |`/auto-cc`|`/auto-cc`|Requests review based on the OWNERS files if the reviewers were not assigned.|anyone|blunderbuss|
 |`/[un]cc [@username]`|`/cc @Ressetkk`, `/uncc`|Requests review from the specific person. You can also use it to assign yourself as a reviewer.|anyone|assign|
 |`/[un]assign [@username]`|`/assign` `/unassign @Ressetkk`|(Un)assigns a person from an issue or PR.|anyone|assign|
-|`/[remove-](area,kind,priority,label,language) [name]`|`/area prow`, `/label Epic`, `/kind bug` `/remove-area ci`|Applies or removes a label from one of the recognized types of labels.|Anyone can trigger this command on issues and PRs. `triage/accepted` can only be added by org members. Restricted labels are only able to be added by teams and users in their configuration.|label|
+|`/[remove-](area,kind,priority,label,language) [name]`|`/area prow`, `/label Epic`, `/kind bug` `/remove-area ci`|Applies or removes a label from one of the recognized types of labels.|Anyone can trigger this command on issues and PRs. `triage/accepted` is a restricted label and can only be added by organization members. Only users that belong to at least one of the configured teams can use the restricted labels.|label|
 |`/test (all,test-name)`|`/test all`, `/test pre-test-infra-build`|- Manually starts all automatically triggered test jobs. <br> - Lists all possible jobs when no jobs or invalid jobs are specified.|anyone|trigger|
 |`/test ?`|`/test ?`|Lists available test jobs for a trusted PR.|anyone|trigger|
 |`/retest`|`/retest`|Rerun test jobs that have failed.|anyone|trigger|
