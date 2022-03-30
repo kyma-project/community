@@ -4,10 +4,10 @@ title: Prow workflow
 
 This document describes the Prow workflow that we use across all Kyma repositories. This includes basic principles, explanations, and commands that interact with [@kyma-bot](https://github.com/kyma-bot).
 
-Prow is a Kubernetes-based CI/CD system. Jobs can be triggered by various types of events and report their status to many services.
-In addition to job execution, Prow provides GitHub automation in the form of policy enforcement, ChatOps through the `/foo` style commands, and automatic PR merging.
+Prow is a Kubernetes-based CI/CD system.
+In addition to job execution, Prow provides GitHub automation in the form of policy enforcement, ChatOps through the `/foo` style commands, and automatic merging of pull requests (PRs).
 
-Prow enforces strict ownership policies based on the OWNERS files that reside on each organisation repository.
+Prow defines the ownership of a repository and its directories based on the mandatory OWNERS file and the optional OWNER_ALIASES file. Read the [OWNERS file](#owners-file) and [OWNER_ALIASES file](#owner_aliases-file) sections to learn more.
 The Prow bot checks if issues have the required labels assigned, automatically assigns the labels to pull requests,
 ensures that pull requests follow the two-person approval flow, automatically merges PRs with approved state, and many more.
 
@@ -37,7 +37,8 @@ labels: # optional
 
 Having the same set of reviewers and approvers is considered a bad practice and should be avoided!
 - Reviewers look for general code quality, correctness, sane software engineering, style, etc.
-- Approvers look for holistic acceptance criteria, including dependencies with other features, forwards/backwards compatibility, API and flag definitions, etc.
+- Approvers look for holistic acceptance criteria, including dependencies to other features, forwards/backwards compatibility, API and flag definitions, etc.
+
 When a person is in both reviewers and approvers groups, their approving review marks the PR as `approved`, which skips the requirement for a second review and immediately allows the PR to be merged.
 
 You can use multiple OWNERS files across the entire repository to diversify the ownership of specific directories between multiple people.
@@ -78,7 +79,7 @@ This is a basic set of commands you need to know to manage issues and PRs in Kym
 |`/[remove-]lifecycle [stale/frozen/rotten/active]`| `/lifecycle frozen`, `/remove-lifecycle stale`|Command used to operate on lifecycle labels respected by [Kyma Stale Bot](https://github.com/apps/kyma-stale-bot).|anyone|lifecycle|
 |`/[un][remove-]hold [cancel]`|`/hold`, `/unhold`, `/remove-hold` `/hold cancel`|Adds or removes the `do-not-merge/hold` label used to indicate that the PR should not be automatically merged.|anyone|hold|
 |`/auto-cc`|`/auto-cc`|Requests review based on the OWNERS files if the reviewers were not assigned.|anyone|blunderbuss|
-|`/[un]cc [@username]`|`/cc @Ressetkk`, `/uncc`|Requests review from the specific person, or yourself.|anyone|assign|
+|`/[un]cc [@username]`|`/cc @Ressetkk`, `/uncc`|Requests review from the specific person. You can also use it to assign yourself as a reviewer.|anyone|assign|
 |`/[un]assign [@username]`|`/assign` `/unassign @Ressetkk`|(Un)assigns a person from an issue or PR.|anyone|assign|
 |`/[remove-](area,kind,priority,label,language) [name]`|`/area prow`, `/label Epic`, `/kind bug` `/remove-area ci`|Applies or removes a label from one of the recognized types of labels.|Anyone can trigger this command on issues and PRs. `triage/accepted` can only be added by org members. Restricted labels are only able to be added by teams and users in their configuration.|label|
 |`/test (all,test-name)`|`/test all`, `/test pre-test-infra-build`|- Manually starts all automatically triggered test jobs. <br> - Lists all possible jobs when no jobs or invalid jobs are specified.|anyone|trigger|
