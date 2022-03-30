@@ -42,7 +42,7 @@ You can use multiple OWNERS files across the entire repository to diversify the 
 
 For more information, refer to the [Kubernetes documentation](https://github.com/kubernetes/community/blob/master/contributors/guide/owners.md) regarding the OWNERS file as well as the [ANNOUNCEMENTS.md](https://github.com/kubernetes/test-infra/blob/master/prow/ANNOUNCEMENTS.md) file in the `kubernetes/test-infra` repository.
 
-## OWNERS_ALIASES file
+## OWNER_ALIASES file
 
 The OWNERS_ALIASES file contains a list of aliases that can be used in the OWNERS files instead of the GitHub usernames.
 It is useful when the same set of people is responsible for bigger amount of directories in the repo.
