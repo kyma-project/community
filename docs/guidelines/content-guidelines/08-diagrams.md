@@ -39,7 +39,9 @@ Keep the background of the diagram **white** as it renders well in both GitHub a
 
 Always add **rounded** secondary backgrounds to indicate the environment in which the workflow takes place. Use **mild blue** (HEX: `#F0F6FF`) to indicate the main environment, such as a cluster, and **mint green** (HEX: `#DEF2DD`) to indicate subsidiary environments, such as Namespaces.
 
-## Shapes
+## Shapes and fills
+
+Use **rounded rectangulars** as default box shapes. 
 
 Use **white** fill for main shapes, such as boxes. For actors, apply **blue** (HEX: `#0A6EC7`) fill.
 
