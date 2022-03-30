@@ -41,7 +41,7 @@ Always add **rounded** secondary backgrounds to indicate the environment in whic
 
 ## Shapes and fills
 
-Use **rounded rectangulars** as default box shapes. 
+Use **rounded rectangles** as default box shapes. 
 
 Use **white** fill for main shapes, such as boxes. For actors, apply **blue** (HEX: `#0A6EC7`) fill.
 
