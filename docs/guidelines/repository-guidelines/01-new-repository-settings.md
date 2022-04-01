@@ -54,4 +54,4 @@ If you define any governance-related [Prow job](https://github.com/kyma-project/
 
 Labels are managed by Prow in the [`labels.yaml`](https://github.com/kyma-project/test-infra/blob/main/prow/labels.yaml) configuration file. To add additional labels, simply raise a Pull Request to the test-infra repository with new label definition. Please follow the structure of this file to add a label.
 
-Additionally, you can [define repository exclusive labels](https://help.github.com/en/articles/creating-a-label) for the new repository so you could use them in issues and pull requests. Follow the naming convention and color array used in other repositories such as [`kyma`](https://github.com/kyma-project/kyma/labels).
+Additionally, you can [define repository labels](https://help.github.com/en/articles/creating-a-label) for the new repository so you could use them in issues and pull requests. Follow the naming convention and color array used in other repositories such as [`kyma`](https://github.com/kyma-project/kyma/labels).
