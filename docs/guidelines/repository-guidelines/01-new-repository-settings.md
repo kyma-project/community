@@ -9,11 +9,13 @@ All repositories in `kyma-project` and `kyma-incubator` organizations should be 
 
 ## Use the repository template
 
-After you create a new repository, copy the basic repository structure from the [`template`](https://github.com/kyma-project/community/tree/main/templates/repository-template) folder that is available in the `community` repository. It contains such files as the obligatory Apache license, the `CODEOWNERS` file that governs the review and approval flow in the repository, and the Stale Bot that handles inactive issues.
+When you create a new repository use the template `kyma-project/template-repository`. This template contains all necessary configuration files for OWNERS, Kyma stale bot, issue and pull request templates, license and code of conduct.
 
-After copying the folder's contents, modify these according to the instructions they contain:
-- [`OWNERS`](https://github.com/kyma-project/community/tree/main/templates/repository-template/OWNERS) to define who is responsible for the review and approval of specific repository parts
-- [`README.md`](https://github.com/kyma-project/community/tree/main/templates/repository-template/README.md) to describe the repository and explain how to use and develop it
+> **NOTE:** Do not check *Include all branches* option!
+
+![Template](./assets/template.png)
+
+If you are interested in what's inside the template, check the [template repository code](https://github.com/kyma-project/template-repository).
 
 ## Adjust repository options
 
