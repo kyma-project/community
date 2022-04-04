@@ -51,6 +51,35 @@ If you define any governance-related [Prow job](https://github.com/kyma-project/
 
 ## Create labels
 
-Labels are managed by Prow in the [`labels.yaml`](https://github.com/kyma-project/test-infra/blob/main/prow/labels.yaml) configuration file. To add a new label, create a pull request to the [`test-infra`](https://github.com/kyma-project/test-infra) repository with a new label definition. When adding a new label, follow the structure of the `labels.yaml` file.
+Labels are managed by Prow in the [`labels.yaml`](https://github.com/kyma-project/test-infra/blob/main/prow/labels.yaml) configuration file.
+To add a new label, create a pull request to the [`test-infra`](https://github.com/kyma-project/test-infra) repository with a new label definition.
 
-Additionally, you can [define repository labels](https://help.github.com/en/articles/creating-a-label) for the new repository so you could use them in issues and pull requests. Follow the naming convention and color array used in other repositories such as [`kyma`](https://github.com/kyma-project/kyma/labels).
+This file is split into two sections:
+* `default` - contains information about labels that are available across all repositories in the organisation.
+* `repos` - a map of repositories with labels configuration only for the given repository.
+
+If your labels needs to be available for all repositories, add it under `default` section.
+
+```yaml
+default:
+  labels:
+    - color: 00ff00
+      name: lgtm
+      description: Looks good to me!
+      target: prs
+...
+```
+
+If your label has to be available only for given repository, add a label to the repository configuration under `repos` section.
+
+```yaml
+repos:
+  kyma-project/community:
+    labels:
+      - color: 0052cc
+        description: Issues or PRs related to the example
+        name: area/example
+        target: both
+        addedBy: label
+...
+```
