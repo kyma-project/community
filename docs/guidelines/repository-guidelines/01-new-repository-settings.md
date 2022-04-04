@@ -9,13 +9,12 @@ All repositories in `kyma-project` and `kyma-incubator` organizations should be 
 
 ## Use the repository template
 
-When you create a new repository use the template `kyma-project/template-repository`. This template contains all necessary configuration files for OWNERS, Kyma stale bot, issue and pull request templates, license and code of conduct.
+Whenever you create a new repository, use the template from the [`template-repository`](https://github.com/kyma-project/template-repository). This template contains all necessary configuration files for [OWNERS](../../contributing/04-prow-workflow.md#owners-file), Kyma stale bot, issue and pull request templates, license, and Code of Conduct.
 
-> **NOTE:** Do not check *Include all branches* option!
+> **NOTE:** Do not mark the **Include all branches** checkbox! 
 
 ![Template](./assets/template.png)
 
-If you are interested in what's inside the template, check the [template repository code](https://github.com/kyma-project/template-repository).
 
 ## Adjust repository options
 
@@ -52,6 +51,6 @@ If you define any governance-related [Prow job](https://github.com/kyma-project/
 
 ## Create labels
 
-Labels are managed by Prow in the [`labels.yaml`](https://github.com/kyma-project/test-infra/blob/main/prow/labels.yaml) configuration file. To add a new label, create a Pull Request to the [`test-infra`](https://github.com/kyma-project/test-infra) repository with a new label definition. When adding a new label, follow the structure of the `labels.yaml` file.
+Labels are managed by Prow in the [`labels.yaml`](https://github.com/kyma-project/test-infra/blob/main/prow/labels.yaml) configuration file. To add a new label, create a pull request to the [`test-infra`](https://github.com/kyma-project/test-infra) repository with a new label definition. When adding a new label, follow the structure of the `labels.yaml` file.
 
 Additionally, you can [define repository labels](https://help.github.com/en/articles/creating-a-label) for the new repository so you could use them in issues and pull requests. Follow the naming convention and color array used in other repositories such as [`kyma`](https://github.com/kyma-project/kyma/labels).
