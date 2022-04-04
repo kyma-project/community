@@ -11,7 +11,7 @@ All repositories in `kyma-project` and `kyma-incubator` organizations should be 
 
 Whenever you create a new repository, use the template from the [`template-repository`](https://github.com/kyma-project/template-repository). This template contains all necessary configuration files for [OWNERS](../../contributing/04-prow-workflow.md#owners-file), Kyma stale bot, issue and pull request templates, license, and Code of Conduct.
 
-> **NOTE:** Do not mark the **Include all branches** checkbox! 
+> **NOTE:** Do not mark the **Include all branches** checkbox as it will clone all branches from the `template-repository` to your new repo.
 
 ![Template](./assets/template.png)
 
@@ -48,38 +48,3 @@ Ask a [kyma-project owner](https://github.com/orgs/kyma-project/people) to add t
 ## Add a milv file
 
 If you define any governance-related [Prow job](https://github.com/kyma-project/test-infra/blob/main/prow/jobs/) for the new repository to validate documentation links, you must add a `milv.config.yaml` file at the root of the repository. [See](https://github.com/kyma-project/test-infra/blob/main/milv.config.yaml) an example of the milv file.
-
-## Create labels
-
-Labels are managed by Prow in the [`labels.yaml`](https://github.com/kyma-project/test-infra/blob/main/prow/labels.yaml) configuration file.
-To add a new label, create a pull request to the [`test-infra`](https://github.com/kyma-project/test-infra) repository with a new label definition.
-
-This file is split into two sections:
-* `default` - contains information about labels that are available across all repositories in the organisation.
-* `repos` - a map of repositories with labels configuration only for the given repository.
-
-If your labels needs to be available for all repositories, add it under `default` section.
-
-```yaml
-default:
-  labels:
-    - color: 00ff00
-      name: lgtm
-      description: Looks good to me!
-      target: prs
-...
-```
-
-If your label has to be available only for given repository, add a label to the repository configuration under `repos` section.
-
-```yaml
-repos:
-  kyma-project/community:
-    labels:
-      - color: 0052cc
-        description: Issues or PRs related to the example
-        name: area/example
-        target: both
-        addedBy: label
-...
-```
