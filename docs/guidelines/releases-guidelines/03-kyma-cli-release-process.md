@@ -59,7 +59,8 @@ A Kyma CLI release consists of:
        ```bash
        brew bump-formula-pr --strict kyma-cli --url https://github.com/kyma-project/cli/archive/{RELEASE_VERSION}.tar.gz
        ```
-      - With above command, it will create a PR to [Homebrew/homebrew-core](https://github.com/Homebrew/homebrew-core) and contains version update changes to kyma-cli formula. Make sure all checks in this PR are passed, then the rest will be handled by Homebrew maintainers.
+      It creates a PR to [Homebrew/homebrew-core](https://github.com/Homebrew/homebrew-core) that contains the version update changes to the kyma-cli formula. 
+      If all checks in this PR are passed, the rest is handled by Homebrew maintainers.
       - If some tests failed, identify the root cause first, if it's not due to bugs, simply close this PR and re-run the above `brew bump-formula-pr` command with `--force` mode.
         - In case you got `fatal: a branch named 'bump-kyma-cli-{RELEASE_VERSION}' already exists`, please delete this local branch.
         - In case you got `Error: You need to bump this formula manually since the new URL and old URL are both: https://github.com/kyma-project/cli/archive/{RELEASE_VERSION}.tar.gz`, please restore the change in you local repo.
