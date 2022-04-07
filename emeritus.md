@@ -26,5 +26,7 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Suleyman Akbas (**[@suleymanakbas91](https://github.com/suleymanakbas91)**) involved in `area/cli`, `area/logging`, `area/tracing`, `area/monitoring`, `area/performance`. 
 * Adam Wałach (**[@adamwalach](https://github.com/adamwalach)**) involved in `area/ci` and `area/service-catalog`.
 * Jose Cortina (**[@jose-cortina](https://github.com/jose-cortina)**) involved in `area/community`.
-* Kamil Sputo (**[@ksputo](https://github.com/ksputo)**) involved in `area/service-catalog` and  `area/control-plane`
-* Mostafa Shorim (**[@shorim](https://github.com/shorim)**) involved in `area/cli`, `area/logging`, `area/tracing`, `area/monitoring`
+* Kamil Sputo (**[@ksputo](https://github.com/ksputo)**) involved in `area/service-catalog` and  `area/control-plane`.
+* Mostafa Shorim (**[@shorim](https://github.com/shorim)**) involved in `area/cli`, `area/logging`, `area/tracing`, `area/monitoring`.
+* Pranav Shankar (**[@Pranav-SA](https://github.com/Pranav-SA)**) involved in `area/logging`, `area/tracing`, `area/monitoring`.
+* Radu Fantaziu (**[@radufa](https://github.com/radufa)**) involved in `area/eventing`.
