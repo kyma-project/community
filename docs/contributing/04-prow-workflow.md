@@ -62,17 +62,17 @@ For more information, refer to the official [Kubernetes documentation](https://g
 
 If you wish to add yourself as a reviewer or approver of the directory, raise a PR with the updated OWNERS file. The current owners of the directory will then review your PR based on the following requirements:
 
-* You need to be a member of `kyma-project`, or `kyma-incubator` organization.
-* You need to actively contribute to the directory you want to be the reviewer for.
-* If you want to add yourself as an approver, you need to have a deep understanding of the code structure and how it is working. Thus you need to be a reviewer for some time.
+* You must be a member of the `kyma-project`, or `kyma-incubator` organization.
+* You must actively contribute to the directory you want to be the reviewer for.
+* If you want to add yourself as an approver, you must have a deep understanding of the code structure and how it is working. Thus, you must have been a reviewer for some time.
 
-Once you meet all the requirements above, your Pull Request will be approved and corresponding changes will be added to the OWNERS file.
+If you meet all the requirements, your PR will be approved and the corresponding changes will be added to the OWNERS file.
 
-The same formula goes for OWNERS_ALIASES, however you need to ask repository adminitrators for approval, once the specific area members approve your application.
+The same requirements apply to the OWNERS_ALIASES file. However, you must ask the repository administrators for approval after the specific area members approved your PR.
 
-If you want to remove yourself from the OWNERS file, simply open a PR where you remove yourself from the file. If you were an approver then add yourself to the [`emeritus_approvers`](https://github.com/kubernetes/community/blob/master/contributors/guide/owners.md#emeritus) section of the OWNERS.
+If you want to remove yourself from the OWNERS file, simply open a PR where you remove yourself from the file. If you were an approver, then add yourself to the [`emeritus_approvers`](https://github.com/kubernetes/community/blob/master/contributors/guide/owners.md#emeritus) section of the OWNERS file.
 
-Additionally add yourself to the [`emeritus.md`](https://github.com/kyma-project/community/blob/main/emeritus.md) file with a new PR. Keep the file structure consistent when you add yourself to it.
+Additionally, create another PR to add yourself to the [`emeritus.md`](https://github.com/kyma-project/community/blob/main/emeritus.md) file . Keep the file structure consistent when you add yourself to it.
 
 ## Code review process
 
