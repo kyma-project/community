@@ -111,3 +111,67 @@ The CRD contains a separate section for the different parts for the Fluent Bit c
 ### Workflow for the User
 
 To configure Fluent Bit, the user must create a new CR regarding to the CRD of this operator. Then, this operator will notice the new or changed CR, and will create or update a ConfigMap for Fluent Bit. Before the ConfigMap is applied, the operator uses the `dry-run` feature of Fluent Bit to validate the new configuration. If the check was successful, the new ConfigMap is applied and Fluent Bit is restarted.
+
+## Fluent-Bit Log Routing
+
+The LogPipeline CRD enables the user to define filter and output elements of a Fluent Bit pipeline. Therefore, a tag that can be consumed by user defined pipeline elements has to be provided by Kyma (either the static Fluent Bit configuration or the telemetry-operator). The different options to provide a log stream under a specific tag will be described in this section.
+
+Log pipelines should be isolated in a way that a dysfunctional pipeline should not affect the availability of other pipelines. A pipeline can for instance become unavailable by an unavailable backend or faulty configuration.
+
+The following requirements for the telemetry-operator should be considered when choosing a sufficient Fluent Bit configuration:
+* Fluent Bit pods and the used image should be managed by Kyma
+* User-provided configuration parts should be as close as possible to the Fluent Bit configuration format
+* Filters can be used to
+  * Parse workload specific log formats (for instance, multi-line exceptions)
+  * Include or exclude parts of the logs (ship only a specific namespace to a backend)
+  * Prepare the log metadata to comply with the backend's requirements (de-dotting for Elastic)
+
+### Tags managed by the telemetry-operator
+
+Properties:
+* The user-defined LogPipeline elements must not contain any "match" attributes
+* Pipeline elements that emit new tags (for instance rewrite_tag filters) must not be used
+* The telemetry-operator adds ad "match" attribute to all filters and outputs
+
+Consequences:
+* Fill control over resource consumption since no additional buffers can be created
+* Design goal to allow pasting existing Fluent Bit config samples is partially lost
+
+### Managed tag per pipeline
+
+Properties:
+* The telemetry-operator provides a specific tag for each LogPipeline that has to be consumed by the pipeline sections
+  * The telemetry-operator creates either a dedicated input plugin or buffered rewrite_tag filter to isolate the pipeline
+* There is a defined way to consume the operator-provided log stream (for instance a tag placeholder or documented naming pattern)
+* The LogPipeline can emit new tags using the rewrite_tag filter
+* Potential overhead since complex pipelines have to be split to multiple simple pipelines, each having an own buffer
+
+Consequences:
+* Full flexibility to use all Fluent Bit concepts for the user
+* The "contract" gives flexibility to change the implementation afterwards (for instance switch to an own input per pipeline or even an own DaemonSet)
+* User can create elements that increase the resource consumption
+* Allows describing complex pipelines and thus reduce the overall resource consumption
+
+### Managed Fluent Bit DaemonSet per LogPipeline
+
+Properties:
+* The telemetry-operator creates a dedicated Fluent Bit DaemonSet per LogPipeline
+* All DaemonSets have configured the same input and Kubernetes filter sections
+
+Consequences:
+* Best possible isolation between different pipelines
+* Highest resource consumption
+* Telemetry-operator has to manage the DaemonSets and not only ConfigMaps
+* Support for custom output plugins might be added by the option to specify an own Fluent Bit image
+ 
+### All LogPipelines use the same base-tag
+
+Properties
+* Current state of telemetry chart (2022-04-12)
+* All LogPipelines match to kube.*
+
+Consequences:
+* Additional filters can be injected to any pipeline
+  * Allows to modify default Loki output
+* Low resource consumption, but user has the control to add additional buffers
+* A dysfunctional output stalls all pipelines (no isolation)
