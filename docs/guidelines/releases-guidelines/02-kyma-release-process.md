@@ -104,6 +104,7 @@ Follow these steps to release another Kyma version. Execute these steps for ever
    > **NOTE:** Every developer who is introducing changes to the specific version can perform steps 1-4.
 
 1. Create a feature-branch based on the given `release-{RELEASE}` branch you want to extend. Add your changes and create a Pull Request.
+   Usually fix is made first on `main` branch and then backported into `release-{RELEASE}` branch. Please make sure that changes are included on `main` branch.
 
 2. Once you create a Pull Request to the release branch, the set of checks is triggered.
    These jobs run in the same way as jobs that run on every Pull Request to the `main` branch.
