@@ -43,9 +43,30 @@ We want to make use of this design pattern to optimize and enhance our current R
 - Able to gracefully manage failing reconciliations through smart resilience patterns (retry backoff), resulting in external support ticket or external reconciliation when not resolved on its own
 - Able to be debugged and developed by multiple teams for multiple components without strong coupling effects
 
+### POC for verifying Reconciliation based on Operators
+
+To verify that our changes have the desired effect and can solve the issues that we face, we should introduce a method of Verification, we propose a POC.
+
+The POCs main focus points should be
+
+1. Clarify which Operator Framework we can use and what Advantages / Disadvantages they have. We can leverage the knowledge of the team for this but should come up with a recommendation
+2. Decide a common approach to make sure that we are able to abstract the Operator communication not only for interaction with a local cluster (the cluster where the operator is running on) but also a remote cluster
+3. Make sure that we can safely watch all necessary Kyma Resources without much CPU or Memory Overhead for a Reconciler
+4. Make sure that our Developer Experience does not suffer from the new approach. Ideally, we want to be able to take over Component Reconciler Logic and keep the interfaces as stable as possible
+
+A derived action plan should tackle the following topics (from first to last):
+
+1. Create a decision document on which Operator Framework to use / not to use (e.g. kubebuilder, operator-sdk, native) and why (can be running document and updated regularly on changes)
+2. Spin-Up a Bootstrap Operator Repository for a Component Reconciler in which we can work further, communicate existance of POC goals in Kyma teams to raise awareness and prompt for collaborators
+3. Create an interface similar to our current K8s client in the reconciler that can deal with in-cluster and remote cluster API-Server Access
+4. Create an implementation that is able to deal with deploying and updating Helm Chart data (templated charts as native resources)
+5. Create a suggestion for a separate Provisioning Operator that can deploy CRDs and the Component Operator
+6. Derive a final Low-Level Architecture that suggests a scaled implementation while making sure to keep team responsibility separate
+
 ## High level architecture
 
 For Operator-based reconciliations, we want to enable maximum flexibility of the architecture depending on the needs of the Kyma user. This means that we want to allow
+
 1. Fully Independent Small-Scale Clusters able to reconcile themselves, relying on external setup nodes (e.g. running for a local evaluation in k3d or for smaller scale deployments)
 2. Lightweight Control Plane Configurations, in which the Control Plane is able to provision the cluster and create/update an inventory of all managed cluster, but not taking care of reconciliation
 3. Fully centralized Control Plane Configurations, in which the Control Plane is not only provisioning the cluster, but also hosting the reconciliation, ensuring minimal overhead in the workload cluster
