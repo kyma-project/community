@@ -145,7 +145,7 @@ Properties:
 * The telemetry operator provides a specific tag for each LogPipeline that must be consumed by the pipeline sections.
 * There is a defined way to consume the operator-provided log stream (for example, a tag placeholder or documented naming pattern).
 * The LogPipeline can emit new tags using the `rewrite_tag` filter.
-* Potential overhead since complex pipelines have to be split into multiple simple pipelines, each having an own buffer
+* Potential overhead because complex pipelines must be split into multiple simple pipelines, each having its own buffer.
 
 Advantages:
 * There's full flexibility to use all Fluent Bit concepts for the user.
