@@ -148,7 +148,7 @@ Properties:
 
 Consequences:
 * Full flexibility to use all Fluent Bit concepts for the user
-* The "contract" gives flexibility to change the implementation afterwards (for instance switch to an own input per pipeline or even an own DaemonSet)
+* The "contract" gives flexibility to change the implementation afterwards (for example, switch to an own input per pipeline or even an own DaemonSet).
 * User can create elements that increase the resource consumption
 * Allows describing complex pipelines and thus reduce the overall resource consumption
 
