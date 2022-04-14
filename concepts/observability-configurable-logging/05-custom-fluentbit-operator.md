@@ -147,22 +147,22 @@ Properties:
 * Potential overhead since complex pipelines have to be split into multiple simple pipelines, each having an own buffer
 
 Consequences:
-* Full flexibility to use all Fluent Bit concepts for the user
+* There's full flexibility to use all Fluent Bit concepts for the user.
 * The "contract" gives flexibility to change the implementation afterwards (for example, switch to an own input per pipeline or even an own DaemonSet).
-* User can create elements that increase the resource consumption
-* Allows describing complex pipelines and thus reduce the overall resource consumption
+* User can create elements that increase the resource consumption.
+* We can describe complex pipelines and thus reduce the overall resource consumption.
 
 ### Managed Fluent Bit DaemonSet per LogPipeline
 
 Properties:
-* The telemetry-operator creates a dedicated Fluent Bit DaemonSet per LogPipeline
+* The telemetry operator creates a dedicated Fluent Bit DaemonSet per Log Pipeline.
 * All DaemonSets have configured the same input and Kubernetes filter sections
 
 Consequences:
 * Best possible isolation between different pipelines
 * Highest resource consumption
 * Telemetry-operator has to manage the DaemonSets and not only ConfigMaps
-* Support for custom output plugins might be added by the option to specify an own Fluent Bit image
+* Support for custom output plugins might be added by specifying a dedicated Fluent Bit image
  
 ### All LogPipelines use the same base-tag
 
@@ -171,7 +171,7 @@ Properties
 * All LogPipelines match to kube.*
 
 Consequences:
-* Additional filters can be injected to any pipeline
+* Additional filters can be injected to any pipeline; for example, to modify the default Loki output.
   * Allows to modify default Loki output
-* Low resource consumption, but user has the control to add additional buffers
-* A dysfunctional output stalls all pipelines (no isolation)
+* Low resource consumption, but user has the control to add additional buffers.
+* No isolation: A dysfunctional output stalls all pipelines.
