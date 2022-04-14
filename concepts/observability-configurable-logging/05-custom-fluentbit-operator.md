@@ -126,51 +126,104 @@ The following requirements for the telemetry operator should be considered when 
   * Include or exclude parts of the logs (ship only a specific namespace to a backend)
   * Prepare the log metadata to comply with the backend's requirements (de-dotting for Elastic)
 
-### Tags managed by the telemetry operator
+### Scenario 1: Tags managed by the telemetry operator
 
 Properties:
 * The user-defined LogPipeline elements must not contain any "match" attributes.
-* Pipeline elements that emit new tags (for example, `rewrite_tag` filters) must not be used
+* Pipeline elements that emit new tags (for example, `rewrite_tag` filters) must not be used.
 * The telemetry operator adds a "match" attribute to all filters and outputs.
 
-Consequences:
+Advantages:
 * Full control over resource consumption because no additional buffers can be created.
+
+Disadvantages:
 * Design goal to allow pasting existing Fluent Bit config samples is partially lost.
 
-### Managed tag per pipeline
+### Scenario 2: Managed tag per pipeline
 
 Properties:
-* The telemetry operator provides a specific tag for each Log Pipeline that must be consumed by the pipeline sections.
-  * The telemetry operator creates either a dedicated input plugin or buffered `rewrite_tag` filter to isolate the pipeline.
+* The telemetry operator provides a specific tag for each LogPipeline that must be consumed by the pipeline sections.
 * There is a defined way to consume the operator-provided log stream (for example, a tag placeholder or documented naming pattern).
-* The Log Pipeline can emit new tags using the `rewrite_tag` filter.
+* The LogPipeline can emit new tags using the `rewrite_tag` filter.
 * Potential overhead since complex pipelines have to be split into multiple simple pipelines, each having an own buffer
 
-Consequences:
+Advantages:
 * There's full flexibility to use all Fluent Bit concepts for the user.
 * The "contract" gives flexibility to change the implementation afterwards (for example, switch to an own input per pipeline or even an own DaemonSet).
-* User can create elements that increase the resource consumption.
 * We can describe complex pipelines and thus reduce the overall resource consumption.
-
-### Managed Fluent Bit DaemonSet per LogPipeline
-
-Properties:
-* The telemetry operator creates a dedicated Fluent Bit DaemonSet per Log Pipeline.
-* All DaemonSets have configured the same input and Kubernetes filter sections
-
-Consequences:
-* Best possible isolation between different pipelines
-* Highest resource consumption
-* Telemetry-operator has to manage the DaemonSets and not only ConfigMaps
-* Support for custom output plugins might be added by specifying a dedicated Fluent Bit image
  
-### All LogPipelines use the same base-tag
+Disadvantages:
+* Users can increase the resource consumption by adding `rewrite_tag` filters with a buffer.
+
+### Scenario 3: All LogPipelines use the same base-tag
 
 Properties
 * Current state of telemetry chart (2022-04-12)
-* All LogPipelines match to kube.*
+* All LogPipelines subscribe the `kube.*` tag using the `match` property
 
-Consequences:
+Advantages:
 * Additional filters can be injected to any pipeline; for example, to modify the default Loki output.
 * Low resource consumption, but user has the control to add additional buffers.
-* No isolation: A dysfunctional output stalls all pipelines.
+
+## Fluent Bit input configuration
+
+The described scenarios allow different Fluent Bit setups. This section describes different options and their compatibility with Scenario 1-3.
+
+### Setup 1: Managed Fluent Bit DaemonSet per LogPipeline
+
+Properties:
+* The telemetry operator creates a dedicated Fluent Bit DaemonSet per LogPipeline.
+* All DaemonSets have configured the same input and Kubernetes filter sections.
+
+Advantages:
+* Best possible isolation between different pipelines.
+* Support for custom output plugins might be added by specifying a dedicated Fluent Bit image.
+ 
+Disadvantages:
+* Highest resource consumption.
+* Telemetry operator must manage the DaemonSets and not only ConfigMaps.
+* Impossible to inject filters to existing pipelines.
+ 
+### Setup 2: Dedicated input plugin per LogPipeline
+
+Properties:
+* The telemetry operator creates a new tail input with Kubernetes filter for every LogPipeline.
+
+Advantages:
+* Expected good isolation between different pipelines. Details have to be evaluated.
+
+Disadvantages:
+* Potential resource overhead through additional buffer requirement.
+* It is not possible to inject filters to existing pipelines.
+
+### Setup 3: Single input plugin with buffered `rewrite_tag` filter per LogPipeline
+
+Properties:
+* The Fluent Bit setup has a single tail input plugin with Kubernetes filter.
+* Each LogPipeline gets its own log stream, provided by a `reqrite_tag` filter.
+
+Advantages / Disadvantages:
+* Isolation and resource consumption behaviour under different buffer settings has to be evaluated.
+
+### Setup 4: Shared input plugin
+
+Properties:
+* The static part of the Fluent Bit configuration contains a shared tail input plugin and Kubernetes filter.
+* All LogPipelines can access the given input by consuming a predefined tag.
+
+Advantages:
+* No additional implementation effort required.
+* Single buffer for the input plugin.
+* Users can add additional filters or parsers to the default Loki pipeline.
+
+Disadvantages:
+* A dysfunctional output stalls all pipelines (no isolation).
+
+The possible log routing scenarios from the previous section can be used in the following combinations with the Fluent Bit input configurations:
+
+|                 | Scenario 1 | Scenario 2 | Scenario 3 |
+|-----------------|------------|------------|------------|
+| Setup 1         | x          | x          | x          |
+| Setup 2         | x          | x          |            |
+| Setup 3         | x          | x          |            |
+| Setup 4         |            |            | x          |
