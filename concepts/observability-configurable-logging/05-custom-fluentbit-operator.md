@@ -114,37 +114,37 @@ To configure Fluent Bit, the user must create a new CR regarding to the CRD of t
 
 ## Fluent-Bit Log Routing
 
-The LogPipeline CRD enables the user to define filter and output elements of a Fluent Bit pipeline. Therefore, a tag that can be consumed by user defined pipeline elements has to be provided by Kyma (either the static Fluent Bit configuration or the telemetry-operator). The different options to provide a log stream under a specific tag will be described in this section.
+The LogPipeline CRD enables the user to define filter and output elements of a Fluent Bit pipeline. Therefore, a tag that can be consumed by user-defined pipeline elements must be provided by Kyma (either the static Fluent Bit configuration or the telemetry operator). The following section describes the different options to provide a log stream under a specific tag.
 
-Log pipelines should be isolated in a way that a dysfunctional pipeline should not affect the availability of other pipelines. A pipeline can for instance become unavailable by an unavailable backend or faulty configuration.
+Log pipelines must be isolated in a way that a dysfunctional pipeline doesn't affect the availability of other pipelines; for example, when a pipeline becomes unavailable by an unavailable backend or faulty configuration.
 
-The following requirements for the telemetry-operator should be considered when choosing a sufficient Fluent Bit configuration:
-* Fluent Bit pods and the used image should be managed by Kyma
-* User-provided configuration parts should be as close as possible to the Fluent Bit configuration format
-* Filters can be used to
-  * Parse workload specific log formats (for instance, multi-line exceptions)
+The following requirements for the telemetry operator should be considered when choosing a sufficient Fluent Bit configuration:
+* Fluent Bit pods and the used image should be managed by Kyma.
+* User-provided configuration parts should be as close as possible to the Fluent Bit configuration format.
+* Filters can be used for the following purposes:
+  * Parse workload-specific log formats (for example, multi-line exceptions)
   * Include or exclude parts of the logs (ship only a specific namespace to a backend)
   * Prepare the log metadata to comply with the backend's requirements (de-dotting for Elastic)
 
-### Tags managed by the telemetry-operator
+### Tags managed by the telemetry operator
 
 Properties:
-* The user-defined LogPipeline elements must not contain any "match" attributes
-* Pipeline elements that emit new tags (for instance rewrite_tag filters) must not be used
-* The telemetry-operator adds ad "match" attribute to all filters and outputs
+* The user-defined LogPipeline elements must not contain any "match" attributes.
+* Pipeline elements that emit new tags (for example, `rewrite_tag` filters) must not be used
+* The telemetry operator adds a "match" attribute to all filters and outputs.
 
 Consequences:
-* Fill control over resource consumption since no additional buffers can be created
-* Design goal to allow pasting existing Fluent Bit config samples is partially lost
+* Full control over resource consumption because no additional buffers can be created.
+* Design goal to allow pasting existing Fluent Bit config samples is partially lost.
 
 ### Managed tag per pipeline
 
 Properties:
-* The telemetry-operator provides a specific tag for each LogPipeline that has to be consumed by the pipeline sections
-  * The telemetry-operator creates either a dedicated input plugin or buffered rewrite_tag filter to isolate the pipeline
-* There is a defined way to consume the operator-provided log stream (for instance a tag placeholder or documented naming pattern)
-* The LogPipeline can emit new tags using the rewrite_tag filter
-* Potential overhead since complex pipelines have to be split to multiple simple pipelines, each having an own buffer
+* The telemetry operator provides a specific tag for each Log Pipeline that must be consumed by the pipeline sections.
+  * The telemetry operator creates either a dedicated input plugin or buffered `rewrite_tag` filter to isolate the pipeline.
+* There is a defined way to consume the operator-provided log stream (for example, a tag placeholder or documented naming pattern).
+* The Log Pipeline can emit new tags using the `rewrite_tag` filter.
+* Potential overhead since complex pipelines have to be split into multiple simple pipelines, each having an own buffer
 
 Consequences:
 * Full flexibility to use all Fluent Bit concepts for the user
