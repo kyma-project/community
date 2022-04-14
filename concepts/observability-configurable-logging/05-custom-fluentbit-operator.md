@@ -172,6 +172,5 @@ Properties
 
 Consequences:
 * Additional filters can be injected to any pipeline; for example, to modify the default Loki output.
-  * Allows to modify default Loki output
 * Low resource consumption, but user has the control to add additional buffers.
 * No isolation: A dysfunctional output stalls all pipelines.
