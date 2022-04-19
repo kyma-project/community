@@ -44,9 +44,9 @@ If users want to use more than one pipeline for the log processing, they can use
 
 Additionally, when creating a `CR`, a [webhook](https://book.kubebuilder.io/cronjob-tutorial/webhook-implementation.html) validates the correctness of the Fluent Bit configuration based on the Fluent Bit `dry-run` feature.
 
-To actually apply the changes of the users, the operator creates or adapts the ConfigMap for FluentBit and restarts Fluent Bit by deleting the pods of the Fluent Bit deployment.
+To actually apply the changes of the users, the operator creates or adapts the Config Map for Fluent Bit and restarts Fluent Bit by deleting the pods of the Fluent Bit deployment.
 
-To make sure that the configuration by the users won't be overwritten by reconciliation, the basic configuration (`kubernetes` filter, `rewrite_tag`, etc.) is written into a ConfigMap. This ConfigMap is embedded by an `@INCLUDE` statement in the chart of this operator.
+To make sure that the configuration by the users won't be overwritten by reconciliation, the basic configuration (`kubernetes` filter, `rewrite_tag`, etc.) is written into a Config Map. This Config Map is embedded by an `@INCLUDE` statement in the chart of this operator.
 
 The following example demonstrates the CRD that will be used by the telemetry operator:
 
@@ -110,11 +110,11 @@ The CRD contains a separate section for the different parts for the Fluent Bit c
 
 ### Workflow for the User
 
-To configure Fluent Bit, the user must create a new CR regarding to the CRD of this operator. Then, this operator will notice the new or changed CR, and will create or update a ConfigMap for Fluent Bit. Before the ConfigMap is applied, the operator uses the `dry-run` feature of Fluent Bit to validate the new configuration. If the check was successful, the new ConfigMap is applied and Fluent Bit is restarted.
+To configure Fluent Bit, the user must create a new CR regarding to the CRD of this operator. Then, this operator will notice the new or changed CR, and will create or update a Config Map for Fluent Bit. Before the Config Map is applied, the operator uses the `dry-run` feature of Fluent Bit to validate the new configuration. If the check was successful, the new Config Map is applied and Fluent Bit is restarted.
 
 ## Fluent-Bit Log Routing
 
-The LogPipeline CRD enables the user to define filter and output elements of a Fluent Bit pipeline. Therefore, a tag that can be consumed by user-defined pipeline elements must be provided by Kyma (either the static Fluent Bit configuration or the telemetry operator). The following section describes the different options to provide a log stream under a specific tag.
+The Log Pipeline CRD enables the user to define filter and output elements of a Fluent Bit pipeline. Therefore, a tag that can be consumed by user-defined pipeline elements must be provided by Kyma (either the static Fluent Bit configuration or the telemetry operator). The following section describes the different options to provide a log stream under a specific tag.
 
 Log pipelines must be isolated in a way that a dysfunctional pipeline doesn't affect the availability of other pipelines; for example, when a pipeline becomes unavailable by an unavailable backend or faulty configuration.
 
@@ -129,7 +129,7 @@ The following requirements for the telemetry operator should be considered when 
 ### Scenario 1: Tags managed by the telemetry operator
 
 Properties:
-* The user-defined LogPipeline elements must not contain any "match" attributes.
+* The user-defined Log Pipeline elements must not contain any "match" attributes.
 * Pipeline elements that emit new tags (for example, `rewrite_tag` filters) must not be used.
 * The telemetry operator adds a "match" attribute to all filters and outputs.
 
@@ -142,24 +142,24 @@ Disadvantages:
 ### Scenario 2: Managed tag per pipeline
 
 Properties:
-* The telemetry operator provides a specific tag for each LogPipeline that must be consumed by the pipeline sections.
+* The telemetry operator provides a specific tag for each Log Pipeline that must be consumed by the pipeline sections.
 * There is a defined way to consume the operator-provided log stream (for example, a tag placeholder or documented naming pattern).
-* The LogPipeline can emit new tags using the `rewrite_tag` filter.
+* The Log Pipeline can emit new tags using the `rewrite_tag` filter.
 * Potential overhead because complex pipelines must be split into multiple simple pipelines, each having its own buffer.
 
 Advantages:
 * There's full flexibility to use all Fluent Bit concepts for the user.
-* The "contract" gives flexibility to change the implementation afterwards (for example, switch to an own input per pipeline or even an own DaemonSet).
+* The "contract" gives flexibility to change the implementation afterwards (for example, switch to an own input per pipeline or even an own Daemon Set).
 * We can describe complex pipelines and thus reduce the overall resource consumption.
  
 Disadvantages:
 * Users can increase the resource consumption by adding `rewrite_tag` filters with a buffer.
 
-### Scenario 3: All LogPipelines use the same base-tag
+### Scenario 3: All Log Pipelines use the same base-tag
 
 Properties
-* Current state of telemetry chart (2022-04-12)
-* All LogPipelines subscribe the `kube.*` tag using the `match` property
+* Current state of telemetry chart (2022-04-12).
+* All Log Pipelines subscribe the `kube.*` tag using the `match` property.
 
 Advantages:
 * Additional filters can be injected to any pipeline; for example, to modify the default Loki output.
@@ -169,11 +169,11 @@ Advantages:
 
 The described scenarios allow different Fluent Bit setups. This section describes different options and their compatibility with Scenario 1-3.
 
-### Setup 1: Managed Fluent Bit DaemonSet per LogPipeline
+### Setup 1: Managed Fluent Bit Daemon Set per Log Pipeline
 
 Properties:
-* The telemetry operator creates a dedicated Fluent Bit DaemonSet per LogPipeline.
-* All DaemonSets have configured the same input and Kubernetes filter sections.
+* The telemetry operator creates a dedicated Fluent Bit Daemon Set per Log Pipeline.
+* All Daemon Sets have configured the same input and Kubernetes filter sections.
 
 Advantages:
 * Best possible isolation between different pipelines.
@@ -181,13 +181,13 @@ Advantages:
  
 Disadvantages:
 * Highest resource consumption.
-* Telemetry operator must manage the DaemonSets and not only ConfigMaps.
+* Telemetry operator must manage the Daemon Sets and not only Config Maps.
 * Impossible to inject filters to existing pipelines.
  
-### Setup 2: Dedicated input plugin per LogPipeline
+### Setup 2: Dedicated input plugin per Log Pipeline
 
 Properties:
-* The telemetry operator creates a new tail input with Kubernetes filter for every LogPipeline.
+* The telemetry operator creates a new tail input with Kubernetes filter for every Log Pipeline.
 
 Advantages:
 * Expected good isolation between different pipelines. Details have to be evaluated.
@@ -196,11 +196,11 @@ Disadvantages:
 * Potential resource overhead through additional buffer requirement.
 * It is not possible to inject filters to existing pipelines.
 
-### Setup 3: Single input plugin with buffered `rewrite_tag` filter per LogPipeline
+### Setup 3: Single input plugin with buffered `rewrite_tag` filter per Log Pipeline
 
 Properties:
 * The Fluent Bit setup has a single tail input plugin with Kubernetes filter.
-* Each LogPipeline gets its own log stream, provided by a `reqrite_tag` filter.
+* Each Log Pipeline gets its own log stream, provided by a `reqrite_tag` filter.
 
 Advantages / Disadvantages:
 * Isolation and resource consumption behaviour under different buffer settings has to be evaluated.
@@ -209,7 +209,7 @@ Advantages / Disadvantages:
 
 Properties:
 * The static part of the Fluent Bit configuration contains a shared tail input plugin and Kubernetes filter.
-* All LogPipelines can access the given input by consuming a predefined tag.
+* All Log Pipelines can access the given input by consuming a predefined tag.
 
 Advantages:
 * No additional implementation effort required.
@@ -219,7 +219,7 @@ Advantages:
 Disadvantages:
 * A dysfunctional output stalls all pipelines (no isolation).
 
-The possible log routing scenarios from the previous section can be used in the following combinations with the Fluent Bit input configurations:
+The possible log routing scenarios from the previous section offer the following combinations with the Fluent Bit input configurations:
 
 |                 | Scenario 1 | Scenario 2 | Scenario 3 |
 |-----------------|------------|------------|------------|
