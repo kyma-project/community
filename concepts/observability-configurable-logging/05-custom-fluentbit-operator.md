@@ -145,7 +145,6 @@ Properties:
 * The telemetry operator provides a specific tag for each Log Pipeline that must be consumed by the pipeline sections.
 * There is a defined way to consume the operator-provided log stream (for example, a tag placeholder or documented naming pattern).
 * The Log Pipeline can emit new tags using the `rewrite_tag` filter.
-* Potential overhead because complex pipelines must be split into multiple simple pipelines, each having its own buffer.
 
 Advantages:
 * There's full flexibility to use all Fluent Bit concepts for the user.
@@ -153,6 +152,7 @@ Advantages:
 * We can describe complex pipelines and thus reduce the overall resource consumption.
  
 Disadvantages:
+* Potential overhead because complex pipelines must be split into multiple simple pipelines, each having its own buffer.
 * Users can increase the resource consumption by adding `rewrite_tag` filters with a buffer.
 
 ### Scenario 3: All Log Pipelines use the same base-tag
