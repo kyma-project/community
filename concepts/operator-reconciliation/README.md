@@ -1,10 +1,12 @@
 # Operator-based Reconciler
 
 ## Motivation
+
 Reconciler is a framework to install, update, and repair Kyma components in managed Kyma Runtimes. The reconciliation runs in the loop to ensure that all components are up and running and properly configured.
 While we currently have a custom reconciliation logic in place, we could make use of the Kubernetes Control Loop and reconciliation and an Operator-based approach to maintain our reconciliation through Kubernetes natively.
 
 We are currently having these issues in our current reconciliation:
+
 - Scheduling / Job-based
   - We have inbuilt limits on how fast a reconciliation can work by having bad worst case scheduling scenarios (e.g. reconciliation updates only get picked up every 45 seconds through our bookkeeper)
   - Reconciliation must be externally managed from outside the Cluster as there is no internal state management inside a shoot, this requires either the CLI or a control plane cluster with a Mothership
@@ -31,17 +33,16 @@ From the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/extend-k
 
 We want to make use of this design pattern to optimize and enhance our current Reconciliation control loop. The core characterics are:
 
-- Should encompass one or many Operator(s) which can reconcile a Gardener Shoot Cluster from empty to working Kyma on their own without external influence
-- Uses CRDs to manage Kyma Components and their necessary Reconciliation
-- Uses CRs to report State of the Reconciliation of a Cluster that can be externally viewed via Kubernetes API (e.g. through kubectl or a central provisioning component in the control plane)
-- Can be simply installed through provisioning of CRDs and/or Operators
-- Does not need explicit State Management outside of CRs managed by the Operator like we have currently with the Mothership
-- Can be deployed inside the Cluster to reconcile and manage itself
-- Can be integrated through a reported Cluster State into an external Provisioning / Reconciliation for consolidation in a Control Plane Cluster (Kubeception)
-- Uses one single source of truth for configuring which Kyma Components are enabled and what Settings are used in the Cluster
-- Only consumes load when actively reconciling by smartly managing deployments and instances used for reconciliation, scaling down and passively watching the compliant cluster
-- Able to gracefully manage failing reconciliations through smart resilience patterns (retry backoff), resulting in external support ticket or external reconciliation when not resolved on its own
-- Able to be debugged and developed by multiple teams for multiple components without strong coupling effects
+- The new architecture should encompass one or many Operator(s) which can reconcile a Gardener Shoot Cluster from empty to working Kyma on their own without external influence
+- The architecture uses CRDs to manage Kyma Components and their necessary Reconciliation
+- The architecture uses CRs to report State of the Reconciliation of a Cluster that can be externally viewed via Kubernetes API (e.g. through kubectl or a central provisioning component in the control plane)
+- The reconciliation infrastructure can be simply installed through provisioning of CRDs and/or Operators, maybe through its own Helm Chart
+- The reconciliation does not need explicit State Management outside of CRs managed by the Operator like we have currently with the Mothership
+- The components for reconciliation can be deployed inside the Cluster to reconcile and manage itself
+- The reconciliation components can be integrated through a reported Cluster State into an external Provisioning / Reconciliation for consolidation in a Control Plane Cluster (Kubeception)
+- The reconciliation uses one single source of truth for configuring which Kyma Components are enabled and what Settings are used in the Cluster
+- The reconciliation only consumes measurable load when actively reconciling by smartly managing deployments and instances used for reconciliation, scaling down and passively watching the compliant cluster
+- The reconciliation is able to be debugged and developed by multiple teams for multiple components without strong coupling effects
 
 ### POC for verifying Reconciliation based on Operators
 
@@ -67,23 +68,34 @@ A derived action plan should tackle the following topics (from first to last):
 
 For Operator-based reconciliations, we want to enable maximum flexibility of the architecture depending on the needs of the Kyma user. This means that we want to allow
 
-1. Fully Independent Small-Scale Clusters able to reconcile themselves, relying on external setup nodes (e.g. running for a local evaluation in k3d or for smaller scale deployments)
-2. Lightweight Control Plane Configurations, in which the Control Plane is able to provision the cluster and create/update an inventory of all managed cluster, but not taking care of reconciliation
-3. Fully centralized Control Plane Configurations, in which the Control Plane is not only provisioning the cluster, but also hosting the reconciliation, ensuring minimal overhead in the workload cluster
+1. Fully Independent Small-Scale Clusters able to reconcile themselves, relying on external node setup (e.g. running for a local evaluation in k3d or for smaller scale deployments)
+2. Fully centralized Control Plane Configurations, in which the Control Plane is not only provisioning the cluster, but also hosting the reconciliation, ensuring minimal overhead in the workload cluster
+3. Lightweight Control Plane Configurations (Hybrid Mode), in which the Control Plane is able to provision the cluster and create/update an inventory of all managed cluster, but not taking care of reconciliation
+
+The main focus of the POC will be to prove the functionality of the Reconciliation Operator to work with all 3 modes independant of the final implementation. The POC needs to prove that we are able to reconcile a cluster remotely or in-cluster without a significant difference in reconciliation logic.
 
 ### Single-Cluster (Small-Scale)
 
 ![single_cluster_configuration.png](assets/single_cluster_configuration.png)
 
-In this setup, the only things necessary for reconciliation are deployed in a single cluster that is provisioned externally (in the example above through k3d). The Kyma CLI is able to quickly bootstrap a cluster into existence through interacting with the k3d, and then deploying the Provisioning Operator directly into the Cluster. 
+In this setup, the only things necessary for reconciliation are deployed in a single cluster that is provisioned externally (in the example above through k3d). The Kyma CLI is able to quickly bootstrap a cluster into existence through interacting with the k3d, and then deploying the Provisioning Operator directly into the Cluster.
 
-The Provisioning Operator will then use the supplied Kyma Version and Components to deploy a Reconciliation Operator and its corresponding CRDs. The Reconciliation Operator can spin up multiple informer queues based on the operator pattern to watch and reconcile the different enabled Kyma components. 
+The Provisioning Operator will then use the supplied Kyma Version and Components to deploy a Reconciliation Operator and its corresponding CRDs. The Reconciliation Operator can spin up multiple informer queues based on the operator pattern to watch and reconcile the different enabled Kyma components.
 
-The Reconciliation Operator will update the state custom resource which is regularly checked by the Provisioning Operator. In case the State is pending for too long or is in an error state (e.g. because the cluster was not configured with enough memory), the provisioning is able to gracefully fail or retry the reconciliation depending on the input configuration. 
+The Reconciliation Operator will update the state custom resource which is regularly checked by the Provisioning Operator. In case the State is pending for too long or is in an error state (e.g. because the cluster was not configured with enough memory), the provisioning is able to gracefully fail or retry the reconciliation depending on the input configuration.
 
 In addition, the Busola UI will be deployable in the cluster and can make the Provisioning Operator visualizable in the cluster making the setup fully encapsulated aside from the initial cluster provisioning, making it perfect for small-scale deployments.
 
+### Centralized Control Plane Configurations
+
+![centralized_control_plane_configurations.png](assets/centralized_control_plane_configurations.png)
+
+In this scenario, The Shoot Cluster will rely purely on the Control Plane to have its reconciliation triggered and executed, in a similar offloading paradigm as the previous mothership reconciler. This has the major advantage of us being able to offload the work into the control plane, but comes with the issue that the operator
+reconciling the cluster has to remotely access the cluster, making Watch API interactions costly and potentially error-prone. To combat this the Provisioning Operator can use the State CR to regularly react in a given interval and reschedule and trigger the Reconciliation Operator whenever the reconciliation is still pending or failing. In comparison
+to the current reconciliation model, it will not update the state of the reconciliation itself, but will rely purely on the state CR managed in the Control Plane. This can potentially lead to scalability issues when dealing with a big amount of clusters and their state.
+
 ### Lightweight Control Plane Configurations
+
 ![lightweight_control_plane_configurations.png](assets/lightweight_control_plane_configurations.png)
 
 For initializing a cluster, we will need to use a connection between the reconciliation of a cluster and the inventory of all managed clusters. Whenever there is a new entry found in the cluster inventory a new cluster has to be created through the provisioning operator.
@@ -94,18 +106,12 @@ This can happen for many clusters at the same time, in which case the Provisioni
 Note that the inventory has to be highly available and will need to make sure that transactional guarantees are eventually consistent and atomic.
 Also note that the Provisioning Operator can still fetch the status of its managed clusters and regularly reschedule failed or pending reconciliations of components.
 
-### Centralized Control Plane Configurations
-![centralized_control_plane_configurations.png](assets/centralized_control_plane_configurations.png)
-
-In this scenario, The Shoot Cluster will rely purely on the Control Plane to have its reconciliation triggered and executed, in a similar offloading paradigm as the previous mothership reconciler. This has the major advantage of us being able to offload the work into the control plane, but comes with the issue that the operator
-reconciling the cluster has to remotely access the cluster, making Watch API interactions costly and potentially error-prone. To combat this the Provisioning Operator can use the State CR to regularly react in a given interval and reschedule and trigger the Reconciliation Operator whenever the reconciliation is still pending or failing. In comparison
-to the current reconciliation model, it will not update the state of the reconciliation itself, but will rely purely on the state CR managed in the Control Plane. This can potentially lead to scalability issues when dealing with a big amount of clusters and their state.
-
 ## Inventory Design - TODO
 
 ## Low Level Implementation of In-Cluster Reconciliation - TODO
 
 #### Idea 1 - One Operator, Many CRDs, One Status
+
 ![idea_1.png](assets/idea_1.png)
 Central Cluster Installs CRDs and Operator
 Installs CRs
@@ -115,20 +121,23 @@ One Operator does everything (Reconcile-Operator)
 One CRD is one Component (e.g. one for Monitoring)
 
 Workflow:
-1.	YAML-Installation
-1.	CRDs
-2.	Component CRs
-3.	Reconcile Operator triggered based on Component CRs
-2.	On Trigger
-1.	Deploy Job (for Component)
-2.	Takes care of installing one component
-3.	Updates / Creates Status CR
-4.	Status Updates get summarized
-3.	Reconcile Operator reestablishes Jobs on-demand
-4.	Watching/Creating Status are managed by Jobs
+
+1. YAML-Installation
+1. CRDs
+1. Component CRs
+1. Reconcile Operator triggered based on Component CRs
+1. On Trigger
+1. Deploy Job (for Component)
+1. Takes care of installing one component
+1. Updates / Creates Status CR
+1. Status Updates get summarized
+1. Reconcile Operator reestablishes Jobs on-demand
+1. Watching/Creating Status are managed by Jobs
 
 ### 2 Operators, Many CRDs, One Status
+
 ![idea_2.png](assets/idea_2.png)
+
 - One CRD for Reconciler, Many Component CRDs
 - Many Component CRDs because there are different specs possible for different components
 - Steps:
@@ -145,9 +154,10 @@ Workflow:
 - The Reconciler Resource can then also update its final cluster state
 - Reconciler is watched by HTTP in a Poll
 
-
 ### Proposal 3
+
 ![idea_3.png](assets/idea_3.png)
+
 - One Single Reconciler Operator
 - One CR for the Reconciliation CRs
 - Problem of multiple CRs -> Doesn't fit into Operator model
@@ -161,13 +171,13 @@ Workflow:
 - Focus on FAST iteration and POCs so a single operator is beneficial for iterating, together with the current binary as well as Reuse
 
 Flow:
-1.	Actor creates reconciliation CR -> Create Reconciler Deployment is prerequisite (e.g. sources for kyma)
-2.	Reconciler Operator watches and creates worker deployment based on the CR -> making HTTP Calls for Workers
-3.	Each Worker is the same and can take of everything
-4.	Once worker is finished it does a callback to the reconciler operator for the specific reconciliation
-5.	Worker is done
-6.	Operator can scale workers down on demand, updates state on-demand
 
+1. Actor creates reconciliation CR -> Create Reconciler Deployment is prerequisite (e.g. sources for kyma)
+2. Reconciler Operator watches and creates worker deployment based on the CR -> making HTTP Calls for Workers
+3. Each Worker is the same and can take of everything
+4. Once worker is finished it does a callback to the reconciler operator for the specific reconciliation
+5. Worker is done
+6. Operator can scale workers down on demand, updates state on-demand
 
 ### Final Proposal
 
@@ -176,6 +186,7 @@ Flow:
 #### One vs Many Operators for reconciliation?
 
 - PRO
+
   - X
 
 - CON
@@ -188,6 +199,7 @@ Decision:
 #### How do we reflect the Cluster State?
 
 - Approach A
+
   - X
 
 - Approach B
@@ -200,6 +212,7 @@ Decision:
 #### How do we protect the changes in the cluster from a user?
 
 - Approach A
+
   - X
 
 - Approach B
@@ -212,6 +225,7 @@ Decision:
 #### One CRD vs Multiple CRDs for maintaining Reconciliation Configuration?
 
 - PRO
+
   - X
 
 - CON
@@ -224,6 +238,7 @@ Decision:
 #### How much do we want to rely on Operator Native Communication vs HTTP based Service in a Deployment?
 
 - Approach A
+
   - X
 
 - Approach B
@@ -232,4 +247,3 @@ Decision:
 Suggestion:
 
 Decision:
-
