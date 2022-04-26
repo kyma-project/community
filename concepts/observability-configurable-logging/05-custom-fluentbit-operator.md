@@ -227,3 +227,6 @@ The possible log routing scenarios from the previous section offer the following
 | Setup 2         | x          | x          |            |
 | Setup 3         | x          | x          |            |
 | Setup 4         |            |            | x          |
+
+
+A detailed comparison with differend scenarios of logpipeline routing has been performed [here](./07-multiple-logpipeline-investigation.md).
