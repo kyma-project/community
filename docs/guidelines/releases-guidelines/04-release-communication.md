@@ -25,4 +25,5 @@ The Release Manager must notify the Kyma team about the planned dates of creatin
 
 The following are contact persons responsible for the whole release process in Kyma:
 
-- [Jose Cortina](https://github.com/jose-cortina) (Release Manager)
+- [Wojciech Soltys](https://github.com/Sawthis) (Release Manager)
+- [Artur Skorupa](https://github.com/arturskorupa) (Software Development Manager)
