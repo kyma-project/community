@@ -56,7 +56,7 @@ Setup:
 1. one input with 2 outputs (mockserver + mockserver) with rewrite tags
 2. logpipelines: [mockserver-1](./assets/logpipeline-invstigation/case-3/mockserver-1.yml), [mockserver-2](./assets/logpipeline-invstigation/case-3/mockserver-2.yml)
 
-
+![a](./assets/logpipeline-invstigation/case-3/case-3.svg)
 Result
 1. When both outputs are down then the buffer was filled and eventually the fluentbit pod got killed because of 500 (most probably because of CPU throttling)
 2. Tail plugin kept pushing logs to rewrite buffer and they were eventually lost
@@ -66,6 +66,7 @@ Setup:
 1. one input with 2 outputs (loki (with official loki plugin) + mockserver) with rewrite tags
 2. logpipelines: [loki](./assets/logpipeline-invstigation/case-4/loki.yml), [mockserver](./assets/logpipeline-invstigation/case-4/mock-server.yml)
 
+![a](./assets/logpipeline-invstigation/case-4/case-4.svg)
 
 Result
 1. Mockserver was down and the loki output was still working
@@ -81,6 +82,8 @@ Result
 Setup:
 1. one input with 2 outputs (loki (with official loki plugin) + mockserver) without rewrite tags
 2. logpipelines: [loki](./assets/logpipeline-invstigation/case-5/loki.yml), [mockserver](./assets/logpipeline-invstigation/case-5/mock-server.yml)
+
+![a](./assets/logpipeline-invstigation/case-5/case-5.svg)
 Result
 1. Mockserver was down, this led to filling of the tail buffer
 2. When the tail plugin buffer is filled, it kept still reading.
@@ -93,14 +96,14 @@ Result
 ### Case 6
 Setup
 1. 2 Inputs and 2 outputs (loki (fluentbit-loki plugin) + mockserver) and no rewrite tags
-
+![a](./assets/logpipeline-invstigation/case-6/case-6.svg)
 Result
 1. Each pipeline has its own buffer
 2. When both the outputs are stopped both the tail plugins are loosing logs. It would keep the latest logs (although the amount of logs are differemt)
 
 
-
-
+## Summary
+We performed various tests and found that a buffer with filesystem (through rewrite_tag filter) is necessary to prevent loss of logs when one of the output is down. However loss of logs cannot be prevented completely, if the buffer is filled up then fluentbit keeps only the latest logs.
 
 
 
