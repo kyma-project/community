@@ -61,17 +61,9 @@ Setup:
 2. logpipelines: [mockserver-1](./assets/logpipeline-invstigation/case-3/mockserver-1.yml), [mockserver-2](./assets/logpipeline-invstigation/case-3/mockserver-2.yml)
 
 ![a](./assets/logpipeline-invstigation/case-3/case-3.svg)
-<<<<<<< Updated upstream
 Result:
 - When both outputs are down, the buffer was filled and eventually the Fluent Bit Pod went down with error code `500` (most probably because of CPU throttling).
 - Tail plugin kept pushing logs to the rewrite buffer, and they were eventually lost.
-=======
-
-Result
-1. When both outputs are down then the buffer was filled and eventually the fluentbit pod got killed because of 500 (most probably because of CPU throttling)
-2. Tail plugin kept pushing logs to rewrite buffer and they were eventually lost
->>>>>>> Stashed changes
-
 ### Case 4
 Setup:
 1. One input with two outputs (Loki with the official Loki plugin, and mock server) with rewrite tags
@@ -99,36 +91,23 @@ Setup:
    - [Mock server](./assets/logpipeline-invstigation/case-5/mock-server.yml)
 
 ![a](./assets/logpipeline-invstigation/case-5/case-5.svg)
-<<<<<<< Updated upstream
+
 Result:
 - Mock server was down. This led to the filling of the tail buffer.
 - After the tail plugin buffer was full, it kept reading.
 - The chunks in the tail plugin buffer are rolled: Old chunks are discarded; new ones created.
-- Loki output stopped working as well.
+- Loki output stopped working as well. However after setting flag `Retry_Limit false` the output was being retried.
+- The logs are stored in filesystem buffer before applying the kuberenets filter. There is a risk of not being able to fetch the kubernetes metadata of the logs. This applies if the pod has been terminated before the logs have been read from the filesystem again for next stage of pipeline processing.
+
 
 A known [Fluent Bit GitHub issue](https://github.com/fluent/fluent-bit/issues/4373) describes the same problem.
-
-![mockserver-down](/assets/logpipeline-invstigation/case-5/dashboard-mock-down.png)
 
 ### Case 6
 Setup:
 - Two Inputs and two outputs (Loki (Fluent Bit-Loki plugin) and mock server) without rewrite tags
-=======
-
-Result
-1. Mockserver was down, this led to filling of the tail buffer
-2. When the tail plugin buffer is filled, it kept still reading.
-3. The chunks in tail plugin is rolled (the old chunks deleted new ones created)
-4. Loki output stopped working as well. However after setting flag `Retry_Limit false` the output was being retried.
-5. Found following [issue](https://github.com/fluent/fluent-bit/issues/4373) in github which describes the same problem.
-6. The logs are stored in filesystem buffer before applying the kuberenets filter. There is a risk of not being able to fetch the kubernetes metadata of the logs. This applies if the pod has been terminated before the logs have been read from the filesystem again for next stage of pipeline processing.
-
-### Case 6
-Setup
-1. 2 Inputs and 2 outputs (loki (fluentbit-loki plugin) + mockserver) and no rewrite tags
-2. logpipelines: [loki](./assets/logpipeline-invstigation/case-6/loki.yml), [mockserver](./assets/logpipeline-invstigation/case-6/mock-server.yml)
-
->>>>>>> Stashed changes
+- Two logpipelines: 
+  - [loki](./assets/logpipeline-invstigation/case-6/loki.yml)
+  - [mockserver](./assets/logpipeline-invstigation/case-6/mock-server.yml)
 ![a](./assets/logpipeline-invstigation/case-6/case-6.svg)
 
 Result
