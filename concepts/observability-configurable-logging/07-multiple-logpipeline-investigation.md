@@ -8,14 +8,14 @@ This document investigates the side effects that may come up when, for example, 
 
 The investigated configuration uses the `filesystem` buffer. When one of the log pipeline outputs fails, the logs are buffered on the file system. In contrast, the `in-memory` buffer has the disadvantage that if the Fluent Bit Pod is restarted, logs can be lost. During the test, we referred to the Fluent Bit knowledge article about [Buffering & Storage](https://docs.fluentbit.io/manual/administration/buffering-and-storage).
 
-Setup consisted of following items
+The setup consisted of following items:
 1. Kyma with telemetry operator
-2. Two outputs were deployed in the kyma cluster
+2. Two outputs, deployed in the Kyma cluster:
     - Loki, which comes with Kyma
     -[Mock server](./assets/logpipeline-invstigation/mock-server.yaml)
 3. [Log generator daemon set](./assets/logpipeline-invstigation/log-generator.yaml) to generate a huge amount of logs to fill the buffer faster
 4. A [Function](./assets/logpipeline-invstigation/func.js) to check if the logs are being delivered when one of the outputs is down
-5. To simulate failures the port of the service was changed so that dns resolution would still work but logs wont be deliverd.
+5. To simulate failures, the port of the service was changed so that the DNS resolution keeps working but logs won't be delivered.
 
 ## Test Cases
 
@@ -58,7 +58,9 @@ Result:
 
 Setup:
 1. One input with two outputs (mock server and mock server) with rewrite tags
-2. logpipelines: [mockserver-1](./assets/logpipeline-invstigation/case-3/mockserver-1.yml), [mockserver-2](./assets/logpipeline-invstigation/case-3/mockserver-2.yml)
+2. Two log pipelines:
+   - [mockserver-1](./assets/logpipeline-invstigation/case-3/mockserver-1.yml)
+   - [mockserver-2](./assets/logpipeline-invstigation/case-3/mockserver-2.yml)
 
 ![a](./assets/logpipeline-invstigation/case-3/case-3.svg)
 Result:
