@@ -6,14 +6,14 @@ This document investigates the side effects that may come up when, for example, 
 
 ## Setup
 
-The investigated configuration uses the `filesystem` buffer. When one of the log pipeline outputs fails, the logs are buffered on the file system. In contrast, the `in-memory` buffer has the disadvantage that if the Fluent Bit Pod is restarted, logs can be lost. During the test, we referred to the Fluent Bit knowledge article about [Buffering & Storage](https://docs.fluentbit.io/manual/administration/buffering-and-storage).
+The investigated configuration uses the `filesystem buffering`. When one of the log pipeline outputs fails, the logs are buffered on the file system. In contrast, the `in-memory` buffer has the disadvantage that if the Fluent Bit Pod is restarted, logs can be lost. During the test, we referred to the Fluent Bit knowledge article about [Buffering & Storage](https://docs.fluentbit.io/manual/administration/buffering-and-storage).
 
 The setup consisted of following items:
 1. Kyma with telemetry operator
 2. Two outputs, deployed in the Kyma cluster:
     - Loki, which comes with Kyma
     -[Mock server](./assets/logpipeline-invstigation/mock-server.yaml)
-3. [Log generator daemon set](./assets/logpipeline-invstigation/log-generator.yaml) to generate a huge amount of logs to fill the buffer faster
+3. [Log generator daemon set](./assets/logpipeline-invstigation/log-generator.yaml) to generate a huge amount of logs to fill the filesystem buffer faster
 4. A [Function](./assets/logpipeline-invstigation/func.js) to check if the logs are being delivered when one of the outputs is down
 5. To simulate failures, the port of the service was changed so that the DNS resolution keeps working but logs won't be delivered.
 
@@ -29,14 +29,14 @@ Setup:
    - [Mock server](./assets/logpipeline-invstigation/case-1/mockserver.yml)
 
 Result:
-- When one of the outputs is down, the filesystem buffer is filled up and only keeps 150M of latest data (old data is discarded first). Eventually, when the buffer at tail plugin is full, the output plugin for Loki stops as well.
-- When both outputs are down, the tail plugin is stopped after filling the buffer, even though the buffer was not completely full (104M/150M).
+- When one of the outputs is down, the filesystem buffer is filled up and only keeps 150M of latest data (old data is discarded first). Eventually, when the filesystem buffer at tail plugin is full, the output plugin for Loki stops as well.
+- When both outputs are down, the tail plugin is stopped after filling the filesystem buffer, even though the buffer was not completely full (104M/150M).
 
 ### Case 2
 ![a](./assets/logpipeline-invstigation/case-2/case-2.svg)
 
 Setup:
-1. One input with two outputs (Loki (fluentbit-loki plugin) and mock server) with rewrite tags
+1. One input with two outputs (Loki (grafana-loki plugin) and mock server (http plugin)) with rewrite tags
 2. Two log pipelines:
    - [Loki](./assets/logpipeline-invstigation/case-2/loki.yaml)
    - [Mock server](./assets/logpipeline-invstigation/case-2/mockserver.yml)
@@ -44,8 +44,8 @@ Setup:
 
 Result:
 - Output chunking keeps with 150M of newest data.
-- The tail plugin sends the data to the next phase of the pipeline (filter plugin). If the output is not working, only the buffer at the rewrite tag is filled and the tail plugin buffer isn't filled.
-- When the buffer is full, error logs state this fact, and that the old logs are discarded.
+- The tail plugin sends the data to the next phase of the pipeline (filter plugin). If the output is not working, only the filesystem buffer at the rewrite tag is filled and the tail plugin buffer isn't filled.
+- When the filesystem buffer is full, error logs state this fact, and that the old logs are discarded.
     ```unix
     [2022/04/21 14:38:23] [error] [input:emitter:log_emitter] error registering chunk with tag: log_rewritten
     [2022/04/21 14:38:24] [error] [input chunk] chunk 1-1650551903.999375896.flb would exceed total limit size in plugin http.1
@@ -64,11 +64,11 @@ Setup:
 
 ![a](./assets/logpipeline-invstigation/case-3/case-3.svg)
 Result:
-- When both outputs are down, the buffer was filled and eventually the Fluent Bit Pod went down with error code `500` (most probably because of CPU throttling).
-- Tail plugin kept pushing logs to the rewrite buffer, and they were eventually lost.
+- When both outputs are down, the filesystem buffer was filled and eventually the Fluent Bit Pod went down with error code `500` (most probably because of CPU throttling).
+- Tail plugin kept pushing logs to the rewrite filesystem buffer, and they were eventually lost.
 ### Case 4
 Setup:
-1. One input with two outputs (Loki with the official Loki plugin, and mock server) with rewrite tags
+1. One input with two outputs (Loki (Loki plugin), and mock server (http plugin)) with rewrite tags
 2. Two log pipelines:
    - [Loki](./assets/logpipeline-invstigation/case-4/loki.yml)
    - [Mock server](./assets/logpipeline-invstigation/case-4/mock-server.yml)
@@ -77,7 +77,7 @@ Setup:
 
 Result:
 - Mock server was down. The Loki output kept working.
-- The chunks in the `filesystem` buffer are rolled: Old chunks are discarded; new ones created.
+- The chunks in the `filesystem buffer` are rolled: Old chunks are discarded; new ones created.
 - When Loki output was down, the mock server output kept working.
 
 ![mockserver-down](/assets/logpipeline-invstigation/case-4/dashboard-mock-down.png)
@@ -87,7 +87,7 @@ Result:
 
 ### Case 5
 Setup:
-1. One input with two outputs (Loki with the official Loki plugin, and mock server) without rewrite tags
+1. One input with two outputs (Loki (Loki plugin), and mock server (http plugin)) without rewrite tags
 2. Two log pipelines:
    - [Loki](./assets/logpipeline-invstigation/case-5/loki.yml)
    - [Mock server](./assets/logpipeline-invstigation/case-5/mock-server.yml)
@@ -95,10 +95,10 @@ Setup:
 ![a](./assets/logpipeline-invstigation/case-5/case-5.svg)
 
 Result:
-- Mock server was down. This led to the filling of the tail buffer.
-- After the tail plugin buffer was full, it kept reading.
-- The chunks in the tail plugin buffer are rolled: Old chunks are discarded; new ones created.
-- Loki output stopped working as well. However after setting flag `Retry_Limit false` the output was being retried.
+- Mock server was down. This led to the filling of the tail filesystem buffer.
+- After the tail plugin filesystem buffer was full, it kept reading.
+- The chunks in the tail plugin filesystem buffer are rolled: Old chunks are discarded; new ones created.
+- Loki output stopped working as well.
 - The logs are stored in filesystem buffer before applying the kuberenets filter. There is a risk of not being able to fetch the kubernetes metadata of the logs. This applies if the pod has been terminated before the logs have been read from the filesystem again for next stage of pipeline processing.
 
 
@@ -106,22 +106,31 @@ A known [Fluent Bit GitHub issue](https://github.com/fluent/fluent-bit/issues/43
 
 ### Case 6
 Setup:
-- Two Inputs and two outputs (Loki (Fluent Bit-Loki plugin) and mock server) without rewrite tags
+- Two Inputs and two outputs (Loki (grafana-loki plugin) and mock server (http plugin)) without rewrite tags
 - Two logpipelines: 
   - [loki](./assets/logpipeline-invstigation/case-6/loki.yml)
   - [mockserver](./assets/logpipeline-invstigation/case-6/mock-server.yml)
 ![a](./assets/logpipeline-invstigation/case-6/case-6.svg)
 
 Result
-- Each pipeline has its own buffer.
+- Each pipeline has its own fileystem buffer.
 - When both outputs are stopped, both tail plugins are losing logs. They keep the latest logs, but the amount of logs is different.
 
 
 ## Summary
-We performed various tests and found that a buffer with filesystem (through rewrite_tag filter) is necessary to prevent loss of logs when one of the output is down. However loss of logs cannot be prevented completely, if the buffer is filled up then fluentbit keeps only the latest logs.
+We performed various tests and found that with filesystem buffering (through rewrite_tag filter) is necessary to prevent loss of logs when one of the output is down. However loss of logs cannot be prevented completely, if the buffer is filled up then fluentbit keeps only the latest logs.
 
 Additionally following case wes tried
 1. With 2 input and 2 outputs and having `storage.max_chunks_pause on`. This option as mentioned in [documentation](https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration) did not apply to input filters. The fluentbit did not recongnize this option and the pod would not start. However applying to the service section did not have any affect.
 
+## Conclusion
+After trying out various possibilities of log pipeline, we decided to choose go with Case 4 for following reasons:
+1. In the event of failure of one output, fluent-bit would still push logs to other output.
+2. The rewrite tag with filesystem buffer enables the logs to buffered as chunks in case of failure of one outputs.
 
+however, in case of failure of output for prolonged period of time and the filesystem buffer being full, there is loss of logs seen.
+
+A decision is still needed how the rewrite tag should be configured. There are following proposals:
+1. The user configures it himself if needed. Documentation should be provided to use rewrite tag as recommendation for the use cases where logs need to be sent to multiple logging backends along with the example how to do it.
+2. The rewrite tag along with name would be configured dynamically when the user creates a new pipeline.
 
