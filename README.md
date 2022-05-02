@@ -53,6 +53,3 @@ If you have a code-level question and need some expert advice, contact us on [St
 The community is relentless about Kyma security. To report a security issue, send an email with details directly to [kyma-security@googlegroups.com](mailto:kyma-security@googlegroups.com) instead of using a public issue tracker.
 
 Thank you for your interest in Kyma. Hope you'll stay with us for a while.
-
-
-TEST
