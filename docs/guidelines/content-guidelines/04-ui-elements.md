@@ -8,20 +8,20 @@ Contrary to the regular technical documentation, UI elements follow different gu
 - Use title case for short texts, such as labels or headings, and sentence case for messages and explanations, unless specified otherwise.
 - Use plural for the object names as users usually interact with multiple objects within the program:
 
-  ✅ Service Instances
+  ✅ Service Instances <br>
   ⛔️ Service Instance
 
 - Use plain, natural language. Even though some verbs may be similar in meaning, they may sound more or less natural to the reader. For example, from these pairs of verbs, the first one sound more natural:
 
-  ✅ Choose
+  ✅ Choose <br>
   ⛔️ Select
 
-  ✅ Edit
+  ✅ Edit <br>
   ⛔️ Modify
 
 - Use the three-letter currency code instead of the currency symbol. This prevents ambiguity when multiple currencies share the same symbol.
 
-  ✅ USD
+  ✅ USD <br>
   ⛔️ $
 
 ## Buttons
@@ -30,16 +30,16 @@ When designing a button label, you must be as straightforward and concise as pos
 
 - Use action verbs that explain what will happen when a user presses the button, without requiring them to read any supporting text. Depending on your needs, you can also use plain adverb. Alternatively, add a noun to indicate what a verb or an adverb refers to. Do **not** use articles and punctuation. They will only add unnecessary "word noise" to your button label.
 
-  ✅ Save
-  ✅ Next
-  ✅ Save draft
-  ✅ Next step
+  ✅ Save <br>
+  ✅ Next <b>
+  ✅ Save draft <br>
+  ✅ Next step <br>
   ⛔️ Save a draft
 
 - Avoid labels that are too generic, such as `Yes` or `No`. They are not intuitive and require the user to read the supporting text.  
 - Use sentence case as it reads more natural and friendly to the users, which makes them more willing to press the button. Title case doesn't read as easily as sentence case and looks more unnatural.
 
-  ✅ Next section
+  ✅ Next section <br>
   ⛔️ Next Section
 
 - Be careful when using words of similar meaning, such as `Delete` and `Remove`.
