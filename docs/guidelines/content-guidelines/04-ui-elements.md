@@ -31,7 +31,7 @@ When designing a button label, you must be as straightforward and concise as pos
 - Use action verbs that explain what will happen when a user presses the button, without requiring them to read any supporting text. Depending on your needs, you can also use plain adverb. Alternatively, add a noun to indicate what a verb or an adverb refers to. Do **not** use articles and punctuation. They will only add unnecessary "word noise" to your button label.
 
   ✅ Save <br>
-  ✅ Next <b>
+  ✅ Next <br>
   ✅ Save draft <br>
   ✅ Next step <br>
   ⛔️ Save a draft
