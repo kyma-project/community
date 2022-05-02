@@ -2,18 +2,23 @@
 title: UI elements
 ---
 
-Contrary to the regular technical documentation, UI elements follow different guidelines and best practices for content. Due to the limited space you can use to convey a message,
+Contrary to the regular technical documentation, UI elements follow different guidelines and best practices. Due to the limited space you can use to convey a message, your UI text must be as precise and concise as possible. Here are some general guidelines you should follow when designing and writing content for UI elements:
 
-Here are the general guidelines you should follow when designing and writing UI elements:
-
-- Use active voice is action-oriented language, starting with a verb. it is preferred for any UX text, and especially for tooltips since they need to be brief and empowering.
+- Use active voice and action-oriented language, starting with a verb.
 - Use title case for short texts, such as labels or headings, and sentence case for messages and explanations, unless specified otherwise.
-- Use plural for the business object, as the user can generally process more than one object within the app.
+- Use plural for the object names as users usually interact with multiple objects within the program:
 
   ✅ Service Instances
   ⛔️ Service Instance
 
-- Use natural language. Some verbs may be similar in meaning but sound more or less natural to the reader. For example, from the pair "Choose" / "Select" or "Edit" / "Modify", the first verb sound more natural.
+- Use plain, natural language. Even though some verbs may be similar in meaning, they may sound more or less natural to the reader. For example, from these pairs of verbs, the first one sound more natural:
+
+  ✅ Choose
+  ⛔️ Select
+
+  ✅ Edit
+  ⛔️ Modify
+
 - Use the three-letter currency code instead of the currency symbol. This prevents ambiguity when multiple currencies share the same symbol.
 
   ✅ USD
@@ -21,16 +26,23 @@ Here are the general guidelines you should follow when designing and writing UI 
 
 ## Buttons
 
-Be as straightforward and concise when designing the button label. To do so:
+When designing a button label, you must be as straightforward and concise as possible, since you have very limited space to convey the message. Moreover, buttons are used to invite a user to perform an action. Make them as inviting and intuitive as possible. To do so:
 
-- Use action verbs . The button labels should tell the user what will happen without requiring him to read any supporting text. Most buttons contain verbs to indicate what the button will do, e.g. ‘Save’, ‘Publish’, ‘Edit’. While ‘Back’, and ‘Next’ aren’t verbs, in the context of an interface they seem to work in the same way. I like to keep the ‘verb’ + ‘noun’ structure when writing button labels — this makes the action more prescriptive, e.g. ‘Save post’, ‘Next step’, etc, as opposed to ‘Save’, ‘Next’ — but the choice is up to you and your users.
-- Avoid labels that are too generic, such as "Yes" or "No". They are not intuitive and require the user to read the supporting text.  
-- Use active imperative form to make your label as precise and task-specific as possible. When you use the imperative form in an active voice, you minimize the number of words and make the button label easier to scan.
-- Omit articles and punctuation to make the button label as concise as possible. If possible, follow the verb+noun or
-This form allows you to drop the subject and unnecessary articles for a more concise button label. All you need to include on your button label is a verb with an adverb or direct object.
-- Use sentence case. Title case, e.g. ‘Next Section’ doesn’t read as easily as sentence case. It makes users feel like someone is speaking to them in a stilted voice. Sentence case, e.g. ‘Next section’ gives much more ‘friendly’ or ‘conversational’ tone. A sentence-style capitalization is best because it conveys a friendly tone that invites users to press the button. Users are most familiar with sentence case and it feels like someone is speaking to them in a natural voice.
-- Use plain, natural language. Remember to write how you would speak to another human being. Have you ever used the word ‘modify’ with a friend? Maybe you have, but it won’t be in the everyday language of your users.
-- Be careful when using words of similar meaning, such as "delete" and "remove".
+- Use action verbs that explain what will happen when a user presses the button, without requiring them to read any supporting text. Depending on your needs, you can also use plain adverb. Alternatively, add a noun to indicate what a verb or an adverb refers to. Do **not** use articles and punctuation. They will only add unnecessary "word noise" to your button label.
+
+  ✅ Save
+  ✅ Next
+  ✅ Save draft
+  ✅ Next step
+  ⛔️ Save a draft
+
+- Avoid labels that are too generic, such as `Yes` or `No`. They are not intuitive and require the user to read the supporting text.  
+- Use sentence case as it reads more natural and friendly to the users, which makes them more willing to press the button. Title case doesn't read as easily as sentence case and looks more unnatural.
+
+  ✅ Next section
+  ⛔️ Next Section
+
+- Be careful when using words of similar meaning, such as `Delete` and `Remove`.
 
 
 ## Tooltips
