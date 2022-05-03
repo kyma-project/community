@@ -2,7 +2,7 @@
 
 The telemetry operator comes with a pipeline configured to push logs to Loki. Additionally, Kyma users can define their own pipeline and push the logs to their own logging backend.
 
-This document investigates the side effects that may come up when, for example, the logging backend defined by  user stops working.
+This document investigates the side effects that may come up when, for example, the logging backend defined by users stops working.
 
 ## Setup
 
