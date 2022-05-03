@@ -237,6 +237,7 @@ After trying out various possibilities of log pipeline, we decided to choose go 
 
 however, in case of failure of output for prolonged period of time and the filesystem buffer being full, there is loss of logs seen.
 
-A decision is still needed how the rewrite tag should be configured. There are following proposals:
-1. The user configures it himself if needed. Documentation should be provided to use rewrite tag as recommendation for the use cases where logs need to be sent to multiple logging backends along with the example how to do it.
-2. The rewrite tag along with name would be configured dynamically when the user creates a new pipeline.
+We still have to decide how the rewrite tag should be configured. There are following proposals:
+-  The users configure it themselves if needed. The users need documentation how to use rewrite tags when logs must be sent to multiple logging backends, along with an example how to do it.
+
+- The rewrite tag, along with name, is configured dynamically when the user creates a new pipeline.

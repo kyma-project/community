@@ -39,7 +39,7 @@ Setup:
 
 Result
 - Each pipeline has its own fileystem buffer.
-- When both outputs are having outage, both tail plugins are losing logs. They keep the latest logs, but the amount of logs is different.
+- When both outputs are having outage, both tail plugins are losing logs. The buffer in the tail plugin stores the latest logs, but the amount of logs is different.
 ### Setup 3a
 ![a](./assets/logpipeline-investigation/setup-3a/setup-3a.svg)
 
