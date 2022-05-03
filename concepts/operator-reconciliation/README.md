@@ -106,144 +106,65 @@ This can happen for many clusters at the same time, in which case the Provisioni
 Note that the inventory has to be highly available and will need to make sure that transactional guarantees are eventually consistent and atomic.
 Also note that the Provisioning Operator can still fetch the status of its managed clusters and regularly reschedule failed or pending reconciliations of components.
 
-## Inventory Design - TODO
+## Inventory Design - Versioned Kyma CRs
+
+When designing our inventory, we want to stay as close to kubernetes-native directives as possible, especially 
+compared to the previous reconciler approach. We want to manage the entire inventory of a Kyma Cluster through a set 
+of smartly entangled CRs that enable interaction in a declarative and easy structure. As such, we will enforce a 
+central `Kyma` CR that will be the Centerpoint of our reconciliation, based on a detailed versioning scheme 
+supporting backups / rollouts similar to the kubernetes-native `rollout` functionality. 
+
+Component CRs will reflect the state of a component reconciliation for a given cluster by updating their reconciliation status in the CR, which 
+the Kyma CR will aggregate into a final `Health Indicator`. This Health Indiciator together with its lifecycle 
+management through versioned Kyma Releases will be used to determine an `Active Release`. This will be the single 
+source of truth for the actually enabled Kyma Release Version in a Cluster after the last successful reconciliation. 
+In case of failure, the Kyma CR will be changed to the Status `Progressing` (similar to the kubernetes native 
+deployment) until the failure was resolved, or a backoff was exhausted, in which case an up/downgrade will be 
+considered failed. In this case, we will ensure there are alert rules available to detect these CRs and ping SREs 
+through the Control Plane monitoring capabilities to manually intervene. 
+
+Ideally the SRE is able to remediate the Cluster Reconciliation by backing up the state through our revision management. If not, we are able to deduce the 
+exact error state and time through issuing of timed Kubernetes Events, our Control-Plane monitoring stack, as well 
+as the individual Component Status in the CRs for that Kyma Release, allowing for much more fine-grained debugging 
+control.
 
 ## Low Level Implementation of In-Cluster Reconciliation - TODO
 
-#### Idea 1 - One Operator, Many CRDs, One Status
-
-![idea_1.png](assets/idea_1.png)
-Central Cluster Installs CRDs and Operator
-Installs CRs
-Watches Reconciliation Status CRs (Pull or Push undecided)
-One Operator does everything (Reconcile-Operator)
-
-One CRD is one Component (e.g. one for Monitoring)
-
-Workflow:
-
-1. YAML-Installation
-1. CRDs
-1. Component CRs
-1. Reconcile Operator triggered based on Component CRs
-1. On Trigger
-1. Deploy Job (for Component)
-1. Takes care of installing one component
-1. Updates / Creates Status CR
-1. Status Updates get summarized
-1. Reconcile Operator reestablishes Jobs on-demand
-1. Watching/Creating Status are managed by Jobs
-
-### 2 Operators, Many CRDs, One Status
-
-![idea_2.png](assets/idea_2.png)
-
-- One CRD for Reconciler, Many Component CRDs
-- Many Component CRDs because there are different specs possible for different components
-- Steps:
-  - CRD installation
-  - Operator Installation for Reconciler
-  - Operator Installation of Components
-  - Summary is a State CR of the Reconciler plus current Configuration
-- The State CR is watched by the Controller and will trigger the resources based on the different CRs from individual component CRDs
-- The Component CR is watched by the reconciliation of the individual components
-- We also have only one single Operator for all reconciliations
-- We could restrict deletion of CRs based on OAuth /CA BUT this only works on managed (not BYOC)
-- We could use validating webhooks and dependencies to avoid messing our configs by the user (different layers of protection)
-- Whenever reconciliation is done, it will trigger on state updates
-- The Reconciler Resource can then also update its final cluster state
-- Reconciler is watched by HTTP in a Poll
-
-### Proposal 3
-
-![idea_3.png](assets/idea_3.png)
-
-- One Single Reconciler Operator
-- One CR for the Reconciliation CRs
-- Problem of multiple CRs -> Doesn't fit into Operator model
-- Many CRs for the different Component Operations, watched / created by Operator
-- If there is specific configuration then they will be on the CRs
-- Operation CRs are used as Bookkeeping Device (Progress tracking), stateful
-- Not many operators for all components
-- For bigger clusters we want to increase the workers/deployments for the components
-- One worker will be a reconciler binary
-- One worker will not touch the Operation CRs
-- Focus on FAST iteration and POCs so a single operator is beneficial for iterating, together with the current binary as well as Reuse
-
-Flow:
-
-1. Actor creates reconciliation CR -> Create Reconciler Deployment is prerequisite (e.g. sources for kyma)
-2. Reconciler Operator watches and creates worker deployment based on the CR -> making HTTP Calls for Workers
-3. Each Worker is the same and can take of everything
-4. Once worker is finished it does a callback to the reconciler operator for the specific reconciliation
-5. Worker is done
-6. Operator can scale workers down on demand, updates state on-demand
-
 ### Final Proposal
+
+TODO
 
 ### Questions Asked During Investigation
 
 #### One vs Many Operators for reconciliation?
 
-- PRO
-
-  - X
-
-- CON
-  - X
-
-Suggestion:
-
-Decision:
+While there certainly can be advantages for coupling certain controller logic together, the consensus for 
+Domain-Driven Design stands that Components should be managed independently from the Main Reconciliation Process. 
+Thus the recommendation is to provide a single Operator for Reconciliation (the previous `mothership`) and a 
+Component Reconciler for every coherent Domain of Kyma (e.g. a Monitoring Operator that can itself contain multiple 
+control loops / controllers)
 
 #### How do we reflect the Cluster State?
 
-- Approach A
-
-  - X
-
-- Approach B
-  - X
-
-Suggestion:
-
-Decision:
+While there are many ways to reflect cluster state, we want to make sure that the cluster is able to be viewed via 
+kubectl or API Interaction as easy as possible. The easiest way for us to allow this is by leveraging the kubernetes 
+built-in `status` field besides the spec to also track reconciliations. This allows us to have eventually consistent 
+clusters that do not rely on any worker queue to get processed but instead can be processed on demand by any free 
+operator taking care of the Cluster reconciliation.
 
 #### How do we protect the changes in the cluster from a user?
 
-- Approach A
-
-  - X
-
-- Approach B
-  - X
-
-Suggestion:
-
-Decision:
+While there are generally multiple approaches for this in a production cluster (e.g. limiting dangerous access to 
+`kyma-system` to SREs or running a dedicated control plane), we also will make use of admission hooks, validation 
+hooks as well as finalizers to enable a resilient interaction with the cluster CRs. We will avoid and stop any 
+interactions that could endanger the cluster integrity. However, there can still be manual interventions into the CR 
+status, which also means that resources should never be exposed to an untrusted source in order to ensure safe 
+reconciliation.
 
 #### One CRD vs Multiple CRDs for maintaining Reconciliation Configuration?
 
-- PRO
-
-  - X
-
-- CON
-  - X
-
-Suggestion:
-
-Decision:
-
-#### How much do we want to rely on Operator Native Communication vs HTTP based Service in a Deployment?
-
-- Approach A
-
-  - X
-
-- Approach B
-  - X
-
-Suggestion:
-
-Decision:
+While we will maintain One CRD for the Kyma Installation managed by the `kyma-operator`, we will also make use of a 
+generic Approach to integrate components dynamically based on a template. This template is a base for any component 
+that needs to be reconciled by our control loop. We will explicitly NOT have hard-coded CRDs for Components and want 
+to dynamically enhance a Kyma Control Plane with Components without having to deliver a new Operator Binary to the 
+Control Plane.
