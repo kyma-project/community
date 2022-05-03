@@ -6,40 +6,45 @@ This document investigates the side effects that may come up when, for example, 
 
 ## Setup
 
-The investigated configuration uses the `filesystem buffering`. When one of the log pipeline outputs fails, the logs are buffered on the file system. In contrast, the `in-memory` buffer has the disadvantage that if the Fluent Bit Pod is restarted, logs can be lost. During the test, we referred to the Fluent Bit knowledge article about [Buffering & Storage](https://docs.fluentbit.io/manual/administration/buffering-and-storage).
+The investigated configuration uses the `filesystem buffering`. When one of the log pipeline outputs fails, the logs are buffered on the filesystem. In contrast, the `in-memory` buffer has the disadvantage that if the Fluent Bit Pod is restarted, logs can be lost. During the test, we referred to the Fluent Bit knowledge article about [Buffering & Storage](https://docs.fluentbit.io/manual/administration/buffering-and-storage).
 
 The setup consisted of following items:
 1. Kyma with telemetry operator
 2. Two outputs, deployed in the Kyma cluster:
     - Loki, which comes with Kyma
-    -[Mock server](./assets/logpipeline-invstigation/mock-server.yaml)
-3. [Log generator daemon set](./assets/logpipeline-invstigation/log-generator.yaml) to generate a huge amount of logs to fill the filesystem buffer faster
-4. A [Function](./assets/logpipeline-invstigation/func.js) to check if the logs are being delivered when one of the outputs is down
+    - [Mock server](./assets/logpipeline-investigation/mock-server.yaml)
+3. [Log generator daemon set](./assets/logpipeline-investigation/log-generator.yaml) to generate a huge amount of logs to fill the filesystem buffer faster
+4. A [Function](./assets/logpipeline-investigation/func.js) to check if the logs are being delivered when one of the outputs is having an outage
 5. To simulate failures, the port of the service was changed so that the DNS resolution keeps working but logs won't be delivered.
 
 ## Test Cases
 
-### Case 1
-![a](./assets/logpipeline-invstigation/case-1/case-1.svg)
+### Setup 1
+This was not tested because of high resource overhead and increased complexity of the implementation of the telemetry operator.
+
+
+### Setup 2
+
+![a](./assets/logpipeline-investigation/setup-2/setup-2.svg)
 
 Setup:
-1. One input with two outputs (limiting the maximum number of chunks in the `filesystem` buffer) without rewrite tags
-2. Two log pipelines:
-   - [Loki](./assets/logpipeline-invstigation/case-1/loki.yaml)
-   - [Mock server](./assets/logpipeline-invstigation/case-1/mockserver.yml)
+- Two Inputs and two outputs (Loki (grafana-loki plugin) and mock server (http plugin)) without rewrite tags
+- Two logpipelines: 
+  - [loki](./assets/logpipeline-investigation/setup-2/loki.yml)
+  - [mockserver](./assets/logpipeline-investigation/setup-2/mock-server.yml)
 
-Result:
-- When one of the outputs is down, the filesystem buffer is filled up and only keeps 150M of latest data (old data is discarded first). Eventually, when the filesystem buffer at tail plugin is full, the output plugin for Loki stops as well.
-- When both outputs are down, the tail plugin is stopped after filling the filesystem buffer, even though the buffer was not completely full (104M/150M).
 
-### Case 2
-![a](./assets/logpipeline-invstigation/case-2/case-2.svg)
+Result
+- Each pipeline has its own fileystem buffer.
+- When both outputs are stopped, both tail plugins are losing logs. They keep the latest logs, but the amount of logs is different.
+### Setup 3a
+![a](./assets/logpipeline-investigation/setup-3a/setup-3a.svg)
 
 Setup:
-1. One input with two outputs (Loki (grafana-loki plugin) and mock server (http plugin)) with rewrite tags
+1. One input with two outputs (Loki (grafana-loki plugin) and mock server (http plugin)) with rewrite tags (with filesystem buffer)
 2. Two log pipelines:
-   - [Loki](./assets/logpipeline-invstigation/case-2/loki.yaml)
-   - [Mock server](./assets/logpipeline-invstigation/case-2/mockserver.yml)
+   - [Loki](./assets/logpipeline-investigation/setup-3a/loki.yaml)
+   - [Mock server](./assets/logpipeline-investigation/setup-3a/mockserver.yml)
 
 
 Result:
@@ -51,51 +56,51 @@ Result:
     [2022/04/21 14:38:24] [error] [input chunk] chunk 1-1650551903.999375896.flb would exceed total limit size in plugin http.1
     ```
 - When the Grafana-Loki plugin is stopped, it stops all the pipelines including mock server, even though that was working fine.
-- When mock server was down, the logs were still shipped to Loki.
+- When mock server was having an outage, the logs were still shipped to Loki.
 
 
-### Case 3
+### Setup 3b
 
 Setup:
 1. One input with two outputs (mock server and mock server) with rewrite tags
 2. Two log pipelines:
-   - [mockserver-1](./assets/logpipeline-invstigation/case-3/mockserver-1.yml)
-   - [mockserver-2](./assets/logpipeline-invstigation/case-3/mockserver-2.yml)
+   - [mockserver-1](./assets/logpipeline-investigation/setup-3b/mockserver-1.yml)
+   - [mockserver-2](./assets/logpipeline-investigation/setup-3b/mockserver-2.yml)
 
-![a](./assets/logpipeline-invstigation/case-3/case-3.svg)
+![a](./assets/logpipeline-investigation/setup-3b/setup-3b.svg)
 Result:
-- When both outputs are down, the filesystem buffer was filled and eventually the Fluent Bit Pod went down with error code `500` (most probably because of CPU throttling).
+- When both outputs are having an outage, the filesystem buffer was filled and eventually the Fluent Bit Pod was crashing with error code `500` (most probably because of CPU throttling).
 - Tail plugin kept pushing logs to the rewrite filesystem buffer, and they were eventually lost.
-### Case 4
+### Setup 3c
 Setup:
 1. One input with two outputs (Loki (Loki plugin), and mock server (http plugin)) with rewrite tags
 2. Two log pipelines:
-   - [Loki](./assets/logpipeline-invstigation/case-4/loki.yml)
-   - [Mock server](./assets/logpipeline-invstigation/case-4/mock-server.yml)
+   - [Loki](./assets/logpipeline-investigation/setup-3c/loki.yml)
+   - [Mock server](./assets/logpipeline-investigation/setup-3c/mock-server.yml)
 
-![a](./assets/logpipeline-invstigation/case-4/case-4.svg)
+![a](./assets/logpipeline-investigation/setup-3c/setup-3c.svg)
 
 Result:
-- Mock server was down. The Loki output kept working.
+- Mock server was having an outage. The Loki output kept working.
 - The chunks in the `filesystem buffer` are rolled: Old chunks are discarded; new ones created.
-- When Loki output was down, the mock server output kept working.
+- When Loki output was having an outage, the mock server output kept working.
 
-![mockserver-down](/assets/logpipeline-invstigation/case-4/dashboard-mock-down.png)
+![a-down](./assets/logpipeline-investigation/setup-3c/dashboard-loki-down.png)
 
 
-![loki-down](/assets/logpipeline-invstigation/case-4/dashboard-loki-down.png)
+![loki-down](./assets/logpipeline-investigation/setup-3c/dashboard-loki-down.png)
 
-### Case 5
+### Setup 3d
 Setup:
 1. One input with two outputs (Loki (Loki plugin), and mock server (http plugin)) without rewrite tags
 2. Two log pipelines:
-   - [Loki](./assets/logpipeline-invstigation/case-5/loki.yml)
-   - [Mock server](./assets/logpipeline-invstigation/case-5/mock-server.yml)
+   - [Loki](./assets/logpipeline-investigation/setup-3d/loki.yml)
+   - [Mock server](./assets/logpipeline-investigation/setup-3d/mock-server.yml)
 
-![a](./assets/logpipeline-invstigation/case-5/case-5.svg)
+![a](./assets/logpipeline-investigation/setup-3d/setup-3d.svg)
 
 Result:
-- Mock server was down. This led to the filling of the tail filesystem buffer.
+- Mock server was having an outage. This led to the filling of the tail filesystem buffer.
 - After the tail plugin filesystem buffer was full, it kept reading.
 - The chunks in the tail plugin filesystem buffer are rolled: Old chunks are discarded; new ones created.
 - Loki output stopped working as well.
@@ -104,21 +109,21 @@ Result:
 
 A known [Fluent Bit GitHub issue](https://github.com/fluent/fluent-bit/issues/4373) describes the same problem.
 
-### Case 6
+### Setup 4
+![a](./assets/logpipeline-investigation/setup-4/setup-4.svg)
+
 Setup:
-- Two Inputs and two outputs (Loki (grafana-loki plugin) and mock server (http plugin)) without rewrite tags
-- Two logpipelines: 
-  - [loki](./assets/logpipeline-invstigation/case-6/loki.yml)
-  - [mockserver](./assets/logpipeline-invstigation/case-6/mock-server.yml)
-![a](./assets/logpipeline-invstigation/case-6/case-6.svg)
+1. One input with two outputs (limiting the maximum number of chunks in the `filesystem` buffer) without rewrite tags
+2. Two log pipelines:
+   - [Loki](./assets/logpipeline-investigation/setup-4/loki.yaml)
+   - [Mock server](./assets/logpipeline-investigation/setup-4/mockserver.yml)
 
-Result
-- Each pipeline has its own fileystem buffer.
-- When both outputs are stopped, both tail plugins are losing logs. They keep the latest logs, but the amount of logs is different.
-
+Result:
+- When one of the outputs is having an outage, the filesystem buffer is filled up and only keeps 150M of latest data (old data is discarded first). Eventually, when the filesystem buffer at tail plugin is full, the output plugin for Loki stops as well.
+- When both outputs are having an outage, the tail plugin is stopped after filling the filesystem buffer, even though the buffer was not completely full (104M/150M).
 
 ## Summary
-We performed various tests and found that with filesystem buffering (through rewrite_tag filter) is necessary to prevent loss of logs when one of the output is down. However loss of logs cannot be prevented completely, if the buffer is filled up then fluentbit keeps only the latest logs.
+We performed various tests and found that with filesystem buffering (through rewrite_tag filter) is necessary to prevent loss of logs when fluent-bit pod is restarted. Additionally when one of output is having an outage, then the logs are still streamed to the other output. However loss of logs cannot be prevented completely, if the buffer is filled up then fluentbit keeps only the latest logs.
 
 Additionally following case wes tried
 1. With 2 input and 2 outputs and having `storage.max_chunks_pause on`. This option as mentioned in [documentation](https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration) did not apply to input filters. The fluentbit did not recongnize this option and the pod would not start. However applying to the service section did not have any affect.
