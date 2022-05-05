@@ -74,9 +74,11 @@ For Operator-based reconciliations, we want to enable maximum flexibility of the
 
 The main focus of the POC will be to prove the functionality of the Reconciliation Operator to work with all 3 modes independant of the final implementation. The POC needs to prove that we are able to reconcile a cluster remotely or in-cluster without a significant difference in reconciliation logic.
 
+![high_level_view_operator-reconciliation](assets/high_level_view_operator-reconciliation.png)
+
 ### Single-Cluster (Small-Scale)
 
-![single_cluster_configuration.png](assets/single_cluster_configuration.png)
+![single_cluster_configuration](assets/single_cluster_configuration.png)
 
 In this setup, the only things necessary for reconciliation are deployed in a single cluster that is provisioned externally (in the example above through k3d). The Kyma CLI is able to quickly bootstrap a cluster into existence through interacting with the k3d, and then deploying the Provisioning Operator directly into the Cluster.
 
@@ -86,6 +88,7 @@ The Reconciliation Operator will update the state custom resource which is regul
 
 In addition, the Busola UI will be deployable in the cluster and can make the Provisioning Operator visualizable in the cluster making the setup fully encapsulated aside from the initial cluster provisioning, making it perfect for small-scale deployments.
 
+
 ### Centralized Control Plane Configurations
 
 ![centralized_control_plane_configurations.png](assets/centralized_control_plane_configurations.png)
@@ -93,6 +96,7 @@ In addition, the Busola UI will be deployable in the cluster and can make the Pr
 In this scenario, The Shoot Cluster will rely purely on the Control Plane to have its reconciliation triggered and executed, in a similar offloading paradigm as the previous mothership reconciler. This has the major advantage of us being able to offload the work into the control plane, but comes with the issue that the operator
 reconciling the cluster has to remotely access the cluster, making Watch API interactions costly and potentially error-prone. To combat this the Provisioning Operator can use the State CR to regularly react in a given interval and reschedule and trigger the Reconciliation Operator whenever the reconciliation is still pending or failing. In comparison
 to the current reconciliation model, it will not update the state of the reconciliation itself, but will rely purely on the state CR managed in the Control Plane. This can potentially lead to scalability issues when dealing with a big amount of clusters and their state.
+
 
 ### Lightweight Control Plane Configurations
 
@@ -127,12 +131,6 @@ Ideally the SRE is able to remediate the Cluster Reconciliation by backing up th
 exact error state and time through issuing of timed Kubernetes Events, our Control-Plane monitoring stack, as well 
 as the individual Component Status in the CRs for that Kyma Release, allowing for much more fine-grained debugging 
 control.
-
-## Low Level Implementation of In-Cluster Reconciliation - TODO
-
-### Final Proposal
-
-TODO
 
 ### Questions Asked During Investigation
 
