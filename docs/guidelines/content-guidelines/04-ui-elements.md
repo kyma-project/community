@@ -28,7 +28,7 @@ Contrary to the regular technical documentation, UI elements follow different gu
 
 When designing a button label, you must be as straightforward and concise as possible, since you have very limited space to convey the message. Moreover, buttons are used to invite a user to perform an action. Make them as inviting and intuitive as possible. To do so:
 
-- Use action verbs that explain what will happen when a user presses the button, without requiring them to read any supporting text. Depending on your needs, you can also use plain adverb. Alternatively, add a noun to indicate what a verb or an adverb refers to. Do **not** use articles and punctuation. They will only add unnecessary "word noise" to your button label.
+- Use action verbs that explain what will happen when a user presses the button, without requiring them to read any supporting text. Depending on your needs, you can also use plain adverb. Alternatively, add a noun to indicate what a verb or an adverb refers to. Do **not** use articles and punctuation. They will only add unnecessary "word pollution" to your button label.
 
   ✅ Save <br>
   ✅ Next <br>
@@ -47,88 +47,44 @@ When designing a button label, you must be as straightforward and concise as pos
 
 ## Tooltips
 
-Tooltips are user-triggered messages that provide additional information about a page element or feature. In other words, if you have nothing to say that adds value to the user, don’t use a tooltip. It’s not only unnecessary, but annoying. In general, keep your tooltips to 1-2 sentences. If there’s more you need to say, you can add a ‘Learn more’ link leading to a Help article.
+Tooltips are messages that provide additional information about a certain UI element. Still, the text within a tooltip should contain information that brings value to the user, so avoid adding content that may be irrelevant. Tooltips shouldn't also contain information that is necessary to complete a given task. Such information should be visible at first glimpse. Otherwise, users will have to remember the content of a tooltip and refer back to it after the tooltip is deactivated. Here are some general guidelines on creating tooltip texts:
 
-1. Don’t use tooltips for information that is vital to task completion.
+- Keep your tooltips 1-2 sentences long. If you need to explain a concept in more details, create a separate document and link to it instead of providing the whole explanation in a tooltip.
+- Use sentence case inside a tooltip and follow punctuation rules.
+- Use tooltips to provide examples, for example:
 
-Users shouldn’t need to find a tooltip in order to complete their task. Tooltips are best when they provide additional explanation for a form field unfamiliar to some users or reasoning for what may seem like an unusual request. Remember that tooltips disappear, so instructions or other directly actionable information, like field requirements, shouldn’t be in a tooltip. (If it is, people will have to commit it to their working memory in order to be able to act upon it.)
+  ✅ The example of a domain name is `yourdomain.example.com`.
 
-2. Provide brief and helpful content inside the tooltip.
-
-Tooltips with obvious or redundant text are not beneficial to users. If you can’t think of particularly helpful content, don’t offer a tooltip. Otherwise, you’ll just add information pollution to your UI and waste the time of any users unlucky enough to activate that tooltip.
-
-Provide tooltips for unlabeled icons.
-Most icons have some level of ambiguity, which is why we recommend text labels for all icons. If you’re too stubborn to provide text labels for the icons on your site, the least you can do is provide your users with a descriptive tooltip.
-
-7. Give examples
-
-Nothing beats a good example to illustrate a point. Take advantage of the extra space provided by a tooltip to inspire users with real examples:
-
-### Label tooltips
-
-unline contextual tooltips, no dot
-title case
-
-### Contextual tooltips
-
-6. Punctuate sentences
-
-You may be tempted to drop the period for a one-line tooltip. However, a 2-3 sentence tooltip with no punctuation would obviously look strange. So to stay consistent and play it safe, punctuate.  
-
-
+- Omit punctuation in case of one-line label tooltips (for more information, see [Headings and labels](#headings-and-labels)).
 
 
 ## Messages
 
-Informational messages (aka passive notifications, something is ready to view)
+There are many different types of messages appearing in every UI. The most common ones are pop-ups and regular messages that  users can find on your page. To avoid information pollution, make sure that all your messages are informative and useful to the users. Moreover:
 
-If there are full sentences, let's use punctuation. Contrary wise, if the message is only a clause (fragment of a sentence), punctuation feels odd and redundant.
-
-### Pop-up messages / hoverbox
-
-### Drop-down messages
-
-Gray out any unavailable options instead of removing them: any items that cannot b­­e selected should remain in view. For extra UX credit, consider showing a short balloon help message if users hover over a grayed-out option for more than a second, explaining why that option is disabled and how to make it active.
-If disabled items are removed, the interface loses spatial consistency and becomes harder to learn.
-
-Keep the menu label or description in view when the dropdown is open. Menu titles provide scope and direction by reminding users what they are choosing. Whenever the labels are obscured or removed when the menu is open, users must recall what they need to select before they can take action. Plan for interruptions that can disrupt the user’s task at any time.
+- Use punctuation in case of messages that are full sentences. In case of clauses (fragments of a sentence), omit punctuation.
+- Use title case for the title of your pop-up message. Keep it as simple as possible and omit punctuation. (?)
 
 ### Error messages
 
+Error message is a special type of message you must be really careful about. It informs about unsuccessful outcome of an action or conveys any other negative information, so you must choose your words wisely not to upset the user. Here are some tips that will help you design your error message:  
 
-Avoid the word “please,” except in situations in which the user is asked to do something inconvenient (such as waiting) or the software is to blame for the situation. ... Error messages need to clearly convey information to the user and if an error is serious, the tone should reflect that.
+- Describe what happened, why it happened, and what the user can do to fix the occurred issue. Avoid abstract messages that only inform that something went wrong. This could make the user feel frustrated not only about the fact that the error has occurred, but also for the fact they cannot do anything about it. However, do not describe the whole troubleshooting in an error message. Link to a separate troubleshooting guide instead.
+- Avoid technical terms and jargon. Every user should be able to understand the message, regardless their technical knowledge. Use language as plain as possible.  
+- Don't blame the user for making an error. Focus on the problem instead, for example:
 
-When it comes to writing error messages, clarity is your top priority. You need to describe what happened, why it happened, and what the user can do about it. The message should be written in plain language so that the target users can easily understand both the problem and the solution.
+  ✅ Your password is incorrect. <br>
+  ⛔️ You have entered an incorrect password.
 
-Avoid abstract error messages
-Abstract error messages don’t contain enough information about the problem. In many cases, they simply state the fact that something went wrong and don’t help users understand the root cause of the problem. Don’t just assume people know about the context of a message—be explicit and indicate what exactly has gone wrong.
+- Avoid title case. It can give users a feeling they are being looking down on. (what about labels/titles? to clarify)
 
-Get rid of technical terms
-If an error message contains technical terms or jargon, the user gets confused. The error message should always describe the problem in terms of target user actions or goals. Even when your users are tech-savvy, it’s still better to use non-technical terms that everyone can easily understand.
+## Headings and labels
 
-Don’t try to explain a complicated troubleshooting process within an error message. Instead, use progressive disclosure to provide this information. The section that contains the steps should be hidden by default, and when the users want to learn more about the problem, they click “How to fix it.”
+Labels are one-line texts that appear in various types of UI elements, such as titles and headings, forms, and drop-down menus.
 
-Avoid phrases like“You did,” “Your action caused.”
-Some error messages are phrased in a way that accuses the user of making an error; errors are already frustrating, and there’s no need to add to frustration with judgment. In the end, these messages are an important, albeit, small way that we communicate and build relationships with our users. Always focus on the problem, not the user action that led to the problem.
+- Use title case for your labels. (?)
+- Omit punctuation to avoid word pollution. 
 
-Here are two ways you can handle a situation when the user enters incorrect login credentials:
-
-Don’t say: You have entered an incorrect login or password.
-Do say: Your login and password do not match.
-
-4. Give users a solution
-Imagine you wrote a very important email and clicked the “Send” button. Right after that you see the message, “Your email could not be sent,” without any details. As a result, you don’t know what you can do about it. You have to pause your task and invest your time in finding the solution to the problem.
-
-8. Avoid Uppercase Text
-Upper case text is difficult to read it gives an impact of shouting on user.
-Error message is a place where user is informed about some critical scenario, so using upper case text can give him a feeling of discouragement.
-
-## Labels
-
-2. Without labels, users cannot check their work before submitting a form.
-The lack of labels makes it impossible for customers to glance through the form and make sure that their responses are correct. Similarly, browsers that autocomplete form fields may fill in information incorrectly.
-
-title case
 
 ## Placeholder texts
 
@@ -156,6 +112,13 @@ In an attempt to shorten the length of a form or reduce visual noise, designers 
 -
 
 ### dropdown menu placeholders
+
+### Drop-down messages
+
+Gray out any unavailable options instead of removing them: any items that cannot b­­e selected should remain in view. For extra UX credit, consider showing a short balloon help message if users hover over a grayed-out option for more than a second, explaining why that option is disabled and how to make it active.
+If disabled items are removed, the interface loses spatial consistency and becomes harder to learn.
+
+Keep the menu label or description in view when the dropdown is open. Menu titles provide scope and direction by reminding users what they are choosing. Whenever the labels are obscured or removed when the menu is open, users must recall what they need to select before they can take action. Plan for interruptions that can disrupt the user’s task at any time.
 
 ### Reference
 
