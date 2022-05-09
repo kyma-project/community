@@ -2,6 +2,23 @@
 
 This document proposes and evaluates a valid design for a custom operator. It is needed to enable a dynamic in-cluster logging configuration with `Fluent Bit`, as outlined in [Spike: Dynamic configuration of logging backend #11105](https://github.com/kyma-project/kyma/issues/11105).
 
+## Table of contents
+
+- [Criteria](#criteria)
+- [Proposal](#proposal)
+  - [Architecture](#architecture)
+  - [Workflow for the User](#workflow-for-the-user)
+- [Overview log routing scenarios and input configuration](#overview-log-routing-scenarios-and-input-configuration)
+- [Fluent Bit log routing](#fluent-bit-log-routing)
+  - [Scenario 1: Tags managed by the telemetry operator](#scenario-1-tags-managed-by-the-telemetry-operator)
+  - [Scenario 2: Managed tag per pipeline](#scenario-2-managed-tag-per-pipeline)
+  - [Scenario 3: All Log Pipelines use the same base-tag](#scenario-3-all-log-pipelines-use-the-same-base-tag)
+- [Fluent Bit input configuration](#fluent-bit-input-configuration)
+  - [Setup 1: Managed Fluent Bit Daemon Set per Log Pipeline](#setup-1-managed-fluent-bit-daemon-set-per-log-pipeline)
+  - [Setup 2: Dedicated input plugin per Log Pipeline](#setup-2-dedicated-input-plugin-per-log-pipeline)
+  - [Setup 3: Single input plugin with buffered `rewrite_tag` filter per Log Pipeline](#setup-3-single-input-plugin-with-buffered-rewrite_tag-filter-per-log-pipeline)
+  - [Setup 4: Shared input plugin](#setup-4-shared-input-plugin)
+
 ## Criteria
 - Customers can place fluent-bit config snippets as k8s resource in any namespace.
 - The customers' configuration must not be reset during reconciliation, even though the central configuration might be overwritten at any time.
@@ -112,6 +129,31 @@ The CRD contains a separate section for the different parts for the Fluent Bit c
 
 To configure Fluent Bit, the user must create a new CR regarding to the CRD of this operator. Then, this operator will notice the new or changed CR, and will create or update a Config Map for Fluent Bit. Before the Config Map is applied, the operator uses the `dry-run` feature of Fluent Bit to validate the new configuration. If the check was successful, the new Config Map is applied and Fluent Bit is restarted.
 
+## Overview Log routing scenarios and input configuration
+
+The possible log routing scenarios offer the following combinations with the Fluent Bit input configurations:
+
+|                 | Scenario 1 | Scenario 2 | Scenario 3 |
+|-----------------|------------|------------|------------|
+| Setup 1         | x          | x          | x          |
+| Setup 2         | x          | x          |            |
+| Setup 3         | x          | x          |            |
+| Setup 4         |            |            | x          |
+
+The following sections describe the details of the log routing scenarios and input configurations.
+For details, see the [comparison with different scenarios of log pipeline routing](./07-multiple-logpipeline-investigation.md).
+
+After trying out various possibilities of log pipeline, we decided to choose go with [Setup 3c ](./07-multiple-logpipeline-investigation.md/#setup-3c) for following reasons:
+1. In the event of failure of one output, fluent-bit would still push logs to other output.
+2. The rewrite tag with filesystem buffer enables the logs to buffered as chunks in case of failure of one outputs.
+
+however, in case of failure of output for prolonged period of time and the filesystem buffer being full, there is loss of logs seen.
+
+We still have to decide how the rewrite tag should be configured. There are following proposals:
+-  The users configure it themselves if needed. The users need documentation how to use rewrite tags when logs must be sent to multiple logging backends, along with an example how to do it.
+
+- The rewrite tag, along with name, is configured dynamically when the user creates a new pipeline.
+
 ## Fluent-Bit Log Routing
 
 The Log Pipeline CRD enables the user to define filter and output elements of a Fluent Bit pipeline. Therefore, a tag that can be consumed by user-defined pipeline elements must be provided by Kyma (either the static Fluent Bit configuration or the telemetry operator). The following section describes the different options to provide a log stream under a specific tag.
@@ -218,26 +260,3 @@ Advantages:
 
 Disadvantages:
 * A dysfunctional output stalls all pipelines (no isolation).
-
-The possible log routing scenarios from the previous section offer the following combinations with the Fluent Bit input configurations:
-
-|                 | Scenario 1 | Scenario 2 | Scenario 3 |
-|-----------------|------------|------------|------------|
-| Setup 1         | x          | x          | x          |
-| Setup 2         | x          | x          |            |
-| Setup 3         | x          | x          |            |
-| Setup 4         |            |            | x          |
-
-
-For details, see the [comparison with different scenarios of log pipeline routing](./07-multiple-logpipeline-investigation.md).
-
-After trying out various possibilities of log pipeline, we decided to choose go with [Setup 3c ](./07-multiple-logpipeline-investigation.md/#setup-3c) for following reasons:
-1. In the event of failure of one output, fluent-bit would still push logs to other output.
-2. The rewrite tag with filesystem buffer enables the logs to buffered as chunks in case of failure of one outputs.
-
-however, in case of failure of output for prolonged period of time and the filesystem buffer being full, there is loss of logs seen.
-
-We still have to decide how the rewrite tag should be configured. There are following proposals:
--  The users configure it themselves if needed. The users need documentation how to use rewrite tags when logs must be sent to multiple logging backends, along with an example how to do it.
-
-- The rewrite tag, along with name, is configured dynamically when the user creates a new pipeline.
