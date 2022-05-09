@@ -4,9 +4,9 @@ title: UI elements
 
 Contrary to the regular technical documentation, UI elements follow different guidelines and best practices. Due to the limited space you can use to convey a message, your UI text must be as precise and concise as possible. Here are some general guidelines you should follow when designing and writing content for UI elements:
 
-- Use active voice and action-oriented language, starting with a verb.
-- Use title case for short texts, such as labels or headings, and sentence case for messages and explanations, unless specified otherwise.
-- Use plural for the object names as users usually interact with multiple objects within the program:
+- Use active voice and action-oriented language.
+- Use title case for short one-line texts, such as labels or headings, and sentence case for messages and explanations, unless specified otherwise. (?)
+- Use plural for the object names, as users usually interact with multiple objects within the program, for example:
 
   ✅ Service Instances <br>
   ⛔️ Service Instance
@@ -24,7 +24,16 @@ Contrary to the regular technical documentation, UI elements follow different gu
   ✅ USD <br>
   ⛔️ $
 
-## Buttons
+
+## Labels
+
+Labels are one-line texts that appear in various types of UI elements, such as buttons, titles and headings, forms, and drop-down menus. When designing labels for the UI elements in the Kyma project, make sure to:
+
+- Use title case for titles and headings.
+- Use sentence case in forms, drop-down menus, and button labels.
+- Omit punctuation to avoid "word pollution".
+
+### Buttons
 
 When designing a button label, you must be as straightforward and concise as possible, since you have very limited space to convey the message. Moreover, buttons are used to invite a user to perform an action. Make them as inviting and intuitive as possible. To do so:
 
@@ -55,7 +64,7 @@ Tooltips are messages that provide additional information about a certain UI ele
 
   ✅ The example of a domain name is `yourdomain.example.com`.
 
-- Omit punctuation in case of one-line label tooltips (for more information, see [Headings and labels](#headings-and-labels)).
+- Omit punctuation in case of one-line label tooltips. For more information, see [Labels](#labels).
 
 
 ## Messages
@@ -63,7 +72,7 @@ Tooltips are messages that provide additional information about a certain UI ele
 There are many different types of messages appearing in every UI. The most common ones are pop-ups and regular messages that  users can find on your page. To avoid information pollution, make sure that all your messages are informative and useful to the users. Moreover:
 
 - Use punctuation in case of messages that are full sentences. In case of clauses (fragments of a sentence), omit punctuation.
-- Use title case for the title of your pop-up message. Keep it as simple as possible and omit punctuation. (?)
+- Use title case for the title of your pop-up message. Keep it as simple as possible and omit punctuation. For more information, see [Labels](#labels).
 
 ### Error messages
 
@@ -78,26 +87,18 @@ Error message is a special type of message you must be really careful about. It 
 
 - Avoid title case. It can give users a feeling they are being looking down on. (what about labels/titles? to clarify)
 
-## Headings and labels
-
-Labels are one-line texts that appear in various types of UI elements, such as titles and headings, forms, and drop-down menus. Due to extremely limited space you have to design a label, make sure to:
-
-- Use title case. (?)
-- Omit punctuation to avoid "word pollution".
-
 
 ## Placeholder texts
 
-A placeholder is a tricky UI element that in general should be avoided. Placeholders tend to disappear when the user clicks a given form field, so it requires them to use their memory, which increases the memory load and hurts usability.
+A placeholder is a tricky UI element that in general should be avoided. Placeholders tend to disappear when the user clicks a given form field, so it requires them to use their memory, which increases memory load and hurts usability.
 
 - Use placeholders to give an additional hint, description, or example.
-- Use placeholders in combination with labels that do not disappear and provide all the necessary information visible at all times.
-- Don't place information essential to complete a task in a placeholder.
+- Use placeholders in combination with labels that do not disappear and provide all the necessary information visible at all times. Don't place information essential to complete a task in a placeholder. Also, do not repeat the same information in a label and a placeholder. In such a case, give up on using a placeholder. 
 - Use sentence case for your placeholder.
-- Omit punctuation in case of one-line placeholders.
+- Omit full stop at the end of the placeholder text.
 
 
-### Reference
+## Reference
 
 Follow these resources for further reference:
 - [UI Text Guidelines for SAP Fiori Apps](https://experience.sap.com/internal/fiori-design-web/ui-text-guidelines-for-sap-fiori/)
