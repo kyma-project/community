@@ -4,11 +4,11 @@ The telemetry operator comes with a pipeline configured to push logs to Loki. Ad
 
 This document investigates the side effects that may come up when, for example, the logging backend defined by users stops working.
 
-## Setup
+## Basic Setup
 
 The investigated configuration uses the `filesystem buffering`. When one of the log pipeline outputs fails, the logs are buffered on the filesystem. In contrast, the `in-memory` buffer has the disadvantage that if the Fluent Bit Pod is restarted, logs can be lost. During the test, we referred to the Fluent Bit knowledge article about [Buffering & Storage](https://docs.fluentbit.io/manual/administration/buffering-and-storage).
 
-The setup consisted of following items:
+The setup consisted of the following items:
 1. Kyma with telemetry operator
 2. Two outputs, deployed in the Kyma cluster:
     - Loki, which comes with Kyma
@@ -17,7 +17,7 @@ The setup consisted of following items:
 4. A [Function](./assets/logpipeline-investigation/func.js) to check if the logs are being delivered when one of the outputs is having an outage
 5. To simulate outage, the port of the service of the output was changed so that the DNS resolution keeps working but logs won't be delivered.
 
-Behaviour of fluent-bit is different when using `in-memory` buffer and `filesystem` buffer. With `in-memory` buffer the input is paused if an output is having an outage. Whereas in case of `filesystem` buffer the logs are still read by the tail plugin and stored in the filesystem buffer until the output is available again. However, logs are dropped if the fileystem buffer is full.
+Fluent Bit behaves differently for `in-memory` buffer and `filesystem` buffer: With `in-memory` buffer, the input is paused if an output is having an outage. With `filesystem` buffer, the logs are still read by the tail plugin and stored in the filesystem buffer until the output is available again. However, logs are dropped if the fileystem buffer is full.
 
 ## Test Cases
 
@@ -30,9 +30,9 @@ This was not tested because of high resource overhead and increased complexity o
 ![a](./assets/logpipeline-investigation/setup-2/setup-2.drawio.svg)
 
 Setup:
-- Two Inputs and two outputs (Loki (grafana-loki plugin) and http output (http plugin)) without rewrite tags
-- Two logpipelines: 
-  - [loki](./assets/logpipeline-investigation/setup-2/loki.yml)
+- Two inputs and two outputs (Loki (grafana-loki plugin) and http output (http plugin)) without rewrite tags
+- Two log pipelines: 
+  - [Loki](./assets/logpipeline-investigation/setup-2/loki.yml)
   - [Http output](./assets/logpipeline-investigation/setup-2/mock-server.yml)
 - [telemetry config](./assets/logpipeline-investigation/setup-2/telemetry-config)
 
@@ -46,12 +46,12 @@ Result
 Setup:
 1. One input with two outputs (Loki (grafana-loki plugin) and Http output (http plugin)) with rewrite tags (with filesystem buffer)
 2. Two log pipelines:
-   - [Loki](./assets/logpipeline-investigation/setup-3a/loki.yaml)
+   - [Loki](./assets/logpipeline-investigation/setup-3a/loki.yml)
    - [Http output](./assets/logpipeline-investigation/setup-3a/mockserver.yml)
 
 
 Result:
-- Output chunking keeps with 150M of newest data.
+- Output chunking keeps 150M of newest data.
 - The tail plugin sends the data to the next phase of the pipeline (filter plugin). If the output is not working, only the filesystem buffer at the rewrite tag is filled and the tail plugin buffer isn't filled.
 - When the filesystem buffer is full, error logs state this fact, and that the old logs are discarded.
     ```unix
@@ -74,7 +74,9 @@ Setup:
 Result:
 - When both outputs are having an outage, the filesystem buffer was filled and eventually the Fluent Bit Pod was crashing with error code `500` (most probably because of CPU throttling).
 - Tail plugin kept pushing logs to the rewrite filesystem buffer, and they were eventually lost.
+
 ### Setup 3c
+
 Setup:
 1. One input with two outputs (Loki (Loki plugin), and http output (http plugin)) with rewrite tags
 2. Two log pipelines:
@@ -107,7 +109,7 @@ Result:
 - After the tail plugin filesystem buffer was full, it kept reading.
 - The chunks in the tail plugin filesystem buffer are rolled: Old chunks are discarded; new ones created.
 - Loki output stopped working as well.
-- The logs are stored in filesystem buffer before applying the kuberenets filter. There is a risk of not being able to fetch the kubernetes metadata of the logs. This applies if the pod has been terminated before the logs have been read from the filesystem again for next stage of pipeline processing.
+- The logs are stored in filesystem buffer before applying the Kubernetes filter. If the Pod has been terminated before the logs have been read from the filesystem again for next stage of pipeline processing, there is a risk that the Kubernetes metadata of the logs can't be fetched.
 
 
 A known [Fluent Bit GitHub issue](https://github.com/fluent/fluent-bit/issues/4373) describes the same problem.
@@ -126,8 +128,8 @@ Result:
 - When both outputs are having an outage, the tail plugin is stopped after filling the filesystem buffer, even though the buffer was not completely full (104M/150M).
 
 ## Summary
-We performed various tests and found that with filesystem buffering (through rewrite_tag filter) is necessary to prevent loss of logs when fluent-bit pod is restarted. Additionally when one of output is having an outage, then the logs are still streamed to the other output. However loss of logs cannot be prevented completely, if the buffer is filled up then fluentbit keeps only the latest logs.
+We performed various tests and found that with filesystem, buffering (through rewrite_tag filter) is necessary to prevent loss of logs when fluent-bit pod is restarted. Additionally, when one of the outputs is having an outage, the logs are still streamed to the other output. However, loss of logs cannot be prevented completely: If the buffer is filled up, Fluent Bit keeps only the latest logs.
 
-Additionally following case wes tried
-1. With 2 input and 2 outputs and having `storage.max_chunks_pause on`. This option as mentioned in [documentation](https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration) did not apply to input filters. The fluentbit did not recongnize this option and the pod would not start. However applying to the service section did not have any affect.
+Additionally, we tried the following scenarios:
+1. With two inputs and two outputs and having `storage.max_chunks_pause on`. This option, as mentioned in [documentation](https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration), did not apply to input filters. The Fluent Bit did not recognize this option and the Pod did not start. However, applying the setup to the service section did not have any affect.
 
