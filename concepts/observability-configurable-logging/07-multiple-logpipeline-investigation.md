@@ -1,4 +1,21 @@
-# Objective
+# Comparison of log pipeline setups
+
+## Table of contents
+
+- [Objective](#objective)
+- [Basic Setup](#basic-setup) 
+- [Test Cases](#test-cases)
+  - [Setup 1](#setup-1)
+  - [Setup 2](#setup-2)
+  - [Setup 3a](#setup-3a)
+  - [Setup 3b](#setup-3b)
+  - [Setup 3c](#setup-3c)
+  - [Setup 3d](#setup-3d)
+  - [Setup 4](#setup-4)
+- [Summary](#summary)
+
+
+## Objective
 
 The telemetry operator comes with a pipeline configured to push logs to Loki. Additionally, Kyma users can define their own pipeline and push the logs to their own logging backend.
 
