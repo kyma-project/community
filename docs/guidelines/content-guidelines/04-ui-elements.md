@@ -80,45 +80,22 @@ Error message is a special type of message you must be really careful about. It 
 
 ## Headings and labels
 
-Labels are one-line texts that appear in various types of UI elements, such as titles and headings, forms, and drop-down menus.
+Labels are one-line texts that appear in various types of UI elements, such as titles and headings, forms, and drop-down menus. Due to extremely limited space you have to design a label, make sure to:
 
-- Use title case for your labels. (?)
-- Omit punctuation to avoid word pollution. 
+- Use title case. (?)
+- Omit punctuation to avoid "word pollution".
 
 
 ## Placeholder texts
 
-A common implementation is by inserting instructions within form fields. Unfortunately, user testing continually shows that placeholders in form fields often hurt usability more than help it.
+A placeholder is a tricky UI element that in general should be avoided. Placeholders tend to disappear when the user clicks a given form field, so it requires them to use their memory, which increases the memory load and hurts usability.
 
-Labels tell users what information belongs in a given form field and are usually positioned outside the form field. Placeholder text, located inside a form field, is an additional hint, description, or example of the information required for a particular field. These hints typically disappear when the user types in the field.
+- Use placeholders to give an additional hint, description, or example.
+- Use placeholders in combination with labels that do not disappear and provide all the necessary information visible at all times.
+- Don't place information essential to complete a task in a placeholder.
+- Use sentence case for your placeholder.
+- Omit punctuation in case of one-line placeholders.
 
-If the user forgets the hint, which people often do while filling out long forms, he has to delete what he wrote and, in some cases, click away from the field to reveal the placeholder text again.
-
-Using placeholder text in combination with form labels is a step in the right direction. Labels outside the form fields make the essential information visible at all times, while placeholder text inside form fields is reserved for supplementary information. However, even when using labels, placing important hints or instructions within a form field can still cause the 7 issues mentioned above, albeit with less severity. If some of the fields require an extra description that is essential to completing the form correctly, it’s best to place that text outside the field so that it is always visible.
-
-The default light-grey color of placeholder text has poor color contrast against most backgrounds. For users with a visual impairment, poor color contrast makes it difficult to read the text. Because not all browsers allow placeholder text to be styled using CSS, this is a difficult issue to mitigate.
-Users with cognitive or motor impairments are more heavily burdened.  As we saw, placeholders can be problematic for all users: disappearing placeholders increase the memory load; persistent dimmable placeholders cause confusion when they look clickable but aren’t, and placeholders that do not disappear require more keyboard or mouse interaction to be deleted. These difficulties are magnified for people with cognitive or motor impairments.
-Not all screen readers read placeholder text aloud. Blind or visually impaired users may miss the hint completely if their software does not speak the placeholder content.
-
-never use placeholder as a label!
-
-In an attempt to shorten the length of a form or reduce visual noise, designers use placeholder text as an input label. This practice places a burden on short-term memory. The label disappears as soon as the user clicks and/or types. The entry must be deleted to expose the label again.
-
- Providing an example of the needed input helps a user understand the request. However, incorporating the example as placeholder text causes issues including disappearance on focus, confusion regarding what has been entered, and reduction of the input acting as an affordance. As an alternative, example text can be placed below the input field.
-
- -Placeholders should be of a lighter value than input text
-- Placeholders should be visible on all screens
-- Placeholders should not disappear when a user clicks into the input
--
-
-### dropdown menu placeholders
-
-### Drop-down messages
-
-Gray out any unavailable options instead of removing them: any items that cannot b­­e selected should remain in view. For extra UX credit, consider showing a short balloon help message if users hover over a grayed-out option for more than a second, explaining why that option is disabled and how to make it active.
-If disabled items are removed, the interface loses spatial consistency and becomes harder to learn.
-
-Keep the menu label or description in view when the dropdown is open. Menu titles provide scope and direction by reminding users what they are choosing. Whenever the labels are obscured or removed when the menu is open, users must recall what they need to select before they can take action. Plan for interruptions that can disrupt the user’s task at any time.
 
 ### Reference
 
