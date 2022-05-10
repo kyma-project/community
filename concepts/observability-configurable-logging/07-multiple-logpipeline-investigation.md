@@ -57,7 +57,9 @@ Setup:
 Result
 - Each pipeline has its own fileystem buffer.
 - When both outputs are having outage, both tail plugins are losing logs. The buffer in the tail plugin stores the latest logs, but the amount of logs is different.
+
 ### Setup 3a
+
 ![a](./assets/logpipeline-investigation/setup-3a/setup-3a.drawio.svg)
 
 Setup:
@@ -113,6 +115,7 @@ Result:
 ![loki-down](./assets/logpipeline-investigation/setup-3c/dashboard-loki-down.png)
 
 ### Setup 3d
+
 Setup:
 1. One input with two outputs (Loki (Loki plugin), and http output (http plugin)) without rewrite tags
 2. Two log pipelines:
@@ -132,6 +135,7 @@ Result:
 A known [Fluent Bit GitHub issue](https://github.com/fluent/fluent-bit/issues/4373) describes the same problem.
 
 ### Setup 4
+
 ![a](./assets/logpipeline-investigation/setup-4/setup-4.drawio.svg)
 
 Setup:
