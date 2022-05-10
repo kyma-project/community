@@ -17,9 +17,7 @@ The `template-repository` consists of:
 
 * [CODE_OF_CONDUCT.md](https://github.com/kyma-project/template-repository/blob/main/CODE_OF_CONDUCT.md) - This document is a ready-to-use template which provides a link to the general `CODE_OF_CONDUCT.md` document from the `community` repository.
 
-* [OWNERS](https://github.com/kyma-project/template-repository/blob/main/OWNERS) - In this document, specify the owners of particular parts of your repository. The owners are automatically added as reviewers when you open a pull request that modifies the code and content they own.
-
-* [OWNERS_ALIASES](https://github.com/kyma-project/template-repository/blob/main/OWNERS_ALIASES) - This file contains the aliases that group the GitHub usernames. Use it when you want to use group names for granting ownership across the repository.
+* [CODEOWNERS](https://github.com/kyma-project/template-repository/blob/main/CODEOWNERS) - In this document, specify the owners of particular parts of your repository. The owners are automatically added as reviewers when you open a pull request that modifies the code and content they own.
 
 * [CONTRIBUTING.md](https://github.com/kyma-project/template-repository/blob/main/CONTRIBUTING.md) - This template makes a reference to the [contributing rules](../../contributing/02-contributing.md) that contain the general guidance from the `community` repository and describes the rules for contributing to all Kyma repositories. If there is any additional, project-specific information that you want to add to your project's `CONTRIBUTING.md` document, add them under the same sections as in the general contributing guide.
 
