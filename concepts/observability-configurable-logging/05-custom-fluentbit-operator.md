@@ -144,12 +144,12 @@ The following sections describe the details of the log routing scenarios and inp
 For details, see the [comparison with different scenarios of log pipeline routing](./07-multiple-logpipeline-investigation.md).
 
 After trying out various possibilities of log pipelines, we decided to go with [Setup 3c](./07-multiple-logpipeline-investigation.md#setup-3c) for the following reasons:
-1. If one output fails, Fluent Bit will still push logs to the other output.
-2. The rewrite tag with filesystem buffer enables the logs to buffered as chunks in case of failure of one outputs.
+- If one output fails, Fluent Bit will still push logs to the other output.
+- The rewrite tag with filesystem buffer enables the logs to buffered as chunks if one output fails.
 
-however, in case of failure of output for prolonged period of time and the filesystem buffer being full, there is loss of logs seen.
+However, if an output fails for a prolonged period of time and the filesystem buffer is full, logs are lost.
 
-We still have to decide how the rewrite tag should be configured. There are following proposals:
+We still have to decide how the rewrite tag should be configured. There are the following proposals:
 -  The users configure it themselves if needed. The users need documentation how to use rewrite tags when logs must be sent to multiple logging backends, along with an example how to do it.
 
 - The rewrite tag, along with name, is configured dynamically when the user creates a new pipeline.

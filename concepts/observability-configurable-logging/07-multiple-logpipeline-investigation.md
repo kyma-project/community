@@ -149,7 +149,9 @@ Result:
 - When both outputs are having an outage, the tail plugin is stopped after filling the filesystem buffer, even though the buffer was not completely full (104M/150M).
 
 ## Summary
-We performed various tests and found that with filesystem, buffering (through rewrite_tag filter) is necessary to prevent loss of logs when the Fluent Bit Pod is restarted. Additionally, when one of the outputs is having an outage, the logs are still streamed to the other output. However, loss of logs cannot be prevented completely: If the buffer is filled up, Fluent Bit keeps only the latest logs.
+After various tests, we saw that filesystem buffering with rewrite_tag filter is the best solution because of the following advantages:
+- When one of the outputs is having an outage, the logs are still streamed to the other output.
+- No logs are lost when the Fluent Bit Pod is restarted. However, loss of logs cannot be prevented completely: If the buffer is full, Fluent Bit keeps only the latest logs and older logs are discarded.
 
 Additionally, we tried the following scenarios:
 With two inputs and two outputs and having `storage.max_chunks_pause on`. This option, as mentioned in [documentation](https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration), did not apply to input filters. The Fluent Bit did not recognize this option and the Pod did not start. However, applying the setup to the service section did not have any affect.
