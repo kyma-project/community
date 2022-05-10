@@ -1,0 +1,32 @@
+apiVersion: telemetry.kyma-project.io/v1alpha1
+kind: LogPipeline
+metadata:
+  name: mock-server
+spec:
+  parsers: []
+  multilineParsers: []
+  filters:
+    - content: |
+        Name   rewrite_tag
+        Match  kube.*
+        Rule   $log "^.*$" log_rewritten true
+        Emitter_Name  log_emitter
+        Emitter_Storage.type filesystem
+  outputs:
+    - content: |
+        Name               http
+        Alias              mock-output
+        Match              log_rewritten
+        Retry_Limit        False
+        Host               mockserver-1.mockserver
+        Port               1080
+        URI                /
+        Header             Content-Type application/json
+        HTTP_User          user
+        HTTP_Passwd        pass
+        Format             json_stream
+        tls                off
+        tls.verify         off
+        storage.total_limit_size 150M
+  files: []
+  secretRefs: []
