@@ -2,7 +2,7 @@
 title: UI elements
 ---
 
-Contrary to the regular technical documentation, UI elements follow different guidelines and best practices. Due to the limited space you can use to convey a message, your UI text must be as precise and concise as possible. Here are some general guidelines you should follow when designing and writing content for UI elements:
+Contrary to the regular technical documentation, UI elements follow different guidelines and best practices. Due to the limited space you can use to convey a message, your UI text must be as precise and concise as possible. Use the following general guidelines to design and write content for UI elements:
 
 - Use active voice and action-oriented language.
 - Use title case for short one-line texts, such as labels or headings, and sentence case for messages and explanations, unless specified otherwise. (?)
@@ -11,7 +11,7 @@ Contrary to the regular technical documentation, UI elements follow different gu
   ✅ Service Instances <br>
   ⛔️ Service Instance
 
-- Use plain, natural language. Even though some verbs may be similar in meaning, they may sound more or less natural to the reader. For example, from these pairs of verbs, the first one sound more natural:
+- Use plain, natural language. Even though some verbs may be similar in meaning, they may sound more or less natural to the reader. For example, from these pairs of verbs, the first one sounds more natural:
 
   ✅ Choose <br>
   ⛔️ Select
@@ -37,7 +37,7 @@ Labels are one-line texts that appear in various types of UI elements, such as b
 
 When designing a button label, you must be as straightforward and concise as possible, since you have very limited space to convey the message. Moreover, buttons are used to invite a user to perform an action. Make them as inviting and intuitive as possible. To do so:
 
-- Use action verbs that explain what will happen when a user presses the button, without requiring them to read any supporting text. Depending on your needs, you can also use plain adverb. Alternatively, add a noun to indicate what a verb or an adverb refers to. Do **not** use articles and punctuation. They will only add unnecessary "word pollution" to your button label.
+- Use action verbs that explain what will happen when a user presses the button, without requiring them to read any supporting text. Depending on your needs, you can also use plain adverb. Alternatively, add a noun to indicate what a verb or an adverb refers to. Do **not** use articles and punctuation. They only add unnecessary "word pollution" to your button label.
 
   ✅ Save <br>
   ✅ Next <br>
@@ -56,7 +56,7 @@ When designing a button label, you must be as straightforward and concise as pos
 
 ## Tooltips
 
-Tooltips are messages that provide additional information about a certain UI element. Still, the text within a tooltip should contain information that brings value to the user, so avoid adding content that may be irrelevant. Tooltips shouldn't also contain information that is necessary to complete a given task. Such information should be visible at first glimpse. Otherwise, users will have to remember the content of a tooltip and refer back to it after the tooltip is deactivated. Here are some general guidelines on creating tooltip texts:
+Tooltips are messages that provide additional information about a certain UI element. Still, the text within a tooltip must contain information that brings value to the user, so avoid adding content that may be irrelevant. Tooltips cannot also contain information that is necessary to complete a given task. Such information should be visible at first glimpse. Otherwise, users will have to remember the content of a tooltip and refer back to it after the tooltip is deactivated. Here are some general guidelines on creating tooltip texts:
 
 - Keep your tooltips 1-2 sentences long. If you need to explain a concept in more details, create a separate document and link to it instead of providing the whole explanation in a tooltip.
 - Use sentence case inside a tooltip and follow punctuation rules.
@@ -76,9 +76,9 @@ There are many different types of messages appearing in every UI. The most commo
 
 ### Error messages
 
-Error message is a special type of message you must be really careful about. It informs about unsuccessful outcome of an action or conveys any other negative information, so you must choose your words wisely not to upset the user. Here are some tips that will help you design your error message:  
+Error message informs about unsuccessful outcome of an action or conveys any other negative information, so you must choose your words wisely not to upset the user. Here are some tips that will help you design your error message:  
 
-- Describe what happened, why it happened, and what the user can do to fix the occurred issue. Avoid abstract messages that only inform that something went wrong. This could make the user feel frustrated not only about the fact that the error has occurred, but also for the fact they cannot do anything about it. However, do not describe the whole troubleshooting in an error message. Link to a separate troubleshooting guide instead.
+- Describe what happened, why it happened, and what the user can do to fix the issue. Avoid abstract messages that only inform that something went wrong. This could make the user feel frustrated not only about the fact that the error has occurred, but also for the fact they cannot do anything about it. However, do not describe the whole troubleshooting in an error message. Link to a separate troubleshooting guide instead.
 - Avoid technical terms and jargon. Every user should be able to understand the message, regardless their technical knowledge. Use language as plain as possible.  
 - Don't blame the user for making an error. Focus on the problem instead, for example:
 
