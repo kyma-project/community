@@ -16,7 +16,7 @@ This document proposes and evaluates a valid design for a custom operator. It is
 - [Fluent Bit input configuration](#fluent-bit-input-configuration)
   - [Setup 1: Managed Fluent Bit Daemon Set per Log Pipeline](#setup-1-managed-fluent-bit-daemon-set-per-log-pipeline)
   - [Setup 2: Dedicated input plugin per Log Pipeline](#setup-2-dedicated-input-plugin-per-log-pipeline)
-  - [Setup 3: Single input plugin with buffered `rewrite_tag` filter per Log Pipeline](#setup-3-single-input-plugin-with-buffered-rewrite_tag-filter-per-log-pipeline)
+  - [Setup 3: Single input plugin with buffered `rewrite_tag` filter per Log Pipeline](#setup-3-single-input-plugin-with-buffered-rewrite-tag-filter-per-log-pipeline)
   - [Setup 4: Shared input plugin](#setup-4-shared-input-plugin)
 
 ## Criteria
