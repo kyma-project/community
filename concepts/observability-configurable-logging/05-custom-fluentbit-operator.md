@@ -238,7 +238,7 @@ Disadvantages:
 * Potential resource overhead through additional buffer requirement.
 * It is not possible to inject filters to existing pipelines.
 
-### Setup 3: Single input plugin with buffered `rewrite_tag` filter per Log Pipeline
+### Setup 3: Single input plugin with buffered rewrite-tag filter per Log Pipeline
 
 Properties:
 * The Fluent Bit setup has a single tail input plugin with Kubernetes filter.
