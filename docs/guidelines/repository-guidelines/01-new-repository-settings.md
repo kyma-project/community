@@ -9,7 +9,7 @@ All repositories in `kyma-project` and `kyma-incubator` organizations should be 
 
 ## Use the repository template
 
-Whenever you create a new repository, use the template from the [`template-repository`](https://github.com/kyma-project/template-repository). This template contains all necessary configuration files for [OWNERS](../../contributing/04-prow-workflow.md#owners-file), Kyma stale bot, issue and pull request templates, license, and Code of Conduct.
+Whenever you create a new repository, use the template from the [`template-repository`](https://github.com/kyma-project/template-repository). This template contains all necessary configuration files for CODEOWNERS, Kyma stale bot, issue and pull request templates, license, and Code of Conduct.
 
 > **NOTE:** Do not mark the **Include all branches** checkbox as it will clone all branches from the `template-repository` to your new repo.
 
