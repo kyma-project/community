@@ -42,7 +42,7 @@ We want to make use of this design pattern to optimize and enhance our current R
 - The reconciliation components can be integrated through a reported Cluster State into an external Provisioning / Reconciliation for consolidation in a Control Plane Cluster (Kubeception)
 - The reconciliation uses one single source of truth for configuring which Kyma Components are enabled and what Settings are used in the Cluster
 - The reconciliation only consumes measurable load when actively reconciling by smartly managing deployments and instances used for reconciliation, scaling down and passively watching the compliant cluster
-- The reconciliation is able to be debugged and developed by multiple teams for multiple components without strong coupling effects
+- The reconciliations of registered components are de-coupled, thereby providing a better root cause analysis
 
 ### POC for verifying Reconciliation based on Operators
 
