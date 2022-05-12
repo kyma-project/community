@@ -85,7 +85,7 @@ The following scenarios should return a `validationError` and result into the ba
 - Spec config keys that do not belong to the specified backend.
 - Spec config values set to forbidden data.
 - Spec config values using the wrong data type for the given key.
-Similar, chaging the specs of an existing backend in an invalid way should be rejected and return a `validationError`.
+Similar, changing the specs of an existing backend in an invalid way should be rejected and return a `validationError`.
 
 ## Status
 
