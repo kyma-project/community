@@ -18,7 +18,7 @@ Components can depend only on core Kubernetes API or API extensions introduced b
 # Release channels
 Release channels let customers balance between available features and stability. The number of channels and their characteristics can be established later. Usually, projects introduce between 2 and 4 channels. Some examples:
 - [GKE](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-- [Next Cloud](https://nextcloud.com/release-channels/)
+- [Nextcloud](https://nextcloud.com/release-channels/)
 
 TO DO:
 - how release channels are implemented (one config file or folder in some repository / config maps)
