@@ -8,7 +8,7 @@ While we currently have a custom reconciliation logic in place, we could make us
 We are currently having these issues in our current reconciliation:
 
 - Scheduling / Job-based
-  - We have inbuilt limits on how fast a reconciliation can work by having bad worst case scheduling scenarios (e.g. reconciliation updates only get picked up every 45 seconds through our bookkeeper)
+  - Static limits on how fast a reconciliation can achieve its desires state, by having worst case scheduling scenarios (e.g. reconciliation updates only get picked up every 45 seconds through our bookkeeper)
   - Reconciliation must be externally managed from outside the Cluster as there is no internal state management inside a shoot, this requires either the CLI or a control plane cluster with a Mothership
   - Callback / Health Pings limit the minimal time spent on reconciliation due to overhead and usually lead to problems if communication bottlenecks or instability occurs
 - Performance Issues while scheduling/managing Reconciliations for >10k Clusters
