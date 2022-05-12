@@ -34,10 +34,12 @@ Kyma ecosystem produces several artifacts that can be deployed in the central co
 - Component deployment ([resources](https://github.com/kyma-project/kyma/tree/main/resources))
 - Component images (docker images in gcr)
 
+Component operators should be deployed continuously. Operators should support all versions that are currently available in all release channels. It is up to the component owner to decide how they manage different component versions inside operator (operator per version or single operator supporting multiple versions).
+
 ## Simple versioning
 
-A simple versioning of component resources could be achieved by packaging component CRDs and charts into component operator binary (or container image). This way released operator would contain CRDs and charts of its components in the local filesystem. 
-The image could be signed and we can ensure the integrity of component deployment in an easy way. 
+Simple versioning of component resources could be achieved by packaging component CRDs and charts into component operator binary (or container image). This way released operator would contain CRDs and charts of its components in the local filesystem. 
+The image could be signed and we can ensure the integrity of component deployment easily. 
 ```
 component-operator
 ├── api
@@ -52,12 +54,22 @@ component-operator
 ```
 
 # Manifest operator
-Some components do not require any custom operator to install or upgrade (e.g. api-gateway, logging, monitoring) and use base reconciler. With the operator approach, this task could be completed by a generic manifest operator. Custom resource for manifest operator would contain information about chart location and overlay values. Single operator for multiple components can have some benefits in single cluster mode (better resource utilization), but would not
-
-# Component submission
+Some components do not require any custom operator to install or upgrade (e.g. api-gateway, logging, monitoring) and use base reconciler. With the operator approach, this task could be completed by a generic manifest operator. Custom resource for manifest operator would contain information about chart location and overlay values. A single operator for multiple components can have some benefits in the in-cluster mode (better resource utilization) but would introduce challenges related to independent releases of charts and the manifest operator itself. Therefore a recommendation is that all components will always provide the operator. Manifest operator can be used as a template with a placeholder for your charts and default implementation (using manifest library).
+# Component submission process
 To submit a new component to Kyma you need to prepare:
 - Component operator custom resource definition (CRD in YAML)
 - Operator deployment and component config (YAML)
 
-Governance jobs should verify component compliance with Kyma quality standards. Governance job should be owned by teams (no shared responsibility)
-Apart from technical quality Kyma components should fulfil other standards (24/7 support, documenting micro-deliveries, etc)
+Component validation should be automated by governance jobs that check different aspects like:
+- component status format 
+- support for release channels
+- exposing metrics
+- proper logging format
+- ...
+
+Governance jobs should be owned by teams (no shared responsibility)
+
+Apart from technical quality, Kyma components should fulfill other standards (24/7 support, documenting micro-deliveries, etc)
+
+TODO:
+- verify if we can use [OCM/CNUDIE](https://github.com/gardener/component-spec) for component submission
