@@ -161,8 +161,4 @@ reconciliation.
 
 #### One CRD vs Multiple CRDs for maintaining Reconciliation Configuration?
 
-While we will maintain One CRD for the Kyma Installation managed by the `kyma-operator`, we will also make use of a 
-generic Approach to integrate components dynamically based on a template. This template is a base for any component 
-that needs to be reconciled by our control loop. We will explicitly NOT have hard-coded CRDs for Components and want 
-to dynamically enhance a Kyma Control Plane with Components without having to deliver a new Operator Binary to the 
-Control Plane.
+While we will maintain one CRD for the Kyma Installation managed by the `kyma-operator`, we will also make use of a generic approach to integrate components dynamically based on a template. This template is a base for any component that needs to be reconciled by our control loop. We will explicitly NOT have hard-coded component API references for components and want to dynamically enhance a Kyma Control Plane with components without having to deliver a new operator binary to the Control Plane.
