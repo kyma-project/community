@@ -81,16 +81,16 @@ spec:
 - Spec config validation can be done by writing a custom `ValidatingAdmissionWebhook`.
 - Defaulting the required but not-set spec config can be done by writing a custom `MutatingAdmissionWebhook`.
 
-In addition, the following should result in adding an error entry under the `status.validationErrors`:
+The following scenarios should return a `validationError` and result into the backend not being created. 
 - Spec config keys that do not belong to the specified backend.
 - Spec config values set to forbidden data.
 - Spec config values using the wrong data type for the given key.
+Similar, chaging the specs of an existing backend in an invalid way should be rejected and return a `validationError`.
 
 ## Status
 
 The `status` contains the following fields:
 - `backendType` contains the type of the backend which is provisioned or used.
-- `validationErrors` contains the the errors that appear during the spec validation phase.
 - `conditions` contains the readiness of all the components which the backend depends on.
 - `eventingReady` is evaluated by `ANDing` all the `status.conditions`.
 
@@ -113,40 +113,6 @@ status:
     status: "True"
     type: Subscription Controller Ready
   eventingReady: true
-```
-
-Example of a backend CR with validation errors:
-
-```yaml
-status:
-  backendType: nats
-  validationErrors:
-  - type: "invalid-data-type-error"
-    config: "maxInFlightMessages"
-    value: "ten"
-    error: "should be of type int"
-  - type: "invalid-value-error"
-    config: "foobar"
-    value: "100"
-    error: "must be set between 1000 and 9999"
-  - type: "unsupported-config-error"
-    config: "foo"
-    value: "bar"
-    error: "config does not exist for backend type nats"
-  conditions:
-  - lastTransitionTime: "2022-05-06T08:35:11Z"
-    reason: The provided spec.config has validation errors
-    status: "False"
-    type: Backend ready
-  - lastTransitionTime: "2022-05-06T08:35:11Z"
-    reason: Publisher proxy deployment ready
-    status: "True"
-    type: Publisher Proxy Ready
-  - lastTransitionTime: "2022-05-06T08:35:11Z"
-    reason: Subscription controller started
-    status: "True"
-    type: Subscription Controller Ready
-  eventingReady: false
 ```
 
 > **Note:** The `Backend Ready` condition should indicate if the configured backend type in the spec is ready for use or not. It can be as simple as checking the underlying connection status with the backend. But that decision is left to the implementation phase.
