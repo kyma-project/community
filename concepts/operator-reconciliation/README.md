@@ -2,7 +2,8 @@
 
 ## Motivation
 
-Reconciler is a framework to install, update, and repair Kyma components in managed Kyma Runtimes. The reconciliation runs in the loop to ensure that all components are up and running and properly configured.
+Reconciler is a framework to install, update, and repair Kyma components in managed Kyma Runtimes. 
+The reconciliation runs in the loop to ensure that all components are up and running and properly configured.
 While we currently have a custom reconciliation logic in place, we could make use of one or more Kubernetes Operators to manage Control Loops and Desired States natively.
 
 We are currently having these issues in our current reconciliation:
@@ -112,53 +113,38 @@ Also note that the Provisioning Operator can still fetch the status of its manag
 
 ## Inventory Design - Versioned Kyma CRs
 
-When designing our inventory, we want to stay as close to kubernetes-native directives as possible, especially 
-compared to the previous reconciler approach. We want to manage the entire inventory of a Kyma Cluster through a set 
-of smartly entangled CRs that enable interaction in a declarative and easy structure. As such, we will enforce a 
-central `Kyma` CR that will be the Centerpoint of our reconciliation, based on a detailed versioning scheme 
-supporting backups / rollouts similar to the kubernetes-native `rollout` functionality. 
+When designing our inventory, we want to stay as close to kubernetes-native directives as possible, especially compared to the previous reconciler approach. We want to manage the entire inventory of a Kyma Cluster through a set of smartly entangled CRs that enable interaction in a declarative and easy structure. 
+As such, we will enforce a central `Kyma` CR that will be the Centerpoint of our reconciliation, based on a detailed versioning scheme supporting backups / rollouts similar to the kubernetes-native `rollout` functionality. 
 
-Component CRs will reflect the state of a component reconciliation for a given cluster by updating their reconciliation status in the CR, which 
-the Kyma CR will aggregate into a final `Health Indicator`. This Health Indiciator together with its lifecycle 
-management through versioned Kyma Releases will be used to determine an `Active Release`. This will be the single 
-source of truth for the actually enabled Kyma Release Version in a Cluster after the last successful reconciliation. 
-In case of failure, the Kyma CR will be changed to the Status `Progressing` (similar to the kubernetes native 
-deployment) until the failure was resolved, or a backoff was exhausted, in which case an up/downgrade will be 
-considered failed. In this case, we will ensure there are alert rules available to detect these CRs and ping SREs 
-through the Control Plane monitoring capabilities to manually intervene. 
+Component CRs will reflect the state of a component reconciliation for a given cluster by updating their reconciliation status in the CR, which the Kyma CR will aggregate into a final `Health Indicator`. 
+This Health Indiciator together with its lifecycle management through versioned Kyma Releases will be used to determine an `Active Release`. 
+This will be the single source of truth for the actually enabled Kyma Release Version in a Cluster after the last successful reconciliation. 
+In case of failure, the Kyma CR will be changed to the Status `Progressing` (similar to the kubernetes native deployment) until the failure was resolved, or a backoff was exhausted, in which case an up/downgrade will be considered failed. 
+In this case, we will ensure there are alert rules available to detect these CRs and ping SREs through the Control Plane monitoring capabilities to manually intervene. 
 
-Ideally the SRE is able to remediate the Cluster Reconciliation by backing up the state through our revision management. If not, we are able to deduce the 
-exact error state and time through issuing of timed Kubernetes Events, our Control-Plane monitoring stack, as well 
-as the individual Component Status in the CRs for that Kyma Release, allowing for much more fine-grained debugging 
-control.
+Ideally the SRE is able to remediate the Cluster Reconciliation by backing up the state through our revision management. 
+If not, we are able to deduce the exact error state and time through issuing of timed Kubernetes Events, our Control-Plane monitoring stack, as well as the individual Component Status in the CRs for that Kyma Release, allowing for much more fine-grained debugging control.
 
 ### Questions Asked During Investigation
 
 #### One vs Many Operators for reconciliation?
 
-While there certainly can be advantages for coupling certain controller logic together, the consensus for 
-Domain-Driven Design stands that Components should be managed independently from the Main Reconciliation Process. 
-Thus the recommendation is to provide a single Operator for Reconciliation (the previous `mothership`) and a 
-Component Reconciler for every coherent Domain of Kyma (e.g. a Monitoring Operator that can itself contain multiple 
-control loops / controllers)
+While there certainly can be advantages for coupling certain controller logic together, the consensus for Domain-Driven Design stands that Components should be managed independently from the Main Reconciliation Process. 
+Thus the recommendation is to provide a single Operator for Reconciliation (the previous `mothership`) and a Component Reconciler for every coherent Domain of Kyma (e.g. a Monitoring Operator that can itself contain multiple control loops / controllers)
 
 #### How do we reflect the Cluster State?
 
-While there are many ways to reflect cluster state, we want to make sure that the cluster is able to be viewed via 
-kubectl or API Interaction as easy as possible. The easiest way for us to allow this is by leveraging the kubernetes 
-built-in `status` field besides the spec to also track reconciliations. This allows us to have eventually consistent 
-clusters that do not rely on any worker queue to get processed but instead can be processed on demand by any free 
-operator taking care of the Cluster reconciliation.
+While there are many ways to reflect cluster state, we want to make sure that the cluster is able to be viewed via kubectl or API Interaction as easy as possible. 
+The easiest way for us to allow this is by leveraging the kubernetes built-in `status` field besides the spec to also track reconciliations. 
+This allows us to have eventually consistent clusters that do not rely on any worker queue to get processed but instead can be processed on demand by any free operator taking care of the Cluster reconciliation.
 
 #### How do we protect the changes in the cluster from a user?
 
-While there are generally multiple approaches for this in a production cluster (e.g. limiting dangerous access to 
-`kyma-system` to SREs or running a dedicated control plane), we also will make use of admission hooks, validation 
-hooks as well as finalizers to enable a resilient interaction with the cluster CRs. We will avoid and stop any 
-interactions that could endanger the cluster integrity. However, there can still be manual interventions into the CR 
-status, which also means that resources should never be exposed to an untrusted source in order to ensure safe 
-reconciliation.
+While there are generally multiple approaches for this in a production cluster (e.g. limiting dangerous access to`kyma-system` to SREs or running a dedicated control plane), we also will make use of admission hooks, validation hooks as well as finalizers to enable a resilient interaction with the cluster CRs. 
+We will avoid and stop any interactions that could endanger the cluster integrity. 
+However, there can still be manual interventions into the CR status, which also means that resources should never be exposed to an untrusted source in order to ensure safe reconciliation.
 
 #### One CRD vs Multiple CRDs for maintaining Reconciliation Configuration?
 
-While we will maintain one CRD for the Kyma Installation managed by the `kyma-operator`, we will also make use of a generic approach to integrate components dynamically based on a template. This template is a base for any component that needs to be reconciled by our control loop. We will explicitly NOT have hard-coded component API references for components and want to dynamically enhance a Kyma Control Plane with components without having to deliver a new operator binary to the Control Plane.
+While we will maintain one CRD for the Kyma Installation managed by the `kyma-operator`, we will also make use of a generic approach to integrate components dynamically based on a template. This template is a base for any component that needs to be reconciled by our control loop. 
+We will explicitly NOT have hard-coded component API references for components and want to dynamically enhance a Kyma Control Plane with components without having to deliver a new operator binary to the Control Plane.
