@@ -34,7 +34,7 @@ From the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/extend-k
 We want to make use of this design pattern to optimize and enhance our current Reconciliation control loop. The core characterics are:
 
 - The new architecture should encompass one or many Operator(s) which can reconcile a Gardener Shoot Cluster from empty to working Kyma on their own without external influence
-- The architecture uses CRDs to manage Kyma Components and their necessary Reconciliation
+- The architecture uses versioned configurations (ConfigMaps) to manage component custom resources, which should trigger component reconciliations on the cluster
 - The architecture uses CRs to report State of the Reconciliation of a Cluster that can be externally viewed via Kubernetes API (e.g. through kubectl or a central provisioning component in the control plane)
 - The reconciliation infrastructure can be simply installed through provisioning of CRDs and/or Operators, maybe through its own Helm Chart
 - The reconciliation does not need explicit State Management outside of CRs managed by the Operator like we have currently with the Mothership
