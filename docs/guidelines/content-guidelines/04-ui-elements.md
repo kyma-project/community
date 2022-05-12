@@ -4,8 +4,22 @@ title: UI elements
 
 Contrary to the regular technical documentation, UI elements follow different guidelines and best practices. Due to the limited space you can use to convey a message, your UI text must be as precise and concise as possible. Use the following general guidelines to design and write content for UI elements:
 
-- Use active voice and action-oriented language.
-- Use title case for short one-line texts, such as labels or headings, and sentence case for messages and explanations, unless specified otherwise. (?)
+- Use active voice and action-oriented language, for example:
+
+  ✅ Show active contacts
+  ⛔️ This toggle shows active contacts
+
+  ✅ Change the password
+  ⛔️ The password must be changed
+
+- Use title case for short one-line texts, such as labels or headings, and sentence case for messages and explanations, unless specified otherwise.
+
+  ✅ Postal Code
+  ⛔️ Postal code
+
+  ✅ Use sentence case for messages and explanations.
+  ⛔️ Don't Use Title Case For Longer Messages.
+
 - Use plural for the object names, as users usually interact with multiple objects within the program, for example:
 
   ✅ Service Instances <br>
@@ -30,14 +44,14 @@ Contrary to the regular technical documentation, UI elements follow different gu
 Labels are one-line texts that appear in various types of UI elements, such as buttons, titles and headings, forms, and drop-down menus. When designing labels for the UI elements in the Kyma project, make sure to:
 
 - Use title case for titles and headings.
-- Use sentence case in forms, drop-down menus, and button labels.
-- Omit punctuation to avoid "word pollution".
+- Use sentence case in drop-down menus and button labels.
+- Omit punctuation to avoid cluttering your text.
 
 ### Buttons
 
 When designing a button label, you must be as straightforward and concise as possible, since you have very limited space to convey the message. Moreover, buttons are used to invite a user to perform an action. Make them as inviting and intuitive as possible. To do so:
 
-- Use action verbs that explain what will happen when a user presses the button, without requiring them to read any supporting text. Depending on your needs, you can also use plain adverb. Alternatively, add a noun to indicate what a verb or an adverb refers to. Do **not** use articles and punctuation. They only add unnecessary "word pollution" to your button label.
+- Use action verbs that explain what will happen when a user presses the button, without requiring them to read any supporting text. Depending on your needs, you can also use plain adverb. Alternatively, add a noun to indicate what a verb or an adverb refers to. Do **not** use articles and punctuation. They only clutter your button label.
 
   ✅ Save <br>
   ✅ Next <br>
@@ -69,7 +83,7 @@ Tooltips are messages that provide additional information about a certain UI ele
 
 ## Messages
 
-There are many different types of messages appearing in every UI. The most common ones are pop-ups and regular messages that  users can find on your page. To avoid information pollution, make sure that all your messages are informative and useful to the users. Moreover:
+There are many different types of messages appearing in every UI. The most common ones are pop-ups and regular messages that users can find on your page. To avoid information pollution, make sure that all your messages are informative and useful to the users. Moreover:
 
 - Use punctuation in case of messages that are full sentences. In case of clauses (fragments of a sentence), omit punctuation.
 - Use title case for the title of your pop-up message. Keep it as simple as possible and omit punctuation. For more information, see [Labels](#labels).
@@ -85,15 +99,15 @@ Error message informs about unsuccessful outcome of an action or conveys any oth
   ✅ Your password is incorrect. <br>
   ⛔️ You have entered an incorrect password.
 
-- Avoid title case. It can give users a feeling they are being looking down on. (what about labels/titles? to clarify)
+- Avoid title case. It can give users a feeling they are being looking down on.
 
 
 ## Placeholder texts
 
-A placeholder is a tricky UI element that in general should be avoided. Placeholders tend to disappear when the user clicks a given form field, so it requires them to use their memory, which increases memory load and hurts usability.
+A placeholder is a tricky UI element. It tends to disappear when the user clicks a given form field, so it requires them to use their memory, which increases memory load and hurts usability. For this reason:
 
+- Use placeholders in combination with labels that do not disappear and provide all the necessary information visible at all times. Don't place information essential to complete a task in a placeholder. Also, do not repeat the same information in a label and a placeholder. In such a case, give up on using a placeholder.
 - Use placeholders to give an additional hint, description, or example.
-- Use placeholders in combination with labels that do not disappear and provide all the necessary information visible at all times. Don't place information essential to complete a task in a placeholder. Also, do not repeat the same information in a label and a placeholder. In such a case, give up on using a placeholder. 
 - Use sentence case for your placeholder.
 - Omit full stop at the end of the placeholder text.
 
