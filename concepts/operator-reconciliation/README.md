@@ -3,7 +3,7 @@
 ## Motivation
 
 Reconciler is a framework to install, update, and repair Kyma components in managed Kyma Runtimes. The reconciliation runs in the loop to ensure that all components are up and running and properly configured.
-While we currently have a custom reconciliation logic in place, we could make use of the Kubernetes Control Loop and reconciliation and an Operator-based approach to maintain our reconciliation through Kubernetes natively.
+While we currently have a custom reconciliation logic in place, we could make use of one or more Kubernetes Operators to manage Control Loops and Desired States natively.
 
 We are currently having these issues in our current reconciliation:
 
