@@ -6,18 +6,18 @@ Contrary to the regular technical documentation, UI elements follow different gu
 
 - Use active voice and action-oriented language, for example:
 
-  ✅ Show active contacts
+  ✅ Show active contacts <br>
   ⛔️ This toggle shows active contacts
 
-  ✅ Change the password
+  ✅ Change the password <br>
   ⛔️ The password must be changed
 
 - Use title case for short one-line texts, such as labels or headings, and sentence case for messages and explanations, unless specified otherwise.
 
-  ✅ Postal Code
+  ✅ Postal Code <br>
   ⛔️ Postal code
 
-  ✅ Use sentence case for messages and explanations.
+  ✅ Use sentence case for messages and explanations. <br>
   ⛔️ Don't Use Title Case For Longer Messages.
 
 - Use plural for the object names, as users usually interact with multiple objects within the program, for example:
@@ -37,6 +37,12 @@ Contrary to the regular technical documentation, UI elements follow different gu
 
   ✅ USD <br>
   ⛔️ $
+
+- Avoid ampersands (&), technical and mathematical symbols, and symbols that may have multiple meanings. Commonly used symbols are acceptable.
+
+  ✅ % CPU <br>
+  ⛔️ Due in < 5 days <br>
+  ⛔️ Save & exit
 
 
 ## Labels
