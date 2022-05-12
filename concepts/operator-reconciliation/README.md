@@ -36,7 +36,7 @@ We want to make use of this design pattern to optimize and enhance our current R
 - The new architecture should encompass one or many Operator(s) which can reconcile a Gardener Shoot Cluster from empty to working Kyma on their own without external influence
 - The architecture uses versioned configurations (ConfigMaps) to manage component custom resources, which should trigger component reconciliations on the cluster
 - The architecture uses CRs to report State of the Reconciliation of a Cluster that can be externally viewed via Kubernetes API (e.g. through kubectl or a central provisioning component in the control plane)
-- The reconciliation infrastructure can be simply installed through provisioning of CRDs and/or Operators, maybe through its own Helm Chart
+- The reconciliation infrastructure can be simply installed through provisioning of CRDs, component configurations and operators, maybe through its own Helm Chart
 - The reconciliation does not need explicit State Management outside of CRs managed by the Operator like we have currently with the Mothership
 - The components for reconciliation can be deployed inside the Cluster to reconcile and manage itself
 - The reconciliation components can be integrated through a reported Cluster State into an external Provisioning / Reconciliation for consolidation in a Control Plane Cluster (Kubeception)
