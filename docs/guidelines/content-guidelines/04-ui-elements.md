@@ -76,11 +76,11 @@ When designing a button label, you must be as straightforward and concise as pos
 
 ## Tooltips
 
-Tooltips are messages that provide additional information about a certain UI element. Still, the text within a tooltip must contain information that brings value to the user, so avoid adding content that may be irrelevant. Tooltips cannot also contain information that is necessary to complete a given task. Such information should be visible at first glimpse. Otherwise, users will have to remember the content of a tooltip and refer back to it after the tooltip is deactivated. Here are some general guidelines on creating tooltip texts:
+Tooltips are messages that provide additional information about a certain UI element. Still, the text within a tooltip must contain information that brings value to the user, so avoid adding content that may be irrelevant. Tooltips cannot contain information that is necessary to complete a given task. Such information should be visible at first glimpse. Otherwise, users will have to remember the content of a tooltip and refer back to it after the tooltip is deactivated. Here are some general guidelines on creating tooltip texts:
 
 - Keep your tooltips 1-2 sentences long. If you need to explain a concept in more details, create a separate document and link to it instead of providing the whole explanation in a tooltip.
 - Use sentence case inside a tooltip and follow punctuation rules.
-- Use tooltips to provide examples, for example:
+- Use tooltips to provide examples:
 
   ✅ The example of a domain name is `yourdomain.example.com`.
 
@@ -96,7 +96,7 @@ There are many different types of messages appearing in every UI. The most commo
 
 ### Error messages
 
-Error message informs about unsuccessful outcome of an action or conveys any other negative information, so you must choose your words wisely not to upset the user. Here are some tips that will help you design your error message:  
+An error message informs about unsuccessful outcome of an action or conveys any other negative information, so you must choose your words wisely not to upset the user. Here are some tips that will help you design your error message:  
 
 - Describe what happened, why it happened, and what the user can do to fix the issue. Avoid abstract messages that only inform that something went wrong. This could make the user feel frustrated not only about the fact that the error has occurred, but also for the fact they cannot do anything about it. However, do not describe the whole troubleshooting in an error message. Link to a separate troubleshooting guide instead.
 - Avoid technical terms and jargon. Every user should be able to understand the message, regardless their technical knowledge. Use language as plain as possible.  
