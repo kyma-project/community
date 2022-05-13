@@ -11,39 +11,47 @@ Contrary to the regular technical documentation, UI elements follow different gu
   ⛔️ This toggle shows active contacts
 
   ✅ Change the password
-  
+
   ⛔️ The password must be changed
 
 - Use title case for short one-line texts, such as labels or headings, and sentence case for messages and explanations, unless specified otherwise.
 
-  ✅ Postal Code <br>
+  ✅ Postal Code
+
   ⛔️ Postal code
 
-  ✅ Use sentence case for messages and explanations. <br>
+  ✅ Use sentence case for messages and explanations.
+
   ⛔️ Don't Use Title Case For Longer Messages.
 
 - Use plural for the object names, as users usually interact with multiple objects within the program, for example:
 
-  ✅ Service Instances <br>
+  ✅ Service Instances
+
   ⛔️ Service Instance
 
 - Use plain, natural language. Even though some verbs may be similar in meaning, they may sound more or less natural to the reader. For example, from these pairs of verbs, the first one sounds more natural:
 
-  ✅ Choose <br>
+  ✅ Choose
+
   ⛔️ Select
 
-  ✅ Edit <br>
+  ✅ Edit
+
   ⛔️ Modify
 
 - Use the three-letter currency code instead of the currency symbol. This prevents ambiguity when multiple currencies share the same symbol.
 
-  ✅ USD <br>
+  ✅ USD
+
   ⛔️ $
 
 - Avoid ampersands (&), technical and mathematical symbols, and symbols that may have multiple meanings. Commonly used symbols are acceptable.
 
-  ✅ % CPU <br>
-  ⛔️ Due in < 5 days <br>
+  ✅ % CPU
+
+  ⛔️ Due in < 5 days
+
   ⛔️ Save & exit
 
 
@@ -61,16 +69,21 @@ When designing a button label, you must be as straightforward and concise as pos
 
 - Use action verbs that explain what will happen when a user presses the button, without requiring them to read any supporting text. Depending on your needs, you can also use plain adverb. Alternatively, add a noun to indicate what a verb or an adverb refers to. Do **not** use articles and punctuation. They only clutter your button label.
 
-  ✅ Save <br>
-  ✅ Next <br>
-  ✅ Save draft <br>
-  ✅ Next step <br>
+  ✅ Save
+
+  ✅ Next
+
+  ✅ Save draft
+
+  ✅ Next step
+
   ⛔️ Save a draft
 
 - Avoid labels that are too generic, such as `Yes` or `No`. They are not intuitive and require the user to read the supporting text.  
 - Use sentence case as it reads more natural and friendly to the users, which makes them more willing to press the button. Title case doesn't read as easily as sentence case and looks more unnatural.
 
-  ✅ Next section <br>
+  ✅ Next section
+
   ⛔️ Next Section
 
 - Be careful when using words of similar meaning, such as `Delete` and `Remove`.
@@ -104,7 +117,8 @@ An error message informs about unsuccessful outcome of an action or conveys any 
 - Avoid technical terms and jargon. Every user should be able to understand the message, regardless their technical knowledge. Use language as plain as possible.  
 - Don't blame the user for making an error. Focus on the problem instead, for example:
 
-  ✅ Your password is incorrect. <br>
+  ✅ Your password is incorrect.
+  
   ⛔️ You have entered an incorrect password.
 
 - Avoid title case. It can give users a feeling they are being looking down on.
