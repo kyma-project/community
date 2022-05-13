@@ -6,10 +6,12 @@ Contrary to the regular technical documentation, UI elements follow different gu
 
 - Use active voice and action-oriented language, for example:
 
-  ✅ Show active contacts <br>
+  ✅ Show active contacts
+
   ⛔️ This toggle shows active contacts
 
-  ✅ Change the password <br>
+  ✅ Change the password
+  
   ⛔️ The password must be changed
 
 - Use title case for short one-line texts, such as labels or headings, and sentence case for messages and explanations, unless specified otherwise.
