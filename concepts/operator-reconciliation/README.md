@@ -77,6 +77,8 @@ The main focus of the POC will be to prove the functionality of the Reconciliati
 
 ![high_level_view_operator-reconciliation](assets/high_level_view_operator-reconciliation.png)
 
+![detailed_overview_reconciliation.png](detailed_overview_reconciliation.png)
+
 ### Single-Cluster (Small-Scale)
 
 ![single_cluster_configuration](assets/single_cluster_configuration.png)
