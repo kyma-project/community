@@ -32,7 +32,6 @@ spec:
   config:
   - maxInFlightMessages: 10
 status:
-  backendType: nats
   conditions:
   - lastTransitionTime: "2022-05-06T08:35:11Z"
     reason: Backend ready
@@ -90,7 +89,6 @@ Similar, changing the specs of an existing backend in an invalid way should be r
 ## Status
 
 The `status` contains the following fields:
-- `backendType` contains the type of the backend which is provisioned or used.
 - `conditions` contains the readiness of all the components which the backend depends on.
 - `eventingReady` is evaluated by `ANDing` all the `status.conditions`.
 
@@ -98,7 +96,6 @@ Example of a backend CR with no validation errors:
 
 ```yaml
 status:
-  backendType: nats
   conditions:
   - lastTransitionTime: "2022-05-06T08:35:11Z"
     reason: Backend ready
