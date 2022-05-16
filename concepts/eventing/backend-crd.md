@@ -116,33 +116,17 @@ status:
 ```
 
 > **Note:** The `Backend Ready` condition should indicate if the configured backend type in the spec is ready for use or not. It can be as simple as checking the underlying connection status with the backend. But that decision is left to the implementation phase.
+
+> **Note:** The `Backend Ready` condition should indicate if the configured backend type in the spec is ready for use or not. It can be as simple as checking the underlying connection status with the backend. But that decision is left to the implementation phase.
+
 ## Discovery
 
-Eventing users have the ability to discover the supported backends and their available configurations by doing get requests to the following endpoints:
+Eventing users have the ability to discover the supported Eventing backends and their corresponding configurations. This can be achieved by one or more of the following options:
 
-- GET `http:/eventing-controller.kyma-system/backend`. The response should look like:
-  - Content-Type: `application/json`.
-  - Body:
-  ```json
-  ["nats","beb", "..."]
-  ```
-- GET `http:/eventing-controller.kyma-system/backend/${TYPE}`. The response should look like:
-  - Content-Type: `application/json`.
-  - Body:
-  ```json
-  {
-     "type":"nats",
-     "config":[
-        {
-           "description":"Some description",
-           "dataType":"Some data type",
-           "defaultValue":"Some default value"
-        },
-        {
-           "description":"Some description",
-           "dataType":"Some data type",
-           "defaultValue":"Some default value"
-        }
-     ]
-  }
-  ```
+1. Document the supported Eventing Backends and their corresponding configurations.
+2. Provide discovery endpoints:
+   - GET `/backend` which returns the supported Eventing backends.
+   - GET `/backend/${TYPE}` which returns more details about the given backend type (e.g. configurations details).
+3. Provide an `openAPIV3Schema` schema validation in the Eventing backend CRD.
+
+> **Note:** For the time being we decided to go with option 1 and in the future we can support the necessary discovery automation if needed.
