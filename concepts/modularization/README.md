@@ -40,18 +40,21 @@ Component operators should be deployed continuously. Operators should support al
 
 Simple versioning of component resources could be achieved by packaging component CRDs and charts into component operator binary (or container image). This way released operator would contain CRDs and charts of its components in the local filesystem. 
 The image could be signed and we can ensure the integrity of component deployment easily. 
-```
-component-operator
-├── api
-│   └── crd
-├── manifests
-│   ├── charts
-│   └── crds
-└── operator
-    └── config
-        ├── default
-        └── manager
-```
+
+![](assets/modularization.drawio.svg)
+
+**Example:**
+
+If we migrate eventing component to the proposed structure it would look like this:
+- github.com/kyma-project/eventing-operator repository
+    - charts (copied from kyma/resources/eventing)
+    - crds (copied from kyma/installation/resources
+    - operator source code (inspired by kyma-incubator/reconciler/pkg/reconciler/instances/eventing importing kyma-project/manifest-operator-lib to do the common tasks like rendering and deploying charts)
+- github.com/kyma-project/eventing-controller repository (moved from kyma/components/eventing-controller)
+- github.com/kyma-project/event-publisher-proxy repository (moved from kyma/components/event-publisher-proxy)
+
+New images of our own components (eventing-controller, event-publisher-proxy) would require changes in charts inside eventing operator. Also changes in nats/jetstream would require chart updates.
+
 
 # Manifest operator
 Some components do not require any custom operator to install or upgrade (e.g. api-gateway, logging, monitoring) and use base reconciler. With the operator approach, this task could be completed by a generic manifest operator. Custom resource for manifest operator would contain information about chart location and overlay values. A single operator for multiple components can have some benefits in the in-cluster mode (better resource utilization) but would introduce challenges related to independent releases of charts and the manifest operator itself. Therefore a recommendation is that all components will always provide the operator. Manifest operator can be used as a template with a placeholder for your charts and default implementation (using manifest library).
@@ -73,3 +76,5 @@ Apart from technical quality, Kyma components should fulfill other standards (24
 
 TODO:
 - verify if we can use [OCM/CNUDIE](https://github.com/gardener/component-spec) for component submission
+
+
