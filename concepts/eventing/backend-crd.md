@@ -34,9 +34,9 @@ spec:
 status:
   conditions:
   - lastTransitionTime: "2022-05-06T08:35:11Z"
-    reason: Backend ready
+    reason: Eventing Backend Ready
     status: "True"
-    type: Backend Ready
+    type: Eventing Backend Ready
   - lastTransitionTime: "2022-05-06T08:35:11Z"
     reason: Publisher proxy deployment ready
     status: "True"
@@ -98,9 +98,9 @@ Example of a backend CR with no validation errors:
 status:
   conditions:
   - lastTransitionTime: "2022-05-06T08:35:11Z"
-    reason: Backend ready
+    reason: Eventing Backend Ready
     status: "True"
-    type: Backend Ready
+    type: Eventing Backend Ready
   - lastTransitionTime: "2022-05-06T08:35:11Z"
     reason: Publisher proxy deployment ready
     status: "True"
@@ -112,7 +112,7 @@ status:
   eventingReady: true
 ```
 
-> **Note:** The `Backend Ready` condition should indicate if the configured backend type in the spec is ready for use or not. It can be as simple as checking the underlying connection status with the backend. But that decision is left to the implementation phase.
+> **Note:** The `Eventing Backend Ready` condition should indicate if the configured backend type in the spec is ready for use or not. It can be as simple as checking the underlying connection status with the backend. But that decision is left to the implementation phase.
 
 ## Discovery
 
