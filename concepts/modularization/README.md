@@ -11,9 +11,12 @@ Kyma provides Kubernetes building blocks. It should be easy to pick only those t
 # Independent releases of modules
 With the growing number of components, it is hard to deliver features and fixes quickly and efficiently. Changes in manifests require a new release of Kyma. Operators (reconcilers) are tightly coupled and must be released together. In most cases, new component releases don't involve any API changes and could be delivered in a few minutes. 
 
-
 # Dependencies between components
 Components can depend only on core Kubernetes API or API extensions introduced by other components. Component operators are responsible for checking if the required APIs are available and react properly to the missing dependencies by reducing functionality or even reporting errors. Component owners are responsible for integration tests with their dependencies (with all versions supported in official release channels).
+
+**Example:**
+
+If the API you require is not available you should fail (e.g. core kubernetes API or istio virtual service). If your component can work without the API, but some features are not available (e.g. service monitor from monitoring) you should just skip it and continue to deploy other component resources. 
 
 # Release channels
 Release channels let customers balance between available features and stability. The number of channels and their characteristics can be established later. Usually, projects introduce between 2 and 4 channels. Some examples:
