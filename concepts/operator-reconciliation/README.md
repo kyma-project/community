@@ -75,57 +75,79 @@ For Operator-based reconciliations, we want to enable maximum flexibility of the
 
 The main focus of the POC will be to prove the functionality of the Reconciliation Operator to work with all 3 modes independant of the final implementation. The POC needs to prove that we are able to reconcile a cluster remotely or in-cluster without a significant difference in reconciliation logic.
 
-![high_level_view_operator-reconciliation](assets/high_level_view_operator-reconciliation.png)
-
-![detailed_overview_reconciliation.png](detailed_overview_reconciliation.png)
+![detailed_overview_reconciliation.png](assets/detailed_overview_reconciliation.png)
 
 ### Single-Cluster (Small-Scale)
 
-![single_cluster_configuration](assets/single_cluster_configuration.png)
+In this setup, the only things necessary for reconciliation are deployed in a single cluster that is provisioned externally (for example through k3d). 
+The Kyma CLI is able to quickly bootstrap a cluster into existence through interacting with the k3d cli, and then deploying the kyma-perator directly into the Cluster.
+In SIngle-Cluster mode there is no necessity to load in a third-party kubeconfig for remote interaction. This means that the Kyma CR can be provisioned as is without having to have any other information for provisioning.
 
-In this setup, the only things necessary for reconciliation are deployed in a single cluster that is provisioned externally (in the example above through k3d). The Kyma CLI is able to quickly bootstrap a cluster into existence through interacting with the k3d, and then deploying the Provisioning Operator directly into the Cluster.
-
-The Provisioning Operator will then use the supplied Kyma Version and Components to deploy a Reconciliation Operator and its corresponding CRDs. The Reconciliation Operator can spin up multiple informer queues based on the operator pattern to watch and reconcile the different enabled Kyma components.
+The Kyma Operator will then use the supplied Release Channel and Components to deploy a Reconciliation Operator and its corresponding CRDs. The Reconciliation Operator can spin up multiple informer queues based on the operator pattern to watch and reconcile the different enabled Kyma components.
 
 The Reconciliation Operator will update the state custom resource which is regularly checked by the Provisioning Operator. In case the State is pending for too long or is in an error state (e.g. because the cluster was not configured with enough memory), the provisioning is able to gracefully fail or retry the reconciliation depending on the input configuration.
 
-In addition, the Busola UI will be deployable in the cluster and can make the Provisioning Operator visualizable in the cluster making the setup fully encapsulated aside from the initial cluster provisioning, making it perfect for small-scale deployments.
-
+In addition, the Busola UI will be deployable in the cluster and can make the Kyma Operator and the owned CRs visualizable in the cluster making the setup fully encapsulated aside from the initial cluster provisioning, making it perfect for small-scale deployments.
 
 ### Centralized Control Plane Configurations
+In this scenario, The SKR Cluster will rely purely on the Control Plane to have its reconciliation triggered and executed, in a similar offloading paradigm as the previous mothership reconciler. 
+This has the major advantage of us being able to offload the work into the control plane, but comes with the issue that the component-operator reconciling the cluster has to remotely access the cluster, making Watch API interactions costly and potentially error-prone and also requiring the introduction of another part, the provisioning operator responsible for spinup of the infrastructure. 
+The kubeconfig will be provided through progressing the Cluster CR by the provisioning-operator. 
 
-![centralized_control_plane_configurations.png](assets/centralized_control_plane_configurations.png)
+To reconcile a module, the component-operator can use the Component CR reference to the Kyma CR by looking up the kubeconfig to regularly reschedule a reconciliation in a given interval and triggering the reconciliation whenever the status is still pending or failing.
 
-In this scenario, The Shoot Cluster will rely purely on the Control Plane to have its reconciliation triggered and executed, in a similar offloading paradigm as the previous mothership reconciler. This has the major advantage of us being able to offload the work into the control plane, but comes with the issue that the operator
-reconciling the cluster has to remotely access the cluster, making Watch API interactions costly and potentially error-prone. To combat this the Provisioning Operator can use the State CR to regularly react in a given interval and reschedule and trigger the Reconciliation Operator whenever the reconciliation is still pending or failing. In comparison
-to the current reconciliation model, it will not update the state of the reconciliation itself, but will rely purely on the state CR managed in the Control Plane. This can potentially lead to scalability issues when dealing with a big amount of clusters and their state.
-
+In comparison to the current reconciliation model, the component-operator will not update the state of the reconciliation itself through a callback, but will rely purely on the Component/Module CR State managed in the Control Plane. This can potentially lead to scalability issues when dealing with a big amount of clusters and their state and we will have to test the performance of reconciling a lot of remote clusters at the same time from a component-operator. To make development of a component operator easier, we will supply a reference library for reconciling charts and updating the CR state as well as develop best practices to develop your own component CR.
 
 ### Lightweight Control Plane Configurations
 
-![lightweight_control_plane_configurations.png](assets/lightweight_control_plane_configurations.png)
+This configuration is a slight alteration and mixture of the previous approaches. Its general idea is that the control-plane will offload the component-reconciliation work into the runtime cluster, only reconciling the component-operators themselves and checking on the state of the modules regularly. This allows a much easier scaling of the control-plane, which the disadvantage of less control over the component reconcilers.
 
-For initializing a cluster, we will need to use a connection between the reconciliation of a cluster and the inventory of all managed clusters. Whenever there is a new entry found in the cluster inventory a new cluster has to be created through the provisioning operator.
-For this, the Provisioning Operator can communicate with an external Provider (e.g. Gardener) and create the cluster as a prerequisite for the reconciliation. After the Cluster has been provisioned, it will deploy the Reconciliation Operator into the provisioned cluster.
+Whenever there is a new entry found in the cluster CRs a new cluster has to be created through the provisioning operator.
+For this, the Provisioning Operator can communicate with an external Provider (e.g. Gardener) and create the cluster as a prerequisite for the reconciliation. After the Cluster has been provisioned, it will now (in comparison to the centralized version) deploy the Reconciliation Operator into the provisioned cluster.
 
 This can happen for many clusters at the same time, in which case the Provisioning Operator will make sure to only keep the currently updating clusters of the inventory in its informer queue based on the inventory.
 
 Note that the inventory has to be highly available and will need to make sure that transactional guarantees are eventually consistent and atomic.
 Also note that the Provisioning Operator can still fetch the status of its managed clusters and regularly reschedule failed or pending reconciliations of components.
 
-## Inventory Design - Versioned Kyma CRs
+## Inventory Design - Versioned Kyma CRs and Release Channels
 
 When designing our inventory, we want to stay as close to kubernetes-native directives as possible, especially compared to the previous reconciler approach. We want to manage the entire inventory of a Kyma Cluster through a set of smartly entangled CRs that enable interaction in a declarative and easy structure. 
 As such, we will enforce a central `Kyma` CR that will be the Centerpoint of our reconciliation, based on a detailed versioning scheme supporting backups / rollouts similar to the kubernetes-native `rollout` functionality. 
 
 Component CRs will reflect the state of a component reconciliation for a given cluster by updating their reconciliation status in the CR, which the Kyma CR will aggregate into a final `Health Indicator`. 
-This Health Indiciator together with its lifecycle management through versioned Kyma Releases will be used to determine an `Active Release`. 
-This will be the single source of truth for the actually enabled Kyma Release Version in a Cluster after the last successful reconciliation. 
+This Health Indiciator together with its lifecycle management through versioned Kyma Releases will be used to determine an `Active Channel`. 
+This will be the single source of truth for the actually enabled Kyma Channel in a Cluster after the last successful reconciliation. 
 In case of failure, the Kyma CR will be changed to the Status `Progressing` (similar to the kubernetes native deployment) until the failure was resolved, or a backoff was exhausted, in which case an up/downgrade will be considered failed. 
 In this case, we will ensure there are alert rules available to detect these CRs and ping SREs through the Control Plane monitoring capabilities to manually intervene. 
 
 Ideally the SRE is able to remediate the Cluster Reconciliation by backing up the state through our revision management. 
 If not, we are able to deduce the exact error state and time through issuing of timed Kubernetes Events, our Control-Plane monitoring stack, as well as the individual Component Status in the CRs for that Kyma Release, allowing for much more fine-grained debugging control.
+
+### Determining Module Versions for a Kyma Installation
+Since a Kyma Installation will only be referenced through a Release Channel, e.g. stable, the actual Module Versions can change or get upgraded regularly. 
+This means that the individual modules for installing Kyma (e.g. Monitoring) would have their own versioning scheme which would be mapped to a release-channel through a compatibility matrix. 
+
+When developing a component module, we will then need
+
+- A Component CR responsible for State Management and Status Observability
+- A component-operator implementing the reconciliation on an external kubeconfig or an incluster configuration
+- A helm chart in the kyma releases that is versioned
+- A compatibility matrix that maps all known helm chart versions towards a component-operator build
+
+Whenever implementing a new feature requiring a breaking change on the operator, one will also have to increase or change the compatibility matrix. As long as only the resource changes, but stays compatible with the operator, only the helm chart version has to be incremented. Whenever the CR Version has to be adopted (e.g. because of an API breaking change), the component-operator has to be updated and potentially a conversion-webhook needs to be setup.
+
+For testing, we define mainly 3 different pipelines:
+- Test and Delivery of the Module Charts (isolated) => chart-tests
+- Test and Delivery of the Module Operator (for all compatible chart versions, isolated) => module-operator-tests
+- Test and Delivery of the Module in Kyma through a Kyma Installation (E2E) => kyma-operator-tests
+
+![channel_based_versioning.png](assets/channel_based_versioning.png)
+
+
+In the end the component-operator will implicitly deploy and upgrade the components deployed on the cluster by checking the channel and using the compatibility matrix to resolve which chart version to deploy.
+
+One of the most important features will also be the inclusion of rollout labels. This will allow SREs and DevOps to deploy and maintain multiple operator versions at the same time in one cluster. A Component CR can then be tagged (similar to istio installations) for a canary or production rollout, allowing a smooth phased rollout in one cluster for operator and chart versions.
 
 ### Questions Asked During Investigation
 
