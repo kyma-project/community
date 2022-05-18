@@ -10,6 +10,7 @@ metadata:
     chart: prometheus-15.0.1
     heritage: Helm
   name: prometheus
+  namespace: monitoring
   annotations:
     {}
 ---
@@ -24,6 +25,7 @@ metadata:
     chart: prometheus-15.0.1
     heritage: Helm
   name: prometheus
+  namespace: monitoring
 data:
   alerting_rules.yml: |
     {}
@@ -177,6 +179,7 @@ metadata:
     chart: prometheus-15.0.1
     heritage: Helm
   name: prometheus
+  namespace: monitoring
 spec:
   ports:
     - name: http
@@ -201,6 +204,7 @@ metadata:
     chart: prometheus-15.0.1
     heritage: Helm
   name: prometheus
+  namespace: monitoring
 spec:
   selector:
     matchLabels:
@@ -216,6 +220,7 @@ spec:
         proxy.istio.io/config: |  # configure an env variable `OUTPUT_CERTS` to write certificates to the given folder
           proxyMetadata:
             OUTPUT_CERTS: /etc/istio-output-certs
+        sidecar.istio.io/inject: "true"
         sidecar.istio.io/userVolumeMount: '[{"name": "istio-certs", "mountPath": "/etc/istio-output-certs"}]' # mount the shared volume at sidecar proxy
       labels:
         component: "server"
@@ -249,6 +254,8 @@ spec:
             - --storage.tsdb.path=/data
             - --web.console.libraries=/etc/prometheus/console_libraries
             - --web.console.templates=/etc/prometheus/consoles
+            - '--web.external-url=http://prometheus.monitoring:9090'
+            - '--web.route-prefix=/'
             - --web.enable-lifecycle
           ports:
             - containerPort: 9090
@@ -300,3 +307,34 @@ spec:
         - name: istio-certs
           emptyDir:
             medium: Memory
+---
+apiVersion: v1
+data:
+  datasource.yaml: |-
+    apiVersion: 1
+    datasources:
+    - name: Custom Prometheus
+      type: prometheus
+      url: http://prometheus.monitoring:9090/
+      access: proxy
+      isDefault: false
+      jsonData:
+        timeInterval: 30s
+kind: ConfigMap
+metadata:
+  labels:
+    grafana_datasource: "1"
+  name: custom-prometheus-datasource
+  namespace: kyma-system
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: prometheus
+  namespace: monitoring
+spec:
+  host: prometheus.monitoring.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: DISABLE
+---
