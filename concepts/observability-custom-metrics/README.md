@@ -1,6 +1,6 @@
-# Custom Workload Metrics
+# Custom workload metrics
 
-# Simple Prometheus Setup
+## Simple Prometheus setup
 
 Deploy a plain (non-operated) Prometheus server instance. Scraping custom workloads can be enabled by setting the following Pod annotations: 
 ```yaml
@@ -11,22 +11,22 @@ annotations:
 ```
 
 Dividing Prometheus into Kyma Prometheus and Custom Worload Prometheus has a lot of advantages.
-However, it still makes sense to use a shared Grafana instance that queries both instances. It is possible to achieve it without making any changes in the Grafana configuration, just adding a custom datasource will suffice.
+However, it still makes sense to use a shared Grafana that queries both Prometheus instances. It is possible to achieve it without making any changes in the Grafana configuration, just by adding a custom datasource.
 
-## How to test it?
+### How to test it?
 
 ```bash
-kubectl apply -f assets/simple-prometheus-setup.yaml
-kubectl apply -f assets/workloads.yaml
-kubectl apply -f assets/dashboard.yaml
+kubectl apply -f assets/simple-prometheus-setup.yaml # deploy Prometheus server and make it a Kyma Grafana datasource
+kubectl apply -f assets/workloads.yaml               # deploy a custom worload that exposes metrics
+kubectl apply -f assets/dashboard.yaml               # deploy Grafana dashboard
 ```
 
-## Pros
+### Pros
 
-1. Isolating Kyma Prometheus makes it possible to optimize its performance.
-2. Easy to enable metric scraping.
+1. Separating Kyma Prometheus, which is fully under our control, from Custom Worload Prometheus. In this setup, Kyma Prometheus remains unaffected by custom metrics hitting scraping limits, having high-cardinality, etc.
+2. Enabling metric scraping is can easily achieved by setting a set of annotations.
 
-## Cons
+### Cons
 
-1. Limited configuration (e.g. comparing to ServiceMonitors).
-2. Two Prometheus instances - increased resource consumption.
+1. Limited configuration flexibility (e.g. comparing to ServiceMonitors). According to the [official documentation](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config), it's only possible to set scrape interval and scrape timeout on a per target basis.
+2. Second Prometheus instance needs additional cluster resources.
