@@ -52,7 +52,7 @@ status:
 
 ## Metadata
 
-The `namespaces` and `name` can be set by users. This allows to run multiple different instances of the same backend type.
+You can set `namespaces` and `name`. This allows you to run multiple different instances of the same backend type.
 
 ```yaml
 metadata:
