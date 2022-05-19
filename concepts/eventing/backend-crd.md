@@ -92,7 +92,7 @@ The following scenarios must return a `validationError` and result in the backen
 - `conditions` contains the readiness of all the components which the backend depends on.
 - `eventingReady` is evaluated by `ANDing` all the `status.conditions`.
 
-Example of a backend CR with no validation errors:
+You can find a backend CR with no validation errors in the following example:
 
 ```yaml
 status:
