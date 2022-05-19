@@ -80,7 +80,7 @@ spec:
 - Spec config validation can be done by writing a custom `ValidatingAdmissionWebhook`.
 - Defaulting the required but not-set spec config can be done by writing a custom `MutatingAdmissionWebhook`.
 
-The following scenarios should return a `validationError` and result into the backend not being created.
+The following scenarios must return a `validationError` and result in the backend not being created.
 - Spec config keys that do not belong to the specified backend.
 - Spec config values set to forbidden data.
 - Spec config values using the wrong data type for the given key.
