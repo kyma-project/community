@@ -7,6 +7,12 @@ The easiest way to let the customer monitor her worloads would be lifting the re
 
 One problem that can occur is so called cardinality explosion when the time series count grows because of high-cardinality labels. A good example is metrics exposed by Istio when elastic workloads scale up and down. Another very common use case is bad code deploys that stuff high-cardinality data (request IDs, timestamps, user-provided values, etc.) into one or more labels of one or more metrics.
 
+A cardinality explosion causes the following problems:
+
+* Increases Prometheus memory consumption, which can eventually lead to be OOM-killed
+* Increases scrape durations
+* Querying becomes effectively impossible
+
 Monitoring and preventing cardinality explosion is not an easy task. There is a project called [Bomb Squad](https://blog.freshtracks.io/bomb-squad-automatic-detection-and-suppression-of-prometheus-cardinality-explosions-62ca8e02fa32), which detects high-cardinality metrics and silences them by rewriting the scrpae config.
 
 ## Separate plain Prometheus
