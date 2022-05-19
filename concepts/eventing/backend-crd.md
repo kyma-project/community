@@ -48,7 +48,7 @@ status:
   eventingReady: true
 ```
 
-> **Note:** As a result of having a flexible design for the backend configuration in the CRD, we decided not to mention which configuration needs to move from the Eventing controller charts to the backend CR and left it to the implementation phase.
+> **Note:** As a result of having a flexible design for the backend configuration in the CRD, we decided not to mention which configuration needs to move from the Eventing controller charts to the backend CR. It is left for the implementation phase.
 
 ## Metadata
 
