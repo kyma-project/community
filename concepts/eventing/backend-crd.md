@@ -66,7 +66,7 @@ metadata:
 
 Each backend instance is defined with its own `spec`. The `spec` contains the objects `type` and `config`. While `type` accepts the string of the backend name (`"nats"`, `"beb"`), the `config` accepts the key-value pairs of the actual configuration for the specified backend.
 
-Example how to configure `BEB` as the Eventing backend:
+You can find instructions how to configure `BEB` as the Eventing backend in the following example:
 
 ```yaml
 spec:
