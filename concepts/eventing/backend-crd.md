@@ -88,7 +88,7 @@ The following scenarios must return a `validationError` and result in the backen
 
 ## Status
 
-The `status` contains the following fields:
+`status` contains the following fields:
 - `conditions` contains the readiness of all the components which the backend depends on.
 - `eventingReady` is evaluated by `ANDing` all the `status.conditions`.
 
