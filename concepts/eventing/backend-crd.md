@@ -112,7 +112,7 @@ status:
   eventingReady: true
 ```
 
-> **Note:** The `Eventing Backend Ready` condition should indicate if the configured backend type in the spec is ready for use or not. It can be as simple as checking the underlying connection status with the backend. But that decision is left to the implementation phase.
+> **Note:** The `Eventing Backend Ready` condition indicates if the configured backend type in the spec is ready for use. It can be as simple as checking the underlying connection status with the backend. This decision is left for the implementation phase.
 
 ## Discovery
 
