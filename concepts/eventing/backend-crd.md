@@ -126,4 +126,4 @@ There are multiple options to provide Eventing backends discovery:
   - GET `/backend/${TYPE}` returns more details about the given backend type (for example, configuration details).
 3. Provide an `openAPIV3Schema` schema validation in the Eventing backend CRD.
 
-> **Note:** For the time being we decided to go with the first option and in the future we can support the necessary discovery automation if needed.
+> **Note:** For the time being we decided to go with the first option. If needed, in the future we can support the necessary discovery automation.
