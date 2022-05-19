@@ -116,7 +116,7 @@ status:
 
 ## Discovery
 
-Eventing users should have the ability to discover the supported Eventing backends and their corresponding configurations.
+Eventing users must have the ability to discover the supported Eventing backends and their corresponding configurations.
 
 There are multiple options to provide Eventing backends discovery:
 
