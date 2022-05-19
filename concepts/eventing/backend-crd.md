@@ -14,7 +14,7 @@
 The goal of this proposal is to design the backend CRD in a flexible way to support:
 
 - Creating multiple backends of different types (for example, `nats`, `beb`).
-- Creating multiple backends of the same type (e.g. `beb-instace-1`, `beb-instace-2`).
+- Creating multiple backends of the same type (for example, `beb-instace-1`, `beb-instace-2`).
 - Providing backend specific configurations in a generic way.
 - Discovering the supported backends by Kyma Eventing.
 - Discovering backend specific configurations.
