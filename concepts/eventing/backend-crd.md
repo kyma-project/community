@@ -120,7 +120,7 @@ Eventing users must have the ability to discover the supported Eventing backends
 
 There are multiple options to provide Eventing backends discovery:
 
-1. Document the supported Eventing Backends and their corresponding configurations.
+1. Document the supported Eventing backends and their corresponding configurations.
 2. Provide discovery endpoints:
   - GET `/backend` returns the supported Eventing backends.
   - GET `/backend/${TYPE}` returns more details about the given backend type (e.g. configuration details).
