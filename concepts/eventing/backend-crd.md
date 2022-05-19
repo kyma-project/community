@@ -64,7 +64,7 @@ metadata:
 
 ## Spec
 
-Each backend instance is defined with its own `spec`. The `spec` contains the objects `type` and `config`. While `type` accepts the string of the name of the backend (`"nats"`, `"beb"`, ...etc), the `config` accepts the key/value pairs of the actual configuration for the specified backend.
+Each backend instance is defined with its own `spec`. The `spec` contains the objects `type` and `config`. While `type` accepts the string of the backend name (`"nats"`, `"beb"`), the `config` accepts the key-value pairs of the actual configuration for the specified backend.
 
 Example how to configure `BEB` as the Eventing backend:
 
