@@ -1,5 +1,10 @@
 # Custom workload metrics
 
+The following document presents possible alternatives for a Kyma user to store and analyze custom worload metrics. We want to address the following aspects:
+
+* How easy it is for a Kyma user to enable and adjust worload scrpaing?
+* Can we guarantee monitoring stack stability in case of a user mistake (e.g. which results in cardinality explosion)
+
 ## Shared Prometheus
 
 Kyma comes with a pre-installed Prometheus. Currently, it is only used for monitoring Kyma components and it is not possible for it to scrape custom workload metrics. 
@@ -14,19 +19,32 @@ A cardinality explosion causes the following problems:
 * Querying becomes effectively impossible
 
 Monitoring and preventing cardinality explosion is not an easy task. There is a project called [Bomb Squad](https://blog.freshtracks.io/bomb-squad-automatic-detection-and-suppression-of-prometheus-cardinality-explosions-62ca8e02fa32), which detects high-cardinality metrics and silences them by rewriting the scrpae config.
+However, it's an alpha project and is, in fact, abandoned. 
+
+## Pros
+
+* Easy to set up - just expose some Kyma Prometheus Operator features to end users
+
+## Cons
+
+* Since Prometheus Operator does not support annotation-based discovery of services, its CRD-based API (PodMonitor or ServiceMonitor) has to be exposed to end users. It is very flexible, but requires from end users advanced knowledge of Prometheus
+* Since the Prometheus config is under control of Kyma Prometheus Operator, it's not possible to use cardinality prevention alike Bomb Squad
+* Hard to guarantee Kyma monitoring stability since custom metrics will be pulled by the same Prometheus instance
 
 ## Separate plain Prometheus
 
 Deploy a plain (non-operated) Prometheus server instance. Scraping custom workloads can be enabled by setting the following Pod annotations: 
 ```yaml
 annotations:
+    prometheus.io/scheme: "https"
     prometheus.io/scrape: "true"
     prometheus.io/path: $(PROMETHEUS_METRICS_PATH)
     prometheus.io/port: $(PROMETHEUS_METRICS_PORT)
 ```
 
 Dividing Prometheus into Kyma Prometheus and Custom Worload Prometheus has a lot of advantages.
-However, it still makes sense to use a shared Grafana that queries both Prometheus instances. It is possible to achieve it without making any changes in the Grafana configuration, just by adding a custom datasource.
+
+It still makes sense to use a shared Grafana that queries both Prometheus instances. It is possible to achieve it without making any changes in the Grafana configuration, just by adding a custom datasource.
 
 ### How to test it?
 
