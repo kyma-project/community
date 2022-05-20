@@ -3,7 +3,7 @@
 The following document presents possible alternatives for a Kyma user to store and analyze custom worload metrics. We want to address the following aspects:
 
 * How easy it is for a Kyma user to enable and adjust worload scraping?
-* Can we guarantee monitoring stack stability in case of a user mistake (e.g. which results in cardinality explosion)
+* Can we guarantee monitoring stack stability in case of a user mistake (e.g. which results in cardinality explosion). Monitoring and recoverability are important
 
 ## Shared Prometheus
 
@@ -67,3 +67,27 @@ kubectl apply -f assets/dashboard.yaml               # deploy Grafana dashboard
 ## Separate operated Prometheus (using Kyma Prometheus Operator)
 
 Use Kyma Prometheus Operator to deploy a second Prometheus instance. However, this approach combines disadvantages from both above-mentioned approaches: complex API and hard to prevent cardinality explosion.
+
+## Separate Prometheus Operator
+
+Similar argumentation as above. In addition to that, more cluster resources will be used.
+
+### Conclusions 
+
+Taking all pros and cons into account, Prometheus Operator-based setups do not suit our needs due to the following reasons:
+
+* Unnessesarily complex API
+* Enabling Prometheus Operator means exposing all its features, many of those customers do not need (e.g. ThanosRuler)
+* Not possible to implement cardinality explosion prevention, since the scrape config is controlled by the operator
+* In the long-run we want to drop Kyma Prometheus Operator in favor of plain Prometheus as a more lightweight alternative. It will also decrase chart maintenance costs.
+
+On the other hand, we want to keep Kyma monitoring separate from customer workload monitoring to ensure its stability.
+It still makes sense to keep all dashboards in one place, which means opening Kyma Grafana to the users.
+
+It means that the separate plain Prometheus setup is the way to go.
+
+### Questions to answer
+
+* How to integrate alertmanager?
+* Investigate what it means to open Kyma dashboard performance-wise (how many dashboards customer can create, etc.)
+* Try out the Bomb Squad approach to prevent Prometheus from crashing
