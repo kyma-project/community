@@ -2,7 +2,7 @@
 
 The following document presents possible alternatives for a Kyma user to store and analyze custom worload metrics. We want to address the following aspects:
 
-* How easy it is for a Kyma user to enable and adjust worload scrpaing?
+* How easy it is for a Kyma user to enable and adjust worload scraping?
 * Can we guarantee monitoring stack stability in case of a user mistake (e.g. which results in cardinality explosion)
 
 ## Shared Prometheus
