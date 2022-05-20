@@ -36,10 +36,10 @@ However, it's an alpha project and is, in fact, abandoned.
 Deploy a plain (non-operated) Prometheus server instance. Scraping custom workloads can be enabled by setting the following Pod annotations: 
 ```yaml
 annotations:
-    prometheus.io/scheme: "https"
-    prometheus.io/scrape: "true"
-    prometheus.io/path: $(PROMETHEUS_METRICS_PATH)
-    prometheus.io/port: $(PROMETHEUS_METRICS_PORT)
+  prometheus.io/scheme: "https"
+  prometheus.io/scrape: "true"
+  prometheus.io/path: $(PROMETHEUS_METRICS_PATH)
+  prometheus.io/port: $(PROMETHEUS_METRICS_PORT)
 ```
 
 Dividing Prometheus into Kyma Prometheus and Custom Worload Prometheus has a lot of advantages. However, we still have to let end users monitor Custom Workload Prometheus's stability and raise alerts if it hits the limits. We also have to suppress high cardinality metrics scraping (e.g. by using something similar to Bomb Squad)
