@@ -98,9 +98,6 @@ data:
       - source_labels: [__meta_kubernetes_namespace]
         action: drop
         regex: kyma-system|kyma-integration|istio-system
-
-      scrape_interval: 5m
-      scrape_timeout: 30s
   recording_rules.yml: |
     {}
   rules: |

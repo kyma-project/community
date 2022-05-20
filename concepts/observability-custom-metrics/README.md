@@ -18,14 +18,14 @@ A cardinality explosion causes the following problems:
 * Increases scrape durations
 * Querying becomes effectively impossible
 
-Monitoring and preventing cardinality explosion is not an easy task. There is a project called [Bomb Squad](https://blog.freshtracks.io/bomb-squad-automatic-detection-and-suppression-of-prometheus-cardinality-explosions-62ca8e02fa32), which detects high-cardinality metrics and silences them by rewriting the scrpae config.
+Monitoring and preventing cardinality explosion is not an easy task. There is a project called [Bomb Squad](https://github.com/open-fresh/bomb-squad), which detects high-cardinality metrics and silences them by rewriting the scrpae config.
 However, it's an alpha project and is, in fact, abandoned. 
 
-## Pros
+### Pros
 
 * Easy to set up - just expose some Kyma Prometheus Operator features to end users
 
-## Cons
+### Cons
 
 * Since Prometheus Operator does not support annotation-based discovery of services, its CRD-based API (PodMonitor or ServiceMonitor) has to be exposed to end users. It is very flexible, but requires from end users advanced knowledge of Prometheus
 * Since the Prometheus config is under control of Kyma Prometheus Operator, it's not possible to use cardinality prevention alike Bomb Squad
@@ -42,9 +42,9 @@ annotations:
     prometheus.io/port: $(PROMETHEUS_METRICS_PORT)
 ```
 
-Dividing Prometheus into Kyma Prometheus and Custom Worload Prometheus has a lot of advantages.
+Dividing Prometheus into Kyma Prometheus and Custom Worload Prometheus has a lot of advantages. However, we still have to let end users monitor Custom Workload Prometheus's stability and raise alerts if it hits the limits. We also have to suppress high cardinality metrics scraping (e.g. by using something similar to Bomb Squad)
 
-It still makes sense to use a shared Grafana that queries both Prometheus instances. It is possible to achieve it without making any changes in the Grafana configuration, just by adding a custom datasource.
+It makes sense to use a shared Grafana that queries both Prometheus instances. It is possible to achieve it without making any changes in the Grafana configuration, just by adding a custom datasource.
 
 ### How to test it?
 
@@ -56,10 +56,14 @@ kubectl apply -f assets/dashboard.yaml               # deploy Grafana dashboard
 
 ### Pros
 
-1. Separating Kyma Prometheus, which is fully under our control, from Custom Worload Prometheus. In this setup, Kyma Prometheus remains unaffected by custom metrics hitting scraping limits, having high-cardinality, etc.
-2. Enabling metric scraping is can easily achieved by setting a set of annotations. In theory, it is possible to wtite a simple mutating webhook server to add those annotations automatically.
+* Separating Kyma Prometheus, which is fully under our control, from Custom Worload Prometheus. In this setup, Kyma Prometheus remains unaffected by custom metrics hitting scraping limits, having high-cardinality, etc
+* Enabling metric scraping is can easily achieved by setting a set of annotations. In theory, it is possible to wtite a simple mutating webhook server to add those annotations automatically
 
 ### Cons
 
-1. Limited configuration flexibility (e.g. comparing to ServiceMonitors). According to the [official documentation](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config), it's only possible to set scrape interval and scrape timeout on a per target basis.
-2. Second Prometheus instance needs additional cluster resources.
+* Limited configuration flexibility (e.g. comparing to ServiceMonitors). According to the [official documentation](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config), it's only possible to set scrape interval and scrape timeout on a per target basis
+* Second Prometheus instance needs additional cluster resources
+
+## Separate operated Prometheus (using Kyma Prometheus Operator)
+
+Use Kyma Prometheus Operator to deploy a second Prometheus instance. However, this approach combines disadvantages from both above-mentioned approaches: complex API and hard to prevent cardinality explosion.
