@@ -5,6 +5,43 @@ kind: Deployment
 metadata:
   name: sample-metrics
   labels:
+    app: sample-metrics-with-sidecar
+    example: monitoring-custom-metrics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-metrics
+      example: monitoring-custom-metrics
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "8080"
+        prometheus.io/scheme: "https"
+        sidecar.istio.io/inject: "true"
+        traffic.sidecar.istio.io/includeInboundPorts: "8080"  
+      labels:
+        app: sample-metrics
+        example: monitoring-custom-metrics
+    spec:
+      containers:
+      - name: sample-metrics
+        image: eu.gcr.io/kyma-project/develop/monitoring-custom-metrics:e56d9645
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: 100Mi
+            cpu: 50m
+          requests:
+            memory: 32Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-metrics-without-sidecar
+  labels:
     app: sample-metrics
     example: monitoring-custom-metrics
 spec:
@@ -19,6 +56,8 @@ spec:
         prometheus.io/scrape: "true"
         prometheus.io/path: "/metrics"
         prometheus.io/port: "8080"
+        prometheus.io/scheme: "http"
+        sidecar.istio.io/inject: "false"
         traffic.sidecar.istio.io/includeInboundPorts: "8080"  
       labels:
         app: sample-metrics
@@ -31,6 +70,7 @@ spec:
         resources:
           limits:
             memory: 100Mi
+            cpu: 50m
           requests:
             memory: 32Mi
 ---
