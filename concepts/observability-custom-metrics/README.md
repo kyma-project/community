@@ -64,7 +64,7 @@ kubectl apply -f assets/dashboard.yaml               # deploy Grafana dashboard
 * Limited configuration flexibility (for example, comparing to Service Monitors). According to the [official documentation](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config), it's only possible to set scrape interval and scrape timeout on a per target basis.
 * Second Prometheus instance needs additional cluster resources.
 
-## Separate operated Prometheus (using Kyma Prometheus Operator)
+## Separately operated Prometheus (using Kyma Prometheus Operator)
 
 Use Kyma Prometheus Operator to deploy a second Prometheus instance. However, this approach combines disadvantages from both previously mentioned approaches: complex API and hard to prevent cardinality explosion.
 
