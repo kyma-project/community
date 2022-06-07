@@ -58,24 +58,30 @@ metadata:
 spec:
   input:
     containers: # maps to central tail pipeline
-      namespaces:[] # maps to rewrite_tag rule
+      namespaces: [] # maps to rewrite_tag rule
       excludeNamespaces: []
       pods: []
+      excludePods: []
       containers: []
+      excludeContainers: []
+      matchLabels:
+        app: icke
     system: {} #maps to systemd based input like kubelet logs
     custom: | # entering unsupported mode
       Name dummy
       Dummy {"message":"dummy"}
   filters:
-    - parser: "json" # support of built-in parsers
-    - dedot: {}
+    - multilineParser:
+        type: "java"
+    - parser:
+        type: "json" # support of built-in parsers
     - modify:
-        operation: "add"
-        key: cluster_identifier
-        value: ${KUBERNETES_SERVICE_HOST}
+        add:
+          key: cluster_identifier
+          value: ${KUBERNETES_SERVICE_HOST}
     - modify:
-        operation: "remove"
-        key: cluster_identifier
+        remove:
+          key: cluster_identifier
     - select:
         include:
           key:
@@ -83,70 +89,82 @@ spec:
         exclude:
           key:
           regexp:
+    - dedot: {}
     - custom: | # no "Match" available, entering unsupported mode
         Name    record_modifier
         Record  cluster_identifier ${KUBERNETES_SERVICE_HOST}
   output: #only one output
     http:
-      Host: ${ES_ENDPOINT}
-      HTTP_User: ${ES_USER} # Defined in Secret
-      HTTP_Password: ${ES_PASSWORD} # Defined in Secret
-    custom: | # no "Match" available, no filebuffer settings available, entering unsupported mode
-        Name               es
-        Alias              es-output
-        Host               ${ES_ENDPOINT} # Defined in Secret
-        HTTP_User          ${ES_USER} # Defined in Secret
-        HTTP_Password      ${ES_PASSWORD} # Defined in Secret
-        LabelMapPath       /files/labelmap.json
-   variables:
+      Host:
+        value: "icke.com"
+      HTTP_User:
+        fromSecretKeyRef:
+          name: my-elastic-credentials
+          namespace: default
+          key: ES_ENDPOINT
+      HTTP_Password:
+        fromSecretKeyRef:
+          name: my-elastic-credentials
+          namespace: default
+          key: ES_ENDPOINT
+    custom:
+      | # no "Match" available, no filebuffer settings available, entering unsupported mode
+      Name               es
+      Alias              es-output
+      Host               ${ES_ENDPOINT} # Defined in Secret
+      HTTP_User          ${ES_USER} # Defined in Secret
+      HTTP_Password      ${ES_PASSWORD} # Defined in Secret
+      LabelMapPath       /files/labelmap.json
+
+  custom:
+    variables:
       - fromSecretRef:
-            name: my-elastic-credentials
-            namespace: default
+          name: my-elastic-credentials
+          namespace: default
       - fromSecretPrefixRef: # secret rotation
-            name: my-elastic-credentials
-            namespace: default
+          name: my-elastic-credentials
+          namespace: default
       - fromSecretKeyRef:
-            name: my-elastic-credentials
-            namespace: default
-            key: ES_ENDPOINT
+          name: my-elastic-credentials
+          namespace: default
+          key: ES_ENDPOINT
       - fromConfigMapRef:
-            name: my-elastic-config
-            namespace: default
+          name: my-elastic-config
+          namespace: default
       - fromConfigMapKeyRef:
-            name: my-elastic-credentials
-            namespace: default
-            key: ES_ENDPOINT
+          name: my-elastic-credentials
+          namespace: default
+          key: ES_ENDPOINT
 
-  files:
-    - name: labelmap.json
-      content: |
-      {
-          "kubernetes": {
-            "namespace_name": "namespace",
-            "pod_name": "pod"
-          },
-          "stream": "stream"
-      }
-   - fromConfigMapRef:
-       name: my-loki-labelMap
-       namespace: default
-   - fromSecretRef:
-       name: my-ip-whitelist
-       namespace: default
-  parsers:
-   - custom: |
-        Name dummy_test
-        Format regex
-        Regex ^(?<INT>[^ ]+) (?<FLOAT>[^ ]+) (?<BOOL>[^ ]+) (?<STRING>.+)$
-  multilineParsers:
-    - custom: |
-        # Example from https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
-        name          multiline-custom-regex
-        type          regex
-        flush_timeout 1000
-        rule      "start_state"   "/(Dec \d+ \d+\:\d+\:\d+)(.*)/"  "cont"
-        rule      "cont"          "/^\s+at.*/"                     "cont" 
-
+    files:
+      - name: "labelmap.json"
+        content: |
+          {
+            "kubernetes": {
+                  "namespace_name": "namespace",
+                  "pod_name": "pod"
+            },
+            "stream": "stream"
+          }
+      - fromConfigMapRef:
+          name: my-loki-labelMap
+          namespace: default
+      - fromSecretRef:
+          name: my-ip-whitelist
+          namespace: default
+    parsers:
+      - custom: |
+          Name dummy_test
+          Format regex
+          Regex ^(?<INT>[^ ]+) (?<FLOAT>[^ ]+) (?<BOOL>[^ ]+) (?<STRING>.+)$
+    multilineParsers:
+      - custom: |
+          # Example from https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
+          name          multiline-custom-regex
+          type          regex
+          flush_timeout 1000
+          rule      "start_state"   "/(Dec \d+ \d+\:\d+\:\d+)(.*)/"  "cont"
+          rule      "cont"          "/^\s+at.*/"                     "cont"
 ```
 
 Example of typical OpenSearch HTTP Application Log pipeline:
@@ -156,42 +174,37 @@ apiVersion: telemetry.kyma-project.io/v1alpha1
 metadata:
   name: OpenSearchHTTP-App
 spec:
-   input:
-      containers:
-         excludeNamespaces: ["kyma-system", "kube-system"]
-   filters:
-      - parser: "json"
-      - dedot: {}
-      - modify:
-         operation: "add"
-         key: cluster_identifier
-         value: ${KUBERNETES_SERVICE_HOST}
-   output:
-      http:
-         Host: ${ES_ENDPOINT}
-         Port: 443
-         HTTP_User: ${ES_USER} # Defined in Secret
-         HTTP_Password: ${ES_PASSWORD} # Defined in Secret
-         URI: /customindex/kyma
-         Format: json
-         allow_duplicated_headers: true
-
-   variables:
-      - fromSecretKeyRef:
-            namespace: default
-            prefix: my-elastic
-            key: HTTP_USER
-            variable: ES_USER
-      - fromSecretKeyRef:
-            namespace: default
-            prefix: my-elastic
-            key: HTTP_PASSWORD
-            variable: ES_PASSWORD
-      - fromSecretKeyRef:
-            namespace: default
-            prefix: my-elastic
-            key: HTTP_HOST
-            variable: ES_ENDPOINT
+  input:
+    containers:
+      excludeNamespaces: ["kyma-system", "kube-system"]
+  filters:
+    - parser:
+        type: "json"
+    - modify:
+        add:
+          key: cluster_identifier
+          value: ${KUBERNETES_SERVICE_HOST}
+    - dedot: {}
+  output:
+    http:
+      Host:
+        fromSecretKeyRef:
+          namespace: default
+          prefix: my-elastic # secret rotation
+          key: HTTP_HOST
+      HTTP_User:
+        fromSecretKeyRef:
+          namespace: default
+          prefix: my-elastic # secret rotation
+          key: HTTP_HOST
+      HTTP_Password:
+        fromSecretKeyRef:
+          namespace: default
+          prefix: my-elastic # secret rotation
+          key: HTTP_PASSWD
+      URI: /customindex/kyma
+      Format: json
+      allow_duplicated_headers: true
 ```
 
 Example of typical OpenSearch HTTP Istio Access Log pipeline:
@@ -199,49 +212,77 @@ Example of typical OpenSearch HTTP Istio Access Log pipeline:
 kind: LogPipeline
 apiVersion: telemetry.kyma-project.io/v1alpha1
 metadata:
-  name: OpenSearchHTTP-App
+  name: OpenSearchHTTP-Istio
 spec:
-   input:
-      containers:
-         excludeNamespaces: ["kyma-system", "kube-system"]
-         containers: ["istio-proxy"]
-   filters:
-      - parser: "json"
-      - dedot: {}
-      - modify:
-            operation: "add"
-            key: cluster_identifier
-            value: ${KUBERNETES_SERVICE_HOST}
-      - select:
-         include:
-            key: protocol
-            regexp: ".+"
-   output:
-      http:
-         Host: ${ES_ENDPOINT}
-         Port: 443
-         HTTP_User: ${ES_USER} # Defined in Secret
-         HTTP_Password: ${ES_PASSWORD} # Defined in Secret
-         URI: /customindex/istio-envoy-kyma
-         Format: json
-         allow_duplicated_headers: true
+  input:
+    containers:
+      excludeNamespaces: ["kyma-system", "kube-system"]
+      containers: ["istio-proxy"]
+  filters:
+    - parser:
+        type: "json"
+    - modify:
+        add:
+          key: cluster_identifier
+          value: ${KUBERNETES_SERVICE_HOST}
+    - select:
+        include:
+          key: protocol
+          regexp: ".+"
+    - dedot: {}
+  output:
+    http:
+      Host:
+        fromSecretKeyRef:
+          namespace: default
+          prefix: my-elastic # secret rotation
+          key: HTTP_HOST
+      HTTP_User:
+        fromSecretKeyRef:
+          namespace: default
+          prefix: my-elastic # secret rotation
+          key: HTTP_HOST
+      HTTP_Password:
+        fromSecretKeyRef:
+          namespace: default
+          prefix: my-elastic # secret rotation
+          key: HTTP_PASSWD
+      URI: /customindex/istio-envoy-kyma
+      Format: json
+      allow_duplicated_headers: true
 
-   variables:
-      - fromSecretKeyRef:
-            namespace: default
-            prefix: my-elastic
-            key: HTTP_USER
-            variable: ES_USER
-      - fromSecretKeyRef:
-            namespace: default
-            prefix: my-elastic
-            key: HTTP_PASSWORD
-            variable: ES_PASSWORD
-      - fromSecretKeyRef:
-            namespace: default
-            prefix: my-elastic
-            key: HTTP_HOST
-            variable: ES_ENDPOINT
+```
+
+Example of default Loki pipeline:
+```YAML
+apiVersion: telemetry.kyma-project.io/v1alpha1
+kind: LogPipeline
+metadata:
+  name: loki
+spec:
+  filters:
+    - parser:
+        type: "json"
+  output:
+    grafana-loki:
+      Url: "http://logging-loki:3100/loki/api/v1/push"
+      Labels:
+        "job": "telemetry-fluent-bit"
+      RemoveKeys: ["kubernetes", "stream"]
+      LineFormat: json
+      LogLevel: warn
+      LabelMap:
+        "kubernetes":
+          "container_name": "container"
+          "host": "node"
+          "labels":
+            "app": "app"
+            "app.kubernetes.io/component": "component"
+            "app.kubernetes.io/name": "app"
+            "serverless.kyma-project.io/function-name": "function"
+          "namespace_name": "namespace"
+          "pod_name": "pod"
+        "stream": "stream"
 ```
 
 ## Pros
