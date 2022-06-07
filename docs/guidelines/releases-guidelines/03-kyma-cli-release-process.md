@@ -67,4 +67,4 @@ A Kyma CLI release consists of:
 
     When a Homebrew maintainer approves your PR, the formula is updated.
 
-8. Verify a day later that the chocolatey formula got updated: https://community.chocolatey.org/packages/kyma-cli
+8. Verify a day later that the chocolatey formula has been updated: https://community.chocolatey.org/packages/kyma-cli
