@@ -14,8 +14,8 @@ A Kyma CLI release consists of:
 * A release tag or branch holding the code
 
 ## Steps
-   >**NOTE:** Once `cli 2.0.0` is released, `cli 1.x.x` should not be released any more. If a new `kyma 1.24.x` is released after releasing `cli 2.0.0`, then a corresponding `cli` patch version (`2.x.x`) should be released.
-1. After Kyma is released, create a release branch in the `cli` repository. The name of this branch must follow the `release-x.y` pattern, such as `release-1.4`.
+
+1. After Kyma is released, create a release branch in the `cli` repository. The name of this branch must follow the `release-x.y` pattern, such as `release-2.4`.
 
    >**NOTE:** This step applies only to new major and minor versions.
 
@@ -25,9 +25,7 @@ A Kyma CLI release consists of:
    git push upstream {RELEASE_NAME}
    ```
 2. Check the `internal/config/config.go` file from the `cli` repository on the release branch:
-   - The `DefaultKyma1Version` variable must contain the latest Kyma `1.24.x` version.
-   - Starting with Kyma 2.0.0, the `DefaultKyma2Version` variable must contain the latest Kyma `2.x.x` version.
-
+   - The `DefaultKyma2Version` variable must contain the latest Kyma `2.x.x` version.
 
 3. Create a PR to `cli/release-x.y` that triggers the presubmit job for `cli`.
 
@@ -68,3 +66,5 @@ A Kyma CLI release consists of:
     - Alternatively, create a PR to the [kyma-cli Homebrew formula](https://github.com/Homebrew/homebrew-core/blob/master/Formula/kyma-cli.rb).
 
     When a Homebrew maintainer approves your PR, the formula is updated.
+
+8. Verify a day later that the chocolatey formula got updated: https://community.chocolatey.org/packages/kyma-cli
