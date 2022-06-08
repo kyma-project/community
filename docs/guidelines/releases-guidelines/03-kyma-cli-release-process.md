@@ -26,6 +26,7 @@ A Kyma CLI release consists of:
    ```
 2. Check the `internal/config/config.go` file from the `cli` repository on the release branch:
    - The `DefaultKyma2Version` variable must contain the latest Kyma `2.x.x` version.
+   - Run `make docs` to update the CLI help accordingly.
 
 3. Create a PR to `cli/release-x.y` that triggers the presubmit job for `cli`.
 
