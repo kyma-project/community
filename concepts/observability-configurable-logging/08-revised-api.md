@@ -57,7 +57,7 @@ metadata:
   name: OpenSearchHTTP-App
 spec:
   input:
-    containers: # maps to central tail pipeline
+    application: # maps to central tail pipeline
       namespaces: [] # maps to rewrite_tag rule
       excludeNamespaces: []
       pods: []
@@ -89,15 +89,17 @@ spec:
         exclude:
           key:
           regexp:
-    - dedot: {}
     - custom: | # no "Match" available, entering unsupported mode
         Name    record_modifier
         Record  cluster_identifier ${KUBERNETES_SERVICE_HOST}
+
   output: #only one output
     http:
+      Dedot: true
       Host:
         value: "icke.com"
       HTTP_User:
+        value: "icke"
         fromSecretKeyRef:
           name: my-elastic-credentials
           namespace: default
@@ -175,7 +177,7 @@ metadata:
   name: OpenSearchHTTP-App
 spec:
   input:
-    containers:
+    application:
       excludeNamespaces: ["kyma-system", "kube-system"]
   filters:
     - parser:
@@ -184,9 +186,9 @@ spec:
         add:
           key: cluster_identifier
           value: ${KUBERNETES_SERVICE_HOST}
-    - dedot: {}
   output:
     http:
+      Dedot: true
       Host:
         fromSecretKeyRef:
           namespace: default
@@ -203,8 +205,6 @@ spec:
           prefix: my-elastic # secret rotation
           key: HTTP_PASSWD
       URI: /customindex/kyma
-      Format: json
-      allow_duplicated_headers: true
 ```
 
 Example of typical OpenSearch HTTP Istio Access Log pipeline:
@@ -215,7 +215,7 @@ metadata:
   name: OpenSearchHTTP-Istio
 spec:
   input:
-    containers:
+    application:
       excludeNamespaces: ["kyma-system", "kube-system"]
       containers: ["istio-proxy"]
   filters:
@@ -229,9 +229,9 @@ spec:
         include:
           key: protocol
           regexp: ".+"
-    - dedot: {}
   output:
     http:
+      Dedot: true
       Host:
         fromSecretKeyRef:
           namespace: default
@@ -248,8 +248,6 @@ spec:
           prefix: my-elastic # secret rotation
           key: HTTP_PASSWD
       URI: /customindex/istio-envoy-kyma
-      Format: json
-      allow_duplicated_headers: true
 
 ```
 
