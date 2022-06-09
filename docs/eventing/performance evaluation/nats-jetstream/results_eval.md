@@ -75,7 +75,7 @@ kubectl delete po -n kyma-system eventing-nats-0
 
 
 ## Test Scenario 3: NATS Servers scaled down to 0 and back to 1 during test
-> **NOTE:** Scaled down NATS statfulset to 0 after 4 minutes.
+> **NOTE:** Scaled down NATS statefulset to 0 after 4 minutes.
 ```
 kubectl scale statefulset eventing-nats -n kyma-system --replicas 0
 kubectl scale statefulset eventing-nats -n kyma-system --replicas 1

@@ -34,9 +34,3 @@ There were some test runs where the "Events Sent" didn't match "Events Received"
 ![](assets/loss_1000_stream.png "")
 ![](assets/loss_1000_consumer.png "")
 
-# Some test runs that showed discrepancy in number of events sent and received:
-## Run ID: 1/6/2022T13:17 (Duration: 10m, Event Rate: 200rps)
-![](assets/01_06_22-10-200_3.png "")
-
-## Run ID: 1/6/2022T13:32 (Duration: 10m, Event Rate: 250rps)
-![](assets/01_06_22-10-250_1.png "")
