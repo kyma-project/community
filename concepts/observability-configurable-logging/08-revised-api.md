@@ -27,7 +27,7 @@ Support of full match expressions in a `LogPipeline` will harm other pipelines a
 
 ### Unsupported Plugins
 
-We need a clear distinction between supported/tested setups and unsupported setups. An HTTP plugin usage should be supported with any configuration while a stackdriver plugin usage is unsupported as we have no chance to cover testing.
+We need a clear distinction between supported/tested setups and unsupported setups. An HTTP plugin usage should be supported with any configuration while a stackdriver plugin usage is unsupported as we have no chance to cover testing. The additional resource consumption of some plugins and settings is also a relevant factor. We don't want the user to configure anything that creates a new emitter, which increases the memory usage above the amount that we introduce ourselves.
 -> Introduce a mechanism to detect usage of unsupported plugins
 
 ### Dedotting support
