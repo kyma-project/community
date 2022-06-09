@@ -66,15 +66,14 @@ spec:
       excludeContainers: []
       matchLabels:
         app: icke
+      multilineParsers:
+        - "java"
+        - "myCustomParser"
     system: {} #maps to systemd based input like kubelet logs
     custom: | # entering unsupported mode
       Name dummy
       Dummy {"message":"dummy"}
   filters:
-    - multilineParser:
-        type: "java"
-    - parser:
-        type: "json" # support of built-in parsers
     - modify:
         add:
           key: cluster_identifier
@@ -118,55 +117,54 @@ spec:
       HTTP_Password      ${ES_PASSWORD} # Defined in Secret
       LabelMapPath       /files/labelmap.json
 
-  custom:
-    variables:
-      - fromSecretRef:
-          name: my-elastic-credentials
-          namespace: default
-      - fromSecretPrefixRef: # secret rotation
-          name: my-elastic-credentials
-          namespace: default
-      - fromSecretKeyRef:
-          name: my-elastic-credentials
-          namespace: default
-          key: ES_ENDPOINT
-      - fromConfigMapRef:
-          name: my-elastic-config
-          namespace: default
-      - fromConfigMapKeyRef:
-          name: my-elastic-credentials
-          namespace: default
-          key: ES_ENDPOINT
+  variables:
+    - fromSecretRef:
+        name: my-elastic-credentials
+        namespace: default
+    - fromSecretPrefixRef: # secret rotation
+        name: my-elastic-credentials
+        namespace: default
+    - fromSecretKeyRef:
+        name: my-elastic-credentials
+        namespace: default
+        key: ES_ENDPOINT
+    - fromConfigMapRef:
+        name: my-elastic-config
+        namespace: default
+    - fromConfigMapKeyRef:
+        name: my-elastic-credentials
+        namespace: default
+        key: ES_ENDPOINT
 
-    files:
-      - name: "labelmap.json"
-        content: |
-          {
-            "kubernetes": {
-                  "namespace_name": "namespace",
-                  "pod_name": "pod"
-            },
-            "stream": "stream"
-          }
-      - fromConfigMapRef:
-          name: my-loki-labelMap
-          namespace: default
-      - fromSecretRef:
-          name: my-ip-whitelist
-          namespace: default
-    parsers:
-      - custom: |
-          Name dummy_test
-          Format regex
-          Regex ^(?<INT>[^ ]+) (?<FLOAT>[^ ]+) (?<BOOL>[^ ]+) (?<STRING>.+)$
-    multilineParsers:
-      - custom: |
-          # Example from https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
-          name          multiline-custom-regex
-          type          regex
-          flush_timeout 1000
-          rule      "start_state"   "/(Dec \d+ \d+\:\d+\:\d+)(.*)/"  "cont"
-          rule      "cont"          "/^\s+at.*/"                     "cont"
+  files:
+    - name: "labelmap.json"
+      content: |
+        {
+          "kubernetes": {
+                "namespace_name": "namespace",
+                "pod_name": "pod"
+          },
+          "stream": "stream"
+        }
+    - fromConfigMapRef:
+        name: my-loki-labelMap
+        namespace: default
+    - fromSecretRef:
+        name: my-ip-whitelist
+        namespace: default
+  parsers:
+    - custom: |
+        Name dummy_test
+        Format regex
+        Regex ^(?<INT>[^ ]+) (?<FLOAT>[^ ]+) (?<BOOL>[^ ]+) (?<STRING>.+)$
+  multilineParsers:
+    - custom: |
+        # Example from https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
+        name          multiline-custom-regex
+        type          regex
+        flush_timeout 1000
+        rule      "start_state"   "/(Dec \d+ \d+\:\d+\:\d+)(.*)/"  "cont"
+        rule      "cont"          "/^\s+at.*/"                     "cont"
 ```
 
 Example of typical OpenSearch HTTP Application Log pipeline:
@@ -180,8 +178,6 @@ spec:
     application:
       excludeNamespaces: ["kyma-system", "kube-system"]
   filters:
-    - parser:
-        type: "json"
     - modify:
         add:
           key: cluster_identifier
@@ -219,8 +215,6 @@ spec:
       excludeNamespaces: ["kyma-system", "kube-system"]
       containers: ["istio-proxy"]
   filters:
-    - parser:
-        type: "json"
     - modify:
         add:
           key: cluster_identifier
@@ -258,17 +252,12 @@ kind: LogPipeline
 metadata:
   name: loki
 spec:
-  filters:
-    - parser:
-        type: "json"
   output:
     grafana-loki:
       Url: "http://logging-loki:3100/loki/api/v1/push"
       Labels:
         "job": "telemetry-fluent-bit"
       RemoveKeys: ["kubernetes", "stream"]
-      LineFormat: json
-      LogLevel: warn
       LabelMap:
         "kubernetes":
           "container_name": "container"
