@@ -28,7 +28,7 @@
 
 ### Run ID: 7/6/2022T13:23 [Simple NATS with JetStream Disabled] (Duration: 10m, Event Rate: 150rps)
 
-> **Note:** This is the only test run with JetStream disabled. All the other tests were done with JetStream enabled.
+> **NOTE:** This is the only test run with JetStream disabled. All the other tests were done with JetStream enabled.
 
 ![](assets/NATS_07_06_22-10-150_1.png "")
 
@@ -60,7 +60,7 @@
 
 ## Test Scenario 2: NATS Servers deleted during test
 
-> **Note:** Deleted (using kubectl delete) all 3 pods of NATS at once after 4 minutes.
+> **NOTE:** Deleted (using `kubectl delete`) all thres Pods of NATS at once after 4 minutes.
 
 ```
 kubectl delete po -n kyma-system eventing-nats-0
@@ -86,7 +86,7 @@ kubectl delete po -n kyma-system eventing-nats-2
 
 ## Test Scenario 3: NATS Servers scaled down to 0 and back to 3 during test
 
-> **Note:** Scaled down NATS statfulset to 0 after 4 minutes.
+> **NOTE:** Scaled down NATS statfulset to 0 after 4 minutes.
 
 ```
 kubectl scale statefulset eventing-nats -n kyma-system --replicas 0
@@ -126,7 +126,7 @@ kubectl scale statefulset eventing-nats -n kyma-system --replicas 3
 ## Test Scenario 4: Eventing-controller Pod deleted during test
 
 ### Run ID: 2/6/2022T14:17 (Duration: 10m, Event Rate: 150rps)
-> **Note:** Deleted (using kubectl delete) the pod of eventing-controller after 4 minutes.
+> **NOTE:** Deleted (using `kubectl delete`) the Pod of eventing-controller after 4 minutes.
 
 **State before test run:**
 - Stream:  

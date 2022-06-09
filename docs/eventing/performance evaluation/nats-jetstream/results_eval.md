@@ -40,7 +40,7 @@
 
 
 ## Test Scenario 2: NATS Servers deleted during test
-> **Note:** Deleted (using kubectl delete) all 3 pods of NATS after 4 minutes.
+> **NOTE:** Deleted (using `kubectl delete`) all three Pods of NATS after 4 minutes.
 
 ```
 kubectl delete po -n kyma-system eventing-nats-0
@@ -75,7 +75,7 @@ kubectl delete po -n kyma-system eventing-nats-0
 
 
 ## Test Scenario 3: NATS Servers scaled down to 0 and back to 1 during test
-> **Note:** Scaled down NATS statfulset to 0 after 4 minutes.
+> **NOTE:** Scaled down NATS statfulset to 0 after 4 minutes.
 ```
 kubectl scale statefulset eventing-nats -n kyma-system --replicas 0
 kubectl scale statefulset eventing-nats -n kyma-system --replicas 1
@@ -111,7 +111,7 @@ kubectl scale statefulset eventing-nats -n kyma-system --replicas 1
 
 
 ## Test Scenario 4: Eventing-controller Pod deleted during test
-> **Note:** Deleted (using kubectl delete) the pod of eventing-controller after 4 minutes.
+> **NOTE:** Deleted (using `kubectl delete`) the Pod of eventing-controller after 4 minutes.
 
 ### Run ID: 7/6/2022T12:21 (10m, 100rps)
 **State before test run:**
