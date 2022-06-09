@@ -5,9 +5,9 @@
 - Test Scenario 1: Without any server restarts/crash
 - Test Scenario 2: NATS Servers deleted during test
 - Test Scenario 3: NATS Servers scaled down to 0 and back to 3 during test
-- Test Scenario 4: Eventing-controller pod deleted during test
+- Test Scenario 4: Eventing-controller Pod deleted during test
 
-# Test Setup
+## Test Setup
 * Testing tool: [K6](https://k6.io/)
 * Kyma CLI version: `2.2.0`
 * Kyma: 
@@ -24,40 +24,41 @@
   kyma deploy --source=main -p production --value global.jetstream.enabled=true --value global.jetstream.storage=file
   ```
 
-# Test Scenario 1: Without any server restarts/crash
+## Test Scenario 1: Without any server restarts/crash
 
-## Run ID: 7/6/2022T13:23 [Simple NATS with JetStream Disabled] (Duration: 10m, Event Rate: 150rps)
+### Run ID: 7/6/2022T13:23 [Simple NATS with JetStream Disabled] (Duration: 10m, Event Rate: 150rps)
+
 > **Note:** This is the only test run with JetStream disabled. All the other tests were done with JetStream enabled.
 
 ![](assets/NATS_07_06_22-10-150_1.png "")
 
-## Run ID: 1/6/2022T11:58 (Duration: 10m, Event Rate: 150rps)
+### Run ID: 1/6/2022T11:58 (Duration: 10m, Event Rate: 150rps)
 ![](assets/01_06_22-10-150_1.png "")
 
-## Run ID: 1/6/2022T12:17 (Duration: 10m, Event Rate: 150rps)
+### Run ID: 1/6/2022T12:17 (Duration: 10m, Event Rate: 150rps)
 ![](assets/01_06_22-10-150_2.png "")
 
-## Run ID: 1/6/2022T12:31 (Duration: 10m, Event Rate: 150rps)
+### Run ID: 1/6/2022T12:31 (Duration: 10m, Event Rate: 150rps)
 ![](assets/01_06_22-10-150_3.png "")
 
-## Run ID: 1/6/2022T12:45 (Duration: 10m, Event Rate: 200rps)
+### Run ID: 1/6/2022T12:45 (Duration: 10m, Event Rate: 200rps)
 ![](assets/01_06_22-10-200_1.png "")
 
-## Run ID: 1/6/2022T13:2 (Duration: 10m, Event Rate: 200rps)
+### Run ID: 1/6/2022T13:2 (Duration: 10m, Event Rate: 200rps)
 ![](assets/01_06_22-10-200_2.png "")
 
-## Run ID: 2/6/2022T7:58 (Duration: 10m, Event Rate: 250rps)
+### Run ID: 2/6/2022T7:58 (Duration: 10m, Event Rate: 250rps)
 ![](assets/02_06_22-10-250_1.png "")
 
-## Run ID: 2/6/2022T8:28 (Duration: 10m, Event Rate: 250rps)
+### Run ID: 2/6/2022T8:28 (Duration: 10m, Event Rate: 250rps)
 ![](assets/02_06_22-10-250_2.png "")
 
-## Run ID: 2/6/2022T10:56 (Duration: 10m, Event Rate: 1000rps)
+### Run ID: 2/6/2022T10:56 (Duration: 10m, Event Rate: 1000rps)
 ![](assets/02_06_22-10-1000_1.png "")
 
 ---
----
-# Test Scenario 2: NATS Servers deleted during test
+
+## Test Scenario 2: NATS Servers deleted during test
 
 > **Note:** Deleted (using kubectl delete) all 3 pods of NATS at once after 4 minutes.
 
@@ -67,7 +68,7 @@ kubectl delete po -n kyma-system eventing-nats-1
 kubectl delete po -n kyma-system eventing-nats-2
 ```
 
-## Run ID: 2/6/2022T13:20 (Duration: 10m, Event Rate: 150rps)
+### Run ID: 2/6/2022T13:20 (Duration: 10m, Event Rate: 150rps)
 
 ```
 -> Total Events Sent      by **Test Sender** : 77,625 (+ 5514 Failed = 83,139)
@@ -82,24 +83,25 @@ kubectl delete po -n kyma-system eventing-nats-2
 ![](assets/crash1_3.png "")
 
 ---
----
-# Test Scenario 3: NATS Servers scaled down to 0 and back to 3 during test
 
-**Note: Scaled down NATS statfulset to 0 after 4 mins**
+## Test Scenario 3: NATS Servers scaled down to 0 and back to 3 during test
+
+> **Note:** Scaled down NATS statfulset to 0 after 4 minutes.
+
 ```
 kubectl scale statefulset eventing-nats -n kyma-system --replicas 0
 kubectl scale statefulset eventing-nats -n kyma-system --replicas 3
 ```
 
-## Run ID: 2/6/2022T13:54 (Duration: 10m, Event Rate: 150rps)
+### Run ID: 2/6/2022T13:54 (Duration: 10m, Event Rate: 150rps)
 
-### State before test run:
+**State before test run:**
 - Stream:  
   - LastSeq# 77,625
 - Consumer:  
   - Ack Floor: Stream sequence# 77,625
 
-### State after test run:
+**State after test run:**
 - Stream: 
   - LastSeq# 149,259
 - Consumer:  
@@ -121,18 +123,18 @@ kubectl scale statefulset eventing-nats -n kyma-system --replicas 3
 
 ---
 ---
-# Test Scenario 4: Eventing-controller pod deleted during test
+## Test Scenario 4: Eventing-controller Pod deleted during test
 
-## Run ID: 2/6/2022T14:17 (Duration: 10m, Event Rate: 150rps)
-**Note: Deleted (using kubectl delete) the pod of eventing-controller after 4 mins**
+### Run ID: 2/6/2022T14:17 (Duration: 10m, Event Rate: 150rps)
+> **Note:** Deleted (using kubectl delete) the pod of eventing-controller after 4 minutes.
 
-### State before test run:
+**State before test run:**
 - Stream:  
   - LastSeq# 149,259
 - Consumer:  
   - Ack Floor: Stream sequence# 149,259
 
-### State after test run:
+**State after test run:**
 - Stream:  
   - LastSeq# 237,514
 - Consumer:  
@@ -153,6 +155,7 @@ kubectl scale statefulset eventing-nats -n kyma-system --replicas 3
 ![](assets/crash3_3.png "")
 
 ---
----
 
-> **Finding:** Eventing controller reaches the CPU limit (500m) on 100 events/sec. (Same for NATS with JetStream disabled)
+## Finding
+
+Eventing controller reaches the CPU limit (500m) on 100 events/sec. Same result for NATS with JetStream disabled.

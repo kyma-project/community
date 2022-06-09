@@ -5,9 +5,9 @@
 - Test Scenario 1: Without any server restarts/crash
 - Test Scenario 2: NATS Servers deleted during test
 - Test Scenario 3: NATS Servers scaled down to 0 and back to 1 during test
-- Test Scenario 4: Eventing-controller pod deleted during test
+- Test Scenario 4: Eventing-controller Pod deleted during test
 
-# Test Setup
+## Test Setup
 * Testing tool: [K6](https://k6.io/)
 * Kyma CLI version: `2.2.0`
 * Kyma: 
@@ -16,7 +16,7 @@
   * JetStream with File Storage
 * K8s cluster:
   * Kubernetes v1.21.10
-  * Gardener cluster [Nodes: 3(min) to 6(max)]
+  * Gardener cluster [Nodes: 3(min) to 5(max)]
   * GCP Machine Type: `n1-standard-4`
 
 * Kyma deploy command:
@@ -24,37 +24,36 @@
     kyma deploy --source=main -p evaluation --value global.jetstream.enabled=true --value global.jetstream.storage=file
     ```
 
-* Eventing controller reaches the CPU limit on xxx events/sec. (For NATS with JetStream)
+## Test Scenario 1: Without any server restarts/crash
 
-
-# Test Scenario 1: Without any server restarts/crash
-## Run ID: 3/6/2022T7:45 (10m, 50rps)
+### Run ID: 3/6/2022T7:45 (10m, 50rps)
 ![](assets/eval_03_06_22-10-50_1.png "")
 
-## Run ID: 3/6/2022T7:58 (10m, 50rps)
+### Run ID: 3/6/2022T7:58 (10m, 50rps)
 ![](assets/eval_03_06_22-10-50_2.png "")
 
-## Run ID: 3/6/2022T8:11 (10m, 100rps)
+### Run ID: 3/6/2022T8:11 (10m, 100rps)
 ![](assets/eval_03_06_22-10-100_1.png "")
 
-## Run ID: 3/6/2022T8:35 (10m, 100rps)
+### Run ID: 3/6/2022T8:35 (10m, 100rps)
 ![](assets/eval_03_06_22-10-100_2.png "")
 
 
-# Test Scenario 2: NATS Servers deleted during test
+## Test Scenario 2: NATS Servers deleted during test
 > **Note:** Deleted (using kubectl delete) all 3 pods of NATS after 4 minutes.
+
 ```
 kubectl delete po -n kyma-system eventing-nats-0
 ```
 
-## Run ID: 3/6/2022T11:5 (10m, 100rps)
-### Before test run:
+### Run ID: 3/6/2022T11:5 (10m, 100rps)
+**State before test run:**
 - Stream: 
     - LastSeq# 20,199
 - Consumer: 
     - Ack Floor: Stream sequence# 20,199
 
-### After test run:
+**State after test run:**
 - Stream:
     - LastSeq# 23,995
 - Consumer: 
@@ -75,21 +74,21 @@ kubectl delete po -n kyma-system eventing-nats-0
 ![](assets/eval_crash1_4.png "")
 
 
-# Test Scenario 3: NATS Servers scaled down to 0 and back to 1 during test
-**Note: Scaled down NATS statfulset to 0 after 4 mins**
+## Test Scenario 3: NATS Servers scaled down to 0 and back to 1 during test
+> **Note:** Scaled down NATS statfulset to 0 after 4 minutes.
 ```
 kubectl scale statefulset eventing-nats -n kyma-system --replicas 0
 kubectl scale statefulset eventing-nats -n kyma-system --replicas 1
 ```
 
-## Run ID: 7/6/2022T11:34 (10m, 100rps)
-### Before test run:
+### Run ID: 7/6/2022T11:34 (10m, 100rps)
+**State before test run:**
 - Stream: 
     - LastSeq# 23,995
 - Consumer: 
     - Ack Floor: Stream sequence# 23,995
 
-### After test run:
+**State after test run:**
 - Stream:
     - LastSeq# 27,378
 - Consumer: 
@@ -111,17 +110,17 @@ kubectl scale statefulset eventing-nats -n kyma-system --replicas 1
 
 
 
-# Test Scenario 4: Eventing-controller pod deleted during test
-**Note: Deleted (using kubectl delete) the pod of eventing-controller after 4 mins**
+## Test Scenario 4: Eventing-controller Pod deleted during test
+> **Note:** Deleted (using kubectl delete) the pod of eventing-controller after 4 minutes.
 
-## Run ID: 7/6/2022T12:21 (10m, 100rps)
-### Before test run:
+### Run ID: 7/6/2022T12:21 (10m, 100rps)
+**State before test run:**
 - Stream: 
     - LastSeq# 31,166
 - Consumer: 
     - Ack Floor: Stream sequence# 31,166
 
-### After test run:
+**State after test run:**
 - Stream:
     - LastSeq# 34,983
 - Consumer: 

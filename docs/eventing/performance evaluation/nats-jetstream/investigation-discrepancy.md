@@ -1,18 +1,18 @@
-# Why was Events Sent != Events Received in some test runs?
+# Investigation of the discrepancy between sent and received events
 
-**Kyma: Production Profile**
+## Why was "Events Sent" not the same as "Events Received" in some test runs?
 
-There were some test runs where the Events Sent != Events Received. Following is the investigation of one of such supicious test run. 
+There were some test runs where the "Events Sent" didn't match "Events Received". This document investigates one such suspicious test run.
 
-> **Conclusion:** Once the minReplicas for the receiver (i.e. sink) was changed to 6 (so that it won't be scaling up during the tests), We haven't seen any job whose Events Sent != Events Received. Therefore, maybe the scaling up of the receiver was causing the issue.
+> **Conclusion:** Once the minReplicas for the receiver (that is, the sink) was changed to six (so that it won't be scaling up during the tests), we haven't seen any job whose "Events Sent" didn't match "Events Received". Therefore, maybe the scaling up of the receiver caused the issue.
 
-## Before test run:
+### State before test run
 - Stream: 
   - LastSeq# 238,410
 - Consumer: 
   - Ack Floor: Stream sequence# 238,410
 
-## After test run:
+### State after test run
 - Stream: 
   - LastSeq# 360,137
 - Consumer: 
