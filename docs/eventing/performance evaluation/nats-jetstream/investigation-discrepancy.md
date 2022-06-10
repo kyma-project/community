@@ -1,18 +1,17 @@
 # Investigation of the discrepancy between sent and received events
 
-## Why was "Events Sent" not the same as "Events Received" in some test runs?
 
 There were some test runs where the "Events Sent" didn't match "Events Received". This document investigates one such suspicious test run.
 
 > **Conclusion:** Once the minReplicas for the receiver (that is, the sink) was changed to six (so that it won't be scaling up during the tests), we haven't seen any job whose "Events Sent" didn't match "Events Received". Therefore, maybe the scaling up of the receiver caused the issue.
 
-### State before test run
+**State before test run:**
 - Stream: 
   - LastSeq# 238,410
 - Consumer: 
   - Ack Floor: Stream sequence# 238,410
 
-### State after test run
+**State after test run:**
 - Stream: 
   - LastSeq# 360,137
 - Consumer: 
