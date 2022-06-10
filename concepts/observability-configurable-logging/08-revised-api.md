@@ -184,10 +184,14 @@ apiVersion: telemetry.kyma-project.io/v1alpha1
 metadata:
   name: multiline-custom-regex
 spec:
-  parser: | # Name is rejected as it gets generated out of resource name
+  parser: # Name is rejected as it gets generated out of resource name
+          # Will be registered as parser to be used in annotations or in a pipeline via a custom parser filter
+      |
         Format regex
         Regex ^(?<INT>[^ ]+) (?<FLOAT>[^ ]+) (?<BOOL>[^ ]+) (?<STRING>.+)$
-  multilineParser: |
+  multilineParser: # Name is rejected as it gets generated out of resource name
+          # Will be registered as multilineparser on the tail plugin
+      |
         type          regex
         flush_timeout 1000
         rule      "start_state"   "/(Dec \d+ \d+\:\d+\:\d+)(.*)/"  "cont"
