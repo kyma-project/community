@@ -46,70 +46,78 @@ It turned out that there are typical inputs available which you would like to pr
 
 ## Revised API
 
-More and more oppinion/abstraction was added to the `LogPipeline` concept and the meaningfullnes of the `LogPreset` is in the room. We could now try to push down the `LogPipeline` to be more native and accepting that the user can do really stupid things in combination of supported plugins and revise the LogPreset concept.
-Or we push up even more the `LogPipeline` API by introducing the convinience of the LogPreset while keeping native support as a customization option clearly indicating an unsupported scenario.
-This proposal favors the second idea by dropping the LogPreset fully and having only one layer which is already an abstraction. Giving no chance to configure fluent-bit natively. For that you can simply go with a custom installation.
+More and more oppinion/abstraction was added to the `LogPipeline` concept and the meaningfullnes of the `LogPreset` is questioned. We could try to push down the `LogPipeline` on the scala of abstraction to be more native and accepting that the user can do really stupid things in combination of supported plugins and revise the `LogPreset` concept.
+Or we even more push up the `LogPipeline` on the scala by introducing the convinience of the `LogPreset` while keeping native support as a customization option clearly indicating an unsupported scenario.
+
+This proposal favors the second idea by dropping the `LogPreset` fully and keeping one layer only which is focused on an abstraction and covering the actual value for users. A pure native layer per se brings no real value to users, as the user needs to understand the fluentbit concepts and the specifics of the layer gaining only the lifecycle management aspects of the fluentbit instance (but what kind of guarantees in regards to support). 
+
+The proposal takes the existing `LogPipeline` and extends it with a more abstracted syntax, still keeping the option to customize single elements. As parsers are a central config element, they get extracted into a dedicated resource `LogParser`
 
 ```YAML
-kind: LogPipeline
+kind: LogPipeline # cluster scope
 apiVersion: telemetry.kyma-project.io/v1alpha1
 metadata:
   name: OpenSearchHTTP-App
 spec:
-  input:
-    application: # maps to central tail pipeline
-      namespaces: [] # maps to rewrite_tag rule
+  input: # singular, different inputs require different pipelines and output configs
+    type: application # application | system | custom, default is application
+    application: # maps to central tail pipeline, dealing with the actual application logs
+      namespaces: [] # generates the rule for the rewrite_tag assigned to every pipeline
       excludeNamespaces: []
-      pods: []
-      excludePods: []
       containers: []
       excludeContainers: []
-      matchLabels:
+
+      podLabels: # generates a "grep" filter as a first element in the chain selecting logs by the "kubernetes" attributes
         app: icke
-      multilineParsers:
-        - "java"
-        - "myCustomParser"
-    system: {} #maps to systemd based input like kubelet logs
-    custom: | # entering unsupported mode
+      excludePodLabels:
+        app: chris
+      
+    system: {} # maps to systemd based input like kubelet logs, no further spec for now designed
+    custom: | # define a custom input, entering unsupported mode
       Name dummy
       Dummy {"message":"dummy"}
-  filters:
-    - modify:
-        add:
+  filters: # list of filters, order is important
+    - add: # maps to "modify" filter, adds a log attribute
           key: cluster_identifier
-          value: ${KUBERNETES_SERVICE_HOST}
-    - modify:
-        remove:
+          value: icke's cluster
+    - remove: # maps to "modify" filter, removes a log attribute
           key: cluster_identifier
-    - select:
-        include:
-          key:
-          regexp:
-        exclude:
-          key:
-          regexp:
+    - include: # maps to "grep" filter, drops lines where attribute will not match the regexp
+        key: tenant
+        regexp: icke
+    - exclude: # maps to "grep" filter, drops lines where attribute will not match the regexp
+        key: severity
+        regexp: debug
     - custom: | # no "Match" available, entering unsupported mode
         Name    record_modifier
-        Record  cluster_identifier ${KUBERNETES_SERVICE_HOST}
+        Record  myKey myValue
 
-  output: #only one output
-    http:
-      Dedot: true
-      Host:
+  output: #only one output, no output should fail validation
+    http: # enables http output
+      Dedot: false # new flag resulting in a lua filter as last element in filter chain, default false as typically not used in http
+      Host: # next 3 attributes should be configurable by static value and valueFrom incl. secret rotation
         value: "icke.com"
+        valueFrom: ...
       HTTP_User:
         value: "icke"
-        fromSecretKeyRef:
-          name: my-elastic-credentials
-          namespace: default
-          key: ES_ENDPOINT
+        valueFrom:
+          secretKeyRef:
+            name: my-elastic-credentials
+            namespace: default
+            key: ES_USER
+          secretRotationKeyRef:
+            prefix: my-elastic
+            namespace: default
+            key: ES_USER
+          configMapKeyRef:
+            name: my-elastic-credentials
+            namespace: default
+            key: ES_USER
       HTTP_Password:
-        fromSecretKeyRef:
-          name: my-elastic-credentials
-          namespace: default
-          key: ES_ENDPOINT
-    custom:
-      | # no "Match" available, no filebuffer settings available, entering unsupported mode
+        value: "icke.com"
+        valueFrom: ...
+      URI: /customindex/kyma 
+    custom: | # no "Match" available, no filebuffer settings available, entering unsupported mode
       Name               es
       Alias              es-output
       Host               ${ES_ENDPOINT} # Defined in Secret
@@ -117,27 +125,41 @@ spec:
       HTTP_Password      ${ES_PASSWORD} # Defined in Secret
       LabelMapPath       /files/labelmap.json
 
-  variables:
-    - fromSecretRef:
-        name: my-elastic-credentials
-        namespace: default
-    - fromSecretPrefixRef: # secret rotation
-        name: my-elastic-credentials
-        namespace: default
-    - fromSecretKeyRef:
-        name: my-elastic-credentials
-        namespace: default
-        key: ES_ENDPOINT
-    - fromConfigMapRef:
-        name: my-elastic-config
-        namespace: default
-    - fromConfigMapKeyRef:
-        name: my-elastic-credentials
-        namespace: default
-        key: ES_ENDPOINT
+  variables: # env variables to be used in custom plugins as placeholders
+    - name: myEnv1 # static mapping
+      value: myValue1
+    - name: myEnv2
+      valueFrom:
+        secretKeyRef:
+          name: my-elastic-credentials
+          namespace: default
+          key: ES_ENDPOINT
+    - name: myEnv3
+      valueFrom:
+        secretRotationKeyRef:
+          prefix: my-elastic
+          namespace: default
+          key: ES_ENDPOINT
+    - name: myEnv4
+      valueFrom:
+        configMapKeyRef:
+          name: my-elastic-credentials
+          namespace: default
+          key: ES_ENDPOINT
+    
+  variablesFrom:  # env variables to be used in custom plugins as placeholders
+  - secretRef:
+      name: my-elastic-credentials
+      namespace: default
+  - secretRotationRef:
+      prefix: my-elastic
+      namespace: default
+  - configMapRef:
+      name: my-elastic-config
+      namespace: default
 
-  files:
-    - name: "labelmap.json"
+  files: # files to be used in custom plugins
+    - name: "labelmap1.json"
       content: |
         {
           "kubernetes": {
@@ -146,60 +168,67 @@ spec:
           },
           "stream": "stream"
         }
-    - fromConfigMapRef:
-        name: my-loki-labelMap
-        namespace: default
-    - fromSecretRef:
-        name: my-ip-whitelist
-        namespace: default
-  parsers:
-    - custom: |
-        Name dummy_test
+    - name: "labelmap2.json"
+      contentFrom:
+        configMapRef:
+          name: my-config
+          namespace: default
+          key: "label.json"
+```
+
+A `LogParser` specifies exactly one parser or a multilineparser and gets activated instantly on the tail plugin (multilineParser) or to be used in an annotation (parser)
+
+```YAML
+kind: LogParser # cluster scope
+apiVersion: telemetry.kyma-project.io/v1alpha1
+metadata:
+  name: multiline-custom-regex
+spec:
+  parser: | # Name is rejected as it gets generated out of resource name
         Format regex
         Regex ^(?<INT>[^ ]+) (?<FLOAT>[^ ]+) (?<BOOL>[^ ]+) (?<STRING>.+)$
-  multilineParsers:
-    - custom: |
-        # Example from https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
-        name          multiline-custom-regex
+  multilineParser: |
         type          regex
         flush_timeout 1000
         rule      "start_state"   "/(Dec \d+ \d+\:\d+\:\d+)(.*)/"  "cont"
         rule      "cont"          "/^\s+at.*/"                     "cont"
 ```
 
-Example of typical OpenSearch HTTP Application Log pipeline:
+Example of minimal OpenSearch HTTP Application Log pipeline:
 ```YAML
 kind: LogPipeline
 apiVersion: telemetry.kyma-project.io/v1alpha1
 metadata:
   name: OpenSearchHTTP-App
 spec:
-  input:
+  input: #  optional section as application is default and all logs are processed by default
     application:
       excludeNamespaces: ["kyma-system", "kube-system"]
-  filters:
-    - modify:
-        add:
-          key: cluster_identifier
-          value: ${KUBERNETES_SERVICE_HOST}
-  output:
+  filters: # optional section
+    - include:
+        key: tenant
+        regexp: icke
+  output: # mandatory section as a whole
     http:
       Dedot: true
       Host:
-        fromSecretKeyRef:
-          namespace: default
-          prefix: my-elastic # secret rotation
-          key: HTTP_HOST
+        valueFrom:
+          secretRotationKeyRef:
+            namespace: default
+            prefix: my-elastic
+            key: HTTP_HOST
       HTTP_User:
-        fromSecretKeyRef:
-          namespace: default
-          prefix: my-elastic # secret rotation
-          key: HTTP_HOST
+        valueFrom:
+          secretRotationKeyRef:
+            namespace: default
+            prefix: my-elastic
+            key: HTTP_HOST
       HTTP_Password:
-        fromSecretKeyRef:
-          namespace: default
-          prefix: my-elastic # secret rotation
-          key: HTTP_PASSWD
+        valueFrom:
+          secretRotationKeyRef:
+            namespace: default
+            prefix: my-elastic
+            key: HTTP_PASSWD
       URI: /customindex/kyma
 ```
 
@@ -210,39 +239,36 @@ apiVersion: telemetry.kyma-project.io/v1alpha1
 metadata:
   name: OpenSearchHTTP-Istio
 spec:
-  input:
+  input: # mandatory section to include only istio containers
     application:
       excludeNamespaces: ["kyma-system", "kube-system"]
       containers: ["istio-proxy"]
-  filters:
-    - modify:
-        add:
-          key: cluster_identifier
-          value: ${KUBERNETES_SERVICE_HOST}
-    - select:
-        include:
-          key: protocol
-          regexp: ".+"
-  output:
+  filters: # mandatory section to exclude logs having no protocol
+    - include:
+        key: protocol
+        regexp: ".+"
+  output: # mandatory section as a whole
     http:
       Dedot: true
       Host:
-        fromSecretKeyRef:
-          namespace: default
-          prefix: my-elastic # secret rotation
-          key: HTTP_HOST
+        valueFrom:
+          secretRotationKeyRef:
+            namespace: default
+            prefix: my-elastic
+            key: HTTP_HOST
       HTTP_User:
-        fromSecretKeyRef:
-          namespace: default
-          prefix: my-elastic # secret rotation
-          key: HTTP_HOST
+        valueFrom:
+          secretRotationKeyRef:
+            namespace: default
+            prefix: my-elastic
+            key: HTTP_HOST
       HTTP_Password:
-        fromSecretKeyRef:
-          namespace: default
-          prefix: my-elastic # secret rotation
-          key: HTTP_PASSWD
+        valueFrom:
+          secretRotationKeyRef:
+            namespace: default
+            prefix: my-elastic
+            key: HTTP_PASSWD
       URI: /customindex/istio-envoy-kyma
-
 ```
 
 Example of default Loki pipeline:
@@ -271,9 +297,3 @@ spec:
           "pod_name": "pod"
         "stream": "stream"
 ```
-
-## Pros
-
-- Approach makes one common layer which is clearly oppinionated but has options to opt-out in a controlled way (match expressions will still be enforced)
-
-## Cons
