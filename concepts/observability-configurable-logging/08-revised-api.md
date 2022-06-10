@@ -105,7 +105,7 @@ spec:
             name: my-elastic-credentials
             namespace: default
             key: ES_USER
-          secretRotationKeyRef:
+          rotatingSecretKeyRef:
             prefix: my-elastic
             namespace: default
             key: ES_USER
@@ -125,7 +125,7 @@ spec:
       HTTP_Password      ${ES_PASSWORD} # Defined in Secret
       LabelMapPath       /files/labelmap.json
 
-  variables: # env variables to be used in custom plugins as placeholders
+  variables: # env variables to be used in custom plugins
     - name: myEnv1 # static mapping
       value: myValue1
     - name: myEnv2
@@ -136,7 +136,7 @@ spec:
           key: ES_ENDPOINT
     - name: myEnv3
       valueFrom:
-        secretRotationKeyRef:
+        rotatingSecretKeyRef:
           prefix: my-elastic
           namespace: default
           key: ES_ENDPOINT
@@ -146,17 +146,6 @@ spec:
           name: my-elastic-credentials
           namespace: default
           key: ES_ENDPOINT
-    
-  variablesFrom:  # env variables to be used in custom plugins as placeholders
-  - secretRef:
-      name: my-elastic-credentials
-      namespace: default
-  - secretRotationRef:
-      prefix: my-elastic
-      namespace: default
-  - configMapRef:
-      name: my-elastic-config
-      namespace: default
 
   files: # files to be used in custom plugins
     - name: "labelmap1.json"
@@ -223,21 +212,21 @@ spec:
       Dedot: true
       Host:
         valueFrom:
-          secretRotationKeyRef:
+          secretKeyRef:
             namespace: default
-            prefix: my-elastic
+            name: my-elastic
             key: HTTP_HOST
       HTTP_User:
         valueFrom:
-          secretRotationKeyRef:
+          secretKeyRef:
             namespace: default
-            prefix: my-elastic
+            name: my-elastic
             key: HTTP_HOST
       HTTP_Password:
         valueFrom:
-          secretRotationKeyRef:
+          secretKeyRef:
             namespace: default
-            prefix: my-elastic
+            name: my-elastic
             key: HTTP_PASSWD
       URI: /customindex/kyma
 ```
@@ -262,21 +251,21 @@ spec:
       Dedot: true
       Host:
         valueFrom:
-          secretRotationKeyRef:
+          secretKeyRef:
             namespace: default
-            prefix: my-elastic
+            name: my-elastic
             key: HTTP_HOST
       HTTP_User:
         valueFrom:
-          secretRotationKeyRef:
+          secretKeyRef:
             namespace: default
-            prefix: my-elastic
+            name: my-elastic
             key: HTTP_HOST
       HTTP_Password:
         valueFrom:
-          secretRotationKeyRef:
+          secretKeyRef:
             namespace: default
-            prefix: my-elastic
+            name: my-elastic
             key: HTTP_PASSWD
       URI: /customindex/istio-envoy-kyma
 ```
