@@ -170,10 +170,16 @@ spec:
         }
     - name: "labelmap2.json"
       contentFrom:
-        configMapRef:
+        configMapKeyRef:
           name: my-config
           namespace: default
           key: "label.json"
+    - name: "cert.crt"
+      contentFrom:
+        secretKeyRef:
+          name: my-certificates
+          namespace: default
+          key: "cert.crt"
 ```
 
 A `LogParser` specifies exactly one parser or a multilineparser and gets activated instantly on the tail plugin (multilineParser) or to be used in an annotation (parser)
