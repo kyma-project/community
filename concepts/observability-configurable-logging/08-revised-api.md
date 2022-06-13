@@ -1,31 +1,32 @@
 # Revised API
 
-## Motivation For Revise
+## Motivation for the revision
 
-The basic idea outlined in [the concept for the custom operator](05-custom-fluentbit-operator.md) and [the concept for the servicecatalog integration](06-servicecatalog-integration.md) was to have
-1. a general layer supporting native fluent-bit config snippets. Out of that an overall fluent-bit config gets generated, validated and injected to the damonset
-2. a second layer on top, bringing the convinience of defining pipelines without knowing the underlaying fluent-bit concepts.
+The basic idea outlined in [the concept for the custom operator](05-custom-fluentbit-operator.md) and [the concept for the servicecatalog integration](06-servicecatalog-integration.md) was to have two layers:
+1. A general layer supporting native Fluent Bit config snippets. Out of that, an overall Fluent Bit config is generated, validated, and injected to the daemonset.
+2. A second layer on top, bringing the convenience of defining pipelines without knowing the underlying Fluent Bit concepts.
 
-The MVP of the overall feature was based on releasing a first version of the 1. native layer. While doing several problems were discovered while doing analysis of several aspects. The These problems adjusted the concepts slightley step by step without re-evaluating the overall picture once again. As a result more and more abstractions/oppinions were build into the first layer, making the layers not differentiated enough anymore. The flexibility on the first layer got lost while the second layer was not fitting anymore fully on top.
+The MVP of the overall feature was based on releasing a first version of the first native layer. 
+As we analysed various aspects, we discovered several problems and thus gradually adjusted the concepts, but didn't re-evaluate the overall picture. As a result, more and more abstractions and opinions were built into the first layer, making the layers not sufficiently differentiated anymore. The flexibility on the first layer was lost, while the second layer didn't fully fit on top anymore.
 
 ## Considerations
 
 ### Tag per pipeline mandatory
 
-Different pipelines will require different filters. By default there is only one tag like `kube.*` resulting from the central tail plugin. Every `LogPipeline` will require a dedicated `rewrite_tag` filter in order to apply some filtering, otherwise you will get indeterministic effects (the order of the filters is important).
--> Every pipeline needs a rewrite_tag introducing a custom tag per pipeline. To generate filters later out of a `LogPreset`, the tag name needs to be known
+Different pipelines will need different filters. By default, there is only one tag like `kube.*` resulting from the central tail plugin. Every `LogPipeline` will need a dedicated `rewrite_tag` filter in order to apply some filtering, otherwise there will be indeterministic effects (the order of the filters is important).
+-> Every pipeline needs a `rewrite_tag` introducing a custom tag per pipeline. To generate filters later out of a `LogPreset`, the tag name must be known.
 
 ### Filesystem buffer mandatory
 
-We realized that using in-memory buffers will not decouple the pipelines well enough. If one output is down, the other output will stop working as well. It requires to enable a filesystem buffer for pipeline including size management to assure that the node filesystem gets not flooded
--> Every pipeline needs a filesystem buffer, every output needs a storage size defaulting/validation
+We realized that using in-memory buffers will not decouple the pipelines well enough. If one output is down, the other output will stop working as well. To solve the problem, there must be an enabled filesystem buffer for each pipeline, including size management assuring that the node filesystem is not flooded.
+-> Every pipeline needs a filesystem buffer; every output needs a storage size defaulting and validation.
 
 ### Match expressions should be limited
 
-Support of full match expressions in a `LogPipeline` will harm other pipelines as well as the central `tail` pipeline. People copying code snippets might have match expressions using `*`. It should be prevented.
--> Match expressions should be defaulted/validated
+Support of full match expressions in a `LogPipeline` will harm other pipelines as well as the central `tail` pipeline. People copying code snippets might have match expressions using `*`. That must be prevented.
+-> Match expressions should be defaulted and validated.
 
-### Unsupported Plugins
+### Unsupported plugins
 
 We need a clear distinction between supported/tested setups and unsupported setups. An HTTP plugin usage should be supported with any configuration while a stackdriver plugin usage is unsupported as we have no chance to cover testing. The additional resource consumption of some plugins and settings is also a relevant factor. We don't want the user to configure anything that creates a new emitter, which increases the memory usage above the amount that we introduce ourselves.
 -> Introduce a mechanism to detect usage of unsupported plugins
