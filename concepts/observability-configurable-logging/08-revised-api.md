@@ -34,7 +34,7 @@ We need a clear distinction between supported and tested setups, and unsupported
 ### Dedotting support
 
 There is no filter available for opensearch-typical dedotting. That is a mandatory feature and we planned to solve it with a Lua script. On the other hand, the Lua filter should be an unsupported feature. So having the convenience of dedotting support in the `LogPresetBinding` would result in a Lua script in the `LogPipeline`. Both ways will not be optimal.
--> Add dedotting support as a feature to the `LogPipeline`
+-> Add dedotting support as a feature to the `LogPipeline`.
 
 ### Meaningfulness of LogPreset
 
