@@ -38,7 +38,7 @@ There were some test runs where the "Events Sent" didn't match "Events Received"
 
 ## Conclusion: 
 
-The comparison of `Total Events Sent by Test Sender` and `Total Events Received by Sink` shows that there might be a loss of 202 events. But further investigation into the consumer and stream stats from NATS server showed that all the events were received by the consumer and delivered (as the `Unprocessed Messages` and `Redelivered Messages`) are zero. One possible reason behind this discrepancy would be that the sink Pods were auto-scaling due to high load and maybe during the scaling, the new Pods were not ready to write results to the database when they received the events.
+The comparison of `Total Events Sent by Test Sender` and `Total Events Received by Sink` shows that there might be a loss of 202 events. But further investigation into the consumer and stream stats from NATS server showed that all the events were received by the consumer and delivered to the subscriber (as the `Unprocessed Messages` and `Redelivered Messages` in consumer stats are zero). One possible reason behind this discrepancy would be that the sink Pods were auto-scaling due to high load and maybe during the scaling, the new Pods were not ready to write results to the database when they received the events.
 
 Once the minReplicas for the receiver (that is, the sink) was changed to six (so that it won't be scaling up during the tests), we haven't seen any job whose "Events Sent" didn't match "Events Received". Therefore, maybe the scaling up of the receiver caused the issue.
 
