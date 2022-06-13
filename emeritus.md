@@ -30,3 +30,4 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Mostafa Shorim (**[@shorim](https://github.com/shorim)**) involved in `area/cli`, `area/logging`, `area/tracing`, `area/monitoring`.
 * Pranav Shankar (**[@Pranav-SA](https://github.com/Pranav-SA)**) involved in `area/logging`, `area/tracing`, `area/monitoring`.
 * Radu Fantaziu (**[@radufa](https://github.com/radufa)**) involved in `area/eventing`.
+* Pooya Salehi (**[@pxsalehi](https://github.com/pxsalehi)**) involved in `area/eventing`.
