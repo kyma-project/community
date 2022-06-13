@@ -28,31 +28,32 @@ Support of full match expressions in a `LogPipeline` will harm other pipelines a
 
 ### Unsupported plugins
 
-We need a clear distinction between supported/tested setups and unsupported setups. An HTTP plugin usage should be supported with any configuration while a stackdriver plugin usage is unsupported as we have no chance to cover testing. The additional resource consumption of some plugins and settings is also a relevant factor. We don't want the user to configure anything that creates a new emitter, which increases the memory usage above the amount that we introduce ourselves.
--> Introduce a mechanism to detect usage of unsupported plugins
+We need a clear distinction between supported and tested setups, and unsupported setups. Using an HTTP plugin should be supported with any configuration, while a stackdriver plugin is unsupported because we have no chance to cover testing. The additional resource consumption of some plugins and settings is also a relevant factor. We don't want the user to configure anything that creates a new emitter, which increases the memory usage above the amount that we introduce ourselves.
+-> Introduce a mechanism to detect usage of unsupported plugins.
 
 ### Dedotting support
 
-There is no filter available for opensearch-typical dedotting. That is a mandatory feature and we planned to solve it via a lua script. On the other hand, the lua filter should be an unsupported feature. So having the convinience of detotting support in the `LogPresetBinding` would result in a lua script in the `LogPipeline`.
+There is no filter available for opensearch-typical dedotting. That is a mandatory feature and we planned to solve it with a Lua script. On the other hand, the Lua filter should be an unsupported feature. So having the convenience of dedotting support in the `LogPresetBinding` would result in a Lua script in the `LogPipeline`. Both ways will not be optimal.
 -> Add dedotting support as a feature to the `LogPipeline`
 
 ### Meaningfulness of LogPreset
 
-It turned out that an OpenSearch integration via a HTTP plugin required for an internal SAP scenario can be much simpler then expected. A real templating is not needed and probably a plain simple pipeline config will be better suited. Also, what presets to provide, we cannot think of other scenarios which can be delivered. The binding to a secret can be done already in the pipeline itself, workload selectors could be added as well
--> do we need the LogPreset concept?
+It turned out that an OpenSearch integration with an HTTP plugin required for an internal SAP scenario can be much simpler than expected. A real templating is not needed, and probably a plain simple pipeline config will be better suited. Also, regarding presets to provide, we cannot think of other scenarios that can be delivered. The binding to a secret can be done already in the pipeline itself, workload selectors could be added as well.
+-> Do we need the LogPreset concept?
 
 ### Support of additional inputs
-It turned out that there are typical inputs available which you would like to process as well, mainly the kubelet logs
--> add a source selector
+It turned out that there are typical inputs available (mainly the kubelet logs) that users might want to process as well.
+-> Add a source selector.
 
 ## Revised API
 
-More and more oppinion/abstraction was added to the `LogPipeline` concept and the meaningfullnes of the `LogPreset` is questioned. We could try to push down the `LogPipeline` on the scala of abstraction to be more native and accepting that the user can do really stupid things in combination of supported plugins and revise the `LogPreset` concept.
-Or we even more push up the `LogPipeline` on the scala by introducing the convinience of the `LogPreset` while keeping native support as a customization option clearly indicating an unsupported scenario.
+More and more opinion and abstraction was added to the `LogPipeline` concept, and the meaningfulness of the `LogPreset` is questioned. We came up with the following ideas:
+- We could try to push down the `LogPipeline` on the scala of abstraction to be more native (accepting that the user might do really stupid things by combining supported plugins), and revise the `LogPreset` concept.
+- Alternatively, we push up the `LogPipeline` on the scala of abstraction even more by introducing the convenience of the `LogPreset`, while keeping native support as a customization option, clearly indicating an unsupported scenario.
 
-This proposal favors the second idea by dropping the `LogPreset` fully and keeping one layer only which is focused on an abstraction and covering the actual value for users. A pure native layer per se brings no real value to users, as the user needs to understand the fluentbit concepts and the specifics of the layer gaining only the lifecycle management aspects of the fluentbit instance (but what kind of guarantees in regards to support). 
+This proposal favors the second idea by dropping the `LogPreset` fully and keeping only one layer that is focused on an abstraction and covers the actual value for users. A pure native layer per se adds no real value for users, as the user must understand the Fluent Bit concepts and the specifics of the layer, gaining only the lifecycle management aspects of the Fluent Bit instance (but what kind of guarantees he will get from the lifecycle management in regards to support?). 
 
-The proposal takes the existing `LogPipeline` and extends it with a more abstracted syntax, still keeping the option to customize single elements. As parsers are a central config element, they get extracted into a dedicated resource `LogParser`
+The proposal takes the existing `LogPipeline` and extends it with a more abstracted syntax, still keeping the option to customize single elements. As parsers are a central config element, they are extracted into a dedicated resource `LogParser`.
 
 ```YAML
 kind: LogPipeline # cluster scope
@@ -172,7 +173,7 @@ spec:
           key: "cert.crt"
 ```
 
-A `LogParser` specifies exactly one parser or a multilineparser and gets activated instantly on the tail plugin (multilineParser) or to be used in an annotation (parser)
+A `LogParser` specifies exactly one parser or a multiline parser, and is activated instantly on the tail plugin (multiline parser) or to be used in an annotation (parser).
 
 ```YAML
 kind: LogParser # cluster scope
@@ -180,12 +181,12 @@ apiVersion: telemetry.kyma-project.io/v1alpha1
 metadata:
   name: multiline-custom-regex
 spec:
-  parser: # Name is rejected as it gets generated out of resource name
-          # Will be registered as parser to be used in annotations or in a pipeline via a custom parser filter
+  parser: # Name is rejected because it is generated from the resource name
+          # Will be registered as parser to be used in annotations, or in a pipeline using a custom parser filter
       |
         Format regex
         Regex ^(?<INT>[^ ]+) (?<FLOAT>[^ ]+) (?<BOOL>[^ ]+) (?<STRING>.+)$
-  multilineParser: # Name is rejected as it gets generated out of resource name
+  multilineParser: # Name is rejected because it is generated from the resource name
           # Will be registered as multilineparser on the tail plugin
       |
         type          regex
@@ -201,7 +202,7 @@ apiVersion: telemetry.kyma-project.io/v1alpha1
 metadata:
   name: OpenSearchHTTP-App
 spec:
-  input: #  optional section as application is default and all logs are processed by default
+  input: #  optional section because application is default and all logs are processed by default
     application:
       excludeNamespaces: ["kyma-system", "kube-system"]
   filters: # optional section
@@ -239,11 +240,11 @@ apiVersion: telemetry.kyma-project.io/v1alpha1
 metadata:
   name: OpenSearchHTTP-Istio
 spec:
-  input: # mandatory section to include only istio containers
+  input: # mandatory section to include only Istio containers
     application:
       excludeNamespaces: ["kyma-system", "kube-system"]
       containers: ["istio-proxy"]
-  filters: # mandatory section to exclude logs having no protocol
+  filters: # mandatory section to exclude logs that have no protocol
     - include:
         key: protocol
         regexp: ".+"
