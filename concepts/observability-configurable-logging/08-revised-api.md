@@ -51,7 +51,7 @@ More and more opinion and abstraction was added to the `LogPipeline` concept, an
 - We could try to push down the `LogPipeline` on the scala of abstraction to be more native (accepting that the user might do really stupid things by combining supported plugins), and revise the `LogPreset` concept.
 - Alternatively, we push up the `LogPipeline` on the scala of abstraction even more by introducing the convenience of the `LogPreset`, while keeping native support as a customization option, clearly indicating an unsupported scenario.
 
-This proposal favors the second idea by dropping the `LogPreset` fully and keeping only one layer that is focused on an abstraction and covers the actual value for users. A pure native layer per se adds no real value for users, as the user must understand the Fluent Bit concepts and the specifics of the layer, gaining only the lifecycle management aspects of the Fluent Bit instance (but what kind of guarantees he will get from the lifecycle management in regards to support?). 
+This proposal favors the second idea by dropping the `LogPreset` fully and keeping only one layer that is focused on an abstraction and covers the actual value for users. A pure native layer per se adds no real value for users, as the user must understand the Fluent Bit concepts and the specifics of the layer, gaining only the lifecycle management aspects of the Fluent Bit instance - however, the lifecycle management does not provide any clearly guaranteed support.
 
 The proposal takes the existing `LogPipeline` and extends it with a more abstracted syntax, still keeping the option to customize single elements. As parsers are a central config element, they are extracted into a dedicated resource `LogParser`.
 
