@@ -9,3 +9,4 @@ For that, the following pages guide you through the different steps of the propo
 * [Another Comparison of existing FluentBit operators](./04-fluent-bit-operator2.md)
 * [Proposal for a custom FluentBit operator](./05-custom-fluentbit-operator.md)
 * [Templating Concept](./06-servicecatalog-integration.md) to enhance the operator with bindings to ServiceCatalog instances
+* [Revised API](./08-revised-api.md) to align on one common abstraction
