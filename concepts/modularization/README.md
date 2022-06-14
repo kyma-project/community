@@ -46,9 +46,9 @@ The image could be signed and we can ensure the integrity of component deploymen
 
 ![](assets/modularization.drawio.svg)
 
-**Example:**
+### Example
 
-If we migrate eventing component to the proposed structure it would look like this:
+If we migrate the eventing component to the proposed structure it would look like this:
 - github.com/kyma-project/eventing-operator repository
     - charts (copied from kyma/resources/eventing)
     - crds (copied from kyma/installation/resources
@@ -60,15 +60,29 @@ New images of our own components (eventing-controller, event-publisher-proxy) wo
 
 
 # Manifest operator
-Some components do not require any custom operator to install or upgrade (e.g. api-gateway, logging, monitoring) and use base reconciler. With the operator approach, this task could be completed by a generic manifest operator. Custom resource for manifest operator would contain information about chart location and overlay values. A single operator for multiple components can have some benefits in the in-cluster mode (better resource utilization) but would introduce challenges related to independent releases of charts and the manifest operator itself. Therefore a recommendation is that all components will always provide the operator. Manifest operator can be used as a template with a placeholder for your charts and default implementation (using manifest library).
+Some components do not require any custom operator to install or upgrade (e.g. api-gateway, logging, monitoring) and use a base reconciler. With the operator approach, this task could be completed by a generic manifest operator. Custom resource for the manifest operator would contain information about chart location and overlay values. A single operator for multiple components can have some benefits in the in-cluster mode (better resource utilization) but would introduce challenges related to independent releases of charts and the manifest operator itself. Therefore a recommendation is that **all components will always provide the operator**. The manifest operator can be used as a template with a placeholder for your charts and default implementation (using the manifest library).
+
+# Component descriptor
+## OCM
+
+[OCM/CNUDIE](https://github.com/gardener/component-spec) stands for Open Component Descriptor and is used by Gardener. OCM intends to solve the problem of addressing, identifying, and accessing artefacts for software components, relative to an arbitrary component repository. By that, it also enables the transport of software components between component repositories. 
+
+## Operator bundle from Operator Lifecycle Manager (OLM)
+
+[Operator bundle](https://olm.operatorframework.io/docs/tasks/creating-operator-bundle/#operator-bundle) is a container image that stores Kubernetes manifests and metadata associated with an operator. A bundle is meant to represent a specific version of an operator on cluster.
+Operator bundle contains ClusterServiceVersion resource that describes operator version and installation descriptor:
+https://olm.operatorframework.io/docs/tasks/creating-operator-manifests/#writing-your-operator-manifests
+
+OLM provides also abstraction for operator catalog with release channels. What can solve the problem with modules discovery for users.
+
+## Own solution
+OCM is a simple descriptor and requires additional structures to apply it for installing, configuring and updating Kyma modules (operators). OLM addresses release channels and operator catalogs but we need to adjust it to the model with operators running centrally and remote subscriptions. We need to decide if we build our own solution or reuse existing software.
+
 # Component submission process
-To submit a new component to Kyma you need to prepare:
-- Component operator custom resource definition (CRD in YAML)
-- Operator deployment and component config (YAML)
+To submit a new component to Kyma you need to prepare a component descriptor (with all related resources). 
 
 Component validation should be automated by governance jobs that check different aspects like:
-- component status format 
-- support for release channels
+- operator CRD validation (e.g. status format)
 - exposing metrics
 - proper logging format
 - ...
@@ -77,7 +91,5 @@ Governance jobs should be owned by teams (no shared responsibility)
 
 Apart from technical quality, Kyma components should fulfill other standards (24/7 support, documenting micro-deliveries, etc)
 
-TODO:
-- verify if we can use [OCM/CNUDIE](https://github.com/gardener/component-spec) for component submission
 
 
