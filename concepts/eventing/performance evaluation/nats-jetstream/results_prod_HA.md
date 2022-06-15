@@ -1,13 +1,18 @@
 # High Availibiltiy (HA) Evaluation of JetStream (Kyma: Production Profile)
 
 ## Table of Contents
+- Purpose
 - Test Setup
-- Anti-Affinity
+- NATS Pods Anti-Affinity
 - Test Scenario 1: Eventing-nats-1 (Stream Leader) pod deleted during test
 - Test Scenario 2: K8s Cluster Node deleted during test where stream leader NATS pod is deployed
 - Test Scenario 3: K8s Cluster Node deleted during test where stream leader NATS pod is NOT deployed
 - Test Scenario 4: Eventing-nats-1 (Stream Leader) pod deleted during test but with Stream Replicas set to 3
 - Conclusion
+
+## Purpose
+
+The purpose of the tests is to evaluate the high availibilty of NATS JetStream to ensure that a node/pod failure must not disrupt event publishing or dispatching workflow.
 
 ## Test Setup
 * Testing tool: [K6](https://k6.io/)
@@ -29,7 +34,7 @@
   ```
 
 
-## Anti-Affinity
+## NATS Pods Anti-Affinity
 
 The NATS pods have the AntiAffinity ([here](https://github.com/kyma-project/kyma/blob/6eba6d3b62c15c69645f8577d5c8ca46beeb2c93/resources/eventing/charts/nats/values.yaml#L144)) :
 ```
@@ -47,34 +52,7 @@ affinity:
 > **NOTE:** Note that the Pod anti-affinity policy is `preferredDuringSchedulingIgnoredDuringExecution` as compared to `requiredDuringSchedulingIgnoredDuringExecution` ([see difference here](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity)). Therefore, in some cases a single node could have multiple NATS Pods deployed on it.
 
 
-## Test Scenario 1: Eventing-nats-1 (Stream Leader) pod deleted during test
-**NOTE:** Deleted (using kubectl delete) the pod of eventing-nats-1 after 3 minutes.
-
-### Run ID: 8/6/2022T11:28 (Duration: 10m, Event Rate: 150rps)
-
-> **NOTE:** If the stream leader NATS pod is deleted then NATS stops accepting messages for that stream until a new leader is elected. Therefore, event-publisher-proxy fails to publish messages until the leader comes back.
-
-![](assets/ha_crash1_1.png "")
-![](assets/ha_crash1_2.png "")
-
-## Test Scenario 2: K8s Cluster Node deleted during test where stream leader NATS pod is deployed
-
-### Run ID: 8/6/2022T14:24 (Duration: 5m, Event Rate: 150rps)
-
-![](assets/ha_crash2_1.png "")
-![](assets/ha_crash2_2.png "")
-
-> **NOTE:** It takes some time for the new NATS Pod to come up because PVC takes some time to be detached and mounted with a new K8s Node.
-
-```
-Events:
-  Type     Reason              Age   From                     Message
-  ----     ------              ----  ----                     -------
-  Normal   Scheduled           49s   default-scheduler        Successfully assigned kyma-system/eventing-nats-1 to shoot--kymatunas--fzn-p2-worker-k59z0-z1-5f68f-q5944
-  Warning  FailedAttachVolume  50s   attachdetach-controller  Multi-Attach error for volume "pv--4fdf1474-93af-4f5b-92b1-ad4df0258e00" Volume is already exclusively attached to one node and can't be attached to another
-```
-
-## Test Scenario 3: K8s Cluster Node deleted during test where stream leader NATS pod is NOT deployed
+## Test Scenario 1: K8s Cluster Node deleted during test where stream leader NATS pod is NOT deployed
 
 ### Run ID: 8/6/2022T15:26 (Duration: 5m, Event Rate: 150rps)
 
@@ -113,6 +91,35 @@ Events:
   Normal   SuccessfulAttachVolume  113s   attachdetach-controller  AttachVolume.Attach succeeded for volume "pv--f20986b4-a4a0-455b-ace2-6b91bdd4f11c"
   Warning  FailedMount             97s    kubelet                  Unable to attach or mount volumes: unmounted volumes=[eventing-nats-js-pvc], unattached volumes=[config-volume pid kube-api-access-gn9xs eventing-nats-js-pvc]: timed out waiting for the condition
 ```
+
+## Test Scenario 1: Eventing-nats-1 (Stream Leader) pod deleted during test
+**NOTE:** Deleted (using kubectl delete) the pod of eventing-nats-1 after 3 minutes.
+
+### Run ID: 8/6/2022T11:28 (Duration: 10m, Event Rate: 150rps)
+
+> **NOTE:** If the stream leader NATS pod is deleted then NATS stops accepting messages for that stream until a new leader is elected. Therefore, event-publisher-proxy fails to publish messages until the leader comes back.
+
+![](assets/ha_crash1_1.png "")
+![](assets/ha_crash1_2.png "")
+
+## Test Scenario 2: K8s Cluster Node deleted during test where stream leader NATS pod is deployed
+
+### Run ID: 8/6/2022T14:24 (Duration: 5m, Event Rate: 150rps)
+
+![](assets/ha_crash2_1.png "")
+![](assets/ha_crash2_2.png "")
+
+> **NOTE:** It takes some time for the new NATS Pod to come up because PVC takes some time to be detached and mounted with a new K8s Node.
+
+```
+Events:
+  Type     Reason              Age   From                     Message
+  ----     ------              ----  ----                     -------
+  Normal   Scheduled           49s   default-scheduler        Successfully assigned kyma-system/eventing-nats-1 to shoot--kymatunas--fzn-p2-worker-k59z0-z1-5f68f-q5944
+  Warning  FailedAttachVolume  50s   attachdetach-controller  Multi-Attach error for volume "pv--4fdf1474-93af-4f5b-92b1-ad4df0258e00" Volume is already exclusively attached to one node and can't be attached to another
+```
+
+
 
 ## Test Scenario 4: Eventing-nats-1 (Stream Leader) pod deleted during test but with Stream Replicas set to 3
 
