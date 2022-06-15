@@ -103,12 +103,8 @@ spec:
       HTTP_User:
         value: "icke"
         valueFrom:
-          secretKeyRef:
+          secretKeyRef: # should reload when secret content changes
             name: my-elastic-credentials
-            namespace: default
-            key: ES_USER
-          rotatingSecretKeyRef:
-            prefix: my-elastic
             namespace: default
             key: ES_USER
           configMapKeyRef:
@@ -137,12 +133,6 @@ spec:
           namespace: default
           key: ES_ENDPOINT
     - name: myEnv3
-      valueFrom:
-        rotatingSecretKeyRef:
-          prefix: my-elastic
-          namespace: default
-          key: ES_ENDPOINT
-    - name: myEnv4
       valueFrom:
         configMapKeyRef:
           name: my-elastic-credentials
