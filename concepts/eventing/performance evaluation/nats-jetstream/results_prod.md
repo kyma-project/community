@@ -63,6 +63,8 @@
 
 ## Test Scenario 2: NATS Servers deleted during test
 
+### Run ID: 2/6/2022T13:20 (Duration: 10m, Event Rate: 150rps)
+
 > **NOTE:** Deleted (using `kubectl delete`) all thres Pods of NATS at once after 4 minutes.
 
 ```
@@ -71,8 +73,7 @@ kubectl delete po -n kyma-system eventing-nats-1
 kubectl delete po -n kyma-system eventing-nats-2
 ```
 
-### Run ID: 2/6/2022T13:20 (Duration: 10m, Event Rate: 150rps)
-
+**Test Results:**
 ```
 -> Total Events Sent      by **Test Sender** : 77,625 (+ 5514 Failed = 83,139)
 -> Total Events Received  by **Stream**      : 77,625
@@ -80,14 +81,27 @@ kubectl delete po -n kyma-system eventing-nats-2
 -> Total Events Received  by **Sink**        : 77,629 (Means that 4 events were duplicates)
 ```
 
-![](assets/crash1_1.png "")
+**Test Results Dashboard:**
+
 ![](assets/crash1_2.png "")
+
+**Test Sender Stats:**
+
+![](assets/crash1_1.png "")
+
+**NATS Stream Info:**
+
 ![](assets/crash1_4.png "")
+
+**NATS Consumer Info:**
+
 ![](assets/crash1_3.png "")
 
 ---
 
 ## Test Scenario 3: NATS Servers scaled down to 0 and back to 3 during test
+
+### Run ID: 2/6/2022T13:54 (Duration: 10m, Event Rate: 150rps)
 
 > **NOTE:** Scaled down NATS statefulset to 0 after 4 minutes.
 
@@ -95,8 +109,6 @@ kubectl delete po -n kyma-system eventing-nats-2
 kubectl scale statefulset eventing-nats -n kyma-system --replicas 0
 kubectl scale statefulset eventing-nats -n kyma-system --replicas 3
 ```
-
-### Run ID: 2/6/2022T13:54 (Duration: 10m, Event Rate: 150rps)
 
 **State before test run:**
 - Stream:  
@@ -112,6 +124,7 @@ kubectl scale statefulset eventing-nats -n kyma-system --replicas 3
   - Redelivered Messages: 0
   - Unprocessed Messages: 0
 
+**Test Results:**
 ```
 -> Total Events Sent      by **Test Sender** : 71,634 (+ 11,113 Failed = 82,747)
 -> Total Events Received  by **Stream**      : 71,634 (i.e. 149,259 - 77,625)
@@ -119,13 +132,24 @@ kubectl scale statefulset eventing-nats -n kyma-system --replicas 3
 -> Total Events Received  by **Sink**        : 71,637 (Means that 3 events were duplicates)
 ```
 
-![](assets/crash2_1.png "")
+**Test Results Dashboard:**
+
 ![](assets/crash2_2.png "")
+
+**Test Sender Stats:**
+
+![](assets/crash2_1.png "")
+
+**NATS Stream Info:**
+
 ![](assets/crash2_4.png "")
+
+**NATS Consumer Info:**
+
 ![](assets/crash2_3.png "")
 
 ---
----
+
 ## Test Scenario 4: Eventing-controller Pod deleted during test
 
 ### Run ID: 2/6/2022T14:17 (Duration: 10m, Event Rate: 150rps)
@@ -145,6 +169,7 @@ kubectl scale statefulset eventing-nats -n kyma-system --replicas 3
   - Redelivered Messages: 0
   - Unprocessed Messages: 0
 
+**Test Results:**
 ```
 -> Total Events Sent      by **Test Sender** : 88,255
 -> Total Events Received  by **Stream**      : 88,255 (i.e. 237,514 - 149,259) 
@@ -152,9 +177,20 @@ kubectl scale statefulset eventing-nats -n kyma-system --replicas 3
 -> Total Events Received  by **Sink**        : 88,255
 ```
 
-![](assets/crash3_1.png "")
+**Test Results Dashboard:**
+
 ![](assets/crash3_2.png "")
+
+**Test Sender Stats:**
+
+![](assets/crash3_1.png "")
+
+**NATS Stream Info:**
+
 ![](assets/crash3_4.png "")
+
+**NATS Consumer Info:**
+
 ![](assets/crash3_3.png "")
 
 ---

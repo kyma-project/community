@@ -62,6 +62,8 @@ JetStream uses a NATS optimized RAFT algorithm for clustering and high availibil
 
 In following sections we will run some tests scenarios covering these two cases in order to check the behaviour of our system.
 
+---
+
 ## Test Scenario 1: K8s Cluster Node deleted during test where stream leader NATS pod was NOT deployed
 
 ### Run ID: 8/6/2022T15:26 (Duration: 5m, Event Rate: 150rps)
@@ -95,9 +97,11 @@ In following sections we will run some tests scenarios covering these two cases 
 ```
 
 **Test Results Dashboard:**
+
 ![](assets/ha_crash3_1.png "")
 
 **Test Sender Stats:**
+
 ![](assets/ha_crash3_2.png "")
 
 
@@ -116,6 +120,8 @@ Events:
   Normal   SuccessfulAttachVolume  113s   attachdetach-controller  AttachVolume.Attach succeeded for volume "pv--f20986b4-a4a0-455b-ace2-6b91bdd4f11c"
   Warning  FailedMount             97s    kubelet                  Unable to attach or mount volumes: unmounted volumes=[eventing-nats-js-pvc], unattached volumes=[config-volume pid kube-api-access-gn9xs eventing-nats-js-pvc]: timed out waiting for the condition
 ```
+
+---
 
 ## Test Scenario 2: K8s Cluster Node deleted during test where stream leader NATS pod was deployed
 
@@ -141,14 +147,18 @@ Events:
 ```
 
 **Test Results Dashboard:**
+
 ![](assets/ha_crash2_1.png "")
 
 **Test Sender Stats:**
+
 ![](assets/ha_crash2_2.png "")
 
 **Finding:** 
 
 Deleting the K8s Node where stream leader NATS Pod was deployed resulted in the JetStream stream to be unavailable as there was only one replica of the stream. NATS stopped accepting any new events for that steam and event-publisher-proxy was failing to publish any event to NATS. The system started to work again as soon as the crashed NATS Pod was deployed on another Node and stream became available again. Therefore, a single stream relpica is not enough to cater a situation of single-node failure.
+
+---
 
 ## Test Scenario 3: NATS Pod (JetStream Stream Leader) deleted during test
 
@@ -176,14 +186,18 @@ kubectl delete po -n kyma-system eventing-nats-1
 ```
 
 **Test Results Dashboard:**
+
 ![](assets/ha_crash1_1.png "")
 
 **Test Sender Stats:**
+
 ![](assets/ha_crash1_2.png "")
 
 **Finding:** 
 
 If the stream leader NATS pod is deleted then NATS stops accepting messages for that stream until a new leader is elected. Therefore, event-publisher-proxy fails to publish messages until the leader came back.
+
+---
 
 ## Test Scenario 4: K8s Node deleted during test where stream leader NATS Pod was deployed (with Stream Replicas: 3)
 
@@ -253,9 +267,11 @@ nats stream update sap --replicas 3 -f
 ```
 
 **Test Results Dashboard:**
+
 ![](assets/ha_crash4_1.png "")
 
 **Test Sender Stats:**
+
 ![](assets/ha_crash4_2.png "")
 
 **Finding:** 
@@ -286,12 +302,15 @@ As now there were 3 stream replicas, deleting the K8s Node where stream leader N
 ```
 
 **Test Results Dashboard:**
+
 ![](assets/ha_crash6_5.png "")
 
 **Test Sender Stats:**
+
 ![](assets/ha_crash6_1.png "")
 
 **NATS JetStream Dashboard:**
+
 ![](assets/ha_crash6_3.png "")
 
 **NATS Consumer Info:**
