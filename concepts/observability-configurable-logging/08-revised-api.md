@@ -103,7 +103,7 @@ spec:
       HTTP_User:
         value: "icke"
         valueFrom:
-          secretKeyRef: # should reload when secret content changes
+          secretKeyRef: # also reloads when secret content changes
             name: my-elastic-credentials
             namespace: default
             key: ES_USER
