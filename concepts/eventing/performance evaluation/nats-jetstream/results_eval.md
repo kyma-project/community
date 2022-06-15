@@ -8,7 +8,6 @@
 - Test Scenario 4: Eventing-controller Pod deleted during test
 
 ## Test Setup
-* Testing tool: [K6](https://k6.io/)
 * Kyma CLI version: `2.2.0`
 * Kyma: 
   * Version: main [[commit](https://github.com/kyma-project/kyma/commit/f2e29f34ed5e71b1f083b4f973934b35b34ec832) and [commit (includes bug fix)](https://github.com/kyma-project/kyma/commit/f8a0c28a43e9eebf192514acc61614300f9909a1)] 
@@ -23,6 +22,10 @@
     ```
     kyma deploy --source=main -p evaluation --value global.jetstream.enabled=true --value global.jetstream.storage=file
     ```
+* Testing tool: [K6](https://k6.io/) (deployed in the same Kyma cluster)
+  * Grafana Dashboard:
+    * **Avg k6-to-eventing proxy time:** Shows the average time taken by the event to be sent from the sender till its received by the event-publisher-proxy.
+    * **Avg e2e time:** Shows the average end-to-end time taken by the event to be sent from the sender till its received by the final sink (i.e. the receiver).
 
 ## Test Scenario 1: Without any server restarts/crash
 

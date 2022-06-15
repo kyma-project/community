@@ -82,7 +82,7 @@ In following sections we will run some tests scenarios covering these two cases 
   - Leader: eventing-nats-1
   - Replicas: 1
 - Consumer:
-  - Ack Floor: Stream sequence# 237,514
+  - Ack Floor: Stream sequence# 741,787
   - Redelivered Messages: 0
   - Unprocessed Messages: 0
 
@@ -148,7 +148,7 @@ Events:
 
 **Finding:** 
 
-Deleting the K8s Node where stream leader NATS Pod was deployed resulted in the JetStream stream to be unavailable as there was only one replica of the stream. NATS stoppped accepting any new event for that steam and event-publisher-proxy was failing to publish any event to NATS. The system started to work again as soon as the crashed NATS Pod was deployed on anther Node and stream became available again. Therefore, a single stream relpica is not enough to cater a situation of single-node failure.
+Deleting the K8s Node where stream leader NATS Pod was deployed resulted in the JetStream stream to be unavailable as there was only one replica of the stream. NATS stopped accepting any new events for that steam and event-publisher-proxy was failing to publish any event to NATS. The system started to work again as soon as the crashed NATS Pod was deployed on another Node and stream became available again. Therefore, a single stream relpica is not enough to cater a situation of single-node failure.
 
 ## Test Scenario 3: NATS Pod (JetStream Stream Leader) deleted during test
 
@@ -260,12 +260,11 @@ nats stream update sap --replicas 3 -f
 
 **Finding:** 
 
-As now there were 3 stream replicas, deleting the K8s Node where stream leader NATS Pod was deployed triggered a leader election for the stream. During the election time, event-publisher-proxy failed to publish some events to NATS. But this downtime is much less than the `Test Scenario 2` where there was only one stream replica and it had to wait for the same NATS Pod to come up in order to resume receiveing events. Intead, in this scenario a new NATS Pod was elected as the leader for the stream.
+As now there were 3 stream replicas, deleting the K8s Node where stream leader NATS Pod was deployed triggered a leader election for the stream. During the election time, event-publisher-proxy failed to publish some events to NATS. But this downtime is much less than the `Test Scenario 2` where there was only one stream replica and it had to wait for the same NATS Pod to come up in order to resume receiveing events. Instead, in this scenario a new NATS Pod was elected as the leader for the stream.
 
 ### Run ID: 9/6/2022T9:22 (Duration: 5m, Event Rate: 150rps)
 
-> **Note:** Eventing-controller pod was not deployed on the deleted node.
-
+> **NOTE:** Deleted k8s Node where `eventing-nats-2` Pod was deployed after 2 minutes of test execution. Eventing-controller pod was not deployed on the deleted node.
 
 **State before test run:**
 - Stream:
