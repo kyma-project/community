@@ -262,7 +262,7 @@ nats stream update sap --replicas 3 -f
 
 **Test Results:**
 ```
--> Total Events Sent      by **Test Sender** : 43,082 (+ 1 Failed = 43,083)
+-> Total Events Sent      by **Test Sender** : 43,083 (+ 1 Failed = 43,084)
 -> Total Events Received  by **Sink**        : 43,012 (There were some errors in sink for storing the data to database)
 ```
 
