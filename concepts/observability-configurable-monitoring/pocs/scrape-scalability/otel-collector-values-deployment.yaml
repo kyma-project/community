@@ -1,8 +1,6 @@
 # possible values are documented here: https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-collector/values.yaml
 
-#helm upgrade opentelemetry-collector open-telemetry/opentelemetry-collector --version 0.20.0 --install --namespace kyma-system -f otel-collector-values.yaml
-
-# use latest collector version (chart version is behind the actual collector release)
+# use contrib image
 image:
   repository: otel/opentelemetry-collector-contrib
 
@@ -17,15 +15,7 @@ serviceAccount:
   create: false
   name: monitoring-prometheus
 
-# ports used in the config which needs to be exposed in the k8s pod and service manifest
-ports:
-  opencensus:
-    enabled: true
-    containerPort: 55678
-    servicePort: 55678
-    hostPort: 55678
-    protocol: TCP
-
+# annotations and mounts for scraping mTLS targets
 podAnnotations:
   proxy.istio.io/config: |
     # configure an env variable `OUTPUT_CERTS` to write certificates to the given folder
@@ -63,7 +53,6 @@ config:
       auth_type: "none"
       endpoint: "http://${NODE_NAME}:10255"
 
-    # metrics
     prometheus:
       config:
         scrape_configs:
@@ -79,9 +68,6 @@ config:
               - role: pod
           # scrape all pods having an istio sidecar
             relabel_configs:
-              - source_labels: [__meta_kubernetes_pod_node_name]
-                action: keep
-                regex: $NODE_NAME
               - source_labels: [__meta_kubernetes_pod_container_port_name]
                 action: keep
                 regex: ".*-envoy-prom"
@@ -90,9 +76,6 @@ config:
             kubernetes_sd_configs:
               - role: endpoints
             relabel_configs:
-              - source_labels: [__meta_kubernetes_endpoint_node_name]
-                action: keep
-                regex: $NODE_NAME
               - source_labels:
                   [__meta_kubernetes_service_annotation_prometheus_io_scrape]
                 action: keep
@@ -137,9 +120,6 @@ config:
             kubernetes_sd_configs:
               - role: pod
             relabel_configs:
-              - source_labels: [__meta_kubernetes_pod_node_name]
-                action: keep
-                regex: $NODE_NAME
               - source_labels:
                   [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
                 action: keep
@@ -213,9 +193,3 @@ config:
           - prometheusremotewrite
           - logging/info
       traces: null
-
-extraEnvs:
-  - name: NODE_NAME
-    valueFrom:
-      fieldRef:
-        fieldPath: spec.nodeName
