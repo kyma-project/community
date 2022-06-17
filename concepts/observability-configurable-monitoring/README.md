@@ -4,3 +4,7 @@ This folder contains pages for evaluating and proposing a concept for having the
 
 For that, the following pages guide you through the different steps of the proposal:
 * [Ground work - current state, requirements, goal](./01-groundwork.md)
+* [Agent Technology Selection](./02-agents.md)
+* [Different PoC's](./03-pocs.md)
+* [API design](./04-api.md)
+* [Final Concept](./05-concept.md)

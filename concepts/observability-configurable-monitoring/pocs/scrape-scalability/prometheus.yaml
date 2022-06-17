@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: monitoring-prometheus
+  namespace: kyma-system
+spec:
+  enableRemoteWriteReceiver: true
+  podMonitorNamespaceSelector:
+    matchExpressions:
+    - key: service_monitor
+      operator: In
+      values:
+      - icke
+  serviceMonitorNamespaceSelector:
+    matchExpressions:
+    - key: service_monitor
+      operator: In
+      values:
+      - icke
