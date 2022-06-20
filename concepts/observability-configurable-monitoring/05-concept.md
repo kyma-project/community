@@ -29,5 +29,4 @@ Telemetry Operator configures pipelines of central collector, using sane default
 
 ### In-Cluster backend
 
-Monitoring component brings config to push metrics via remotewrite to prometheus
-
+Monitoring component brings config to push metrics via remotewrite to managed prometheus instances. One for system, istio and custom metrics each. There will be no further tooling like the prometheus-operator ar an alertmanager available.
