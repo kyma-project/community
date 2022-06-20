@@ -212,7 +212,7 @@ nats stream update sap --replicas 3 -f
 
 ### Run ID: 9/6/2022T8:31 (Duration: 5m, Event Rate: 150rps)
 
-> **NOTE:** Deleted k8s Node where `eventing-nats-1` Pod was deployed after 2 minutes of test execution. Eventing-controller pod was also deployed on the deleted node and it was re-scheduled after the crashed Node came back online.
+In this test run, the k8s Node was deleted where `eventing-nats-1` Pod (Stream Leader) was deployed after 2 minutes of test execution. The eventing-controller pod was also deployed on the deleted node and it was re-scheduled after the crashed Node came back online.
 
 **State before test run:**
 - Stream:
@@ -283,7 +283,7 @@ As now there were 3 stream replicas, deleting the K8s Node where stream leader N
 
 ### Run ID: 9/6/2022T9:22 (Duration: 5m, Event Rate: 150rps)
 
-> **NOTE:** Deleted k8s Node where `eventing-nats-2` Pod was deployed after 2 minutes of test execution. Eventing-controller pod was not deployed on the deleted node.
+In this test run, again the k8s Node was deleted where `eventing-nats-2` Pod (Stream Leader) was deployed after 2 minutes of test execution. But the difference from last test run is that the eventing-controller pod was not deployed on the deleted node.
 
 **State before test run:**
 - Stream:
