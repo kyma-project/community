@@ -29,7 +29,7 @@
 
 ## Test Scenario 1: Without any server restarts/crash
 
-In this test scenario, the normal behaviour of NATS was tested without any server restarts or crash. The goal of was to check that there is no event loss in case of high event throughput.
+In this test scenario, the normal behaviour of NATS was tested without any server restarts or crash. The goal was to check that there is no event loss in case of high event throughput.
 
 ### Run ID: 3/6/2022T7:45 (10m, 50rps)
 ![](assets/eval_03_06_22-10-50_1.png "")
