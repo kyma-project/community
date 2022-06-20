@@ -48,11 +48,6 @@ config:
         network:
         paging:
 
-    kubeletstats:
-      collection_interval: 30s
-      auth_type: "none"
-      endpoint: "http://${NODE_NAME}:10255"
-
     prometheus:
       config:
         scrape_configs:
@@ -186,7 +181,6 @@ config:
         receivers:
           - prometheus
           - hostmetrics
-          - kubeletstats
         processors:
           - memory_limiter
         exporters:
