@@ -57,10 +57,10 @@ affinity:
 ## Test Cases
 JetStream uses a NATS optimized RAFT algorithm for clustering and high availibilty. Each stream in JetStream has a assigned stream leader NATS server. For failure scenarios, there would be two main cases:
 
-1. The k8s Node crashes where stream leader NATS Pod deployed.
+1. The k8s Node crashes where stream leader NATS Pod is deployed.
 2. The k8s Node crashes where stream leader NATS Pod is not deployed.
 
-In following sections we will run some tests scenarios covering these two cases in order to check the behaviour of our system.
+In following sections we will run some test scenarios covering these two cases in order to check the behaviour of our system.
 
 ---
 
@@ -156,7 +156,7 @@ Events:
 
 **Finding:** 
 
-Deleting the K8s Node where stream leader NATS Pod was deployed resulted in the JetStream stream to be unavailable as there was only one replica of the stream. NATS stopped accepting any new events for that steam and event-publisher-proxy was failing to publish any event to NATS. The system started to work again as soon as the crashed NATS Pod was deployed on another Node and stream became available again. Therefore, a single stream relpica is not enough to cater a situation of single-node failure.
+Deleting the K8s Node where stream leader NATS Pod was deployed resulted in the JetStream stream to be unavailable as there was only one replica of the stream. NATS stopped accepting any new events for that steam and event-publisher-proxy was failing to publish any event to NATS. The system started to work again as soon as the crashed NATS Pod was deployed on another Node and stream became available again. Therefore, a single stream replica is not enough to cater a situation of single-node failure.
 
 ---
 
@@ -276,7 +276,7 @@ nats stream update sap --replicas 3 -f
 
 **Finding:** 
 
-As now there were 3 stream replicas, deleting the K8s Node where stream leader NATS Pod was deployed triggered a leader election for the stream. During the election time, event-publisher-proxy failed to publish some events to NATS. But this downtime is much less than the `Test Scenario 2` where there was only one stream replica and it had to wait for the same NATS Pod to come up in order to resume receiveing events. Instead, in this scenario a new NATS Pod was elected as the leader for the stream.
+As now there were 3 stream replicas, deleting the K8s Node where stream leader NATS Pod was deployed triggered a leader election for the stream. During the election time, event-publisher-proxy failed to publish some events to NATS. But this downtime is much less than the `Test Scenario 2` where there was only one stream replica and it had to wait for the same NATS Pod to come up in order to resume receiving events. Instead, in this scenario a new NATS Pod was elected as the leader for the stream.
 
 ### Run ID: 9/6/2022T9:22 (Duration: 5m, Event Rate: 150rps)
 
@@ -326,4 +326,4 @@ As now there were 3 stream replicas, deleting the K8s Node where stream leader N
 After the test run, the consumer info showed `Unprocessed Messages: 29,386` but the `Redelivered Messages` and `Outstanding Acks` were zero. The eventing-controller was healthy so the unprocessed messages should have being delivered by NATS but they were not. Further investigation unveiled that there were some accounting bugs in NATS v2.8.2 and is fixed in new NATS v2.8.4 by [PR](https://github.com/nats-io/nats-server/pull/3148).
 
 ## Conclusion
-Based on the findings of the test scenarios, it was seen that having a single stream replica does not ensure high availability as clustering in JetStream uses RAFT ([more info](https://docs.nats.io/running-a-nats-service/configuration/clustering/jetstream_clustering)). It is recommended to have atleast 3 stream replicas to provide high availibilty of stream in case of single-node failure. Therefore, now the production profile will use 3 replicas of stream and evaluation profile will still be set to use 1 stream replica ([related PR](https://github.com/kyma-project/kyma/pull/14539)).
+Based on the findings of the test scenarios, it was seen that having a single stream replica does not ensure high availability as clustering in JetStream uses RAFT ([more info](https://docs.nats.io/running-a-nats-service/configuration/clustering/jetstream_clustering)). It is recommended to have at least 3 stream replicas to provide high availability of a stream in case of single-node failure. Therefore, now the production profile will use 3 replicas of stream and evaluation profile will still be set to use 1 stream replica ([related PR](https://github.com/kyma-project/kyma/pull/14539)).
