@@ -29,6 +29,8 @@
 
 ## Test Scenario 1: Without any server restarts/crash
 
+In this test scenario, the normal behaviour of NATS was tested without any server restarts or crash. The goal of was to check that there is no event loss in case of high event throughput.
+
 ### Run ID: 7/6/2022T13:23 [Simple NATS with JetStream Disabled] (Duration: 10m, Event Rate: 150rps)
 
 > **NOTE:** This is the only test run with JetStream disabled. All the other tests were done with JetStream enabled.
@@ -62,6 +64,8 @@
 ---
 
 ## Test Scenario 2: NATS Servers deleted during test
+
+In this test scenario, the behaviour of NATS was tested when there is a server crash. The goal of was to check that there is not event loss when a server crash.
 
 ### Run ID: 2/6/2022T13:20 (Duration: 10m, Event Rate: 150rps)
 
@@ -100,6 +104,8 @@ kubectl delete po -n kyma-system eventing-nats-2
 ---
 
 ## Test Scenario 3: NATS Servers scaled down to 0 and back to 3 during test
+
+In this test scenario, the behaviour of NATS was tested when all the NATS servers are shuted down and restarted. The goal of was to check that there is no event loss in this case.
 
 ### Run ID: 2/6/2022T13:54 (Duration: 10m, Event Rate: 150rps)
 
@@ -152,7 +158,10 @@ kubectl scale statefulset eventing-nats -n kyma-system --replicas 3
 
 ## Test Scenario 4: Eventing-controller Pod deleted during test
 
+In this test scenario, the behaviour of eventing-controller was tested when it is crashed. The goal of was to check that there is not event loss when the eventing-controller crash.
+
 ### Run ID: 2/6/2022T14:17 (Duration: 10m, Event Rate: 150rps)
+
 > **NOTE:** Deleted (using `kubectl delete`) the Pod of eventing-controller after 4 minutes.
 
 **State before test run:**

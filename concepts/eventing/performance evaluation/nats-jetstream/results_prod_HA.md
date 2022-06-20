@@ -68,7 +68,7 @@ In following sections we will run some test scenarios covering these two cases i
 
 ### Run ID: 8/6/2022T15:26 (Duration: 5m, Event Rate: 150rps)
 
-> **NOTE:** Deleted k8s Node where `eventing-nats-2` Pod was deployed after 2 minutes of test execution.
+In this test run, the k8s Node was deleted where `eventing-nats-2` Pod was deployed. The Node was deleted after 2 minutes of test execution. The `eventing-nats-2` Pod was not the stream leader.
 
 **State before test run:**
 - Stream:
@@ -127,7 +127,7 @@ Events:
 
 ### Run ID: 8/6/2022T14:24 (Duration: 5m, Event Rate: 150rps)
 
-> **NOTE:** Deleted k8s Node where `eventing-nats-2` Pod was deployed after 2 minutes of test execution.
+In this test run, the k8s Node was deleted where `eventing-nats-2` Pod was deployed. The Node was deleted after 2 minutes of test execution. The `eventing-nats-2` Pod was the stream leader.
 
 **State before test run:**
 - Stream:
@@ -162,7 +162,10 @@ Deleting the K8s Node where stream leader NATS Pod was deployed resulted in the 
 
 ## Test Scenario 3: NATS Pod (JetStream Stream Leader) deleted during test
 
-> **NOTE:** Deleted the pod `eventing-nats-1` (Stream Leader) after 3 minutes. Notice that this time only the pod was deleted, not the k8s Node itself.
+In this test scenario, the NATS Stream Leader Pod (i.e. `eventing-nats-1`) was deleted. In previous test scenarios, the K8s Node was deleted, but in this test only the NATS Pod was deleted in order to check the behavour when JetStream Stream Leader is down.
+
+
+> **NOTE:** The pod `eventing-nats-1` was deleted after 3 minutes of test execution. 
 ```
 kubectl delete po -n kyma-system eventing-nats-1
 ```
