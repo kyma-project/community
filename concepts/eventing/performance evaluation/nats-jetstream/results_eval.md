@@ -24,8 +24,8 @@
     ```
 * Testing tool: [K6](https://k6.io/) (deployed in the same Kyma cluster)
   * Grafana Dashboard:
-    * **Avg k6-to-eventing proxy time:** Shows the average time taken by the event to be sent from the sender till its received by the event-publisher-proxy.
-    * **Avg e2e time:** Shows the average end-to-end time taken by the event to be sent from the sender till its received by the final sink (i.e. the receiver).
+    * **Avg k6-to-eventing proxy time:** Shows the average time taken by the event to be sent from the sender till it's received by the event-publisher-proxy.
+    * **Avg e2e time:** Shows the average end-to-end time taken by the event to be sent from the sender till it's received by the final sink (that is, the receiver).
 
 ## Test Scenario 1: Without any server restarts/crash
 
@@ -46,7 +46,7 @@ In this test scenario, the normal behaviour of NATS was tested without any serve
 
 ## Test Scenario 2: NATS Servers deleted during test
 
-In this test scenario, the behaviour of NATS was tested when there is a server crash. The goal of was to check that there is not event loss when a server crash.
+In this test scenario, the behaviour of NATS was tested when there is a server crash. The goal was to check that there is not event loss when a server crash.
 
 > **NOTE:** Deleted (using `kubectl delete`) all the Pods of NATS after 4 minutes.
 
@@ -96,7 +96,7 @@ kubectl delete po -n kyma-system eventing-nats-0
 
 ## Test Scenario 3: NATS Servers scaled down to 0 and back to 1 during test
 
-In this test scenario, the behaviour of NATS was tested when all the NATS servers are shuted down and restarted. The goal of was to check that there is no event loss in this case.
+In this test scenario, the behaviour of NATS was tested when all the NATS servers are shut down and restarted. The goal was to check that there is no event loss in this case.
 
 > **NOTE:** Scaled down NATS statefulset to 0 after 4 minutes.
 ```
@@ -146,7 +146,7 @@ kubectl scale statefulset eventing-nats -n kyma-system --replicas 1
 
 ## Test Scenario 4: Eventing-controller Pod deleted during test
 
-In this test scenario, the behaviour of eventing-controller was tested when it is crashed. The goal of was to check that there is not event loss when the eventing-controller crash.
+In this test scenario, the behaviour of eventing-controller was tested when it is crashed. The goal was to check that there is not event loss when the eventing-controller crashes.
 
 > **NOTE:** Deleted (using `kubectl delete`) the Pod of eventing-controller after 4 minutes.
 
