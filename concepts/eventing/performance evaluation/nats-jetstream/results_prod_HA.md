@@ -4,15 +4,15 @@
 - Purpose
 - Test Setup
 - NATS Pods Anti-Affinity
-- Test Scenario 1: K8s Cluster Node deleted during test where stream leader NATS pod was NOT deployed
-- Test Scenario 2: K8s Cluster Node deleted during test where stream leader NATS pod was deployed
-- Test Scenario 3: NATS Pod (JetStream Stream Leader) deleted during test
-- Test Scenario 4: K8s Node deleted during test where stream leader NATS Pod was deployed (with Stream Replicas: 3)
+- Test Scenario 1: Kubernetes cluster Node deleted during test where stream leader NATS Pod was NOT deployed
+- Test Scenario 2: Kubernetes cluster Node deleted during test where stream leader NATS Pod was deployed
+- Test Scenario 3: NATS Pod (JetStream stream leader) deleted during test
+- Test Scenario 4: Kubernetes Node deleted during test where stream leader NATS Pod was deployed (with stream replicas: 3)
 - Conclusion
 
 ## Purpose
 
-The purpose of the tests is to evaluate the high availibilty of NATS JetStream to ensure that a node/pod failure must not disrupt event publishing or dispatching workflow.
+The purpose of the tests is to evaluate the high availability of NATS JetStream to ensure that a Node or Pod failure does not disrupt the event publishing or dispatching workflow.
 
 ## Test Setup
 * Kyma CLI version: `2.2.0`
@@ -21,7 +21,7 @@ The purpose of the tests is to evaluate the high availibilty of NATS JetStream t
   * Production Profile
   * JetStream with File Storage
 * NATS Image: `eu.gcr.io/kyma-project/external/nats:2.8.2-alpine`
-* K8s cluster:
+* Kubernetes cluster:
   * Kubernetes v1.21.10
   * Gardener cluster [Nodes: 3(min) to 6(max)]
   * GCP machine type: `n1-standard-4`
@@ -57,18 +57,18 @@ affinity:
 ## Test Cases
 JetStream uses a NATS optimized RAFT algorithm for clustering and high availibilty. Each stream in JetStream has a assigned stream leader NATS server. For failure scenarios, there would be two main cases:
 
-1. The k8s Node crashes where stream leader NATS Pod is deployed.
-2. The k8s Node crashes where stream leader NATS Pod is not deployed.
+1. The Kubernetes Node crashes where stream leader NATS Pod is deployed.
+2. The Kubernetes Node crashes where stream leader NATS Pod is not deployed.
 
-In following sections we will run some test scenarios covering these two cases in order to check the behaviour of our system.
+In following sections, we will run some test scenarios covering these two cases in order to check the behaviour of our system.
 
 ---
 
-## Test Scenario 1: K8s Cluster Node deleted during test where stream leader NATS pod was NOT deployed
+## Test Scenario 1: Kubernetes cluster Node deleted during test where stream leader NATS Pod was NOT deployed
 
 ### Run ID: 8/6/2022T15:26 (Duration: 5m, Event Rate: 150rps)
 
-In this test run, the k8s Node was deleted where `eventing-nats-2` Pod was deployed. The Node was deleted after 2 minutes of test execution. The `eventing-nats-2` Pod was not the stream leader.
+In this test run, the Kubernetes Node was deleted where `eventing-nats-2` Pod was deployed. The Node was deleted after 2 minutes of test execution. The `eventing-nats-2` Pod was not the stream leader.
 
 **State before test run:**
 - Stream:
@@ -107,7 +107,7 @@ In this test run, the k8s Node was deleted where `eventing-nats-2` Pod was deplo
 
 **Finding:**
 
-The downtime of the NATS Pod (non-stream leader) did not cause any disruption in event publishing or dispatching workflow. However, it took some time for the crashed pod to come back because it takes some time for the PVC to be detached and mounted with a new K8s Node.
+The downtime of the NATS Pod (non-stream leader) did not cause any disruption in the event publishing or dispatching workflow. However, it took some time for the crashed Pod to come back because it takes some time for the PVC to be detached and mounted with a new Kubernetes Node.
 
 ```
 Events:
@@ -123,11 +123,11 @@ Events:
 
 ---
 
-## Test Scenario 2: K8s Cluster Node deleted during test where stream leader NATS pod was deployed
+## Test Scenario 2: Kubernetes cluster Node deleted during test where stream leader NATS Pod was deployed
 
 ### Run ID: 8/6/2022T14:24 (Duration: 5m, Event Rate: 150rps)
 
-In this test run, the k8s Node was deleted where `eventing-nats-2` Pod was deployed. The Node was deleted after 2 minutes of test execution. The `eventing-nats-2` Pod was the stream leader.
+In this test run, the Kubernetes Node was deleted in which `eventing-nats-2` Pod was deployed. The Node was deleted after two minutes of test execution. The `eventing-nats-2` Pod was the stream leader.
 
 **State before test run:**
 - Stream:
@@ -156,16 +156,16 @@ In this test run, the k8s Node was deleted where `eventing-nats-2` Pod was deplo
 
 **Finding:** 
 
-Deleting the K8s Node where stream leader NATS Pod was deployed resulted in the JetStream stream to be unavailable as there was only one replica of the stream. NATS stopped accepting any new events for that steam and event-publisher-proxy was failing to publish any event to NATS. The system started to work again as soon as the crashed NATS Pod was deployed on another Node and stream became available again. Therefore, a single stream replica is not enough to cater a situation of single-node failure.
+Deleting the Kubernetes Node in which the stream leader NATS Pod was deployed resulted in the JetStream stream to be unavailable because there was only one replica of the stream. NATS stopped accepting any new events for that stream and event-publisher-proxy was failing to publish any event to NATS. The system started to work again as soon as the crashed NATS Pod was deployed on another Node and the stream became available again. Therefore, a single stream replica is not enough to cater a situation of single-node failure.
 
 ---
 
-## Test Scenario 3: NATS Pod (JetStream Stream Leader) deleted during test
+## Test Scenario 3: NATS Pod (JetStream stream leader) deleted during test
 
-In this test scenario, the NATS Stream Leader Pod (i.e. `eventing-nats-1`) was deleted. In previous test scenarios, the K8s Node was deleted, but in this test only the NATS Pod was deleted in order to check the behavour when JetStream Stream Leader is down.
+In this test scenario, the NATS Stream Leader Pod (`eventing-nats-1`) was deleted. In previous test scenarios, the Kubernetes Node was deleted. But in this test, only the NATS Pod was deleted to check the behaviour when the JetStream stream leader is down.
 
 
-> **NOTE:** The pod `eventing-nats-1` was deleted after 3 minutes of test execution. 
+> **NOTE:** The Pod `eventing-nats-1` was deleted after three minutes of test execution. 
 ```
 kubectl delete po -n kyma-system eventing-nats-1
 ```
@@ -198,13 +198,13 @@ kubectl delete po -n kyma-system eventing-nats-1
 
 **Finding:** 
 
-If the stream leader NATS pod is deleted then NATS stops accepting messages for that stream until a new leader is elected. Therefore, event-publisher-proxy fails to publish messages until the leader came back.
+If the stream leader NATS pod is deleted, then NATS stops accepting messages for that stream until a new leader is elected. Therefore, event-publisher-proxy fails to publish messages until the leader comes back.
 
 ---
 
-## Test Scenario 4: K8s Node deleted during test where stream leader NATS Pod was deployed (with Stream Replicas: 3)
+## Test Scenario 4: Kubernetes Node deleted during test where stream leader NATS Pod was deployed (with stream replicas: 3)
 
-The number of stream replicas was changed to 3 replicas in order to check the behaviour of single-node failure with multiple stream replicas.
+To check the behaviour of single-node failure with multiple stream replicas, the number of stream replicas was increased to three.
 
 ```
 nats stream update sap --replicas 3 -f
@@ -212,7 +212,7 @@ nats stream update sap --replicas 3 -f
 
 ### Run ID: 9/6/2022T8:31 (Duration: 5m, Event Rate: 150rps)
 
-In this test run, the k8s Node was deleted where `eventing-nats-1` Pod (Stream Leader) was deployed after 2 minutes of test execution. The eventing-controller pod was also deployed on the deleted node and it was re-scheduled after the crashed Node came back online.
+In this test run, the Kubernetes Node was deleted where `eventing-nats-1` Pod (stream leader) was deployed after two minutes of test execution. The eventing-controller Pod was also deployed on the deleted Node and it was re-scheduled after the crashed Node came back online.
 
 **State before test run:**
 - Stream:
@@ -224,7 +224,7 @@ In this test run, the k8s Node was deleted where `eventing-nats-1` Pod (Stream L
   - Leader: eventing-nats-2
   - Replicas: 3
 
-- Stream info after deleting the K8s Node:
+- Stream info after deleting the Kubernetes Node:
   ```
   ╰─ nats stream info sap
   Information for Stream sap created 2022-06-09T10:01:02+02:00
@@ -279,11 +279,12 @@ In this test run, the k8s Node was deleted where `eventing-nats-1` Pod (Stream L
 
 **Finding:** 
 
-As now there were 3 stream replicas, deleting the K8s Node where stream leader NATS Pod was deployed triggered a leader election for the stream. During the election time, event-publisher-proxy failed to publish some events to NATS. But this downtime is much less than the `Test Scenario 2` where there was only one stream replica and it had to wait for the same NATS Pod to come up in order to resume receiving events. Instead, in this scenario a new NATS Pod was elected as the leader for the stream.
+Because now there were three stream replicas, deleting the Kubernetes Node in which the stream leader NATS Pod was deployed triggered a leader election for the stream. During the election time, event-publisher-proxy failed to publish some events to NATS. 
+But this downtime is much shorter than in test scenario 2 where there was only one stream replica and it had to wait for the same NATS Pod to come up in order to resume receiving events. Instead, in test scenario 4, a new NATS Pod was elected as the leader for the stream.
 
 ### Run ID: 9/6/2022T9:22 (Duration: 5m, Event Rate: 150rps)
 
-In this test run, again the k8s Node was deleted where `eventing-nats-2` Pod (Stream Leader) was deployed after 2 minutes of test execution. But the difference from last test run is that the eventing-controller pod was not deployed on the deleted node.
+In this test run, again the Kubernetes Node was deleted in which the `eventing-nats-2` Pod (stream leader) was deployed after two minutes of test execution. But the difference from the last test run is that the eventing-controller Pod was not deployed on the deleted Node.
 
 **State before test run:**
 - Stream:
@@ -326,7 +327,8 @@ In this test run, again the k8s Node was deleted where `eventing-nats-2` Pod (St
 
 **Finding:** 
 
-After the test run, the consumer info showed `Unprocessed Messages: 29,386` but the `Redelivered Messages` and `Outstanding Acks` were zero. The eventing-controller was healthy so the unprocessed messages should have being delivered by NATS but they were not. Further investigation unveiled that there were some accounting bugs in NATS v2.8.2 and is fixed in new NATS v2.8.4 by [PR](https://github.com/nats-io/nats-server/pull/3148).
+After the test run, the consumer info showed `Unprocessed Messages: 29,386` but the `Redelivered Messages` and `Outstanding Acks` were zero. The eventing-controller was healthy, so the unprocessed messages should have being delivered by NATS but they were not. Further investigation unveiled that there were some accounting bugs in NATS v2.8.2, which has been fixed in new NATS v2.8.4 by [PR 3148](https://github.com/nats-io/nats-server/pull/3148).
 
 ## Conclusion
-Based on the findings of the test scenarios, it was seen that having a single stream replica does not ensure high availability as clustering in JetStream uses RAFT ([more info](https://docs.nats.io/running-a-nats-service/configuration/clustering/jetstream_clustering)). It is recommended to have at least 3 stream replicas to provide high availability of a stream in case of single-node failure. Therefore, now the production profile will use 3 replicas of stream and evaluation profile will still be set to use 1 stream replica ([related PR](https://github.com/kyma-project/kyma/pull/14539)).
+Based on the findings of the test scenarios, we saw that having a single stream replica does not ensure high availability because clustering in JetStream uses RAFT ([more info](https://docs.nats.io/running-a-nats-service/configuration/clustering/jetstream_clustering)).
+It is recommended to have at least three stream replicas to provide high availability of a stream if a single Node fails. Therefore, now the production profile will use three replicas of stream. The evaluation profile will still be set to use one stream replica ([see PR 14539](https://github.com/kyma-project/kyma/pull/14539)).
