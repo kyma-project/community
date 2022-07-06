@@ -437,8 +437,8 @@ Code-specific rules:
   ```go
   namedLogger.Debug("Event Publisher deployment not ready...")
   ```
-- In order to recognize the error logs easier, they should have the following structure:
-  *past tense started with **Failed to...**, followed by the error wrapped with some meaningful context*:
+- In order to recognize the error logs easily, they should have the following structure:
+  *past tense starting with **Failed to...**, followed by the error wrapped with some meaningful context*:
     ```
     namedLogger.Errorw("Failed to update Event Publisher secret", "error", err)
     ```
