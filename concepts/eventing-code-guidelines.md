@@ -394,13 +394,13 @@ MarkReady(apiRuleNew) // instead consider using another function that explicitly
 Here are some general rules to standardize logs across eventing components:
 
 - Log message should be as short and meaningful as possible.
-- Logs should be aligned with the unified way of logging inside kyma ([reference](https://github.com/kyma-project/community/blob/16520807578a889f763bb8083601ae0de357aa3d/concepts/observability-consistent-logging/README.md)).
+- Logs should be aligned with the unified way of logging inside kyma ([reference](https://github.com/kyma-project/community/blob/main/concepts/observability-consistent-logging/README.md)).
 - Each log message should have enough context to convey what happened.
-- Each log message should have the proper log level ([reference](https://github.com/kyma-project/community/blob/16520807578a889f763bb8083601ae0de357aa3d/concepts/observability-consistent-logging/unified-approach-to-logging-levels.md)).
+- Each log message should have the proper log level ([reference](https://github.com/kyma-project/community/blob/main/concepts/observability-consistent-logging/unified-approach-to-logging-levels.md)).
 
 Code-specific rules:
 
-- Consider using `uber-go/zap` logging library. Label the logger by naming it with the component name and add the context whenever it is possible ([reference](https://github.com/kyma-project/community/blob/16520807578a889f763bb8083601ae0de357aa3d/concepts/observability-consistent-logging/improvement-of-log-messages-usability.md#log-structure)):
+- Consider using `uber-go/zap` logging library. Label the logger by naming it with the component name and add the context whenever it is possible ([reference](https://github.com/kyma-project/community/blob/main/concepts/observability-consistent-logging/improvement-of-log-messages-usability.md#log-structure)):
   <details>
         <summary>Example</summary>
 
