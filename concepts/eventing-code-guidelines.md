@@ -389,7 +389,7 @@ MarkReady(apiRuleNew) // instead consider using another function that explicitly
 ```
 </details>
 
-### Logging Rules
+### Logging Guidelines
 
 Here are some general rules to standardize logs across eventing components:
 
@@ -439,13 +439,13 @@ Code-specific rules:
   ```
 - In order to recognize the error logs easily, they should have the following structure:
   *past tense starting with **Failed to...**, followed by the error wrapped with some meaningful context*:
-    ```
+    ```go
     namedLogger.Errorw("Failed to update Event Publisher secret", "error", err)
     ```
 -  Capitalize the first letter of the first word in the logs, including the error logs:
-  ```go
-  namedLogger.Debug("Creating secret for BEB publisher")
-  ```
+    ```go
+    namedLogger.Debug("Creating secret for BEB publisher")
+    ```
 
 ## Testing pyramid in Kyma
 
