@@ -1,4 +1,4 @@
-# High Availibiltiy (HA) Evaluation of JetStream (Kyma: Production Profile)
+# High Availability (HA) Evaluation of JetStream (Kyma: Production Profile)
 
 ## Table of Contents
 - Purpose
