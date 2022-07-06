@@ -391,12 +391,12 @@ MarkReady(apiRuleNew) // instead consider using another function that explicitly
 
 ### Logging Rules
 
-Here are some general rules to keep the logs standardized across the eventing components:
+Here are some general rules to standardize logs across eventing components:
 
-- Log message should be as short and meaningful as possible
-- Logs should be aligned with the unified way of logging inside kyma ([reference](https://github.com/kyma-project/community/blob/16520807578a889f763bb8083601ae0de357aa3d/concepts/observability-consistent-logging/README.md))
-- Each log message should have enough context to convey what happened
-- Each log message should have the proper log level ([reference](https://github.com/kyma-project/community/blob/16520807578a889f763bb8083601ae0de357aa3d/concepts/observability-consistent-logging/unified-approach-to-logging-levels.md))
+- Log message should be as short and meaningful as possible.
+- Logs should be aligned with the unified way of logging inside kyma ([reference](https://github.com/kyma-project/community/blob/16520807578a889f763bb8083601ae0de357aa3d/concepts/observability-consistent-logging/README.md)).
+- Each log message should have enough context to convey what happened.
+- Each log message should have the proper log level ([reference](https://github.com/kyma-project/community/blob/16520807578a889f763bb8083601ae0de357aa3d/concepts/observability-consistent-logging/unified-approach-to-logging-levels.md)).
 
 Code-specific rules:
 
@@ -415,7 +415,7 @@ Code-specific rules:
   </details>
 
 
-- Don't log the error in case you return the same error as a result for the `Reconcile()` method. **Reason:** kubebuilder will output it too, so in the end the use will have two very similar outputs one after another:
+- Don't log the error in case you return the same error as a result for the `Reconcile()` method. **Reason:** kubebuilder will output it too, so in the end the user will have two very similar logs one after another:
   <details>
       <summary>Example</summary>
 
@@ -425,7 +425,7 @@ Code-specific rules:
           return ctrl.Result{}, errors.Wrap(err, updateErr.Error())
     }
     ```
-  will result into this double output:
+  will result into duplication of logs:
     ```
     {"level":"ERROR","timestamp":"2022-07-01T08:20:26Z","logger":"beb-subscription-reconciler","caller":"beb/reconciler.go:275","message":"Failed to sync BEB subscription","context":{"kind":"Subscription","version":2,"namespace":"tunas-testing","name":"test-noapp","error":"prefix not found"}}
     {"level":"ERROR","timestamp":"2022-07-01T08:20:26Z","caller":"controller/controller.go:326","message":"Reconciler error","context":{"controller":"beb-subscription-reconciler","object":{"name":"test-noapp","namespace":"tunas-testing"},"namespace":"tunas-testing","name":"test-noapp","reconcileID":"9994dd3e-0104-4170-82aa-79df9ec41af1","error":"prefix not found"}}
@@ -433,16 +433,16 @@ Code-specific rules:
   </details>
 
 
-- Capitilize the component names, i.e. Event Publisher, or EventingBackend:
+- Capitalize the component names, i.e. Event Publisher, or EventingBackend:
   ```go
   namedLogger.Debug("Event Publisher deployment not ready...")
   ```
 - In order to recognize the error logs easier, they should have the following structure:
-  *past tense started with **Failed to...**, after that the error wrapped with some meaningful context*:
+  *past tense started with **Failed to...**, followed by the error wrapped with some meaningful context*:
     ```
     namedLogger.Errorw("Failed to update Event Publisher secret", "error", err)
     ```
-- Capitilize all the logs, including the error messages:
+-  Capitalize the first letter of the first word in the logs, including the error logs:
   ```go
   namedLogger.Debug("Creating secret for BEB publisher")
   ```
