@@ -55,6 +55,21 @@ Cons:
 - No support for OTLP
 - No pluggable pipeline mechanisms as only remotewrite is supported as output
 
+### Fluent Bit
+[FluentBit](https://fluentbit.io/) is a famous log collector being part of the CNCF. It has a pluggable design with a very low resource footprint and it is used in kyma already as a collector for logs. It nowadays gets extended more and more to support metrics as well.
+
+Pros:
+- Performant and lightweight
+- Pluggable input and outputs
+- Used already as log collector
+- OTEL output support (input to come soon)
+- Basic metric inputs, even k8s based like node exporter
+
+Cons:
+- Not designed to be a metric collector
+- Very initial support for prometheus input and output
+
+
 ### CollectD
 [CollectD](https://collectd.org/) and potentially the [cassandra specific k8s port](https://docs.k8ssandra.io/components/metrics-collector/) is a well known metrics collector mainly for linux systems.
 
@@ -77,4 +92,4 @@ Cons:
 
 ## Decision
 As the general observability strategy is based on OTLP, support for that as input and output is mandatory. Even considering the potential instability of the otel-collector, it shows that the big contributors are start using it in production already. As the metrics protocol is stable already, it is just a matter of time till all aspects are being marked as stable. As we plan to bring our own abstraction for supported scenarios, a beta API used underneath is acceptable.
-With that, the otel-collector will be used in the further concept.
+As the otel-collector is supporting OTLP native, the otel-collector will be used in the further concept. However, FluentBit seems to become an actual alternative and should be re-evaluated as soon as metrics input via OTLP and full prometheus scraping is supported.

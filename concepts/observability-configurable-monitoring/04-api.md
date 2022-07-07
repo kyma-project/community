@@ -7,9 +7,9 @@ apiVersion: telemetry.kyma-project.io/v1alpha1
 metadata:
   name: PrometheusRemoteWrite
 spec:
-  receiver: # singular, different receivers require different pipelines and exporterssss configs
-    type: OTLP # OTLP | system | custom, default is application
-    otlp: # maps to central tail pipeline, dealing with the actual application logs
+  receiver: # singular, different receivers require different pipelines and exporters configs
+    type: application # application | system | custom, default is application
+    application: # maps to central tail pipeline, dealing with the actual application logs
       namespaces: [] # generates the rule for the rewrite_tag assigned to every pipeline
       excludeNamespaces: []
       containers: []
