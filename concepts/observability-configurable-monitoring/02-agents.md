@@ -14,7 +14,7 @@ The agent's responsibility is to collect all metrics in the cluster (Kubernetes,
      - Metrics name (with wildcard support)
      - Metrics labels
 - Output
-  - Independent outputs (with buffer/retry management)
+  - Independent outputs (with buffer or retry management)
   - OTLP support
   - Prometheus support
 
@@ -25,12 +25,12 @@ The [otel-collector](https://opentelemetry.io/docs/collector/) is the agent of t
 
 Pros
 - Natively supports OTLP even as internal format
-- Support for prometheus format and pull approach as receiver
-- Support for prometheus as output
+- Support for Prometheus format and pull approach as receiver
+- Support for Prometheus as output
 - Flexible way of configuring pipelines
 - Big emerging community
-- Part of CNCF and with that safe investment from license perspective
-- Outputs do have buffer/retry management
+- Part of CNCF and with that, safe investment from license perspective
+- Outputs with buffer and retry management
 - Pluggable and extensible
 - Different deployment modes
 - Emerging K8S metrics community
