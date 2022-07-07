@@ -2,17 +2,17 @@
 
 ## Requirements
 
-The agents responsibility is to collect all metrics in the cluster (k8s, kyma, envoy, custom) and ship them in a configurable way to targets. It is not meant to be used as backend system, so in best case t is even stateless.
+The agent's responsibility is to collect all metrics in the cluster (Kubernetes, Kyma, envoy, custom) and ship them in a configurable way to targets. The agent is not meant to be used as backend system, so ideally it is even stateless.
 
 - Collection
-  - Support Prometheus Format and pull approach, best with service discovery. A lot of apps are based on the pull approach and should not be re-written or operated with a sidecar only for transforming that approach
-  - Support for push based model using OTLP
-  - Flexible deployment model so that pull-based model might be scaled (by sharding) independent of the push-based approach
+  - Support Prometheus format and pull approach, ideally with service discovery. A lot of apps are based on the pull approach and should not be rewritten or operated with a sidecar only for transforming that approach.
+  - Support push-based model using OTLP.
+  - Support flexible deployment model so that the pull-based model might be scaled (by sharding) independently of the push-based approach.
 - Filter
-  - Way to filter out metrics per pipeline
-     - based on the source by namespace/pod name and k8s labels
-     - based on metrics name (with wildcard support)
-     - based on metrics labels
+  - Support filtering metrics per pipeline based on the following criteria:
+     - Source by Namespace or Pod name and Kubernetes labels
+     - Metrics name (with wildcard support)
+     - Metrics labels
 - Output
   - Independent outputs (with buffer/retry management)
   - OTLP support
