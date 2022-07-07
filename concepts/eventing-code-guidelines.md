@@ -389,6 +389,66 @@ MarkReady(apiRuleNew) // instead consider using another function that explicitly
 ```
 </details>
 
+### Logging guidelines
+
+Standardize logs across Eventing components according to the following general and code-specific rules.
+
+#### General rules
+
+- Each log message should be as short and meaningful as possible.
+- Logs should be aligned with the unified way of logging inside Kyma (see [Consistent Logging](https://github.com/kyma-project/community/blob/main/concepts/observability-consistent-logging/README.md)).
+- Each log message should have enough context to convey what happened.
+- Each log message should have the proper log level (see [Unified approach to logging levels](https://github.com/kyma-project/community/blob/main/concepts/observability-consistent-logging/unified-approach-to-logging-levels.md)).
+
+#### Code-specific rules:
+
+- Consider using the `uber-go/zap` logging library. Label the logger by naming it with the component name and add the context whenever it is possible (see [Log structure](https://github.com/kyma-project/community/blob/main/concepts/observability-consistent-logging/improvement-of-log-messages-usability.md#log-structure)):
+  <details>
+        <summary>Example</summary>
+
+  ```go
+  namedLogger := r.logger.WithContext().Named("logger-name").With("backend", "BEB")
+  r.namedLogger().Info("Creating Event Publisher deployment")
+  ```
+  will output:
+  ```
+  {"level":"INFO","timestamp":"2022-07-04T12:00:36+02:00","logger":"logger-name","caller":"backend/reconciler.go:741","message":"Creating Event Publisher deployment","context":{"backend":"BEB"}}
+  ```
+  </details>
+
+
+- If you return the same error as a result for the `Reconcile()` method, don't log the error. That's because Kubebuilder will output it too, so the user gets two very similar logs one after another:
+  <details>
+      <summary>Example</summary>
+
+    ```go
+    namedLogger.Errorw("Failed to sync BEB subscription", "error", err)
+    updateErr := r.updateSubscription(ctx, subscription, log); updateErr != nil {
+          return ctrl.Result{}, errors.Wrap(err, updateErr.Error())
+    }
+    ```
+  will result in duplication of logs:
+    ```
+    {"level":"ERROR","timestamp":"2022-07-01T08:20:26Z","logger":"beb-subscription-reconciler","caller":"beb/reconciler.go:275","message":"Failed to sync BEB subscription","context":{"kind":"Subscription","version":2,"namespace":"tunas-testing","name":"test-noapp","error":"prefix not found"}}
+    {"level":"ERROR","timestamp":"2022-07-01T08:20:26Z","caller":"controller/controller.go:326","message":"Reconciler error","context":{"controller":"beb-subscription-reconciler","object":{"name":"test-noapp","namespace":"tunas-testing"},"namespace":"tunas-testing","name":"test-noapp","reconcileID":"9994dd3e-0104-4170-82aa-79df9ec41af1","error":"prefix not found"}}
+    ```
+  </details>
+
+
+- Capitalize the component names, for example Event Publisher, or EventingBackend:
+  ```go
+  namedLogger.Debug("Event Publisher deployment not ready...")
+  ```
+- Use the standardized structure:
+  *past tense starting with **Failed to...**, followed by the error wrapped with some meaningful context*:
+    ```go
+    namedLogger.Errorw("Failed to update Event Publisher secret", "error", err)
+    ```
+-  Capitalize the first letter of the first word in the logs, including the error logs:
+    ```go
+    namedLogger.Debug("Creating secret for BEB publisher")
+    ```
+
 ## Testing pyramid in Kyma
 
 The following section describes the different testing levels for Kyma. These levels are usually seen as a [pyramid](https://en.wikipedia.org/wiki/Test_automation#Testing_at_different_levels):
