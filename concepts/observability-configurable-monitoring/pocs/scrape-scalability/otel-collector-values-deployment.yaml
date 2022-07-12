@@ -7,7 +7,7 @@ image:
 command:
   name: otelcol-contrib
 
-mode: daemonset
+mode: deployment
 
 # Defined the used k8s serviceaccount for communication to the K8s APIServer
 serviceAccount:
