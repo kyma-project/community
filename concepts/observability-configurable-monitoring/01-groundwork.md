@@ -2,7 +2,7 @@
 
 ## Current Situation and Motivation
 
-In the current shape of Kyma in 2022, the monitoring stack is focussing on providing a lightweight and opinionated monitoring solution, working out of the box, to solve basic requirements for application operators like instant troubleshooting. Consequently, it is not focussing on integration aspects in order to cover a broader and richer usage scenario.
+In the current (2022) setup of Kyma, the monitoring stack focuses on providing a lightweight and opinionated monitoring solution out of the box, to solve basic requirements for application operators like instant troubleshooting. Consequently, it does not focus on integration aspects that would support a broader and richer usage scenario.
 
 ![a](./assets/current_all.drawio.svg)
 
