@@ -2,7 +2,7 @@
 
 In the current shape of Kyma in 2022, the monitoring stack is focussing on providing a lightweight and opinionated monitoring solution, working out of the box, to solve basic requirements for application operators like instant troubleshooting. Consequently, it is not focussing on integration aspects in order to cover a broader and richer usage scenario.
 
-![a](./assets/current_all.drawio.svg)
+![a](./assets/current.drawio.svg)
 
 In the diagram, you see that the solution is based on a pre-configured prometheus-operator providing exporter components and a prometheus instance acting as collector and backend. On top, Grafana gets bundled for visualisations. However, it does not provide a neutral and unified way to integrate backends outside of the cluster. 
 
