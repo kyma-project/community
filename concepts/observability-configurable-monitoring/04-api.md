@@ -1,4 +1,4 @@
-# API
+# API Design
 
 
 ```YAML
@@ -7,9 +7,9 @@ apiVersion: telemetry.kyma-project.io/v1alpha1
 metadata:
   name: PrometheusRemoteWrite
 spec:
-  receiver: # singular, different receivers require different pipelines and exporters configs
+  receiver: # singular, different receivers need different pipelines and exporterssss configs
     type: application # application | system | custom, default is application
-    application: # maps to central tail pipeline, dealing with the actual application logs
+    otlp: # maps to central tail pipeline, dealing with the actual application logs
       namespaces: [] # generates the rule for the rewrite_tag assigned to every pipeline
       excludeNamespaces: []
       containers: []
@@ -20,7 +20,7 @@ spec:
       excludePodLabels:
         app: chris
       
-    system: {} # maps to systemd based input like kubelet logs, no further spec for now designed
+    system: {} # maps to systemd based input like kubelet logs; for now, no further spec designed
     custom: # define a custom input, entering unsupported mode
         cloudfoundry:
             rlp_gateway:
@@ -44,7 +44,7 @@ spec:
               action: insert
               new_name: host.cpu.utilization
 
-  exporter: #only one output, no output should fail validation
+  exporter: # only one output, defining no output will fail validation
     prometheusremotewrite: # enables the exporter
       endpoint: "http://monitoring-prometheus.kyma-system.svc.cluster.local:9090/api/v1/write"
       tls:
