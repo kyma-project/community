@@ -1,0 +1,204 @@
+# possible values are documented here: https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-collector/values.yaml
+
+# use contrib image
+image:
+  repository: otel/opentelemetry-collector-contrib
+
+command:
+  name: otelcol-contrib
+
+mode: daemonset
+
+# Defined the used k8s serviceaccount for communication to the K8s APIServer
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  name: monitoring-prometheus
+
+# annotations and mounts for scraping mTLS targets
+podAnnotations:
+  proxy.istio.io/config: |
+    # configure an env variable `OUTPUT_CERTS` to write certificates to the given folder
+    proxyMetadata:
+      OUTPUT_CERTS: /etc/istio-output-certs
+  sidecar.istio.io/inject: "true"
+  sidecar.istio.io/userVolumeMount: '[{"name": "istio-certs", "mountPath": "/etc/istio-output-certs"}]'
+  traffic.sidecar.istio.io/includeInboundPorts: ""
+  traffic.sidecar.istio.io/includeOutboundIPRanges: ""
+
+extraVolumeMounts:
+  - mountPath: /etc/istio-output-certs
+    name: istio-certs
+    readOnly: true
+extraVolumes:
+  - name: istio-certs
+    emptyDir: {}
+
+# actual otel controller configuration
+config:
+  receivers:
+    hostmetrics:
+      collection_interval: 30s
+      scrapers:
+        cpu:
+        disk:
+        load:
+        filesystem:
+        memory:
+        network:
+        paging:
+
+    prometheus:
+      config:
+        scrape_configs:
+          # scrape collector itself
+          - job_name: opentelemetry-collector
+            scrape_interval: 10s
+            static_configs:
+              - targets:
+                  - ${MY_POD_IP}:8888
+          - job_name: "envoy-stats"
+            metrics_path: /stats/prometheus
+            kubernetes_sd_configs:
+              - role: pod
+          # scrape all pods having an istio sidecar
+            relabel_configs:
+              - source_labels: [__meta_kubernetes_pod_node_name]
+                action: keep
+                regex: $NODE_NAME
+              - source_labels: [__meta_kubernetes_pod_container_port_name]
+                action: keep
+                regex: ".*-envoy-prom"
+          # scrape all services having prometheus annotation
+          - job_name: "kubernetes-service-endpoints"
+            kubernetes_sd_configs:
+              - role: endpoints
+            relabel_configs:
+              - source_labels: [__meta_kubernetes_endpoint_node_name]
+                action: keep
+                regex: $NODE_NAME
+              - source_labels:
+                  [__meta_kubernetes_service_annotation_prometheus_io_scrape]
+                action: keep
+                regex: true
+              - source_labels:
+                  [__meta_kubernetes_service_annotation_prometheus_io_scheme]
+                action: replace
+                target_label: __scheme__
+                regex: (https?)
+              - source_labels:
+                  [__meta_kubernetes_service_annotation_prometheus_io_path]
+                action: replace
+                target_label: __metrics_path__
+                regex: (.+)
+              - source_labels:
+                  [
+                    __address__,
+                    __meta_kubernetes_service_annotation_prometheus_io_port,
+                  ]
+                action: replace
+                target_label: __address__
+                regex: ([^:]+)(?::\d+)?;(\d+)
+                replacement: $$1:$$2
+              - action: labelmap
+                regex: __meta_kubernetes_service_label_(.+)
+              - source_labels: [__meta_kubernetes_namespace]
+                action: replace
+                target_label: kubernetes_namespace
+              - source_labels: [__meta_kubernetes_service_name]
+                action: replace
+                target_label: kubernetes_name
+              - source_labels: [__meta_kubernetes_pod_node_name]
+                action: replace
+                target_label: kubernetes_node
+            tls_config:
+              ca_file: /etc/istio-output-certs/root-cert.pem
+              cert_file: /etc/istio-output-certs/cert-chain.pem
+              insecure_skip_verify: true
+              key_file: /etc/istio-output-certs/key.pem
+          # scrape all pods having the prometheus annotation
+          - job_name: "kubernetes-pods"
+            kubernetes_sd_configs:
+              - role: pod
+            relabel_configs:
+              - source_labels: [__meta_kubernetes_pod_node_name]
+                action: keep
+                regex: $NODE_NAME
+              - source_labels:
+                  [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+                action: keep
+                regex: true
+              - source_labels:
+                  [__meta_kubernetes_pod_annotation_prometheus_io_scheme]
+                action: replace
+                regex: (https?)
+                target_label: __scheme__
+              - source_labels:
+                  [__meta_kubernetes_pod_annotation_prometheus_io_path]
+                action: replace
+                target_label: __metrics_path__
+                regex: (.+)
+              - source_labels:
+                  [
+                    __address__,
+                    __meta_kubernetes_pod_annotation_prometheus_io_port,
+                  ]
+                action: replace
+                regex: ([^:]+)(?::\d+)?;(\d+)
+                replacement: $$1:$$2
+                target_label: __address__
+              - action: labelmap
+                regex: __meta_kubernetes_pod_label_(.+)
+              - source_labels: [__meta_kubernetes_namespace]
+                action: replace
+                target_label: kubernetes_namespace
+              - source_labels: [__meta_kubernetes_pod_name]
+                action: replace
+                target_label: kubernetes_pod_name
+              - source_labels: [__meta_kubernetes_pod_phase]
+                regex: Pending|Succeeded|Failed
+                action: drop
+            tls_config:
+              ca_file: /etc/istio-output-certs/root-cert.pem
+              cert_file: /etc/istio-output-certs/cert-chain.pem
+              insecure_skip_verify: true
+              key_file: /etc/istio-output-certs/key.pem
+  processors:
+    batch: {}
+    memory_limiter: {}
+
+  exporters:
+    logging/info:
+      loglevel: info
+    logging/debug:
+      loglevel: debug
+    prometheusremotewrite:
+      endpoint: "http://monitoring-prometheus.kyma-system.svc.cluster.local:9090/api/v1/write"
+      tls:
+        insecure: true
+  extensions:
+    health_check: {}
+  service:
+    telemetry:
+      logs:
+        level: "debug"
+    extensions:
+      - health_check
+    pipelines:
+      logs: null
+      metrics:
+        receivers:
+          - prometheus
+          - hostmetrics
+        processors:
+          - memory_limiter
+        exporters:
+          - prometheusremotewrite
+          - logging/info
+      traces: null
+
+extraEnvs:
+  - name: NODE_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: spec.nodeName
