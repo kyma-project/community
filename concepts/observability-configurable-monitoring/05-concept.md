@@ -13,9 +13,9 @@ To assure that the scraping collector will scale with the targets to scrape, it 
 
 ### OTLP Push Support
 
-**Push support will be provided via OTLP only via the central deployment**
+**Push support will be provided using OTLP only with the central deployment**
 
-A central collector, which listens for OTLP metrics, will be part of the setup. This dedicated central collector runs independent from the pull-based daemonset as the criterias for scaling are different. The central deployment mainly will auto-scale on resource consumption related to the incoming OTLP traffic. The related service port can be used for pushing custom metrics of any kind. Also, that instance will be configurable via the telemetry-operators MetricPipeline resource. In future it might be used for other kind of signals like traces as well.
+A central collector, which listens for OTLP metrics, will be part of the setup. This dedicated central collector runs independently from the pull-based daemonset because the criteria for scaling are different. The central deployment will auto-scale on resource consumption related to the incoming OTLP traffic. The related service port can be used for pushing custom metrics of any kind. Also, the central deployment will be configurable with the MetricPipeline resource managed by the new Telemetry Operator component. In the future, it might also be used for other kinds of signals (like traces).
 
 ### Kubernetes and Kyma Integration
 
