@@ -44,8 +44,8 @@ If you add a new repository in:
 ## Update CLA assistant configuration
 
 Ask a [kyma-project owner](https://github.com/orgs/kyma-project/people) to:
-- add the newly created repository to the [Contributor License Agreement](https://cla-assistant.io/) (CLA). 
-- add `kyma-bot` username to be exempt from signing the CLA
+- Add the newly created repository to the [Contributor License Agreement](https://cla-assistant.io/) (CLA).
+- Add the `kyma-bot` username to be exempt from signing the CLA.
 
 ## Add a milv file
 
