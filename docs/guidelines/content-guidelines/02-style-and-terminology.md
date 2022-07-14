@@ -128,22 +128,41 @@ Use short command line arguments whenever possible.
 
 In such a case, explain the context in the document.
 
-## Capitalization: Upper case, sentence case, and CamelCase
+## Capitalization
 
-* For normal, everyday words in body text, use sentence case.
-* For headings, use sentence case (more details about [headings](03-formatting.md#headings)).
-* For Kyma components, such as Application Connector or API Gateway Controller, use upper case.
-  Whenever you point to the outside sources, research whether the name of the source starts with a capital letter or not.
-* For Kubernetes resources and custom resources, use CamelCase. For plurals, add "s". For navigation and titles, use natural language (upper case and blank space).
-  ⛔️ API Gateway is a Kubernetes controller, which operates on API Rule custom resources.
+### Sentence case
+
+Sentence case is the normal style in English: Lowercase for all words, first letter of the first word in a sentence is uppercase. Exception: Uppercase for the first letters of proper nouns and names.
+
+Use sentence case for normal, everyday words in body text. Don't capitalize words just because they are "special" or "important".
+Also, we use use sentence case for headings (more details about [headings](03-formatting.md#headings)).
+
+### Upper case
+
+Upper case means the first letter of a word is capitalized.
+
+Use upper case for Kyma components, such as Application Connector or API Gateway Controller.
+Whenever you point to the outside sources, research whether the name of the source starts with a capital letter or not.
+
+### Camel case
+
+Camel case means writing words or phrases without a blank space, using a capitalized letter to separate the words. It's very common in Kubernetes terminology.
+
+Use CamelCase for Kubernetes resources and custom resources. For plurals, add "s".
+For navigation and titles, use natural language (upper case and blank space).
+  
   ✅ API Gateway is a Kubernetes controller, which operates on APIRule custom resources.
-  If you refer to the code specifically, format it as code, for example, `APIRule` (more details about [code font](03-formatting.md#code-font-and-bold-font)).
+  ⛔️ API Gateway is a Kubernetes controller, which operates on API Rule custom resources.
+  
+If you refer to the code specifically, format it as code, for example, `APIRule` (more details about [code font](03-formatting.md#code-font-and-bold-font)).
+  
+However, if the words are not used in relation to Kubernetes resources, do not capitalize them.
 
-  However, if the words are not used in relation to Kubernetes resources, do not capitalize them.
+See the following examples:
 
 * ConfigMap
 * CronJob
-* CustomResourceDefinition (CRD) - note that "custom resource" isn't Kubernetes-specific, thus it's lower case.
+* CustomResourceDefinition (CRD) - note that "custom resource" alone isn't Kubernetes-specific, thus it's lower case.
 * Deployment
 * Function
 * Ingress
@@ -157,7 +176,7 @@ In such a case, explain the context in the document.
 * ServiceBinding
 * ServiceClass
 * ServiceInstance
-
+  
 >**NOTE:** Kubernetes itself is also capitalized. Do not write it in lowercase or in the abbreviated version.
   ✅ Kubernetes  
   ⛔️ kubernetes
