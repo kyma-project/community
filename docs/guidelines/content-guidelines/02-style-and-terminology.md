@@ -52,7 +52,7 @@ It's okay to use contractions in the documentation from time to time. However, d
 
 Always verify the use of the articles "a", "an", and "the" where appropriate. Use "the" when you refer to a specific example. Use "a" when you refer to something non-specific or hypothetical.
 
-> **NOTE:** Use `Kyma` whenever you refer to the name of our product:   
+> **NOTE:** Use `Kyma` whenever you refer to the name of our product:
 ✅ Kyma is awesome.  
 ⛔️ The Kyma is not awesome.
 
@@ -128,7 +128,7 @@ Use short command line arguments whenever possible.
 
 In such a case, explain the context in the document.
 
-## Capitalization: Title case, sentence case, and CamelCase
+## Capitalization: Upper case, sentence case, and CamelCase
 
 * For normal, everyday words in body text, use sentence case.
 * For headings, use sentence case (more details about [headings](03-formatting.md#headings)).
@@ -141,22 +141,22 @@ In such a case, explain the context in the document.
 
   However, if the words are not used in relation to Kubernetes resources, do not capitalize them.
 
-- ConfigMap
-- CronJob
-- CustomResourceDefinition (CRD) - note that "custom resource" isn't Kubernetes-specific, thus it's lower case.
-- Deployment
-- Function
-- Ingress
-- Namespace
-- Node
-- PodPreset
-- Pod
-- ProwJob
-- Secret
-- Service
-- ServiceBinding
-- ServiceClass
-- ServiceInstance
+* ConfigMap
+* CronJob
+* CustomResourceDefinition (CRD) - note that "custom resource" isn't Kubernetes-specific, thus it's lower case.
+* Deployment
+* Function
+* Ingress
+* Namespace
+* Node
+* PodPreset
+* Pod
+* ProwJob
+* Secret
+* Service
+* ServiceBinding
+* ServiceClass
+* ServiceInstance
 
 >**NOTE:** Kubernetes itself is also capitalized. Do not write it in lowercase or in the abbreviated version.
   ✅ Kubernetes  
