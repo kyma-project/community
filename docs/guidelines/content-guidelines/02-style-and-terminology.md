@@ -12,23 +12,23 @@ These are the generally accepted grammar rules for writing Kyma documentation.
 
 Use active voice whenever possible. Active voice is clear, concise, and it avoids misinterpretation. It is also easier for non-native speakers to understand. Passive voice is indirect, uses more words, and can be misleading because it reverses the logical order of events.
 
-✅ The endpoint path includes your service name.   
+✅ The endpoint path includes your service name.
 ⛔️ Your service name is to be included in the endpoint path.
 
 ### Voice and tone
 
-There are different tones for different types of technical documentation. The documentation can range from instructional to somewhat conversational, but always with the goal of helping users understand how to use the product for practical purposes and, in blogs and release notes, also helping business users understand changes. While writing Kyma documentation, use semi-formal style and imperative mood. The imperative mood tells the reader directly to do something. Use the imperative mood to write instructional documentation such as procedures and tutorials. Other moods can imply optional behavior.
+There are different tones for different types of technical documentation. The documentation can range from instructional to somewhat conversational, but always with the goal of helping users understand how to use the product for practical purposes and, in blogs and release notes, also helping business users understand changes.
+While writing Kyma documentation, use semi-formal style and imperative mood. The imperative mood tells the reader directly to do something. Use the imperative mood to write instructional documentation such as procedures and tutorials. Other moods can imply optional behavior.
 
-> **NOTE:** Avoid using unnecessary words such as "please" or "remember."
+> **NOTE:** Avoid click-level instructions. Avoid using unnecessary words such as "please" or "remember."
 
-✅ Click **Add**.  
-✅ Click the **Add** button.  
-⛔️ Please, click **Add**.    
+✅ Click **Add**.
+⛔️ Click the **Add** button.  
+⛔️ Please, click **Add**.
 ⛔️ Remember to click **Add**.
 
 ✅ Click **Upload** and select one or more documents.  
 ⛔️ If you want to upload a document, you can click **Upload**.
-
 
 ### Tenses
 
@@ -62,7 +62,7 @@ Use colons and semicolons sparingly. Use the colon ( : ) to introduce a list of 
 
 Use serial commas. A missing serial comma can create confusion about whether the statement applies to each list item individually, or whether the last two items are connected.
 
-✅ In your request, include the values for the request date, name, and ID.   
+✅ In your request, include the values for the request date, name, and ID.
 ⛔️ In your request, include the values for the request date, name and ID.
 
 Avoid using parenthesis. Use lists instead, to make your sentences as simple as possible.
@@ -74,7 +74,7 @@ Avoid using parenthesis. Use lists instead, to make your sentences as simple as 
 
 Here is the preferred terminology to use in the Kyma documentation:
 
-* Use American English spelling, not British English.   
+* Use American English spelling, not British English.
   ✅ The **color** of the message changes from blue to red if there are errors.  
   ⛔️ The **colour** of the message changes from blue to red if there are errors.
 
@@ -82,8 +82,8 @@ Here is the preferred terminology to use in the Kyma documentation:
 * "repository," not "repo"
 * "document," not "doc"
 * "as shown in the example," not "below," nor "above"  
-✅ In your request, supply the values as shown in the example:   
-✅ In your request, supply the values for the following parameters:    
+✅ In your request, supply the values as shown in the example:
+✅ In your request, supply the values for the following parameters:
 ⛔️ In your request, supply the values as shown below:
 
 * "backend,"  not "back end" or "back-end"
@@ -92,10 +92,10 @@ Here is the preferred terminology to use in the Kyma documentation:
 * "email," not "e-mail"
 * "fill in," not "complete"
 * "ID," not "id"
-* "for example," not "e.g."    
-Don't use "e.g." in documentation. Use the words "for example" or "such as" instead. Don't use "for example" in the middle of the sentence.   
-✅ There are many variables in the file. For example, you can configure the host ID.   
-✅ There are some variables that are inherited from the parent process, such as user ID, date, and permissions.   
+* "for example," not "e.g."
+Don't use "e.g." in documentation. Use the words "for example" or "such as" instead. Don't use "for example" in the middle of the sentence.
+✅ There are many variables in the file. For example, you can configure the host ID.
+✅ There are some variables that are inherited from the parent process, such as user ID, date, and permissions.
 ⛔️ There are many variables in the file, for example, user ID, that can be configured.  
 
 * "key-value," not "key/value," nor "key:value"
@@ -128,41 +128,39 @@ Use short command line arguments whenever possible.
 
 In such a case, explain the context in the document.
 
-## Capitalized terms
+## Capitalization: Title case, sentence case, and CamelCase
 
-This is the list of the Kubernetes resources capitalized in Kyma documentation. However, if these words are not used in relation to Kubernetes resources, do not capitalize them. Use natural language when referring to Kubernetes resources. Do not use CamelCase. 
+* For normal, everyday words in body text, use sentence case.
+* For headings, use sentence case (more details about [headings](03-formatting.md#headings)).
+* For Kyma components, such as Application Connector or API Gateway Controller, use upper case.
+  Whenever you point to the outside sources, research whether the name of the source starts with a capital letter or not.
+* For Kubernetes resources and custom resources, use CamelCase. For plurals, add "s". For navigation and titles, use natural language (upper case and blank space).
+  ⛔️ API Gateway is a Kubernetes controller, which operates on API Rule custom resources.
+  ✅ API Gateway is a Kubernetes controller, which operates on APIRule custom resources.
+  If you refer to the code specifically, format it as code, for example, `APIRule` (more details about [code font](03-formatting.md#code-font-and-bold-font)).
 
-- Config Map
-- Cron Job
-- Custom Resource Definition
+  However, if the words are not used in relation to Kubernetes resources, do not capitalize them.
+
+- ConfigMap
+- CronJob
+- CustomResourceDefinition (CRD) - note that "custom resource" isn't Kubernetes-specific, thus it's lower case.
 - Deployment
 - Function
 - Ingress
 - Namespace
 - Node
-- Pod Preset
+- PodPreset
 - Pod
-- Prow Job
+- ProwJob
 - Secret
 - Service
-- Service Binding
-- Service Class
-- Service Instance
+- ServiceBinding
+- ServiceClass
+- ServiceInstance
 
-All Kyma components, such as Application Connector or API Gateway Controller, are capitalized as well. Whenever you point to the outside sources, do some research to check whether the name of the source starts with a capital letter or not.
-
->**NOTE:** Kubernetes itself is also capitalized. Do not write it in lowercase or in the abbreviated version.   
+>**NOTE:** Kubernetes itself is also capitalized. Do not write it in lowercase or in the abbreviated version.
   ✅ Kubernetes  
-  ⛔️ kubernetes   
+  ⛔️ kubernetes
   ⛔️ k8s
-
-### Custom resources
-
-Use the natural language by default when writing about custom resources.
-
-✅ API Gateway is a Kubernetes controller, which operates on API Rule custom resources.   
-⛔️ API Gateway is a Kubernetes controller, which operates on APIRule custom resources.
-
-Use the CamelCase-spelled custom resource name if you want to refer to the code specifically. In that case, format it as code, for example, `APIRule`.
 
 In case of any further doubts concerning the style and standards of writing, see [Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/style-guide/welcome/).
