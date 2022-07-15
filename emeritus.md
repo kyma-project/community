@@ -31,4 +31,4 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Pranav Shankar (**[@Pranav-SA](https://github.com/Pranav-SA)**) involved in `area/logging`, `area/tracing`, `area/monitoring`.
 * Radu Fantaziu (**[@radufa](https://github.com/radufa)**) involved in `area/eventing`.
 * Pooya Salehi (**[@pxsalehi](https://github.com/pxsalehi)**) involved in `area/eventing`.
-* Klaudia Grzondziel (**[klaudiagrz](https://github.com/klaudiagrz)**) creating docs for `area/documentation`, `area/service-management`, `area/control-plane`, `area/community`, and contributing to the overall Kyma documentation.
+* Klaudia Grzondziel (**[@klaudiagrz](https://github.com/klaudiagrz)**) creating docs for `area/documentation`, `area/service-management`, `area/control-plane`, `area/community`, and contributing to the overall Kyma documentation.
