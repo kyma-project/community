@@ -2,13 +2,11 @@
 
 ## Current Situation and Motivation
 
-In the current (2022) setup of Kyma, the monitoring stack focuses on providing a lightweight and opinionated monitoring solution out of the box, to solve basic requirements for application operators like instant troubleshooting. Consequently, it does not focus on integration aspects that would support a broader and richer usage scenario.
-
 ![a](./assets/current.drawio.svg)
 
 The diagram shows that the current solution is based on a preconfigured Prometheus operator providing exporter components, and a Prometheus instance acting as collector and backend. On top, Grafana visualizes the data. However, the current setup does not support a neutral and unified way to integrate backends outside of the cluster.
 
-Integration (and with that, changing the focus away from in-cluster backends) is the key to open up the stack for a broad range of use cases. Users can simply bring their own backends, if they already use a commercial offering or run their own infrastructure. The data can be stored outside the cluster in a managed offering, shared with the data of multiple clusters, away from any tampering or deletion attempt of a hacker, to name just a few advantages.
+As outlined already in the [general strategy](../strategy.md), integration (and with that, changing the focus away from in-cluster backends) is the key to open up the stack for a broad range of use cases. Users can simply bring their own backends, if they already use a commercial offering or run their own infrastructure. The data can be stored outside the cluster in a managed offering, shared with the data of multiple clusters, away from any tampering or deletion attempt of a hacker, to name just a few advantages.
 
 This concept proposes how to open up to those new scenarios by making integration possible conveniently at runtime, leveraging vendor-neutral protocols.
 
@@ -48,14 +46,12 @@ This concept proposes how to open up to those new scenarios by making integratio
 - Envoy metrics should be collected instantly (without user action).
 
 ### Local backend
-- Installing the monitoring component ships managed Prometheus instances.
+- There is a blueprint based on helm for installing the kube-prometheus-stack
 - The setup is not meant to be HA and scalable.
-- The setup should handle overload properly, so that it is always in a functional state.
-- Multiple instances might be used for the different scenarios like system, istio, and custom. That will assure reliability of one scenario if the other is in trouble.
 
-## General Idea
+## Proposed Solution
 
-The idea of the proposal is to introduce a preconfigured agent layer that's responsible for collecting metric data only. Those agents can be configured dynamically at runtime with different configuration scenarios, so that the agents start shipping the data to the configured backends. The dynamic configuration and management of the agent is handled by a new operator, which is configured using Kubernetes APIs. The agent and the new operator are bundled in a new core package called `telemetry`. The existing Kyma backends and UIs will be just one possible solution that can be installed optionally and will stay in the existing modules like `monitoring`.
+The idea of the proposal is to introduce a preconfigured agent layer that's responsible for collecting metric data only. Those agents can be configured dynamically at runtime with different configuration scenarios, so that the agents start shipping the data to the configured backends. The dynamic configuration and management of the agent is handled by a new operator, which is configured using Kubernetes APIs. The agent and the new operator are bundled in a new core package called `telemetry`. The existing Kyma backends and UIs will be just one possible solution to integrate with. They can be installed manually by the user following a blueprint.
 
 ![b](./assets/future.drawio.svg)
 
