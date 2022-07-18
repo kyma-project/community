@@ -6,9 +6,9 @@
 
 The diagram shows that the current solution is based on a preconfigured Prometheus operator providing exporter components, and a Prometheus instance acting as collector and backend. On top, Grafana visualizes the data. However, the current setup does not support a neutral and unified way to integrate backends outside of the cluster.
 
-As outlined already in the [general strategy](../strategy.md), integration (and with that, changing the focus away from in-cluster backends) is the key to open up the stack for a broad range of use cases. Users can simply bring their own backends, if they already use a commercial offering or run their own infrastructure. The data can be stored outside the cluster in a managed offering, shared with the data of multiple clusters, away from any tampering or deletion attempt of a hacker, to name just a few advantages.
+As outlined in the [general strategy](../strategy.md), integration (and with that, changing the focus away from in-cluster backends) is the key to open up the stack for a broad range of use cases. Users can simply bring their own backends, if they already use a commercial offering or run their own infrastructure. The data can be stored outside the cluster in a managed offering, shared with the data of multiple clusters, away from any tampering or deletion attempt of a hacker, to name just a few advantages.
 
-This concept proposes how to open up to those new scenarios by making integration possible conveniently at runtime, leveraging vendor-neutral protocols.
+This concept proposes how to open up to those new scenarios by supporting convenient integration at runtime, leveraging vendor-neutral protocols.
 
 ## Requirements
 
@@ -46,7 +46,7 @@ This concept proposes how to open up to those new scenarios by making integratio
 - Envoy metrics should be collected instantly (without user action).
 
 ### Local backend
-- There is a blueprint based on helm for installing the kube-prometheus-stack
+- Kyma will provide a blueprint based on Helm for installing the kube-prometheus-stack.
 - The setup is not meant to be HA and scalable.
 
 ## Proposed Solution

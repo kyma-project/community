@@ -6,9 +6,9 @@
 
 In the diagram, you see that all three observability aspects (log, trace, metric) provide a preconfigured backend with visualisations. However, they don't provide a neutral and unified way to integrate backends outside of the cluster. The tracing stack provides no way to centrally push trace data to the outside. Logging can be configured much more flexibly and neutrally, however, the configuration must be done during installation so it isn't lost at the next Kyma upgrade process. Furthermore, it is not easy to use to mix and match different integrations, because you need to deal with one centralized configuration (the fluent-bit config).
 
-As outlined already in the [general strategy](../strategy.md), integration (and with that, changing the focus away from in-cluster backends) is the key to open up the stack for a broad range of use cases. Users can simply bring their own backends if they already use a commercial offering or run their own infrastructure. The data can be stored outside the cluster in a managed offering, shared with the data of multiple clusters, away from any tampering or deletion attempt of a hacker, to name just a few.
+As outlined in the [general strategy](../strategy.md), integration (and with that, changing the focus away from in-cluster backends) is the key to open up the stack for a broad range of use cases. Users can simply bring their own backends if they already use a commercial offering or run their own infrastructure. The data can be stored outside the cluster in a managed offering, shared with the data of multiple clusters, away from any tampering or deletion attempt of a hacker, to name just a few.
 
-This concept proposes how to open up to those new scenarios by making integration possible at runtime in a convenient way.
+This concept proposes how to open up to those new scenarios by supporting convenient integration at runtime.
 
 ## Requirements
 
@@ -34,14 +34,14 @@ This concept proposes how to open up to those new scenarios by making integratio
 ### Template instantiation
 - A template is instantiated by binding it to a secret that provides input for placeholders like URL and credentials. Alternatively, placeholders can be filled out with configMaps and static values.
   - The template validates whether all placeholders will be replaced with values.
-- A template can be instantiated for a specific workload and/or namespaces only.
+- A template can be instantiated for a specific workload and/or Namespaces only.
 
 ### Local backend
-- There is a blueprint based on helm for installing the typical loki stack as example
+- Kyma will provide a blueprint based on Helm for installing the typical Loki stack as example.
 - The setup is not meant to be HA and scalable.
 
 # Proposed Solution
 
-The idea of the proposal is to introduce a preconfigured agent layer that's responsible for collecting all telemetry data. Those agents can be configured dynamically at runtime with different configuration scenarios, so that the agents start shipping the data to the configured backends. The dynamic configuration and management of the agent is handled by a new operator, which is configured using Kubernetes resources. The agents and the new operator are bundled in a new core package called `telemetry`. The existing Kyma backends and UIs will be just one possible solution to integrate with. They can be installed manually by the user following a blueprint.
+The idea of the proposal is to introduce a preconfigured agent layer that's responsible for collecting all telemetry data. Users can configure those agents dynamically at runtime with different configuration scenarios, so that the agents start shipping the data to the configured backends. The dynamic configuration and management of the agent is handled by a new operator, which is configured with Kubernetes resources. The agents and the new operator are bundled in a new core package called `telemetry`. The existing Kyma backends and UIs will be just one possible solution to integrate with. The user can install them manually following a blueprint.
 
 ![b](./assets/future.drawio.svg)
