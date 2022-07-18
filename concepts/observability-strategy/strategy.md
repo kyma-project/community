@@ -2,7 +2,8 @@
 
 ## Current Situation and Motivation
 
-In the current shape of Kyma in 2022, the observability stack is focussing on providing an opinionated and lightweight solution, working out of the box, to solve basic requirements for application operators. It is not focussing on integration aspects in order to enable for example cross-runtime observations, integration of advanced analytic tools or simple re-usage of existing infrastructure. Also it does not provide a guide on how to extend the setup to become HA with historical storage of the data. Having very limited integration possibilities and providing a limited in-cluster solution only, it is missing a lot of usage scenarios and the opportunity to focus on enabling users for modern observability. Overall, the potential audience is very limited.
+
+In the current (2022) setup of Kyma, the observability stack focuses on providing an opinionated and lightweight solution out of the box, to solve basic requirements for application operators. It does not focus on integration aspects that would enable, for example, cross-runtime observations, integration of advanced analytic tools, or simple re-usage of users' existing observability infrastructure. Also, the current observability stack does not provide a guide on how to extend the setup to become HA with historical storage of the data. Having very limited integration possibilities and providing a limited in-cluster solution only, current observability stack is missing a lot of usage scenarios and the potential audience is very limited.
 
 ![a](./assets/current.drawio.svg)
 
