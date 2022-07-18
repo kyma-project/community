@@ -4,7 +4,9 @@
 
 ![a](./assets/current.drawio.svg)
 
-In the diagram, you see that all three observability aspects (log, trace, metric) provide a preconfigured backend with visualisations. However, they don't provide a neutral and unified way to integrate backends outside of the cluster. The tracing stack provides no way to centrally push trace data to the outside. Logging can be configured much more flexibly and neutrally, however, the configuration must be done during installation so it isn't lost at the next Kyma upgrade process. Furthermore, it is not easy to use to mix and match different integrations, because you need to deal with one centralized configuration (the fluent-bit config).
+In the current setup, all three observability aspects (log, trace, metric) provide a preconfigured backend with visualisations. However, they don't provide a neutral and unified way to integrate backends outside of the cluster.
+
+The tracing stack does not support centrally pushing trace data to the outside.  Logging can be configured much more flexibly and neutrally. However, users must apply the configuration during installation; otherwise it's lost at the next Kyma upgrade process. Furthermore, it is hard to mix and match different integrations, because you must deal with one centralized configuration (the Fluent Bit config).
 
 As outlined in the [general strategy](../strategy.md), integration (and with that, changing the focus away from in-cluster backends) is the key to open up the stack for a broad range of use cases. Users can simply bring their own backends if they already use a commercial offering or run their own infrastructure. The data can be stored outside the cluster in a managed offering, shared with the data of multiple clusters, away from any tampering or deletion attempt of a hacker, to name just a few.
 
@@ -40,8 +42,8 @@ This concept proposes how to open up to those new scenarios by supporting conven
 - Kyma will provide a blueprint based on Helm for installing the typical Loki stack as example.
 - The setup is not meant to be HA and scalable.
 
-# Proposed Solution
+## Proposed Solution
 
-The idea of the proposal is to introduce a preconfigured agent layer that's responsible for collecting all telemetry data. Users can configure those agents dynamically at runtime with different configuration scenarios, so that the agents start shipping the data to the configured backends. The dynamic configuration and management of the agent is handled by a new operator, which is configured with Kubernetes resources. The agents and the new operator are bundled in a new core package called `telemetry`. The existing Kyma backends and UIs will be just one possible solution to integrate with. The user can install them manually following a blueprint.
+The proposal introduces a new preconfigured agent layer that's responsible for collecting all telemetry data. Users can configure those agents dynamically at runtime with different configuration scenarios, so that the agents start shipping the data to the configured backends. The dynamic configuration and management of the agent is handled by a new operator, which is configured with Kubernetes resources. The agents and the new operator are bundled in a new core package called `telemetry`. The existing Kyma backends and UIs will be just one possible solution to integrate with. The user can install them manually following a blueprint.
 
 ![b](./assets/future.drawio.svg)

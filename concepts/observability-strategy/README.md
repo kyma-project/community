@@ -1,6 +1,6 @@
 # Kyma Observability Strategy
 
-This folder contains documents for proposing a new strategy with sub-concepts for the kyma observability stack.
+This folder contains documents for proposing a new strategy with sub-concepts for the Kyma observability stack.
 
 * [General Strategy](./strategy.md) - the motivation and general strategy paper
 * [POC - OpenTelemetry Collector](./opentelemetry/README.md.md) - basic evaluation of the Otel Collector as solution for the agent technology

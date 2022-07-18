@@ -51,7 +51,7 @@ This concept proposes how to open up to those new scenarios by supporting conven
 
 ## Proposed Solution
 
-The idea of the proposal is to introduce a preconfigured agent layer that's responsible for collecting metric data only. Those agents can be configured dynamically at runtime with different configuration scenarios, so that the agents start shipping the data to the configured backends. The dynamic configuration and management of the agent is handled by a new operator, which is configured using Kubernetes APIs. The agent and the new operator are bundled in a new core package called `telemetry`. The existing Kyma backends and UIs will be just one possible solution to integrate with. They can be installed manually by the user following a blueprint.
+The proposal introduces a new preconfigured agent layer that's responsible for collecting metric data only. Users can configure those agents dynamically at runtime with different configuration scenarios, so that the agents start shipping the data to the configured backends. The dynamic configuration and management of the agent is handled by a new operator, which is configured using Kubernetes APIs. The agent and the new operator are bundled in a new core package called `telemetry`. The existing Kyma backends and UIs will be just one possible solution to integrate with. They can be installed manually by the user following a blueprint.
 
 ![b](./assets/future.drawio.svg)
 
