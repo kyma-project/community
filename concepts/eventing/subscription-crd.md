@@ -159,7 +159,7 @@ spec:
 
 - Publishing: 
     - EPP will internally prepend `JetStreamPrefix` and `applicationName` to the received event type before forwarding it to the NATS Server.
-        - User --> `order.created.v1` --> EPP --> `kyma.commerceMock.order.created.v1` --> EventMesh
+        - User --> `order.created.v1` --> EPP --> `kyma.commerceMock.order.created.v1` --> NATS
 
 
 **EventMesh:**
@@ -168,7 +168,7 @@ spec:
         - For example: `sap.kyma.custom.commerceMock.order.created.v1`
 
 - Publishing: 
-    - EPP will internally prepend `JetStreamPrefix` and `applicationName` to the received event type before forwarding it to the EventMesh Server.
+    - EPP will internally prepend `JetStreamPrefix` and `applicationName` to the received event type before forwarding it to the EventMesh Server. The application name will be in the request Url.
         - User --> `order.created.v1` --> EPP --> `sap.kyma.custom.commerceMock.order.created.v1` --> EventMesh
 
 ### Case 2: Event sent from within the cluster
@@ -194,6 +194,7 @@ spec:
         - For example: `kyma.goldfishbot.order.created.v1`
 
 - Publishing: 
+    - Question: We don't know the `applicationName` in this case, so should we expect the user to prepend `applicationName` to eventType when publishing??? Or we can hard-code the `applicationName` to "internal" for in-cluster eventing.
     - EPP will internally prepend `JetStreamPrefix` to the received event type before forwarding it to the NATS Server.
         - User --> `goldfishbot.order.created.v1` --> EPP --> `kyma.goldfishbot.order.created.v1` --> EventMesh
 
