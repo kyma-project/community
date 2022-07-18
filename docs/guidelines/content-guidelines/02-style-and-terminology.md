@@ -12,7 +12,7 @@ These are the generally accepted grammar rules for writing Kyma documentation.
 
 Use active voice whenever possible. Active voice is clear, concise, and it avoids misinterpretation. It is also easier for non-native speakers to understand. Passive voice is indirect, uses more words, and can be misleading because it reverses the logical order of events.
 
-✅ The endpoint path includes your service name.
+✅ The endpoint path includes your service name.  
 ⛔️ Your service name is to be included in the endpoint path.
 
 ### Voice and tone
@@ -22,9 +22,9 @@ While writing Kyma documentation, use semi-formal style and imperative mood. The
 
 > **NOTE:** Avoid click-level instructions. Avoid using unnecessary words such as "please" or "remember."
 
-✅ Click **Add**.
+✅ Click **Add**.  
 ⛔️ Click the **Add** button.  
-⛔️ Please, click **Add**.
+⛔️ Please, click **Add**.  
 ⛔️ Remember to click **Add**.
 
 ✅ Click **Upload** and select one or more documents.  
@@ -45,16 +45,18 @@ Use the second person and the pronouns "you," "your," and "yours" to speak direc
 
 It's okay to use contractions in the documentation from time to time. However, do not overuse it. Otherwise, your text will become messy and hard to read.
 
-✅ It's okay to use contractions.
+✅ It's okay to use contractions.  
 ✅ It is okay to not use them as well.
 
 ### Articles
 
 Always verify the use of the articles "a", "an", and "the" where appropriate. Use "the" when you refer to a specific example. Use "a" when you refer to something non-specific or hypothetical.
 
-> **NOTE:** Use `Kyma` whenever you refer to the name of our product:
-✅ Kyma is awesome.  
-⛔️ The Kyma is not awesome.
+> **NOTE:** Whenever you refer to the name of our product or one of our components, don't use an article:  
+  ✅ Kyma is awesome.  
+  ⛔️ The Kyma is not awesome.
+  ✅ Application Connector  
+  ⛔️ the Application Connector
 
 ### Punctuation
 
@@ -62,7 +64,7 @@ Use colons and semicolons sparingly. Use the colon ( : ) to introduce a list of 
 
 Use serial commas. A missing serial comma can create confusion about whether the statement applies to each list item individually, or whether the last two items are connected.
 
-✅ In your request, include the values for the request date, name, and ID.
+✅ In your request, include the values for the request date, name, and ID.  
 ⛔️ In your request, include the values for the request date, name and ID.
 
 Avoid using parenthesis. Use lists instead, to make your sentences as simple as possible.
@@ -82,8 +84,8 @@ Here is the preferred terminology to use in the Kyma documentation:
 * "repository," not "repo"
 * "document," not "doc"
 * "as shown in the example," not "below," nor "above"  
-✅ In your request, supply the values as shown in the example:
-✅ In your request, supply the values for the following parameters:
+✅ In your request, supply the values as shown in the example:  
+✅ In your request, supply the values for the following parameters:  
 ⛔️ In your request, supply the values as shown below:
 
 * "backend,"  not "back end" or "back-end"
@@ -94,8 +96,8 @@ Here is the preferred terminology to use in the Kyma documentation:
 * "ID," not "id"
 * "for example," not "e.g."
 Don't use "e.g." in documentation. Use the words "for example" or "such as" instead. Don't use "for example" in the middle of the sentence.
-✅ There are many variables in the file. For example, you can configure the host ID.
-✅ There are some variables that are inherited from the parent process, such as user ID, date, and permissions.
+✅ There are many variables in the file. For example, you can configure the host ID.  
+✅ There are some variables that are inherited from the parent process, such as user ID, date, and permissions.  
 ⛔️ There are many variables in the file, for example, user ID, that can be configured.  
 
 * "key-value," not "key/value," nor "key:value"
@@ -148,11 +150,11 @@ Whenever you point to the outside sources, research whether the name of the sour
 
 Camel case means writing words or phrases without a blank space, using a capitalized letter to separate the words. It's very common in Kubernetes terminology.
 
-Use CamelCase for Kubernetes resources and custom resources. For plurals, add "s".
+Use Camel case for Kubernetes resources and custom resources. For plurals, add "s".
 For navigation and titles, use natural language (upper case and blank space).
-  
-  ✅ API Gateway is a Kubernetes controller, which operates on APIRule custom resources.
-  ⛔️ API Gateway is a Kubernetes controller, which operates on API Rule custom resources.
+
+✅ API Gateway is a Kubernetes controller, which operates on APIRule custom resources.  
+⛔️ API Gateway is a Kubernetes controller, which operates on API Rule custom resources.
   
 If you refer to the code specifically, format it as code, for example, `APIRule` (more details about [code font](03-formatting.md#code-font-and-bold-font)).
   
@@ -177,9 +179,9 @@ See the following examples:
 * ServiceClass
 * ServiceInstance
   
->**NOTE:** Kubernetes itself is also capitalized. Do not write it in lowercase or in the abbreviated version.
+>**NOTE:** Kubernetes itself is also capitalized. Do not write it in lowercase or in the abbreviated version.  
   ✅ Kubernetes  
-  ⛔️ kubernetes
+  ⛔️ kubernetes  
   ⛔️ k8s
 
 In case of any further doubts concerning the style and standards of writing, see [Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/style-guide/welcome/).
