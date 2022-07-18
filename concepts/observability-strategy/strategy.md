@@ -1,35 +1,41 @@
-# Current Situation and Motivation
+# General Strategy
+
+## Current Situation and Motivation
 
 In the current shape of Kyma in 2022, the observability stack is focussing on providing an opinionated and lightweight solution, working out of the box, to solve basic requirements for application operators. It is not focussing on integration aspects in order to enable for example cross-runtime observations, integration of advanced analytic tools or simple re-usage of existing infrastructure. Also it does not provide a guide on how to extend the setup to become HA with historical storage of the data. Having very limited integration possibilities and providing a limited in-cluster solution only, it is missing a lot of usage scenarios and the opportunity to focus on enabling users for modern observability. Overall, the potential audience is very limited.
 
 ![a](./assets/current.drawio.svg)
 
-In the diagram, you see that all three observability aspects (log, trace, metric) provide a preconfigured backend with visualisations. However, they don't provide a neutral and unified way to integrate backends outside of the cluster.
+The diagram shows that all three observability aspects (log, trace, metric) provide a preconfigured backend with visualisations. However, they don't provide a neutral and unified way to integrate backends outside of the cluster.
 - The tracing stack provides no way to centrally push trace data to the outside.
-- Logging can be configured much more flexibly and neutrally, however, the configuration must be done during installation so it isn't lost at the next Kyma upgrade process. Furthermore, it is not easy to use to mix and match different integrations, because you need to deal with one centralized configuration (the fluent-bit config).
-- Monitoring is based on prometheus which is widely adopted but still is limiting to the prometheus-protocols only. A configuration can happen via the kyma upgrade process only,
+- Logging can be configured much more flexibly and neutrally. However, users must apply the configuration during installation; otherwise it's lost at the next Kyma upgrade process. Furthermore, it is hard to mix and match different integrations, because you must deal with one centralized configuration (the Fluent Bit config).
+- Monitoring is based on Prometheus, which is widely adopted but limited to the Prometheus protocols. Users can configure the monitoring stack only during the Kyma upgrade process.
 
 Integration (and with that, changing the focus away from in-cluster backends) is the key to open up the stack for a broad range of use cases. Users can bring their own backends if they already use a commercial offering or run their own infrastructure. The data can be stored outside the cluster in a managed offering, shared with the data of multiple clusters, away from any tampering or deletion attempt of a hacker, to name just a few.
 
-Providing ready-to-use in-cluster backends will always be oppinionated, will not cover all usage scenarios and is not fitting well into the Kyma focus of providing the kubernetes building blocks to integrate into the the SAP eco-system. Also the license topic of Grafana/Loki as well as ElasticSearch (even if it is not affecting Kyma) shows that the oppiniation is problematic and is better handled by integrating with actual managed services to be integrated with. 
+Providing ready-to-use in-cluster backends is necessarily opinionated, does not cover all usage scenarios, and does not fit into Kyma's goal of providing the Kubernetes building blocks to integrate into the the SAP ecosystem. Also, the licensing issues (particularly with Grafana and Loki, or ElasticSearch as an alternative backend technology) show that an opinionated stack is problematic. It's better to handle opinionation by integrating with actual managed services. 
 
-This strategy proposes a new approach for the Kyma observability stack overall by opening up to new scenarios by making integration possible at runtime in a convenient way. At the same time it will de-focus on ready-to-use solutions running inside the cluster.
+The following strategy proposes a new approach for the Kyma observability stack by opening up to new scenarios by supporting convenient integration at runtime. At the same time, it reduces the focus on ready-to-use solutions running inside the cluster.
 
-# Goals
+## Goals
+
+### Stages of observability
 
 Observability can be split up into:
-1. instrumentation of the users application itself
-2. the collection and pre-processing of the signals from the user application and the surrounding infrastructure incl. metadata enrichment
-3. the delivery of the signal to an actual backend for storage
-4. an optional aggregation of the signals
-5. the actual storage of the signals
-6. the analysis/querying/dashboarding of the signals
+1. Instrumentation of the users application
+2. The collection and preprocessing of the signals from the user application and the surrounding infrastructure, including metadata enrichment
+3. The delivery of the signal to an backend for storage
+4. An optional aggregation of the signals
+5. Storage of the signals
+6. The analysis, querying, and dashboarding of the signals
 
 ![a](./assets/stages.drawio.svg)
 
-Kyma is a runtime to operate actual workload. A basic requirement for users is to observe the workload deployed to the runtime in order to fullfil typical Day-2 operations.
+Kyma is a runtime to operate actual workloads. To fulfill typical operational requirements, users must be able to observe the workload deployed to the runtime .
 
-The mandatory parts for a Kyma runtime are the stages which must be happen inside the runtime. With that the following points must be seen as the major goal of the Kyma feature set:
+### Mandatory feature set
+
+The mandatory parts for a Kyma runtime are the stages that must be happen inside the runtime. With that, the following points are the major goal of the Kyma feature set:
 1. Instrumentation support: Instrumentation of workload in order to expose typical signals like logs/traces/metrics usually require custom coding. Still there are common aspects to support these tasks by providing guidelines/best practices but also by providing ways of auto-instrumentation (like istio tracing).
 2. Signal collection: The runtime needs to provide the basic infrastructure to collect the emitted signals (like a unified log collector). That infrastructure should collect the signals instantly in case the user has followed the provided guides. Special cases (like specific protocols not backed by guides and infra) should be supported by simple customizations (plug-in a custom trace converter). Furthermore, the infrastructure should already enrich the signals of the workloads with metadata of the infrastructure as this cannot happen at a later stage anymore.
 3. Signal Delivery: The signals need to be consumed by some party, either running inside or outside the cluster. It can be an aggregating layer or the backend directly. In any way, the shipment of the data needs to be configurable and should be based on a neutral protocol so that any aggregation layer or backend can be integrated.
@@ -37,13 +43,13 @@ The mandatory parts for a Kyma runtime are the stages which must be happen insid
 The optional parts where Kyma can provide features are for the stages to the right (aggregation/storage/analysis). Here, usually a oppinionated solution must be picked as there is no common technology available. Such oppinionated solution can be pre-configured to provide either a starting point or a full-blown solution. However, these aspects will usually not cover all usage and operations/scalability scenarios. Furthermore, it will require a huge investment in order to provide just another backend solution.
 
 With that, the goal of the kyma observability should be the seemless enablement of the stages on the left, allowing the ingestion of the signals into any backend system, opening up plenty usage scenarios. Kyma should provide blueprints for the stages on the right, especially focussed on the SAP ecosystem enablement, in order to have at least some guidance for these aspects.
-To sum it up, the goals of kyma observability should be:
-1. provide guides on how to do instrumentation (with potential helpers and auto-instrumentation options)
-2. collect resulting signals instantly when guides are followed, provide customization options for border cases
-3. ship the signals reliable to a configurable vendor-neutral destination
-4. provide blueprints for integration to specific vendors
+To sum it up, the goals of Kyma observability should be:
+1. Provide guides on instrumentation (with potential helpers and auto-instrumentation options).
+2. Collect resulting signals instantly when guides are followed, provide customization options for special cases.
+3. Ship the signals reliably to a configurable vendor-neutral destination.
+4. Provide blueprints for integration with specific vendors.
 
-# Architecture
+## Architecture
 
 The idea of the proposal is to introduce a new preconfigured agent layer that's responsible for collecting all telemetry data. Hereby, the collection is very dependent on the signal type itself. These agents can be configured at runtime with different signal pipelines with basic filtering (inclusion and exclusion of signals) and outputs, so that the agents start shipping the signals via the pipelines to the configured backends. The dynamic configuration and management of the agent is handled by a new operator, which is configured using Kubernetes resources. The agents and the new operator are bundled in a new core component called `telemetry`. The existing Kyma backends and UIs will be just one possible solution to integrate with. They continue to be installable manually by the user (via a blueprint), but will not be part of the actual Kyma offering anymore.
 

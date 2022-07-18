@@ -29,4 +29,4 @@ Telemetry Operator configures pipelines of a central collector, using sane defau
 
 ### In-Cluster backend
 
-The monitoring component brings config to push metrics using remote write to managed Prometheus instances. Kyma will provide a blueprint to deploy your own kube-prometheus-stack
+The monitoring component brings config to push metrics using remote write to managed Prometheus instances. Kyma will provide a blueprint to deploy your own kube-prometheus-stack.
