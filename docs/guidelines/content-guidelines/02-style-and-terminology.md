@@ -76,7 +76,7 @@ Avoid using parenthesis. Use lists instead, to make your sentences as simple as 
 
 Here is the preferred terminology to use in the Kyma documentation:
 
-* Use American English spelling, not British English.
+* Use the American English spelling, not British English.
   ✅ The **color** of the message changes from blue to red if there are errors.  
   ⛔️ The **colour** of the message changes from blue to red if there are errors.
 
@@ -164,7 +164,7 @@ See the following examples:
 
 * ConfigMap
 * CronJob
-* CustomResourceDefinition (CRD) - note that "custom resource" alone isn't Kubernetes-specific, thus it's lower case.
+* CustomResourceDefinition (CRD) - note that "custom resource" alone isn't Kubernetes-specific, thus it's lowercase.
 * Deployment
 * Function
 * Ingress
