@@ -50,3 +50,7 @@ Ask a [kyma-project owner](https://github.com/orgs/kyma-project/people) to:
 ## Add a milv file
 
 If you define any governance-related [Prow job](https://github.com/kyma-project/test-infra/blob/main/prow/jobs/) for the new repository to validate documentation links, you must add a `milv.config.yaml` file at the root of the repository. [See](https://github.com/kyma-project/test-infra/blob/main/milv.config.yaml) an example of the milv file.
+
+## Custom settings
+
+All settings that deviate from configuration standard described in the guidelines should be tracked in an [issue](https://github.tools.sap/kyma/test-infra/issues/new?assignees=&labels=config-change&template=bug_report.md&title=).
