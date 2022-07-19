@@ -1,8 +1,8 @@
-# Groundwork
+# Configurable Logging: Groundwork
 
 ## Current Situation and Motivation
 
-![a](./assets/current.drawio.svg)
+![a](./assets/logging-current.drawio.svg)
 
 In the current setup, all three observability aspects (log, trace, metric) provide a preconfigured backend with visualisations. However, they don't provide a neutral and unified way to integrate backends outside of the cluster.
 
@@ -25,7 +25,7 @@ This concept proposes how to open up to those new scenarios by supporting conven
 - Scenarios/Pipelines need to be isolated and have it's own buffer management. If a backend is in a bad shape and cannot process any data anymore, data should still continue to be pushed to other backends
 - Typical auth mechanisms for the integration must be support, especially also client certificate based solutions
 - For logging: de-dotting for elasticsearch must be possible
-- Filtering of unrelevant data (like dropping logs of kyma-system namespace) must be possible
+- Filtering of unrelevant data (like dropping logs of kyma-system Namespace) must be possible
 
 ### Template definitions
 - Have a mechanism to provide templates and best practices for typical scenarios, which can be instantiated at runtime
@@ -46,4 +46,4 @@ This concept proposes how to open up to those new scenarios by supporting conven
 
 The proposal introduces a new preconfigured agent layer that's responsible for collecting all telemetry data. Users can configure those agents dynamically at runtime with different configuration scenarios, so that the agents start shipping the data to the configured backends. The dynamic configuration and management of the agent is handled by a new operator, which is configured with Kubernetes resources. The agents and the new operator are bundled in a new core package called `telemetry`. The existing Kyma backends and UIs will be just one possible solution to integrate with. The user can install them manually following a blueprint.
 
-![b](./assets/future.drawio.svg)
+![b](./assets/logging-future.drawio.svg)

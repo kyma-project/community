@@ -1,8 +1,8 @@
-# Groundwork
+# Configurable Monitoring: Groundwork
 
 ## Current Situation and Motivation
 
-![a](./assets/current.drawio.svg)
+![a](./assets/monitoring-current.drawio.svg)
 
 The diagram shows that the current solution is based on a preconfigured Prometheus operator providing exporter components, and a Prometheus instance acting as collector and backend. On top, Grafana visualizes the data. However, the current setup does not support a neutral and unified way to integrate backends outside of the cluster.
 
@@ -53,5 +53,5 @@ This concept proposes how to open up to those new scenarios by supporting conven
 
 The proposal introduces a new preconfigured agent layer that's responsible for collecting metric data only. Users can configure those agents dynamically at runtime with different configuration scenarios, so that the agents start shipping the data to the configured backends. The dynamic configuration and management of the agent is handled by a new operator, which is configured using Kubernetes APIs. The agent and the new operator are bundled in a new core package called `telemetry`. The existing Kyma backends and UIs will be just one possible solution to integrate with. They can be installed manually by the user following a blueprint.
 
-![b](./assets/future.drawio.svg)
+![b](./assets/monitoring-future.drawio.svg)
 

@@ -42,13 +42,13 @@ Using this structure supports the full Fluent Bit syntax without needing to main
 <details>
 <summary><b>Pipeline Overview</b> for User - Click to expand</summary>
 
-![Thank you](assets/fluentbit_CR_overview.drawio.svg)
+![Thank you](assets/logging-pipeline-general.drawio.svg)
 </details>
 
 We're proposing the following constraints for the custom operator:
 - It doesn't support dynamic plugins that must be loaded into the Fluent Bit image.
 
-![Fluent Bit Pipeline Architecture](assets/fluentbit_dynamic_config.drawio.svg)
+![Fluent Bit Pipeline Architecture](assets/logging-pipeline-detail.drawio.svg)
 
 1. The logs are fetched using a Fluent Bit, which is created by this custom operator. This INPUT tags all logs with the following tag scheme: `kube.<namespace_name>.<pod_name>.<container_name>`.
 2. The logs are enriched with Kubernetes information using the `kubernetes` filter of Fluent Bit.

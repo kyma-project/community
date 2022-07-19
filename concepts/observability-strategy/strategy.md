@@ -7,7 +7,7 @@ In the current (2022) setup of Kyma, the observability stack provides an opinion
 
 With such limited integration possibilities and providing only a very lightweight in-cluster solution, the current observability stack is missing a lot of usage scenarios, and the potential audience is very narrow.
 
-![Current observability stack](./assets/current.drawio.svg "Current observability stack")
+![Current observability stack](./assets/strategy-current.drawio.svg "Current observability stack")
 
 In the current setup, all three observability aspects (log, trace, metric) provide a preconfigured backend with visualisations. However, they don't provide a neutral and unified way to integrate backends outside of the cluster.
 - The tracing stack does not support centrally pushing trace data to the outside.
@@ -32,7 +32,7 @@ Observability can be split up in the following stages:
 5. Storage of the signals
 6. Analysis, querying, and dashboarding of the signals
 
-![a](./assets/stages.drawio.svg)
+![a](./assets/strategy-stages.drawio.svg)
 
 Kyma is a runtime to operate actual workloads. To fulfill typical operational requirements, users must be able to observe the workload deployed to the runtime.
 
@@ -61,7 +61,7 @@ To sum it up, the goals of Kyma observability should be:
 
 The proposal introduces a new preconfigured agent layer that's responsible for collecting all telemetry data. Hereby, the collection is very dependent on the signal type. The agents can be configured at runtime with different signal pipelines with basic filtering (inclusion and exclusion of signals) and outputs, so that the agents start shipping the signals through the pipelines to the configured backends. The dynamic configuration and management of the agent is handled by a new operator, which is configured using Kubernetes resources. The agents and the new operator are bundled in a new core component called `telemetry`. The existing Kyma backends and UIs will be just one possible solution to integrate with. The users will still be able to install them manually with a blueprint, but they will no longer be part of the Kyma offering.
 
-![b](./assets/future.drawio.svg)
+![b](./assets/strategy-future.drawio.svg)
 
 As mentioned before, the technology and protocols for the signal collection are different for the signal types: Logs are tailed from container log files, metrics usually are pulled using the Prometheus format, and traces are pushed with OTLP. With that, also the pre-integration (so that typical signals are collected instantly) is different per type.
 That's why the specific concepts for the different types are different, and are discussed in more detail in the following documents:

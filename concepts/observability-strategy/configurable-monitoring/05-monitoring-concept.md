@@ -2,7 +2,7 @@
 
 ## Architecture Overview
 
-![b](./assets/arch.drawio.svg)
+![b](./assets/monitoring-arch.drawio.svg)
 
 ### Prometheus Pull Support
 
