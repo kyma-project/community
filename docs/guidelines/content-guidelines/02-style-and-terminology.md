@@ -4,6 +4,8 @@ title: Style and terminology
 
 When you're writing Kyma documentation, refer to the following guidelines for grammar, capitalization, and preferred word choices. These guidelines help that all contributors write in the same way to ensure a uniform flow throughout the whole Kyma documentation.
 
+> **TIP:** In case of any further doubts concerning the style and standards of writing, see [Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/style-guide/welcome/).
+
 ## Grammar
 
 These are the generally accepted grammar rules for writing Kyma documentation.
@@ -21,14 +23,14 @@ There are different tones for different types of technical documentation, which 
 
 While writing Kyma documentation, use semi-formal style and imperative mood. The imperative mood tells the reader directly to do something. Use the imperative mood to write instructional documentation such as procedures and tutorials. Other moods can imply optional behavior.
 
-Avoid click-level instructions unless the UI is confusing. Readers of Kyma documentation are assumed to be fairly tech-savvy.
+Avoid click-level instructions unless the UI is confusing. Readers of Kyma documentation are typically fairly tech-savvy.  
 Avoid using unnecessary words such as "please" or "remember". If there's just one way to do something, don't use "can".
 
-✅ Add your {XYZ}.  
-✅ Click **Add**.  
-⛔️ Click the **Add** button.  
-⛔️ Please, click **Add**.  
-⛔️ Remember to click **Add**.
+✅ Save your changes.  
+✅ Click **Save**.  
+⛔️ Click the **Save** button.  
+⛔️ Please, click **Save**.  
+⛔️ Remember to click **Save**.
 
 ✅ Click **Upload** and select one or more documents.  
 ⛔️ If you want to upload a document, you can click **Upload**.
@@ -58,7 +60,8 @@ Always verify the use of the articles "a", "an", and "the" where appropriate. Us
 Whenever you refer to the name of our product or one of our components, don't use an article:  
 
 ✅ Kyma is awesome.  
-⛔️ The Kyma is not awesome.
+⛔️ The Kyma is not awesome.  
+
 ✅ Application Connector  
 ⛔️ the Application Connector
 
@@ -92,14 +95,15 @@ Use sentence case for normal, everyday words in body text. Don't capitalize word
 Capitalize Kyma components such as Application Connector or API Gateway Controller.
 Whenever you point to the outside sources, research whether the name of the source starts with a capital letter or not.
 
->**NOTE:** Kubernetes is capitalized. Do not write it in lowercase or in the abbreviated version.  
+>**NOTE:** Kubernetes is capitalized. Do not use lowercase or the abbreviation.  
+
   ✅ Kubernetes  
   ⛔️ kubernetes  
   ⛔️ k8s
 
-### Camel case
+### CamelCase
 
-Camel case means writing words or phrases without a blank space, using a capitalized letter to separate the words. It's very common in Kubernetes terminology.
+CamelCase means writing words or phrases without a blank space, using a capitalized letter to separate the words. It's very common in Kubernetes terminology.
 
 Use camel case for Kubernetes resources and custom resources.
 
@@ -109,9 +113,9 @@ Use camel case for Kubernetes resources and custom resources.
 For plurals, add "s".
 For titles and navigation, add blank spaces, so that it's natural language instead of camel case.
 
-✅ ConfigMap, ConfigMaps (resource)
-✅ Config Map, Config Maps (resource in titles and navigation)
-⛔️ configmap
+✅ ConfigMap, ConfigMaps (resource)  
+✅ Config Map, Config Maps (resource in titles and navigation)  
+⛔️ configmap  
 ⛔️ config map
   
 If you refer to the code specifically, format it as code (more details about [code font](03-formatting.md#code-font-and-bold-font)).
@@ -177,7 +181,7 @@ Here is the preferred terminology to use in the Kyma documentation:
 | YAML (file format)       | yaml                            | If it's a file extension or file name, use `.yaml` (see [formatting](03-formatting.md)) |
 | Prow Job (process)       | Prowjob, prowjob                | If it's a resource, use [camel case](#camel-case): "ProwJob" |
 | must, can                | should                          | If mandatory, use “must”, if optional, use “can”. |
-| (you) can                | it is possible to, allows you to, there is the possibility to, you have the option to, … | If there’s no other option, drop the “can”, simply use imperative. |
+| (you) can                | it is possible to, allows you to, there is the possibility to, you have the option to, … | If there’s no other option, drop the “can”, simply use [imperative](#voice-and-tone). |
 | that is                  | i.e.                            | If you must explain a statement with "i.e." or "that is,…", often the first statement adds little value and can be dropped completely, keeping just the part after "i.e.". |
 | for example, such as     | e.g.                            | In the middle of a sentence, "such as" is better than "for example". ⛔️ Kyma has many components, for example, Observability, that improve your life. |
 | cloud-native (adjective) | cloud native                    | Rule of thumb: Noun compounds usually don't need a hyphen, adjective compounds often do. |
@@ -197,5 +201,3 @@ Use short command line arguments whenever possible.
 * Helm: `helm -n` equals `helm --name`, not `helm --namespace`
 
 In such a case, explain the context in the document.
-
-> **TIP:** In case of any further doubts concerning the style and standards of writing, see [Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/style-guide/welcome/).
