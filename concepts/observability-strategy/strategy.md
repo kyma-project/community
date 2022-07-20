@@ -41,7 +41,7 @@ The current Kyma observability stack is spreading over all stages and is providi
 
 The current solution provides a feature-rich end-to-end setup at a first glance. However, at a second look users realize soon the major drawbacks and usually will require additional stacks deployed besides:
 - Very limited integration possibilities into external systems; that is usually required for different reasons (cross-cluster correlation, forensic analysis, long time storage,..); integration points are not vendor-neutral
-- Very limited configuration options for data enrichment/filtering; users are interested in specific aspects for specific scenarios
+- Very limited configuration options for data enrichment and filtering. Users want to enrich the data with data relevant for there environments, like cluster names. Furthermore, they want to filter out non-relevant log lines or log attributes within a line to save resources/money in the backend.
 - Storage backends are non-scalable and with can be used only in limited scenarios. There is no option to upgrade the backend into a scalable setup but also no way to integrate with other solutions
 
 ### Requirements
@@ -59,10 +59,10 @@ Optionally, Kyma can provide features for the later stages (aggregation, storage
 
 The goal of the Kyma observability stack should be seamless enablement of the first three stages, supporting the ingestion of the signals into any backend system, opening up plenty usage scenarios. Kyma should provide at least blueprints as guidance for the stages latter stages, especially for enabling the SAP ecosystem.
 To sum it up, the goals of Kyma observability should be:
-1. Provide guides on instrumentation (with potential helpers and auto-instrumentation options).
-2. Collect resulting signals instantly when guides are followed, provide customization options for special cases.
-3. Ship the signals reliably to a configurable vendor-neutral destination.
-4. Provide blueprints for integration with specific vendors.
+- Provide guides on instrumentation (with potential helpers and auto-instrumentation options).
+- Collect resulting signals instantly when guides are followed, provide customization options for special cases.
+- Ship the signals reliably to a configurable vendor-neutral destination.
+- Provide blueprints for integration with specific vendors.
 
 ## Architecture
 
