@@ -19,41 +19,47 @@ Observability can be split up in the following stages:
 
 ![a](./assets/strategy-stages.drawio.svg)
 
-The current Kyma observability stack is spreading over all stages and is providing a lightweight end-to-end setup for basic needs. Hereby, configuration possibilities are available at installation time mainly.
+The current Kyma observability stack covers all stages, providing a lightweight end-to-end setup for basic needs. It can mainly be configured at installation.
 
 ![Current observability stack](./assets/strategy-current.drawio.svg "Current observability stack")
 
-- Application Logs
+### Application Logs
   - Instrumentation is done by printing logs to stdout/stderr as recommended by Kubernetes best practices, system components are following that guide and logs are available already; no other way of getting logs collected
   - FluentBit as log collector defines a hardcoded pipeline for collecting, enriching and pushing the logs to a backend; no further configuration of pipelines at runtime, especially additional outputs for external systems cannot be configured
   - Storage is realized by a lightweight (non-scalable) Loki installation, no configuration at runtime
   - Reporting is implemented by the log explorer of Grafana
-- Metrics
+### Metrics
   - For instrumentation workload needs to expose metrics in the prometheus-compatible format, system components are already doing that; no other ways of exporting metrics is supported like using the OTLP push based protocol
   - Collection of metrics from system and custom workloads is done by a lightweight prometheus installation; configuration of collection can be defined at runtime but the storage might not scale in accordingly requiring adjustments at deploy time; configuration of outputs is not possible at runtime and only prometheus-specific protocols are supported (forward or federation)
   - Prometheus is collecting and storing the metrics; setup is non-scalable and resource settings cannot be configured at runtime
   - Reporting is done via a Grafana installation which loads pre-bundled dashboards; dashboards can be added at runtime
-- Traces
+### Traces
   - Traces needs to be propagated via the Zipkin B3 protocol, which is supported by the istio infrastructure. From workload perspective, one needs to propagate that traces with requests and then can send additional span data to the JAeger collector in the Jaeger or zipkin protocol. The Istio, Serverless and Eventing component are supporting that already.
   - The tracing component is based on the Jaeger all-in-one deployment which is acting as collector, not being scalable independent from the backend part. There are well-defined services in the cluster to which an application can push the span data to. However, it is tightly coupled to the related backend and does not provide any customiation, espacially no integration into other systems.
   - The storage is based on a restricted in-memory store. So it is non-scalable and data will be lost on restarts.
   - The Visualization can be done via the explore tab in Grafana or the bundled Jaeger UI. Again, no further customization is possible here.
 
-The current solution provides a feature-rich end-to-end setup at a first glance. However, at a second look users realize soon the major drawbacks and usually will require additional stacks deployed besides:
-- Very limited integration possibilities into external systems; that is usually required for different reasons (cross-cluster correlation, forensic analysis, long time storage,..); integration points are not vendor-neutral
-- Very limited configuration options for data enrichment and filtering. Users want to enrich the data with data relevant for there environments, like cluster names. Furthermore, they want to filter out non-relevant log lines or log attributes within a line to save resources/money in the backend.
-- Storage backends are non-scalable and with can be used only in limited scenarios. There is no option to upgrade the backend into a scalable setup but also no way to integrate with other solutions
+### Drawbacks
 
-### Requirements
+At a first glance, the current solution provides a feature-rich end-to-end setup. However, at a second look, users notice major drawbacks and usually need additional stacks.
+- Very limited integration possibilities to external systems. Integration is usually needed for different reasons, such as cross-cluster correlation, forensic analysis, or long-term storage. Kyma's integration points are not vendor-neutral.
+- Very limited configuration options for data enrichment and filtering. Users want to enrich the data with data relevant for there environments, like cluster names. Furthermore, they want to filter out non-relevant log lines or log attributes within a line to save resources/money in the backend.
+- Storage backends are non-scalable, so they can be used only in limited scenarios. Users cannot upgrade the backend into a scalable setup, nor integrate with other solutions.
+
+## Requirements
 
 Integration (and with that, moving the focus away from in-cluster backends) is the key to open up the stack for a broad range of use cases. Users can bring their own backends if they already use a commercial offering or run their own infrastructure. The data can be stored outside the cluster in a managed offering, shared with the data of multiple clusters, away from any tampering or deletion attempt of a hacker, to name just a few advantages.
 
 Providing ready-to-use in-cluster backends is necessarily opinionated, does not cover all usage scenarios, and does not fit into Kyma's goal of providing the Kubernetes building blocks to integrate into the the SAP ecosystem. Also, the licensing issues (particularly with Grafana and Loki, or ElasticSearch as an alternative backend technology) show that an opinionated stack is problematic. It's better to handle opinionation by integrating with actual managed services. 
 
-In order to support integration as a key element, it is mandatory that a Kyma runtime supports the stages that must happen within a runtime itself (instrumentation, collection, delivery). Thus, the following points will be the major goal of the Kyma feature set:
+### Mandatory features
+
+To support integration as a key element, a Kyma runtime must support the stages that happen within the runtime itself (instrumentation, collection, delivery). Thus, the following points are mandatory for the future Kyma observability stack:
 1. Instrumentation support: Users usually need custom code for the instrumentation of a workload to expose typical signals like logs, traces, and metrics. Kyma can support common aspects of these tasks with guidelines, best practice guides, and ways of auto-instrumentation (like Istio tracing).
 2. Signal collection: The runtime must provide the basic infrastructure to collect the emitted signals (like a unified log collector). If the user has followed the provided guides, that infrastructure should collect the signals instantly. Special cases (like specific protocols not backed by guides and infrastructure) should be supported by simple customizations (plug in a custom trace converter). Furthermore, the infrastructure must already enrich the signals of the workloads with metadata of the infrastructure, because this cannot happen at a later stage.
 3. Signal delivery: The signals must be consumed by some party, either running inside or outside the cluster. It can be an aggregating layer or the backend directly. In either case, the shipment of the data must be configurable and should be based on a neutral protocol, so that any aggregation layer or backend can be integrated.
+
+### Optional features
 
 Optionally, Kyma can provide features for the later stages (aggregation, storage, and analysis). Here, users typically must pick an opinionated solution because there is no common technology available. Kyma can support such opinionated solutions by pre-configuring either a starting point or a full-blown solution. However, these aspects will usually not cover all usage, operations, and scalability scenarios. Furthermore, huge investments are necessary to provide any additional backend solution.
 
@@ -66,11 +72,15 @@ To sum it up, the goals of Kyma observability should be:
 
 ## Architecture
 
-A new preconfigured agent layer gets introduced which is responsible for collecting all telemetry data without being bound to any backend. Hereby, the collection is very dependent on the signal type. The agents can be configured at runtime with different signal pipelines with basic filtering (inclusion and exclusion of signals) and outputs, so that the agents start shipping the signals through the pipelines to the configured backends. The dynamic configuration and management of the agent is handled by a new operator, which is configured using Kubernetes resources. The agents and the new operator are bundled in a new core component called `telemetry`. The existing Kyma backends and UIs will be just one possible solution to integrate with. The users will still be able to install them manually with a blueprint, but they will no longer be part of the Kyma offering.
+The proposal introduces a new preconfigured agent layer that's not bound to any backend. The agent layer is responsible for collecting all telemetry data, depending on the signal type.
+
+Users can configure the agents at runtime with different signal pipelines using basic filtering (inclusion and exclusion of signals) and outputs, so that the agents start shipping the signals through the pipelines to the configured backends. The dynamic configuration and management of the collector is handled by a new operator, which is configured using Kubernetes resources. The agents and the new operator are bundled in a new core component called `telemetry`.
+
+The existing Kyma backends and UIs will be just one possible solution to integrate with. The users will still be able to install them manually with a blueprint, but they will no longer be part of the Kyma offering.
 
 ![b](./assets/strategy-future.drawio.svg)
 
-As mentioned before, the technology and protocols for the signal collection are different for the signal types: Logs are tailed from container log files, metrics usually are pulled using the Prometheus format, and traces are pushed with OTLP. With that, also the pre-integration (so that typical signals are collected instantly) is different per type.
+As mentioned before, the technology and protocols for the signal collection depend on the signal types: Logs are tailed from container log files, metrics usually are pulled using the Prometheus format, and traces are pushed with OTLP. With that, also the pre-integration (so that typical signals are collected instantly) is different per type.
 That's why the specific concepts for the different types are different, and are discussed in more detail in the following documents:
 * [Concept - Configurable Logging](./configurable-logging/README.md) 
 * [Concept - Configurable Monitoring](./configurable-monitoring/README.md)
