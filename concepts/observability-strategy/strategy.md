@@ -34,7 +34,10 @@ The current Kyma observability stack is spreading over all stages and is providi
   - Prometheus is collecting and storing the metrics; setup is non-scalable and resource settings cannot be configured at runtime
   - Reporting is done via a Grafana installation which loads pre-bundled dashboards; dashboards can be added at runtime
 - Traces
-  - 
+  - Traces needs to be propagated via the Zipkin B3 protocol, which is supported by the istio infrastructure. From workload perspective, one needs to propagate that traces with requests and then can send additional span data to the JAeger collector in the Jaeger or zipkin protocol. The Istio, Serverless and Eventing component are supporting that already.
+  - The tracing component is based on the Jaeger all-in-one deployment which is acting as collector, not being scalable independent from the backend part. There are well-defined services in the cluster to which an application can push the span data to. However, it is tightly coupled to the related backend and does not provide any customiation, espacially no integration into other systems.
+  - The storage is based on a restricted in-memory store. So it is non-scalable and data will be lost on restarts.
+  - The Visualization can be done via the explore tab in Grafana or the bundled Jaeger UI. Again, no further customization is possible here.
 
 The current solution provides a feature-rich end-to-end setup at a first glance. However, at a second look users realize soon the major drawbacks and usually will require additional stacks deployed besides:
 - Very limited integration possibilities into external systems; that is usually required for different reasons (cross-cluster correlation, forensic analysis, long time storage,..); integration points are not vendor-neutral
