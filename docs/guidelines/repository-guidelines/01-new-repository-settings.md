@@ -53,4 +53,4 @@ If you define any governance-related [Prow job](https://github.com/kyma-project/
 
 ## Custom settings
 
-All settings that deviate from configuration standard described in the guidelines should be tracked in an [issue](https://github.tools.sap/kyma/test-infra/issues/new?assignees=&labels=config-change&template=bug_report.md&title=).
+Please track all repository changes that deviate from configuration standard described in the guidelines with an [issue](https://github.tools.sap/kyma/test-infra/issues/new?assignees=&labels=config-change&template=bug_report.md&title=).
