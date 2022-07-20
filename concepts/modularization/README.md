@@ -13,12 +13,16 @@
 - [Operator based component management](#operator-based-component-management)
   - [Regular (local) component operators](#regular-local-component-operators)
   - [Central component operators](#central-component-operators)
+  - [Central vs local operator](#central-vs-local-operator)
 - [Example local and central operators](#example-local-and-central-operators)
 - [FAQ](#faq)
   - [Do we still release Kyma? What is a Kyma release?](#do-we-still-release-kyma-what-is-a-kyma-release)
   - [Can I still use `kyma deploy` command to install Kyma in my cluster?](#can-i-still-use-kyma-deploy-command-to-install-kyma-in-my-cluster)
   - [I have a simple component with helm chart. Why do I need an operator?](#i-have-a-simple-component-with-helm-chart-why-do-i-need-an-operator)
   - [I don't know how to write the operator. Can I use some generic operator for installing my chart?](#i-dont-know-how-to-write-the-operator-can-i-use-some-generic-operator-for-installing-my-chart)
+- [Why should I provide a central operator](#why-should-i-provide-a-central-operator)
+- [How to roll out a new module version in phases?](#how-to-roll-out-a-new-module-version-in-phases)
+- [Can I run multiple versions of central operator](#can-i-run-multiple-versions-of-central-operator)
 
 
 
@@ -118,10 +122,16 @@ Apart from technical quality, Kyma components should fulfill other standards (24
 
 ## Regular (local) component operators
 Each Kyma component has to provide the operator that manages the component lifecycle (installing, updating, configuring, deleting). The component provider (team) has to prepare one custom resource (ComponentDescriptor) that specifies how to install the operator (deployment yaml) and how to configure it (operator CRD, default values). 
-The complexity of managing installation in many clusters or using configured release channels is handled by kyma-operator and component providers can ship regular kubernetes operators. Such regular operators are installed in the target cluster (where component should be installed). 
+The complexity of managing installation in many clusters or using configured release channels is handled by kyma-operator and component providers can ship regular kubernetes operators. Such regular operators are installed in the target cluster (where components should be installed). 
 
 ## Central component operators
-`kyma-operator` can also work with other component operators deployed centrally. In this case, kyma-operator creates resources for component operators in the central cluster. The Reconciliation logic of the central component operator can find a remote cluster kubeconfig by convention or reference (e.g. annotation). 
+`kyma-operator` can also work with other component operators deployed centrally. In this case, `kyma-operator` creates resources for component operators in the central cluster. The Reconciliation logic of the central component operator can find a remote cluster kubeconfig by convention or reference (e.g. annotation). 
+
+## Central vs local operator
+
+With Kyma 2.0 we moved component installation (`kyma-installer`) from the cluster to the central place (reconciler). Each component was installed by the dedicated reconciler from the Kyma control plane. For some components, it perfectly makes sense (they interact mainly with other central systems to enable some integrations), but for some components that interact only with internal cluster resources, such a setup is suboptimal. The local Kubernetes operator designed and implemented accordingly to the best practices should have minimal resource requirements (few MB of memory and few mCPU). Therefore for the cases where you don't need access to central services or external resources it is recommended to use a regular operator (not central). Such an operator is much easier to develop and maintain for the component team, as an operator lifecycle management is still handled centrally by `kyma-operator` (together with `manifest-operator`).
+
+
 # Example local and central operators
 In this example 2 components are defined:
 - central operator for compass integration
@@ -147,5 +157,16 @@ With the operator you can fully control your component lifecycle and ensure that
 
 Yes. You can use [Operator SDK - Helm](https://sdk.operatorframework.io/docs/building-operators/helm/) to generate it from your charts. You can create Helm based operator in a few minutes. If you want to better control the operator logic using [Operator SDK - Go](https://sdk.operatorframework.io/docs/building-operators/golang/) or [Kubebuilder](https://book.kubebuilder.io/)
 
-#
+# Why should I provide a central operator
 
+Consider providing central operator when:
+- you deal with resources outside of Kyma cluster
+- you need access to external systems/resources with powerful credentials (that cannot be stored in the Kyma cluster)
+
+# How to roll out a new module version in phases?
+
+Use release channels to push the new version in the rapid channel first and after some time you can push that version to the stable channel. Release channels are flexible and if you need to test the new version only on 1 cluster you can create a new release channel and assign only one cluster to that channel. 
+
+# Can I run multiple versions of central operator
+
+Yes. But you have to ensure that each module instance described by your module custom resource is reconciled (managed) by a single operator to avoid concurrent updates and unpredictable outcomes. You can achieve that by introducing a field in the spec or using labels differentiating release channels.
