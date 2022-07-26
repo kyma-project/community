@@ -2,7 +2,7 @@
 title: Style and terminology
 ---
 
-When you're writing Kyma documentation, refer to the following guidelines for grammar, capitalization, and preferred word choices. These guidelines help that all contributors write in the same way to ensure a uniform flow throughout the whole Kyma documentation.
+When writing Kyma documentation, refer to the following guidelines for grammar, capitalization, and preferred word choices. These guidelines help ensure that all contributors write in the same way to ensure a uniform flow throughout the whole Kyma documentation.
 
 > **TIP:** In case of any further doubts concerning the style and standards of writing, see [Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/style-guide/welcome/).
 
@@ -81,44 +81,49 @@ Avoid using parenthesis. Use lists instead, to make your sentences as simple as 
 
 ## Capitalization
 
-### Lowercase words
+Don't capitalize words just because they are "special" or "important".
 
-Sentence case is the normal style in English: Lowercase for all words, uppercase for the first letter of the first word in a sentence, and of proper nouns and names.
-
-Kyma documentation uses sentence case for headings (more details about [headings](03-formatting.md#headings)).
-
-### Capitalized words
-
-Capitalize the first letter of a proper noun and name.
-Use sentence case for normal, everyday words in body text. Don't capitalize words just because they are "special" or "important".
-
-Capitalize Kyma components such as Application Connector or API Gateway Controller.
 Whenever you point to the outside sources, research whether the name of the source starts with a capital letter or not.
-
+  
 >**NOTE:** Kubernetes is capitalized. Do not use lowercase or the abbreviation.  
 
   ✅ Kubernetes  
   ⛔️ kubernetes  
   ⛔️ k8s
 
+### Sentence case
+
+Use [Sentence case](https://dictionary.cambridge.org/dictionary/english/sentence-case) for:
+- Standard sentences
+- Headings
+
+> **NOTE:** For more details about [headings](03-formatting.md#headings), see the Formatting guidelines.
+
+### Title Case
+
+Use [Title Case](https://dictionary.cambridge.org/dictionary/english/title-case) for:
+- The names of Kyma components, such as Application Connector or API Gateway Controller
+
 ### CamelCase
 
-CamelCase means writing words or phrases without a blank space, using a capitalized letter to separate the words. It's very common in Kubernetes terminology.
-
-Use camel case for Kubernetes resources and custom resources.
+Use [**CamelCase**](https://dictionary.cambridge.org/dictionary/english/camel-case) for 
+- Kubernetes resources
+- custom resources
 
 ✅ API Gateway is a Kubernetes controller, which operates on APIRule custom resources.  
 ⛔️ API Gateway is a Kubernetes controller, which operates on API Rule custom resources.
 
 For plurals, add "s".
-For titles and navigation, add blank spaces, so that it's natural language instead of camel case.
+For titles and navigation, add blank spaces, so that it is natural language instead of camel case.
 
 ✅ ConfigMap, ConfigMaps (resource)  
 ✅ Config Map, Config Maps (resource in titles and navigation)  
 ⛔️ configmap  
 ⛔️ config map
   
-If you refer to the code specifically, format it as code (more details about [code font](03-formatting.md#code-font-and-bold-font)).
+If you refer to the code specifically, format it as code 
+
+> **NOTE:** For more details about [code font](03-formatting.md#code-font-and-bold-font), see the Formatting guidelines).
 
 ✅ `APIRule`
   
@@ -154,40 +159,40 @@ Use the American English spelling, not British English.
 
 Here is the preferred terminology to use in the Kyma documentation:
 
-| ✅                       | ⛔️                              | comment                           |
+| ✅ Use                     | ⛔️ Don't use                              | Comment                           |
 | ------------------------ | ------------------------------- | --------------------------------- |
-| API Micro Gateway        | API Gateway                     |                                   |
-| ID                       | id                              |                                   |
-| and                      | + (plus), & (ampersand)         |                                   |
-| backend                  | back end, back-end              |                                   |
-| connect, connection      | integrate, integration          |                                   |
-| custom resource          | Custom Resource, CustomResource |                                   |
-| document                 | doc                             |                                   |
-| email                    | e-mail                          |                                   |
-| fill in                  | complete                        |                                   |
-| frontend                 | front end, front-end            |                                   |
-| key-value                | key/value, key:value            |                                   |
-| micro frontend           | microfrontend, micro front-end  |                                   |
-| must                     | have to, need to                |                                   |
-| need                     | require                         |                                   |
-| or                       | / (slash)                       |                                   |
-| repository               | repo                            |                                   |
-| run                      | execute                         |                                   |
-| single sign on (SSO)     | single sign-on                  |                                   |
-| the following, several,… | a specific number               |                                   |
-| typically                | usually                         |                                   |
-| use                      | utilize                         |                                   |
-| using, with              | via                             |                                   |
-| YAML (file format)       | yaml                            | If it's a file extension or file name, use `.yaml` (see [formatting](03-formatting.md)) |
-| Prow Job (process)       | Prowjob, prowjob                | If it's a resource, use [camel case](#camel-case): "ProwJob" |
-| must, can                | should                          | If mandatory, use “must”, if optional, use “can”. |
-| (you) can                | it is possible to, allows you to, there is the possibility to, you have the option to, … | If there’s no other option, drop the “can”, simply use [imperative](#voice-and-tone). |
-| that is                  | i.e.                            | If you must explain a statement with "i.e." or "that is,…", often the first statement adds little value and can be dropped completely, keeping just the part after "i.e.". |
-| for example, such as     | e.g.                            | In the middle of a sentence, "such as" is better than "for example". ⛔️ Kyma has many components, for example, Observability, that improve your life. |
-| cloud-native (adjective) | cloud native                    | Rule of thumb: Noun compounds usually don't need a hyphen, adjective compounds often do. |
-| application              | app                             | Use "Application" to describe an external solution connected to Kyma through Application Connector, "application" to describe a microservice deployed on Kyma or other kind of software. |
-| the following         | below, this, the described, ...    | or "as shown in the example"      |
-| the previous, earlier | above, this, the described, ...    | or "as shown in the example"      |
+| **API Micro Gateway**        | **API Gateway**                     |                                   |
+| **ID**                       | **id**                              |                                   |
+| **and**                      | **+** (plus), **&** (ampersand)         |                                   |
+| **backend**                  | **back end**, **back-end**              |                                   |
+| **connect**, **connection**      | **integrate**, **integration**          |                                   |
+| **custom resource**          | **Custom Resource**, **CustomResource** |                                   |
+| **document**                 | **doc**                             |                                   |
+| **email**                    | **e-mail**                          |                                   |
+| **fill in**                  | **complete**                        |                                   |
+| **frontend**                 | **front end**, **front-end**            |                                   |
+| **key-value**                | **key/value**, **key:value**            |                                   |
+| **micro frontend**           | **microfrontend**, **micro front-end**  |                                   |
+| **must**                     | **have to, need to**                |                                   |
+| **need**                     | **require**                         |                                   |
+| **or**                       | **/** (slash)                       |                                   |
+| **repository**               | **repo**                            |                                   |
+| **run**                      | **execute**                         |                                   |
+| **single sign on (SSO)**     | **single sign-on**                  |                                   |
+| **the following**, **several**,… | **a specific number**               |                                   |
+| **typically**                | **usually**                         |                                   |
+| **use**                      | **utilize**                         |                                   |
+| **using**, **with**              | **via**                             |                                   |
+| **YAML** (file format)       | **yaml**                            | If it's a file extension or file name, use `.yaml` (see [formatting](03-formatting.md)) |
+| **Prow Job** (process)       | **Prowjob**, **prowjob**                | If it's a resource, use [camel case](#camel-case): "ProwJob" |
+| **must**, **can**                | **should**                          | If mandatory, use “must”, if optional, use “can”. |
+| (you) **can**                | **it is possible to**, **allows you to**, **there is the possibility to**, **you have the option to**, … | If there’s no other option, drop the “can”, simply use [imperative](#voice-and-tone). |
+| **that is**                  | **i.e.**                            | If you must explain a statement with "i.e." or "that is,…", often the first statement adds little value and can be dropped completely, keeping just the part after "i.e.". |
+| **for example**, **such as**     | **e.g.**                            | In the middle of a sentence, "such as" is better than "for example". ⛔️ Kyma has many components, for example, Observability, that improve your life. |
+| **cloud-native** (adjective) | **cloud native**                    | Rule of thumb: Noun compounds usually don't need a hyphen, adjective compounds often do. |
+| **application**              | **app**                             | Use "Application" to describe an external solution connected to Kyma through Application Connector, "application" to describe a microservice deployed on Kyma or other kind of software. |
+| **the following**         | **below**, **this**, **the described**, ...    | or "as shown in the example"      |
+| **the previous**, **earlier** | **above**, **this**, **the described**, ...    | or "as shown in the example"      |
 
 ### Command line arguments
 
