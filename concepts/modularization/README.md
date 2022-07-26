@@ -20,9 +20,9 @@
   - [Can I still use `kyma deploy` command to install Kyma in my cluster?](#can-i-still-use-kyma-deploy-command-to-install-kyma-in-my-cluster)
   - [I have a simple component with helm chart. Why do I need an operator?](#i-have-a-simple-component-with-helm-chart-why-do-i-need-an-operator)
   - [I don't know how to write the operator. Can I use some generic operator for installing my chart?](#i-dont-know-how-to-write-the-operator-can-i-use-some-generic-operator-for-installing-my-chart)
-- [Why should I provide a central operator](#why-should-i-provide-a-central-operator)
-- [How to roll out a new module version in phases?](#how-to-roll-out-a-new-module-version-in-phases)
-- [Can I run multiple versions of central operator](#can-i-run-multiple-versions-of-central-operator)
+  - [Why should I provide a central operator](#why-should-i-provide-a-central-operator)
+  - [How to roll out a new module version in phases?](#how-to-roll-out-a-new-module-version-in-phases)
+  - [Can I run multiple versions of central operator](#can-i-run-multiple-versions-of-central-operator)
 
 
 
@@ -157,16 +157,16 @@ With the operator you can fully control your component lifecycle and ensure that
 
 Yes. You can use [Operator SDK - Helm](https://sdk.operatorframework.io/docs/building-operators/helm/) to generate it from your charts. You can create Helm based operator in a few minutes. If you want to better control the operator logic using [Operator SDK - Go](https://sdk.operatorframework.io/docs/building-operators/golang/) or [Kubebuilder](https://book.kubebuilder.io/)
 
-# Why should I provide a central operator
+## Why should I provide a central operator
 
 Consider providing central operator when:
 - you deal with resources outside of Kyma cluster
 - you need access to external systems/resources with powerful credentials (that cannot be stored in the Kyma cluster)
 
-# How to roll out a new module version in phases?
+## How to roll out a new module version in phases?
 
 Use release channels to push the new version in the rapid channel first and after some time you can push that version to the stable channel. Release channels are flexible and if you need to test the new version only on 1 cluster you can create a new release channel and assign only one cluster to that channel. 
 
-# Can I run multiple versions of central operator
+## Can I run multiple versions of central operator
 
-Yes. But you have to ensure that each module instance described by your module custom resource is reconciled (managed) by a single operator to avoid concurrent updates and unpredictable outcomes. You can achieve that by introducing a field in the spec or using labels differentiating release channels.
+Yes. But you have to ensure that each module instance described by your module custom resource is reconciled (managed) by a single operator to avoid concurrent updates and unpredictable outcomes. You can achieve that by marking your custom resources with labels pointing to release channels in your module template. Then you can deploy one central module per release channel and update them independently.
