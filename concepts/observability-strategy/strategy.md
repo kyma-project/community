@@ -34,14 +34,14 @@ The current Kyma observability stack covers all stages, providing a lightweight 
   - Prometheus is collecting and storing the metrics; setup is non-scalable and resource settings cannot be configured at runtime
   - Reporting is done via a Grafana installation which loads pre-bundled dashboards; dashboards can be added at runtime
 ### Traces
-  - Traces needs to be propagated via the Zipkin B3 protocol, which is supported by the istio infrastructure. From workload perspective, one needs to propagate that traces with requests and then can send additional span data to the JAeger collector in the Jaeger or zipkin protocol. The Istio, Serverless and Eventing component are supporting that already.
-  - The tracing component is based on the Jaeger all-in-one deployment which is acting as collector, not being scalable independent from the backend part. There are well-defined services in the cluster to which an application can push the span data to. However, it is tightly coupled to the related backend and does not provide any customiation, espacially no integration into other systems.
-  - The storage is based on a restricted in-memory store. So it is non-scalable and data will be lost on restarts.
-  - The Visualization can be done via the explore tab in Grafana or the bundled Jaeger UI. Again, no further customization is possible here.
+  - Trace context must be propagated with the Zipkin B3 protocol, which is supported by the Istio infrastructure. From a workload perspective, it needs to propagate trace context with requests, and then can send additional span data to the Jaeger collector in the Jaeger or Zipkin protocol. The Istio, Serverless, and Eventing components support that already.
+  - The Tracing component is based on the Jaeger all-in-one deployment, which acts as collector and is not scalable independently from the backend part. There are well-defined services in the cluster to which an application can push the span data. However, it is tightly coupled to the related backend and does not provide any customization, especially no integration into other systems.
+  - The storage is based on a restricted in-memory store. Thus, it is non-scalable and data is lost on restarts.
+  - The visualization can be done with the "Explore" tab in Grafana or the bundled Jaeger UI. Again, no further customization is possible here.
 
 ### Drawbacks
 
-At a first glance, the current solution provides a feature-rich end-to-end setup. However, at a second look, users notice major drawbacks and usually need additional stacks.
+At a first glance, the current solution provides a feature-rich end-to-end setup. However, at a second glance, users notice major drawbacks and usually need additional stacks.
 - Very limited integration possibilities to external systems. Integration is usually needed for different reasons, such as cross-cluster correlation, forensic analysis, or long-term storage. Kyma's integration points are not vendor-neutral.
 - Very limited configuration options for data enrichment and filtering. Users want to enrich the data with data relevant for there environments, like cluster names. Furthermore, they want to filter out non-relevant log lines or log attributes within a line to save resources/money in the backend.
 - Storage backends are non-scalable, so they can be used only in limited scenarios. Users cannot upgrade the backend into a scalable setup, nor integrate with other solutions.

@@ -4,7 +4,8 @@
 
 ![a](./assets/logging-current.drawio.svg)
 
-In the current setup, the logging component provides feature-rich e2e logging solution with Loki as backend and Grafana as log Browser. The used log collector (FluentBit) can be configured flexibly and neutrally. However, users must apply the configuration during installation; otherwise it's lost at the next Kyma upgrade process. Furthermore, it is hard to mix and match different integrations, as you must deal with one centralized configuration (the Fluent Bit config) at deploy time. Furthermore, Loki is provided in a non-scalabale setup and cannot configured at runtime.
+In the current setup, the logging component provides a feature-rich end-to-end logging solution with Loki as backend and Grafana as log browser. Users can configure Fluent Bit, the log collector, flexibly and neutrally - but only during installation, otherwise the configuration is lost at the next Kyma upgrade. Mixing and matching different integrations is hard, because users must deal with one centralized configuration (the Fluent Bit config) at deployment.
+Furthermore, Loki is provided in a non-scalabale setup and cannot be configured at runtime.
 
 As outlined in the [general strategy](../strategy.md), integration (and with that, changing the focus away from in-cluster backends) is the key to open up the stack for a broad range of use cases. Users can simply bring their own backends if they already use a commercial offering or run their own infrastructure. The data can be stored outside the cluster in a managed offering, shared with the data of multiple clusters, away from any tampering or deletion attempt of a hacker, to name just a few.
 
