@@ -50,14 +50,12 @@ TO DO:
 
 # Component packaging and versioning
 Kyma ecosystem produces several artifacts that can be deployed in the central control plane (KEB + operators) and in the target Kubernetes cluster. Versioning strategy should address pushing changes for all these artifacts in an unambiguous way with full traceability. Identified artifacts for each component
-- Operator CRD ([api/config/crd](https://github.com/kyma-project/manifest-operator/tree/main/api/config/crd))
-- Operator deployment ([operator/config/manager](https://github.com/kyma-project/manifest-operator/blob/main/operator/config/manager/manager.yaml))
+- Operator CRD (contains mainly overrides that can be set by customer or SRE for component installation)
+- Operator deployment (yaml/helm to deploy component operator)
 - Operator image (docker image in gcr)
 - Component CRDs ([installation/resources/crds](https://github.com/kyma-project/kyma/tree/main/installation/resources/crds))
 - Component deployment ([resources](https://github.com/kyma-project/kyma/tree/main/resources))
 - Component images (docker images in gcr)
-
-Component operators should be deployed continuously. Operators should support all versions that are currently available in all release channels. It is up to the component owner to decide how they manage different component versions inside operator (operator per version or single operator supporting multiple versions).
 
 Versioning of component resources could be achieved by packaging component CRDs and charts into component operator binary (or container image). This way released operator would contain CRDs and charts of its components in the local filesystem. 
 The image could be signed and we can ensure the integrity of component deployment easily. 
