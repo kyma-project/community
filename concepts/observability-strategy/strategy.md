@@ -29,7 +29,7 @@ The current Kyma observability stack covers all stages, providing a lightweight 
   - Storage is realized by a lightweight (non-scalable) Loki installation, no configuration at runtime
   - Reporting is implemented by the log explorer of Grafana
 ### Metrics
-  - For instrumentation workload needs to expose metrics in the prometheus-compatible format, system components are already doing that; no other ways of exporting metrics is supported like using the OTLP push based protocol
+  - For instrumentation, a workload must expose metrics in the prometheus-compatible format. System components are already doing that. No other way of exporting metrics, like using the OTLP push-based protocol,  is supported.
   - Collection of metrics from system and custom workloads is done by a lightweight prometheus installation; configuration of collection can be defined at runtime but the storage might not scale in accordingly requiring adjustments at deploy time; configuration of outputs is not possible at runtime and only prometheus-specific protocols are supported (forward or federation)
   - Prometheus is collecting and storing the metrics; setup is non-scalable and resource settings cannot be configured at runtime
   - Reporting is done via a Grafana installation which loads pre-bundled dashboards; dashboards can be added at runtime
