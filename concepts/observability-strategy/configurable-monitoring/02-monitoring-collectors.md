@@ -1,4 +1,4 @@
-# Agents
+# Comparison of collector technologies
 
 ## Requirements
 

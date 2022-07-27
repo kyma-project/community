@@ -6,10 +6,10 @@
 
 ### Prometheus Pull Support
 
-**Workloads can be scraped with annotations only. A dedicated otel-collector agent with a hardcoded scrape config will take care and emit the metrics to the central otel-collector deployment.**
+**Workloads can be scraped with annotations only. A dedicated otel-collector with a hardcoded scrape config will take care and emit the metrics to the central otel-collector deployment.**
 
 The scraping functionality that provides compatibility with the Prometheus-style of metrics collection will be realized by a dedicated otel-collector setup. This installation takes care of scraping workloads and pushing the scraped metrics to the central otel-collector via OTLP. Workloads can be annotated using specific annotations to enable scraping of the workload, which will be the only way for the end user to influence the scrape configuration. If users want something more custom, they can either use the push approach to the central OTLP endpoint, or run an otel-collector sidecar to scrape and push.
-To assure that the scraping collector will scale with the targets to scrape, it will be deployed as a daemonset, and the targets are split on a per-node base across the agents. Hereby, the scrape config of the agent just uses the node information to achieve that without a central coordinator.
+To assure that the scraping collector will scale with the targets to scrape, it will be deployed as a daemonset, and the targets are split on a per-node base across the instances. Hereby, the scrape config of a collector instance just uses the node information to achieve that without a central coordinator.
 
 ### OTLP Push Support
 
@@ -21,7 +21,7 @@ A central collector, which listens for OTLP metrics, will be part of the setup. 
 
 **Based on polling via hard scrape config or annotations**
 
-Kubernetes infrastructure will be polled as part of the scrape agent configuration. If possible, potential replacements coming with the otel-collector will be used (like for scraping node metrics). Kyma components will be scraped via annotations like any other custom workload.
+Kubernetes infrastructure will be polled as part of the configuration for the DaemonSet based collector. If possible, potential replacements coming with the otel-collector will be used (like for scraping node metrics). Kyma components will be scraped via annotations like any other custom workload.
 
 ### Configurability
 

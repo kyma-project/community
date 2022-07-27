@@ -4,7 +4,7 @@ This folder contains pages for evaluating and proposing a concept for having the
 
 For that, the following pages guide you through the different steps of the proposal:
 * [Ground work - current state, requirements, goal](./01-logging-groundwork.md)
-* [Comparison of existing log agents](./02-logging-agents.md)
+* [Comparison of existing log collectors](./02-logging-collectors.md)
 * [Comparison of existing FluentBit operators](./03-fluent-bit-operator1.md)
 * [Another Comparison of existing FluentBit operators](./04-fluent-bit-operator2.md)
 * [Proposal for a custom FluentBit operator](./05-custom-fluentbit-operator.md)

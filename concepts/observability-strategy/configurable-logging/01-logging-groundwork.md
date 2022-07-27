@@ -14,12 +14,12 @@ This concept proposes how to open up to those new scenarios by supporting conven
 ## Requirements
 
 ### Basic backend configuration
-- Have a vendor-neutral agent layer that collects and ships the telemetry data, but does not permanently store it (as a backend)
-- Support configuration of the selected agent at runtime (no need to run a Kyma upgrade process) in a scenario-focused approach
+- Have a vendor-neutral layer of collectors that collects and ships the telemetry data, but does not permanently store it (as a backend)
+- Support configuration of the selected collector at runtime (no need to run a Kyma upgrade process) in a scenario-focused approach
 - Support multiple configurations at the same time in individual resources to enable easy activation of dedicated scenarios
-- As a minimum, support one vendor-neutral input and output. It should be possible to chain your custom agent for specific conversions. For example, for traces, supporting the OLTP protocol will support most of the vendors already. Chaining a custom OpenTelemetry  Collector can do custom conversion to a specific protocol.
-- Support all typical settings for the supported outputs of the used agent, do not hide or abstract them
-- The agent must run stable at any time. Bad configuration must be prevalidated and rejected. Fast feedback is welcome.
+- As a minimum, support one vendor-neutral input and output. It should be possible to chain your custom collector for specific conversions. For example, for traces, supporting the OLTP protocol will support most of the vendors already. Chaining a custom OpenTelemetry  Collector can do custom conversion to a specific protocol.
+- Support all typical settings for the supported outputs of the used collector, do not hide or abstract them
+- The collector must run stable at any time. Bad configuration must be prevalidated and rejected. Fast feedback is welcome.
 - Secrets must be kept secret.
 - Scenarios/Pipelines need to be isolated and have it's own buffer management. If a backend is in a bad shape and cannot process any data anymore, data should still continue to be pushed to other backends
 - Typical auth mechanisms for the integration must be support, especially also client certificate based solutions
@@ -29,7 +29,7 @@ This concept proposes how to open up to those new scenarios by supporting conven
 ### Template definitions
 - Have a mechanism to provide templates and best practices for typical scenarios, which can be instantiated at runtime
 - Such template provides the same feature-richness as a configuration scenario
-- If specific templates are bundled with Kyma, updates of a template in use must propagate to the actual agent configuration
+- If specific templates are bundled with Kyma, updates of a template in use must propagate to the actual collector configuration
   - Support placeholder definitions with default values and descriptions
 
 ### Template instantiation
@@ -43,6 +43,6 @@ This concept proposes how to open up to those new scenarios by supporting conven
 
 ## Proposed Solution
 
-The proposal introduces a new preconfigured agent layer that's responsible for collecting all telemetry data. Users can configure those agents dynamically at runtime with different configuration scenarios, so that the agents start shipping the data to the configured backends. The dynamic configuration and management of the agent is handled by a new operator, which is configured with Kubernetes resources. The agents and the new operator are bundled in a new core package called `telemetry`. The existing Kyma backends and UIs will be just one possible solution to integrate with. The user can install them manually following a blueprint.
+The proposal introduces a new preconfigured layer of collectors that's responsible for collecting all telemetry data. Users can configure those collectors dynamically at runtime with different configuration scenarios, so that the collectors start shipping the data to the configured backends. The dynamic configuration and management of a collector is handled by a new operator, which is configured with Kubernetes resources. The collectors and the new operator are bundled in a new core package called `telemetry`. The existing Kyma backends and UIs will be just one possible solution to integrate with. The user can install them manually following a blueprint.
 
 ![b](./assets/logging-future.drawio.svg)
