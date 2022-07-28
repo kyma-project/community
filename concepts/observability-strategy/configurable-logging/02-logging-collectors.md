@@ -1,15 +1,15 @@
-# Comparison of collector agents
+# Comparison of collector technologies
 
 ## Requirements
 
 ### Vendor-neutral on input and output
-The goal of the new agent layer is to separate the telemetry data collection from the actual backend technology. It should be possible to integrate with many different vendor-specific backend providers. Furthermore, the way of providing the input to the collector should also be as vendor-neutral and open as possible, allowing different kinds of instrumentation in any desired programming language.
+The goal of the new layer of collectors is to separate the telemetry data collection from the actual backend technology. It should be possible to integrate with many different vendor-specific backend providers. Furthermore, the way of providing the input to the collector should also be as vendor-neutral and open as possible, supporting different kinds of instrumentation in any desired programming language.
 
 ### Rich ecosystem
-To support a variety of backends and also to increase the likelihood that the user knows how to integrate, the agent should provide an active and feature-rich ecosystem.
+To support a variety of backends and also to increase the likelihood that the user knows how to integrate, the collector should provide an active and feature-rich ecosystem.
 
 ### Mature on Kubernetes
-The agent should be a battle-tested component that can scale out and is already in use for big setups. It should have built-in Kubernetes support and a lightweight footprint.
+The collector should be a battle-tested component that can scale out and is already in use for big setups. It should have built-in Kubernetes support and a lightweight footprint.
 
 ## Candidates
 
@@ -18,7 +18,7 @@ The most prominent technology nowadays is the `otel-collector` of the `OpenTelem
 It is quite new but already has a big community behind, because it covers the community of OpenCensus and OpenTracing. With that, the ecosystem is already good enough and the majority of vendor-specific backends are supported (seeing the available exporters on the contrib repo).
 Most probably, it is the only real vendor-neutral project covering really all three aspects of logs, traces, and metrics.
 Bigger companies are actively planning to use it at least for the trace and metrics aspects. Here, the configuration specification is not in a stable state yet. For logging, the whole feature is still in a beta stadium.
-See also [more detailed here](../observability-opentelemetry/README.md)
+See also [more detailed here](../opentelemetry/README.md)
 
 ### Logs - Fluent-Bit
 Fluent-Bit is the log collector traditionally used in Kyma, being part of CNCF and widely adopted on Kubernetes. It is vendor-neutral and supports a variety of generic outputs, so that it can integrate with quite some backends. If a backend is not supported, you can use the fluent-specific Forward protocol to connect a FluentD, providing an even richer ecosystem. It will scale out perfectly by running on every node with a minimalistic resource footprint.
