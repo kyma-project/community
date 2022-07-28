@@ -21,7 +21,7 @@ A central collector, which listens for OTLP metrics, will be part of the setup. 
 
 **Based on polling via hard scrape config or annotations**
 
-Kubernetes infrastructure will be polled as part of the configuration for the DaemonSet based collector. If possible, potential replacements coming with the otel-collector will be used (like for scraping node metrics). Kyma components will be scraped via annotations like any other custom workload.
+Kubernetes infrastructure will be polled as part of the configuration for the DaemonSet-based collector. If possible, potential replacements coming with the Otel Collector will be used (like for scraping node metrics). Kyma components will be scraped with annotations like any other custom workload.
 
 ### Configurability
 

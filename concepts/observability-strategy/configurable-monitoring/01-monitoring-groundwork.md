@@ -6,7 +6,7 @@
 
 The diagram shows that the current solution is based on a preconfigured Prometheus operator providing exporter components, and a Prometheus instance acting as collector and backend. On top, Grafana visualizes the data. However, the current setup does not support a neutral and unified way to integrate backends outside of the cluster at runtime.
 
-As outlined in the [general strategy](../strategy.md), integration (and with that, changing the focus away from in-cluster backends) is the key to open up the stack for a broad range of use cases. Users can simply bring their own backends, if they already use a commercial offering or run their own infrastructure. The data can be stored outside the cluster in a managed offering, shared with the data of multiple clusters, away from any tampering or deletion attempt of a hacker, to name just a few advantages.
+As outlined in the [general strategy](../strategy.md), integration (and with that, changing the focus away from in-cluster backends) is the key to open up the stack for a broad range of use cases. Users can simply bring their own backends, if they already use a commercial offering or run their own infrastructure. To name just a few advantages, the data can be stored outside the cluster in a managed offering, shared with the data of multiple clusters, and kept away from any tampering or deletion attempts by hackers.
 
 This concept proposes how to open up to those new scenarios by supporting convenient integration at runtime, leveraging vendor-neutral protocols.
 
@@ -19,7 +19,7 @@ This concept proposes how to open up to those new scenarios by supporting conven
 
 ### Basic backend configuration
 - Have a vendor-neutral layer of collectors that collects and ships metrics, but does not permanently store it (as a backend).
-- The collector must run stable at any time when using the typical settings. Bad configuration must be prevalidated and rejected. Fast feedback is welcome.
+- The collector must run stably at any time when using the typical settings. Bad configuration must be prevalidated and rejected. Fast feedback is welcome.
 - Outputs
   - Support configuration of backends and outputs at runtime (no need to run a Kyma upgrade process) in a scenario-focused approach.
   - Support multiple configurations at the same time (in individual Kubernetes resources) to support easy activation of dedicated scenarios.

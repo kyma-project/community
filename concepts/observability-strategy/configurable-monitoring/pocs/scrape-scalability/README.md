@@ -2,17 +2,17 @@
 
 ## Goal
 
-The collector must support scraping metrics in the prometheus pull approach. For that the [prometheusreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver) needs to be used.
-As the instance keeps state about the scraped data, one target cannot be scraped by interchanging instances (sticky targets we could say).
-What will happen if there a magnitude of scrape targets and one instance cannot scrape them all?
+The collector must support scraping metrics in the Prometheus pull approach. Thus, the [Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver) must be used.
+Because the instance keeps state about the scraped data, one target cannot be scraped by interchanging instances (sticky targets, we could say).
+What will happen if there is a large amount of scrape targets and one instance cannot scrape them all?
 Probably only sharding can solve the problem by distributing the targets to scrape to multiple instances.
 
 ## Ideas
 - Coordinator: Have an instance like the otel-collector-operator which splits the scrape config into distinct sets and assignes it collector instances.
-- Self-contained Criterias: Support configs only via service discovery and annotations, then shard the targets via dynamic criterias like namespace or node by the collector itself
+- Self-contained criteria: Support configs only by service discovery and annotations, and the collector itself is responsible for sharding the targets based on dynamic criterias like Namespace or Node.
 
 ## Proposal
-Support only dynamic confgiuration of targets via Service Discovery and annotations. Use service discovery attributes as criteria inside every collector to shard the targets over the instances.
+Support only dynamic configuration of targets using service discovery and annotations. Use service discovery attributes as criteria inside every collector to shard the targets over the instances.
 Proposal: Use the "node" as criteria element and have one instance per node running. 
 
 Pro:

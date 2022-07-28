@@ -3,7 +3,7 @@
 ## Requirements
 
 ### Vendor-neutral on input and output
-The goal of the new layer of collectors is to separate the telemetry data collection from the actual backend technology. It should be possible to integrate with many different vendor-specific backend providers. Furthermore, the way of providing the input to the collector should also be as vendor-neutral and open as possible, allowing different kinds of instrumentation in any desired programming language.
+The goal of the new layer of collectors is to separate the telemetry data collection from the actual backend technology. It should be possible to integrate with many different vendor-specific backend providers. Furthermore, the way of providing the input to the collector should also be as vendor-neutral and open as possible, supporting different kinds of instrumentation in any desired programming language.
 
 ### Rich ecosystem
 To support a variety of backends and also to increase the likelihood that the user knows how to integrate, the collector should provide an active and feature-rich ecosystem.
