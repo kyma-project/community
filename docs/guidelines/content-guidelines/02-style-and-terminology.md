@@ -23,7 +23,7 @@ There are different tones for different types of technical documentation, which 
 
 While writing Kyma documentation, use semi-formal style and imperative mood. The imperative mood tells the reader directly to do something. Use the imperative mood to write instructional documentation such as procedures and tutorials. Other moods can imply optional behavior.
 
-Avoid click-level instructions unless the UI is confusing. Readers of Kyma documentation are typically fairly tech-savvy.  
+> **TIP:** If possible, avoid click-level instructions. Readers of Kyma documentation are typically fairly tech-savvy.  
 Avoid using unnecessary words such as "please" or "remember". If there's just one way to do something, don't use "can".
 
 ✅ Save your changes.  
