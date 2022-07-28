@@ -5,7 +5,8 @@
 
 In the current (2022) setup of Kyma, the observability stack provides an opinionated and lightweight solution out of the box, which solves basic requirements for application operators. It does not focus on integration aspects that would support, for example, cross-runtime observations, advanced analytic tools, or reuse of users' existing observability infrastructure. Also, the current observability stack does not provide a guide how to extend the setup to become highly available (HA) with historical storage of the data.
 
-With such limited integration possibilities and providing only a very lightweight in-cluster solution, the current observability stack is missing a lot of usage scenarios, and the potential audience is very narrow. Introducing vendor-neutral integration possibilities and moving the focus away from backend solutions will enable The Kyma runtime for a broad audience and enable adoption.
+With such limited integration possibilities and providing only a very lightweight in-cluster solution, the current observability stack is missing a lot of usage scenarios, and the potential audience is very narrow. 
+By moving the focus away from backend solutions towards vendor-neutral integration possibilities, Kyma runtime will meet the needs of a broader audience and open up possibilities for wider adoption.
 
 ## Current Situation 
 
