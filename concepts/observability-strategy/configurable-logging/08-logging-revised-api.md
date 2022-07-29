@@ -275,16 +275,4 @@ spec:
       Labels:
         "job": "telemetry-fluent-bit"
       RemoveKeys: ["kubernetes", "stream"]
-      LabelMap:
-        "kubernetes":
-          "container_name": "container"
-          "host": "node"
-          "labels":
-            "app": "app"
-            "app.kubernetes.io/component": "component"
-            "app.kubernetes.io/name": "app"
-            "serverless.kyma-project.io/function-name": "function"
-          "namespace_name": "namespace"
-          "pod_name": "pod"
-        "stream": "stream"
 ```
