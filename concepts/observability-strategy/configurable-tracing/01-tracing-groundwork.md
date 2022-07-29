@@ -1,24 +1,24 @@
-# Configurable Monitoring: Groundwork
+# Configurable Tracing: Groundwork
 
 ## Current Situation and Motivation
 
-![a](./assets/monitoring-current.drawio.svg)
+![a](./assets/tracing-current.drawio.svg)
 
-The diagram shows that the current solution is based on a preconfigured Prometheus operator providing exporter components, and a Prometheus instance acting as collector and backend. On top, Grafana visualizes the data. However, the current setup does not support a neutral and unified way to integrate backends outside of the cluster at runtime.
+The diagram shows that the current solution is based on a preconfigured Jaeger deployment which is serving as collector, in-memory storage and UI. The system components and the user workload are pushing the trace data directly to that Jaeger deployment using the Zipkin or Jaeger protocol. The setup does not support a neutral and unified way to integrate backends outside of the cluster at runtime. The storage is not durable and will not scale dependent on the load.
 
 As outlined in the [general strategy](../strategy.md), integration (and with that, changing the focus away from in-cluster backends) is the key to open up the stack for a broad range of use cases. Users can simply bring their own backends, if they already use a commercial offering or run their own infrastructure. To name just a few advantages, the data can be stored outside the cluster in a managed offering, shared with the data of multiple clusters, and kept away from any tampering or deletion attempts by hackers.
 
-This concept proposes how to open up to those new scenarios by supporting convenient integration at runtime, leveraging vendor-neutral protocols.
+This concept proposes how to open up to those new scenarios by supporting convenient integration at runtime, leveraging vendor-neutral protocols and technologies.
 
 ## Requirements
 
 ### General
-- Users need a way to outstream metrics into multiple external systems. There will be no production-ready solution provided by Kyma, so user need to integrate with something.
+- Users need a way to outstream trace data into multiple external systems. There will be no production-ready solution provided by Kyma, so user need to integrate with something.
 - Users need a way to add custom metrics from users' workload to that outstreams. Support for custom metrics is a major requirement for a monitoring solution.
 - Users need a way to influence what metrics are outstreamed. External systems will have a price dependent on load. Not relevant metrics must be droppable.
 
 ### Basic backend configuration
-- Have a vendor-neutral layer of collectors that collects and ships metrics, but does not permanently store it (as a backend).
+- Have a vendor-neutral layer of collectors that collects and ships trace data, but does not permanently store it (as a backend).
 - The collector must run stably at any time when using the typical settings. Bad configuration must be prevalidated and rejected. Fast feedback is welcome.
 - Outputs
   - Support configuration of backends and outputs at runtime (no need to run a Kyma upgrade process) in a scenario-focused approach.
@@ -34,24 +34,23 @@ This concept proposes how to open up to those new scenarios by supporting conven
   - Inputs are predefined and should be based on the pull- and push-based approach. In best case, the users do not need to differentiate between the two types as they bring no semantical difference.
   - The input should be filterable on Namespace or workload level; ideally, metrics of uninteresting components should not create a resource footprint in the pipeline.
 - Filter
-  - Filtering of data (like dropping metrics of kyma-system components) must be possible.
+  - Filtering of data (like dropping attributes or whole traces) must be possible.
 
 ### Pre-integration
-- Kyma system components are pre-integrated, so the predefined input in the collector serves them by default.
-- Typical Kubernetes metrics are pre-integrated, including basic node and kube-state-metrics. Users might need this data for their own troubleshooting.
-- Istio metrics are pre-integrated and can be easily filtered and de-selected.
+- Kyma system components are pre-integrated, so the predefined input in the collector serves them by default (eventing and serverless mainly)
+- Istio trace data is pre-integrated and can be easily filtered and de-selected.
 
 ### Ease of integration
-- It should be easy to integrate metrics of a workload - either with a push approach to a well-known internal URL in a vendor-neutral protocol, or with a pull approach by annotating the workload.
-- Envoy metrics should be collected instantly (without user action).
+- It should be easy to integrate metrics of a workload - with a push approach to a well-known internal URL in a vendor-neutral protocol
+- Envoy trace data should be collected instantly (without user action).
 
 ### Local backend
-- Kyma will provide a blueprint based on Helm for installing the kube-prometheus-stack.
+- Kyma will provide a blueprint based on Helm for installing a Jaeger based Deployment.
 - The setup is not meant to be HA and scalable.
 
 ## Proposed Solution
 
-The proposal introduces a new preconfigured collector layer that's responsible for collecting metric data only. Users can configure those collectors dynamically at runtime with different configuration scenarios, so that the collectors start shipping the data to the configured backends. The dynamic configuration and management of the collector is handled by a new operator, which is configured using Kubernetes APIs. The collector and the new operator are bundled in a new core package called `telemetry`. The existing Kyma backends and UIs will be just one possible solution to integrate with. They can be installed manually by the user following a blueprint.
+The proposal introduces a new preconfigured collector layer that's responsible for collecting trace data only. OTLP will be supported as the only data protocol. Users can configure those collectors dynamically at runtime with different configuration scenarios, so that the collectors start shipping the data to the configured backends. The dynamic configuration and management of the collector is handled by a new operator, which is configured using Kubernetes APIs. The collector and the new operator are bundled in a new core package called `telemetry`. The existing Kyma backends and UIs will be just one possible solution to integrate with. They can be installed manually by the user following a blueprint. The trace propagation protocol will be switched to w3c-tracecontext to have a vendor-neutral approach in place.
 
-![b](./assets/monitoring-future.drawio.svg)
+![b](./assets/tracing-future.drawio.svg)
 
