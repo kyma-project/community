@@ -271,8 +271,8 @@ metadata:
 spec:
   output:
     grafana-loki:
-      Url: "http://logging-loki:3100/loki/api/v1/push"
-      Labels:
-        "job": "telemetry-fluent-bit"
-      RemoveKeys: ["kubernetes", "stream"]
+      url: "http://logging-loki:3100/loki/api/v1/push"
+      labels:
+        job: "telemetry-fluent-bit"
+      removekeys: ["kubernetes", "stream"]
 ```
