@@ -15,7 +15,7 @@ With the `ModuleTemplate`, you can integrate your module with `kyma-operator` . 
 
 `kyma-operator` is deployed in the control-plane and integrated with Kyma Environment Broker (KEB). Additional plan (preview) is created in KEB that creates Kyma clusters with kyma-operator only (no call to reconciler). This plan is the first playground to test KEB integration without affecting existing clusters and flows. The plan is tested with all environments (dev, stage, prod) to ensure we have all major integration issues resolved. The first module (frontrunner) can be submitted by the team and installed in the cluster. The minimal submission process is described and fully automated (manual steps are allowed only before submission). The minimal submission process looks like:
 - team verifies on their own if new module (or version) is product standard compliant 
-- team creates pull request to the control-plane that contains new/updated ModuleTemplate (by doing it team declares product standard compliance and functional correctness - can be checkbox in PR template)
+- team creates pull request to the control-plane that contains new/updated ModuleTemplate(s) (by doing it team declares product standard compliance and functional correctness - can be checkbox in PR template)
 - automated test verifies if the module operator can be installed/upgraded without issues for all release channels (with default settings) - it is not functional test or integration test 
 - automated test verifies if all images installed by operator are declared in the module template, signed by approved CA, vulnerability free
 - control-plane maintainer (codeowner) approves the PR which is automatically merged and rolled out
