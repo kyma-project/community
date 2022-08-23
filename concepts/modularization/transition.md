@@ -28,5 +28,5 @@ Regular plans use reconciler and kyma-operator in parallel (clusters are managed
 The submission process is extended with all aspects required for production deployment, like support, commercialization, security, micro-delivery, etc.
 ## Phase 3 - all modules are managed by `kyma-operator` 
 
-Reconciler is shutdown and KEB plans integrate only with `kyma-operator` (preview plan is also gone). All teams have submitted their modules using full version of submission process - the minimal submission process introduced in phase 2 extended to cover other aspects like support, microdelivery, etc. Other SAP teams can also submit their modules following improved technical guides and submission process description. 
+All modules are enabled in `kyma-operator` and modules are added to Kyma resources for existing clusters. Reconciler is shutdown and KEB plans integrate only with `kyma-operator` (preview plan is also gone). All teams have submitted their modules using full version of submission process - the minimal submission process introduced in phase 2 extended to cover other aspects like support, microdelivery, etc. Other SAP teams can also submit their modules following improved technical guides and submission process description. 
 
