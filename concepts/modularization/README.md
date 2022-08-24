@@ -23,6 +23,7 @@
   - [Why should I provide a central operator?](#why-should-i-provide-a-central-operator)
   - [How to roll out a new module version in phases?](#how-to-roll-out-a-new-module-version-in-phases)
   - [Can I run multiple versions of central operator](#can-i-run-multiple-versions-of-central-operator)
+  - [How do we migrate all the modules to the new concept?](#how-do-we-migrate-all-the-modules-to-the-new-concept)
 
 
 
@@ -151,7 +152,7 @@ Yes, but under the hood, `kyma-operator` will be used to install component opera
 
 ## I have a simple component with a Helm chart. Why do I need an operator?
 
-With the operator, you can fully control your component lifecycle and ensure that your component are reconciled  to the desired state (watch component config and actual state).
+With the operator, you can fully control your component lifecycle and ensure that your component are reconciled to the desired state (watch component config and actual state). Each operator comes with a custom resource that describes the module configuration and represents the module installation status. It is a way to enable users with providing chart overrides in a controlled way.
 
 ## I don't know how to write the operator. Can I use some generic operator for installing my chart?
 
@@ -170,3 +171,7 @@ Use release channels to push the new version in the rapid channel first. After s
 ## Can I run multiple versions of central operator
 
 Yes. But to avoid concurrent updates and unpredictable outcomes, you must ensure that each module instance described by your module custom resource is reconciled (managed) by a single operator. You can achieve that by marking your custom resources with labels pointing to release channels in your module template. Then you can deploy one central module per release channel and update them independently.
+
+## How do we migrate all the modules to the new concept?
+
+Read about the initial plan in the [transition document](transition.md).
