@@ -152,7 +152,7 @@ Yes, but under the hood, `kyma-operator` will be used to install component opera
 
 ## I have a simple component with a Helm chart. Why do I need an operator?
 
-With the operator, you can fully control your component lifecycle and ensure that your component are reconciled to the desired state (watch component config and actual state). Each operator comes with a custom resource that describes module configuration and represents module installation status. It is a way to enable users with providing chart overrides in a controlled way.
+With the operator, you can fully control your component lifecycle and ensure that your component are reconciled to the desired state (watch component config and actual state). Each operator comes with a custom resource that describes the module configuration and represents the module installation status. It is a way to enable users with providing chart overrides in a controlled way.
 
 ## I don't know how to write the operator. Can I use some generic operator for installing my chart?
 
@@ -174,4 +174,4 @@ Yes. But to avoid concurrent updates and unpredictable outcomes, you must ensure
 
 ## How do we migrate all the modules to the new concept?
 
-The initial plan is described in the [transition](transition.md) document.
+Read about the initial plan in the [transition document](transition.md).
