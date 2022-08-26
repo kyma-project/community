@@ -28,15 +28,16 @@ Additional assumptions:
 
 To unify the logs, which will make the debugging process and logs parsing much easier, I'd like to propose a single log format that every service, job, and all the components should follow:
 
-- **timestamp** - RFC3339 format of date, time, and timezone. For example: "2012-12-12T07:20:50.52Z".
+- **date** - RFC3339 format of date, time, and timezone. For example: "2012-12-12T07:20:50.52Z".
 - **level** - logging level. For example: "ERROR"
-- **message** - human-readable information with the specified format (notice that there is no data duplication in the context structure):
+- **msg** - human-readable information with the specified format (notice that there is no data duplication in the context structure):
     - error and fatal message: past tense started with, for example, `Failed to...`, after that the error wrapped with some meaningful context. For example: `Failed to provision runtime: while fetching release: while validating release: release does not contain installer yaml`.
     - info message: present continuous tense for the things that are about to be done, for example, `Starting processing...`, or past tense for the things that are finished, such as `Finished successfully!`.
     - warning message: a short explanation of what happened and what this can cause. For example: `Tiller configuration not found in the release artifacts. Proceeding to the Helm 3 installation...` or `Connection is not yet established. Retrying in 5 minutes...`.
     - message language: English. To preserve unified number/date formatting, go with the `en-us` locale.
     - encoding: `UTF-8`.
-- **context** - structure of the contextual information, such as operation (for example: `starting workers`), handler/ resolver (for example: `ProvisionRuntime`), controller, resource-namespaced name (for example: `production/application1`), operation ID, instance ID, operation stage, and so on. Users must be able to filter the logs so all the info provided here must be a useful and unique minimal set for every operation. Users must be able to find the needed resource in some store so provide here a name instead of an ID if it's easier to use later.
+- **context** - structure of the contextual information, such as operation (for example: `starting workers`), handler/ resolver (for example: `ProvisionRuntime`), controller, resource-namespaced name (for example: `production/application1`), operation ID, instance ID, operation stage, and so on. Users must be able to filter the logs so all the info provided here must be a useful and unique minimal set for every operation. 
+Flat context object is recommended as in the end the cloud storage flattens it to a key-value map to make it searchable using OpenSearch. Avoid dots (`.`) in the keys.
 - **caller** - string with information where in the code the log was created. For example: `"pkg/components/client.go:45"`.
 - **traceid** - 16-byte numeric value as a base16-encoded string. It'll be passed through a header, so the user can filter all the logs regarding the whole business operation in the whole system.
 - **spanid** - 16-byte numeric value as a base16-encoded string. It'll be randomly generated for each request handling so the user can filter the component logs for a specific operation handling.
