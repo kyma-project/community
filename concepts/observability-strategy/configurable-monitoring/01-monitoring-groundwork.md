@@ -23,12 +23,12 @@ This concept proposes how to open up to those new scenarios by supporting conven
 - Outputs
   - Support configuration of backends and outputs at runtime (no need to run a Kyma upgrade process) in a scenario-focused approach.
   - Support multiple configurations at the same time (in individual Kubernetes resources) to support easy activation of dedicated scenarios.
-  - As a minimum, support one vendor-neutral output. It should be possible to chain your custom collector for specific conversions. For example, supporting the OLTP protocol will support most of the vendors already. Chaining a custom OpenTelemetry  Collector can do custom conversion to a specific protocol.
+  - As a minimum, support one vendor-neutral output. It should be possible to chain your custom collector for specific conversions. For example, supporting the OLTP protocol will support most of the vendors already. Chaining a custom OpenTelemetry Collector can do custom conversion to a specific protocol.
   - Support typical settings for the supported outputs in a convenient way.
   - Non-typical settings should be possible as well, leaving the collector in an unsupported mode.
   - Secrets must be kept secret.
   - Secret bindings for the SAP BTP Operator must be supported, including secret rotations.
-  - Scenarios and Pipelines must be isolated and have their own buffer management. If one backend is in a bad shape and cannot process any data anymore, data should still continue to be pushed to other backends.
+  - Scenarios must be isolated and have their own buffer management. If one backend is in a bad shape and cannot process any data anymore, data should still continue to be pushed to other backends.
   - Typical auth mechanisms for the integration must be supported, especially client-certificate-based solutions.
 - Inputs
   - Inputs are predefined and should be based on the pull- and push-based approach. In best case, the users do not need to differentiate between the two types as they bring no semantical difference.
