@@ -15,7 +15,7 @@ This concept proposes how to open up to those new scenarios by supporting conven
 ### General
 - Users need a way to outstream trace data into multiple external systems. There will be no production-ready solution provided by Kyma, so user need to integrate with something.
 - Users need a way to add custom trace data from users' workload to that outstreams. Support for custom trace data is a major requirement for a distributed tracing solution.
-- Users need a way to influence the amount of traces being outstreamed. External systems will have a price dependent on load and traffic. Not relevant traces must be droppable with some strategies.
+- Users need a way to influence the amount of traces being outstreamed. External systems will have a price dependent on load and traffic. Not relevant traces must be droppable.
 
 ### Basic backend configuration
 - Have a vendor-neutral layer of collectors that collects and ships trace data, but does not permanently store it (as a backend).
@@ -36,15 +36,15 @@ This concept proposes how to open up to those new scenarios by supporting conven
   - Filtering of data (like dropping attributes or whole traces) must be possible.
 
 ### Pre-integration
-- Kyma system components are pre-integrated, so the predefined input in the collector serves them by default (eventing and serverless mainly)
-- Istio and serverless trace data is pre-integrated and can be easily filtered and de-selected.
+- Kyma system components are pre-integrated, so the predefined input in the collector serves them by default (Eventing and Serverless mainly).
+- Trace data from the Istio and Serverless components is pre-integrated and can be easily filtered and de-selected.
 
 ### Ease of integration
 - It should be easy to integrate trace data of a workload - with a push approach to a well-known internal URL in a vendor-neutral protocol
 - Envoy trace data should be collected instantly (without user action).
 
 ### Local backend
-- Kyma will provide a blueprint based on Helm for installing a Jaeger based Deployment.
+- Kyma will provide a blueprint based on Helm for installing a Jaeger-based Deployment.
 - The setup is not meant to be HA and scalable.
 
 ## Proposed Solution
