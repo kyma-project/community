@@ -10,6 +10,8 @@ Check
 - Istio
 - Serverless
 
+The [w3c-tracecontext](./pocs/w3c-tracecontext/README.md) proves that Kyma Serverless and EVenting supports w3c-tracecontext native. Istio can be enabled for it via the openCensusAgent tracer.
+
 ## Head-based sampling always on
 
 The user must be able to control how much trace data is streamed into the backend, because that has a huge impact on costs (mainly data transfer and storage). 
@@ -47,3 +49,9 @@ What should be the name for the OTLP push URL for traces? Should we use one for 
 
 Is it relevant to include/exclude trace data by Namespace or container? (Results in incomplete traces?)
 Is it relevant to include/exclude trace data by attributes? (Attributes might differ in the spans for one trace? Results in incomplete traces)
+
+## Can istio/envoy report spans via OTLP already, what is with w3c-tracecontext support?
+
+There is no way at the moment to let Istio send trace data to a backends in OTLP protocol. The [envoy-otel](https://github.com/envoyproxy/envoy/issues/9958) integration made very good progress already and support will be provided soon.
+
+You can enable w3c-tracecontext support already via the openCensusAgent tracer. That will change the data protocol from current zipkin to openCensus. As Jaeger does not support OpenCensus protocol, an otel-collector deployment as converter in the middle is required. The [w3c-tracecontext](./pocs/w3c-tracecontext/README.md) will outline how to enable it with an E2E scenario.
