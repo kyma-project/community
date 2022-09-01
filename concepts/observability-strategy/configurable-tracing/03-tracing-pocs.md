@@ -54,7 +54,7 @@ Is it relevant to include/exclude trace data by attributes? (Attributes might di
 
 At the moment, there is no way to let Istio send trace data to a backends in OTLP protocol. The [envoy-otel](https://github.com/envoyproxy/envoy/issues/9958) integration made very good progress already and support will be provided soon.
 
-You can enable w3c-tracecontext support already via the openCensusAgent tracer. That will change the data protocol from current zipkin to openCensus. As Jaeger does not support OpenCensus protocol, an otel-collector deployment as converter in the middle is required. The [w3c-tracecontext](./pocs/w3c-tracecontext/README.md) will outline how to enable it with an E2E scenario.
+Istio can be configured to use the w3c-tracecontext for trace propagation already. However, that cannot be achieved by a native Istio feature directly, but by using the `openCensusAgent tracer` instead of the `zipkin` tracer. That will change the data protocol from current zipkin to openCensus. As Jaeger does not support OpenCensus protocol, an otel-collector deployment as converter in the middle is required. The [w3c-tracecontext PoC](./pocs/w3c-tracecontext/README.md) provides such setup.
 
 ## How pipeline isolation can be achieved, is it feasible at all?
 
