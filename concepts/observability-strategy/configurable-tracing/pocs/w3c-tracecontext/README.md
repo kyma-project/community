@@ -18,13 +18,13 @@ So the PoC used the traditional approach with the meshConfig and a hardcoded pro
 4. Update Istio: `kyma deploy -s local --component istio`.
 5. Verify changes are applied: `kubectl -n istio-system get istiooperators.install.istio.io -oyaml`.
 6. Deploy sample app.
-```
-kubectl -n default apply -f https://raw.githubusercontent.com/a-thaler/kyma-function-examples/master/chain/apirule.yaml
-kubectl -n default apply -f https://raw.githubusercontent.com/a-thaler/kyma-function-examples/master/chain/subscription.yaml
-kubectl -n default apply -f https://raw.githubusercontent.com/a-thaler/kyma-function-examples/master/chain/svc-a.yaml
-kubectl -n default apply -f https://raw.githubusercontent.com/a-thaler/kyma-function-examples/master/chain/svc-b.yaml
-kubectl -n default apply -f https://raw.githubusercontent.com/a-thaler/kyma-function-examples/master/chain/svc-c.yaml
-```
+    ```
+    kubectl -n default apply -f https://raw.githubusercontent.com/a-thaler/kyma-function-examples/master/chain/apirule.yaml
+    kubectl -n default apply -f https://raw.githubusercontent.com/a-thaler/kyma-function-examples/master/chain/subscription.yaml
+    kubectl -n default apply -f https://raw.githubusercontent.com/a-thaler/kyma-function-examples/master/chain/svc-a.yaml
+    kubectl -n default apply -f https://raw.githubusercontent.com/a-thaler/kyma-function-examples/master/chain/svc-b.yaml
+    kubectl -n default apply -f https://raw.githubusercontent.com/a-thaler/kyma-function-examples/master/chain/svc-c.yaml
+    ```
 7. Call `GET demo.<yourClusterDomain>`.
 8. Check Jaeger `kubectl port-forward -n kyma-system svc/tracing-jaeger-query 16686:16686`.
 
