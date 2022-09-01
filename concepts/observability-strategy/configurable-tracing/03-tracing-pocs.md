@@ -10,7 +10,7 @@ Check
 - Istio
 - Serverless
 
-The [w3c-tracecontext](./pocs/w3c-tracecontext/README.md) proves that Kyma Serverless and EVenting supports w3c-tracecontext native. Istio can be enabled for it via the openCensusAgent tracer.
+The [w3c-tracecontext](./pocs/w3c-tracecontext/README.md) proves that Kyma Serverless and Eventing supports w3c-tracecontext natively. Istio can be enabled for it with the openCensusAgent tracer.
 
 ## Head-based sampling always on
 
@@ -52,10 +52,10 @@ Is it relevant to include/exclude trace data by attributes? (Attributes might di
 
 ## Can istio/envoy report spans via OTLP already, what is with w3c-tracecontext support?
 
-There is no way at the moment to let Istio send trace data to a backends in OTLP protocol. The [envoy-otel](https://github.com/envoyproxy/envoy/issues/9958) integration made very good progress already and support will be provided soon.
+At the moment, there is no way to let Istio send trace data to a backends in OTLP protocol. The [envoy-otel](https://github.com/envoyproxy/envoy/issues/9958) integration made very good progress already and support will be provided soon.
 
 You can enable w3c-tracecontext support already via the openCensusAgent tracer. That will change the data protocol from current zipkin to openCensus. As Jaeger does not support OpenCensus protocol, an otel-collector deployment as converter in the middle is required. The [w3c-tracecontext](./pocs/w3c-tracecontext/README.md) will outline how to enable it with an E2E scenario.
 
 ## How pipeline isolation can be achieved, is it feasible at all?
 
-The goal of the TracePipeline is to push trace data to multiple destinations using a different set of processors or sampling strategies. How an isolation of these pipelines can be achieved on base of the otel-collector? If one destination is down, can the other destination be continued?
+The goal of the TracePipeline is to push trace data to multiple destinations using a different set of processors or sampling strategies. How can an isolation of these pipelines be achieved based on the otel-collector? If one destination is down, can the other destination be continued?
