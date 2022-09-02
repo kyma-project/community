@@ -40,4 +40,9 @@ data:
   tls.key: {{ b64enc $cert.Key }}
 ```
 
-2. Generate the ca cert and the server cert and update the webhook configuration in the webhook server code itself (used by serverless and api-gateway). In this case, the certificates are generated upon the server startup.
+2. Generate the CA cert and the server cert and update the webhook configuration in the webhook server code itself (used by serverless and api-gateway). In this case, the certificates are generated upon the server startup.
+
+The above-mentioned approaches have the following disadvantages:
+
+1. The certs are getting updated every time the Helm Chart is rendered (every reconciliation). This updated is not atomic. For example, when the server cert is updated, but the caBundle of the webhook configuration is not yet updated, the webhook is non-working state and all the corresponding API requests will fail. This situation is actually not unkommon and is documented in [this bug](https://github.com/kyma-project/kyma/issues/15142). You can come up with some workarounds: make reconciler deploy resources in a strict predefined order or make sure the webhook chart does not contain the corresponding CRs. However, it does not fix the underlying problem and the bug may pop up again. 
+2. TODO
