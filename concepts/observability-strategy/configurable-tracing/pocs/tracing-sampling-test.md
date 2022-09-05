@@ -2,6 +2,8 @@
 
 This analysis aim to find out impact of different sampling rate configuration on istio proxy and overall call chain.
 
+Different scenarios should be compared end of analysis, like istio resource consumption, throughput, and impact of other kubernetes components. 
+
 ## Setup
 ### Opentelemetry
 OpenTelemetry version 0.22.1 deployed on a Kyma cluster (version 2.6.0) with a minimal setup,
@@ -33,6 +35,24 @@ Call is simple URL call of FunctionA with no additional data or http headers to 
 Call simulation should run 100 minutes long to put enough load on call chain and generate enough metrics to get precise result.
 
 ### Scenario 1
-Kyma standard deployment with istio sampling rate configured to 1%
+Kyma standard (version 2.6.0) deployment with istio sampling rate configured to **1%** sampling, to observe istio behavior like resource consumption and throughput.
+
+### Scenario 2 
+Kyma standard deployment from main branch with istio sampling rate configuration changed to **100%** sampling, to observe istio behavior like resource consumption and throughput.
+
+### Scenario 3
+Like **Scenario 2** described above with additional configuration on **Jaeger** and **Zipkin** receivers services without endpoint.
+
+Services **Jaeger** and **Zipkin** in this scenario are exist but pointing no valid endpoint. This scenario should focus additionally impact on kubernetes components.
+
+### Scenario 4
+
+Like Scenario 2 described above, this setup should run without collectors **Jaeger** and **Zipkin** to analyse istio behaviour and impact on kubernetes components like **CoreDNS**.
 
 ## Result
+
+Overall analysis focus on istio behavior and resource consumption under different configuration and setup, in **Scenario 3** and **Scenario 4** additionally focus on kubernetes components.
+
+### Scenario 1
+
+![a](../assets/istio-1per-overwiew.jpg)
