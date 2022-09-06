@@ -7,7 +7,6 @@ At the end of the analysis, different scenarios are compared, like Istio resourc
 ## Setup
 ### OpenTelemetry
 OpenTelemetry version 0.22.1 deployed on a Kyma cluster (version 2.6.0) with the following minimal setup:
-minimal setup mean :
 - Standard deployment of OpenTelemetry Helm Chart version 0.22.1
 - As receivers, standard Jaeger, Zipkin, and OTLP configured
 - As processor only memory limiter processor with standard configuration
