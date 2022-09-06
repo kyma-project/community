@@ -5,14 +5,14 @@ This analysis aim to find out impact of different sampling rate configuration on
 Different scenarios should be compared end of analysis, like istio resource consumption, throughput, and impact of other kubernetes components. 
 
 ## Setup
-### Opentelemetry
+### OpenTelemetry
 OpenTelemetry version 0.22.1 deployed on a Kyma cluster (version 2.6.0) with a minimal setup,
 minimal setup mean :
 - Standard deployment of OpenTelemetry Helm Chart version 0.22.1
 - As receivers standard Jaeger, Zipkin, and OTLP configured
 - As processor only memory limiter processor with standard configuration
 - As exporter only log/info and/or NOP exporter to keep impact of OpenTelemetry as low as possible
-- No andy additional extensions
+- No any additional extensions
 
 ### Sampling App Deployment
 
@@ -94,6 +94,7 @@ Although resource consumtion during test execution increased, there are no consi
 | Fig. 6 Istio Proxy Resource Consumption |
 
 On Kubernetes CoreDNS service side nothing important to mention here, screenshots below shown an overview.
+
 DNS request per second increase during test execution from 2 packet/sec. to 3.5 packet/sec. also DNS lookups increased. 
 
 DNS Cache overview show cache hits are increased which indicate DNS records request results are mostly coming from cache.
@@ -108,7 +109,8 @@ DNS Cache overview show cache hits are increased which indicate DNS records requ
 
 #### Summary
 Test results shown there is a small impact on istio proxy but none of those are overall considerably.
-Also, on Kubernetes side look good, CoreDNS service side is no considerable DNS record request observed and DNS records mostly read from DNS cache.
+On Kubernetes CoreDNS side no suspicion behavior observed, DNS request are increased from 2 to 3 request per second, DNS lookups increased from 1 to 2 per second, and 
+DNS cache hits increased parallel to the DNS lookup responses, which indicate lookups request hit mostly cache.
 
 ### Scenario 2
 
@@ -145,7 +147,7 @@ Global Request Volume increased from 10 to 65.8 operation per second which indic
 | :--: |
 | Fig. 5 Service Network Details |
 
-Screenshot below show istio proxy resource consumption during test, bytes transferred during test phase increased from around 10KB/s to 300KB/s in peak time.
+Screenshot below show istio proxy resource consumption during test, bytes transferred during the test execution time increased from around 10KB/s to 300KB/s in peak time.
 
 Memory consumption of istio proxy increased from 61MB to 68.7 MB in peak time, on CPU consumption side, before test started was 0.100 in peak time the value increased to around 0.170.
 
@@ -155,10 +157,10 @@ Although resource consumption during test execution increased, there are no cons
 | :--: |
 | Fig. 6 Istio Proxy Resource Consumption |
 
-On Kubernetes CoreDNS service side nothing important to mention here, screenshots below shown an overview.
-DNS request per second increase during test execution from 2 packet/sec. to 3.3 packet/sec. also DNS lookups increased.
+On Kubernetes CoreDNS service side nothing important observed, screenshots below shown an overview on CoreDNS service.
+DNS request per second increase during the test execution time from 2 packet/sec. to 3.3 packet/sec. also DNS lookups increased.
 
-DNS Cache overview show cache hits are increased which indicate DNS records request results are mostly coming from cache.
+DNS Cache overview show cache hits are increased parallel to DNS lookup request which indicate DNS records request results are mostly coming from cache.
 
 | ![Kubernetes CoreDNS Overview](../assets/istio-100per-coredns-overview.jpg) |
 | :--: |
@@ -172,15 +174,14 @@ DNS Cache overview show cache hits are increased which indicate DNS records requ
 Test results shown there is a small impact on istio proxy but none of those are overall considerably.
 On Kubernetes side look good, CoreDNS service side is no considerable DNS record request observed and DNS records mostly read from DNS cache.
 
-Test shown 100% sampling rate, increase istio proxy network traffic, in certain circumstances can cause increased network latency.
+Test shown 100% sampling rate, increase overall network traffic, in certain circumstances can cause increased network latency and some networking issues.
 
 ### Scenario 3
 
 Following picture shown call execution summary (from client perspective) of test cluster with istio sampling rate 100% setup.
 Success rate of call execution is 33% and average response time is around **9 seconds.**
 
-Unsuccessfully calls mostly result HTTP 503, main cause of not successfully calls is, istio proxy can't access upstream service jaeger tracing collector service,
-this service has a broken endpoint.
+Unsuccessfully calls mostly result HTTP 503 because of upstream services can't access Jaeger tracing collector.
 
 
 | ![Call execution summary](../assets/istio-100per-broken-svc-call-summary.jpg) |
@@ -191,7 +192,7 @@ this service has a broken endpoint.
 Screenshot below show overview istio mesh network, as call execution summary cluster metrics also show 33% of success rate inclusive local call chain.
 Latency on average stay over 951ms with a 7 operation per second per service.
 
-Global Request Volume increased from 10 to 72.8 operation per second which indicate high traffic on istio side.
+Global Request Volume increased from 10 to 72.8 operation per second which indicate high traffic on istio mesh.
 
 | ![Istio mesh mverview](../assets/istio-100per-broken-svc-overwiew.jpg) |
 | :--: |
@@ -209,11 +210,11 @@ Global Request Volume increased from 10 to 72.8 operation per second which indic
 | :--: |
 | Fig. 5 Service Network Details |
 
-Screenshot below show istio proxy resource consumption during test, bytes transferred during test phase increased from around 10KB/s to 180KB/s in peak time.
+Screenshot below show istio proxy resource consumption during the test execution time, bytes transferred during test phase increased from around 10KB/s to 180KB/s in peak time.
 
 Memory consumption of istio proxy increased from 61MB to 67 MB in peak time, on CPU consumption side, before test started was 0.100 in peak time the value increased to around 0.140.
 
-Compare to test **Scenario 2** amount of data transferred is almost 50% decreased which show no tracing data could be transferred to the collectors.
+Compare to the test **Scenario 2** amount of data transferred is almost 50% decreased which show no tracing data could be transferred to the tracing collectors.
 
 Although resource consumption during test execution increased, there are no considerable resource consumption observed.
 
@@ -221,10 +222,10 @@ Although resource consumption during test execution increased, there are no cons
 | :--: |
 | Fig. 6 Istio Proxy Resource Consumption |
 
-On Kubernetes CoreDNS service side, DNS request significantly increased, from 2 paket per second to almost 8 packet per second during the test execution time.
-DNS lookup times also increased significantly, compare to test case 100% sampling in **Scenario 2** increased 100%.
+Kubernetes CoreDNS service show increased DNS request and DNS lookup response time, to compared with **Scenario 2**
+DNS request and DNS lookup response times are more than doubled.
 
-DNS cache behavior also changed if we compare with **Scenario 2**, cache hits and misses doubled during test execution.
+Same behavior also observable on DNS cache metrics side, cache misses almost doubled to compared with **Scenario 2**.
 
 | ![Kubernetes CoreDNS Overview](../assets/istio-100per-broken-svc-coredns-overview.jpg) |
 | :--: |
@@ -235,27 +236,25 @@ DNS cache behavior also changed if we compare with **Scenario 2**, cache hits an
 | Fig. 8 Kubernetes CoreDNS Cache |
 
 #### Summary
-Test results shown there is a small impact on istio proxy resource consumption but network throughput getting bad.
-Network latency increased and Kubernetes CoreDNS service has more work compare to **Scenario 2**
+Overall network latency resulted bad to compare to **Scenario 2**, response times increased from just below 1 second up to 9 second.
+Same behavior observable on Kubernetes CoreDNS side, DNS requests and DNS lookups times increased up to 100% to compared with **Scenario 2**
 
 ### Scenario 4
 
-Following picture shown call execution summary (from client perspective) of test cluster with istio sampling rate 100% setup.
+Fig.1 shown call execution summary (from client perspective) of test cluster with istio sampling rate 100% setup.
 Success rate of call execution is 99% and average response time is around **1 seconds.**
 
-Unsuccessfully calls mostly result HTTP 503, main cause of not successfully calls are, either istio proxy can't access upstream service (serverless function self) or jaeger tracing collector service,
-which result both upstream services (serverless function and jaeger) are can't deal such load but on istio proxy side noting suspicion observed.
-
+Unsuccessfully calls mostly result HTTP 503, main cause was high network latency and high load to the upstream service. 
 
 | ![Call execution summary](../assets/istio-100per-no-svc-call-summary.jpg) |
 | :--: |
 | Fig. 1 Call execution summary |
 
 
-Screenshot below show overview istio mesh network, as call execution summary cluster metrics also show 100% of success rate inclusive local call chain.
+Fig. 2 below show overview istio mesh network, as call execution summary cluster metrics also show 100% of success rate inclusive local call chain.
 Latency on average stay over 727ms with a 7.30 operation per second per service.
 
-Global Request Volume increased from 10 to 21.1 operation per second which indicate increased traffic on istio side.
+Global Request Volume increased from 10 to 21.1 operation per second, compared to the **Scenario 2** and **Scenario 3** with Global operation per second value over 65, here missing calls to the tracing collector service calls.
 
 | ![Istio mesh mverview](../assets/istio-100per-no-svc-overwiew.jpg) |
 | :--: |
@@ -273,20 +272,21 @@ Global Request Volume increased from 10 to 21.1 operation per second which indic
 | :--: |
 | Fig. 5 Service Network Details |
 
-Screenshot below show istio proxy resource consumption during test, bytes transferred during test phase increased from around 10KB/s to 77KB/s in peak time.
+Fig. 6 below show istio proxy resource consumption during the test execution time, bytes transferred during entire test increased from around 10KB/s to 77KB/s in the peak time.
 
-Memory consumption of istio proxy increased from 66MB to 67 MB in peak time, on CPU consumption side, before test started was 0.050 in peak time the value increased to around 0.100.
+Memory consumption of istio proxy increased from 66MB to 67 MB in peak time, CPU consumption, before test started was 0.050 in the peak time the value increased to around 0.100.
 
 By test start, memory consumption as well as CPU consumption increased rapidly but decreased in 5 minutes to the normal values.
 
-Although resource consumption during test execution increased, there are no considerable resource consumption observed.
+Data amount transferred with in the mesh compared to previous scenarios **Scenario 2** and **Scenario 3** significantly decreased,
+which to lead back missing tracing collector service calls.
 
 | ![Istio resource consumption](../assets/istio-100per-no-svc-resource.jpg) |
 | :--: |
 | Fig. 6 Istio Proxy Resource Consumption |
 
 Like **Scenario 3** Kubernetes CoreDNS service side DNS request per second increased significantly, from 2 packet per second to 8 packet per second.
-DNS cache misses also doubled in the test execution time, which also explain increased DSN lookup response time, this value increased from 1 second to 4 second during test execution time.
+DNS cache misses also doubled in the test execution time, which also explain increased DSN lookup response time, this value increased from 1 second to 4 seconds and response times up to 500ms during test execution time.
 
 | ![Kubernetes CoreDNS Overview](../assets/istio-100per-no-svc-coredns-overview.jpg) |
 | :--: |
@@ -297,11 +297,9 @@ DNS cache misses also doubled in the test execution time, which also explain inc
 | Fig. 8 Kubernetes CoreDNS Cache |
 
 #### Summary
-Test results shown there is a small impact on istio proxy but none of those are overall considerably.
 
-CoreDNS service lookup times increased significantly because of unresolved dns entries.
+CoreDNS service lookup times and DNS requests are increased significantly, overall network latency increased. 
 
-This scenario show bad behavior of CoreDNS service and bad istio proxy network traffic result.
-### Peroration
+### Conclusion
 
 TBD
