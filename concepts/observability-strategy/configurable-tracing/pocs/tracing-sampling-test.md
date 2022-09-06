@@ -298,10 +298,10 @@ DNS cache misses also doubled in the test execution time, which also explain inc
 
 #### Summary
 Test results shown there is a small impact on istio proxy but none of those are overall considerably.
-On Kubernetes side look good, CoreDNS service side is no considerable DNS record request observed and DNS records mostly read from DNS cache.
 
-Test shown 100% sampling rate, increase istio proxy network traffic, in certain circumstances can cause increased network latency.
+CoreDNS service lookup times increased significantly because of unresolved dns entries.
 
+This scenario show bad behavior of CoreDNS service and bad istio proxy network traffic result.
 ### Peroration
 
 TBD
