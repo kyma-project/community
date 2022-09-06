@@ -15,7 +15,7 @@ OpenTelemetry version 0.22.1 deployed on a Kyma cluster (version 2.6.0) with the
 
 ### Sampling App Deployment
 
-As sampling app, 3 serverless function deployed with istio sidecar injected and which calling each other in a chain like
+As sampling app, three serverless Functions are deployed with Istio sidecar injected. To simulate a trace fully sampled with an external call, the Functions call each other in the following chain:
 **Extern Call -> FunctionA -> FunctionB -> FunctionC** to simulate a trace fully sampled with an external call.
 
 All functions are deployed with NodeJs version 16.
