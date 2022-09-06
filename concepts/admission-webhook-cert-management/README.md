@@ -55,3 +55,27 @@ You can come up with some workarounds: make reconciler deploy resources in a str
 This approach is used by serverless and api-gateway. In this case, the certificates are generated upon the server startup. Here's an [example of this solution](https://github.com/kyma-project/api-gateway/blob/main/internal/webhook/certificates.go).
 
 Issuing a certificate in the webhook server code doesn't have the above-mentioned problem. However, in this case it has to be implemented by every operator. In addition to that, the webhook server will have to be provided with extended permissions to change the corresponding `validatingwebhookconfiguration` (or the `mutatingwebhookconfiguration`). In addition to that, both the CA and the server certificate will be recreated upon each pod restart and will never be rotated if the pod is not restarted.
+
+
+## How other teams manage webhook certificates
+
+The most prominent operator frameworks advertise `cert-manager` as a possible solution to manage webhook certificate:
+
+- Kubebuilder: https://kubebuilder.io/cronjob-tutorial/cert-manager.html
+- Operator SDK: https://developer.ibm.com/tutorials/create-a-conversion-webhook-with-the-operator-sdk/
+
+Let's discribe a few possible solutions.
+
+### Gardener cert-manager
+
+https://github.com/gardener/cert-management
+
+Since Kyma-on-Gardener is a very common setup, and Gardener has a pre-installed cert-manager, it seems to be a natural choice. However Gardener `cert-manager` is actually a separate open source project and is very different from the upstrem `cert-manager`. It comes with a different feature set (it even has its own CRDs). From the Github project description:
+
+>In a multi-cluster environment like Gardener, using existing open source projects for certificate management like cert-manager becomes cumbersome. With this project the separation of concerns between multiple clusters is realized more easily. The cert-controller-manager runs in a secured cluster where the issuer secrets are stored. At the same time it watches an untrusted source cluster and can provide certificates for it.
+
+However, according to the project maintainers the Gardener `cert-manager` is built for mainly for the “Let’s Encrypt” use-cases (publicly resolvable domain names). It does not support self-signed issuers, nor it supports caBundle injection. The project maintainers suggest using the upstream `cert-manager` from the community for self-signed/webhook certs.
+
+### Upstream cert-manager
+
+https://github.com/cert-manager/cert-manager
