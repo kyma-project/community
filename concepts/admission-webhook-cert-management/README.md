@@ -79,3 +79,11 @@ However, according to the project maintainers the Gardener `cert-manager` is bui
 ### Upstream cert-manager
 
 https://github.com/cert-manager/cert-manager
+
+<img src="assets/admission-controller-certs-with-cert-manager.drawio.svg">
+
+This approach has one big downsides: cert-manager is deployed using Helm, so the chart has to be maintained (upgrades, security patches, etc.)
+
+### Init container
+
+https://www.velotio.com/engineering-blog/managing-tls-certificate-for-kubernetes-admission-webhook
