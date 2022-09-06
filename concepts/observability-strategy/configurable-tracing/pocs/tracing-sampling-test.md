@@ -24,7 +24,11 @@ All Functions are deployed with NodeJs version 16.
 As call simulator Gatling version 3.8.3 used.
 
 ## Scenario
-All scenarios are having same OpenTelemetry deployment and configuration described above.
+### Common Setup
+
+The following setup is identical across all scenarios:
+
+* OpenTelemetry deployment and configuration (see [Setup](#setup))
 
 Same Sampling app used in all scenarios.
 
