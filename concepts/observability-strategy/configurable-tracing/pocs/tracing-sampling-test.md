@@ -1,6 +1,6 @@
 # OpenTelemetry/Istio Sampling Rate Analysis
 
-This analysis aim to find out impact of different sampling rate configuration on istio proxy and overall call chain.
+This analysis aims to find out the impact of different sampling rate configuration on the Istio proxy and overall call chain.
 
 Different scenarios should be compared end of analysis, like istio resource consumption, throughput, and impact of other kubernetes components. 
 
