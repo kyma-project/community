@@ -11,64 +11,64 @@
 * Capability check removed: https://github.com/kyma-project/kyma/blob/main/resources/telemetry/charts/fluent-bit/templates/servicemonitor.yaml#L1
 * Custom dashboard name: https://github.com/kyma-project/kyma/blob/main/resources/telemetry/charts/fluent-bit/dashboards/fluent-bit.json#L1302
 
-### Prometheus & Prometheus Operator
+### Prometheus and Prometheus Operator
 #### /monitoring/
 
-| resource | modification description | prometheus-community | kyma-project |
+| Resource | Modification Description | Prometheus Community | Kyma Project |
 | -------  | ------------------------ | -------------------- | ------------ |
 | charts/prometheus-istio/templates/deploy.yaml | Different path for monitoring CRDs | /crds/ | /installation/resources/crds/monitoring/ | 
 | charts/prometheus-istio/templates/deploy.yaml | Different names for monitoring CRDS | crd-*.yaml | *.monitoring.coreos.crd.yaml | 
 | charts/prometheus-istio/templates/deploy.yaml | priorityClassName considers global priorityClass | [L#36](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/templates/server/deploy.yaml#L36) | [L#43](https://github.com/kyma-project/kyma/blob/main/resources/monitoring/charts/prometheus-istio/templates/deploy.yaml#L43) | 
-| charts/prometheus-istio/templates/deploy.yaml | images are referenced from global values | [L#57](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/templates/server/deploy.yaml#L57) |  | 
-| charts/prometheus-istio/templates/deploy.yaml | images are referenced from global values | [L#87](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/templates/server/deploy.yaml#L87) |  | 
-| charts/prometheus-istio/templates/deploy.yaml | sidecar has containerSecurityContext | n/a |  | 
+| charts/prometheus-istio/templates/deploy.yaml | Images are referenced from global values | [L#57](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/templates/server/deploy.yaml#L57) |  | 
+| charts/prometheus-istio/templates/deploy.yaml | Images are referenced from global values | [L#87](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/templates/server/deploy.yaml#L87) |  | 
+| charts/prometheus-istio/templates/deploy.yaml | Sidecar has containerSecurityContext | n/a |  | 
 | charts/prometheus-istio/templates/sts.yaml | priorityClassName considers global priorityClass | [L#36](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/templates/server/sts.yaml#L36) |  | 
-| charts/prometheus-istio/templates/sts.yaml | images are referenced from global values | [L#57](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/templates/server/sts.yaml#L57) |  | 
-| charts/prometheus-istio/templates/sts.yaml | images are referenced from global values | [L#87](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/templates/server/sts.yaml#L87) |  | 
-| charts/prometheus-istio/templates/sts.yaml | add containerSecurityContext | n/a |  | 
-| templates/grafana/dashboards-1.14/cluster-total.yaml | dashboard not editable | [L#43](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/cluster-total.yaml#L43) |  | 
-| templates/_helpers.tpl | define imageurl | n/a | [L#207](https://github.com/kyma-project/kyma/blob/main/resources/monitoring/templates/_helpers.tpl#L207) | 
-| templates/grafana/dashboards-1.14/etcd.yaml | dashboard not editable | [L#28](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/etcd.yaml#L28) |  | 
-| templates/grafana/dashboards-1.14/grafana-overview.yaml | dashboard disabled | n/a |  | 
-| templates/grafana/dashboards-1.14/k8s-coredns.yaml | dashboard not editable | [L#34](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-coredns.yaml#L34) |  | 
-| templates/grafana/dashboards-1.14/k8s-resources-cluster.yaml | dashboard not editable | [L#29](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-cluster.yaml#L29) |  | 
-| templates/grafana/dashboards-1.14/k8s-resources-namespace.yaml | dashboard not editable | [L#29](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-namespace.yaml#L29) |  | 
-| templates/grafana/dashboards-1.14/k8s-resources-node.yaml | dashboard not editable | [L#29](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-node.yaml#L29) |  | 
-| templates/grafana/dashboards-1.14/k8s-resources-pod.yaml | dashboard not editable | [L#29](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-pod.yaml#L29) |  | 
-| templates/grafana/dashboards-1.14/k8s-resources-workload.yaml | dashboard not editable | [L#29](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-workload.yaml#L29) |  | 
-| templates/grafana/dashboards-1.14/k8s-resources-workloads-namespace.yaml | dashboard not editable | [L#29](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-workloads-namespace.yaml#L29) |  | 
-| templates/grafana/dashboards-1.14/namespace-by-pod.yaml | dashboard not editable | [L#43](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/namespace-by-pod.yaml#L43) |  | 
-| templates/grafana/dashboards-1.14/namespace-by-workload.yaml | dashboard not editable | [L#43](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/namespace-by-workload.yaml#L43) |  | 
-| templates/grafana/dashboards-1.14/pod-total.yaml | dashboard not editable | [L#43](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/pod-total.yaml#L43) |  | 
-| templates/grafana/dashboards-1.14/prometheus-remote-write.yaml | dashboard not editable | [L#35](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/prometheus-remote-write.yaml#L35) |  | 
-| templates/grafana/dashboards-1.14/workload-total.yaml | dashboard not editable | [L#43](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/workload-total.yaml#L43) |  | 
-| templates/grafana/dashboards-1.14/prometheus.yaml | dashboard not editable | [L#29](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/prometheus.yaml#L29) |  | 
-| templates/grafana/dashboards-1.14/prometheus.yaml | remove hard-coded monitoring namespace in label_values | [L#1159](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/prometheus.yaml#L1159) |  | 
-| templates/prometheus/rules-1.14/kubernetes-system-kubelet.yaml | alert KubeletPodStartUpLatencyHigh additional service label | [L#110](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/kubernetes-system-kubelet.yaml#L110) |  | 
-| templates/prometheus/rules-1.14/etcd.yaml | renamed annotation message to description | [L#30](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L30) |  | 
-| templates/prometheus/rules-1.14/etcd.yaml | renamed annotation message todescription | [L#42](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L42) |  | 
-| templates/prometheus/rules-1.14/etcd.yaml | renamed annotation message to description | [L#54](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L54) |  | 
-| templates/prometheus/rules-1.14/etcd.yaml | renamed annotation message to description | [L#66](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L66) |  | 
-| templates/prometheus/rules-1.14/etcd.yaml | renamed annotation message to description | [L#82](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L82) |  | 
-| templates/prometheus/rules-1.14/etcd.yaml | renamed annotation message to description | [L#98](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L98) |  | 
-| templates/prometheus/rules-1.14/etcd.yaml | renamed annotation message to description | [L#112](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L112) |  | 
-| templates/prometheus/rules-1.14/etcd.yaml | renamed annotation message to description | [L#127](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L127) |  | 
-| templates/prometheus/rules-1.14/etcd.yaml | renamed annotation message to description | [L#138](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L138) |  | 
-| templates/prometheus/rules-1.14/etcd.yaml | renamed annotation message to description | [L#152](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L152) |  | 
-| templates/prometheus/rules-1.14/etcd.yaml | renamed annotation message to description | [L#166](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L166) |  | 
-| templates/prometheus/rules-1.14/etcd.yaml | renamed annotation message to description | [L#180](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L180) |  | 
-| templates/prometheus/rules-1.14/etcd.yaml | renamed annotation message to description | [L#194](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L194) |  | 
-| templates/grafana/dashboards-1.14/alertmanager-overview.yaml | enabled flag | n/a |  | 
-| templates/alertmanager/alertmanager.yaml | images are referenced from global values | [L#15](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/alertmanager/alertmanager.yaml#L15) |  | 
-| templates/grafana/dashboards-1.14/apiserver.yaml | dashboard disabled | n/a |  | 
-| templates/prometheus/prometheus.yaml | images are referenced from global values | [L#34](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/prometheus.yaml#L34) |  | 
+| charts/prometheus-istio/templates/sts.yaml | Images are referenced from global values | [L#57](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/templates/server/sts.yaml#L57) |  | 
+| charts/prometheus-istio/templates/sts.yaml | Images are referenced from global values | [L#87](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/templates/server/sts.yaml#L87) |  | 
+| charts/prometheus-istio/templates/sts.yaml | Add containerSecurityContext | n/a |  | 
+| templates/grafana/dashboards-1.14/cluster-total.yaml | Dashboard not editable | [L#43](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/cluster-total.yaml#L43) |  | 
+| templates/_helpers.tpl | Define imageurl | n/a | [L#207](https://github.com/kyma-project/kyma/blob/main/resources/monitoring/templates/_helpers.tpl#L207) | 
+| templates/grafana/dashboards-1.14/etcd.yaml | Dashboard not editable | [L#28](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/etcd.yaml#L28) |  | 
+| templates/grafana/dashboards-1.14/grafana-overview.yaml | Dashboard disabled | n/a |  | 
+| templates/grafana/dashboards-1.14/k8s-coredns.yaml | Dashboard not editable | [L#34](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-coredns.yaml#L34) |  | 
+| templates/grafana/dashboards-1.14/k8s-resources-cluster.yaml | Dashboard not editable | [L#29](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-cluster.yaml#L29) |  | 
+| templates/grafana/dashboards-1.14/k8s-resources-namespace.yaml | Dashboard not editable | [L#29](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-namespace.yaml#L29) |  | 
+| templates/grafana/dashboards-1.14/k8s-resources-node.yaml | Dashboard not editable | [L#29](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-node.yaml#L29) |  | 
+| templates/grafana/dashboards-1.14/k8s-resources-pod.yaml | Dashboard not editable | [L#29](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-pod.yaml#L29) |  | 
+| templates/grafana/dashboards-1.14/k8s-resources-workload.yaml | Dashboard not editable | [L#29](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-workload.yaml#L29) |  | 
+| templates/grafana/dashboards-1.14/k8s-resources-workloads-namespace.yaml | Dashboard not editable | [L#29](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-workloads-namespace.yaml#L29) |  | 
+| templates/grafana/dashboards-1.14/namespace-by-pod.yaml | Dashboard not editable | [L#43](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/namespace-by-pod.yaml#L43) |  | 
+| templates/grafana/dashboards-1.14/namespace-by-workload.yaml | Dashboard not editable | [L#43](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/namespace-by-workload.yaml#L43) |  | 
+| templates/grafana/dashboards-1.14/pod-total.yaml | Dashboard not editable | [L#43](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/pod-total.yaml#L43) |  | 
+| templates/grafana/dashboards-1.14/prometheus-remote-write.yaml | Dashboard not editable | [L#35](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/prometheus-remote-write.yaml#L35) |  | 
+| templates/grafana/dashboards-1.14/workload-total.yaml | Dashboard not editable | [L#43](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/workload-total.yaml#L43) |  | 
+| templates/grafana/dashboards-1.14/prometheus.yaml | Dashboard not editable | [L#29](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/prometheus.yaml#L29) |  | 
+| templates/grafana/dashboards-1.14/prometheus.yaml | Remove hard-coded monitoring Namespace in label_values | [L#1159](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/prometheus.yaml#L1159) |  | 
+| templates/prometheus/rules-1.14/kubernetes-system-kubelet.yaml | Alert KubeletPodStartUpLatencyHigh additional service label | [L#110](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/kubernetes-system-kubelet.yaml#L110) |  | 
+| templates/prometheus/rules-1.14/etcd.yaml | Renamed annotation message to description | [L#30](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L30) |  | 
+| templates/prometheus/rules-1.14/etcd.yaml | Renamed annotation message to description | [L#42](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L42) |  | 
+| templates/prometheus/rules-1.14/etcd.yaml | Renamed annotation message to description | [L#54](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L54) |  | 
+| templates/prometheus/rules-1.14/etcd.yaml | Renamed annotation message to description | [L#66](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L66) |  | 
+| templates/prometheus/rules-1.14/etcd.yaml | Renamed annotation message to description | [L#82](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L82) |  | 
+| templates/prometheus/rules-1.14/etcd.yaml | Renamed annotation message to description | [L#98](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L98) |  | 
+| templates/prometheus/rules-1.14/etcd.yaml | Renamed annotation message to description | [L#112](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L112) |  | 
+| templates/prometheus/rules-1.14/etcd.yaml | Renamed annotation message to description | [L#127](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L127) |  | 
+| templates/prometheus/rules-1.14/etcd.yaml | Renamed annotation message to description | [L#138](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L138) |  | 
+| templates/prometheus/rules-1.14/etcd.yaml | Renamed annotation message to description | [L#152](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L152) |  | 
+| templates/prometheus/rules-1.14/etcd.yaml | Renamed annotation message to description | [L#166](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L166) |  | 
+| templates/prometheus/rules-1.14/etcd.yaml | Renamed annotation message to description | [L#180](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L180) |  | 
+| templates/prometheus/rules-1.14/etcd.yaml | Renamed annotation message to description | [L#194](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/rules-1.14/etcd.yaml#L194) |  | 
+| templates/grafana/dashboards-1.14/alertmanager-overview.yaml | Enabled flag | n/a |  | 
+| templates/alertmanager/alertmanager.yaml | Images are referenced from global values | [L#15](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/alertmanager/alertmanager.yaml#L15) |  | 
+| templates/grafana/dashboards-1.14/apiserver.yaml | Dashboard disabled | n/a |  | 
+| templates/prometheus/prometheus.yaml | Images are referenced from global values | [L#34](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/prometheus.yaml#L34) |  | 
 | templates/prometheus/prometheus.yaml | priorityClassName considers global priorityClass | [L#297](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus/prometheus.yaml#L297) |  | 
-| charts/prometheus-istio/Chart.yaml | deleted home, icon, sources, maintainers, engine, type, dependencies |  |  | 
-| charts/prometheus-istio/Chart.yaml | renamed: prometheus-istio |  |  | 
+| charts/prometheus-istio/Chart.yaml | Deleted home, icon, sources, maintainers, engine, type, dependencies |  |  | 
+| charts/prometheus-istio/Chart.yaml | Renamed: prometheus-istio |  |  | 
 | templates/prometheus-operator/deployment.yaml | priorityClassName considers global priorityClass | [L#31](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus-operator/deployment.yaml#L31) |  | 
-| templates/prometheus-operator/deployment.yaml | images are referenced from global values (operator) | [L#37](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus-operator/deployment.yaml#L37) |  | 
-| templates/prometheus-operator/deployment.yaml | images are referenced from global values (configmap reloader) | [L#69](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus-operator/deployment.yaml#L69) |  | 
-| templates/prometheus-operator/deployment.yaml | added liveness/readiness probes | n/a |  | 
+| templates/prometheus-operator/deployment.yaml | Images are referenced from global values (operator) | [L#37](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus-operator/deployment.yaml#L37) |  | 
+| templates/prometheus-operator/deployment.yaml | Images are referenced from global values (configmap reloader) | [L#69](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus-operator/deployment.yaml#L69) |  | 
+| templates/prometheus-operator/deployment.yaml | Added liveness/readiness probes | n/a |  | 
 | charts/prometheus-istio/values.yaml | serviceAccounts.nodeExporter.create: false | [L#14](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml#L14) |  | 
 | charts/prometheus-istio/values.yaml | serviceAccounts.alertmanager.create: false | [L#18](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml#L18) |  | 
 | charts/prometheus-istio/values.yaml | serviceAccounts.pushgateway.create: false | [L#22](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml#L22) |  | 
@@ -97,7 +97,7 @@
 | charts/prometheus-istio/values.yaml | envoyStats.labeldropRegex: ^(grpc_response_status | n/a |  | 
 | charts/prometheus-istio/values.yaml | extraScrapeConfigs | n/a |  | 
 | charts/prometheus-istio/values.yaml | grafana.datasource.enabled: false | n/a |  | 
-| charts/prometheus-istio/values.yaml | deleted example scrape configs L1426 - L1808 | [L#1426](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml#L1426) |  | 
+| charts/prometheus-istio/values.yaml | Deleted example scrape configs L1426 - L1808 | [L#1426](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml#L1426) |  | 
 | values.yaml | defaultRules.rules.etcd: false | [L#37](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml#L37) |  | 
 | values.yaml | defaultRules.rules.kubeApiserverBurnrate: false | n/a |  | 
 | values.yaml | defaultRules.rules.kubeApiserverHistogram: false | n/a |  | 
@@ -168,7 +168,7 @@
 | values.yaml | grafana.serviceMonitor.scheme: https    (overrides grafana charts' values) | n/a |  | 
 | values.yaml | grafana.serviceMonitor.tlsConfig     (overrides grafana charts' values) | n/a |  | 
 | values.yaml | grafana.serviceMonitor.metricRelabelings | n/a |  | 
-| templates/grafana/servicemonitor.yaml | new resource overriding the upstream one in grafana templates | n/a |  | 
+| templates/grafana/servicemonitor.yaml | New resource overriding the upstream one in Grafana templates | n/a |  | 
 | templates/grafana/dashboards-1.14/k8s-resources-cluster.yaml | Delete device label selector | [L#2548](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-cluster.yaml#L2548) |  | 
 | templates/grafana/dashboards-1.14/k8s-resources-cluster.yaml | Delete device label selector | [L#2637](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-cluster.yaml#L2637) |  | 
 | templates/grafana/dashboards-1.14/k8s-resources-cluster.yaml | Delete device label selector | [L#2898](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-cluster.yaml#L2898) |  | 
