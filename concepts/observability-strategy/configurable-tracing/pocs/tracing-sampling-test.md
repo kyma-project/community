@@ -30,7 +30,7 @@ The following setup is identical across all scenarios:
 
 * OpenTelemetry deployment and configuration (see [Setup](#setup))
 
-Same Sampling app used in all scenarios.
+* Sampling app
 
 Same Gatling call simulator used in all scenarios, Gatling shall call **FunctionA** from extern with at least 5 simultaneous users up to 10 users maximum.
 Call is simple URL call of FunctionA with no additional data or http headers to keep any influence of those on trace self.
