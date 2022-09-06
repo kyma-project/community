@@ -33,25 +33,22 @@ The following setup is identical across all scenarios:
 * Sampling app
 
 Same Gatling call simulator used in all scenarios, Gatling shall call **FunctionA** from extern with at least 5 simultaneous users up to 10 users maximum.
-Call is simple URL call of FunctionA with no additional data or http headers to keep any influence of those on trace self.
 
-Call simulation should run 100 minutes long to put enough load on call chain and generate enough metrics to get precise result.
 Gatling will generate around 50K call towards to FunctionA, istio proxy of deployed functions will call tracing collectors for each call should be sampled
 
 ### Scenario 1
-Kyma standard (version 2.6.0) deployment with istio sampling rate configured to **1%** sampling, to observe istio behavior like resource consumption and throughput.
+Kyma standard deployment (version 2.6.0) with Istio sampling rate configured to **1%** sampling, to observe Istio behavior like resource consumption and throughput.
 
 ### Scenario 2 
-Kyma standard deployment from main branch with istio sampling rate configuration changed to **100%** sampling, to observe istio behavior like resource consumption and throughput.
+Kyma standard deployment from main branch with Istio sampling rate configuration changed to **100%** sampling, to observe Istio behavior like resource consumption and throughput.
 
 ### Scenario 3
-Like **Scenario 2** described above with additional configuration on **Jaeger** and **Zipkin** receivers services without endpoint.
+Like **Scenario 2** with additional configuration on **Jaeger** and **Zipkin** receiver services without valid endpoint. This scenario should investigates additional impact on Kubernetes components.
 
-Services **Jaeger** and **Zipkin** in this scenario are exist but pointing no valid endpoint. This scenario should focus additionally impact on kubernetes components.
 
 ### Scenario 4
 
-Like Scenario 2 described above, this setup should run without collectors **Jaeger** and **Zipkin** to analyse istio behaviour and impact on kubernetes components like **CoreDNS**.
+Like Scenario 2, runs without collectors **Jaeger** and **Zipkin** to analyse Istio behaviour and impact on Kubernetes components like **CoreDNS**.
 
 ## Result
 
