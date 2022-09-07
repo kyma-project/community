@@ -2,7 +2,7 @@
 
 This analysis aims to find out the impact of different sampling rate configuration on the Istio proxy and overall call chain.
 
-At the end of the analysis, different scenarios are compared, like Istio resource consumption, throughput, and impact of other Kubernetes components. 
+At the end of the analysis, different scenarios are compared, like Istio resource consumption, throughput and impact of other Kubernetes components. 
 
 ## Setup
 ### OpenTelemetry
@@ -10,7 +10,7 @@ OpenTelemetry version 0.22.1 deployed on a Kyma cluster (version 2.6.0) with the
 - Standard deployment of OpenTelemetry Helm Chart version 0.22.1
 - As receivers, standard Jaeger, Zipkin, and OTLP configured
 - As processor, only a memory limiter processor with standard configuration
-- As exporter, only log/info and/or NOP exporter to keep impact of OpenTelemetry as low as possible
+- As exporter, only log/info and/or NOP exporter to keep impact of OpenTelemetry as low as possible.
 - No additional extensions
 
 ### Sampling App Deployment
@@ -36,13 +36,13 @@ The following setup is identical across all scenarios:
   The call is a simple URL call of FunctionA with no additional data or http headers to keep any influence of those on the trace itself.
   The call simulation runs for 100 minutes to put enough load on the call chain and generate enough metrics to get precise results.
 ### Scenario 1
-Kyma standard deployment (version 2.6.0) with Istio sampling rate configured to **1%** sampling, to observe Istio behavior like resource consumption and throughput.
+Kyma standard deployment (version 2.6.0), with Istio sampling rate configured to **1%** sampling, to observe Istio behavior like resource consumption and throughput.
 
 ### Scenario 2 
-Kyma standard deployment from main branch with Istio sampling rate configuration changed to **100%** sampling, to observe Istio behavior like resource consumption and throughput.
+Kyma standard deployment from main branch, with Istio sampling rate configuration changed to **100%** sampling, to observe Istio behavior like resource consumption and throughput.
 
 ### Scenario 3
-Like **Scenario 2** with additional configuration on **Jaeger** and **Zipkin** receiver services without valid endpoint. This scenario should investigates additional impact on Kubernetes components.
+Like **Scenario 2** with additional configuration on **Jaeger** and **Zipkin** receiver services without a valid endpoint. This scenario should investigate additional impact on Kubernetes components.
 
 
 ### Scenario 4
@@ -63,7 +63,7 @@ Success rate of call execution is 100% and average response time is around **400
 
 
 Fig. 2 below show overview istio mesh network, as call execution summary cluster metrics also show 100% of success rate inclusive local call chain.
-Latency on average stay around 400ms with a 6.5 operation per second per service.
+Latency on the average stay around 400ms with a 6.5 operation per second per service.
 
 | ![Istio mesh mverview](../assets/istio-1per-overwiew.jpg) |
 | :--: |
@@ -81,11 +81,11 @@ Latency on average stay around 400ms with a 6.5 operation per second per service
 | :--: |
 | Fig. 5 Service Network Details |
 
-Fig. 6 below show istio proxy resource consumption during test, bytes transfered during test phase increased from around 10KB/s to 60KB/s in peak time.
+Fig. 6 below show istio proxy resource consumption during test, bytes transferred during test phase increased from around 10KB/s to 60KB/s in peak time.
 
-Memory consumtion of istio proxy increased from 61MB to 68.7 MB in peak time, on CPU consumption side, before test started was 0.100 in peak time the value increased to around 0.150.
+Memory consumption of istio proxy increased from 61MB to 68.7 MB in peak time, on CPU consumption side, before test started 0.100 in peak time the value increased to around 0.150.
 
-Although resource consumtion during test execution increased, there are no considarable resource consumption observed.
+Although resource consumption during test execution increased, there are no considerable resource consumption observed.
 
 | ![Istio resource consumption](../assets/istio-1per-resource.jpg) |
 | :--: |
@@ -304,12 +304,12 @@ CoreDNS service lookup times and DNS requests are increased significantly, overa
 
 ### Conclusion
 
-Table below compare all scenarios with relevant metrics for the test.
+Table below compare all relevant metrics for all four scenarios.
 
-- **Scenrario 1** with 1% sampling rate
-- **Scenrario 2** with 100% sampling rate
-- **Scenrario 3** with 100% sampling rate, collector service without end point
-- **Scenrario 4** with 100% sampling rate, no collector deployed
+- **Scenario 1** with 1% sampling rate
+- **Scenario 2** with 100% sampling rate
+- **Scenario 3** with 100% sampling rate, collector service without end point
+- **Scenario 4** with 100% sampling rate, no collector deployed
 
 ||Scenario 1|Scenario 2|Scenario 3|Scenario 4|
 |:--|:--:|:--:|:--:|:--:|
@@ -322,6 +322,6 @@ Table below compare all scenarios with relevant metrics for the test.
 |DNS Lookups|150ms|150ms|500ms|700ms|
 
 
-A 100% sampling rate will put more presure on overall network communication, which will result to high latency and hihg load on collector services
+A 100% sampling rate will put more pressure on overall network communication, which will result to high latency and high load on collector services.
 
-Deployment without or broken collectors will result CoreDNS service presure, DNS request and DNS lookups will increase up to 400% compare to with collectors.
+Deployment without collectors (or broken collector service), will result CoreDNS service pressure, DNS request and DNS lookups will increase up to 400% compare to with collectors.
