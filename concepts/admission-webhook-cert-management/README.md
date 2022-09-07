@@ -84,8 +84,45 @@ https://github.com/cert-manager/cert-manager
 <img src="assets/admission-controller-certs-with-cert-manager.drawio.svg">
 
 The `cert-manager` is an operator running inside a Kyma cluster. It is a Kyma component itself and is used by other Kyma components that have custom webhook servers. A shared self-signed `Issuer` is also deployed.
+  ```yaml
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: selfsigned-issuer
+  namespace: sandbox
+spec:
+  selfSigned: {}
+```
 
-Each component that needs a TLS certificate would just deploy a `Certificate` resource and mount the generated secret as files to be used by the server container. Since all Kyma operators are implemented using Kubebuilder, secret rotation will work out of the box: whenever the `cert-manager` rotates a secret, the server will notice the files change and reload the http handler.
+Each component that needs a TLS certificate would just deploy a `Certificate` resource and mount the generated secret as files to be used by the server container. Since all Kyma operators are implemented using Kubebuilder, secret rotation will work out of the box: whenever the `cert-manager` rotates a secret, the server will notice the files change and reload the http handler. 
+  ```yaml
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: serving-cert
+  namespace: kyma-system
+spec:
+  # $(SERVICE_NAME) and $(SERVICE_NAMESPACE) must be substituted by the webhook service/namespace
+  dnsNames:
+  - $(SERVICE_NAME).$(SERVICE_NAMESPACE).svc
+  - $(SERVICE_NAME).$(SERVICE_NAMESPACE).svc.cluster.local
+  issuerRef:
+    kind: Issuer
+    name: selfsigned-issuer
+  secretName: webhook-server-cert
+```
+
+In addition to that, it would mark it's webhook configuration with a special anntotation to let the `ca injector` automatically populate the `caBundle`. See [more](https://cert-manager.io/docs/concepts/ca-injector/).
+
+  ```yaml
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: validation.webhook.telemetry.kyma-project.io
+  annotations:
+    cert-manager.io/inject-ca-from: kyma-system/serving-cert
+...  
+```
 
 This approach has one big downsides - `cert-manager is` deployed using Helm, so the chart has to be maintained (upgrades, security patches, etc.)
 
