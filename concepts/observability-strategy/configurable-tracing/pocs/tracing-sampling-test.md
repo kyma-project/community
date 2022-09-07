@@ -11,7 +11,7 @@ OpenTelemetry version 0.22.1 deployed on a Kyma cluster (version 2.6.0) with the
 - As receivers, standard Jaeger, Zipkin, and OTLP configured
 - As processor, only a memory limiter processor with standard configuration
 - As exporter, only log/info and/or NOP exporter to keep impact of OpenTelemetry as low as possible
-- No any additional extensions
+- No additional extensions
 
 ### Sampling App Deployment
 
@@ -32,10 +32,9 @@ The following setup is identical across all scenarios:
 
 * Sampling app
 
-Same Gatling call simulator used in all scenarios, Gatling shall call **FunctionA** from extern with at least 5 simultaneous users up to 10 users maximum.
-
-Gatling will generate around 50K call towards to FunctionA, istio proxy of deployed functions will call tracing collectors for each call should be sampled
-
+* Call simulator "Gatling" calls **FunctionA** from external, with 5-10 simultaneous users.
+  The call is a simple URL call of FunctionA with no additional data or http headers to keep any influence of those on the trace itself.
+  The call simulation runs for 100 minutes to put enough load on the call chain and generate enough metrics to get precise results.
 ### Scenario 1
 Kyma standard deployment (version 2.6.0) with Istio sampling rate configured to **1%** sampling, to observe Istio behavior like resource consumption and throughput.
 
