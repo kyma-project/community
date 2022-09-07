@@ -47,7 +47,7 @@ Like **Scenario 2** with additional configuration on **Jaeger** and **Zipkin** r
 
 ### Scenario 4
 
-Like Scenario 2, runs without collectors **Jaeger** and **Zipkin** to analyse Istio behaviour and impact on Kubernetes components like **CoreDNS**.
+Like Scenario 2, runs without collectors **Jaeger** and **Zipkin** to analyze Istio behavior and impact on Kubernetes components like **CoreDNS**.
 
 ## Result
 
