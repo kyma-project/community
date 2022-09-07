@@ -57,7 +57,7 @@ This approach is used by serverless and api-gateway. In this case, the certifica
 Issuing a certificate in the webhook server code doesn't have the aforementioned problem. However, in this case it must be implemented by every operator. In addition to that, the webhook server must be provided with extended permissions to change the corresponding `validatingwebhookconfiguration` (or the `mutatingwebhookconfiguration`). Furthermore, both the CA and the server certificate are recreated upon each Pod restart and are never be rotated if the Pod is not restarted.
 
 
-## How other teams manage webhook certificates
+## How other organizations manage webhook certificates
 
 The most prominent operator frameworks advertise `cert-manager` as a possible solution to manage webhook certificate:
 
