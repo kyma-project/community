@@ -11,7 +11,7 @@ It is possible to extend the compiled-in admission controllers with custom webho
 
 ## How Kyma webhooks manage cerificates
 
-A handful of Kyma operators are deployed with custom validating admission webhooks (api-gateway, pod-preset, serverless, telemetry, etc.). They use different apporaches to manage certificates, which can be categorized into 2 groups.
+A handful of Kyma operators are deployed with custom validating admission webhooks (api-gateway, pod-preset, serverless, telemetry, etc.). They use different approaches to manage certificates, which can be categorized into 2 groups.
 
 ### <a name="helm"></a>Use Helm built-in crypto functions to generate certificates
 
