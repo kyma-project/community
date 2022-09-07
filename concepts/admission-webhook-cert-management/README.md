@@ -16,7 +16,7 @@ A handful of Kyma operators are deployed with custom validating admission webhoo
 ### <a name="helm"></a>Use Helm built-in crypto functions to generate certificates
 
 This approach is used by pod-preset, telemetry:
-```yaml
+  ```yaml
 {{- $ca := genCA "telemetry-validating-webhook-ca" 3650 }}
 {{- $cn := printf "%s-webhook" (include "fullname" .) }}
 {{- $altName1 := printf "%s.%s" $cn .Release.Namespace }}
