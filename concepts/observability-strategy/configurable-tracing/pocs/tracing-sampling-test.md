@@ -52,8 +52,7 @@ Like Scenario 2, runs without collectors **Jaeger** and **Zipkin** to analyse Is
 
 ## Result
 
-Overall analysis focus on istio behavior, resource consumption under different configuration and setup, in **Scenario 3** and **Scenario 4** additionally focus on kubernetes components.
-
+The overall analysis focuses on Istio behavior and resource consumption under different setups. In **Scenario 3** and **Scenario 4**, there's additional focus on Kubernetes components.
 ### Scenario 1
 
 Following picture shown call execution summary (from client perspective) of test cluster with istio sampling rate 1% setup. 
