@@ -106,7 +106,7 @@ Fig. 8 show an overview on the cache, cache hits are increased which indicate DN
 | Fig. 8 Kubernetes CoreDNS Cache |
 
 #### Summary
-Test results shown there is a small impacts on the istio proxy, but none of those are overall considerably.
+Test results shown there is a small impact on the istio proxy, but none of those are overall considerably.
 By the Kubernetes CoreDNS, no suspicion behavior observed, DNS request are increased from 2 to 3 request per second, DNS lookups increased from 1 to 2 per second, and 
 DNS cache hits increased parallel to the DNS lookup responses, which proof lookups request hit mostly cache.
 
@@ -324,4 +324,4 @@ Table below compare all relevant metrics for all four scenarios.
 
 A 100% sampling rate will put more pressure on overall network communication, which will result to high latency and high load on collector services.
 
-Deployment without collectors (or broken collector service), will result CoreDNS service pressure, DNS request and DNS lookups will increase up to 400% compare to with collectors.
+Deployment without collectors (or broken collector service), will result CoreDNS service pressure, DNS request and DNS lookups will increase up to 400% compared to with collectors.
