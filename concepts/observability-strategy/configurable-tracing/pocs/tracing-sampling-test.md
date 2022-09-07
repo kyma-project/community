@@ -304,4 +304,24 @@ CoreDNS service lookup times and DNS requests are increased significantly, overa
 
 ### Conclusion
 
-TBD
+Table below compare all scenarios with relevant metrics for the test.
+
+**Scenrario 1** with 1% sampling rate
+**Scenrario 2** with 100% sampling rate
+**Scenrario 3** with 100% sampling rate, collector service without end point
+**Scenrario 4** with 100% sampling rate, no collector deployed
+
+||Scenario 1|Scenario 2|Scenario 3|Scenario 4|
+|:--|:--:|:--:|:--:|:--:|
+|Success Rate|100%|99%|33%|99%|
+|Global Request (Mesh)|20.2 ops/s|65.8 ops/s|72.8 ops/s|21.1 ops/s|
+|Request per Service|6.20 ops/s|6.70 ops/s|7.20 ops/s|7.33 ops/s|
+|Latency|400ms|950ms|9 sec|1 sec|
+|Bytes Transferred|60KB/s|300KB/s|170KB/s|70KB/s|
+|DNS Requests|3 p/s|3 p/s|8 p/s|8 p/s|
+|DNS Lookups|150ms|150ms|500ms|700ms|
+
+
+A 100% sampling rate will put more presure on overall network communication, which will result to high latency and hihg load on collector services
+
+Deployment without or broken collectors will result CoreDNS service presure, DNS request and DNS lookups will increase up to 400% compare to with collectors.
