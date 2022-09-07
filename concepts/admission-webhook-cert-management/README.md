@@ -93,4 +93,4 @@ This approach has one big downsides - `cert-manager is` deployed using Helm, so 
 
 https://www.velotio.com/engineering-blog/managing-tls-certificate-for-kubernetes-admission-webhook
 
-This is slightly modified version of [one ofthe before-mentioned approach](#server-code). Instead of implementing the logic in the webhook server code, it's packaged as a Docker image and run as an init container.
+This is slightly modified version of [one of the currently used approaches](#a-nameserver-codeagenerate-the-ca-cert-and-the-server-cert-and-update-the-webhook-configuration-in-the-webhook-server-code-itself). Instead of implementing the logic in the webhook server code, it's packaged as a Docker image and run as an init container.
