@@ -306,10 +306,10 @@ CoreDNS service lookup times and DNS requests are increased significantly, overa
 
 Table below compare all scenarios with relevant metrics for the test.
 
-**Scenrario 1** with 1% sampling rate
-**Scenrario 2** with 100% sampling rate
-**Scenrario 3** with 100% sampling rate, collector service without end point
-**Scenrario 4** with 100% sampling rate, no collector deployed
+- **Scenrario 1** with 1% sampling rate
+- **Scenrario 2** with 100% sampling rate
+- **Scenrario 3** with 100% sampling rate, collector service without end point
+- **Scenrario 4** with 100% sampling rate, no collector deployed
 
 ||Scenario 1|Scenario 2|Scenario 3|Scenario 4|
 |:--|:--:|:--:|:--:|:--:|
