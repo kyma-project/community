@@ -1,0 +1,49 @@
+# possible values are documented here: https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-collector/values.yaml
+
+# use contrib image
+image:
+  repository: otel/opentelemetry-collector-contrib
+
+command:
+  name: otelcol-contrib
+
+mode: deployment
+
+# Defined the used k8s serviceaccount for communication to the K8s APIServer
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  name: monitoring-prometheus
+
+
+# actual otel controller configuration
+config:
+  processors:
+    batch: {}
+    memory_limiter: {}
+
+  exporters:
+    logging/info:
+      loglevel: info
+    logging/debug:
+      loglevel: debug
+    otlp:
+      endpoint: 
+      headers:
+      tls:
+        insecure: false
+
+  extensions:
+    health_check: {}
+  service:
+    telemetry:
+      logs:
+        level: "info"
+    extensions:
+      - health_check
+    pipelines:
+      logs: null
+      metrics: null
+      traces:
+        exporters:
+          - logging/info

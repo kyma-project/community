@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app.kubernetes.io/instance: opentelemetry-collector
+    app.kubernetes.io/name: opentelemetry-collector
+  name: opentelemetry-collector
+  namespace: kyma-system
+spec:
+  endpoints:
+  - port: http-metrics
+  namespaceSelector:
+    matchNames:
+    - kyma-system
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: opentelemetry-collector
+      app.kubernetes.io/name: opentelemetry-collector
