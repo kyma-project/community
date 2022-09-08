@@ -1,0 +1,33 @@
+apiVersion: serverless.kyma-project.io/v1alpha2
+kind: Function
+metadata:
+  name: svc-c
+  labels:
+    app: svc-c
+spec:
+  scaleConfig:
+    maxReplicas: 1
+    minReplicas: 1
+  runtime: nodejs16
+  template:
+    labels:
+      app: svc-c
+  source:
+    inline:
+      source: |-
+        const axios = require("axios");
+        module.exports = {
+            main: async function (event, context) {
+              let traceId=event.extensions.request.headers['x-b3-traceid']
+              console.debug(`level=debug traceId=${traceId} message=Event data: ${JSON.stringify(event.data)}`);
+              return "success"
+          }
+        };
+      dependencies: |-
+        {  
+          "name": "svc-c",
+          "version": "1.0.0",
+          "dependencies":{
+            "axios": "^0.21.1"
+          }
+        }
