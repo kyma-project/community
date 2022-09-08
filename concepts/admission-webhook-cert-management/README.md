@@ -127,7 +127,7 @@ metadata:
 This approach has a few downsides:
 * `cert-manager` is deployed using Helm, so the chart must be maintained (upgrades, security patches, etc.).
 * deploying the `cert-manager` as a standalone Kyma component means opening it's API to Kyma customers. It also means that we should build expertise within Kyma, some team should take ownership of this nedw component, etc.
-* we only neeed support of self-signed certificates and certificate rotation, which is a very small subset of `cert-manager`'s features
+* We only need support of self-signed certificates and certificate rotation, which is a very small subset of `cert-manager`'s features.
 
 ### <a name="init-container"></a>Init container
 
