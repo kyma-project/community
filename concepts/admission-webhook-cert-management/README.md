@@ -50,7 +50,7 @@ The certs are updated every time the Helm chart is rendered (every reconciliatio
 You can come up with some workarounds: make reconciler deploy resources in a strict predefined order or make sure the webhook chart does not contain the corresponding CRs. However, it does not fix the underlying problem and the bug may pop up again. 
 
 
-### <a name="server-code"></a>Generate the CA cert and the server cert and update the webhook configuration in the webhook server code itself
+### <a name="server-code"></a>Generate the CA cert and the server cert, and update the webhook configuration in the webhook server code itself
 
 This approach is used by serverless and api-gateway. In this case, the certificates are generated upon the server startup. Here's an [example of this solution](https://github.com/kyma-project/api-gateway/blob/main/internal/webhook/certificates.go).
 
