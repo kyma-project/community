@@ -54,7 +54,7 @@ You can come up with some workarounds: make reconciler deploy resources in a str
 
 This approach is used by serverless and api-gateway. In this case, the certificates are generated upon the server startup. Here's an [example of this solution](https://github.com/kyma-project/api-gateway/blob/main/internal/webhook/certificates.go).
 
-Issuing a certificate in the webhook server code doesn't have the aforementioned problem. However, in this case it must be implemented by every operator. In addition to that, the webhook server must be provided with extended permissions to change the corresponding `validatingwebhookconfiguration` (or the `mutatingwebhookconfiguration`). Furthermore, both the CA and the server certificate are recreated upon each Pod restart and are never be rotated if the Pod is not restarted.
+Issuing a certificate in the webhook server code doesn't have the aforementioned problem. However, in this case it must be implemented by every operator. In addition to that, the webhook server must be provided with extended permissions to change the corresponding `validatingwebhookconfiguration` (or the `mutatingwebhookconfiguration`). Furthermore, both the CA and the server certificate are recreated upon each Pod restart and are never rotated if the Pod is not restarted.
 
 
 ## How other organizations manage webhook certificates
