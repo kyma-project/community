@@ -59,7 +59,7 @@ Issuing a certificate in the webhook server code doesn't have the aforementioned
 
 ## How other organizations manage webhook certificates
 
-The most prominent operator frameworks advertise `cert-manager` as a possible solution to manage webhook certificate:
+The most prominent operator frameworks advertise `cert-manager` as a possible solution to manage webhook certificates:
 
 - Kubebuilder: https://kubebuilder.io/cronjob-tutorial/cert-manager.html
 - Operator SDK: https://developer.ibm.com/tutorials/create-a-conversion-webhook-with-the-operator-sdk/
