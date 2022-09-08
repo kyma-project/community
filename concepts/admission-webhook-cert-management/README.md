@@ -142,4 +142,4 @@ The certificate management functionality can be also packaged as a Go module and
 
 ## Conclusion
 
-After some discussions we came to the conclsuion that even though `cert-manager` is a recommended solution, it would be an overkill for our use case. Self-signed certificate generation and rotation is a tiny subset of all `cert-manager` capabilities and can be implemented in future component operators as a part of the modularization startegy.
+After some discussions, we came to the conclusion that even though `cert-manager` is a recommended solution, it would be an overkill for our use case. Self-signed certificate generation and rotation is a tiny subset of all `cert-manager` capabilities and can be implemented in future component operators as a part of the modularization strategy.
