@@ -9,7 +9,7 @@ It is possible to extend the compiled-in admission controllers with custom webho
 
 <img src="assets/admission-controller-certs.drawio.svg">
 
-## How Kyma webhooks manage cerificates
+## How Kyma webhooks manage certificates
 
 A handful of Kyma operators are deployed with custom validating admission webhooks (api-gateway, pod-preset, serverless, telemetry, etc.). They use different approaches to manage certificates, which can be categorized into 2 groups.
 
