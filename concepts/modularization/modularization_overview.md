@@ -20,7 +20,7 @@ All these assets are bundled into a single container image using the OCI image s
 
 ## 2. Module Manager
 
-The Module Manager installs and manages the Kyma components remotely, and synchronizes the installation in the SAP Kyma Runtime [TBC: Can we write this for OS??]. The Module Manager retrieves the container image and processes the Kubernetes manifest by calling a rendering framework like Helm or Kustomize. Finally, it deploys the manifest in Kubernetes and monitors the outcome of the deployment.
+The Module Manager installs and manages the Kyma components in a local or remote setup. For example, it remotely manages and synchronizes the installation in the SAP Kyma Runtime. The Module Manager retrieves the container image and processes the Kubernetes manifest by calling a rendering framework like Helm or Kustomize. Finally, it deploys the manifest in Kubernetes and monitors the outcome of the deployment.
 
 ## 3. Runtime Watcher
 
@@ -34,3 +34,5 @@ If needed, the Runtime Watcher triggers a reconciliation of the user’s Kyma ru
 ## 4. Lifecycle Manager
 
 The Lifecycle Manager is responsible for managing the lifecycle of Kyma instances, like installing or deleting a Kyma instance from a cluster. It checks whether a CR is provided for every module, and deletes obsoletes module if they’re no longer required
+
+> **TIP:** Learn how to build a module(ADD_LINK).
