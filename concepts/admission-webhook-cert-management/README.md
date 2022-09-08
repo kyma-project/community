@@ -70,7 +70,7 @@ Let's discribe a few possible solutions.
 
 https://github.com/gardener/cert-management
 
-Since Kyma-on-Gardener is a very common setup, and Gardener has a pre-installed cert-manager, it seems to be a natural choice. However Gardener `cert-manager` is actually a separate open source project and is very different from the upstrem `cert-manager`. It comes with a different feature set (it even has its own CRDs). From the Github project description:
+Because Kyma-on-Gardener is a very common setup, and Gardener has a pre-installed cert-manager, it seems to be a natural choice. However, Gardener `cert-manager` is actually a separate open source project and is very different from the upstream `cert-manager`. It comes with a different feature set (it even has its own CRDs). From the Github project description:
 
 >In a multi-cluster environment like Gardener, using existing open source projects for certificate management like cert-manager becomes cumbersome. With this project the separation of concerns between multiple clusters is realized more easily. The cert-controller-manager runs in a secured cluster where the issuer secrets are stored. At the same time it watches an untrusted source cluster and can provide certificates for it.
 
