@@ -74,7 +74,7 @@ Because Kyma-on-Gardener is a very common setup, and Gardener has a pre-installe
 
 >In a multi-cluster environment like Gardener, using existing open source projects for certificate management like cert-manager becomes cumbersome. With this project the separation of concerns between multiple clusters is realized more easily. The cert-controller-manager runs in a secured cluster where the issuer secrets are stored. At the same time it watches an untrusted source cluster and can provide certificates for it.
 
-However, according to the project maintainers the Gardener `cert-manager` is built for mainly for the “Let’s Encrypt” use-cases (publicly resolvable domain names). It does not support self-signed issuers, nor it supports caBundle injection. The project maintainers suggest using the upstream `cert-manager` from the community for self-signed/webhook certs.
+However, according to the project maintainers, the Gardener `cert-manager` is built for mainly for the “Let’s Encrypt” use-cases (publicly resolvable domain names). It supports neither self-signed issuers nor caBundle injection. The project maintainers suggest using the upstream `cert-manager` from the community for self-signed/webhook certs.
 
 Moreover, there are other supported non-Gardener Kyma environments (k3d), where the Gardener `cert-manager` is not pre-installed. 
 ### <a name="upstream-cert-manager"></a>Upstream cert-manager
