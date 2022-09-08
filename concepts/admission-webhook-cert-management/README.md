@@ -112,7 +112,7 @@ spec:
   secretName: webhook-server-cert
 ```
 
-In addition to that, it would mark it's webhook configuration with a special anntotation to let the `ca injector` automatically populate the `caBundle`. See [more](https://cert-manager.io/docs/concepts/ca-injector/).
+In addition to that, it would mark its webhook configuration with a special annotation to let the `ca injector` automatically populate the `caBundle`. See [CA Injector](https://cert-manager.io/docs/concepts/ca-injector/).
 
   ```yaml
 apiVersion: admissionregistration.k8s.io/v1
