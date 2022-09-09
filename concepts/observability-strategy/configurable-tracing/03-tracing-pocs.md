@@ -32,7 +32,26 @@ Comparing the resource consumption and throughput of the envoys, and checking ot
 
 ## Tail Sampling
 
-Understand what tail sampling strategies are available already in OTEL and understand the scaling requirements of them.
+Opposed to Head-based sampling, Tail sampling make the decision at the end of the entire flow, wenn whole trace data already gathered. This kind of sampling decision made at the collector level.
+
+With Tail sampling, it's possible to create advanced rules to filter out traces based on any **span** property, include their attributes, duration etc. Tail sampling will allow us to collect data like unsually long operations and rare errors.
+
+Basically, with Tail sampling, sampling decision delayed end of flow untill all spans of a trace are available, this enables better sampling decisions based on all data from the trace.
+
+However, make decision at the end of the trace, the backed has to buffer entire trace data, which can increase storage overhead.
+
+Choosing right sample rate is diffucult, mostly depend on system requirement, the way services are built and amount of traffic they have. For example when a service is verry noisy and receiving a lot of traffic, rather a small percentece of sampling rate is a better decision, to avoid the costs and the noise. But when there is a endpoint with less traffic (e.g. a core service), high percentece is a better chooice since it won't cost much but most likely be valuable.
+
+On first look, Tail sampling seems to be better solution over Head-based sampling. Policy based sampling processor configuration offers wide capabilities to configure sampling according to application needs, but this capability brings own complexity with itself. At the time, this document written, tail based sampling processor was still in a *beta* state and not fully tested.
+
+For further information about Tail sampling can be found in following liks:
+
+- [OpenTelemetry: head-based and tail-based sampling, rate-limiting](https://uptrace.dev/opentelemetry/sampling.html)
+- [TraceState: Probability Sampling](https://opentelemetry.io/docs/reference/specification/trace/tracestate-probability-sampling/)
+- [Tail Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
+- [Probabilistic Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/probabilisticsamplerprocessor)
+
+
 ## Plugin mechanism
 
 If the Telemetry component is disabled, there must be a way to bring your own otel-collector. How to achieve that with the planned push approach? The client's apps like Istio are preconfigured with a hardcoded URL to push traces. By default, trace data should be served by the telemetry otel-collector, but should be also servable by the custom otel-collector stack.
