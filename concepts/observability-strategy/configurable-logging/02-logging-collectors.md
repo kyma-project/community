@@ -21,7 +21,7 @@ Bigger companies are actively planning to use it at least for the trace and metr
 See also [more detailed here](../opentelemetry/README.md)
 
 ### Logs - Fluent-Bit
-Fluent-Bit is the log collector traditionally used in Kyma, being part of CNCF and widely adopted on Kubernetes. It is vendor-neutral and supports a variety of generic outputs, so that it can integrate with quite some backends. If a backend is not supported, you can use the fluent-specific Forward protocol to connect a FluentD, providing an even richer ecosystem. It will scale out perfectly by running on every node with a minimalistic resource footprint.
+Fluent-Bit is the log collector traditionally used in Kyma, being part of CNCF and widely adopted on Kubernetes. It is vendor-neutral and supports a variety of generic outputs, so that it can integrate with quite some backends. If a backend is not supported, you can use the fluent-specific Forward ot HTTP protocol to connect a FluentD, providing an even richer ecosystem. It will scale out perfectly by running on every node with a minimalistic resource footprint.
 
 ### Logs - FluentD
 Written in Ruby and being more resource-extensive than Fluent-Bit, FluentD presents a valid alternative to Fluent-Bit. However, it is usually recommended as the central application that does not run on every node but handles the central aggregation and shipment to the backend.
