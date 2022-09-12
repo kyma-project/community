@@ -30,21 +30,25 @@ Running a Istio performance test with high load, and compare the following setti
 - 100% sampling to non-existing URL
 Comparing the resource consumption and throughput of the envoys, and checking other relevant Kubernetes components for suspicious effects like CoreDNS.
 
-## Tail Sampling
+## Tail-based Sampling
 
-Opposed to Head-based sampling, Tail sampling make the decision at the end of the entire flow, wenn whole trace data already gathered. This kind of sampling decision made at the collector level.
+Opposed to head-based sampling, tail-based sampling makes the decision at the end of the entire flow, wenn all the trace data has been gathered. This kind of sampling decision is made at the collector level.
 
-With Tail sampling, it's possible to create advanced rules to filter out traces based on any **span** property, include their attributes, duration etc. Tail sampling will allow us to collect data like unsually long operations and rare errors.
+With tail-based sampling, it's possible to create advanced rules to filter out traces based on any **span** property, including their attributes, duration etc. With tail-based sampling, we can collect data like usually long operations and rare errors.
 
-Basically, with Tail sampling, sampling decision delayed end of flow untill all spans of a trace are available, this enables better sampling decisions based on all data from the trace.
+With the sampling decision delayed to the end of flow when all spans of a trace are available, the decision is better because it is based on all data from the trace.
 
-However, make decision at the end of the trace, the backed has to buffer entire trace data, which can increase storage overhead.
+However, deciding at the end of the trace means that the backed must buffer the entire trace data, which can increase storage overhead.
 
-Choosing right sample rate is diffucult, mostly depend on system requirement, the way services are built and amount of traffic they have. For example when a service is verry noisy and receiving a lot of traffic, rather a small percentece of sampling rate is a better decision, to avoid the costs and the noise. But when there is a endpoint with less traffic (e.g. a core service), high percentece is a better chooice since it won't cost much but most likely be valuable.
+Choosing the right sample rate is difficult - it mostly depends on system requirements, the way services are built,  and the amount of traffic they have. For example, when a service is very noisy and receives a lot of traffic, a smaller percentage of sampling rate is better, to prevent the costs and the noise. But for an endpoint with less traffic (like a core service), high percentage is a better choice, because it it won't cost much and, most likely, is valuable.
 
-On first look, Tail sampling seems to be better solution over Head-based sampling. Policy based sampling processor configuration offers wide capabilities to configure sampling according to application needs, but this capability brings own complexity with itself. At the time, this document written, tail based sampling processor was still in a *beta* state and not fully tested.
+At the first glance, tail-based sampling seems to be a better solution than head-based sampling. 
 
-For further information about Tail sampling can be found in following liks:
+Policy-based sampling processor configuration offers wide capabilities to configure sampling according to application needs, but this capability brings its own complexity. 
+
+At the time this document is written (Sept '21), tail-based sampling processor is still in a *beta* state and not fully tested.
+
+For further information about tail-based sampling, see:
 
 - [OpenTelemetry: head-based and tail-based sampling, rate-limiting](https://uptrace.dev/opentelemetry/sampling.html)
 - [TraceState: Probability Sampling](https://opentelemetry.io/docs/reference/specification/trace/tracestate-probability-sampling/)
