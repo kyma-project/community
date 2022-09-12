@@ -18,9 +18,15 @@ A Kyma module contains all information required to install and run the associate
 
 All these assets are bundled into a single container image using the OCI image specification.
 
+> **TIP:** Learn how to build a module(ADD_LINK).
+
 ## 2. Module Manager
 
-The Module Manager installs, uninstalls, and manages the Kyma modules in a local (single cluster mode) or remote setup. For example, it remotely manages and synchronizes Kyma module manifest resources in the SAP Kyma Runtime. The Module Manager retrieves the image layers from the specified image registry and processes the manifest resources by calling a rendering framework like Helm or Kustomize. Finally, it deploys this resource along with a custom resource to track state changes. It ensures consistency both with a time-based reconciliation and by watching state changes of the deployed custom resource in Kyma runtime.
+The Module Manager installs, uninstalls, and manages the Kyma modules in a local (single cluster mode) or remote setup. For example, it remotely manages and synchronizes Kyma module manifest resources in the SAP Kyma Runtime.
+
+The Module Manager retrieves the image layers from the specified image registry and processes the manifest resources by calling a rendering framework like Helm or Kustomize.
+
+Finally, it deploys this resource along with a custom resource to track state changes. It ensures consistency both with a time-based reconciliation and by watching state changes of the deployed custom resource in Kyma runtime.
 
 ## 3. Runtime Watcher
 
@@ -33,6 +39,4 @@ If needed, the Runtime Watcher triggers a reconciliation of the user’s Kyma ru
 
 ## 4. Lifecycle Manager
 
-The Lifecycle Manager is responsible for orchestrating Kyma module operators to process their respective resources on the Kyma runtime. This is done by generating the required Kyma module custom resources, which bootstrap Kyma module processing. Furthermore, the Lifecycle Manager reconciles a Kyma custom resource for each Kyma runtime, indicating the consolidated status of all modules configured for that Kyma cluster. 
-
-> **TIP:** Learn how to build a module(ADD_LINK).
+The Lifecycle Manager is responsible for orchestrating Kyma module operators to process their respective resources on the Kyma runtime. This is done by generating the required Kyma module custom resources, which bootstrap Kyma module processing. Furthermore, the Lifecycle Manager reconciles a Kyma custom resource for each Kyma runtime, indicating the consolidated status of all modules configured for that Kyma cluster.
