@@ -1,26 +1,25 @@
-# General Strategy
+# From Observability to Telemetry - a strategy shift in Kymas Observability feature
 
 ## Motivation
 
+The Kyma project evolved over time, from an extensibility framework with "batteries included", to a runtime that focuses on providing Kubernetes building blocks with enterprise-grade quality. Up until now, the Kyma Observability feature is providing an out-of-the box in-cluster stack that gets you started immediately, but which does not qualify for the enterprise-grade qualities. Various observability backends are already available as managed services from different vendors fulfilling these criterias. The possibility for integration into these offerings will not only bring provide the missing value but also Openness - it is up to the users scenarios which observability system will fit best to the actual requirements.
+When Kyma supports a simple way of instrumenting, collecting and integration of the workloads telemetry data into available observability systems, leveraging the [OpenTelemetry](https://opentelemetry.io/) standards to provide integration options in a vendor-neutral approach, the Kyma Observability feature is ready for it's evolution too.
 
-In the current (2022) setup of Kyma, the observability stack provides an opinionated and lightweight solution out of the box, which solves basic requirements for application operators. It does not focus on integration aspects that would support, for example, cross-runtime observations, advanced analytic tools, or reuse of users' existing observability infrastructure. Also, the current observability stack does not provide a guide how to extend the setup to become highly available (HA) with historical storage of the data.
 
-With such limited integration possibilities and providing only a very lightweight in-cluster solution, the current observability stack is missing a lot of usage scenarios, and the potential audience is very narrow. 
-By moving the focus away from backend solutions towards vendor-neutral integration possibilities, Kyma runtime will meet the needs of a broader audience and open up possibilities for wider adoption.
+With that, Kyma will shift the focus away from providing a full Observability solution; instead it will simplify the instrumentation and integration of telemetry data into external systems.
 
 ## Current Situation 
 
-Observability can be split up in the following stages:
+The Observability domain can be split up in the following stages:
 1. **Instrumentation** of the user application
 2. **Collection** and preprocessing of the signals from the user application and the surrounding infrastructure, including metadata enrichment
 3. **Delivery** of the signal to an backend for storage
-4. Optionally, **aggregation** of the signals
-5. **Storage** of the signals
-6. **Analysis**, querying, and dashboarding of the signals
+4. **Storage** of the signals
+5. **Analysis**, querying, and dashboarding of the signals
 
 ![a](./assets/strategy-stages.drawio.svg)
 
-The current Kyma observability stack covers all stages, providing a lightweight end-to-end setup for basic needs. It can mainly be configured at installation.
+The current Kyma observability stack covers all mentioned stages, providing a lightweight and opinionated end-to-end setup inside the cluster, which solves basic requirements for application operators. It can mainly be configured at installation. It does not focus on integration aspects that would support, for example, cross-runtime observations, advanced analytic tools, or reuse of users' existing observability infrastructure. Also, the current observability stack does not provide a guide how to extend the setup to become highly available (HA) with historical storage of the data.
 
 ![Current observability stack](./assets/strategy-current.drawio.svg "Current observability stack")
 
@@ -44,16 +43,18 @@ The current Kyma observability stack covers all stages, providing a lightweight 
 
 ### Drawbacks
 
-At a first glance, the current solution provides a feature-rich end-to-end setup. However, at a second glance, users notice major drawbacks and usually need additional stacks.
+At a first glance, the current solution provides a feature-rich end-to-end setup. However, at a second glance, users notice major drawbacks that aren't a good fit for enterprise-grade software and usually require to bring an own backend.
 - Very limited integration possibilities to external systems. Integration is usually needed for different reasons, such as cross-cluster correlation, forensic analysis, or long-term storage. Kyma's integration points are not vendor-neutral.
 - Very limited configuration options for data enrichment and filtering. Users want to enrich the data with data relevant for their environments, like cluster names. Furthermore, they want to filter out irrelevant log lines or log attributes within a line to save resources and money in the backend.
 - Storage backends are non-scalable, so they can be used only in limited scenarios. Users cannot upgrade the backend into a scalable setup, nor integrate with other solutions.
 
 ## Requirements
 
-Integration (and with that, moving the focus away from in-cluster backends) is the key to open up the stack for a broad range of use cases. Users can bring their own backends if they already use a commercial offering or run their own infrastructure. To name just a few advantages, the data can be stored outside the cluster in a managed offering, shared with the data of multiple clusters, and kept away from any tampering or deletion attempts by hackers.
+Integration (and with that, moving the focus away from providing backends) is the key to open up the stack for a broad range of use cases. Users can bring their own backends if they already use a commercial offering or run their own infrastructure. To name just a few advantages, the data can be stored outside the cluster in a managed offering, shared with the data of multiple clusters, and kept away from any tampering or deletion attempts by hackers.
 
-Providing ready-to-use in-cluster backends is necessarily opinionated, does not cover all usage scenarios, and does not fit into Kyma's goal of providing the Kubernetes building blocks to integrate into the the SAP ecosystem. Also, the licensing issues (particularly with Grafana and Loki, or Elasticsearch as an alternative backend technology) show that an opinionated stack is problematic. It's better to handle opinionation by integrating with actual managed services. 
+Providing ready-to-use in-cluster backends is necessarily opinionated, does not cover all usage scenarios, and does not fit into Kyma's goal of providing the Kubernetes building blocks to integrate into the the SAP ecosystem. Also, the licensing issues (particularly with Grafana and Loki, or Elasticsearch as an alternative backend technology) show that an opinionated stack is problematic. It's better to handle opinionation by integrating with actual managed services.
+
+Instrumentation and integration of telemetry data into external systems can be complex and is heterogenous. To simplify those tasks, Kyma will provide instrumentation conventions so that provided collectors can automatically pick up the data and make the integration problem a central aspect.
 
 ### Mandatory features
 
@@ -75,16 +76,20 @@ To sum it up, the goals of Kyma observability should be:
 
 ## Architecture
 
-The proposal introduces a new preconfigured layer of collectors that's not bound to any backend. This layer is responsible for collecting all telemetry data, depending on the signal type.
+The strategy shift will be backed by a new layer of collectors that are not bound to any backend anymore. This layer is responsible for collecting and enriching all telemetry data, depending on the signal type. As long as the best practices for instrumentation are followed, the data is collected automatically.
 
-Users can configure the collectors at runtime with different signal pipelines using basic filtering (inclusion and exclusion of signals) and outputs, so that the collectors start shipping the signals through the pipelines to the configured backends. The dynamic configuration and management of the collector is handled by a new operator, which is configured using Kubernetes resources. The collectors and the new operator are bundled in a new core component called `telemetry`.
+Users can configure the collectors at runtime with different signal pipelines using basic filtering (inclusion and exclusion of signals) and outputs, so that the collectors start shipping the signals through the pipelines to the configured backends. The dynamic configuration and management of the collector is handled by a new operator, which is configured using Kubernetes API. The collectors and the new operator are bundled in a new core component called `telemetry`.
 
-The existing Kyma backends and UIs will be just one possible solution to integrate with. The users will still be able to install them manually with a blueprint, but they will no longer be part of the Kyma offering.
+To guarantee enterprise-grade qualities, the configuration options for the collectors using the Kubernetes API will be limited. However, users can run their own collector setup for advanced customization options at any time.
+
+The existing Kyma backends and UIs will be just one possible solution to integrate with. Users will still be able to install them manually with a blueprint.
 
 ![b](./assets/strategy-future.drawio.svg)
 
-As mentioned before, the technology and protocols for the signal collection depend on the signal types: Logs are tailed from container log files, metrics usually are pulled using the Prometheus format, and traces are pushed with OTLP. With that, also the pre-integration (so that typical signals are collected instantly) is different per type.
-That's why the specific concepts for the different types are different, and are discussed in more detail in the following documents:
+The technology stack for instrumentation and collection will be based on the [OpenTelemetry](https://opentelemetry.io/) project. The central data protocol will be [OTLP](https://opentelemetry.io/docs/reference/specification/protocol/); for trace propagation it will be [w3c-tracecontext](https://www.w3.org/TR/trace-context/). As exception to that, the technology stack for log collection will be based on the [Fluent Bit](https://fluentbit.io/) and [Fluentd](https://www.fluentd.org/) ecosystem and the specific protocols, with the goal to adopt to OpenTelemetry at a later time.
+
+As mentioned before, the collector setup and used protocols for the signal collection depend on the signal types: Logs are tailed from container log files, metrics usually are pulled using the Prometheus format, and traces are pushed with OTLP. With that, the pre-integration (so that typical signals are collected instantly) is different per type.
+That's why the specific concepts for the different types are different, and are discussed in more detail in the following documents. Note that these documents are still under development and should not be seen as final yet:
 * [Concept - Configurable Logging](./configurable-logging/README.md) 
 * [Concept - Configurable Monitoring](./configurable-monitoring/README.md)
 * [Concept - Configurable Tracing](./configurable-tracing/README.md)
@@ -98,15 +103,18 @@ All concepts follow general rules and will provide harmonized user APIs:
 - **Custom output protocols can be integrated**: Users can have custom transformation from the supported protocol, usually with additional operational effort (like running a dedicated Otel Collector sidecar or deployment in the users' Namespace). Furthermore, Kyma offers typical output plugins of the used collector technology as part of a pipeline definition; however, only with limited support.
 - **Blueprints are fully integrated**: Blueprints for local backend deployments are integrated with the used pipeline mechanism, so that they work instantly.
 
+## Conclusion
+
+Kyma's new focus in the observability area is to support the users in getting their telemetry data into an external system in a reliable, effortless, and vendor-neutral way. Hereby, integration of an in-cluster solution is just one option. With the new approach, Kyma users get the flexibility to pick the solution fitting to their needs.
+
 ## Execution
 
 The outlined strategy shifts the Kyma observability stack heavily, and the transformation process must be executed stepwise by priorities:
 
 1. [**Configurable Logging**](https://github.com/kyma-project/kyma/issues/11236): Introduce a configurable log collector and support log pipeline configurations at runtime with focus on the SAP ecosystem as MVP. Accessing application logs is the first and most common way of troubleshooting applications and is the minimal feature that users expect.
-2. **Transform Kiali component into a blueprint**: Kiali is a very valuable tool for visualizing the Istio service mesh. It is based and fully dependent on Istio metrics from Prometheus and the Kubernetes APIServer, and brings integrations into Jaeger and Grafana. It is very specific to that toolset and must run within the cluster. The effort of providing a scalable HA setup fitting all usage scenarios is too high and distracts from the new focus of the Kyma observability stack. Thus, the Kiali component must be transformed into a blueprint based on the upstream kiali-operator Helm chart, providing a `values.yaml` file with instant integration. This step has high priority because it has no further dependency, low investment, and reduces maintenance efforts.
+2. [**Transform Kiali component into a blueprint**](https://github.com/kyma-project/kyma/issues/15412): Kiali is a very valuable tool for visualizing the Istio service mesh. It is based and fully dependent on Istio metrics from Prometheus and the Kubernetes APIServer, and brings integrations into Jaeger and Grafana. It is very specific to that toolset and must run within the cluster. The effort of providing a scalable HA setup fitting all usage scenarios is too high and distracts from the new focus of the Kyma observability stack. Thus, the Kiali component must be transformed into a blueprint based on the upstream kiali-operator Helm chart, providing a `values.yaml` file with instant integration. This step has high priority because it has no further dependency, low investment, and reduces maintenance efforts.
 3. [**Configurable Tracing**](https://github.com/kyma-project/kyma/issues/11231): Switch the official trace propagation protocol to [W3C-tracecontext](https://www.w3.org/TR/trace-context/), and introduce a configurable trace collector based on OTLP. 
 4. **Transform Tracing component into a blueprint**: The tracing component bundles a Jaeger-all-in-one installation pre-integrated with Kyma's Istio, Serverless, and Eventing components. The bundle has a very lightweight setup that is mainly for demo purposes. It should be turned into a blueprint to save maintenance efforts. In the same step, Kyma must be adjusted to leverage Istio's telemetry API so that the telemetry can be activated at runtime.
 5. [**Configurable Monitoring**](https://github.com/kyma-project/kyma/issues/13079): Introduce a configurable metrics collector that instantly scrapes all annotated workloads and supports the shipment of the metrics with a pipeline configuration. To cover a lot of providers instantly, the focus is on integrations based on OTLP. After logs, metrics are the next important feature to gain insights into distributed applications.
 6. **Transform Logging component into a blueprint**: As soon as the application logs can be out-streamed to external systems, Kyma can choose alternatives for the in-cluster logging solution. The Loki stack (Loki and Grafana) can be turned into a blueprint with the advantage of using the latest Loki versions (solving the license problem). Again, users get instant integration with the upstream Loki Helm chart and a provided `values.yaml` file.
 7. **Transform the Monitoring component into a blueprint**: After finishing the configurable monitoring story, there is a good way to instrument and collect metrics of workloads independently of the Prometheus Operator stack. Now Kyma can introduce a blueprint to turn the actual Prometheus storage and Grafana visualization into a self-hosted component. Kyma-specific Grafana dashboards might be still bundled and maintained. All other dashboards are anyway based on the upstream kube-prometheus-stack, on which the monitoring blueprint will be based.
-

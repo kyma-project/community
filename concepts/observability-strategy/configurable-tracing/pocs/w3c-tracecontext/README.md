@@ -8,8 +8,6 @@ At the moment, the only solution to use w3c-tracecontext is with an OpenCensus t
 
 ## Setup
 
-The activation of the openCensusAgent as tracer with the [extensionProvider](https://preliminary.istio.io/latest/docs/tasks/observability/distributed-tracing/opencensusagent/) concept was not working properly yet. Here, the sampling rate was not taken into account properly, causing strange effects. The istio-ingressgateway did not report spans, the downstream services received trace headers without sampling decision and still were reporting spans.
-
 So the PoC used the traditional approach with the meshConfig and a hardcoded proxy setting. A sample application based on Serverless and Eventing was deployed.
 
 1. Have an OSS Kyma 2.6.1 installed.
@@ -27,6 +25,32 @@ So the PoC used the traditional approach with the meshConfig and a hardcoded pro
     ```
 7. Call `GET demo.<yourClusterDomain>`.
 8. Check Jaeger `kubectl port-forward -n kyma-system svc/tracing-jaeger-query 16686:16686`.
+
+The activation of the openCensusAgent as tracer with the [extensionProvider](https://istio.io/latest/docs/tasks/observability/distributed-tracing/opencensusagent/) concept was tried as well. It required to use Istio 1.15 and worked out very well by changing the Istio config to use the following settings:
+```yaml
+  defaultProviders:
+    tracing: ["opencensus"]
+  extensionProviders:
+    - name: "opencensus"
+      opencensus:
+          service: "otel-collector.kyma-system.svc.cluster.local"
+          port: 55678
+          context:
+          - W3C_TRACE_CONTEXT
+```
+These settings enabled the tracer properly with a default sampling rate of 1%. Be aware that defining a single extensionProvider of type `tracing` deactivates the old meshConfig completely, including sampling and "enableTracing". Placing the telemetry resource in the istio-system namespace configured the sampling rate for the whole mesh:
+```yaml
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: mesh-default
+  namespace: istio-system
+spec:
+  tracing:
+  - randomSamplingPercentage: 100.00
+```
+
+By providing no default telemetry resource, the user can completely configure the tracing (besides the push URL, which is controlled by the extensionProvider). Already now, this approach looks like the preferable way to configure tracing.
 
 ## Result
 
