@@ -2,11 +2,11 @@
 
 ## Motivation
 
-The Kyma project evolved over time, from an extensibility framework having batteries-included, to a runtime which focusses on providing kubernetes building blocks with enterprise-grade quality. Hereby, the Kyma observability feature was not adapting yet, still providing an out-of-the box in-cluster stack which gets you started immediately, but does not qualify for the enterprise-grade qualities.
+The Kyma project evolved over time, from an extensibility framework with "batteries included", to a runtime that focuses on providing Kubernetes building blocks with enterprise-grade quality. Up until now, the Kyma Observability feature was still providing an out-of-the box in-cluster stack that gets you started immediately, but which does not qualify for the enterprise-grade qualities. Now, the the Kyma Observability feature is evolving, too.
 
-Observability backends are available in various ways from different vendors as managed services. While users can pick and choose and can leverage benefits like cross-cluster scenarios, the integration aspect into that external managed services is often complex and heterogenous. Kyma should not invest into another opinionated solution for an in-cluster backend with enterprise-grade qualities, it should instead focus on simplifying the instrumentation and collection of the telemetry data and the integration of the data into external solutions. Hereby, it will leverage as much as possible the OpenTelemetry standards to provide integration options in a vendor-neutral approach.
+Various observability backends are available as managed services from different vendors. While users can pick and choose and can leverage benefits like cross-cluster scenarios, the integration with such externally managed services is often complex and heterogenous. Kyma should not invest in another opinionated solution for an in-cluster backend with enterprise-grade qualities. Instead, it should focus on simplifying the instrumentation and collection of the telemetry data, and the integration of the data into external solutions. Hereby, Kyma will as much as possible leverage the OpenTelemetry standards to provide integration options in a vendor-neutral approach.
 
-With that Kyma will shift the focus away from providing a full Observability solution, instead it will simplify the instrumentation and integration of telemetry data into external systems.
+With that, Kyma will shift the focus away from providing a full Observability solution; instead it will simplify the instrumentation and integration of telemetry data into external systems.
 
 ## Current Situation 
 
@@ -43,7 +43,7 @@ The current Kyma observability stack covers all mentioned stages, providing a li
 
 ### Drawbacks
 
-At a first glance, the current solution provides a feature-rich end-to-end setup. However, at a second glance, users notice major drawbacks which are not fitting to enterprise-grade software and usually need additional stacks.
+At a first glance, the current solution provides a feature-rich end-to-end setup. However, at a second glance, users notice major drawbacks that aren't a good fit for enterprise-grade software and usually require to bring an own backend.
 - Very limited integration possibilities to external systems. Integration is usually needed for different reasons, such as cross-cluster correlation, forensic analysis, or long-term storage. Kyma's integration points are not vendor-neutral.
 - Very limited configuration options for data enrichment and filtering. Users want to enrich the data with data relevant for their environments, like cluster names. Furthermore, they want to filter out irrelevant log lines or log attributes within a line to save resources and money in the backend.
 - Storage backends are non-scalable, so they can be used only in limited scenarios. Users cannot upgrade the backend into a scalable setup, nor integrate with other solutions.
@@ -54,7 +54,7 @@ Integration (and with that, moving the focus away from providing backends) is th
 
 Providing ready-to-use in-cluster backends is necessarily opinionated, does not cover all usage scenarios, and does not fit into Kyma's goal of providing the Kubernetes building blocks to integrate into the the SAP ecosystem. Also, the licensing issues (particularly with Grafana and Loki, or Elasticsearch as an alternative backend technology) show that an opinionated stack is problematic. It's better to handle opinionation by integrating with actual managed services.
 
-Instrumentation and integration of telemetry data into external systems can be complex and is heterogenous. Providing instrumentation conventions so that provided collectors can automatically pick-up the data and make the integration problem a central aspect, can simplify that tasks a lot.
+Instrumentation and integration of telemetry data into external systems can be complex and is heterogenous. To simplify those tasks, Kyma will provide instrumentation conventions so that provided collectors can automatically pick up the data and make the integration problem a central aspect.
 
 ### Mandatory features
 
