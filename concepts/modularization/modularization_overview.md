@@ -6,7 +6,7 @@ With Kyma’s modular approach, you can install exactly the Kyma components you 
 
 ## Kyma’s Modular Approach
 
-![](assets/Modular_Approach.svg)
+![](assets/modular_approach.svg)
 
 ## 1. Kyma Module
 
