@@ -76,20 +76,20 @@ To sum it up, the goals of Kyma observability should be:
 
 ## Architecture
 
-The strategy shift will be backed by a new layer of collectors that are not bound to any backend anymore. This layer is responsible for collecting and enriching all telemetry data, depending on the signal type. The data will be collected automatically when the best practices for instrumentation are followed.
+The strategy shift will be backed by a new layer of collectors that are not bound to any backend anymore. This layer is responsible for collecting and enriching all telemetry data, depending on the signal type. As long as the best practices for instrumentation are followed, the data is collected automatically.
 
 Users can configure the collectors at runtime with different signal pipelines using basic filtering (inclusion and exclusion of signals) and outputs, so that the collectors start shipping the signals through the pipelines to the configured backends. The dynamic configuration and management of the collector is handled by a new operator, which is configured using Kubernetes API. The collectors and the new operator are bundled in a new core component called `telemetry`.
 
-The configuration options for the collectors via the Kubernetes API will be limited in order to guarantee enterprise-grade qualities. However, it will be possible to run your own collector setup for advanced customization options.
+To guarantee enterprise-grade qualities, the configuration options for the collectors using the Kubernetes API will be limited. However, users can run their own collector setup for advanced customization options.
 
 The existing Kyma backends and UIs will be just one possible solution to integrate with. Users will still be able to install them manually with a blueprint.
 
 ![b](./assets/strategy-future.drawio.svg)
 
-The technology stack for instrumentation and collection will be based on the OpenTelemetry project. The central data protocol will be OTLP, for trace propagation it will be w3c-tracecontext. As exception to that, the technology stack for collection logs will be based on the Fluent ecosystem and the specific protocols with the goal to adopt to OpenTelemetry at a later time.
+The technology stack for instrumentation and collection will be based on the OpenTelemetry project. The central data protocol will be OTLP; for trace propagation it will be w3c-tracecontext. As exception to that, the technology stack for log collection will be based on the Fluent ecosystem and the specific protocols, with the goal to adopt to OpenTelemetry at a later time.
 
 As mentioned before, the collector setup and used protocols for the signal collection depend on the signal types: Logs are tailed from container log files, metrics usually are pulled using the Prometheus format, and traces are pushed with OTLP. With that, the pre-integration (so that typical signals are collected instantly) is different per type.
-That's why the specific concepts for the different types are different, and are discussed in more detail in the following documents which are still under development and should not be seen final yet:
+That's why the specific concepts for the different types are different, and are discussed in more detail in the following documents. Note that these documents are still under development and should not be seen as final yet:
 * [Concept - Configurable Logging](./configurable-logging/README.md) 
 * [Concept - Configurable Monitoring](./configurable-monitoring/README.md)
 * [Concept - Configurable Tracing](./configurable-tracing/README.md)
