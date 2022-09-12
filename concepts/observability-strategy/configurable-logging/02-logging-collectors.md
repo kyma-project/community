@@ -20,11 +20,11 @@ Most probably, it is the only real vendor-neutral project covering really all th
 Bigger companies are actively planning to use it at least for the trace and metrics aspects. Here, the configuration specification is not in a stable state yet. For logging, the whole feature is still in a beta stadium.
 See also [more detailed here](../opentelemetry/README.md)
 
-### Logs - Fluent-Bit
+### Logs - Fluent Bit
 Fluent-Bit is the log collector traditionally used in Kyma, being part of CNCF and widely adopted on Kubernetes. It is vendor-neutral and supports a variety of generic outputs, so that it can integrate with quite some backends. If a backend is not supported, you can use the fluent-specific Forward ot HTTP protocol to connect a FluentD, providing an even richer ecosystem. It will scale out perfectly by running on every node with a minimalistic resource footprint.
 
-### Logs - FluentD
-Written in Ruby and being more resource-extensive than Fluent-Bit, FluentD presents a valid alternative to Fluent-Bit. However, it is usually recommended as the central application that does not run on every node but handles the central aggregation and shipment to the backend.
+### Logs - Fluentd
+Written in Ruby and being more resource-extensive than Fluent Bit, Fluentd presents a valid alternative to Fluent Bit. However, it is usually recommended as the central application that does not run on every node but handles the central aggregation and shipment to the backend.
 
 ### Logs - rsyslog
 Rsyslog also supports a variety of inputs and outputs. Here, mainly the built-in Kubernetes support is missing.

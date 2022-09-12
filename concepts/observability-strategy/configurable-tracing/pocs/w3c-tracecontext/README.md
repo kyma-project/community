@@ -26,7 +26,7 @@ So the PoC used the traditional approach with the meshConfig and a hardcoded pro
 7. Call `GET demo.<yourClusterDomain>`.
 8. Check Jaeger `kubectl port-forward -n kyma-system svc/tracing-jaeger-query 16686:16686`.
 
-The activation of the openCensusAgent as tracer with the [extensionProvider](https://istio.io/latest/docs/tasks/observability/distributed-tracing/opencensusagent/) concept was tried as well. It required to use Istio 1.15 and worked out very well by changing the istio config to use these settings:
+The activation of the openCensusAgent as tracer with the [extensionProvider](https://istio.io/latest/docs/tasks/observability/distributed-tracing/opencensusagent/) concept was tried as well. It required to use Istio 1.15 and worked out very well by changing the Istio config to use the following settings:
 ```yaml
   defaultProviders:
     tracing: ["opencensus"]
@@ -38,7 +38,7 @@ The activation of the openCensusAgent as tracer with the [extensionProvider](htt
           context:
           - W3C_TRACE_CONTEXT
 ```
-That enabled the tracer properly with a default sampling rate of 1%. Be aware of that defining a single extensionProvider of type tracing will deactivate fully the old meshConfig, including sampling and "enableTracing". Placing the telemetry resource in istio-system namespace configured the sampling rate for the whole mesh:
+These settings enabled the tracer properly with a default sampling rate of 1%. Be aware that defining a single extensionProvider of type `tracing` deactivates the old meshConfig completely, including sampling and "enableTracing". Placing the telemetry resource in the istio-system namespace configured the sampling rate for the whole mesh:
 ```yaml
 apiVersion: telemetry.istio.io/v1alpha1
 kind: Telemetry
@@ -50,7 +50,7 @@ spec:
   - randomSamplingPercentage: 100.00
 ```
 
-By providing no default telemetry resource, the user will be able to fully configure the tracing (besides the push URL which will be in the control of the extensionProvider). The approach looks already like the preferable way of configuring tracing.
+By providing no default telemetry resource, the user can completely configure the tracing (besides the push URL, which is controlled by the extensionProvider). Already now, this approach looks like the preferable way to configure tracing.
 
 ## Result
 
