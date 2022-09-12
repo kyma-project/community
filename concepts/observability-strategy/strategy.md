@@ -6,7 +6,7 @@ The Kyma project evolved over time, from an extensibility framework with "batter
 When Kyma supports a simple way of instrumenting, collecting and integration of the workloads telemetry data into available observability systems, leveraging the [OpenTelemetry](https://opentelemetry.io/) standards to provide integration options in a vendor-neutral approach, the Kyma Observability feature is ready for it's evolution too.
 
 
-With that, Kyma will shift the focus away from providing a full Observability solution; instead it will simplify the instrumentation and integration of telemetry data into external systems and with that will provide the support which is needed by keeping biggest flexibility.
+With that, Kyma will shift the focus away from providing a full Observability solution; instead it will simplify the instrumentation and integration of telemetry data into external systems.
 
 ## Current Situation 
 
@@ -105,7 +105,7 @@ All concepts follow general rules and will provide harmonized user APIs:
 
 ## Conclusion
 
-Kymas new focus in the observability area is to support the user getting its telemetry data reliable into an external system with few efforts and in a vendor-neutral way. Hereby, an integration of an in-cluster system is just one option. This shift will provide the missing flexibility to the user to pick the solution fitting best to its scenario.
+Kyma's new focus in the observability area is to support the users in getting their telemetry data into an external system in a reliable, effortless, and vendor-neutral way. Hereby, integration of an in-cluster solution is just one option. With the new approach, Kyma users get the flexibility to pick the solution fitting to their needs.
 
 ## Execution
 
