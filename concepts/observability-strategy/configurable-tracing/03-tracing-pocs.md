@@ -30,9 +30,32 @@ Running a Istio performance test with high load, and compare the following setti
 - 100% sampling to non-existing URL
 Comparing the resource consumption and throughput of the envoys, and checking other relevant Kubernetes components for suspicious effects like CoreDNS.
 
-## Tail Sampling
+## Tail-based Sampling
 
-Understand what tail sampling strategies are available already in OTEL and understand the scaling requirements of them.
+Opposed to head-based sampling, tail-based sampling makes the decision at the end of the entire flow, wenn all the trace data has been gathered. This kind of sampling decision is made at the collector level.
+
+With tail-based sampling, it's possible to create advanced rules to filter out traces based on any **span** property, including their attributes, duration etc. With tail-based sampling, we can collect data like usually long operations and rare errors.
+
+With the sampling decision delayed to the end of flow when all spans of a trace are available, the decision is better because it is based on all data from the trace.
+
+However, deciding at the end of the trace means that the backed must buffer the entire trace data, which can increase storage overhead.
+
+Choosing the right sample rate is difficult - it mostly depends on system requirements, the way services are built,  and the amount of traffic they have. For example, when a service is very noisy and receives a lot of traffic, a smaller percentage of sampling rate is better, to prevent the costs and the noise. But for an endpoint with less traffic (like a core service), high percentage is a better choice, because it it won't cost much and, most likely, is valuable.
+
+At the first glance, tail-based sampling seems to be a better solution than head-based sampling. 
+
+Policy-based sampling processor configuration offers wide capabilities to configure sampling according to application needs, but this capability brings its own complexity. 
+
+At the time this document is written (Sept '21), tail-based sampling processor is still in a *beta* state and not fully tested.
+
+For further information about tail-based sampling, see:
+
+- [OpenTelemetry: head-based and tail-based sampling, rate-limiting](https://uptrace.dev/opentelemetry/sampling.html)
+- [TraceState: Probability Sampling](https://opentelemetry.io/docs/reference/specification/trace/tracestate-probability-sampling/)
+- [Tail Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
+- [Probabilistic Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/probabilisticsamplerprocessor)
+
+
 ## Plugin mechanism
 
 If the Telemetry component is disabled, there must be a way to bring your own otel-collector. How to achieve that with the planned push approach? The client's apps like Istio are preconfigured with a hardcoded URL to push traces. By default, trace data should be served by the telemetry otel-collector, but should be also servable by the custom otel-collector stack.
