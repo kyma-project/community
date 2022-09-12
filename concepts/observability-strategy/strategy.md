@@ -2,11 +2,11 @@
 
 ## Motivation
 
-The Kyma project evolved over time, from an extensibility framework with "batteries included", to a runtime that focuses on providing Kubernetes building blocks with enterprise-grade quality. Up until now, the Kyma Observability feature was still providing an out-of-the box in-cluster stack that gets you started immediately, but which does not qualify for the enterprise-grade qualities. Now, the the Kyma Observability feature is evolving, too.
+The Kyma project evolved over time, from an extensibility framework with "batteries included", to a runtime that focuses on providing Kubernetes building blocks with enterprise-grade quality. Up until now, the Kyma Observability feature is providing an out-of-the box in-cluster stack that gets you started immediately, but which does not qualify for the enterprise-grade qualities. Various observability backends are already available as managed services from different vendors fulfilling these criterias. The possibility for integration into these offerings will not only bring provide the missing value but also Openness - it is up to the users scenarios which observability system will fit best to the actual requirements.
+When Kyma supports a simple way of instrumenting, collecting and integration of the workloads telemetry data into available observability systems, leveraging the [OpenTelemetry](https://opentelemetry.io/) standards to provide integration options in a vendor-neutral approach, the Kyma Observability feature is ready for it's evolution too.
 
-Various observability backends are available as managed services from different vendors. While users can pick and choose and can leverage benefits like cross-cluster scenarios, the integration with such externally managed services is often complex and heterogenous. Kyma should not invest in another opinionated solution for an in-cluster backend with enterprise-grade qualities. Instead, it should focus on simplifying the instrumentation and collection of the telemetry data, and the integration of the data into external solutions. Hereby, Kyma will as much as possible leverage the OpenTelemetry standards to provide integration options in a vendor-neutral approach.
 
-With that, Kyma will shift the focus away from providing a full Observability solution; instead it will simplify the instrumentation and integration of telemetry data into external systems.
+With that, Kyma will shift the focus away from providing a full Observability solution; instead it will simplify the instrumentation and integration of telemetry data into external systems and with that will provide the support which is needed by keeping biggest flexibility.
 
 ## Current Situation 
 
@@ -80,13 +80,13 @@ The strategy shift will be backed by a new layer of collectors that are not boun
 
 Users can configure the collectors at runtime with different signal pipelines using basic filtering (inclusion and exclusion of signals) and outputs, so that the collectors start shipping the signals through the pipelines to the configured backends. The dynamic configuration and management of the collector is handled by a new operator, which is configured using Kubernetes API. The collectors and the new operator are bundled in a new core component called `telemetry`.
 
-To guarantee enterprise-grade qualities, the configuration options for the collectors using the Kubernetes API will be limited. However, users can run their own collector setup for advanced customization options.
+To guarantee enterprise-grade qualities, the configuration options for the collectors using the Kubernetes API will be limited. However, users can run their own collector setup for advanced customization options at any time.
 
 The existing Kyma backends and UIs will be just one possible solution to integrate with. Users will still be able to install them manually with a blueprint.
 
 ![b](./assets/strategy-future.drawio.svg)
 
-The technology stack for instrumentation and collection will be based on the OpenTelemetry project. The central data protocol will be OTLP; for trace propagation it will be w3c-tracecontext. As exception to that, the technology stack for log collection will be based on the Fluent ecosystem and the specific protocols, with the goal to adopt to OpenTelemetry at a later time.
+The technology stack for instrumentation and collection will be based on the [OpenTelemetry](https://opentelemetry.io/) project. The central data protocol will be [OTLP](https://opentelemetry.io/docs/reference/specification/protocol/); for trace propagation it will be [w3c-tracecontext](https://www.w3.org/TR/trace-context/). As exception to that, the technology stack for log collection will be based on the [Fluent Bit](https://fluentbit.io/) and [Fluentd](https://www.fluentd.org/) ecosystem and the specific protocols, with the goal to adopt to OpenTelemetry at a later time.
 
 As mentioned before, the collector setup and used protocols for the signal collection depend on the signal types: Logs are tailed from container log files, metrics usually are pulled using the Prometheus format, and traces are pushed with OTLP. With that, the pre-integration (so that typical signals are collected instantly) is different per type.
 That's why the specific concepts for the different types are different, and are discussed in more detail in the following documents. Note that these documents are still under development and should not be seen as final yet:
@@ -105,7 +105,8 @@ All concepts follow general rules and will provide harmonized user APIs:
 
 ## Conclusion
 
-Shifting the focus of Kymas Observability feature away from an end-to-end observability solution having major drawbacks (in-cluster, opinionated, not flexible enough, ..), into a solution which supports the user with the runtime centric tasks of instrumentation, collection and integration of telemetry data into external systems in a vendor-neutral way, which solves an actual problem of enterprise users - getting telemetry data reliable into an external system with few efforts.
+Kymas new focus in the observability area is to support the user getting its telemetry data reliable into an external system with few efforts and in a vendor-neutral way. Hereby, an integration of an in-cluster system is just one option. This shift will provide the missing flexibility to the user to pick the solution fitting best to its scenario.
+
 ## Execution
 
 The outlined strategy shifts the Kyma observability stack heavily, and the transformation process must be executed stepwise by priorities:
