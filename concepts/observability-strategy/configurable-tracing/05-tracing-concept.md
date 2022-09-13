@@ -26,7 +26,7 @@ There should be no resource consumption if there is no pipeline defined. To achi
 The following work packages are identified and will be transformed into stories:
 - Build a custom Otel Collector image with a receiver for Istio traces and tail-based sampling processor.
 - If a pipeline is defined, the Telemetry Operator deploys Otel Collector.
-- operator removes deployment if last pipeline gets deleted
+- When the last pipeline is deleted,  the Telemetry Operator removes the Deployment.
 - Define basic settings for the Otel Collector Deployment.
 - Configure Otel Collector with tracePipeline settings.
 - Limit the setup to a singular pipeline only. To keep it simple, there can be only 0 or 1 pipeline.

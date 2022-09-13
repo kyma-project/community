@@ -2,7 +2,7 @@
 
 ## Requirements
 
-The agent's responsibility is to collect all span data in the cluster (Istio, Serverless, Eventing, custom) and ship them in a configurable way to targets. The agent is not meant to be used as backend system, so ideally it is even stateless.
+The agent's responsibility is to collect all span data in the cluster (Istio, Serverless, Eventing, custom) and ship them in a configurable way to targets. The agent is not meant to be used as backend system, so ideally, it is stateless.
 
 - Collection
   - Support OTLP push approach.
