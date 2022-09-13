@@ -13,7 +13,7 @@ OpenTelemetry version 0.22.1 deployed on a Kyma cluster (version 2.6.0) with the
 - As exporter, only log/info and/or NOP exporter to keep impact of OpenTelemetry as low as possible.
 - No additional extensions
 
-See the [otel-collector](./files/otel-collector/) for details.
+For details, see the [Otel Collector](./files/otel-collector/).
 
 ### Sampling App Deployment
 
@@ -25,7 +25,7 @@ All Functions are deployed with NodeJs version 16.
 See the [application folder](./files/application/) for details.
 
 ### Call Simulator
-As call simulator, Gatling version 3.8.3 is used, see the [Gatling test](./files/call-simulator/TracingSimulation.java)
+As call simulator, Gatling version 3.8.3 is used; see the [Gatling test](./files/call-simulator/TracingSimulation.java).
 
 ## Scenarios
 

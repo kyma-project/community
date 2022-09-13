@@ -31,14 +31,14 @@ Running a Istio performance test with high load, and compare the following setti
 Comparing the resource consumption and throughput of the envoys, and checking other relevant Kubernetes components for suspicious effects like CoreDNS.
 
 Conclusions:
-- Client-based sampling should not be set to 100% by default, it must be a user controlled configuration
-- Tracing should be turned off if there is no endpoint available to push the data
+- Client-based sampling should not be set to 100% by default, it must be a user-controlled configuration
+- If there is no endpoint available to push the data, tracing should be deactivated
 
 ## Tail-based Sampling
 
 Opposed to head-based sampling, tail-based sampling makes the decision at the end of the entire flow, when all the trace data has been gathered. This kind of sampling decision is made at the collector level.
 
-With tail-based sampling, it's possible to create advanced rules to filter out traces based on any **span** property, including their attributes, duration etc. With tail-based sampling, we can collect data like usually long operations and rare errors.
+With tail-based sampling, it's possible to create advanced rules to filter out traces based on any **span** property, including their attributes, duration etc. With tail-based sampling, we can collect data like unusually long operations and rare errors.
 
 With the sampling decision delayed to the end of flow when all spans of a trace are available, the decision is better because it is based on all data from the trace.
 
@@ -87,7 +87,7 @@ Istio can be configured to use the w3c-tracecontext for trace propagation alread
 
 The goal of the TracePipeline is to push trace data to multiple destinations using a different set of processors or sampling strategies. How can an isolation of these pipelines be achieved based on the otel-collector? If one destination is down, can the other destination be continued?
 
-## Modularization - 3 modules or one telemetry module
+## Modularization - three modules or one telemetry module
 
 Benefits of one module
 - Shared caches for the controllers possible
@@ -95,11 +95,11 @@ Benefits of one module
 - shared packages possible without spending time in dependency tree maintenance
 
 Benefits of three modules
-- There are 3 independent domains sharing a lot of common things, it sounds more natural to model them individual
-- Feature selection (on/off) is natively supported (no sub-attributes which are doing something similar)
+- There are 3 independent domains sharing a lot of common things, it sounds more natural to model them individually
+- Feature selection (on/off) is natively supported (no sub-attributes with similar purposes)
 
 ## Modularization - Re-use the deployer library of the module-manager
-For managing the otel-collector deployment, can the new library of the module-manager be used already? Is deletion supported? What artifact format should be used?
+Can the new library of the Module Manager be used already to manage the Otel Collector deployment? Is deletion supported? What artifact format should be used?
 
-## Otel-Collector base setup
-What processors and extensions the base setup needs to use, what are the configuration options?
+## Otel Collector base setup
+Which processors and extensions does the base setup need? What are the configuration options?
