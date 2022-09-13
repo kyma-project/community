@@ -24,7 +24,7 @@ For that, it is crucial to understand the impact of a permanently enabled sampli
 The [Istio trace sampling rate analysis](./pocs/sampling-rate/README.md) investigation does that in the following way:
 
 Running a Istio performance test with high load, and compare the following settings:
-- 1% sampling to otel-collector with noop exporter
+- 1% sampling to Otel Collector with noop exporter
 - 100% sampling to otel-collector with noop exporter
 - 100% sampling to kubernetes service without endpoints
 - 100% sampling to non-existing URL
@@ -85,7 +85,7 @@ Istio can be configured to use the w3c-tracecontext for trace propagation alread
 
 ## How pipeline isolation can be achieved, is it feasible at all?
 
-The goal of the TracePipeline is to push trace data to multiple destinations using a different set of processors or sampling strategies. How can an isolation of these pipelines be achieved based on the otel-collector? If one destination is down, can the other destination be continued?
+The goal of the TracePipeline is to push trace data to multiple destinations using a different set of processors or sampling strategies. How can an isolation of these pipelines be achieved based on the Otel Collector? If one destination is down, can the other destination be continued?
 
 ## Modularization - three modules or one telemetry module
 

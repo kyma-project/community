@@ -7,7 +7,7 @@
 ## Simple Auto-Scaling - Tail-based sampling
 
 Auto-scaling should be possible from the beginning. A simple Deployment of the Otel Collector is the best option to achieve scaling. We only have to evaluate the relevant scaling criteria based on incoming traffic to scale the ReplicaSet up and down. A single Deployment of the Otel Collector requires that sampling decisions are made on the data that is constant and available across all spans of a trace, mainly the traceID.
-Any other sampling would require to batch trace data, and to do that batching sticky on dedicated instances. That would require an advanced architecture, which we can adopt later.
+More advanced sampling like respecting some error status would require to batch all spans for a trace at one instance in order to make a decision. Having a scalable setup would require to introduce another StatefulSet of the Otel Collector and forward the spans for a specific trace always to the same instance of the StatefulSet (sticky). That advanced architecture, can be adopted at a later time.
 A simple sampling approach is acceptable for now.
 
 ## Temporary OpenCensus support
