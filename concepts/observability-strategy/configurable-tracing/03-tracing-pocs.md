@@ -1,7 +1,7 @@
 # Proof of Concepts
 
 As foundation for the final concept, see the following collection of investigations:
-## Will all system components work with w3c-tracecontext?
+## (Done) Will all system components work with w3c-tracecontext?
 
 The goal is to use w3c-tracecontext for propagation only. For that, it must be verified that this is feasible. Are there any components not yet supporting it, which will require to run both protocols (zipkin-B3) in parallel?
 
@@ -12,7 +12,7 @@ Check
 
 The [w3c-tracecontext](./pocs/w3c-tracecontext/README.md) proves that Kyma Serverless and Eventing supports w3c-tracecontext natively. Istio can be enabled for it with the openCensusAgent tracer.
 
-## Head-based sampling always on
+## (Done) Head-based sampling always on
 
 The user must be able to control how much trace data is streamed into the backend, because that has a huge impact on costs (mainly data transfer and storage). 
 An option could be to make the [Head-based sampling](https://uptrace.dev/opentelemetry/sampling.html#rate-limiting-sampling) configurable in every client that pushes trace data, mainly Istio. However, the potential for making good sampling decisions is very limited, because most attributes like errors or latencies are not known at that time.
@@ -21,7 +21,7 @@ To support sampling centrally with the pipeline in the collector config, head-ba
 
 For that, it is crucial to understand the impact of a permanently enabled sampling strategy on the used infrastructure, mainly Istio and Kubernetes.
 
-The [Istio trace sampling rate analysis](https://github.com/kyma-project/kyma/issues/15304) investigation does that in the following way:
+The [Istio trace sampling rate analysis](./pocs/sampling-rate/README.md) investigation does that in the following way:
 
 Running a Istio performance test with high load, and compare the following settings:
 - 1% sampling to otel-collector with noop exporter
@@ -30,9 +30,13 @@ Running a Istio performance test with high load, and compare the following setti
 - 100% sampling to non-existing URL
 Comparing the resource consumption and throughput of the envoys, and checking other relevant Kubernetes components for suspicious effects like CoreDNS.
 
+Conclusions:
+- Client-based sampling should not be set to 100% by default, it must be a user controlled configuration
+- Tracing should be turned off if there is no endpoint available to push the data
+
 ## Tail-based Sampling
 
-Opposed to head-based sampling, tail-based sampling makes the decision at the end of the entire flow, wenn all the trace data has been gathered. This kind of sampling decision is made at the collector level.
+Opposed to head-based sampling, tail-based sampling makes the decision at the end of the entire flow, when all the trace data has been gathered. This kind of sampling decision is made at the collector level.
 
 With tail-based sampling, it's possible to create advanced rules to filter out traces based on any **span** property, including their attributes, duration etc. With tail-based sampling, we can collect data like usually long operations and rare errors.
 
@@ -46,7 +50,7 @@ At the first glance, tail-based sampling seems to be a better solution than head
 
 Policy-based sampling processor configuration offers wide capabilities to configure sampling according to application needs, but this capability brings its own complexity. 
 
-At the time this document is written (Sept '21), tail-based sampling processor is still in a *beta* state and not fully tested.
+At the time this document is written (Sept '22), tail-based sampling processor is still in a *beta* state and not fully tested.
 
 For further information about tail-based sampling, see:
 
@@ -73,7 +77,7 @@ What should be the name for the OTLP push URL for traces? Should we use one for 
 Is it relevant to include/exclude trace data by Namespace or container? (Results in incomplete traces?)
 Is it relevant to include/exclude trace data by attributes? (Attributes might differ in the spans for one trace? Results in incomplete traces)
 
-## Can istio/envoy report spans via OTLP already, what is with w3c-tracecontext support?
+## (Done) Can istio/envoy report spans via OTLP already, what is with w3c-tracecontext support?
 
 At the moment, there is no way to let Istio send trace data to a backends in OTLP protocol. The [envoy-otel](https://github.com/envoyproxy/envoy/issues/9958) integration made very good progress already and support will be provided soon.
 
@@ -82,3 +86,20 @@ Istio can be configured to use the w3c-tracecontext for trace propagation alread
 ## How pipeline isolation can be achieved, is it feasible at all?
 
 The goal of the TracePipeline is to push trace data to multiple destinations using a different set of processors or sampling strategies. How can an isolation of these pipelines be achieved based on the otel-collector? If one destination is down, can the other destination be continued?
+
+## Modularization - 3 modules or one telemetry module
+
+Benefits of one module
+- Shared caches for the controllers possible
+- less maintenance (3 images instead of one, think of security scanning, kube-builder updates)
+- shared packages possible without spending time in dependency tree maintenance
+
+Benefits of three modules
+- There are 3 independent domains sharing a lot of common things, it sounds more natural to model them individual
+- Feature selection (on/off) is natively supported (no sub-attributes which are doing something similar)
+
+## Modularization - Re-use the deployer library of the module-manager
+For managing the otel-collector deployment, can the new library of the module-manager be used already? Is deletion supported? What artifact format should be used?
+
+## Otel-Collector base setup
+What processors and extensions the base setup needs to use, what are the configuration options?
