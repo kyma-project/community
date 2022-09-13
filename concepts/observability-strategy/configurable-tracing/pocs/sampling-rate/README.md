@@ -13,6 +13,8 @@ OpenTelemetry version 0.22.1 deployed on a Kyma cluster (version 2.6.0) with the
 - As exporter, only log/info and/or NOP exporter to keep impact of OpenTelemetry as low as possible.
 - No additional extensions
 
+For details, see the [Otel Collector](./files/otel-collector/).
+
 ### Sampling App Deployment
 
 As sampling app, three serverless Functions are deployed with Istio sidecar injected. To simulate a trace fully sampled with an external call, the Functions call each other in the following chain:
@@ -20,8 +22,10 @@ As sampling app, three serverless Functions are deployed with Istio sidecar inje
 
 All Functions are deployed with NodeJs version 16.
 
+See the [application folder](./files/application/) for details.
+
 ### Call Simulator
-As call simulator, Gatling version 3.8.3 is used.
+As call simulator, Gatling version 3.8.3 is used; see the [Gatling test](./files/call-simulator/TracingSimulation.java).
 
 ## Scenarios
 
@@ -67,7 +71,7 @@ The overall analysis focuses on Istio behavior and resource consumption under di
 Fig. 1 shows the call execution summary (from client perspective) of the test cluster with Istio sampling rate set to **1%**. 
 The success rate of call execution is 100%, and the average response time is around **400ms**.
 
-| ![Call execution summary](../assets/istio-1per-call-summary.jpg) |
+| ![Call execution summary](./assets/istio-1per-call-summary.jpg) |
 | :--: |
 | Fig. 1 Call execution summary |
 
@@ -75,19 +79,19 @@ The success rate of call execution is 100%, and the average response time is aro
 Fig. 2 shows the Istio Mesh overview. Like for the call execution summary, the success rate of cluster metrics is 100%, including local call chain.
 Average latency stays around 400ms, with 6.5 operations per second per service.
 
-| ![Istio mesh mverview](../assets/istio-1per-overwiew.jpg) |
+| ![Istio mesh mverview](./assets/istio-1per-overwiew.jpg) |
 | :--: |
 | Fig. 2 Istio Mesh Overview |
 
-| ![Istio service detail](../assets/istio-1per-servicedetail.jpg) |
+| ![Istio service detail](./assets/istio-1per-servicedetail.jpg) |
 | :--: |
 | Fig. 3 Istio Service Overview |
 
-| ![Service network detail 1](../assets/istio-1per-servicedetail-2.jpg) |
+| ![Service network detail 1](./assets/istio-1per-servicedetail-2.jpg) |
 | :--: |
 | Fig. 4 Service Network Details |
 
-| ![Service network detail 2](../assets/istio-1per-servicedetail-3.jpg) |
+| ![Service network detail 2](./assets/istio-1per-servicedetail-3.jpg) |
 | :--: |
 | Fig. 5 Service Network Details |
 
@@ -97,7 +101,7 @@ Memory consumption of the Istio proxy increased from 61 MB to 68.7 MB in the pea
 
 Although resource consumption during test execution increased, there was no considerable resource consumption observed.
 
-| ![Istio resource consumption](../assets/istio-1per-resource.jpg) |
+| ![Istio resource consumption](./assets/istio-1per-resource.jpg) |
 | :--: |
 | Fig. 6 Istio Proxy Resource Consumption |
 
@@ -107,11 +111,11 @@ During test execution, DNS requests per second increased from 2 packet/sec to 3.
 
 Fig. 8 shows an overview on the cache. Cache hits are increased, which indicates that DNS record request results are mostly caused by cache.
 
-| ![Kubernetes CoreDNS Overview](../assets/istio-1per-coredns-overview.jpg) |
+| ![Kubernetes CoreDNS Overview](./assets/istio-1per-coredns-overview.jpg) |
 | :--: |
 | Fig. 7 Kubernetes CoreDNS Overview |
 
-| ![Kubernetes CoreDNS Cache](../assets/istio-1per-coredns-cache.jpg) |
+| ![Kubernetes CoreDNS Cache](./assets/istio-1per-coredns-cache.jpg) |
 | :--: |
 | Fig. 8 Kubernetes CoreDNS Cache |
 
@@ -127,7 +131,7 @@ The success rate of call execution is 99%, and the average response time is arou
 Unsuccessful calls mostly result in a HTTP 503 response; with the main cause being that Istio proxy can't access either the upstream service (the serverless function), or the Jaeger tracing collector service.
 
 
-| ![Call execution summary](../assets/istio-100per-call-summary.jpg) |
+| ![Call execution summary](./assets/istio-100per-call-summary.jpg) |
 | :--: |
 | Fig. 1 Call execution summary |
 
@@ -137,19 +141,19 @@ Average latency stays over 500ms, with 6.7 operations per second per service.
 
 Global Request Volume increased from 10 to 65.8 operations per second, which indicates high traffic on the Istio mesh.
 
-| ![Istio mesh mverview](../assets/istio-100per-overwiew.jpg) |
+| ![Istio mesh mverview](./assets/istio-100per-overwiew.jpg) |
 | :--: |
 | Fig. 2 Istio Mesh Overview |
 
-| ![Istio service detail](../assets/istio-100per-servicedetail.jpg) |
+| ![Istio service detail](./assets/istio-100per-servicedetail.jpg) |
 | :--: |
 | Fig. 3 Istio Service Overview |
 
-| ![Service network detail 1](../assets/istio-100per-servicedetail-2.jpg) |
+| ![Service network detail 1](./assets/istio-100per-servicedetail-2.jpg) |
 | :--: |
 | Fig. 4 Service Network Details |
 
-| ![Service network detail 2](../assets/istio-100per-servicedetail-3.jpg) |
+| ![Service network detail 2](./assets/istio-100per-servicedetail-3.jpg) |
 | :--: |
 | Fig. 5 Service Network Details |
 
@@ -159,7 +163,7 @@ Memory consumption of the Istio proxy increased from 61 MB to 68.7 MB in the pea
 
 Although resource consumption during test execution increased, there are no considerable resource consumption observed.
 
-| ![Istio resource consumption](../assets/istio-100per-resource.jpg) |
+| ![Istio resource consumption](./assets/istio-100per-resource.jpg) |
 | :--: |
 | Fig. 6 Istio Proxy Resource Consumption |
 
@@ -168,11 +172,11 @@ During test execution, DNS requests per second increased from 2 packet/sec to 3.
 
 Fig. 8 shows the DNS Cache overview. DNS cache hits increased in parallel to the DNS lookup requests, which indicates that DNS record request results are mostly caused by cache.
 
-| ![Kubernetes CoreDNS Overview](../assets/istio-100per-coredns-overview.jpg) |
+| ![Kubernetes CoreDNS Overview](./assets/istio-100per-coredns-overview.jpg) |
 | :--: |
 | Fig. 7 Kubernetes CoreDNS Overview |
 
-| ![Kubernetes CoreDNS Cache](../assets/istio-100per-coredns-cache.jpg) |
+| ![Kubernetes CoreDNS Cache](./assets/istio-100per-coredns-cache.jpg) |
 | :--: |
 | Fig. 8 Kubernetes CoreDNS Cache |
 
@@ -194,7 +198,7 @@ The success rate of call execution is 33%, and the average response time is arou
 Unsuccessful calls mostly result in a HTTP 503 response because upstream services can't access the Jaeger tracing collector service.
 
 
-| ![Call execution summary](../assets/istio-100per-broken-svc-call-summary.jpg) |
+| ![Call execution summary](./assets/istio-100per-broken-svc-call-summary.jpg) |
 | :--: |
 | Fig. 1 Call execution summary |
 
@@ -205,19 +209,19 @@ Average latency stays over 951ms, with 7 operations per second per service.
 
 Global Request Volume increased from 10 to 72.8 operations per second, which indicates high traffic on the Istio mesh.
 
-| ![Istio mesh mverview](../assets/istio-100per-broken-svc-overwiew.jpg) |
+| ![Istio mesh mverview](./assets/istio-100per-broken-svc-overwiew.jpg) |
 | :--: |
 | Fig. 2 Istio Mesh Overview |
 
-| ![Istio service detail](../assets/istio-100per-broken-svc-servicedetail.jpg) |
+| ![Istio service detail](./assets/istio-100per-broken-svc-servicedetail.jpg) |
 | :--: |
 | Fig. 3 Istio Service Overview |
 
-| ![Service network detail 1](../assets/istio-100per-broken-svc-servicedetail-2.jpg) |
+| ![Service network detail 1](./assets/istio-100per-broken-svc-servicedetail-2.jpg) |
 | :--: |
 | Fig. 4 Service Network Details |
 
-| ![Service network detail 2](../assets/istio-100per-broken-svc-servicedetail-3.jpg) |
+| ![Service network detail 2](./assets/istio-100per-broken-svc-servicedetail-3.jpg) |
 | :--: |
 | Fig. 5 Service Network Details |
 
@@ -227,7 +231,7 @@ Memory consumption of the Istio proxy increased from 61 MB to 67 MB in the peak 
 
 Compared to **Scenario 2**, the transferred amount of data decreased by almost 50%, which is related to the fact that no tracing data could be transferred to the Jaeger tracing collector.
 
-| ![Istio resource consumption](../assets/istio-100per-broken-svc-resource.jpg) |
+| ![Istio resource consumption](./assets/istio-100per-broken-svc-resource.jpg) |
 | :--: |
 | Fig. 6 Istio Proxy Resource Consumption |
 
@@ -235,11 +239,11 @@ Fig. 7 shows an overview of the Kubernetes CoreDNS service. Compared to **Scenar
 
 The same behavior is observable for the DNS cache metrics: Compared to **Scenario 2**, the cache misses are almost doubled.
 
-| ![Kubernetes CoreDNS Overview](../assets/istio-100per-broken-svc-coredns-overview.jpg) |
+| ![Kubernetes CoreDNS Overview](./assets/istio-100per-broken-svc-coredns-overview.jpg) |
 | :--: |
 | Fig. 7 Kubernetes CoreDNS Overview |
 
-| ![Kubernetes CoreDNS Cache](../assets/istio-100per-broken-svc-coredns-cache.jpg) |
+| ![Kubernetes CoreDNS Cache](./assets/istio-100per-broken-svc-coredns-cache.jpg) |
 | :--: |
 | Fig. 8 Kubernetes CoreDNS Cache |
 
@@ -256,7 +260,7 @@ The success rate of call execution is 99%, and the average response time is arou
 
 Unsuccessful calls mostly result in a HTTP 503 response; with the main causes being high network latency and high load to the upstream service.
 
-| ![Call execution summary](../assets/istio-100per-no-svc-call-summary.jpg) |
+| ![Call execution summary](./assets/istio-100per-no-svc-call-summary.jpg) |
 | :--: |
 | Fig. 1 Call execution summary |
 
@@ -266,19 +270,19 @@ Average latency stays over 727ms, with 7.30 operations per second per service.
 
 Global Request Volume increased from 10 to 21.1 operations per second. Compared to **Scenario 2** and **Scenario 3**, which have more than 65 operations per second, here the calls to the tracing collector service are missing.
 
-| ![Istio mesh mverview](../assets/istio-100per-no-svc-overwiew.jpg) |
+| ![Istio mesh mverview](./assets/istio-100per-no-svc-overwiew.jpg) |
 | :--: |
 | Fig. 2 Istio Mesh Overview |
 
-| ![Istio service detail](../assets/istio-100per-no-svc-servicedetail.jpg) |
+| ![Istio service detail](./assets/istio-100per-no-svc-servicedetail.jpg) |
 | :--: |
 | Fig. 3 Istio Service Overview |
 
-| ![Service network detail 1](../assets/istio-100per-no-svc-servicedetail-2.jpg) |
+| ![Service network detail 1](./assets/istio-100per-no-svc-servicedetail-2.jpg) |
 | :--: |
 | Fig. 4 Service Network Details |
 
-| ![Service network detail 2](../assets/istio-100per-no-svc-servicedetail-3.jpg) |
+| ![Service network detail 2](./assets/istio-100per-no-svc-servicedetail-3.jpg) |
 | :--: |
 | Fig. 5 Service Network Details |
 
@@ -290,7 +294,7 @@ At test start, memory consumption and CPU consumption increased rapidly, but wit
 
 Compared to **Scenario 2** and **Scenario 3**, the transferred amount of data decreased significantly decreased, which is related to the missing tracing collector service calls.
 
-| ![Istio resource consumption](../assets/istio-100per-no-svc-resource.jpg) |
+| ![Istio resource consumption](./assets/istio-100per-no-svc-resource.jpg) |
 | :--: |
 | Fig. 6 Istio Proxy Resource Consumption |
 
@@ -298,11 +302,11 @@ Fig. 7 shows an overview of the Kubernetes CoreDNS service.
 Like in **Scenario 3**, the DNS requests per second increased significantly, from 2 packet/sec to 8 packet/sec.
 During test execution, DNS cache misses also doubled, which also explains the increased DNS lookup response time. DNS lookup response time increased from 1 second to 4 seconds, and response times went up to 500ms.
 
-| ![Kubernetes CoreDNS Overview](../assets/istio-100per-no-svc-coredns-overview.jpg) |
+| ![Kubernetes CoreDNS Overview](./assets/istio-100per-no-svc-coredns-overview.jpg) |
 | :--: |
 | Fig. 7 Kubernetes CoreDNS Overview |
 
-| ![Kubernetes CoreDNS Cache](../assets/istio-100per-no-svc-coredns-cache.jpg) |
+| ![Kubernetes CoreDNS Cache](./assets/istio-100per-no-svc-coredns-cache.jpg) |
 | :--: |
 | Fig. 8 Kubernetes CoreDNS Cache |
 

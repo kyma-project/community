@@ -88,9 +88,9 @@ The existing Kyma backends and UIs will be just one possible solution to integra
 
 The technology stack for instrumentation and collection will be based on the [OpenTelemetry](https://opentelemetry.io/) project. The central data protocol will be [OTLP](https://opentelemetry.io/docs/reference/specification/protocol/); for trace propagation it will be [w3c-tracecontext](https://www.w3.org/TR/trace-context/). As exception to that, the technology stack for log collection will be based on the [Fluent Bit](https://fluentbit.io/) and [Fluentd](https://www.fluentd.org/) ecosystem and the specific protocols, with the goal to adopt to OpenTelemetry at a later time.
 
-As mentioned before, the collector setup and used protocols for the signal collection depend on the signal types: Logs are tailed from container log files, metrics usually are pulled using the Prometheus format, and traces are pushed with OTLP. With that, the pre-integration (so that typical signals are collected instantly) is different per type.
-That's why the specific concepts for the different types are different, and are discussed in more detail in the following documents. Note that these documents are still under development and should not be seen as final yet:
-* [Concept - Configurable Logging](./configurable-logging/README.md) 
+As mentioned before, the collector setup and used protocols for the signal collection are specific to the signal types: Logs are tailed from container log files, metrics usually are pulled using the Prometheus format, and traces are pushed with OTLP. With that, the pre-integration (so that typical signals are collected instantly) is different per type.
+That's why the concrete concepts for the different types are different, and are discussed in more detail in the following documents:
+* [Concept - Configurable Logging](./configurable-logging/README.md)
 * [Concept - Configurable Monitoring](./configurable-monitoring/README.md)
 * [Concept - Configurable Tracing](./configurable-tracing/README.md)
 
