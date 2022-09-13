@@ -9,16 +9,21 @@ metadata:
 spec:
   receiver: # singular, different receivers need different pipelines and exporters configs
     type: otlp # otlp  | custom, default is otlp
-    otlp: # maps to central otlp receiver, dealing with the actual application logs
-      namespaces: [] # generates the rule for the rewrite_tag assigned to every pipeline
-      excludeNamespaces: []
-      containers: []
-      excludeContainers: [] # allows to exclude istio proxies
-
-      podLabels: # generates a "filterprocessor" filter as a first element in the chain selecting logs by the "kubernetes" attributes
-        app: icke
-      excludePodLabels:
-        app: chris
+    otlp: # maps to central otlp receiver
+      namespaces: # maps to filterprocessor
+        include: []
+        exclude: []
+      containers:
+        include: []
+        exclude: []
+      system:
+        apiserver: 
+          enabled: true
+        nodes:
+          enabled: true
+        kube-state-metrics:
+          enabled: true
+          deployments: false
 
   processors: # list of processors, order is important
     - addLabel: # maps to "metricstransformprocessor" filter, adds an attribute

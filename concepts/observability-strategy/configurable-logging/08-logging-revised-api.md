@@ -64,10 +64,13 @@ spec:
   input: # singular, different inputs require different pipelines and output configs
     type: application # application | system | custom, default is application
     application: # maps to central tail pipeline, dealing with the actual application logs
-      namespaces: [] # generates the rule for the rewrite_tag assigned to every pipeline
-      excludeNamespaces: []
-      containers: []
-      excludeContainers: []
+      namespaces:
+        include: []
+        exclude: []
+        system: true
+      containers:
+        include: []
+        exclude: []
 
       podLabels: # generates a "grep" filter as a first element in the chain selecting logs by the "kubernetes" attributes
         app: icke
