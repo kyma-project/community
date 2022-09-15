@@ -4,7 +4,7 @@
 - [Release channels](#release-channels)
 - [Component packaging and versioning](#component-packaging-and-versioning)
   - [Example](#example)
-- [Manifest operator](#manifest-operator)
+- [Module manager](#module-manager)
 - [Component descriptor](#component-descriptor)
   - [OCM](#ocm)
   - [Operator bundle from Operator Lifecycle Manager (OLM)](#operator-bundle-from-operator-lifecycle-manager-olm)
@@ -40,14 +40,17 @@ Components can depend only on core Kubernetes API, or on API extensions introduc
 If the API you need (like a core Kubernetes API or Istio virtual service) is not available, you should fail. If your component can work without the API, but some features are not available (for example, service monitor from monitoring), you should just skip it and continue to deploy other component resources. 
 
 # Release channels
-Release channels let customers balance between available features and stability. The number of channels and their characteristics can be established later. Usually, projects introduce between 2 and 4 channels. Some examples:
-- [GKE](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-- [Nextcloud](https://nextcloud.com/release-channels/)
+Release channels let customers try new modules or features early or decide when the updates will be applied. 
 
-TO DO:
-- How are release channels implemented - one config file or folder in some repository, or config maps?
-- What component versions are included in the channel?
-- What governance model and requirements for promoting a version to the stable channel? Hotfix should be possible, anyway.
+![](assets/release-channels.drawio.svg)
+
+The first use case will be modeled as the alpha channel. Modules available in the alpha channel are developed with all quality measures in place (functional correctness, security, etc), but can have still unstable API or can be changed without keeping backward compatibility. When you use the module from alpha channel you won't get full SLA guarantees for that module or other modules that are affected (directly or indirectly).
+
+The second use case (decide when updates should be applied) will require 2 production-grade channels with the different update schedule. The fast channel will get updates as soon as they are released and pass all quality gates. The regular channel will get updates a few days later. Customers can switch the entire cluster or particular component to the fast channel to check if the upstream changes will not cause any issues with their workload. Changing back to the regular channel is possible but the module version won't be downgraded - the next version has to reach the channel to be applied.
+
+Hotfixes will be delivered to all channels immediately (TODO: how to apply hotfix for the release that is not available in the current channel).
+
+
 
 # Component packaging and versioning
 Kyma ecosystem produces several artefacts that can be deployed in the central control plane (KEB + operators) and in the target Kubernetes cluster. Versioning strategy should address pushing changes for all these artefacts in an unambiguous way with full traceability. 
@@ -71,15 +74,15 @@ If we migrate the Eventing component to the proposed structure, it would look li
 - `github.com/kyma-project/eventing-operator` repository
     - charts (copied from `kyma/resources/eventing`)
     - CRDs (copied from `kyma/installation/resources`)
-    - operator source code (inspired by `kyma-incubator/reconciler/pkg/reconciler/instances/eventing` importing `kyma-project/manifest-operator-lib` to do the common tasks like rendering and deploying charts)
+    - operator source code (inspired by `kyma-incubator/reconciler/pkg/reconciler/instances/eventing` importing `kyma-project/module-manager-lib` to do the common tasks like rendering and deploying charts)
 - `github.com/kyma-project/eventing-controller` repository (moved from `kyma/components/eventing-controller`)
 - `github.com/kyma-project/event-publisher-proxy` repository (moved from `kyma/components/event-publisher-proxy`)
 
 New images of our own components (`eventing-controller`, `event-publisher-proxy`) would require changes in charts inside Eventing operator. Also, changes in `nats/jetstream` would require chart updates.
 
 
-# Manifest operator
-Some components do not need any custom operator to install or upgrade (for example, API Gateway, Logging, Monitoring) and use a base reconciler. With the operator approach, this task could be completed by a generic manifest operator. Custom resource for the manifest operator would contain information about chart location and overlay values. A single operator for multiple components can have some benefits in the in-cluster mode (better resource utilization), but would introduce challenges related to independent releases of charts and the manifest operator itself. Therefore a recommendation is that **all components will always provide the operator**. The manifest operator can be used as a template with a placeholder for your charts and default implementation (using the manifest library).
+# Module manager
+Some components do not need any custom operator to install or upgrade (for example, API Gateway, Logging, Monitoring) and use a base reconciler. With the operator approach, this task could be completed by a generic `module-manager`. Custom resource for the `module-manager` would contain information about chart location and overlay values. A single operator for multiple components can have some benefits in the in-cluster mode (better resource utilization), but would introduce challenges related to independent releases of charts and the `module-manager` itself. Therefore a recommendation is that **all components will always provide the operator**. The `module-manager` can be used as a template with a placeholder for your charts and default implementation (using the module-manager library).
 
 # Component descriptor
 ## OCM
@@ -117,20 +120,20 @@ Apart from technical quality, Kyma components must fullfil other standards, such
 
 # Operator-based component management
 
-`kyma-operator` is a meta operator responsible for installing and updating component operators. It is similar to [Operator Lifecycle Manger](https://olm.operatorframework.io/), but it can work in two modes: 
+`lifecycle-manager` is a meta operator responsible for installing and updating component operators. It is similar to [Operator Lifecycle Manger](https://olm.operatorframework.io/), but it can work in two modes: 
 - central mode (managing thousands of clusters) 
 - single cluster mode (local installation)
 
 ## Regular (local) component operators
 Each Kyma component must provide the operator that manages the component lifecycle (installing, updating, configuring, deleting). The component provider (team) must prepare one custom resource (ComponentDescriptor) that specifies how to install the operator (`deployment.yaml`) and how to configure it (operator CRD, default values). 
-The complexity of managing installation in many clusters or using configured release channels is handled by `kyma-operator`. Component providers can ship regular Kubernetes operators. Such regular operators are installed in the target cluster where components should be installed. 
+The complexity of managing installation in many clusters or using configured release channels is handled by `lifecycle-manager`. Component providers can ship regular Kubernetes operators. Such regular operators are installed in the target cluster where components should be installed. 
 
 ## Central component operators
-`kyma-operator` can also work with other component operators deployed centrally. In this case, `kyma-operator` creates resources for component operators in the central cluster. The reconciliation logic of the central component operator can find a remote cluster kubeconfig by convention or reference (for example, annotation). 
+`lifecycle-manager` can also work with other component operators deployed centrally. In this case, `lifecycle-manager` creates resources for component operators in the central cluster. The reconciliation logic of the central component operator can find a remote cluster kubeconfig by convention or reference (for example, annotation). 
 
 ## Central vs local operator
 
-With Kyma 2.0, we moved the component installation (`kyma-installer`) from the cluster to a central place (reconciler). Each component was installed by the dedicated reconciler from the Kyma control plane. For some components, it perfectly makes sense because they interact mainly with other central systems to enable some integrations. But for some components that interact only with internal cluster resources, such a setup is suboptimal. The local Kubernetes operator designed and implemented according to the best practices should have minimal resource requirements (few MB of memory and few mCPU). Therefore, for the cases where you don't need access to central services or external resources, it is better to use a regular operator than a central one. A regular operator is much easier to develop and maintain for the component team, because the operator lifecycle management is still handled centrally by `kyma-operator` (together with `manifest-operator`).
+With Kyma 2.0, we moved the component installation (`kyma-installer`) from the cluster to a central place (reconciler). Each component was installed by the dedicated reconciler from the Kyma control plane. For some components, it perfectly makes sense because they interact mainly with other central systems to enable some integrations. But for some components that interact only with internal cluster resources, such a setup is suboptimal. The local Kubernetes operator designed and implemented according to the best practices should have minimal resource requirements (few MB of memory and few mCPU). Therefore, for the cases where you don't need access to central services or external resources, it is better to use a regular operator than a central one. A regular operator is much easier to develop and maintain for the component team, because the operator lifecycle management is still handled centrally by `lifecycle-manager` (together with `module-manager`).
 
 
 # Example for local and central operators
@@ -144,11 +147,11 @@ In the following example, two components are defined:
 
 ## Do we still release Kyma? What is a Kyma release?
  
-Every Kyma release contains the `kyma-operator` in the given version and component descriptors for release channels. As we can continuously release components and upgrade their versions in the release channels, the Kyma release is not that important anymore, but it can be useful for the open source community.
+Every Kyma release contains the `lifecycle-manager` in the given version and component descriptors for release channels. As we can continuously release components and upgrade their versions in the release channels, the Kyma release is not that important anymore, but it can be useful for the open source community.
 
 ## Can I still use the `kyma deploy` command to install Kyma in my cluster?
 
-Yes, but under the hood, `kyma-operator` will be used to install component operators. It is not decided yet whether Kyma CLI will install `kyma-operator` in the cluster or will contain `kyma-operator` code and run it locally.
+Yes, but under the hood, `lifecycle-manager` will be used to install component operators. It is not decided yet whether Kyma CLI will install `lifecycle-manager` in the cluster or will contain `lifecycle-manager` code and run it locally.
 
 ## I have a simple component with a Helm chart. Why do I need an operator?
 
