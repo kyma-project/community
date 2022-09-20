@@ -16,41 +16,43 @@ A Kyma module contains all information required to install and run the associate
 * A default configuration for module chart resource installation
 * Optionally, further layers that can enhance, or be required by, the operator of a module
 
-All these assets are bundled into a single container image using the OCI image specification.
+All these assets are bundled into a single container image using the [OCI image specification](https://github.com/opencontainers/image-spec).
 
 > **TIP:** Learn how to build a module(ADD_LINK).
 
 ## 2. Module Manager
 
-The Module Manager installs, uninstalls, and manages the Kyma modules in a local (single cluster mode) or remote setup (in which one cluster acts as control plane). For example, it remotely manages and synchronizes Kyma module resources in the SAP Kyma Runtime, while the manifest is located in the control plane.
+Module Manager installs, uninstalls, and manages the Kyma modules in a local (single cluster mode) or remote setup (in which one cluster acts as control plane). For example, it remotely manages and synchronizes Kyma module resources in the SAP Kyma Runtime, while the manifest is located in the control plane.
 
-The Module Manager retrieves the image layers from the specified image registry and processes the manifest resources by calling a rendering framework like Helm or Kustomize.
+Module Manager retrieves the image layers from the specified image registry and processes the manifest resources by calling a rendering framework like Helm or Kustomize.
 
 Finally, it deploys this resource along with a custom resource to track state changes. It ensures consistency both with a time-based reconciliation and by watching state changes of the deployed custom resource in Kyma runtime.
 
 ## 3. Runtime Watcher
 
-The Runtime Watcher monitors the relevant module resources of the user’s Kyma runtime for configured changes, specified by the operator in the control plane, such as:
+> **NOTE:** Runtime Watcher is a necessary component only when running with a control plane that manages one or more other runtimes. For local (single-cluster) setups, the Runtime Watcher is not needed.
+
+Runtime Watcher monitors the relevant module resources of the user’s Kyma runtime for configured changes, specified by the operator in the control plane, such as:
 
 * Expected changes, like a Kyma user providing a configuration update to the module, which must lead to an update of related resources in the Kyma runtime.
 * Unexpected changes, like an accidental creation, deletion, or modification, which must be reverted to recover the Kyma runtime to a healthy state.
 
-For all such detected changes, the Runtime Watcher triggers a reconciliation of the user’s Kyma runtime by propagating the desired changes to the Module Manager and the Lifecycle Manager.
-> **NOTE:** The Runtime Watcher is a necessary component only when running with a control plane that manages one or more other runtimes. For local (single-cluster) setups, the Runtime Watcher is not needed.
+For all such detected changes, Runtime Watcher triggers a reconciliation of the user’s Kyma runtime by propagating the desired changes to Module Manager and Lifecycle Manager.
+
 ## 4. Lifecycle Manager
 
 Lifecycle Manager is responsible for orchestrating Kyma module operators to process their respective resources on the Kyma runtime. It also aggregates all module states into one easy-to-monitor resource, the `Kyma CR`, with the following strategies:
 
-1. Generating the required Kyma module custom resources through a manifest, which starts the Kyma module processing in Module Manager. 
+1. Generating the required Kyma module custom resources through a manifest, which starts the Kyma module processing in Module Manager.
 
 2. Reconciling a Kyma custom resource for each Kyma runtime, indicating the consolidated status of all modules configured for that Kyma cluster.
 
 Lifecycle Manager is also responsible for propagating updates from a module into the respective manifest through the ModuleTemplate. Whenever modules are updated and a new release is triggered, Lifecycle Manager propagates the correct upgrade information to the manifest, which in turn leads to updates in the runtime cluster.
 
-## 5. Module Template
+## 5. ModuleTemplate
 
-The ModuleTemplate is a custom resource that is used by Lifecycle Manager as a scaffolding when initializing new Modules. It is also used as a base output of the module bundling process inside the CLI.
+The ModuleTemplate is a custom resource that is used by Lifecycle Manager as a scaffolding when initializing new modules. It is also used as a base output of the module bundling process inside the CLI.
 
 Whenever a new module must be installable or registered in the ecosystem, users only have to apply a new ModuleTemplate with the necessary information for generating the module. Then, it is available for consumption in every runtime instance registered in the control plane.
 
-For every new module, Lifecycle Manager tracks the available ModuleTemplates in different release configurations and makes them available in a catalog, so users have a browsable interface for all available modules. This catalog is also synchronized into all runtime clusters so users can enable modules as runtime administrators without needing access to the control plane.
+For every new module, Lifecycle Manager tracks the available ModuleTemplates in different release configurations and makes them available in a catalog, which users can browse to see all available modules. This catalog is also synchronized into all runtime clusters, so users can enable modules as runtime administrators without needing access to the control plane.
