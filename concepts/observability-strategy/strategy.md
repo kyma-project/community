@@ -6,7 +6,7 @@ The Kyma project evolved over time, from an extensibility framework with "batter
 
 Various observability backends are available as managed services from different vendors fulfilling these criteria. Connecting with a backend that fulfils enterprise-grade criteria not only bring the missing value, but also openness - it is up to the users' scenarios which observability system fits best to their requirements.
 
-For the enterprise-grade evolution of the Observability feature, Kyma will support a simple way of instrumenting, collecting and integration of the workloads' telemetry data into available observability systems, leveraging the [OpenTelemetry](https://opentelemetry.io/) standards for a vendor-neutral approach.
+For the enterprise-grade evolution of the Observability feature, Kyma will support a simple way of instrumenting, collecting and integrating the workloads' telemetry data into available observability systems, leveraging the [OpenTelemetry](https://opentelemetry.io/) standards for a vendor-neutral approach.
 
 With that, Kyma will remove the focus from providing a full Observability solution towards simplifying the instrumentation and integration of telemetry data into external systems.
 
@@ -35,7 +35,7 @@ The current Kyma observability stack covers all these stages, providing a lightw
   
 ### Metrics
 
-- For instrumentation, a workload must expose metrics in the Prometheus-compatible format. System components are already doing that. No other way of exporting metrics, like using the OTLP push-based protocol,  is supported.
+- For instrumentation, a workload must expose metrics in the Prometheus-compatible format. System components are already doing that. No other way of exporting metrics, like using the OTLP push-based protocol, is supported.
 - Collection of metrics from system and custom workloads is done by a lightweight Prometheus installation. Configuration of collection can be defined at runtime, but the storage might not scale accordingly, requiring adjustments at deploy time. Configuration of outputs is not possible at runtime and only Prometheus-specific protocols are supported (forward or federation).
 - Prometheus collects and stores the metrics. The setup is non-scalable, and resource settings cannot be configured at runtime.
 - Reporting is done by a Grafana installation, which loads pre-bundled dashboards. Dashboards can be added at runtime.
@@ -116,7 +116,7 @@ All concepts follow general rules and will provide harmonized user APIs:
 
 ## Integration Options
 
-With the new Observability architecture in place, the in-cluster backends won't be integrated by default out-of-the box. Instead, users will have the following three options to start their journey: Direct integration, indirect integration, and custom integration:
+With the new Observability architecture, the in-cluster backends won't be integrated by default out-of-the box. Instead, users will have the following three options to start their journey: direct integration, indirect integration, and custom integration.
 
 ### Direct Integration
 
@@ -126,13 +126,13 @@ Kyma will provide a vendor-neutral integration point for traces, metrics, and lo
 
 ### Indirect Integration
 
-If the system to integrate with does not provide the vendor-neutral protocol natively, a converter is needed. Typically, this requires running a collector that supports OTLP and is configured as target for the direct integration. That collector then takes care of the conversion into the custom protocol and integration with the target system. Usually, that task will be realized by a custom Otel Collector instance.
+If the system to integrate with does not provide the vendor-neutral protocol natively, a converter is needed. Typically, this requires running a collector that supports OTLP and is configured as target for the direct integration. That collector then takes care of the conversion into the custom protocol and integration with the target system. Usually, that task is realized by a custom Otel Collector instance.
 
 ![Indirect Integration](./assets/integration-indirect.drawio.svg)
 
 ### Custom Integration
 
-If users find the configuration options of the collector layer still too limiting, they can bring their own collector setup and disable the respective Kyma component for a signal type (logs, traces, metrics) so that it won't consume resources. With such custom setup, users get full  flexibility but also full responsibility. Users can also bring their own APM tooling at any time.
+If users find the configuration options of the collector layer still too limiting, they can bring their own collector setup and disable the respective Kyma component for a signal type (logs, traces, metrics) so that it won't consume resources. With such custom setup, users get full flexibility but also full responsibility. Users can also bring their own APM tooling at any time.
 
 ![Custom Integration](./assets/integration-custom.drawio.svg)
 
