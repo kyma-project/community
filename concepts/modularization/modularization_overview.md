@@ -5,8 +5,10 @@ title: Modularization in Kyma
 With Kyma’s modular approach, you can install exactly the Kyma components you want, making the installation very lightweight and adjusted to your business needs. Kyma uses three system components to support the modular approach: The Module Manager, the Lifecycle Manager, and the Runtime Watcher.
 
 ## Kyma’s Modular Approach
-
+<!-- diagram still WIP! -->
 ![](assets/modular_approach.svg)
+<!-- alternative draft: -->
+![](assets/modular_approach2.svg)
 
 ## 1. Kyma Module
 
