@@ -40,7 +40,7 @@ Components can depend only on core Kubernetes API, or on API extensions introduc
 If the API you need (like a core Kubernetes API or Istio virtual service) is not available, you should fail. If your component can work without the API, but some features are not available (for example, service monitor from monitoring), you should just skip it and continue to deploy other component resources. 
 
 # Release channels
-Release channels let customers try new modules or features early or decide when the updates will be applied. 
+Release channels let customers try new modules and features early, and decide when the updates should be applied. 
 
 ![](assets/release-channels.drawio.svg)
 
