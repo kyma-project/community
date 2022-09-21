@@ -1,7 +1,7 @@
 # Cluster Operator proposal
 
 ## Motivation
-Operator pattern is a framework that uses Kubernetes' Custom Resources as an API and introduces a control loop to manage applications and their components. The resources are reconciled periodically to ensure that all desired components are configured properly and running. This principle can be extended to cover also infrastructure components, this will introduce a lower maintenance effort and provide easy to use, declarative approach to infrastructure provisioning.
+Operators use Kubernetes' Custom Resources as an API and introduce a control loop to manage third party applications and their components. The resources are reconciled periodically to ensure that all desired components are configured properly and running. This principle can be applied to cover also infrastructure components, this will introduce a lower maintenance effort and provides an easy to use, declarative approach to infrastructure provisioning.
 
 ## Use cases for Cluster Operator
 
