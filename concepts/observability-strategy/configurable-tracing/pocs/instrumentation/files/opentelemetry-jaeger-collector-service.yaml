@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: jaeger
+    app.kubernetes.io/component: all-in-one
+    app.kubernetes.io/instance: tracing-jaeger
+    app.kubernetes.io/managed-by: jaeger-operator
+    app.kubernetes.io/name: tracing-jaeger
+    app.kubernetes.io/part-of: jaeger
+  name: jaeger-otlp-collector
+  namespace: kyma-system
+spec:
+  ports:
+  - name: otlp-grpc
+    port: 4317
+    protocol: TCP
+    targetPort: otlp-grpc
+  - name: otlp-http
+    port: 4318
+    protocol: TCP
+    targetPort: otlp-http
+  - name: c-binary-trft
+    port: 14268
+    protocol: TCP
+    targetPort: c-binary-trft
+  - name: grpc
+    port: 14250
+    protocol: TCP
+    targetPort: 14250 
+  selector:
+    app: jaeger
+    app.kubernetes.io/component: all-in-one
+    app.kubernetes.io/instance: tracing-jaeger
+    app.kubernetes.io/managed-by: jaeger-operator
+    app.kubernetes.io/name: tracing-jaeger
+    app.kubernetes.io/part-of: jaeger
+  sessionAffinity: None
+  type: ClusterIP
