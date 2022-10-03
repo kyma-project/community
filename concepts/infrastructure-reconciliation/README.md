@@ -49,7 +49,7 @@ It should be the responsibility of the Component Reconcilers to figure out if al
 
 ## High-level architecture
 
-![](assets/infrastructure-reconcilation.svg)
+![](assets/infrastructure-reconciliation.svg)
 
 The three new operators would need to be introduced:
 - Gardener Cluster Manager
