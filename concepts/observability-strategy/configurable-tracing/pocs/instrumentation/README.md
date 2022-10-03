@@ -67,7 +67,7 @@ With tail based sampling either:
 
 ## Queue Test
 
-The OpenTelemetry pipelines offers a queue and retry mechanism in case of backend outages. 
+The OpenTelemetry pipelines offers a set of queue and retry mechanism, in case of backend outages. 
 The queue mechanism consist on two stages, first one is on the processor level in this case **Batch Processor**, 
 the batch processor queue is pretty simple and will queue **spans** received from any receiver before processed. This processor support both size and time based batching.
 The batch processor queue is an only in-memory queue and offers the following configuration possibilities:
@@ -79,17 +79,17 @@ The batch processor queue is an only in-memory queue and offers the following co
 Batching helps better compress the data and reduce the number of outgoing connections required to transmit the data.
 
 The second kind of queue is on the exporter level and primarily offers queued retries. This queue support also persistent queue mechanism but this is not part of the test.
-This queue, queues batches which received from batch processor and will push batches to the backed after a configured timeout.
+The exporter queue, queues batches which received from batch processor and will push batches to the backed after a configured timeout.
 
-In case of backend outages, there is a retry mechanism to retry export to the backend before batches dropped from queue. 
+In case of backend outages, there is a retry mechanism to retry export to the backend before batches dropped from the queue. 
 That retry mechanism offers following configuration possibilities:
 - **initial_interval**: Time to wait after the first failure before retrying (default 5 seconds).
 - **max_interval**: The upper bound of backoff (default 30 seconds).
 - **max_elapsed_time**: The maximum amount of time spent trying to send a batch (default 300 seconds).
 
-The test goals is, simulate a backend outages and find out a configuration at least can 10 minutes long tolerate outages before drop traces from queue.
+The test goals is, simulate a backend outages and find out a configuration at least can 10 minutes long tolerate outages before drop traces from the queue.
 
-Test was performed on Kyma version 2.6 deployed on Kubernetes version 1.23.9 using the [Synthetic Load Generator utility](https://github.com/Omnition/synthetic-load-generator) running for a minimum of one hour.
+The test was performed on a Kyma version 2.6 deployed on Kubernetes version 1.23.9 using the [Synthetic Load Generator utility](https://github.com/Omnition/synthetic-load-generator) running for a minimum of 15 minutes.
 
 The parameters used in this test are:
 
@@ -100,7 +100,7 @@ The parameters used in this test are:
 OpenTelemetry Collector:
 - 1 CPU
 - 2 GiB Memory
-- The Processor memory limiter disabled to avoid any data dropping before processed.
+- The Processor memory limiter disabled to avoid any data losses.
 - The Batch processor queue size configured to 10000 spans and 10 second timeout.
 - The exporter queue size configured to 600 batches and max elapsed time to 600 seconds.
 
