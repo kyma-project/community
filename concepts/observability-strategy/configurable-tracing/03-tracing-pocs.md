@@ -87,8 +87,7 @@ Istio can be configured to use the w3c-tracecontext for trace propagation alread
 
 The goal of the TracePipeline is to push trace data to multiple destinations using a different set of processors or sampling strategies. How can an isolation of these pipelines be achieved based on the Otel Collector? If one destination is down, can the other destination be continued?
 
-## Modularization
-###Three modules or one telemetry module
+### Modularization - Three modules or one telemetry module
 
 Benefits of one module
 - Shared caches for the controllers possible
@@ -100,17 +99,17 @@ Benefits of three modules
 - There are 3 independent domains not sharing a lot, it sounds more natural to model them individually
 - Feature selection (on/off) is natively supported (no sub-attributes with similar purposes)
 
-##Otel Collector base setup
+## Otel Collector base setup
 Which processors and extensions does the base setup need? 
 
 What are the configuration options?
 
-####What are the deployment options?
-#####Helm deployment:
+#### What are the deployment options?
+##### Helm deployment:
 When deploying otel collector resources we could use the helm client as a library directly. This approach in general is very verbose and poses some edge cases and complexity. Other Kyma teams are handling this complexity already for some time and provide a wrapper library called [module-manager](https://github.com/kyma-project/module-manager). Although described in the [README](https://github.com/kyma-project/module-manager/blob/main/README.md) this library can be used directly as a dependency in operator code, this is is not recommendable due to an unstable api that is not completely abstracting away helm dependencies.
 Another approach to make use of the wrapper module-manager is more indirect (declarative library) by implementing the manifest reconciler interface. This approach on the other hand is preferrable when installing and uninstalling charts. It is viable for creating a thin operator layer on top of third party open-source components, e.g. our monitoring stack.
 
-#####Deployment by code:
+##### Deployment by code:
 Creating, updating and deleting collector resources may also be done in plain code. As many community examples like the operators of grafana, jaeger, prometheus, elastic search and argocd are showing, this approach is widely accepted and offers some advantages:
 * Predictable resource names, labels and annotations
 * Easy resource ownership management
@@ -121,5 +120,5 @@ Creating, updating and deleting collector resources may also be done in plain co
 
 As a disadvantage the maintance of a library for holistic lifecycle management of resources has to be mentioned, which requires some initial effort.
 
-####Which deployment option will be used?
+#### Which deployment option will be used?
 Deployment by code, because of aforementioned benefits
