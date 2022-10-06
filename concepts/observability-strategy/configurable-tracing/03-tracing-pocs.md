@@ -87,19 +87,38 @@ Istio can be configured to use the w3c-tracecontext for trace propagation alread
 
 The goal of the TracePipeline is to push trace data to multiple destinations using a different set of processors or sampling strategies. How can an isolation of these pipelines be achieved based on the Otel Collector? If one destination is down, can the other destination be continued?
 
-## Modularization - three modules or one telemetry module
+## Modularization - Three modules or one telemetry module
 
 Benefits of one module
 - Shared caches for the controllers possible
-- less maintenance (3 images instead of one, think of security scanning, kube-builder updates)
-- shared packages possible without spending time in dependency tree maintenance
+- Less maintenance (3 images instead of one, think of security scanning, kube-builder updates)
+- Shared packages possible without spending time in dependency tree maintenance
+- Less cluster resource requirements, which is important for trial customers
 
 Benefits of three modules
-- There are 3 independent domains sharing a lot of common things, it sounds more natural to model them individually
+- There are 3 independent domains not sharing a lot, it sounds more natural to model them individually
 - Feature selection (on/off) is natively supported (no sub-attributes with similar purposes)
 
-## Modularization - Re-use the deployer library of the module-manager
-Can the new library of the Module Manager be used already to manage the Otel Collector deployment? Is deletion supported? What artifact format should be used?
-
 ## Otel Collector base setup
-Which processors and extensions does the base setup need? What are the configuration options?
+### What are the deployment options?
+#### Helm deployment:
+When deploying the OpenTelemetry (OTEL) collector resources you can use the helm client directly as a library. In general, this approach is very verbose and poses some edge cases and complexity. Other Kyma teams have been handling this complexity already for some time and have provided a wrapper library called [module-manager](https://github.com/kyma-project/module-manager). Although described in the [README](https://github.com/kyma-project/module-manager/blob/main/README.md) this library can be used directly as a dependency in operator code. This is not recommended due to an unstable API that is not completely abstracting away helm dependencies.
+You can use the module-manager wrapper indirectly (declarative library) by implementing the manifest reconciler interface. On the other hand, this approach is preferable when installing and uninstalling charts. It is viable for creating a thin operator layer on top of the third-party open-source components, for example, monitoring stack.
+
+#### Deployment by code:
+Creating, updating, and deleting the collector resources may also be done in plain code. As you can see in many community examples, like the operators in Grafana, Jaeger, Prometheus, Elasticsearch, and Argo CD, this approach is widely accepted and offers many advantages:
+* Predictable resource names, labels and annotations
+* Easy resource ownership management
+* Testability
+* Simplicity, very local scope of modification
+* Helm chart upgrades can be error prone, handling upgrades in code offer fine-grained control
+* Edge cases and caveats can be easily discovered in various production-ready reference implementations
+
+On the other hand, maintaining the library for the holistic lifecycle management of resources requires some initial effort.
+
+### Which deployment option will be used?
+Deployment by code, because of the aforementioned benefits
+
+### Which processors and extensions does the base setup need? 
+
+### What are the configuration options?
