@@ -103,7 +103,7 @@ Benefits of three modules
 ### What are the deployment options?
 #### Helm deployment:
 When deploying the OpenTelemetry (OTEL) collector resources you can use the helm client directly as a library. In general, this approach is very verbose and poses some edge cases and complexity. Other Kyma teams have been handling this complexity already for some time and have provided a wrapper library called [module-manager](https://github.com/kyma-project/module-manager). Although described in the [README](https://github.com/kyma-project/module-manager/blob/main/README.md) this library can be used directly as a dependency in operator code. This is not recommended due to an unstable API that is not completely abstracting away helm dependencies.
-Another approach to make use of the wrapper module-manager is more indirect (declarative library) by implementing the manifest reconciler interface. This approach on the other hand is preferrable when installing and uninstalling charts. It is viable for creating a thin operator layer on top of third party open-source components, e.g. our monitoring stack.
+You can use the module-manager wrapper indirectly (declarative library) by implementing the manifest reconciler interface. On the other hand, this approach is preferable when installing and uninstalling charts. It is viable for creating a thin operator layer on top of the third-party open-source components, for example, monitoring stack.
 
 #### Deployment by code:
 Creating, updating and deleting collector resources may also be done in plain code. As many community examples like the operators of grafana, jaeger, prometheus, elastic search and argocd are showing, this approach is widely accepted and offers some advantages:
