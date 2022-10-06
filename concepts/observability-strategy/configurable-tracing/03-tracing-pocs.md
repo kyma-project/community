@@ -106,7 +106,7 @@ When deploying the OpenTelemetry (OTEL) collector resources you can use the helm
 You can use the module-manager wrapper indirectly (declarative library) by implementing the manifest reconciler interface. On the other hand, this approach is preferable when installing and uninstalling charts. It is viable for creating a thin operator layer on top of the third-party open-source components, for example, monitoring stack.
 
 #### Deployment by code:
-Creating, updating and deleting collector resources may also be done in plain code. As many community examples like the operators of grafana, jaeger, prometheus, elastic search and argocd are showing, this approach is widely accepted and offers some advantages:
+Creating, updating, and deleting the collector resources may also be done in plain code. As you can see in many community examples, like the operators in Grafana, Jaeger, Prometheus, Elasticsearch, and Argo CD, this approach is widely accepted and offers many advantages:
 * Predictable resource names, labels and annotations
 * Easy resource ownership management
 * Testability
