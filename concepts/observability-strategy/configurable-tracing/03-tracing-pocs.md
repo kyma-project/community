@@ -117,7 +117,7 @@ Creating, updating, and deleting the collector resources may also be done in pla
 On the other hand, maintaining the library for the holistic lifecycle management of resources requires some initial effort.
 
 ### Which deployment option will be used?
-Deployment by code, because of aforementioned benefits
+Deployment by code, because of the aforementioned benefits
 
 ### Which processors and extensions does the base setup need? 
 
