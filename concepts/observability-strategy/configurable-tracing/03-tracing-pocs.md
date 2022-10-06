@@ -114,7 +114,7 @@ Creating, updating, and deleting the collector resources may also be done in pla
 * Helm chart upgrades can be error prone, handling upgrades in code offer fine-grained control
 * Edge cases and caveats can be easily discovered in various production-ready reference implementations
 
-As a disadvantage the maintance of a library for holistic lifecycle management of resources has to be mentioned, which requires some initial effort.
+On the other hand, maintaining the library for the holistic lifecycle management of resources requires some initial effort.
 
 ### Which deployment option will be used?
 Deployment by code, because of aforementioned benefits
