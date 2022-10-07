@@ -17,19 +17,19 @@ Operators use Kubernetes' Custom Resources as an API and introduce a control loo
 
 To achieve a declarative and responsive way of interacting with the infrastructure provisioning a pair of Cluster Managers should be introduced. This components will use an event-based reconciliation of a new Cluster Custom Resources, which will serve as an API for Kubernetes Cluster provisioning.
 
-In order to provide a common Custom Resource for all clusters regardless of their licence type there will be a new Cluster CR introduced. It is a simple entity containing only reference to specific Custom Resource, which will determine the Cluster sub-type. There are two of those CRs introduced:
+In order to provide a common Custom Resource for all clusters regardless of their licence type there will be a new pair of cluster CRs introduced:
 - GardenerCluster CR (for managed clusters running on Gardener)
-- CustomerCluster CR (for Bring-Your-Own-Cluster model)
+- ExternalCluster CR (for Bring-Your-Own-Cluster model)
 
 And respectively - there will be two operators handling different processes for those CRs:
 - Gardener Cluster Manager, which will handle Gardener Shoot provisioning and kubeconfig generation/rotation
-- Customer Cluster Manager, which takes care of storing the kubeconfig uploaded by the customer safely and makes sure constrained kubeconfig is available for other operators
+- External Cluster Manager, which takes care of storing the kubeconfig uploaded by the customer safely and makes sure constrained kubeconfig is available for other operators
 
 The goal is to reduce time-based loops as those result in a delayed response from the components. The Cluster Managers would react upon any Cluster CR change (creation, update, deletion) to introduce changes to the infrastructure immediately.
 
 > Note: Restoring resources accidentally removed by the user is not the responsibility of this reconciler. Removing a whole Shoot CR from the Gardener will result in the whole cluster being deleted. This is an issue that is not easy to mitigate as this component won't have information on what were the cluster contents. Perhaps some sort of cluster backup strategy should be introduced to handle this matter.
 
-Lifecycle Manager, along with the Component Operators, should not be able to modify the cluster metadata, however, in some potential cases, it may be useful for those components to be able to read the Cluster CR status and metadata. This will provide a separation layer while leaving the possibility open for the Kyma Environment Broker and the operations team to make required changes directly.
+Lifecycle Manager, along with the Component Operators, should not be able to modify the cluster metadata, however, in some potential cases, it may be useful for those components to be able to read the cluster CR status and metadata. This will provide a separation layer while leaving the possibility open for the Kyma Environment Broker and the operations team to make required changes directly.
 
 For specific requests (such as additional network configuration or NAT Gateway toggles) the API of the Gardener Cluster Manager (GardenerCluster CR) can be extended and additional ways of interacting with the Gardener Cluster Manager could be potentially added.
 
@@ -53,43 +53,21 @@ It should be the responsibility of the Component Reconcilers to figure out if al
 
 The three new operators would need to be introduced:
 - Gardener Cluster Manager
-- Customer Cluster Manager
+- External Cluster Manager
 - Subscription Manager
 
 Each of those components has a clear set of responsibilities that together handle the flow that creates a new, complete, Kyma-ready  Kubernetes cluster.
 
 Along the operators, there are four new Custom Resources, that serve as an API for the components:
-- Cluster CR
 - Gardener Cluster CR
-- Customer Cluster CR
+- External Cluster CR
 - SubscriptionRequest CR
 
 ### Cluster Managers and the Cluster CRs
 
 The Cluster Managers' main responsibility is to manage the respective Cluster CRs, this is tied to both their provisioning and providing an access to the created K8S clusters.
 
-First of all, an overarching Cluster CR will provide a common API for operations connected to support or infrastructure maintenance. It contains reference to the resource corresponding to the sub-type of cluster:
-```
-apiVersion: operator.kyma-project.io/v1alpha1
-kind: Cluster
-metadata:
-	name: managed-cluster
-	namespace: default
-spec:
-	gardenerClusterRef:
-		apiVersion: operator.kyma-project.io/v1alpha1
-		kind: GardenerCluster
-		name: managed-cluster
-		namespace: default
-*** or ***
-    customerClusterRef:
-		apiVersion: operator.kyma-project.io/v1alpha1
-		kind: CustomerCluster
-		name: customer-cluster
-		namespace: default	
-```
-
-Then, there will be two resources, first for the Gardener-based, managed clusters:
+There will be two resources, first for the Gardener-based, managed clusters:
 ```
 apiVersion: operator.kyma-project.io/v1alpha1
 kind: GardenerCluster
@@ -132,17 +110,15 @@ This contains a minimal set of values that are required to provision a new Garde
 
 And the second one for BYOC model:
 ```
-customer-cluster
-
 apiVersion: operator.kyma-project.io/v1alpha1
-kind: CustomerCluster
+kind: ExternalCluster
 metadata:
-	name: customer-cluster
+	name: external-cluster
 	namespace: default
 spec:
 	adminKubeconfig: LS0tV1...
 	kubeconfigs:
-	- secretRef: customer-cluster-admin-kubeconfig
+	- secretRef: external-cluster-admin-kubeconfig
 	  clusterRole:
 		rules:
 		- apiGroups: ["*"]
@@ -181,8 +157,8 @@ The resource structure is really simple, the Subscription Manager only needs to 
 The flow from the user's perspective stays intact, the part that changes is the list of actions needed by KEB to make sure the cluster is up and running.
 
 First of all, after receiving the provisioning request, KEB should create a set of CRs for accordingly to the licence type of the Runtime:
-- For BYOC - CustomerCluster CR and a Cluster CR with a reference to the sub-resource
-- For managed - GardenerCluster CR and a Cluster CR with a reference to the sub-resource
+- For BYOC - ExternalCluster CR
+- For managed - GardenerCluster CR
 
 KEB should deliver all the required parameters for the cluster provisioning, this translates to the minimal infrastructure config for Gardener clusters, and the role/kubeconfig details for both types.
 
