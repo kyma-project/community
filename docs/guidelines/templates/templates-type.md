@@ -12,7 +12,7 @@ This table contains templates for general documents.
 
 | Repository | Template | Usage | Author |
 |---|---|---|---|
-| All | [`README.md`](https://github.com/kyma-project/community/blob/main/templates/repository-template/README.md) | Use the template for the `README.md` document in any repository, directory, or subdirectory within the Kyma organization. | All contributors |
+| All | [`README.md`](https://github.com/kyma-project/template-repository/blob/main/README.md) | Use the template for the `README.md` document in any repository, directory, or subdirectory within the Kyma organization. | All contributors |
 
 ## Document types for Kyma areas and components
 
