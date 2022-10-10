@@ -2,7 +2,7 @@
 title: Modularization in Kyma
 ---
 
-With Kyma’s modular approach, you can install exactly the Kyma components you want, making the installation very lightweight and adjusted to your business needs. Kyma uses three system components to support the modular approach: The Module Manager, the Lifecycle Manager, and the Runtime Watcher.
+With Kyma’s modular approach, you can install exactly the Kyma components you want, making the installation very lightweight and adjusted to your business needs. Kyma uses three system components to support the modular approach: Module Manager, Lifecycle Manager, and Runtime Watcher.
 
 ## Kyma’s Modular Approach
 <!-- diagram still WIP! -->
@@ -57,4 +57,4 @@ The ModuleTemplate is a custom resource that is used by Lifecycle Manager as a s
 
 Whenever a new module must be installable or registered in the ecosystem, users only have to apply a new ModuleTemplate with the necessary information for generating the module. Then, it is available for consumption in every runtime instance registered in the control plane.
 
-For every new module, Lifecycle Manager tracks the available ModuleTemplates in different release configurations and makes them available in a catalog, which users can browse to see all available modules. This catalog is also synchronized into all runtime clusters, so users can enable modules as runtime administrators without needing access to the control plane.
+For every new module, Lifecycle Manager tracks the available ModuleTemplates in different release configurations and makes them available in a catalog, which you can browse to see all available modules. This catalog is also synchronized into all runtime clusters, so you can enable modules as runtime administrators without needing access to the control plane.
