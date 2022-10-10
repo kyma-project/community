@@ -55,6 +55,6 @@ Lifecycle Manager is also responsible for propagating updates from a module into
 
 The ModuleTemplate is a custom resource that is used by Lifecycle Manager as a scaffolding when initializing new modules. It is also used as a base output of the module bundling process inside the CLI.
 
-Whenever a new module must be installable or registered in the ecosystem, users only have to apply a new ModuleTemplate with the necessary information for generating the module. Then, it is available for consumption in every runtime instance registered in the control plane.
+Whenever a new module must be installable or registered in the ecosystem, you only have to apply a new ModuleTemplate with the necessary information to generate the module. Then, it is available for consumption in every runtime instance registered in the control plane.
 
 For every new module, Lifecycle Manager tracks the available ModuleTemplates in different release configurations and makes them available in a catalog, which you can browse to see all available modules. This catalog is also synchronized into all runtime clusters, so you can enable modules as runtime administrators without needing access to the control plane.
