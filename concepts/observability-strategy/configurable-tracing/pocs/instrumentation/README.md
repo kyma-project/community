@@ -105,7 +105,7 @@ OpenTelemetry Collector:
 - Exporter queue size configured to 600 batches and max elapsed time to 600 seconds.
 
 The test was executed for approximately 15 minutes. During test execution, 61285 traces (in average 100 traces/second) were generated and sent to the collector; in total 3064250 spans (in average 5000 spans/second). 
-All the traces and spans arrived to the collector pipelines and processed without successfully pushed to the backend.
+All the traces and spans arrived at the collector pipelines and were processed without being successfully pushed to the backend.
 
 The collector deployment memory arrive his peak after approximately after 10 minutes (see Figure 8) and start with dropping data from the queue.
 The CPU utilization stay moderate during entire test execution (see Figure 7).
