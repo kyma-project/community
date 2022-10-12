@@ -4,7 +4,7 @@ The measured numbers were generated with version 0.60.0 of the OpenTelemetry Col
 
 The performance of the OpenTelemetry Collector depends on a set of factors, including the following:
 
-- CPU / Memory allocation
+- CPU and memory allocation
 - The type of sampling: Tail based or head based sampling
 - The receiving format: OpenTelemetry, Jaeger thrift or Zipkin
 - The size of spans
