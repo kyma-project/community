@@ -24,11 +24,11 @@ The parameters used in this test are:
 OpenTelemetry Collector:
 - 1 CPU
 - 2 GiB Memory
-- Processor memory limiter: 1000 Mib with a spike limit 256 Mib, and an interval check of one second.
+- Processor memory limiter: 1000 Mib with a spike limit 256 Mib, and an interval check of one second
 
-Test goal is, find a maximum sustained rate with given default configuration and allocated resources (CPU and Memory).
+Test goal is to find a maximum sustained rate with given default configuration and allocated resources (CPU and memory).
 
-Test setup in total reach 3248176 (900 traces/sec.) traces with total 162408800 (45K span/sec.) spans.
+The test setup in total reaches 3248176 traces (900 traces/sec.) with total 162408800 spans (45K span/sec.).
 
 | ![CPU Utilization](assets/cpu.jpg) |
 | :--: |
@@ -55,41 +55,45 @@ Test setup in total reach 3248176 (900 traces/sec.) traces with total 162408800 
 | :--: |
 | Fig. 6 Rate of Transmitted Packets |
 
-With using head based sampling, when higher rates needed, either:
+If you use head-based sampling and need higher rates, you can do the following:
 
-- Divide traffic to different collector
-- Scale-up by adding more CPU/Memory resources (doubling CPU and Memory will result two time more rate).
-- Scale-out by adding one or more collector behind a load balancer or a Kubernetes service.
+- Divide traffic to different collector.
+- Scale up by adding more CPU and memory resources; for example, to double the rate, double CPU and memory.
+- Scale out by adding one or more collectors behind a load balancer or a Kubernetes service.
 
-With tail based sampling either:
-- Scale-up by adding more CPU/Memory resources (doubling CPU and Memory will result two time more rate).
-- Scale-out by adding one or more collector behind a load balancer or a Kubernetes service, but the load balancer have to support **traceID-based** routing because all span of a given traceID need to be received by the dame collector instance.
+If you use tail-based sampling and need higher rates, you can do the following:
+- Scale up by adding more CPU and memory resources; for example, to double the rate, double CPU and memory.
+- Scale out by adding one or more collectors behind a load balancer or a Kubernetes service. The load balancer must support traceID-based routing, because all spans of a given traceID must be received by the dame collector instance.
 
 ## Queue Test
 
-The OpenTelemetry pipelines offers a set of queue and retry mechanism, in case of backend outages. 
-The queue mechanism consist on two stages, first one is on the processor level in this case **Batch Processor**, 
-the batch processor queue is pretty simple and will queue **spans** received from any receiver before processed. This processor support both size and time based batching.
-The batch processor queue is an only in-memory queue and offers the following configuration possibilities:
+To mitigate backend outages, the OpenTelemetry pipelines offer a set of queue and retry mechanisms.
+The queue mechanism consists of two stages, one on processor level and one on exporter level.
 
-- **send_batch_size**: Number of spans, which a batch will be sent regardless of the timeout.
-- **timeout**: Time duration after which a batch will be sent regardless of size.
-- **send_batch_max_size**: The upper limit of the batch size. This setting ensures that large batches are split into smaller units and it must be greater or equal to **send_batch_size**.
+In this case, on processor level, we use the **batch processor**. The batch processor queue is a pretty simple in-memory queue. It queues spans received from any receiver before they are processed.
 
-Batching helps better compress the data and reduce the number of outgoing connections required to transmit the data.
+The batch processor supports both size- and time-based batching. Batching supports better data compression and reduces the number of outgoing connections required to transmit the data.
 
-The second kind of queue is on the exporter level and primarily offers queued retries. This queue support also persistent queue mechanism but this is not part of the test.
-The exporter queue, queues batches which received from batch processor and will push batches to the backed after a configured timeout.
+You can configure the batch processor queue with the following configuration parameters:
 
-In case of backend outages, there is a retry mechanism to retry export to the backend before batches dropped from the queue. 
-That retry mechanism offers following configuration possibilities:
+
+- **send_batch_size**: Number of spans that a batch receives, regardless of the timeout.
+- **timeout**: Time duration after which a batch is sent, regardless of size.
+- **send_batch_max_size**: The upper limit of the batch size. This setting ensures that large batches are split into smaller units. It must be greater or equal to **send_batch_size**.
+
+
+The second kind of queue is on the exporter level and primarily offers queued retries. This queue also supports a persistent queue mechanism, but this is not part of the test.
+The exporter queue queues batches that it receives from the batch processor, and pushes batches to the backed after a configured timeout.
+
+In case of backend outages, a retry mechanism retries export to the backend before batches are dropped from the queue. 
+You can configure the retry mechanism with the following configuration parameters:
 - **initial_interval**: Time to wait after the first failure before retrying (default 5 seconds).
 - **max_interval**: The upper bound of backoff (default 30 seconds).
 - **max_elapsed_time**: The maximum amount of time spent trying to send a batch (default 300 seconds).
 
-The test goals is, simulate a backend outages and find out a configuration at least can 10 minutes long tolerate outages before drop traces from the queue.
+The test goals is to simulate backend outages and find out a configuration that tolerates outages of 10 minutes (or longer) before it drops traces from the queue.
 
-The test was performed on a Kyma version 2.6 deployed on Kubernetes version 1.23.9 using the [Synthetic Load Generator utility](https://github.com/Omnition/synthetic-load-generator) running for a minimum of 15 minutes.
+The test was performed on Kyma version 2.6 deployed on Kubernetes version 1.23.9 using the [Synthetic Load Generator utility](https://github.com/Omnition/synthetic-load-generator) running for a minimum of 15 minutes.
 
 The parameters used in this test are:
 
@@ -99,9 +103,9 @@ The parameters used in this test are:
 
 OpenTelemetry Collector:
 - 1 CPU
-- 2 GiB Memory
-- The Processor memory limiter disabled to avoid any data losses.
-- The Batch processor queue size configured to 10000 spans and 10 second timeout.
+- 2 GiB memory
+- Processor memory limiter disabled to avoid data losses.
+- Batch processor queue size configured to 10000 spans and 10 second timeout.
 - Exporter queue size configured to 600 batches and max elapsed time to 600 seconds.
 
 The test was executed for approximately 15 minutes. During test execution, 61285 traces (in average 100 traces/second) were generated and sent to the collector; in total 3064250 spans (in average 5000 spans/second). 
