@@ -108,7 +108,7 @@ The test was executed for approximately 15 minutes. During test execution, 61285
 All the traces and spans arrived at the collector pipelines and were processed without being successfully pushed to the backend.
 
 The collector deployment memory peaked after approximately 10 minutes (see Figure 8) and started dropping data from the queue.
-The CPU utilization stay moderate during entire test execution (see Figure 7).
+The CPU utilization stayed moderate during the entire test execution (see Figure 7).
 
 | ![CPU Utilization](assets/cpu_queue.jpg) |
 | :--: |
