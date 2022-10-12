@@ -102,7 +102,7 @@ OpenTelemetry Collector:
 - 2 GiB Memory
 - The Processor memory limiter disabled to avoid any data losses.
 - The Batch processor queue size configured to 10000 spans and 10 second timeout.
-- The exporter queue size configured to 600 batches and max elapsed time to 600 seconds.
+- Exporter queue size configured to 600 batches and max elapsed time to 600 seconds.
 
 Test executed approximately 15 minutes, during test execution 61285 (in average 100 traces/second) traces generated and sent to the collector, in total 3064250 spans (in average 5000 spans/second). 
 All the traces and spans arrived to the collector pipelines and processed without successfully pushed to the backend.
