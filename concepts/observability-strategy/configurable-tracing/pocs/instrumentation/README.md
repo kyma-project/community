@@ -1,6 +1,6 @@
 # OpenTelemetry Collector Performance
 
-The measured numbers that generated using version 0.60.0 of the OpenTelemetry Collector, are primarily applicable to the OpenTelemetry Collector and measured only for traces. In the future, more configurations should be tested.
+The measured numbers were generated with version 0.60.0 of the OpenTelemetry Collector. They are primarily applicable to the OpenTelemetry Collector and measured only for traces. In the future, more configurations should be tested.
 
 It is important to know, that the performance of the OpenTelemetry Collector depends on a set of factors including:
 
