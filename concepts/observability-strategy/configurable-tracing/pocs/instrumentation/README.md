@@ -9,7 +9,7 @@ The performance of the OpenTelemetry Collector depends on a set of factors, incl
 - The receiving format: OpenTelemetry, Jaeger thrift, or Zipkin
 - The size of spans
 
-Please note, with OpenTelemetry agent expected better performance with lower resource utilization, since the OpenTelemetry Agent does not support features such as batching or retries and no tail based sampling supported yet.
+With OpenTelemetry agent, better performance with lower resource utilization is expected, because the OpenTelemetry agent does not support features such as batching, retries, or tail-based sampling.
 
 # Testing
 
