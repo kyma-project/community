@@ -6,7 +6,7 @@ The performance of the OpenTelemetry Collector depends on a set of factors, incl
 
 - CPU and memory allocation
 - The type of sampling: Tail-based or head-based sampling
-- The receiving format: OpenTelemetry, Jaeger thrift or Zipkin
+- The receiving format: OpenTelemetry, Jaeger thrift, or Zipkin
 - The size of spans
 
 Please note, with OpenTelemetry agent expected better performance with lower resource utilization, since the OpenTelemetry Agent does not support features such as batching or retries and no tail based sampling supported yet.
