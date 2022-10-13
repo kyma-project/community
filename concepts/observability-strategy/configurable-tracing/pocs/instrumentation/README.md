@@ -63,7 +63,7 @@ If you use head-based sampling and need higher rates, you can do the following:
 
 If you use tail-based sampling and need higher rates, you can do the following:
 - Scale up by adding more CPU and memory resources; for example, to double the rate, double CPU and memory.
-- Scale out by adding one or more collectors behind a load balancer or a Kubernetes service. The load balancer must support traceID-based routing, because all spans of a given traceID must be received by the dame collector instance.
+- Scale out by adding one or more collectors behind a load balancer or a Kubernetes service. The load balancer must support traceID-based routing, because all spans of a given traceID must be received by the same collector instance.
 
 ## Queue Test
 
@@ -77,7 +77,7 @@ The batch processor supports both size- and time-based batching. Batching suppor
 You can configure the batch processor queue with the following configuration parameters:
 
 
-- **send_batch_size**: Number of spans that a batch receives, regardless of the timeout.
+- **send_batch_size**: Number of spans that a single batch can contain, regardless of the timeout.
 - **timeout**: Time duration after which a batch is sent, regardless of size.
 - **send_batch_max_size**: The upper limit of the batch size. This setting ensures that large batches are split into smaller units. It must be greater or equal to **send_batch_size**.
 
