@@ -34,3 +34,4 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Klaudia Grzondziel (**[@klaudiagrz](https://github.com/klaudiagrz)**) creating docs for `area/documentation`, `area/service-management`, `area/control-plane`, `area/community`, and contributing to the overall Kyma documentation.
 * Mariusz Szymański (**[@Maladie](https://github.com/Maladie)**) involved in `area/application-connector`, `area/management-plane`.
 * Johannes Veicht (**[@veichtj](https://github.com/veichtj)**) involved in `area/service-mesh`,`area/api-gateway`.
+* Hanna Gościniak (**[@hanngos](https://github.com/hanngos)**) involved in `area/control-plane`,`area/tests`, `area/charts`, `area/ci`, `area/security`, `area/dependency`, `area/service-management.
