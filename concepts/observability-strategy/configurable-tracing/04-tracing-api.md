@@ -20,13 +20,6 @@ metadata:
   name: myPipeline
 spec:
   input:
-    tags: # Filter based on custom tags (Is there any use-case or would we just produce incomplete traces?)
-      include:
-        - name: deployment
-          value: my-app
-        - name: landscape
-          value: production
-      exclude: []
     istio: # Would configure Istio to send traces to the collector service
       propagation: w3c # w3c | b3
       enabled: true
