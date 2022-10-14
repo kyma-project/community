@@ -19,18 +19,37 @@ apiVersion: telemetry.kyma-project.io/v1alpha1
 metadata:
   name: myPipeline
 spec:
+  input:
+    tags: # Filter based on custom tags (Is there any use-case or would we just produce incomplete traces?)
+      include:
+        - name: deployment
+          value: my-app
+        - name: landscape
+          value: production
+      exclude: []
+    istio: # Would configure Istio to send traces to the collector service
+      propagation: w3c # w3c | b3
+      enabled: true
+      samplingPercentage: 100
+
   processors: # list of processors, order is important
     probabilisticSampler:
         samplingPercentage: 15.3
 
-  exporter: # only one output, defining no output will fail validation
+  output: # only one output, defining no output will fail validation
     otlp:
         protocol: grpc #grpc | http
-        endpoint: myserver.local:55690
+        endpoint:
+          value: "myserver.local:55690"
+          valueFrom:
+            secretKeyRef:
+                name: my-config
+                namespace: default
+                key: "endpoint"
         tls:
             insecure: false
             insecureSkipVerify: true
-            ca: 
+            ca:
               value: dummy
               valueFrom:
                   secretKeyRef:
@@ -51,6 +70,29 @@ spec:
                         name: my-config
                         namespace: default
                         key: "client.key"
+        authentication:
+          basic:
+            username:
+              value: "user"
+              valueFrom:
+                secretKeyRef:
+                    name: my-config
+                    namespace: default
+                    key: "username"
+            password:
+              value: "my-insecure-password"
+              valueFrom:
+                secretKeyRef:
+                    name: my-config
+                    namespace: default
+                    key: "password"
+          bearerToken:
+            value: "insecure-token"
+            valueFrom:
+              secretKeyRef:
+                  name: my-config
+                  namespace: default
+                  key: "token"
         headers:
             - name: x-token
               value: "value1"

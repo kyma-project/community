@@ -7,23 +7,32 @@ apiVersion: telemetry.kyma-project.io/v1alpha1
 metadata:
   name: PrometheusRemoteWrite
 spec:
-  receiver: # singular, different receivers need different pipelines and exporters configs
-    type: otlp # otlp  | custom, default is otlp
-    otlp: # maps to central otlp receiver
+  input: # Metrics can be received from different receivers (OTLP and Prometheus), metrics are selected based on labels
+    application:
       namespaces: # maps to filterprocessor
         include: []
         exclude: []
+        system: true
       containers:
         include: []
         exclude: []
-      system:
-        apiserver: 
-          enabled: true
-        nodes:
-          enabled: true
-        kube-state-metrics:
-          enabled: true
-          deployments: false
+      kubeStateMetrics:
+        enabled: true
+        deployments: false
+      istio: # Filter by `destination_service_namespace` or `destination_workload_namespace` if namespaces are limited
+        enabled: true
+    system: # metrics that are not related to any Kubernetes workload (for instance, node or control-plane specific)
+      apiserver:
+        enabled: true
+      nodes:
+        enabled: true
+    labels: # Filter based on custom labels
+      include:
+        - name: deployment
+          value: my-app
+        - name: landscape
+          value: production
+      exclude: []
 
   processors: # list of processors, order is important
     - addLabel: # maps to "metricstransformprocessor" filter, adds an attribute
@@ -53,22 +62,64 @@ spec:
           - hello_world
           - hello/world
 
-  exporter: # only one output, defining no output will fail validation
+  output: # only one output, defining no output will fail validation
     prometheusremotewrite:
-      endpoint: "https://my-cortex:7900/api/v1/push"
+      endpoint:
+          value: "https://my-cortex:7900/api/v1/push"
+          valueFrom:
+            secretKeyRef:
+                name: my-config
+                namespace: default
+                key: "endpoint"
       external_labels:
         label_name1: label_value1
         label_name2: label_value2
       tls:
-          insecure: false
-          insecureSkipVerify: true
+        insecure: false
+        insecureSkipVerify: true
+        ca:
+          value: dummy
+          valueFrom:
+              secretKeyRef:
+                name: my-config
+                namespace: default
+                key: "server.crt"
+        cert:
+            value: dummy
+            valueFrom:
+                secretKeyRef:
+                    name: my-config
+                    namespace: default
+                    key: "cert.crt"
+        key:
+            value: dummy
+            valueFrom:
+                secretKeyRef:
+                    name: my-config
+                    namespace: default
+                    key: "client.key"
+    dynatrace:
+      endpoint:
+        value: "https://ab12345.live.dynatrace.com"
+        valueFrom:
+          secretKeyRef:
+              name: my-config
+              namespace: default
+              key: "endpoint"
+      apiToken:
+        value: "insecure-token"
+        valueFrom:
+          secretKeyRef:
+              name: my-config
+              namespace: default
+              key: "token"
     otlp:
       protocol: grpc #grpc | http
       endpoint: myserver.local:55690
       tls:
           insecure: false
           insecureSkipVerify: true
-          ca: 
+          ca:
             value: dummy
             valueFrom:
                 secretKeyRef:
@@ -89,6 +140,29 @@ spec:
                       name: my-config
                       namespace: default
                       key: "client.key"
+      authentication:
+        basic:
+          username:
+            value: "user"
+            valueFrom:
+              secretKeyRef:
+                  name: my-config
+                  namespace: default
+                  key: "username"
+          password:
+            value: "my-insecure-password"
+            valueFrom:
+              secretKeyRef:
+                  name: my-config
+                  namespace: default
+                  key: "password"
+        bearerToken:
+          value: "insecure-token"
+          valueFrom:
+            secretKeyRef:
+                name: my-config
+                namespace: default
+                key: "token"
       headers:
           - name: x-token
             value: "value1"
