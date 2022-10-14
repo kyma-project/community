@@ -16,15 +16,26 @@ spec:
       containers:
         include: []
         exclude: []
-      kubeStateMetrics:
-        enabled: true
-        deployments: false
-      istio: # Filter by `destination_service_namespace` or `destination_workload_namespace` if namespaces are limited
-        enabled: true
-    system: # metrics that are not related to any Kubernetes workload (for instance, node or control-plane specific)
+      system:
+        kubernetes:
+          enabled: true
+          deployments: false
+          daemonSets: true
+          persistentVolumes: true
+          resources: true
+        runtime:
+          enabled: true
+        istio: # Filter by `destination_service_namespace` or `destination_workload_namespace` if namespaces are limited
+          controlPlane:
+            enabled: true
+          proxies:
+            enabled: true
+    infrastructure: # metrics that are not related to any Kubernetes workload (for instance, node or control-plane specific)
       apiserver:
         enabled: true
       nodes:
+        enabled: true
+      network:
         enabled: true
     labels: # Filter based on custom labels
       include:
