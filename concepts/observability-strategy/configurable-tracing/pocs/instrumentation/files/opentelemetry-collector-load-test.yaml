@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: load-test-deployment
+  labels:
+    app: load-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: load-test
+  template:
+    metadata:
+      labels:
+        app: load-test
+    spec:
+      containers:
+      - name: load-test
+        image: hbalik/synthetic-load-generator:latest
+        resources:
+          requests:
+            memory: "128Mi"
+          limits:
+            memory: "256Mi"
