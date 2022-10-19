@@ -132,7 +132,7 @@ This is the simpler one, as there is no cluster provisioning happening in this f
 
 As stated before, the separation of kubeconfigs and limiting access is needed to have a healthy, secure environment. Cluster Managers will provide a possibility to create RBAC-based kubeconfigs in both BYOC and Gardener clusters. This will provide operators with the required access to perform any necessary actions.
 
-The kubeconfigs for specific Kubernetes clusters will be fetched (both from Vault or Gardener) in the runtime and stored only in the components' memory for the limited time needed to issue another (constrained) kubeconfig for a given cluster.
+The kubeconfigs for specific Kubernetes clusters will be fetched (both from Vault or Gardener) in the runtime and stored only in the components' memory for the limited time needed to issue another (constrained) kubeconfig for a given cluster. Those new kubeconfigs (used by the Lifecycle and Module Managers) will have a short expiration date and will be available in the KCP.
 
 ### Subscription Manager and the SubscriptionRequest CR
 
@@ -170,3 +170,14 @@ At this point Lifecycle Manager can step in, it has all required resources to se
 - running cluster
 - kubeconfig (passed via secret reference)
 - Kyma CR
+
+## Reacting to the kubeconfig rotation
+
+Since Lifecycle Manager and Module Manager need to interact with the provisioned K8S cluster directly, a mechanism for providing them with an up-to-date kubeconfig is needed.
+
+There are few possible options here:
+- Watching K8S Secrets - Managers should watch the Secrets containing the kubeconfigs, with a big amount of Runtimes this may be resource intensive on the API server side.
+- Implementing caching logic based on the timestamps for the kubeconfig expiration - Managers would determine themselves whether a new kubeconfig should be fetched or not, this one requires implementing custom caching mechanisms in the components.
+- Simple retries - if the Manager is unable to connect to the cluster with it's current kubeconfig, it should try fetching a new one, it's not the prettiest and most performant option though.
+
+Before making a final decision on that part, we should consider different options and compare them (at least) performance-wise.
