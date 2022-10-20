@@ -1,13 +1,13 @@
 # Cluster Manager proposal
 
 ## Motivation
-Operators use Kubernetes' Custom Resources as an API and introduce a control loop to manage third party applications and their components. The resources are reconciled periodically to ensure that all desired components are configured properly and running. This principle can be applied to cover also infrastructure components, this will introduce a lower maintenance effort and provides an easy to use, declarative approach to infrastructure provisioning.
+Operators use Kubernetes' custom resources (CR) as an API and introduce a control loop to manage third-party applications and their components. The resources are reconciled periodically to ensure that all desired components are configured properly and running. This principle can be applied to cover also infrastructure components. This introduces a lower maintenance effort and provides an easy-to-use, declarative approach to infrastructure provisioning.
 
 ## Use cases for Cluster Manager
 
 - Create/reconcile a Gardener Shoot cluster for Kyma Runtime 
 - Create kubeconfigs for provisioned clusters, those should be limited by Kubernetes roles and rotated regularly. There should be also a possibility to revoke access to the cluster if needed.
-- Manage hyperscaler subscriptions that are used by the Kubernetes Clusters
+- Manage hyperscaler subscriptions that are used by the Kubernetes clusters
 - Support bring your own cluster models (BYOC) - a cluster is ready and we get cluster-admin kubeconfig 
 - Trigger reconciliation on a configuration or a cluster state change
 
@@ -15,14 +15,14 @@ Operators use Kubernetes' Custom Resources as an API and introduce a control loo
 
 ### Cluster Managers handling cluster provisioning
 
-To achieve a declarative and responsive way of interacting with the infrastructure provisioning a pair of Cluster Managers should be introduced. This components will use an event-based reconciliation of a new Cluster Custom Resources, which will serve as an API for Kubernetes Cluster provisioning.
+To achieve a declarative and responsive way of interacting with the infrastructure provisioning, a pair of Cluster Managers should be introduced. These components will use an event-based reconciliation of new cluster CRs, serving as an API for Kubernetes Cluster provisioning.
 
-In order to provide a common Custom Resource for all clusters regardless of their licence type there will be a new pair of cluster CRs introduced:
+In order to provide a common CR for all clusters regardless of their license type there will be a new pair of cluster CRs introduced:
 - GardenerCluster CR (for managed clusters running on Gardener)
 - ExternalCluster CR (for Bring-Your-Own-Cluster model)
 
 And respectively - there will be two operators handling different processes for those CRs:
-- Gardener Cluster Manager, which will handle Gardener Shoot provisioning and kubeconfig generation/rotation
+- Gardener Cluster Manager, which handles Gardener Shoot provisioning and kubeconfig generation/rotation
 - External Cluster Manager, which takes care of storing the kubeconfig uploaded by the customer safely and makes sure constrained kubeconfig is available for other operators
 
 The goal is to reduce time-based loops as those result in a delayed response from the components. The Cluster Managers would react upon any Cluster CR change (creation, update, deletion) to introduce changes to the infrastructure immediately.
@@ -39,7 +39,7 @@ Separating user subscriptions is both a business and security requirement. Right
 
 ### Issuing RBAC-based kubeconfigs
 
-To provide an environment, where certain Operators are not able to leverage the cluster access, it is required to open up a possibility for the constrained kubeconfigs to be created. This ensures that Operators can work only with the resources they require access to and security-wise, potential malicious parties won't be able to use kubeconfigs issued for the Operators to execute cluster-wide attacks.
+To provide an environment where certain Operators cannot leverage the cluster access, it is required to open up a possibility for the constrained kubeconfigs to be created. This ensures that Operators can work only with the resources they need access to. Security-wise, potential malicious parties won't be able to use kubeconfigs issued for the Operators to execute cluster-wide attacks.
 
 The solution is to introduce a possibility in the Cluster Managers to issue limited kubeconfigs, which will be rotated in a time-based manner. Creation of those resources in Kyma Runtimes will be done using the master kubeconfigs coming from the Gardener (or Vault for BYOC), which will not be stored anywhere in the Control Plane.
 
@@ -56,16 +56,16 @@ The three new operators would need to be introduced:
 - External Cluster Manager
 - Subscription Manager
 
-Each of those components has a clear set of responsibilities that together handle the flow that creates a new, complete, Kyma-ready  Kubernetes cluster.
+Each of those components has a clear set of responsibilities that together handle the flow that creates a new, complete, Kyma-ready Kubernetes cluster.
 
-Along the operators, there are four new Custom Resources, that serve as an API for the components:
+Along the operators, there are four new CRs that serve as an API for the components:
 - Gardener Cluster CR
 - External Cluster CR
 - SubscriptionRequest CR
 
 ### Cluster Managers and the Cluster CRs
 
-The Cluster Managers' main responsibility is to manage the respective Cluster CRs, this is tied to both their provisioning and providing an access to the created K8S clusters.
+The Cluster Managers' main responsibility is to manage the respective Cluster CRs, this is tied to both their provisioning and providing an access to the created Kubernetes clusters.
 
 There will be two resources, first for the Gardener-based, managed clusters:
 ```
@@ -108,7 +108,7 @@ spec:
 
 This contains a minimal set of values that are required to provision a new Gardener cluster. The resource also contains the `administrators` and `subscriptionSelector` fields that are required for the Binding creation and requesting a hyperscaler subscription respectively.
 
-And the second one for BYOC model:
+And the second one for the Bring Your Own Cluster (BYOC) model:
 ```
 apiVersion: operator.kyma-project.io/v1alpha1
 kind: ExternalCluster
@@ -150,7 +150,7 @@ status:
     gardenerSecretName: subscription-secret
 ```
 
-The resource structure is really simple, the Subscription Manager only needs to know the provider and a proper selector for the subscription to be selected. It provides credentials in a form of the Gardener secret name, which can be simply used as a parameter in the Shoot CR.
+The resource structure is really simple. Subscription Manager only needs to know the provider and a proper selector for the subscription to be selected. It provides credentials in the form of the Gardener's Secret name, which can be simply used as a parameter in the Shoot CR.
 
 ## Cluster Provisioning Flow
 
@@ -162,7 +162,7 @@ First of all, after receiving the provisioning request, KEB should create a set 
 
 KEB should deliver all the required parameters for the cluster provisioning, this translates to the minimal infrastructure config for Gardener clusters, and the role/kubeconfig details for both types.
 
-Another thing that KEB would need to create is the Kyma CR for the Runtime, this will either require passing the proper secret reference so that kubeconfig can be accessed by the Lifecycle Manager.
+Another thing that KEB would need to create is the Kyma CR for the Runtime, this will either require passing the proper Secret reference so that kubeconfig can be accessed by the Lifecycle Manager.
 
 After the CRs are created, the respective Cluster Manager will pick up the provisioning request and will create a new Shoot for the runtime (managed scenario only), and provide a requested kubeconfig.
 
@@ -173,10 +173,10 @@ At this point Lifecycle Manager can step in, it has all required resources to se
 
 ## Reacting to the kubeconfig rotation
 
-Since Lifecycle Manager and Module Manager need to interact with the provisioned K8S cluster directly, a mechanism for providing them with an up-to-date kubeconfig is needed.
+Since Lifecycle Manager and Module Manager need to interact with the provisioned Kubernetes cluster directly, a mechanism for providing them with an up-to-date kubeconfig is needed.
 
 There are few possible options here:
-- Watching K8S Secrets - Managers should watch the Secrets containing the kubeconfigs, with a big amount of Runtimes this may be resource intensive on the API server side.
+- Watching Kubernetes Secrets - Managers should watch the Secrets containing the kubeconfigs, with a big amount of Runtimes this may be resource intensive on the API server side.
 - Implementing caching logic based on the timestamps for the kubeconfig expiration - Managers would determine themselves whether a new kubeconfig should be fetched or not, this one requires implementing custom caching mechanisms in the components.
 - Simple retries - if the Manager is unable to connect to the cluster with it's current kubeconfig, it should try fetching a new one, it's not the prettiest and most performant option though.
 
