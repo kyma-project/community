@@ -14,10 +14,15 @@ Pod Security Policies as well as Pod Security Standards are enforced via a so-ca
 
 ## Compliance with Pod Security Standards
 
-To decide whether you can activate the Pod Security Standards on the kyma-system Namespace or not, and which level we can use, you must check the existing Pod specifications against the Pod Security Standards. If the Pod specification doesn't meet the requirements, you must try to change the existing Pod specification to implement the most secure setting. For more information, see [Create secure Pod specifications](#create-secure-pod-specifications). To decide if the specification files are compatible, and to change the specifications, you can use one of the two Pod specification templates containing the security relevant entries. They ensure compliance with the respective standard.
+Since we don't know at the moment, if we are able to activate the baseline or restricted Pod Security Standards, we have to take some actions in order to get detailed information about the existing Pod specifications. Because of this, each team has to perform the following steps:
 
-- [Pod Security Standard - baseline level](baseline-pod-spec.yaml)
-- [Pod Security Standard - restricted level](restricted-pod-spec.yaml)
+1. Check the workloads you are responsible for, whether they fullfil the requirements of the restricted Pod Security Standard. You can use the [Pod Security Standard - restricted level template](restricted-pod-spec.yaml) for this. If the specification doesn't fulfill the requirement, go ahead with the next action.
+2. Try to apply the directives from the [Pod Security Standard - restricted level template](restricted-pod-spec.yaml) in order to fullfil the restricted standard. If you can apply the settings, you are done. Otherwise go ahead with the next action.
+3. Check the workloads you are responsible for, whether they fullfil the requirements of the baseline Pod Security Standard. You can use the [Pod Security Standard - baseline level template](baseline-pod-spec.yaml) for this. If the specification doesn't fulfill the requirement, go ahead with the next action.
+4. Try to apply the directives from the [Pod Security Standard - baseline level template](baseline-pod-spec.yaml) in order to fullfil the baseline standard. If you can apply the settings, you are done. Otherwise go ahead with the next action.
+5. Try to apply the most restrictive Security settings possible for your workload.
+
+After you finished the actions above, please document the outcome. In particular you have to document, which actions are completed successfully and in case you reached step 5, which settings are applied.
 
 ## Differences between baseline and restricted standards
 
