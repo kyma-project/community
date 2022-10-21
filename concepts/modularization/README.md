@@ -3,7 +3,7 @@
 - [Dependencies between components](#dependencies-between-components)
 - [Release channels](#release-channels)
 - [Component packaging and versioning](#component-packaging-and-versioning)
-  - [Example](#example)
+  - [Example module structure](#example-module-structure)
 - [Module manager](#module-manager)
 - [Component descriptor](#component-descriptor)
   - [OCM](#ocm)
@@ -14,7 +14,7 @@
   - [Central vs local operator](#central-vs-local-operator)
   - [Regular (local) module operators](#regular-local-module-operators)
   - [Central component operators](#central-component-operators)
-  - [Example](#example-1)
+  - [Example module operators](#example-module-operators)
 - [FAQ](#faq)
   - [Do we still release Kyma? What is a Kyma release?](#do-we-still-release-kyma-what-is-a-kyma-release)
   - [Can I still use the `kyma deploy` command to install Kyma in my cluster?](#can-i-still-use-the-kyma-deploy-command-to-install-kyma-in-my-cluster)
@@ -49,8 +49,6 @@ The second use case (deciding when updates should be applied) will require 2 pro
 
 Hotfixes will be delivered to all channels immediately (TODO: how to apply a hotfix for the release that is not available in the current channel).
 
-
-
 # Component packaging and versioning
 Kyma ecosystem produces several artefacts that can be deployed in the central control plane (KEB + operators) and in the target Kubernetes cluster. Versioning strategy should address pushing changes for all these artefacts in an unambiguous way with full traceability. 
 
@@ -67,7 +65,7 @@ The image could be signed and we can ensure the integrity of component deploymen
 
 ![](assets/modularization.drawio.svg)
 
-## Example
+## Example module structure
 
 If we migrate the Eventing component to the proposed structure, it would look like this:
 - `github.com/kyma-project/eventing-operator` repository
@@ -135,7 +133,7 @@ The complexity of managing installation in many clusters or using configured rel
 
 Some modules can require additional actions executed in the central control plane to configure/connect modules to the central systems. In that case, additional operators (controllers) can be installed in the Kyma control plane. These controllers can watch Kyma resources in the control plane or even remote cluster resources (providing Watcher custom resource). `lifecycle-manager` does not install central controllers and does not watch their resources. 
 
-## Example 
+## Example module operators
 In the following example, three modules are defined:
 - application-connector
 - eventing
