@@ -20,7 +20,7 @@
   - [Can I still use the `kyma deploy` command to install Kyma in my cluster?](#can-i-still-use-the-kyma-deploy-command-to-install-kyma-in-my-cluster)
   - [I have a simple component with a Helm chart. Why do I need an operator?](#i-have-a-simple-component-with-a-helm-chart-why-do-i-need-an-operator)
   - [I don't know how to write the operator. Can I use some generic operator for installing my chart?](#i-dont-know-how-to-write-the-operator-can-i-use-some-generic-operator-for-installing-my-chart)
-  - [Why should I provide a central operator / controler?](#why-should-i-provide-a-central-operator--controler)
+  - [Why should I provide a central operator / controller?](#why-should-i-provide-a-central-operator--controller)
   - [How to roll out a new module version in phases?](#how-to-roll-out-a-new-module-version-in-phases)
   - [How do we migrate all the modules to the new concept?](#how-do-we-migrate-all-the-modules-to-the-new-concept)
 
@@ -161,7 +161,7 @@ With the operator, you can fully control your component lifecycle and ensure tha
 
 Yes. You can use [Operator SDK - Helm](https://sdk.operatorframework.io/docs/building-operators/helm/) to generate it from your charts. You can create a Helm-based operator in a few minutes. If you want more control over the operator logic, use [Operator SDK - Go](https://sdk.operatorframework.io/docs/building-operators/golang/) or [Kubebuilder](https://book.kubebuilder.io/)
 
-## Why should I provide a central operator / controler?
+## Why should I provide a central operator / controller?
 
 You should go with the regular operator in most cases. Consider providing the central operator only if you mainly deal with resources outside of the Kyma cluster, or need access to external systems or resources with powerful credentials that cannot be stored in the Kyma cluster.
 
