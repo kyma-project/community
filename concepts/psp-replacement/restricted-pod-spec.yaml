@@ -1,6 +1,6 @@
-# This is a sample Pod specification which contains only entries relevant to meet the restricted Pod Security Standard from Kubernetes
-# Details about Pod Security Standards can be found here: https://kubernetes.io/docs/concepts/security/pod-security-standards
-# Information about Pod Security Admission, an Admission Controller to enforce Pod Security Standards, can be found here: https://kubernetes.io/docs/concepts/security/pod-security-admission/
+# This is a sample Pod specification which contains only entries relevant to meet the restricted Pod Security Standard from Kubernetes.
+# For more details about Pod Security Standards, look here: https://kubernetes.io/docs/concepts/security/pod-security-standards.
+# For more information about Pod Security Admission, and using Admission Controller to enforce Pod Security Standards, look here: https://kubernetes.io/docs/concepts/security/pod-security-admission/.
 apiVersion: v1
 kind: Pod
 metadata:
@@ -12,9 +12,9 @@ spec:
     runAsUser: 10001 # Mandatory. Any number higher than 10000
     runAsGroup: 30001 # Mandatory. Any number higher than 10000
     runAsNonRoot: true # Mandatory
-    seccompProfile: # Mandatory. This option can also be set on container level but I recommend to set it on Pod level and leave it undefined on container level.
+    seccompProfile: # Mandatory. This option can also be set on container level but it is recommended to set it on Pod level and leave it undefined on container level.
       type: RuntimeDefault
-    sysctls: # Only the following calls are allowed. If it isn't necessary to modify kernel attributes (which usually should be the case), the whole sysctl-section has to be removed.
+    sysctls: # Only the following calls are allowed. If it isn't necessary to modify kernel attributes (which usually should be the case), the whole sysctl-section must be removed.
       - name: kernel.shm_rmid_forced,
         value: ''
       - name: net.ipv4.ip_local_port_range,
@@ -28,7 +28,7 @@ spec:
   hostNetwork: false # Optional. The default is false if the entry is not there.
   hostPID: false # Optional. The default is false if the entry is not there.
   hostIPC: false # Optional. The default is false if the entry is not there.
-  volumes: # Only the volume types in the following list are allowed. If no volumes needed, the whole volumes-section has to be removed. Otherwise replace the brackets with the volumes needed.
+  volumes: # Only the volume types in the following list are allowed. If no volumes needed, the whole volumes-section must be removed. Otherwise, replace the brackets with the volumes needed.
     - csi:
       name: <''>
     - downwardAPI:
@@ -59,12 +59,12 @@ spec:
         capabilities:
           drop: # Mandatory.
             - ALL
-          add: # Only the NET_BIND_SERVICE capability is allowed in the restricted standard. If it is not needed, the whole add-section has to be removed
+          add: # Only the NET_BIND_SERVICE capability is allowed in the restricted standard. If it is not needed, the whole add-section has to be removed.
             - NET_BIND_SERVICE
         seLinuxOptions: # Set this on container level and only if it is really necessary. Setting the user or role option is forbidden. If the setting is not needed, the whole seLinuxOptions-section has to be removed.
           type: container_t # or container_init_t or container_kvm_t
         procMount: default # Optional. The default is false if the entry is not there.
-        readOnlyRootFilesystem: true # Mandatory, Security Best Practice. Not relevant for Pod Security Admission
+        readOnlyRootFilesystem: true # Mandatory, Security Best Practice. Not relevant for Pod Security Admission.
   initContainers:
     - name: init-container-restricted
       securityContext:
@@ -74,12 +74,12 @@ spec:
         capabilities:
           drop: # Mandatory
             - ALL
-          add: # Only the NET_BIND_SERVICE capability is allowed in the restricted standard. If it is not needed, the whole add-section has to be removed
+          add: # Only the NET_BIND_SERVICE capability is allowed in the restricted standard. If it is not needed, the whole add-section has to be removed.
             - NET_BIND_SERVICE
         seLinuxOptions: # Set this on container level and only if it is really necessary. Setting the user or role option is forbidden. If the setting is not needed, the whole seLinuxOptions-section has to be removed.
           type: container_t # or container_init_t or container_kvm_t
         procMount: default
-        readOnlyRootFilesystem: true # Mandatory, Security Best Practice. Not relevant for Pod Security Admission
-      ports: # Delete section if it is not needed
+        readOnlyRootFilesystem: true # Mandatory, Security Best Practice. Not relevant for Pod Security Admission.
+      ports: # Delete section if it is not needed.
         - containerPort: <integer> # Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
-          hostPort: 0 # 0 if no host port is needed. Specify a dedicated one if necessary
+          hostPort: 0 # 0 if no host port is needed. Specify a dedicated one if necessary.

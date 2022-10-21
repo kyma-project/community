@@ -1,6 +1,6 @@
-# This is a sample Pod specification which contains only entries relevant to meet the restricted Pod Security Standard from Kubernetes
-# Details about Pod Security Standards can be found here: https://kubernetes.io/docs/concepts/security/pod-security-standards
-# Information about Pod Security Admission, an Admission Controller to enforce Pod Security Standards, can be found here: https://kubernetes.io/docs/concepts/security/pod-security-admission/
+# This is a sample Pod specification which contains only the entries relevant to meet the restricted Pod Security Standard from Kubernetes.
+# For more details about Pod Security Standards, look here: https://kubernetes.io/docs/concepts/security/pod-security-standards.
+# For more information about Pod Security Admission, and using Admission Controller to enforce Pod Security Standards, look here: https://kubernetes.io/docs/concepts/security/pod-security-admission/.
 apiVersion: v1
 kind: Pod
 metadata:
@@ -11,9 +11,9 @@ spec:
   securityContext:
     runAsUser: '!=0' # Optional. Use this setting only when necessary, otherwise delete it. Never set to 0 because this is the ID of root.
     runAsGroup: '!=0' # Optional. Use this setting only when necessary, otherwise delete it. Never set to 0 because this is the ID of root.
-    seccompProfile: # Optional. This option can also be set on container level but I recommend to set it on Pod level and leave it undefined on container level
+    seccompProfile: # Optional. This option can also be set on container level but it is recommended to set it on Pod level and leave it undefined on container level.
       type: RuntimeDefault
-    sysctls: # Optional. Only the following calls are allowed. If it isn't necessary to modify kernel attributes (which usually should be the case), the whole sysctl-section has to be removed
+    sysctls: # Optional. Only the following calls are allowed. If it isn't necessary to modify kernel attributes (which usually should be the case), the whole sysctl-section has to be removed.
       - name: kernel.shm_rmid_forced,
         value: ''
       - name: net.ipv4.ip_local_port_range,
@@ -27,7 +27,7 @@ spec:
   hostNetwork: false # Optional. The default is false if the entry is not there.
   hostPID: false # Optional. The default is false if the entry is not there.
   hostIPC: false # Optional. The default is false if the entry is not there.
-  volumes: # hostPath volumes are not allowed. If no volumes needed, the whole volumes-section has to be removed. Otherwise replace the brackets with the volumes needed.
+  volumes: # hostPath volumes are not allowed. If no volumes needed, the whole volumes-section must be removed. Otherwise replace the brackets with the volumes needed.
     - []
   containers:
     - name: container-baseline
@@ -35,11 +35,11 @@ spec:
       command: ['']
       ports:
         - containerPort: <integer> # Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
-          hostPort: 0 # 0 if no host port is needed. Specify a dedicated one if necessary
+          hostPort: 0 # 0 if no host port is needed. Specify a dedicated one if necessary.
       securityContext:
         privileged: false # Mandatory
         capabilities:
-          add: # Only the following capabilities are allowed in the baseline standard. If no capabilities needed, the whole add-section has to be removed
+          add: # Only the following capabilities are allowed in the baseline standard. If no capabilities needed, the whole add-section has to be removed.
             - AUDIT_WRITE
             - CHOWN
             - DAC_OVERRIDE
@@ -62,7 +62,7 @@ spec:
       securityContext:
         privileged: false # Mandatory
         capabilities:
-          add: # Only the following capabilities are allowed in the baseline standard. If no capabilities needed, the whole add-section has to be removed
+          add: # Only the following capabilities are allowed in the baseline standard. If no capabilities needed, the whole add-section has to be removed.
             - AUDIT_WRITE
             - CHOWN
             - DAC_OVERRIDE
@@ -80,6 +80,6 @@ spec:
           type: container_t # or container_init_t or container_kvm_t
         procMount: default
         readOnlyRootFilesystem: true
-      ports: # Delete section if it is not needed
+      ports: # Delete section if it is not needed.
         - containerPort: <integer> # Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
-          hostPort: 0 # 0 if no host port is needed. Specify a dedicated one if necessary
+          hostPort: 0 # 0 if no host port is needed. Specify a dedicated one if necessary.
