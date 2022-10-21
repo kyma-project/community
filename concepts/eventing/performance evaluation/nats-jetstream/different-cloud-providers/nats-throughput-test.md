@@ -19,7 +19,7 @@
 
 * Kyma deploy command:
     ```
-    kyma deploy --source=main --profile production ...
+    kyma deploy --source=${kyma_version} --profile production --value eventing.nats.nats.jetstream.fileStorage.storageClassName=${storage_class_name}
     ```
 * Testing tool: [NATS Benchmarking Tool](https://docs.nats.io/using-nats/nats-tools/nats_cli/natsbench)
 <br/><br/>
@@ -73,7 +73,7 @@ Note: there is an issue that most of the time the tools gets stuck. Just try mul
 [nats-top](https://docs.nats.io/using-nats/nats-tools/nats_top) cli can be used to monitor NATS Jetsream server. You can monitor incoming and outging msms/sec, bytes/sec, etc.
 
 ### Sample executions
-Here are some sample NATS benchmarking executions for GCP. This is just to show the exections look like:
+Here are some sample NATS benchmarking executions for GCP. This is just to show the executions look like:
 
 pub: 5, sub: 5
 ```
