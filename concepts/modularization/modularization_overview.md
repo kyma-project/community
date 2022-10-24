@@ -18,7 +18,7 @@ A Kyma module contains all information required to install and run the associate
 
 All these assets are bundled into a single container image using the [OCI image specification](https://github.com/opencontainers/image-spec).
 
-> **TIP:** Learn how to build a module(ADD_LINK).
+> **TIP:** Learn how to [build a module](https://github.com/kyma-project/lifecycle-manager/tree/main/samples/template-operator).
 
 ## 2. Module Manager
 
