@@ -45,7 +45,7 @@ spec:
           value: production
       exclude: []
 
-  processors: # list of processors, order is important
+  filters: # list of filters, order is important
     - addLabel: # maps to "metricstransformprocessor" filter, adds an attribute
           match_type: regexp
           metric_names:
@@ -167,7 +167,8 @@ spec:
                   name: my-config
                   namespace: default
                   key: "password"
-        bearerToken:
+        token:
+          type: bearer
           value: "insecure-token"
           valueFrom:
             secretKeyRef:

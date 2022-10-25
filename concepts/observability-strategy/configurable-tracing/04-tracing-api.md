@@ -19,13 +19,7 @@ apiVersion: telemetry.kyma-project.io/v1alpha1
 metadata:
   name: myPipeline
 spec:
-  input:
-    istio: # Would configure Istio to send traces to the collector service
-      propagation: w3c # w3c | b3
-      enabled: true
-      samplingPercentage: 100
-
-  processors: # list of processors, order is important
+  Filters: # list of filters, order is important
     probabilisticSampler:
         samplingPercentage: 15.3
 
