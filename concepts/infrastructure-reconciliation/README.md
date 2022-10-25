@@ -96,8 +96,8 @@ spec:
 	subscriptionSelector: "globalaccount:abcd-0001" || "shared"
 	kubeconfigs:
 	- secretRef: 
-		name: managed-cluster-admin-kubeconfig
-		namespace: default
+		secretName: managed-cluster-admin-kubeconfig
+		secretNamespace: default
 	  clusterRole:
 		rules:
 		- apiGroups: ["*"]
@@ -120,7 +120,9 @@ spec:
 		secretName: user-provided-kubeconfig
 		secretNamespace: default
 	kubeconfigs:
-	- secretRef: external-cluster-admin-kubeconfig
+	- secretRef: 
+		secretName: external-cluster-admin-kubeconfig
+		secretNamespace: default
 	  clusterRole:
 		rules:
 		- apiGroups: ["*"]
