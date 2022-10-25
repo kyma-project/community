@@ -116,7 +116,9 @@ metadata:
 	name: external-cluster
 	namespace: default
 spec:
-	adminKubeconfig: LS0tV1...
+	adminKubeconfigRef:
+		secretName: user-provided-kubeconfig
+		secretNamespace: default
 	kubeconfigs:
 	- secretRef: external-cluster-admin-kubeconfig
 	  clusterRole:
@@ -127,6 +129,10 @@ spec:
 ```
 
 This is the simpler one, as there is no cluster provisioning happening in this flow most of the parameters can be dropped.
+
+In both resources' spec, the `kubeconfigs` sections describes all the kubeconfigs that should be issued for the use of KCP components. 
+
+ExternalCluster CR also has a `adminKubeconfigRef` section that should point to the admin kubeconfig delivered by the user. This kubeconfig will be saved to the secure Vault and removed from the cluster.
 
 ### Issuing kubeconfigs
 
@@ -159,6 +165,8 @@ The flow from the user's perspective stays intact, the part that changes is the 
 First of all, after receiving the provisioning request, KEB should create a set of CRs for accordingly to the licence type of the Runtime:
 - For BYOC - ExternalCluster CR
 - For managed - GardenerCluster CR
+
+> In the BYOC flow, KEB should also create a secret with the kubeconfig uploaded by the user and provide a reference to that resource in the ExternalCluster CR
 
 KEB should deliver all the required parameters for the cluster provisioning, this translates to the minimal infrastructure config for Gardener clusters, and the role/kubeconfig details for both types.
 
