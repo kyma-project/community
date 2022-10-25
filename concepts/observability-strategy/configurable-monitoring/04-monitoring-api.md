@@ -7,7 +7,7 @@ apiVersion: telemetry.kyma-project.io/v1alpha1
 metadata:
   name: PrometheusRemoteWrite
 spec:
-  input: # Metrics can be received from different receivers (OTLP and Prometheus), metrics are selected based on labels
+  input: # Metrics can be received from different receivers (OTLP and Prometheus). Metrics are selected based on labels
     application:
       namespaces: # maps to filterprocessor
         include: []
@@ -30,7 +30,7 @@ spec:
             enabled: true
           proxies:
             enabled: true
-    infrastructure: # metrics that are not related to any Kubernetes workload (for instance, node or control-plane specific)
+    infrastructure: # Metrics that are not related to any Kubernetes workload (for instance, node or control-plane specific)
       apiserver:
         enabled: true
       nodes:
@@ -73,7 +73,7 @@ spec:
           - hello_world
           - hello/world
 
-  output: # only one output, defining no output will fail validation
+  output: # Only one output. Defining no output will fail validation
     prometheusremotewrite:
       endpoint:
           value: "https://my-cortex:7900/api/v1/push"

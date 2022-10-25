@@ -29,7 +29,7 @@ spec:
     probabilisticSampler:
         samplingPercentage: 15.3
 
-  output: # only one output, defining no output will fail validation
+  output: # Only one output. Defining no output will fail validation
     otlp:
         protocol: grpc #grpc | http
         endpoint:
