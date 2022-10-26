@@ -27,6 +27,7 @@ Here are the common crash failures occured during the testing:
 - F1  - Only one of the NATS Jetstream nodes storage is full
 - F2  - All JetStream node storage is full
 - F3  - NATS JetStream just doesn’t accept and dispatch events despite storage is not full. This is solely observed on Azure
+- F4  - K6 stopped sending events in less than 20 hours
 
 ### How to reproduce  
 * F1 crash case might be reproduced with CPU: 2, Memory: 16GB, storage class: managed-standard-hdd, NATS version: 2.9.0, by sending 4800 rps with thirty K6 pods (each 1600 rps).
@@ -46,8 +47,11 @@ CPU: 4, Memory: 15GB
 | ssd | 300 | 263 | yes | 2.7.0-rc2 | 13.5 hours | full storage (F2) | 2.8.4 |
 | ssd | 280 | 240 | yes | 2.7.0-rc2 | 31.5 hours |  | 2.8.4 |
 | ssd | 280 | 265 | yes | main | 46 hours  | full storage (F2) | 2.9.0 |
+| ssd | 300 | 293 | yes | 2.8.0 | 19.5 hours | F4 | 2.9.3 |
 | hdd | 250 | 240 | no | 2.7.0-rc2 |  |  | 2.8.4 |
 | hdd | 300 | 278 | yes | main | 15 hours | full storage (F1) | 2.9.0 |
+
+
 <br/>
 
 ### Azure
@@ -59,7 +63,11 @@ CPU: 4, Memory: 16GB
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | sdd | 250 | 88 (250 for 3h) | yes | main | 19.5 hours | F1 | 2.9.0 |
 | ssd | 300 | 95 (298 for 3h) | no | main |  |  | 2.9.0 |
+| ssd | 500 | 55 (399 for 3h)  |  | 2.8.0-rc2 |  |  | 2.9.3 |
+| ssd | 350 | 67 (330 for 3h) |  | 2.8.0-rc2 |  |  | 2.9.3 |
 | hdd | 300 | 70 (290 for 3h) | no | main |  |  | 2.9.0 |
+
+In the table, K6 rps=`70 (290 for 3h)` means EPP rps was 290 in the first 3 hours and then dropped to 70. 
 
 NOTE: As you see in the table for Azure above the EPP rps was as high as K6 rps, but after 3h it dropped sharply.
 <br/>
@@ -86,6 +94,7 @@ CPU: 4, Memory: 16GB
 | ssd | 250 | 247 | no | 2.7.1 |  |  | 2.8.4 |
 | ssd | 500 | 365 | yes | 2.7.1 | 5 hours | F1   -  storage is full | 2.8.4 |
 | ssd | 350 | 307 | yes | 2.7.1 | 17 hours | F1   -   storage is full | 2.8.4 |
+| ssd | 300 | 293 |  | 2.8.0 | 17.5 hours | F4 | 2.9.3 |
 
 <br/>
 
