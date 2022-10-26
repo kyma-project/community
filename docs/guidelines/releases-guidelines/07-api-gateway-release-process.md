@@ -3,7 +3,7 @@ title: API Gateway release process
 label: internal
 ---
 
-This document describes how to create a API Gateway release.
+This document describes how to create an API Gateway release.
 
 ## Release content
 
@@ -69,4 +69,4 @@ A API Gateway release consists of:
    https://github.com/kyma-project/api-gateway/issues/12345
    ```
 
-   In this PR update the release version in the [Chart](https://github.com/videlov/kyma/blob/main/resources/api-gateway/Chart.yaml) and the image versions in [Chart values](https://github.com/videlov/kyma/blob/main/resources/api-gateway/values.yaml)
+   In this PR update the release version in the [Chart](https://github.com/kyma-project/kyma/blob/main/resources/api-gateway/Chart.yaml) and the image versions in [Chart values](https://github.com/kyma-project/kyma/blob/main/resources/api-gateway/values.yaml)
