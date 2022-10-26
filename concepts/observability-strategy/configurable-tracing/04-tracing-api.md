@@ -19,7 +19,7 @@ apiVersion: telemetry.kyma-project.io/v1alpha1
 metadata:
   name: myPipeline
 spec:
-  Filters: # list of filters, order is important
+  filters: # list of filters, order is important
     probabilisticSampler:
         samplingPercentage: 15.3
 
