@@ -73,13 +73,14 @@ spec:
                     name: my-config
                     namespace: default
                     key: "password"
-          bearerToken:
-            value: "insecure-token"
-            valueFrom:
-              secretKeyRef:
-                  name: my-config
-                  namespace: default
-                  key: "token"
+            token:
+              type: bearer
+              value: "insecure-token"
+              valueFrom:
+                secretKeyRef:
+                    name: my-config
+                    namespace: default
+                    key: "token"
         headers:
             - name: x-token
               value: "value1"
