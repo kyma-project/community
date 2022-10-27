@@ -9,7 +9,7 @@ This document describes how to create an API Gateway release.
 
 An API Gateway release consists of:
 
-* GitHub release with automated changelog generation
+* A GitHub release with automated changelog generation
 * Artifacts, including `api-gateway` binary and source code archives
 * A release tag and branch holding the code
 
