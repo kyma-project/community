@@ -51,7 +51,7 @@ An API Gateway release consists of:
       git push upstream {RELEASE_VERSION}
       ```
 
-7. After the release tarball is available on Github update Kyma resources.
+7. After the release, a tarball is available on Github update Kyma resources.
 
    Create a PR to Kyma and include details on the features released with the new API Gateway version, description example:
 
