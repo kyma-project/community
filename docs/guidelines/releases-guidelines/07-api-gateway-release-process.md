@@ -53,7 +53,7 @@ An API Gateway release consists of:
 
 7. After the release, a tarball is available on Github update Kyma resources.
 
-   Create a PR to Kyma and include details on the features released with the new API Gateway version, description example:
+   Create a PR to Kyma and include details on the features released with the new API Gateway version. Provide a description, as in the example:
 
    ```
    **Description**
