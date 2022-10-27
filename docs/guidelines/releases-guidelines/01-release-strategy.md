@@ -178,7 +178,7 @@ The final release is available in the GitHub releases, including the installatio
 
 A Technical Writer publishes the blog post on the public Kyma website to announce the release. The post includes release notes that describe new features, as well as resolved and known issues.
 
-You can learn about the new release from additional notifications published on social media and Slack channels. Alternatively, you can [subscribe](./06-release-subscription.md) to GitHub notifications and receive updates each time a new release is available.
+You can learn about the new release from additional notifications published on social media and Slack channels. Alternatively, you can [subscribe](./07-release-subscription.md) to GitHub notifications and receive updates each time a new release is available.
 
 ## Release scope
 
