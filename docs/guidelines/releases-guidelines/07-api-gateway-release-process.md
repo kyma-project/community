@@ -69,4 +69,4 @@ An API Gateway release consists of:
    https://github.com/kyma-project/api-gateway/issues/12345
    ```
 
-   In this PR update the release version in the [Chart](https://github.com/kyma-project/kyma/blob/main/resources/api-gateway/Chart.yaml) and the image versions in [Chart values](https://github.com/kyma-project/kyma/blob/main/resources/api-gateway/values.yaml)
+   In this PR, update the release version in the [Chart](https://github.com/kyma-project/kyma/blob/main/resources/api-gateway/Chart.yaml) and the image versions in the [Chart values](https://github.com/kyma-project/kyma/blob/main/resources/api-gateway/values.yaml).
