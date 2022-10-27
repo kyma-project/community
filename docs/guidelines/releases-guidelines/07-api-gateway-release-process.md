@@ -36,7 +36,7 @@ An API Gateway release consists of:
    Replace {RELEASE_VERSION} with the new `api-gateway` release version, for example, `1.2.0`.
 
 6. Create the new version.
-   1. Push the tag to trigger a postsubmit job that creates the GitHub release. Check whether the release is available under [releases](https://github.com/kyma-project/api-gateway/releases).
+   1. Push the tag to trigger a postsubmit job that creates a GitHub release. Check whether the release is available under [releases](https://github.com/kyma-project/api-gateway/releases).
 
       ```bash
       git push upstream {RELEASE_VERSION}
