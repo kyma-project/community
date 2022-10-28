@@ -19,18 +19,24 @@ apiVersion: telemetry.kyma-project.io/v1alpha1
 metadata:
   name: myPipeline
 spec:
-  processors: # list of processors, order is important
+  filters: # list of filters, order is important
     probabilisticSampler:
         samplingPercentage: 15.3
 
-  exporter: # only one output, defining no output will fail validation
+  output: # Only one output. Defining no output will fail validation
     otlp:
         protocol: grpc #grpc | http
-        endpoint: myserver.local:55690
+        endpoint:
+          value: "myserver.local:55690"
+          valueFrom:
+            secretKeyRef:
+                name: my-config
+                namespace: default
+                key: "endpoint"
         tls:
             insecure: false
             insecureSkipVerify: true
-            ca: 
+            ca:
               value: dummy
               valueFrom:
                   secretKeyRef:
@@ -51,6 +57,30 @@ spec:
                         name: my-config
                         namespace: default
                         key: "client.key"
+        authentication:
+          basic:
+            username:
+              value: "user"
+              valueFrom:
+                secretKeyRef:
+                    name: my-config
+                    namespace: default
+                    key: "username"
+            password:
+              value: "my-insecure-password"
+              valueFrom:
+                secretKeyRef:
+                    name: my-config
+                    namespace: default
+                    key: "password"
+            token:
+              type: bearer
+              value: "insecure-token"
+              valueFrom:
+                secretKeyRef:
+                    name: my-config
+                    namespace: default
+                    key: "token"
         headers:
             - name: x-token
               value: "value1"
