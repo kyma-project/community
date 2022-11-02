@@ -29,7 +29,7 @@ Every codeowner is expected to:
 * Perform a thorough review of incoming PRs and make sure he/she follows the [contributing rules](../contributing/02-contributing.md)
 * Approve only those PRs in which the contributor made the requested improvements
 * Check if the related CI tests have completed successfully before approving the PR
-* Make sure that the PR approval flow runs smoothly
+* Make sure that the PR approval flow runs smoothly - the goal is to have every PR addressed within one working day, counting from the day following the PR creation.
 * Proactively fix bugs
 * Perform maintenance tasks for his/her projects
 * As an assignee, treat issues assigned to a current release with priority
