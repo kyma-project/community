@@ -7,9 +7,6 @@
 # Owners of the sigs-and-wgs folder
 /sigs-and-wgs/ @PK85
 
-# Owners of all .md files in the repository
-*.md @mmitoraj @majakurcius @NHingerl @grego952 @IwonaLanger  
-
 # Owners of the .kyma-project-io folder
 /.kyma-project-io/ @valentinvieriu @akucharska @dariadomagala @qbalukom @Wawrzyn321 @Sawthis @wchrapka @mrCherry97 @Lyczeq
 
@@ -18,3 +15,6 @@ milv.config.yaml @m00g3n @pPrecel @dbadura @kwiatekus @moelsayed @cortey
 
 # Concepts (features, architecture)
 /concepts/ @pbochynski @a-thaler @PK85 @valentinvieriu @varbanv @k15r @janmedrek @kwiatekus @tobiscr @strekm 
+
+# Owners of all .md files in the repository
+*.md @mmitoraj @NHingerl @grego952 @IwonaLanger  
