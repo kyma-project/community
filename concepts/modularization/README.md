@@ -76,10 +76,12 @@ Here is the complete history of module `x` versions submitted to the release cha
 | x-1.2.0 -> fast | ... then to the fast channel| 1.2.0| 1.2.0| 1.1.1 |
 | x-1.2.0 -> regular | ... and finally to the regular channel| 1.2.0| 1.2.0| 1.2.0 |
 
-**Module X**
+**Module Y**
+
 Module `y` is quite new and still under heavy development with expected changes in the API. Team that develops it wants to validate the features and collect customer's feedback. New versions are published in the alpha channel only. Automatic upgrades are not guaranteed.
 
 **Module Z**
+
 Stable module in the maintenance mode. Only bug fixes and security patches are shipped. New versions go to alpha channel first, and after validation to fast and regular (hot-fix immediately, regular patch with some delay).
 
 
