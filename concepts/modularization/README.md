@@ -45,9 +45,43 @@ Release channels let customers try new modules and features early, and decide wh
 
 The first use case will be modeled as the alpha channel. Modules available in the alpha channel are developed with all quality measures in place (functional correctness, security, etc.), but they might still have unstable API or be changed without keeping backward compatibility. When you use a module from the alpha channel, you won't get full SLA guarantees for that module or other modules that are affected (directly or indirectly).
 
-The second use case (deciding when updates should be applied) will require 2 production-grade channels with a different update schedule. The fast channel will get updates as soon as they are released and have passed all quality gates. The regular channel will get updates a few days later. Customers can switch the entire cluster or a particular component to the fast channel to check if the upstream changes do not cause any issues with their workload. Changing back to the regular channel is possible, but the module version won't be downgraded - the next version has to reach the channel to be applied.
+The second use case (deciding when updates should be applied) will require 2 production-grade channels with a different update schedule. The fast channel will get updates as soon as they are released and have passed all quality gates. The regular channel will get updates a few days later. Customers can switch the entire cluster or a particular component to the regular channel to check if the upstream changes do not cause any issues with their workload. Changing back to the regular channel is possible, but the module version won't be downgraded - the next version has to reach the channel to be applied.
 
-Hotfixes will be delivered to all channels immediately (TODO: how to apply a hotfix for the release that is not available in the current channel).
+Moving module versions between channels should be automated as much as possible using a promotion strategy suitable for the particular version change (major/minor/patch) or priority (regular/hot-fix).
+
+In the diagram, we have an example with 3 modules that got new releases. Each one represents a different promotion strategy:
+
+**Module X**
+
+Module `x` is in active development. Version 1.0.x is out for a longer time (version 1.0.18 in the regular channel). The new version (1.1.0) was released recently and is available in the fast channel for a few days. The new version is not super stable yet. The patch version (1.1.1) with bug fixes was required a few days later. Also, the security vulnerability was fixed in that patch but the version is too fresh to go to the regular channel already, therefore new patch release for the 1.0.x version is required (only the security patch included). The patch goes only to the regular channel as we can't downgrade versions in the alpha or fast channel. 
+
+The team develops new features and soon introduces another minor version (1.2.0). Shipping that version to the fast channel can cause problems as we already have 2 older versions in the active maintenance. We can either decide to push it to the fast channel (replacing 1.1.x) immediately or wait until 1.1.x is promoted to the regular first. The first case extends the maintenance period for 1.0.x version and requires direct upgrade from 1.0.x to 1.2.x. The second case means 1.2.x availability has to be delayed. 
+
+Here is the complete history of module `x` versions submitted to the release channels:
+
+| Module submission | Comment | Alpha | Fast | Regular |
+| ----------------- | ------- | ----- | ---- | ------- |
+| x-1.0.18 -> alpha | First we test on alpha| 1.0.18| - |  -  |
+| x-1.0.18 -> fast | Integration tests on alpha passed, submitted to fast channel| 1.0.18| 1.0.18|  -  |
+| x-1.0.18 -> regular | First version can go to regular channel without 2 weeks waiting| 1.0.18| 1.0.18| 1.0.18 |
+| x-1.1.0 -> alpha | New feature goes to alpha first| 1.1.0| 1.0.18| 1.0.18 |
+| x-1.1.0 -> fast | New feature goes to fast| 1.1.0| 1.1.0| 1.0.18 |
+| x-1.1.1 -> alpha | Bug fix for new feature goes to alpha channel first| 1.1.1| 1.1.0| 1.0.18 |
+| x-1.1.1 -> fast | Bug fix for new feature goes to fast channel| 1.1.1| 1.1.1| 1.0.18 |
+| **x-1.0.19 -> dev** | Security patch is required for 1.0.x version, we can't wait 2 weeks for 1.1.0 or 1.1.1 where it is fixed already. We need **special dev channel** for testing it.| 1.1.1| 1.1.1| 1.0.18 |
+| x-1.0.19 -> regular | Push security fix to regular channel| 1.1.1| 1.1.1| 1.0.19 |
+| **x-1.2.0 -> dev** | New major/minor version **can't be published** in any channel as we already have **2 different versions** (1.0.x and 1.1.x) on production| 1.1.1| 1.1.1| 1.0.19 |
+| x-1.1.1 -> regular | Sync regular channel with the latest version from fast channel (skip 1.1.0)| 1.1.1| 1.1.1| 1.1.1 |
+| x-1.2.0 -> alpha | Now new major/minor version can be published in alpha channel| 1.2.0| 1.1.1| 1.1.1 |
+| x-1.2.0 -> fast | ... then to the fast channel| 1.2.0| 1.2.0| 1.1.1 |
+| x-1.2.0 -> regular | ... and finally to the regular channel| 1.2.0| 1.2.0| 1.2.0 |
+
+**Module X**
+Module `y` is quite new and still under heavy development with expected changes in the API. Team that develops it wants to validate the features and collect customer's feedback. New versions are published in the alpha channel only. Automatic upgrades are not guaranteed.
+
+**Module Z**
+Stable module in the maintenance mode. Only bug fixes and security patches are shipped. New versions go to alpha channel first, and after validation to fast and regular (hot-fix immediately, regular patch with some delay).
+
 
 # Component packaging and versioning
 Kyma ecosystem produces several artefacts that can be deployed in the central control plane (KEB + operators) and in the target Kubernetes cluster. Versioning strategy should address pushing changes for all these artefacts in an unambiguous way with full traceability. 
