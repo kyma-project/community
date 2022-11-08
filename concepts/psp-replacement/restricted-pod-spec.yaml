@@ -5,8 +5,6 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: <restricted-compliant-spec>
-  annotations:
-    container.apparmor.security.beta.kubernetes.io: runtime/default # Mandatory
 spec:
   securityContext:
     runAsUser: 10001 # Mandatory. Any number higher than 10000
