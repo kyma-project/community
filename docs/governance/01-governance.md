@@ -31,7 +31,7 @@ Every codeowner is expected to:
 * Check if the related CI tests have completed successfully before approving the PR
 * Make sure that the PR approval flow runs smoothly - the goal is to have every PR addressed within one working day, counting from the day following the PR creation
 * Triage stale GitHub issues and pull requests and perform pull request reviews for other maintainers and the community
-* Follow [github flow](https://docs.github.com/en/get-started/quickstart/github-flow) and enable github notifications of upcomming pull requests and issues
+* Follow [github flow](https://docs.github.com/en/get-started/quickstart/github-flow) and [enable github notifications](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#about-custom-notifications) of upcomming pull requests and issues
 * Proactively fix bugs
 * Perform maintenance tasks for his/her projects
 * As an assignee, treat issues assigned to a current release with priority
