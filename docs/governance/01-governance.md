@@ -30,12 +30,13 @@ Every codeowner is expected to:
 * Approve only those PRs in which the contributor made the requested improvements
 * Check if the related CI tests have completed successfully before approving the PR
 * Make sure that the PR approval flow runs smoothly - the goal is to have every PR addressed within one working day, counting from the day following the PR creation
-* Triage stale GitHub issues and pull requests and perform pull request reviews for other maintainers and the community
-* Follow [github flow](https://docs.github.com/en/get-started/quickstart/github-flow) and [enable github notifications](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#about-custom-notifications) of upcomming pull requests and issues
+* Triage stale GitHub issues and pull requests
+* Perform pull request reviews for other maintainers and the community
+* Follow [GitHub flow](https://docs.github.com/en/get-started/quickstart/github-flow) and [enable GitHub notifications](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#about-custom-notifications) of incoming pull requests and issues
 * Proactively fix bugs
 * Perform maintenance tasks for his/her projects
 * As an assignee, treat issues assigned to a current release with priority
-* In general, continue to be willing to spend at least 50% of his/her time working on Kyma (~2.5 business days per week)
+* In general, continue to be willing to spend at least 50% of their time working on Kyma (~2.5 business days per week)
 
 ### Process for becoming a codeowner
 
