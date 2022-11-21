@@ -12,6 +12,7 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Mateusz Puczyński (**[@aerfio](https://github.com/aerfio)**) involved in `area/core-and-supporting`, `area/serverless`, `area/console`, and `area/quality`.
 * Karol Jaksik (**[@kjaksik](https://github.com/kjaksik)**) involved in `area/service-catalog`, `area/management-plane`, and `area/control-plane`.
 * Michał Kempski (**[@polskikiel](https://github.com/polskikiel)**) involved in `area/service-catalog` and `area/control-plane`.
+* Karol Furgoł (**[@kfurgol](https://github.com/kfurgol)**) involved in `area/core-and-supporting`, `area/serverless`. 
 * Justyna Sztyper (**[@superojla](https://github.com/superojla)**) involved in `area/documentation` and creating docs for `area/service-mesh`, `area/installation`, and `area/api-gateway`.
 * Karolina Zydek (**[@kazydek](https://github.com/kazydek)**) contributing as a Technical Writer to `area/serverless`, `area/core-and-supporting`, and the overall Kyma documentation.
 * Julia Iskierka (**[@colunira](https://github.com/colunira)**) involved in `area/installation`, `area/service-mesh`, `area/security`, and `area/api-gateway`.
@@ -36,3 +37,4 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Johannes Veicht (**[@veichtj](https://github.com/veichtj)**) involved in `area/service-mesh`,`area/api-gateway`.
 * Hanna Gościniak (**[@hanngos](https://github.com/hanngos)**) involved in `area/control-plane`,`area/tests`, `area/charts`, `area/ci`, `area/security`, `area/dependency`, `area/service-management.
 * Wojciech Chrapka (**[@wchrapka](https://github.com/wchrapka)**) involved in `area/console`, `area/busola`.
+* Maja Szostok (**[@majakurcius](https://github.com/majakurcius)**) involved in `area/console`, `area/busola`, `area/application-connector`, `area/management-plane`, `area/community`.
