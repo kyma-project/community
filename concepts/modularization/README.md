@@ -38,6 +38,13 @@ Components can depend only on core Kubernetes API, or on API extensions introduc
 
 If the API you need (like a core Kubernetes API or Istio virtual service) is not available, you should fail. If your component can work without the API, but some features are not available (for example, service monitor from monitoring), you should just skip it and continue to deploy other component resources. 
 
+**Principles:**
+- module operator should know its dependencies
+- keep dependencies minimal and try to depend on API only (check if API exists in the required version)
+- report missing dependencies in the status of the module operator resource
+- remember that dependency can be installed in parallel to your module - give it some time and report error after reasonable timeout
+- error or success is not a final state (your dependencies can come and go) - reconcile, update status, bring it to the desired state eventually
+
 # Release channels
 Release channels let customers try new modules and features early, and decide when the updates should be applied. 
 
@@ -83,6 +90,7 @@ Module `y` is quite new and still under heavy development with expected changes 
 **Module Z**
 
 Stable module in the maintenance mode. Only bug fixes and security patches are shipped. New versions go to alpha channel first, and after validation to fast and regular (hot-fix immediately, regular patch with some delay).
+
 
 
 # Component packaging and versioning
