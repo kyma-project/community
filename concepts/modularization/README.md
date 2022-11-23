@@ -2,6 +2,7 @@
 - [Motivation](#motivation)
 - [Dependencies between components](#dependencies-between-components)
 - [Release channels](#release-channels)
+- [Release flow](#release-flow)
 - [Component packaging and versioning](#component-packaging-and-versioning)
   - [Example module structure](#example-module-structure)
 - [Module manager](#module-manager)
@@ -60,28 +61,24 @@ In the diagram, we have an example with 3 modules that got new releases. Each on
 
 **Module X**
 
-Module `x` is in active development. Version 1.0.x is out for a longer time (version 1.0.18 in the regular channel). The new version (1.1.0) was released recently and is available in the fast channel for a few days. The new version is not super stable yet. The patch version (1.1.1) with bug fixes was required a few days later. Also, the security vulnerability was fixed in that patch but the version is too fresh to go to the regular channel already, therefore new patch release for the 1.0.x version is required (only the security patch included). The patch goes only to the regular channel as we can't downgrade versions in the alpha or fast channel. 
+Module `x` is in active development. Version 1.0.x is out for a longer time (version 1.0.18 in the regular channel). The new version (1.1.0) was released recently and is available in the fast channel for a few days. The new version is not super stable yet. The patch version (1.1.1) with bug fixes was required a few days later. Also, the security vulnerability was fixed in that patch but the version is too fresh to go to the regular channel already, therefore new patch release for the 1.0.x version is required (only the security patch included). The patch goes only to the regular channel.
 
-The team develops new features and soon introduces another minor version (1.2.0). Shipping that version to the fast channel can cause problems as we already have 2 older minor versions in active maintenance. We can either decide to push it to the fast channel (replacing 1.1.x) immediately or wait until 1.1.x is promoted to the regular first. The first case extends the maintenance period for 1.0.x version (2 weeks waiting period is reset) and requires a direct upgrade from 1.0.x to 1.2.x. The second case means 1.2.x availability has to be delayed (it can be introduced after 1.0.x is replaced by 1.1.x in the regular channel). 
+The team develops new features and soon introduces another minor version (1.2.0). Shipping that version to the fast channel can cause problems as we already have 2 older minor versions in active maintenance. If you want to test it with customers you can use alpha channel and release it there, until version 1.1.x is propagated to the regular channel.  
 
 Here is the complete history of module `x` versions submitted to the release channels:
 
 | Module submission | Comment | Alpha | Fast | Regular |
 | ----------------- | ------- | ----- | ---- | ------- |
-| x-1.0.18 -> alpha | First we test on alpha| 1.0.18| - |  -  |
-| x-1.0.18 -> fast | Integration tests on alpha passed, submitted to fast channel| 1.0.18| 1.0.18|  -  |
-| x-1.0.18 -> regular | First version can go to regular channel without 2 weeks waiting| 1.0.18| 1.0.18| 1.0.18 |
-| x-1.1.0 -> alpha | New feature goes to alpha first| 1.1.0| 1.0.18| 1.0.18 |
-| x-1.1.0 -> fast | New feature goes to fast| 1.1.0| 1.1.0| 1.0.18 |
-| x-1.1.1 -> alpha | Bug fix for new feature goes to alpha channel first| 1.1.1| 1.1.0| 1.0.18 |
-| x-1.1.1 -> fast | Bug fix for new feature goes to fast channel| 1.1.1| 1.1.1| 1.0.18 |
-| **x-1.0.19 -> dev** | Security patch is required for 1.0.x version, we can't wait 2 weeks for 1.1.0 or 1.1.1 where it is fixed already. We need **special dev channel** for testing it.| 1.1.1| 1.1.1| 1.0.18 |
-| x-1.0.19 -> regular | Push security fix to regular channel| 1.1.1| 1.1.1| 1.0.19 |
-| **x-1.2.0 -> dev** | New major/minor version **can't be published** in any channel as we already have **2 different versions** (1.0.x and 1.1.x) on production| 1.1.1| 1.1.1| 1.0.19 |
-| x-1.1.1 -> regular | Sync regular channel with the latest version from fast channel (skip 1.1.0)| 1.1.1| 1.1.1| 1.1.1 |
-| x-1.2.0 -> alpha | Now new major/minor version can be published in alpha channel| 1.2.0| 1.1.1| 1.1.1 |
-| x-1.2.0 -> fast | ... then to the fast channel| 1.2.0| 1.2.0| 1.1.1 |
-| x-1.2.0 -> regular | ... and finally to the regular channel| 1.2.0| 1.2.0| 1.2.0 |
+| x-1.0.18 -> fast | Integration tests on alpha passed, submitted to fast channel|  - | 1.0.18|  -  |
+| x-1.0.18 -> regular | First version can go to regular channel without 2 weeks waiting|  - | 1.0.18| 1.0.18 |
+| x-1.1.0 -> fast | New feature goes to fast|  - | 1.1.0| 1.0.18 |
+| x-1.1.1 -> fast | Bug fix for new feature goes to fast channel|  - | 1.1.1| 1.0.18 |
+| x-1.0.19 -> regular | Push security fix to regular channel|  - | 1.1.1| 1.0.19 |
+| x-1.2.0-alpha1 -> alpha | New major/minor version can't be published in the fast channel before 1.1.0 is propagated to the regular| 1.2.0-alpha1| 1.1.1| 1.0.19 |
+| x-1.1.1 -> regular | Sync regular channel with the latest version from fast channel (skip 1.1.0)| 1.2.0-alpha1| 1.1.1| 1.1.1 |
+| x-1.2.0 -> fast | Deploy new minor version to the fast channel (and remove it from alpha)| - | 1.2.0| 1.1.1 |
+| x-1.2.0 -> regular | ... and to the regular channel| - | 1.2.0| 1.2.0 |
+
 
 **Module Y**
 
@@ -91,8 +88,27 @@ Module `y` is quite new and still under heavy development with expected changes 
 
 Stable module in the maintenance mode. Only bug fixes and security patches are shipped. New versions go to alpha channel first, and after validation to fast and regular (hot-fix immediately, regular patch with some delay).
 
+# Release flow
 
+Introducing operators and release channels can look complex from the development team's perspective, but the module releases can be fully automated. This is the flow describing actions that are executed starting with the initial PR with the new feature until it is available in production in all Kyma clusters:
 
+- PR to module repository (new feature, bug fix, etc)
+- Team pipeline (this is a guideline, but Team is responsible and accountable for it 100% )
+  - build images for controllers (have to be certified pipeline - remember about SLC-29, prow is recommended)
+  - execute tests - check functional correctness, test your dependencies
+  - build image for operator/manager (have to be certified pipeline - remember about SLC-29, prow is recommended)
+  - test your operator (installation, upgrade)
+  - optional:
+    - create module template - and deploy it in the integration environment 
+    - test with lifecycle-manager (integration flow: `kyma deploy` installs lifecycle-manager) - optional it is also tested in the second
+  - merge the PR
+- PR to kyma-project/kyma/modules with module template (one file per channel) - this is new file or changed version in the existing module template. This step can be the last one in the pipeline before (continuous delivery option or explicit for manual releases)
+- Submission pipeline executed on PR to kyma-project/kyma/modules - checking mainly syntax correctness no functional correctness, it is common for all modules
+  - smoke tests for module template (we don't run any module specific tests here)
+  - smoke upgrade test (upgrade from version currently available in the channel)
+  - merge
+- After merge automation (argo CD) that pushes new channel versions to KCP dev/stage/prod environment
+  
 # Component packaging and versioning
 Kyma ecosystem produces several artefacts that can be deployed in the central control plane (KEB + operators) and in the target Kubernetes cluster. Versioning strategy should address pushing changes for all these artefacts in an unambiguous way with full traceability. 
 
