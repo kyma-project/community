@@ -70,3 +70,5 @@ An API Gateway release consists of:
    ```
 
    In this PR, update the release version in the [Chart](https://github.com/kyma-project/kyma/blob/main/resources/api-gateway/Chart.yaml) and the image versions in the [Chart values](https://github.com/kyma-project/kyma/blob/main/resources/api-gateway/values.yaml).
+
+8. [Configure Dependabot](https://github.com/kyma-project/api-gateway/blob/35f3201a442a332b4b78467af13e46db7b8dfe7b/.github/dependabot.yml#L25) to watch the release branch if new one was created.
