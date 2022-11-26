@@ -2,6 +2,7 @@
 - [Motivation](#motivation)
 - [Dependencies between components](#dependencies-between-components)
 - [Release channels](#release-channels)
+- [Release flow](#release-flow)
 - [Component packaging and versioning](#component-packaging-and-versioning)
   - [Example module structure](#example-module-structure)
 - [Module manager](#module-manager)
@@ -38,17 +39,76 @@ Components can depend only on core Kubernetes API, or on API extensions introduc
 
 If the API you need (like a core Kubernetes API or Istio virtual service) is not available, you should fail. If your component can work without the API, but some features are not available (for example, service monitor from monitoring), you should just skip it and continue to deploy other component resources. 
 
+**Principles:**
+- module operator should know its dependencies
+- keep dependencies minimal and try to depend on API only (check if API exists in the required version)
+- report missing dependencies in the status of the module operator resource
+- remember that dependency can be installed in parallel to your module - give it some time and report error after reasonable timeout
+- error or success is not a final state (your dependencies can come and go) - reconcile, update status, bring it to the desired state eventually
+
 # Release channels
 Release channels let customers try new modules and features early, and decide when the updates should be applied. 
 
-![](assets/release-channels.drawio.svg)
-
-The first use case will be modeled as the alpha channel. Modules available in the alpha channel are developed with all quality measures in place (functional correctness, security, etc.), but they might still have unstable API or be changed without keeping backward compatibility. When you use a module from the alpha channel, you won't get full SLA guarantees for that module or other modules that are affected (directly or indirectly).
+The first use case will be modeled as the alpha channel. Modules available in the alpha channel are developed with all quality measures in place (functional correctness, security, etc.), but they might still have unstable API, be changed without keeping backward compatibility or even removed before they reach fast or regular channel. When you use a module from the alpha channel, you won't get full SLA guarantees for that module or other modules that are affected (directly or indirectly).
 
 The second use case (deciding when updates should be applied) will require 2 production-grade channels with a different update schedule. The fast channel will get updates as soon as they are released and have passed all quality gates. The regular channel will get updates a few days later. Customers can switch the entire cluster or a particular component to the fast channel to check if the upstream changes do not cause any issues with their workload. Changing back to the regular channel is possible, but the module version won't be downgraded - the next version has to reach the channel to be applied.
 
-Hotfixes will be delivered to all channels immediately (TODO: how to apply a hotfix for the release that is not available in the current channel).
+Moving module versions between channels can be done with a simple pull request (bump version). Later on, it can be automated using a promotion strategy suitable for the particular version change (major/minor/patch defined by [semver.org](https://semver.org/)) or priority (regular/hot-fix), but it is not the highest priority for the first iteration.
 
+![](assets/release-channels.drawio.svg)
+
+In the diagram, we have an example with 3 modules that got new releases. Each one represents a different promotion strategy:
+
+**Module X**
+
+Module `x` is in active development. Version 1.0.x is out for a longer time (version 1.0.18 in the regular channel). The new version (1.1.0) was released recently and is available in the fast channel for a few days. The new version is not super stable yet. The patch version (1.1.1) with bug fixes was required a few days later. Also, the security vulnerability was fixed in that patch but the version is too fresh to go to the regular channel already, therefore new patch release for the 1.0.x version is required (only the security patch included). The patch goes only to the regular channel.
+
+The team develops new features and soon introduces another minor version (1.2.0). Shipping that version to the fast channel can cause problems as we already have 2 older minor versions in active maintenance. If you want to test it with customers you can use alpha channel and release it there, until version 1.1.x is propagated to the regular channel.  
+
+Here is the complete history of module `x` versions submitted to the release channels:
+
+| Module submission | Comment | Alpha | Fast | Regular |
+| ----------------- | ------- | ----- | ---- | ------- |
+| x-1.0.18 -> fast | Integration tests on alpha passed, submitted to fast channel|  - | 1.0.18|  -  |
+| x-1.0.18 -> regular | First version can go to regular channel without 2 weeks waiting|  - | 1.0.18| 1.0.18 |
+| x-1.1.0 -> fast | New feature goes to fast|  - | 1.1.0| 1.0.18 |
+| x-1.1.1 -> fast | Bug fix for new feature goes to fast channel|  - | 1.1.1| 1.0.18 |
+| x-1.0.19 -> regular | Push security fix to regular channel|  - | 1.1.1| 1.0.19 |
+| x-1.2.0-alpha1 -> alpha | New major/minor version can't be published in the fast channel before 1.1.0 is propagated to the regular| 1.2.0-alpha1| 1.1.1| 1.0.19 |
+| x-1.1.1 -> regular | Sync regular channel with the latest version from fast channel (skip 1.1.0)| 1.2.0-alpha1| 1.1.1| 1.1.1 |
+| x-1.2.0 -> fast | Deploy new minor version to the fast channel (and remove it from alpha)| - | 1.2.0| 1.1.1 |
+| x-1.2.0 -> regular | ... and to the regular channel| - | 1.2.0| 1.2.0 |
+
+
+**Module Y**
+
+Module `y` is quite new and still under heavy development with expected changes in the API. Team that develops it wants to validate the features and collect customer's feedback. New versions are published in the alpha channel only. Automatic upgrades are not guaranteed.
+
+**Module Z**
+
+Stable module in the maintenance mode. Only bug fixes and security patches are shipped. New versions go to alpha channel first, and after validation to fast and regular (hot-fix immediately, regular patch with some delay).
+
+# Release flow
+
+Introducing operators and release channels can look complex from the development team's perspective, but the module releases can be fully automated. This is the flow describing actions that are executed starting with the initial PR with the new feature until it is available in production in all Kyma clusters:
+
+- PR to module repository (new feature, bug fix, etc)
+- Team pipeline (this is a guideline, but Team is responsible and accountable for it 100% )
+  - build images for controllers (have to be certified pipeline - remember about SLC-29, prow is recommended)
+  - execute tests - check functional correctness, test your dependencies
+  - build image for operator/manager (have to be certified pipeline - remember about SLC-29, prow is recommended)
+  - test your operator (installation, upgrade)
+  - optional:
+    - create module template - and deploy it in the integration environment 
+    - test with lifecycle-manager (integration flow: `kyma deploy` installs lifecycle-manager) - optional it is also tested in the second
+  - merge the PR
+- PR to kyma-project/kyma/modules with module template (one file per channel) - this is new file or changed version in the existing module template. This step can be the last one in the pipeline before (continuous delivery option or explicit for manual releases)
+- Submission pipeline executed on PR to kyma-project/kyma/modules - checking mainly syntax correctness no functional correctness, it is common for all modules
+  - smoke tests for module template (we don't run any module specific tests here)
+  - smoke upgrade test (upgrade from version currently available in the channel)
+  - merge
+- After merge automation (argo CD) that pushes new channel versions to KCP dev/stage/prod environment
+  
 # Component packaging and versioning
 Kyma ecosystem produces several artefacts that can be deployed in the central control plane (KEB + operators) and in the target Kubernetes cluster. Versioning strategy should address pushing changes for all these artefacts in an unambiguous way with full traceability. 
 
