@@ -49,7 +49,7 @@ If the API you need (like a core Kubernetes API or Istio virtual service) is not
 # Release channels
 Release channels let customers try new modules and features early, and decide when the updates should be applied. 
 
-The first use case will be modeled as the alpha channel. Modules available in the alpha channel are developed with all quality measures in place (functional correctness, security, etc.), but they might still have unstable API or be changed without keeping backward compatibility. When you use a module from the alpha channel, you won't get full SLA guarantees for that module or other modules that are affected (directly or indirectly).
+The first use case will be modeled as the alpha channel. Modules available in the alpha channel are developed with all quality measures in place (functional correctness, security, etc.), but they might still have unstable API, be changed without keeping backward compatibility or even removed before they reach fast or regular channel. When you use a module from the alpha channel, you won't get full SLA guarantees for that module or other modules that are affected (directly or indirectly).
 
 The second use case (deciding when updates should be applied) will require 2 production-grade channels with a different update schedule. The fast channel will get updates as soon as they are released and have passed all quality gates. The regular channel will get updates a few days later. Customers can switch the entire cluster or a particular component to the fast channel to check if the upstream changes do not cause any issues with their workload. Changing back to the regular channel is possible, but the module version won't be downgraded - the next version has to reach the channel to be applied.
 
