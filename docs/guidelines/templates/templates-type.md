@@ -46,7 +46,7 @@ See the templates for providing input and writing release notes.
 
 ## Repository templates
 
-Go to the [`repository-templates`](https://github.com/kyma-project/community/tree/main/templates/repository-template) directory for the template of an exemplary Kyma repository.
+Go to the [`template-repository`](https://github.com/kyma-project/template-repository) directory for the template of an exemplary Kyma repository.
 
 ## Special Interest Group and Working Group
 
