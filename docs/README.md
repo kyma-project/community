@@ -4,17 +4,17 @@ title: Get started
 
 Welcome to the Kyma community page!
 
-If you are looking for information on how to join us, you are in the right place. Read on to find out how you can get involved, contribute to Kyma code and documentation, and stay in touch with the latest Kyma news. Let's get started!
+If you are looking for information on how to join us, you are in the right place. Read on to find out how you can get involved, contribute to the Kyma code and documentation, and stay in touch with the latest Kyma news. Let's get started!
 
 # <img src="assets/contribution-collaboration-icon.svg" width="120"> Contribution & Collaboration
 
 ## Contribution rules
 
-Before you start contributing, read our [Code of Conduct](./contributing/01-code-of-conduct.md) and learn about our [working model](./governance/01-governance.md) to understand the way Kyma community works. Get familiar with the [contributing rules](./contributing/02-contributing.md), recommended [Git workflow](./contributing/03-git-workflow.md), [Prow workflow](./contributing/04-prow-workflow.md), and [issues workflow](./governance/03-issues-workflow.md) we use in Kyma so you can apply them later in practice as an active contributor.
+Before you start contributing, read our [Code of Conduct](./contributing/01-code-of-conduct.md) and learn about our [working model](./governance/01-governance.md) to understand the way the Kyma community works. Get familiar with the [contributing rules](./contributing/02-contributing.md), recommended [Git workflow](./contributing/03-git-workflow.md), [Prow workflow](./contributing/04-prow-workflow.md), and [issues workflow](./governance/03-issues-workflow.md) we use in Kyma so you can apply them later in practice as an active contributor.
 
 ## Guidelines
 
-Follow guidelines for writing [content](./guidelines/content-guidelines) and [code](./guidelines/technical-guidelines). See how to create a [new repository](./guidelines/repository-guidelines) or a [new release](./guidelines/releases-guidelines), and use [templates](./guidelines/templates/templates-type.md) for various document types.
+Follow the guidelines for writing [content](./guidelines/content-guidelines) and [code](./guidelines/technical-guidelines). See how to create a [new repository](./guidelines/repository-guidelines) or a [new release](./guidelines/releases-guidelines), and use the [templates](./guidelines/templates/templates-type.md) for various document types.
 
 ## Issues
 
@@ -22,7 +22,7 @@ Create an issue on [GitHub](https://github.com/kyma-project) to report a bug or 
 
 ## Special Interest Groups & Working Groups
 
-The Kyma community collaborates through Special Interest Groups and Working Groups ([SIGs and WGs](contributing/04-sig-and-wg.md)). By joining the SIGs and WGs, you can meet other community members, exchange information on Kyma, provide feedback, raise interest, ask questions, and learn about the product. Join the SIGs or WGs meeting to learn more what each group works on.
+The Kyma community collaborates through Special Interest Groups and Working Groups ([SIGs and WGs](contributing/04-sig-and-wg.md)). By joining the SIGs and WGs, you can meet other community members, exchange information on Kyma, provide feedback, raise interest, ask questions, and learn about the product. Join the SIGs or WGs meeting to learn more about what each group works on.
 
 # <img src="assets/stay-informed-icon.svg" width="120"> Stay Informed
 
@@ -36,7 +36,7 @@ Subscribe to our [YouTube channel](https://www.youtube.com/channel/UC8Q8bBtYe9gQ
 
 ## Blog
 
-Go the [Kyma blog](https://kyma-project.io/blog/) to read the latest news on our project, events, and teams. If you want to share your experience with Kyma, feel free to [write a blog post](https://github.com/kyma-project/website/blob/main/docs/write-blog-posts.md) on your own.
+Go to the [Kyma blog](https://kyma-project.io/blog/) to read the latest news on our project, events, and teams. If you want to share your experience with Kyma, feel free to [write a blog post](https://github.com/kyma-project/website/blob/main/docs/write-blog-posts.md) on your own.
 
 # <img src="assets/community-support-icon.svg" width="120"> Community Support
 
