@@ -34,8 +34,8 @@ the [Corporate Contributor License Agreement](./assets/SAP%20Corporate%20Contrib
 
 If you are a contributor, follow these basic rules:
 
-* The contribution workflow in all Kyma repositories bases on the principles of the [GitHub flow](https://guides.github.com/introduction/flow/). Thus, the `main` branch is the most important one. Avoid working directly on it. When you work on new features or bug fixes, work on separate branches.
-* Work on forks of Kyma repositories.
+* The contribution workflow in all Kyma repositories is based on the principles of the [GitHub flow](https://guides.github.com/introduction/flow/). Thus, the `main` branch is the most important one. Avoid working directly on it. When you work on new features or bug fixes, work on separate branches.
+* Work on forks of the Kyma repositories.
 * You can merge a PR if you receive an approval from at least one code owner from each part of the repository to which you contribute in your PR.
 
 Every contributor commits to the following agreement:
@@ -78,7 +78,7 @@ To contribute code or content to a given Kyma repository, follow these steps:
 
 ### Report an issue
 
-If you find a bug to report or you want to propose a new feature, go to the GitHub issue tracker of a given repository and create an issue. If you are not certain which repository your bug or feature relates to, raise it on the `kyma` repository.
+If you find a bug to report or you want to propose a new feature, go to the GitHub issue tracker of a given repository and create an issue. If you are not certain which repository your bug or feature relates to, raise it on the `Kyma` repository.
 
 > **NOTE:** The repository maintainers handle only well-documented, valid issues that have not been reported yet. Before you create one, check if there are no duplicates. Provide all details and include examples. When you report a bug, list the exact steps necessary to reproduce it.
 
