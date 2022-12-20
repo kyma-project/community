@@ -1,11 +1,11 @@
 # Default owners of the repository
-* @mmitoraj @NHingerl @grego952 @IwonaLanger  
+* @mmitoraj @NHingerl @grego952 @IwonaLanger @nataliasitko 
 
 # Owners of the sigs-and-wgs folder
 /sigs-and-wgs/ @PK85
 
 # Owners of all .md files in the repository
-*.md @mmitoraj @NHingerl @grego952 @IwonaLanger
+*.md @mmitoraj @NHingerl @grego952 @IwonaLanger @nataliasitko
 
 # Owners of the .kyma-project-io folder
 /.kyma-project-io/ @valentinvieriu @akucharska @dariadomagala @qbalukom @Wawrzyn321 @Sawthis @mrCherry97 @Lyczeq
