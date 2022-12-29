@@ -26,7 +26,7 @@ Every code owner is expected to:
 
 * Contribute high-quality code and content
 * Communicate and collaborate with other code owners to improve the ownership process
-* Perform  thorough pull request reviews for other maintainers and the community
+* Perform thorough pull request reviews for other maintainers and the community
 * Make sure to follow the [contributing rules](../contributing/02-contributing.md)
 * Approve only the PRs in which the contributor made the requested improvements
 * Check if the related CI tests have completed successfully before approving the PR
