@@ -4,79 +4,76 @@ title: Kyma working model
 
 ## Scope
 
-All repositories in the Kyma organization must follow the official guidelines, contributing rules, and the governance process to assure quality and consistency.
+All repositories in the Kyma organization must follow the official guidelines, contributing rules, and the governance process to ensure quality and consistency.
 
 The Kyma project also includes the [Kyma Incubator](https://github.com/kyma-incubator) organization. It is a place where all new projects start in a more relaxed environment that facilitates their rapid growth. At that stage, they do not have to comply with all rules that govern the Kyma organization. Once the incubating project is ready to become a part of the main Kyma organization, adjust it to all standards.
 
 ### Add a new repository to Kyma's organizations
 
-Create a GitHub issue in the [community](https://github.com/kyma-project/community) repository and describe the purpose of the new repository, proposed name and explanation which organization it should go to, **kyma-project** or **kyma-incubator**.
+Create a GitHub issue in the [community](https://github.com/kyma-project/community) repository and describe the purpose of the new repository, proposed name, and explanation which organization it should go to, **kyma-project** or **kyma-incubator**.
 
 ## Ownership policy
 
-Kyma repositories are owned by codeowners who are a group of people with special privileges in the repositories of the [Kyma](https://github.com/kyma-project) organization. Each repository has a separate `CODEOWNERS` file located at its root. The file specifies persons who have the ability to approve contribution to the part of the repository they own, after a detailed review of the related pull requests (PRs). Although the name suggests only the code ownership, the `CODEOWNERS` file is not only about the code but the content in general. Apart from the developers, you can define any relevant parties as codeowners. For example, technical writers are set up as the owners of all `.md` documents in the Kyma repositories and SIG/WG members are the owners of their SIG/WG's folders' content.
+Kyma repositories are owned by code owners who are a group of people with special privileges in the repositories of the [Kyma](https://github.com/kyma-project) organization. Each repository has a separate `CODEOWNERS` file located at its root. The file specifies persons who have the ability to approve contribution to the part of the repository they own, after a detailed review of the related pull requests (PRs). Although the name suggests only the code ownership, the `CODEOWNERS` file is not only about the code but the content in general. Apart from the developers, you can define any relevant parties as code owners. For example, technical writers are set up as the owners of all `.md` documents in the Kyma repositories and SIG/WG members are the owners of their SIG/WG's folders' content.
 
->**NOTE:** Within this document, words "codeowner" and "maintainer" are used interchangeably.
+>**NOTE:** Within this document, the terms "code owner" and "maintainer" are used interchangeably.
 
-### Codeowners responsibilities
+### Code owners' responsibilities
 
-With great power comes great responsibility. Maintainers not only review and approve PRs but also truly care about their projects.
+With great power comes great responsibility. Maintainers do not only review and approve PRs but also truly care about their projects.
 
-Every codeowner is expected to:
+Every code owner is expected to:
 
 * Contribute high-quality code and content
 * Communicate and collaborate with other code owners to improve the ownership process
-* Perform a thorough review of incoming PRs and make sure he/she follows the [contributing rules](../contributing/02-contributing.md)
-* Approve only those PRs in which the contributor made the requested improvements
+* Perform thorough pull request reviews for other maintainers and the community
+* Make sure to follow the [contributing rules](../contributing/02-contributing.md)
+* Approve only the PRs in which the contributor made the requested improvements
 * Check if the related CI tests have completed successfully before approving the PR
 * Make sure that the PR approval flow runs smoothly - the goal is to have every PR addressed within one working day, counting from the day following the PR creation
 * Triage stale GitHub issues and pull requests
-* Perform pull request reviews for other maintainers and the community
 * Follow [GitHub flow](https://docs.github.com/en/get-started/quickstart/github-flow) and [enable GitHub notifications](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#about-custom-notifications) of incoming pull requests and issues
 * Proactively fix bugs
-* Perform maintenance tasks for his/her projects
+* Perform maintenance tasks for their projects
 * As an assignee, treat issues assigned to a current release with priority
 * In general, continue to be willing to spend at least 50% of their time working on Kyma (~2.5 business days per week)
 
-### Process for becoming a codeowner
+### Become a code owner
 
-* Express interest to the existing maintainers that you or your organization are interested in becoming a
+* Inform the existing maintainers that you or your organization are interested in becoming a
   maintainer. Depending on whether you are an individual or a corporate contributor/maintainer, a different contributor license agreement applies.
-* Express what the areas of Kyma that you want to engage with are. Kyma, because of its goal, is complex, and it is impossible to become a maintainer in every area. Make sure you get support from a proper group of maintainers.
+* Determine what areas of Kyma you want to engage with. Kyma, because of its goal, is complex, and it is impossible to become a maintainer in every area. Make sure you get support from a proper group of maintainers.
 * Becoming a maintainer generally means that you are going to be spending a substantial part of your time (>50%) on Kyma for the foreseeable future. Among other responsibilities, this means:
   * creating and merging pull requests
   * reviewing pull requests
   * creating or commenting on issues
   * helping on Slack and other community communication channels.
-* We will expect you to start contributing increasingly complicated PRs, under the guidance
+* You are expected to start contributing increasingly complicated PRs, under the guidance
   of the existing maintainers.
-* We may ask you to do some PRs from our backlog.
-* As you gain experience with the code base and our standards, we will ask you to do code reviews for incoming PRs (i.e., all maintainers are expected to shoulder a proportional share of community reviews).
-* After working together and making sure you deeply understand the code base, and are comfortable with submitting reviews, the existing codeowners can make a decision to add you to the maintainers list. To request approval, the candidate creates an issue in the [community](https://github.com/kyma-project/community) repository with a list of his/her current contributions. The existing maintainers will confer and decide whether to grant the maintainer status or not.
+* We may ask you to work on some PRs from our backlog.
+* As you gain experience with the code base and our standards, we will ask you to do code reviews for incoming PRs. All maintainers are expected to shoulder a proportional share of community reviews.
+* After working together and making sure you have a deep understanding of the code base, and are comfortable with submitting reviews, the existing code owners can make a decision to add you to the maintainers list. To request approval, the candidate creates an issue in the [community](https://github.com/kyma-project/community) repository with a list of their current contributions. The existing maintainers confer and decide whether to grant the maintainer status or not.
 
 >**NOTE:** To be accepted as a maintainer and be added to Kyma GitHub organizations, you need to have [two-factor authentication](https://help.github.com/en/articles/about-two-factor-authentication) enabled on your GitHub account.
 
 ### When does a maintainer lose the maintainer status?
 
-- If a maintainer is no longer interested or cannot perform the maintainer duties listed above, he/she
-should volunteer to be transitioned to emeritus status.
-- If a maintainer is unresponsive, the existing codeowners can decide he/she can be removed from the maintainers list immediately.
-- In extreme cases, this can also occur by a vote of
-the maintainers per the voting process below.
+- If a maintainer is no longer interested or cannot perform the maintainer duties listed above, they
+should request a change of their status to emeritus.
+- If a maintainer is unresponsive, the existing code owners can decide to remove them from the maintainers list in absentia.
+- In extreme cases, a maintainer can be removed by [voting of the maintainers](#conflict-resolution-and-voting-among-maintainers). 
 
-### How to suggest a change in maintainers list?
+### How to suggest a change in a maintainers list?
 
 To suggest a change in the ownership of a given repository part, create a PR with the required changes in the `CODEOWNERS` file in the project's repository. The required number of codeowners needs to approve the PR for the changes to take place. Read the [CODEOWNERS  file template](https://github.com/kyma-project/community/blob/main/templates/repository-template/CODEOWNERS) to learn how to set up and modify owners of the given repository folders and files.
 
-The name of the removed maintainer should be added to the [emeritus](https://github.com/kyma-project/community/blob/main/emeritus.md) file with short info about what areas were covered by this person.
+The name of the removed maintainer is added to the [emeritus](https://github.com/kyma-project/community/blob/main/emeritus.md) file with a short message about what areas the person worked on.
 
-### Conflict resolution and voting among maintainers
+### Conflict resolution and voting of the maintainers
 
 In general, we prefer technical issues and the maintainer membership to be amicably worked out
-between the persons involved. If a dispute cannot be decided independently, the maintainers can be
-called in to decide an issue. If the maintainers themselves cannot decide an issue, the issue will
-be resolved by voting. The voting process is a simple majority in which each maintainer
-receives one vote.
+between the persons involved. If a dispute cannot be resolved independently, the maintainers can be
+called in to decide an issue. If the maintainers themselves cannot decide an issue, the issue is resolved by voting. In the voting process each maintainer receives one vote and the decision is reached by simple majority.
 
 For complex cases when there is a situation that we need a decision that affects more than just one group of maintainers, the decision making process applies.
 
