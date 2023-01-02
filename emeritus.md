@@ -38,3 +38,5 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Hanna Gościniak (**[@hanngos](https://github.com/hanngos)**) involved in `area/control-plane`,`area/tests`, `area/charts`, `area/ci`, `area/security`, `area/dependency`, `area/service-management.
 * Wojciech Chrapka (**[@wchrapka](https://github.com/wchrapka)**) involved in `area/console`, `area/busola`.
 * Maja Szostok (**[@majakurcius](https://github.com/majakurcius)**) involved in `area/console`, `area/busola`, `area/application-connector`, `area/management-plane`, `area/community`.
+* Daria Domagała (**[@wchrapka](https://github.com/dariadomagala-sap)**) involved in `area/console`, `area/busola`.
+* Piotr Wawrzyńczyk (**[@Wawrzyn321](https://github.com/wawrzyn321)**) involved in `area/console`, `area/busola`.
