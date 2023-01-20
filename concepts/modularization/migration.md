@@ -17,9 +17,9 @@ First step is to enable module installation with lifecycle manager for new clust
 
 Migration can be stopped at any moment if any problem occurs. Not migrated clusters will still use serverless reconciler (old Kyma version with serverless)
 
-1. Upgrade the clusters to the new Kyma version (without serverless) - from this point reconciler doesn't touch serverless resources.
-2. Add module to Kyma CR in SKR with option to not copy default CR. Lifecycle manager will install serverless manager without starting module installation. Default CR creation is omitted for the case when we need different setting for different clusters (eg. trial / production). If default CR can be applied for all the clusters then module copy can stay enabled and the next step is not required.
-3. Create CRD  and default CR for serverless manager in the SKR. CRD creation is optional - it can be skipped, but then migration script has to wait until liefecycle-manager installs it. Entire step can be skipped if the default module CR can be applied for all the clusters.
+- Upgrade the clusters to the new Kyma version (without serverless) - from this point reconciler doesn't touch serverless resources.
+- Add module to Kyma CR in SKR with option to not copy default CR. Lifecycle manager will install serverless manager without starting module installation. Default CR creation is omitted for the case when we need different setting for different clusters (eg. trial / production). If default CR can be applied for all the clusters then module copy can stay enabled and the next step is not required.
+- Create CRD  and default CR for serverless manager in the SKR. CRD creation is optional - it can be skipped, but then migration script has to wait until liefecycle-manager installs it. Entire step can be skipped if the default module CR can be applied for all the clusters.
 
 # Validation scenarios
 
