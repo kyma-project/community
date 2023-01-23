@@ -1,6 +1,6 @@
 # Transition from reconciler to kyma-operator
 
-With almost 20 modules and several teams involved, it is not feasible to coordinate the transition to the new modular architecture in a single release. The plan is to switch modules to the new architecture gradually, avoiding big bang releases and keeping existing clusters stable. 
+With almost 20 modules and several Kyma Module Providers (KMPs) involved, it is not feasible to coordinate the transition to the new modular architecture in a single release. The plan is to switch modules to the new architecture gradually, avoiding big bang releases and keeping existing clusters stable. 
 
 ## Phase 1 - local development
 
@@ -8,16 +8,16 @@ You can start developing a module operator with the provided guide, tools, and l
 To test the operator on its own, apply the operator CRD and start it independently. You can install the operator on your test cluster or even run it locally.  
 You can build the operator image and publish it (using the recommended pipeline template), and generate a `ModuleTemplate` that contains a default custom resource used to install the module and operator deployment. For every release channel you want to support, create one `ModuleTemplate`. 
 
-With the `ModuleTemplate`, you can integrate your module with `kyma-operator`: Install kyma-operator and its custom resources in your test cluster, create a `Kyma` resource, and add your module in the spec. `Kyma-operator` installs your operator CRD, deploys your operator, and starts the module installation by creating the default custom resource. When your operator changes the status.state field (for an example, take a look at the [template-operator](https://github.com/kyma-project/template-operator)), it should be propagated to the `Kyma` resource status. You can install `kyma-operator` and will be able to enable and disable modules using `Kyma CLI` or `Kyma Dashboard`.
+With the `ModuleTemplate`, you can integrate your module with `kyma-operator`: Install kyma-operator and its custom resources in your test cluster, create a `Kyma` resource, and add your module in the spec. `Kyma-operator` installs your operator CRD, deploys your operator, and starts the module installation by creating the default custom resource. When your operator changes the status.state field (for example, take a look at the [template-operator](https://github.com/kyma-project/template-operator)), it should be propagated to the `Kyma` resource status. You can install `kyma-operator` and will be able to enable and disable modules using `Kyma CLI` or `Kyma Dashboard`.
 
 ## Phase 2 - first module managed by `kyma-operator` integrated with KEB
 
 ### Phase 2a - new clusters only (internal usage)
 
 `kyma-operator` is deployed in the control-plane and integrated with Kyma Environment Broker (KEB). As a first playground to test KEB integration without affecting existing clusters and flows, an additional plan called "preview" is created in KEB. This plan creates Kyma clusters with kyma-operator only and does not call reconciler.
-The plan is tested with all environments (dev, stage, prod) to ensure we have all major integration issues resolved. The first module (frontrunner) can be submitted by the team and installed in the cluster. The minimal submission process is described and fully automated (manual steps are allowed only before submission). The minimal submission process looks like:
-1. The team verifies on their own if the new module (or version) complies with the SAP Product Standard.
-2. The team creates a pull request to the control-plane that contains one or more new or updated ModuleTemplates. With this action, the team declares product standard compliance and functional correctness; for example, with a checkbox in the PR template.
+The plan is tested with all environments (dev, stage, prod) to ensure we have all major integration issues resolved. The first module (frontrunner) can be submitted by Kyma Module Provider (KMP) and installed in the cluster. The minimal submission process is described and fully automated (manual steps are allowed only before submission). Here is the minimal submission process:
+1. KMP verifies on their own if the new module (or version) complies with the SAP Product Standard.
+2. KMP creates a pull request to the control-plane that contains one or more new or updated ModuleTemplates. With this action, KMP declares product standard compliance and functional correctness; for example, with a checkbox in the PR template.
 3. An automated test verifies if the module operator can be installed or upgraded without issues for all release channels (with default settings). This is not a functional test or integration test!
 4. An automated test verifies if all images installed by operator are declared in the module template, signed by approved CA, and free of vulnerabilities.
 5. The control-plane maintainer (code owner) approves the PR, which is automatically merged and rolled out.
@@ -30,5 +30,4 @@ Regular plans use reconciler and kyma-operator in parallel (clusters are managed
 The submission process is extended with all aspects required for production deployment, like support, commercialization, security, micro-delivery, etc.
 ## Phase 3 - all modules are managed by `kyma-operator` 
 
-All modules are enabled in `kyma-operator`, and modules are added to Kyma resources for existing clusters. Reconciler is shut down, and KEB plans integrate only with `kyma-operator`. The "preview" plan is also gone. All teams have submitted their modules following the full submission process - the minimal submission process introduced in phase 2 extended to cover other aspects like support, microdelivery, etc. Other SAP teams can also submit their modules following improved technical guides and the full submission process. 
-
+All modules are enabled in `kyma-operator`, and modules are added to Kyma resources for existing clusters. Reconciler is shut down, and KEB plans integrate only with `kyma-operator`. The "preview" plan is also gone. All Kyma Module Providers have submitted their modules following the full submission process - the minimal submission process introduced in phase 2 extended to cover other aspects like support, microdelivery, etc. Other SAP teams can also submit their modules following improved technical guides and the full submission process. 
