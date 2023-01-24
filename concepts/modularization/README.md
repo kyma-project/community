@@ -63,7 +63,7 @@ In the diagram, we have an example with 3 modules that got new releases. Each on
 
 Module `x` is in active development. Version 1.0.x is out for a longer time (version 1.0.18 in the regular channel). The new version (1.1.0) was released recently and is available in the fast channel for a few days. The new version is not super stable yet. The patch version (1.1.1) with bug fixes was required a few days later. Also, the security vulnerability was fixed in that patch but the version is too fresh to go to the regular channel already, therefore new patch release for the 1.0.x version is required (only the security patch included). The patch goes only to the regular channel.
 
-Kyma Module Provider (KMP) develops new features and soon introduces another minor version (1.2.0). Shipping that version to the fast channel can cause problems as we already have 2 older minor versions in active maintenance. If KMP wants to test it with customers, they can use beta channel and release it there, until version 1.1.x is propagated to the regular channel.  
+Kyma Module Provider (KMP) is a developer team that delivers a Kyma module. KMP develops new features and soon introduces another minor version (1.2.0). Shipping that version to the fast channel can cause problems as we already have 2 older minor versions in active maintenance. If KMP wants to test it with customers, they can use beta channel and release it there, until version 1.1.x is propagated to the regular channel.  
 
 Here is the complete history of module `x` versions submitted to the release channels:
 
