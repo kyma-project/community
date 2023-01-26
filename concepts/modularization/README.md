@@ -191,7 +191,7 @@ The complexity of managing installation in many clusters or using configured rel
 
 ## Central component operators
 
-Some modules can require additional actions executed in the central control plane to configure/connect modules to the central systems. In that case, additional operators (controllers) can be installed in the Kyma control plane. These controllers can watch Kyma resources in the control plane or even remote cluster resources (providing Watcher custom resource). `lifecycle-manager` does not install central controllers and does not watch their resources. 
+Some modules can require additional actions executed in the central control plane to configure or connect modules to the central systems. In that case, additional operators (controllers) can be installed in the Kyma control plane. These controllers can watch Kyma resources in the control plane or even remote cluster resources (providing Watcher custom resource). `lifecycle-manager` does not install central controllers and does not watch their resources. 
 
 ## Example module operators
 In the following example, three modules are defined:
