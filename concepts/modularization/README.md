@@ -28,12 +28,12 @@
 
 
 # Motivation
-Kyma provides Kubernetes building blocks. It should be easy to pick only those that are needed for the job and it should be easy to add new blocks to extend Kyma features. With the growing number of components, it is not possible to always install them all anymore. 
+Kyma provides Kubernetes building blocks. It should be easy to pick only those that are needed for the job, and it should be easy to add new blocks to extend Kyma features. With the growing number of components, it is impossible to always install them all anymore. 
 
 With the growing number of components, it is hard to deliver features and fixes quickly and efficiently. Changes in manifests require a new release of Kyma. Operators (reconcilers) are tightly coupled and must be released together. In most cases, new component releases don't involve any API changes and could be delivered in a few minutes. 
 
 # Dependencies between components
-Components can depend only on core Kubernetes API, or on API extensions introduced by other components. Component operators must check whether the required APIs are available and react properly to the missing dependencies by reducing functionality or even reporting errors. Component owners are responsible for integration tests with their dependencies (with all versions supported in official release channels).
+Components can depend only on core Kubernetes API or on API extensions introduced by other components. Component operators must check whether the required APIs are available and react properly to the missing dependencies by reducing functionality or even reporting errors. Component owners are responsible for integration tests with their dependencies (with all versions supported in official release channels).
 
 **Example:**
 
@@ -49,7 +49,7 @@ If the API you need (like a core Kubernetes API or Istio virtual service) is not
 # Release channels
 Release channels let customers try new modules and features early, and decide when the updates should be applied. 
 
-The first use case will be modeled as the alpha channel. Modules available in the alpha channel are developed with all quality measures in place (functional correctness, security, etc.), but they might still have unstable API, be changed without keeping backward compatibility or even removed before they reach fast or regular channel. When you use a module from the alpha channel, you won't get full SLA guarantees for that module or other modules that are affected (directly or indirectly).
+The first use case will be modeled as the beta channel. Modules available in the beta channel are developed with all quality measures in place (functional correctness, security, etc.), but they might still have unstable API, be changed without keeping backward compatibility or even removed before they reach fast or regular channel. When you use a module from the beta channel, you won't get full SLA guarantees for that module or other modules that are affected (directly or indirectly).
 
 The second use case (deciding when updates should be applied) will require 2 production-grade channels with a different update schedule. The fast channel will get updates as soon as they are released and have passed all quality gates. The regular channel will get updates a few days later. Customers can switch the entire cluster or a particular component to the fast channel to check if the upstream changes do not cause any issues with their workload. Changing back to the regular channel is possible, but the module version won't be downgraded - the next version has to reach the channel to be applied.
 
@@ -63,37 +63,37 @@ In the diagram, we have an example with 3 modules that got new releases. Each on
 
 Module `x` is in active development. Version 1.0.x is out for a longer time (version 1.0.18 in the regular channel). The new version (1.1.0) was released recently and is available in the fast channel for a few days. The new version is not super stable yet. The patch version (1.1.1) with bug fixes was required a few days later. Also, the security vulnerability was fixed in that patch but the version is too fresh to go to the regular channel already, therefore new patch release for the 1.0.x version is required (only the security patch included). The patch goes only to the regular channel.
 
-The team develops new features and soon introduces another minor version (1.2.0). Shipping that version to the fast channel can cause problems as we already have 2 older minor versions in active maintenance. If you want to test it with customers you can use alpha channel and release it there, until version 1.1.x is propagated to the regular channel.  
+Kyma Module Provider (KMP) is a developer team that delivers a Kyma module. KMP develops new features and soon introduces another minor version (1.2.0). Shipping that version to the fast channel can cause problems as we already have 2 older minor versions in active maintenance. If KMP wants to test it with customers, they can use beta channel and release it there, until version 1.1.x is propagated to the regular channel.  
 
 Here is the complete history of module `x` versions submitted to the release channels:
 
-| Module submission | Comment | Alpha | Fast | Regular |
+| Module submission | Comment | Beta | Fast | Regular |
 | ----------------- | ------- | ----- | ---- | ------- |
-| x-1.0.18 -> fast | Integration tests on alpha passed, submitted to fast channel|  - | 1.0.18|  -  |
+| x-1.0.18 -> fast | Integration tests on beta passed, submitted to fast channel|  - | 1.0.18|  -  |
 | x-1.0.18 -> regular | First version can go to regular channel without 2 weeks waiting|  - | 1.0.18| 1.0.18 |
 | x-1.1.0 -> fast | New feature goes to fast|  - | 1.1.0| 1.0.18 |
 | x-1.1.1 -> fast | Bug fix for new feature goes to fast channel|  - | 1.1.1| 1.0.18 |
 | x-1.0.19 -> regular | Push security fix to regular channel|  - | 1.1.1| 1.0.19 |
-| x-1.2.0-alpha1 -> alpha | New major/minor version can't be published in the fast channel before 1.1.0 is propagated to the regular| 1.2.0-alpha1| 1.1.1| 1.0.19 |
+| x-1.2.0-beta1 -> beta | New major/minor version can't be published in the fast channel before 1.1.0 is propagated to the regular| 1.2.0-beta1| 1.1.1| 1.0.19 |
 | x-1.1.1 -> regular | Sync regular channel with the latest version from fast channel (skip 1.1.0)| 1.2.0-alpha1| 1.1.1| 1.1.1 |
-| x-1.2.0 -> fast | Deploy new minor version to the fast channel (and remove it from alpha)| - | 1.2.0| 1.1.1 |
+| x-1.2.0 -> fast | Deploy new minor version to the fast channel (and remove it from beta)| - | 1.2.0| 1.1.1 |
 | x-1.2.0 -> regular | ... and to the regular channel| - | 1.2.0| 1.2.0 |
 
 
 **Module Y**
 
-Module `y` is quite new and still under heavy development with expected changes in the API. Team that develops it wants to validate the features and collect customer's feedback. New versions are published in the alpha channel only. Automatic upgrades are not guaranteed.
+Module `y` is quite new and still under heavy development with expected changes in the API. Kyma Module Provider (KMP) that develops it wants to validate the features and collect customer's feedback. New versions are published in the beta channel only. Automatic upgrades are not guaranteed.
 
 **Module Z**
 
-Stable module in the maintenance mode. Only bug fixes and security patches are shipped. New versions go to alpha channel first, and after validation to fast and regular (hot-fix immediately, regular patch with some delay).
+Stable module in maintenance mode. Only bug fixes and security patches are shipped. New versions go to beta channel first, and after validation to fast and regular (hot-fix immediately, regular patch with some delay).
 
 # Release flow
 
-Introducing operators and release channels can look complex from the development team's perspective, but the module releases can be fully automated. This is the flow describing actions that are executed starting with the initial PR with the new feature until it is available in production in all Kyma clusters:
+Introducing operators and release channels can look complex from Kyma Module Provider's perspective, but the module releases can be fully automated. This is the flow describing actions that are executed starting with the initial PR with a new feature until it is available in production in all Kyma clusters:
 
 - PR to module repository (new feature, bug fix, etc)
-- Team pipeline (this is a guideline, but Team is responsible and accountable for it 100% )
+- Team pipeline (this is a guideline, but Kyma Module Provider is fully responsible and accountable for it)
   - build images for controllers (have to be certified pipeline - remember about SLC-29, prow is recommended)
   - execute tests - check functional correctness, test your dependencies
   - build image for operator/manager (have to be certified pipeline - remember about SLC-29, prow is recommended)
@@ -163,7 +163,7 @@ We need the representation of the component in the control plane cluster. The id
 
 
 # Module submission process
-To submit a new module to Kyma, you must prepare a component descriptor with all related resources. 
+When you submit a new module to Kyma as Kyma Module Provider, you must prepare a component descriptor with all related resources. 
 
 Module validation should be automated by governance jobs that check different aspects like:
 - operator CRD validation (for example, status format)
@@ -171,9 +171,9 @@ Module validation should be automated by governance jobs that check different as
 - proper logging format
 - ...
 
-Governance jobs should be owned by teams (no shared responsibility).
+Governance jobs should be owned by Kyma Module Providers (no shared responsibility).
 
-Apart from technical quality, Kyma modules must fulfill other standards, such as 24/7 support, documenting micro-deliveries.
+Apart from technical quality, Kyma modules must fulfill other standards, such as 24/7 support or documenting micro-deliveries.
 
 # Operator-based module management
 
@@ -191,7 +191,7 @@ The complexity of managing installation in many clusters or using configured rel
 
 ## Central component operators
 
-Some modules can require additional actions executed in the central control plane to configure/connect modules to the central systems. In that case, additional operators (controllers) can be installed in the Kyma control plane. These controllers can watch Kyma resources in the control plane or even remote cluster resources (providing Watcher custom resource). `lifecycle-manager` does not install central controllers and does not watch their resources. 
+Some modules can require additional actions executed in the central control plane to configure or connect modules to the central systems. In that case, additional operators (controllers) can be installed in the Kyma control plane. These controllers can watch Kyma resources in the control plane or even remote cluster resources (providing Watcher custom resource). `lifecycle-manager` does not install central controllers and does not watch their resources. 
 
 ## Example module operators
 In the following example, three modules are defined:
@@ -213,7 +213,7 @@ Yes, but under the hood, `lifecycle-manager` will be used to install component o
 
 ## I have a simple component with a Helm chart. Why do I need an operator?
 
-With the operator, you can fully control your component lifecycle and ensure that your component are reconciled to the desired state (watch component config and actual state). Each operator comes with a custom resource that describes the module configuration and represents the module installation status. It is a way to enable users with providing chart overrides in a controlled way.
+With the operator, you can fully control your component lifecycle and ensure that your component is reconciled to the desired state (watch component config and actual state). Each operator comes with a custom resource that describes the module configuration and represents the module installation status. It is a way to enable users with providing chart overrides in a controlled way.
 
 ## I don't know how to write the operator. Can I use some generic operator for installing my chart?
 
