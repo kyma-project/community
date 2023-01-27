@@ -1,0 +1,8 @@
+admissionWebhooks:
+  certManager:
+    enabled: false
+kubeRBACProxy:
+  enabled: true
+manager:
+  podLabels:
+    sidecar.istio.io/inject: "false"
