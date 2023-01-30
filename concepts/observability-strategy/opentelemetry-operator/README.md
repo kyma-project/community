@@ -11,7 +11,7 @@ Experience showed that there is no way to run an operator in an isolated/restric
 - The operator managed by Kyma could be limited to act on a single namespace, however a second operator instance deployed by the user will by default act on all namespaces and will race-reconcile the kyma managed resources. Also, the default instance of the user might intercept webhooks for kyma managed resources.
 In conclusion, we must choose between the following options:
 - Either the operator is used as underlying technology for the Kyma abstractions and instrumentation support AND is accessible for custom scenarios for users.
-- Alternatively, the operator is not used. No other option, as using it in a restricted way as underlying technology and blocking the user from running on own instance, will prevent the user of leveraging that technology.
+- Alternatively, the operator is not used. No other option, as using it in a restricted way as underlying technology without access for the user and blocking the user from running an own instance, will prevent the user of leveraging that technology overall.
 
 ## Proposal
 
