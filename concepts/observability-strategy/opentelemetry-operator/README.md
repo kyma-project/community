@@ -6,10 +6,12 @@ A crucial aspect that was neglected too much in the previous concept design is t
 Re-inventing the wheel should be avoided, so the PoC discusses the impact on introducing the operator in order to provide the mentioned features to the users.
 
 ## Scope
-Introducing the operator to the stack either as underlying technology only or actual feature, the effect will be that the CRDs will be visible to runtime users and users can independently use them. Trying to isolate them will not be of success as previous experience with the prometheus-operator shows that this will only cause conflicts with potential operator installations provided by the user. Meaning of: restricting the operator usage in the runtime AND blocking the installation of a custom operator installation is not an option as users cannot leverage the power of it at all. Running a restricted operator for internal usage and allowing to install a custom operator is resulting in many potential conflicts like race-reconcilations on the same resources or webhook conflicts (as custom operator is not excluding system namespaces).
+Experience showed that there is no way to run an operator in an isolated/restricted way, so that a user operating on other namespaces would not be affected. Potential conflicts are:
+- The CRDs are managed cluster wide. Operators running in different namespaces will bring it's CRDs in own versions and potentially will race-reconcile the cluster wide CRD resources
+- The operator managed by Kyma could be limited to act on a single namespace, however a second operator instance deployed by the user will by default act on all namespaces and will race-reconcile the kyma managed resources. Also, the default instance of the user might intercept webhooks for kyma managed resources.
 In conclusion, we must choose between the following options:
 - Either the operator is used as underlying technology for the Kyma abstractions and instrumentation support AND is accessible for custom scenarios for users.
-- Alternatively, the operator is not used. No other option.
+- Alternatively, the operator is not used. No other option, as using it in a restricted way as underlying technology and blocking the user from running on own instance, will prevent the user of leveraging that technology.
 
 ## Proposal
 
@@ -51,9 +53,9 @@ In conclusion, we must choose between the following options:
 
 ### Findings
 
-The injection of environment variables does not only inject the destination for the exporters but also injects the typical OTEL resource attributes. Also it supports injecting trace propagation and sampling strategies. That is a very convenient feature to configure your workload declarative in case of it is already instrumented with the OTEL SDK.
+The injection of environment variables does not only inject the destination for the exporters but also injects the typical OTEL resource attributes. Also, it supports injecting trace propagation and sampling strategies. That is a very convenient feature to configure your workload declarative if it is already instrumented with the OTEL SDK.
 
-The auto-instrumentation was tested for java and nodejs. Here, we failed to get the nodejs instrumentation working at all, one application was coming up operational but without instrumentation active. Another one was even not starting up anymore.
+The auto-instrumentation was tested for Java and Node.js. While the java tests were successful, we failed to get the Node.js instrumentation working at all, one application was coming up operational but without instrumentation active. Another one was not even starting up anymore.
 
 ## Considerations, Risks, Potentials
 
@@ -61,13 +63,15 @@ The following section discusses several very relevant aspects in order to derive
 
 ### Simplification of own abstraction logic
 
-The OpenTelemetry Operator is a well maintained project having an active community behind. The operator maps an otel-collector configuration in an actual deployment and manages the lifecycle of it. With that, the telemetry-operator does not need to manage concrete deployments/daemonsets and alike anymore but could rely on the intermediate abstraction and with that could get a simplified implementation. New features in the underlying operator can be leveraged immediately in the layer above.
+The OpenTelemetry Operator is a well maintained project with an active community. The operator maps an `otel-collector` configuration in an actual deployment and manages its lifecycle. With that, Kyma's Telemetry operator no longer needs to manage concrete deployments or DaemonSets and alike, but could rely on the intermediate abstraction, and with that could get a simplified implementation. New features in the underlying operator can be leveraged immediately in the layer above.
 
-However, the current functionality of the OpenTelemetry Operator in regards to deployments is very limited. It mainly maps the collector definition 1:1 to the underlying k8s resource. Actual logic which will simplify more complex scenarios are not covered, also simple scenarios like adding a batch processor in combination with a memory-ballast extension with settings fitting to the actual resource settings are not covered. So there is simplification in pure resource handling mainly.
+However, the current functionality of the OpenTelemetry Operator in regards to deployments is very limited. It mainly maps the collector definition 1:1 to the underlying Kubernetes resource. Actual logic, which will simplify more complex scenarios, is not covered. Also simple scenarios are not covered, like adding a batch processor in combination with a memory-ballast extension with settings fitting to the actual resource settings. So there is simplification in pure resource handling mainly.
 
 ### Guarantees for custom instances
 
-As the OTEL operator will be a feature for users of the cluster, also the lifecycle of users collectors will be managed in regards to image updates (otherwise there is not much meaning in having the feature). Here, the question on the supported image arises. Is it just a plain base image with basic receivers/exporters or the full contrib image? If it ships the full contrib image, there cannot be given any guarantees an updates, it will be best effort only relying on the upstream project fully, it might break your collector. Also providing a hardened image from security perspective will be very challenging as there will be many 3party-dependencies included having no knowledge about actual usage.
+Because the OpenTelemetry Operator will be a feature for users of the cluster, also the lifecycle of the users' collectors will be managed in regards to image updates (otherwise, the feature is pretty meaningless). Here, the question on the supported image arises: 
+Is it just a plain base image with basic receivers/exporters, or the full contrib image?
+- If it ships the full contrib image, there cannot be given any guarantees on updates; it will be best-effort only, relying on the upstream project fully. It might break your collector. Also, providing a hardened image from security perspective will be very challenging as there will be many third-party dependencies included having no knowledge about actual usage.
 With a stripped-down image version basic tests could be performed to assure that standard scenarios are working and also a security triaging is realistic. However, there will be still not the full guarantee of that an update of your collector instance will be working reliably.
 Providing the base image only brings no value as you rarely can use it without any additional processors, so users would always need to opt out (which is possible without problems). But again, the value of the whole feature is under question.
 
