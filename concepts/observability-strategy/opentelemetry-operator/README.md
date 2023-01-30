@@ -7,7 +7,7 @@ Re-inventing the wheel should be avoided, so the PoC discusses the impact on int
 
 ## Scope
 Experience showed that there is no way to run an operator in an isolated/restricted way, so that a user operating on other namespaces would not be affected. Potential conflicts are:
-- The CRDs are managed cluster wide. Operators running in different namespaces will bring it's CRDs in own versions and potentially will race-reconcile the cluster wide CRD resources
+- The CRDs are managed cluster wide. Operators running in different namespaces will bring it's CRDs in own versions and potentially will race-update the cluster wide CRD resources
 - The operator managed by Kyma could be limited to act on a single namespace, however a second operator instance deployed by the user will by default act on all namespaces and will race-reconcile the kyma managed resources. Also, the default instance of the user might intercept webhooks for kyma managed resources.
 In conclusion, we must choose between the following options:
 - Either the operator is used as underlying technology for the Kyma abstractions and instrumentation support AND is accessible for custom scenarios for users.
