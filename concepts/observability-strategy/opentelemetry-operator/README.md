@@ -1,45 +1,47 @@
 # OpenTelemetry Operator PoC
 
 ## About
-A crucial aspect which was neglected to much in the previous concept design is the feature of activating instrumentation and exporter configuration of a workload in a seamless fashion. That feature is already available in the [opentelemetry-operator](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection). Via central configuration you can inject relevant configuration by putting a simple annotation. Relevant programming languages are supported by auto-instrumentation already.
+A crucial aspect that was neglected too much in the previous concept design is the feature of activating instrumentation and exporter configuration of a workload in a seamless fashion. That feature is already available in the [opentelemetry-operator](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection). Using central configuration, you can inject relevant configuration by putting a simple annotation. Relevant programming languages are supported by auto-instrumentation already.
 
-Re-inventing the wheel should be avoided, so the PoC discusses the impact on introducing the operator in irder to provide the mentioned features to the users.
+Re-inventing the wheel should be avoided, so the PoC discusses the impact on introducing the operator in order to provide the mentioned features to the users.
 
 ## Scope
 Introducing the operator to the stack either as underlying technology only or actual feature, the effect will be that the CRDs will be visible to runtime users and users can independently use them. Trying to isolate them will not be of success as previous experience with the prometheus-operator shows that this will only cause conflicts with potential operator installations provided by the user. Meaning of: restricting the operator usage in the runtime AND blocking the installation of a custom operator installation is not an option as users cannot leverage the power of it at all. Running a restricted operator for internal usage and allowing to install a custom operator is resulting in many potential conflicts like race-reconcilations on the same resources or webhook conflicts (as custom operator is not excluding system namespaces).
-Conclusion: either the operator gets used as underlying technology for the kyma abstractions and instrumentation support AND is accessible for custom scenarios for users. Or the operator gets not used. No other option.
+In conclusion, we must choose between the following options:
+- Either the operator is used as underlying technology for the Kyma abstractions and instrumentation support AND is accessible for custom scenarios for users.
+- Alternatively, the operator is not used. No other option.
 
 ## Proposal
 
-- The existing `telemetry-operator` manages an opentelemetry-operator additionally.
-- The current abstraction `TracePipeline` does not reveal into an actual deployment but an `OpenTelemetryCollector` resource configuration. The configuration gets reconciled and with that cannot be influenced by the user. The `opentelemetry-collector` will resolve the configuration into an actual deployment. That part is still optional and the indirection via the opentelemetry-operator is not mandatory. It will be mainly beneficial for the user to copy-over sich configuration in order to realize a custom trace-collector
-- The telemetry-operator reconciles `Instrumentation` resources which can be used by the user instantly for auto-instrumentation and injection of the `trace-collector` reference
-- The user can specify custom `OpenTelemetryCollector` resource for custom exporter handling or any other activities likes running a sidecar.
-- The user can specify custom `Instrumentation` for env injection of custom collectors.
+- The existing Telemetry operator manages an OpenTelemetry operator additionally.
+- The current abstraction `TracePipeline` does not reveal into an actual deployment but an `OpenTelemetryCollector` resource configuration. The configuration is reconciled and with that, it cannot be influenced by the user. The `opentelemetry-collector` will resolve the configuration into an actual deployment. That part is still optional and the indirection using the OpenTelemetry operator is not mandatory. It will be mainly beneficial for the user to copy-over such configuration in order to realize a custom trace collector
+- The Telemetry operator reconciles `Instrumentation` resources, which can be used by the user instantly for auto-instrumentation and injection of the `trace-collector` reference
+- The user can specify a custom `OpenTelemetryCollector` resource for custom exporter handling or any other activities, likes running a sidecar.
+- The user can specify a custom `Instrumentation` for env injection of custom collectors.
 
 ![Architecture](./assets/architecture.drawio.svg)
 
 ## POC
 
 ### Prerequisites
-- Have a Kyma cluster in version >= 2.10
+- Have a Kyma cluster in version 2.10 or higher
 - Have a TracePipeline configured with a valid output
 
 
 ### Installation
-Install the Otel Operator using helm
+1. Install the Otel Operator using Helm:
 
 ```bash
 helm upgrade otel-operator open-telemetry/opentelemetry-operator --version 0.21.1 --install --namespace kyma-system -f otel-operator-values.yaml
 ```
 
-Create an Instrumentation configuration with the endpoints to use
+2. Create an Instrumentation configuration with the endpoints to use:
 ```bash
 kubectl apply -n kyma-system -f instrumentation.yaml
 ```
 
 ### Instrumentation
-Annotate your app with either:
+3. Annotate your app with either of the following options:
 ```yaml
 annotations:
   instrumentation.opentelemetry.io/inject-sdk: "kyma-system/kyma" #to inject env variables only
@@ -55,7 +57,7 @@ The auto-instrumentation was tested for java and nodejs. Here, we failed to get 
 
 ## Considerations, Risks, Potentials
 
-In the following several very relevant aspects are getting discussed in order to derive a architectural decision
+The following section discusses several very relevant aspects in order to derive a architectural decision.
 
 ### Simplification of own abstraction logic
 
@@ -67,23 +69,23 @@ However, the current functionality of the OpenTelemetry Operator in regards to d
 
 As the OTEL operator will be a feature for users of the cluster, also the lifecycle of users collectors will be managed in regards to image updates (otherwise there is not much meaning in having the feature). Here, the question on the supported image arises. Is it just a plain base image with basic receivers/exporters or the full contrib image? If it ships the full contrib image, there cannot be given any guarantees an updates, it will be best effort only relying on the upstream project fully, it might break your collector. Also providing a hardened image from security perspective will be very challenging as there will be many 3party-dependencies included having no knowledge about actual usage.
 With a stripped-down image version basic tests could be performed to assure that standard scenarios are working and also a security triaging is realistic. However, there will be still not the full guarantee of that an update of your collector instance will be working reliably.
-Providing the base image only brings no value as you rarely can use it without any additional processors. So users would need to opt-out always (which is possible without problems) but again the value of the whole feature is under question.
+Providing the base image only brings no value as you rarely can use it without any additional processors, so users would always need to opt out (which is possible without problems). But again, the value of the whole feature is under question.
 
 ### The power of auto-instrumentation
 
-Auto-instrumentation sounds like a great idea at a first view. It will provide so much insights of your application without any investment. However, that approach has a high chance of also breaking your application. Especially for nodeJS, the auto feature will just add a node package to an application which can cause version conflicts and block startups.
-Instead, users should add instrumentation (even automatic ones) before the app gets deployed, so that this happens in a controlled and tested way. Again, think of updates to the auto-instrumentation library. If that happens at runtimes, suddenly an application might not startup anymore.
+Auto-instrumentation sounds like a great idea at a first glance. It provides so much insight of your application without any investment. However, that approach has a high chance of also breaking your application. Especially for Node.js, the auto feature just adds a node package to an application, which can cause version conflicts and block startups.
+Instead, users should add instrumentation (even automatic ones) _before_ the app is deployed, so that this happens in a controlled and tested way. Again, think of updates to the auto-instrumentation library. If that happens at runtimes, suddenly an application might not start up anymore.
 
 ### Injection of settings
 
-The injection of the typical and recommended setting for a workload instrumented by the OTEL SDK is very useful and lowers the burden for managing an application. Insteaf of injecting a hardcoded URL which might change over time, the operator will take care by annotation to inject the proper URL.
+The injection of the typical and recommended setting for a workload instrumented by the OTEL SDK is very useful and lowers the burden for managing an application. Instead of injecting a hardcoded URL (which might change over time), the operator will take care by annotation to inject the proper URL.
 
 ## Conclusion
 
-The proposed solution has many advantages. The standard way of auto-injection will be working instantly without any kyma-specific invention. The kyma specific operator can be simplified and users can run more easily custom collector instances.
+The proposed solution has many advantages. The standard way of auto-injection will be working instantly without any Kyma-specific invention. The Kyma-specific operator can be simplified and users can run custom collector instances more easily.
 On the negative side, the feature will introduce mainly a technology, not a feature. It will promise to take care of the full lifecycle of custom collectors but cannot deliver that promise. Updates of custom instances cannot be guaranteed to be reliable. Also, the included auto-instrumentation feature can break your application on updates of the instrumentation logic.
 
-As the upgrade topic is too serious, the proposed solution cannot be followed in that way. Instead, a compromise seems as a better solution by adopting the very good concept of env variable injection:
-1. Assure at anytime that users can install an own OTEL operator at anytime to manage custom collectors more easy, and also to have instrumentation if desired. The benefit of having the operator and collector update automatically is not provided with that.
-1. Adopt the principle of injecting the OTEL SDK env variables into workload in a declarative way by the Kyma specific operator and Kyma specific annotations. The user could still achieve the same by using the standard annotations and a custom OTEL operator.
-1. The kyma operator continues to manage own deployments otel-collectors
+As the upgrade topic is too serious, the proposed solution cannot be followed in that way. Instead, a compromise seems to be a better solution by adopting the very good concept of env variable injection:
+1. Assure at any time that users can install an own OTEL operator at any time to manage custom collectors more easily, and also to have instrumentation if desired. The benefit of having the operator and collector update automatically is not provided with that.
+1. Adopt the principle of injecting the OTEL SDK env variables into workload in a declarative way by the Kyma-specific operator and Kyma-specific annotations. The user could still achieve the same by using the standard annotations and a custom OTEL operator.
+1. The Kyma operator continues to manage own deployments otel-collectors
