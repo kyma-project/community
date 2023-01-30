@@ -72,7 +72,7 @@ However, the current functionality of the OpenTelemetry Operator in regards to d
 Because the OpenTelemetry Operator will be a feature for users of the cluster, also the lifecycle of the users' collectors will be managed in regards to image updates (otherwise, the feature is pretty meaningless). Here, the question on the supported image arises: 
 Is it just a plain base image with basic receivers/exporters, or the full contrib image?
 - If it ships the full contrib image, there cannot be given any guarantees on updates; it will be best-effort only, relying on the upstream project fully. It might break your collector. Also, providing a hardened image from security perspective will be very challenging as there will be many third-party dependencies included having no knowledge about actual usage.
-With a stripped-down image version basic tests could be performed to assure that standard scenarios are working and also a security triaging is realistic. However, there will be still not the full guarantee of that an update of your collector instance will be working reliably.
+- With a stripped-down image version, basic tests could be performed to assure that standard scenarios are working. Also, a security triaging is realistic. However, there still won't be the full guarantee that an update of your collector instance will be working reliably.
 Providing the base image only brings no value as you rarely can use it without any additional processors, so users would always need to opt out (which is possible without problems). But again, the value of the whole feature is under question.
 
 ### The power of auto-instrumentation
