@@ -31,23 +31,23 @@ In conclusion, we must choose between the following options:
 ### Installation
 1. Install the Otel Operator using Helm:
 
-```bash
-helm upgrade otel-operator open-telemetry/opentelemetry-operator --version 0.21.1 --install --namespace kyma-system -f otel-operator-values.yaml
-```
+   ```bash
+   helm upgrade otel-operator open-telemetry/opentelemetry-operator --version 0.21.1 --install --namespace kyma-system -f otel-operator-values.yaml
+   ```
 
-2. Create an Instrumentation configuration with the endpoints to use:
-```bash
-kubectl apply -n kyma-system -f instrumentation.yaml
-```
+1. Create an Instrumentation configuration with the endpoints to use:
+   ```bash
+   kubectl apply -n kyma-system -f instrumentation.yaml
+   ```
 
 ### Instrumentation
-3. Annotate your app with either of the following options:
-```yaml
-annotations:
-  instrumentation.opentelemetry.io/inject-sdk: "kyma-system/kyma" #to inject env variables only
-  instrumentation.opentelemetry.io/inject-nodejs: "kyma-system/kyma" #to inject env variables and nodejs instrumentation library
-  instrumentation.opentelemetry.io/container-names: "myapp,myapp2" #to inject env variables and javaagent
-```
+1. Annotate your app with either of the following options:
+   ```yaml
+   annotations:
+     instrumentation.opentelemetry.io/inject-sdk: "kyma-system/kyma" #to inject env variables only
+     instrumentation.opentelemetry.io/inject-nodejs: "kyma-system/kyma" #to inject env variables and nodejs instrumentation library
+     instrumentation.opentelemetry.io/container-names: "myapp,myapp2" #to inject env variables and javaagent
+   ```
 
 ### Findings
 
