@@ -150,10 +150,3 @@ Follow these steps to release another Kyma version. Execute these steps for ever
    For installation instructions, use the links from the previous release and update the version number in URLs. If contributors want you to change something in the instructions, they would address you directly. Contact technical writers for the link to release notes.
 
 > **NOTE:** After the Kyma release is complete, proceed with [releasing Kyma CLI](./03-kyma-cli-release-process.md).
-
-## Post-release tasks
-
-1. Ask the Huskies team to upgrade the Kyma Helm chart on AppHub.
-
-        > **NOTE:** Because of a limitation on the AppHub side, only a few people are allowed to create such a PR, which currently includes the members of the Huskies team.
-
