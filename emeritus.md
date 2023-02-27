@@ -40,4 +40,4 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Maja Szostok (**[@majakurcius](https://github.com/majakurcius)**) involved in `area/console`, `area/busola`, `area/application-connector`, `area/management-plane`, `area/community`.
 * Daria Domagała (**[@wchrapka](https://github.com/dariadomagala-sap)**) involved in `area/console`, `area/busola`.
 * Piotr Wawrzyńczyk (**[@Wawrzyn321](https://github.com/wawrzyn321)**) involved in `area/console`, `area/busola`.
-* Francziszek Pogodziński (**[@franpog859](https://github.com/franpog859)**) involved in `area/application-connector`, `area/management-plane`.
+* Franciszek Pogodziński (**[@franpog859](https://github.com/franpog859)**) involved in `area/application-connector`, `area/management-plane`, and `area/control-plane`.
