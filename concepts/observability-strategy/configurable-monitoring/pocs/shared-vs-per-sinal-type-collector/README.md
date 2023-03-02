@@ -26,4 +26,14 @@ As we can see, having a shared collector also presents certain implementation ch
 
 ### Single Endpoint
 
+From the usablity point of view it would be handy to provide a single endpoint to push telemetry data in the OTLP format. It's possible to do it using URL rewriting, so e.g. requests targeting "telemetry.kyma-system.svc.cluster.local/metrics" are forwarded to the metrics gateway and "telemetry.kyma-system.svc.cluster.local/traces"
+to the tracing gateway. There are a few possibilities to implement it:
+*  [Istio Virtual Service](https://istio.io/latest/docs/reference/config/networking/virtual-service/) using the default `mesh` gateway
+* [Kubernetes Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/), which requires deploying an Ingress Controller
+* An HTTP proxy with a hard-coded configuration to rewrite the request URLs
+
+The first approach is the easiest one, the only drawback is a hard dependency on Istio.
+
 ## Proposal
+
+It becomes clear that having an individual collector per signal type has a lot of advantages and gives us flexibility to come up with a good scaling strategy later.
