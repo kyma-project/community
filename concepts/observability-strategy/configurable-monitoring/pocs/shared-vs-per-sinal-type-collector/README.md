@@ -8,7 +8,11 @@ The [OpenTelemetry collector](https://opentelemetry.io/docs/collector/) is a cor
 
 ### Scaling
 
-The decision of whether to share the collector for all signal types or to keep them separate comes down to the question of scaling. In practice, each type may have different scaling needs and require different scaling strategies. Since we don't yet know enough about our users' telemetry data trends, having separate collectors would give us more flexibility in the future. The tracing collector will most likely remain a stateless gateway that receives, filters, augments, and pushes race data to the configured backend. Such a gateway can easily scale horizontally by adding more replicas and load balancing between them. Metrics collection is a bit more complicated, as we need to combine a push gateway (stateless) and Prometheus scrapers (statefull). The scrapers do not scale horizontally and should be sharded. See more about [how to scale an OpenTelemetry collector] (https://opentelemetry.io/docs/collector/scaling/). It's also not uncommon for workloads to generate different amounts of signals of different types. In this case, having separate collectors allows us to scale only what is needed.
+The decision of whether to share the collector for all signal types or to keep them separate comes down to the question of scaling. In practice, each type may have different scaling needs and require different scaling strategies:
+
+* Since we don't yet know enough about our users' telemetry data trends, having separate collectors would give us more flexibility in the future.
+* Push and Pull Gateways are scaled differently: The tracing collector will most likely remain a push gateway (stateless) that receives, filters, augments, and pushes race data to the configured backend. Such a gateway can easily scale horizontally by adding more replicas and balancing the load between them. Using Prometheus, the metrics collector is a pull gateway (stateful) that scrapes the metrics from the configured targets. Adding more replicas would result in that all replicas scrape the the same targets. The scrapers do not scale horizontally and should be sharded. See more about [how to scale an OpenTelemetry collector] (https://opentelemetry.io/docs/collector/scaling/). 
+* Workloads may generate different amounts of signals of different types. In this case, having separate collectors allows us to scale only what is needed.
 
 ### Implementation
 
