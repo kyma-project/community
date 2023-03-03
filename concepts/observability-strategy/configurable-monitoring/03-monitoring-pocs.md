@@ -18,4 +18,4 @@ Can we replace kube-state-metrics with [k8sclusterreceiver](https://github.com/o
 
 ## Shared OpenTelemetry Collector vs Individual Collectors Per Signal Type 
 
-Determine the pros and cons of having a single shared collector with different pipelines per signal type versus having an individual collector per signal type. See [results](./pocs/shared-vs-per-sinal-type-collector/README.md)
+Determine the pros and cons of having a single shared collector with different pipelines per signal type versus having an individual collector per signal type. See the [results](./pocs/shared-vs-per-sinal-type-collector/README.md).
