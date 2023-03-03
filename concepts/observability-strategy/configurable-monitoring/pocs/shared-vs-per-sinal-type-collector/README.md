@@ -1,4 +1,4 @@
-# Shared OpenTelemetry Collector vs Individual Collectors Per Signal Type 
+# Shared OpenTelemetry Collector vs. individual collectors per signal type 
 
 ## Goal 
 [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) is a core component of Kyma Telemetry. It receives different telemetry signals (tracing, metrics, and, in the future, logs), filters and augments them, and sends them to the respective backends. The goal of the PoC is to determine the pros and cons of having a single shared collector with different pipelines per signal type versus having an individual collector per signal type.
