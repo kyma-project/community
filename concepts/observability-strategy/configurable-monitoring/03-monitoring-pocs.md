@@ -16,6 +16,6 @@ Can we replace node-exporter metrics with [hostmetricsreceiver](https://github.c
 Can we replace kubelet metrics with [kubeletstatsreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletstatsreceiver)?
 Can we replace kube-state-metrics with [k8sclusterreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sclusterreceiver)?
 
-## Shared OpenTelemetry Collector vs Individual Collectors Per Signal Type 
+## Shared OpenTelemetry Collector vs. individual collectors per signal type 
 
 Determine the pros and cons of having a single shared collector with different pipelines per signal type versus having an individual collector per signal type. See the [results](./pocs/shared-vs-per-sinal-type-collector/README.md).
