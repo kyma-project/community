@@ -19,7 +19,7 @@ The decision of whether to share the collector for all signal types or to keep t
 When implementing Kubernetes operators, it's common practice to have a single controller per custom resource. Telemetry Manager is no exception. It has LogPipeline Controller and TracePipeline Controller. There is also LogParser Controller, which is more of an extension of LogPipeline Controller than a standalone thing. 
 
 Each controller reconciles its own custom resource, translates it to the respective configuration (Fluent Bit or OpenTelemetry Collector), and deploys the resources. Imagine we implement a new `MetricPipelineController` in such a way that it shares the deployed OpenTelemetry Collector with the `TracePipelineController`. This approach would have two major drawbacks:
-Both controllers will have to share at least the configuration rendering code that contains both metric and tracing pipelines. If there is a bug in the configuration rendering logic, it will affect both metrics and traces
+* Both controllers will have to share at least the configuration rendering code that contains both metric and tracing pipelines. If there is a bug in the configuration rendering logic, it will affect both metrics and traces.
 * Both controllers will be reconciling the same resources (restarting the controller pod, etc.), possibly interfering with each other
 
 As we can see, having a shared collector also presents certain implementation challenges.
