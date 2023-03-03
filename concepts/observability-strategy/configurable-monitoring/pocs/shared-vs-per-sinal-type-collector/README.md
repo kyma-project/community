@@ -39,4 +39,4 @@ It is sometimes necessary to convert signals from one signal type to another. Si
 
 ## Proposal
 
-It becomes clear that having an individual collector per signal type has a lot of advantages and gives us flexibility to come up with a good scaling strategy later.
+It becomes clear that having an individual collector per signal type has a lot of advantages and gives us the flexibility to develop a good scaling strategy in the future.
