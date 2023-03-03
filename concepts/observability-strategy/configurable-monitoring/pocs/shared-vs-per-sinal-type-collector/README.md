@@ -33,7 +33,7 @@ to the tracing gateway. There are a few possibilities to implement it:
 
 The first approach is the easiest one, the only drawback is a hard dependency on Istio.
 
-### Signal Translation
+### Signal translation
 
 It is sometimes necessary to convert signals from one signal type to another. Signal translations may be direct one-to-one operations or include derivative signals such as counts, aggregations, summarizations, etc. It is possible to, let's say, convert traces to metrics in the trace gateway using the [spanmetricsprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/spanmetricsprocessor) and send them to the metric gateway, which in turn would send them to the backend. However, a shared collector is advantageous in this case because it can do it in-process without performing additional network calls.
 
