@@ -20,7 +20,7 @@ When implementing Kubernetes operators, it's common practice to have a single co
 
 Each controller reconciles its own custom resource, translates it to the respective configuration (Fluent Bit or OpenTelemetry Collector), and deploys the resources. Imagine we implement a new `MetricPipelineController` in such a way that it shares the deployed OpenTelemetry Collector with the `TracePipelineController`. This approach would have two major drawbacks:
 * Both controllers will have to share at least the configuration rendering code that contains both metric and tracing pipelines. If there is a bug in the configuration rendering logic, it will affect both metrics and traces.
-* Both controllers will be reconciling the same resources (restarting the controller pod, etc.), possibly interfering with each other
+* Both controllers will be reconciling the same resources (restarting the controller pod, etc.), possibly interfering with each other.
 
 As we can see, having a shared collector also presents certain implementation challenges.
 
