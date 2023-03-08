@@ -41,3 +41,4 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Daria Domagała (**[@dariadomagala-sap](https://github.com/dariadomagala-sap)**) involved in `area/console`, `area/busola`.
 * Piotr Wawrzyńczyk (**[@Wawrzyn321](https://github.com/wawrzyn321)**) involved in `area/console`, `area/busola`.
 * Franciszek Pogodziński (**[@franpog859](https://github.com/franpog859)**) involved in `area/application-connector`, `area/management-plane`, and `area/control-plane`.
+* Jakub Łyczko (**[@Lyczeq](https://github.com/Lyczeq)**) involved in `area/console`, `area/busola`.
