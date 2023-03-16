@@ -42,3 +42,4 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Piotr Wawrzyńczyk (**[@Wawrzyn321](https://github.com/wawrzyn321)**) involved in `area/console`, `area/busola`.
 * Franciszek Pogodziński (**[@franpog859](https://github.com/franpog859)**) involved in `area/application-connector`, `area/management-plane`, and `area/control-plane`.
 * Jakub Łyczko (**[@Lyczeq](https://github.com/Lyczeq)**) involved in `area/console`, `area/busola`.
+* Karol Szwaj (**[@cnvergence](https://github.com/cnvergence)**) involved in `area/api-gateway`, `area/service-mesh`.
