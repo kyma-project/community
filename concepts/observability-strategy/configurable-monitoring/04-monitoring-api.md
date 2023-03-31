@@ -7,36 +7,28 @@ apiVersion: telemetry.kyma-project.io/v1alpha1
 metadata:
   name: PrometheusRemoteWrite
 spec:
-  input: # Metrics can be received from different receivers (OTLP and Prometheus). Metrics are selected based on labels
-    application:
+  input: # Metrics will be received via OTLP to the gateway always. Additionally you can enable different inputs to send additional metrics to the gateway. Metrics are selected based on labels
+    application: # activates app-scraper by annotation
       namespaces: # maps to filterprocessor
         include: []
         exclude: []
-        system: true
-      containers:
+        system: true # enables system namespaces for scraping as well
+      containers: # maps to filterprocessor
         include: []
         exclude: []
-      system:
-        kubernetes:
-          enabled: true
-          deployments: false
-          daemonSets: true
-          persistentVolumes: true
-          resources: true
-        runtime:
-          enabled: true
-        istio: # Filter by `destination_service_namespace` or `destination_workload_namespace` if namespaces are limited
-          controlPlane:
-            enabled: true
-          proxies:
-            enabled: true
+      runtime: # (container runtime) activates cadvisor scraping (kubelet receiver)
+        enabled: true
+      istio: # activates istio scraping. Filter by `destination_service_namespace` or `destination_workload_namespace` if namespaces are limited
+        enabled: true
     infrastructure: # Metrics that are not related to any Kubernetes workload (for instance, node or control-plane specific)
-      apiserver:
-        enabled: true
-      nodes:
-        enabled: true
-      network:
-        enabled: true
+      kubernetes: # activates kube-state-metrics scraping
+        enabled: false
+      apiserver: # activate k8s apiserver scraping
+        enabled: false
+      nodes: # activates host receiver
+        enabled: false
+      network: # activates cadvisor scraping (kubelet receiver)
+        enabled: false
     labels: # Filter based on custom labels
       include:
         - name: deployment
