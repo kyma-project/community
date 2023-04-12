@@ -44,3 +44,4 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Jakub Łyczko (**[@Lyczeq](https://github.com/Lyczeq)**) involved in `area/console`, `area/busola`.
 * Karol Szwaj (**[@cnvergence](https://github.com/cnvergence)**) involved in `area/api-gateway`, `area/service-mesh`.
 * Jakub Łukomski (**[@qbalukom](https://github.com/qbalukom)**) involved in `area/console`, `area/busola`.
+* Dariusz Tutaj (**[@dariusztutaj](https://github.com/dariusztutaj)**) involved in `area/api-gateway`, `area/service-mesh`.
