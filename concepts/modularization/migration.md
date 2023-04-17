@@ -30,3 +30,78 @@ The migration process should be resilient and validated against possible user ac
 - in the old cluster after migration - OK (reconciler is already disabled for serverless)
 
 Migration validation discovers only one challenge: it can become unstable if the user will add and remove module using Kyma CR in SKR before reconciler is disabled for that cluster. It is mitigated by disabling module template propagation for old clusters until migration is over.
+
+# Migration example
+
+> **NOTE:** As we want to replicate the default, "managed" behaviour of the environment, this example bases on the dual-cluster setup for Lifecycle Manager, in order to set up your own testing grounds please refer to the Lifecycle Manager documentation available in the [KLM repository](https://github.com/kyma-project/lifecycle-manager).
+
+1. **KCP:** Disable the module catalog sync for the cluster - this will block any updates to the ModuleTemplate list present in the SKR cluster. The user will not see any new modules appearing to be installed in their cluster, the rest of the modules that were already there will still behave as normal.
+
+    > **WARNING:** This does not mean that the module sync will be disabled, if the user somehow has the name of the module before or during the migration and enables it in Kyma CR manually it will be installed and may influence the migration process.
+
+    ```shell
+    kubectl patch kyma -n {KYMA_NAMESPACE} {KYMA_NAME} -p '{"spec":{"sync":{"moduleCatalog":false}}}' --type="merge"
+    ```
+
+2. **KCP:** Create the ModuleTemplate in the cluster.
+
+    > **NOTE:** All the Kymas with `moduleCatalog` set to `true` will get this ModuleTemplate, make sure that every Kyma CR has this field set to proper value.
+
+    ```shell
+    cat <<EOF | kubectl apply -f -
+    kubectl apply -f https://github.com/kyma-project/keda-manager/releases/download/v0.0.3/moduletemplate.yaml
+    EOF
+    ```
+
+    also, we need to patch the `target` to `remote` as it is set by default to the `control-plane` value.
+
+    ```shell
+    k patch -n kcp-system moduletemplates.operator.kyma-project.io moduletemplate-keda -p '{"spec":{"target":"remote"}}' --type="merge"
+    ```
+
+3. **SKR:** Apply the CRD on the cluster, we can use the [keda](https://github.com/kyma-project/keda-manager) module.
+
+    > **Note:** This will disable the reconcilation for the component in the old Reconciler, until the module is enabled in the Kyma CR it will stay in an unmanaged state.
+
+4. **SKR:** Create the default Module CR in the cluster. Make sure that the metadata (name, namespace) is aligned with the Module Template and the namespaces matches the one in the ModuleTemplate or in the Kyma CR.
+
+    ```shell
+    cat <<EOF | kubectl apply -f -
+    apiVersion: operator.kyma-project.io/v1alpha1
+    kind: Keda
+    metadata:
+      name: keda-sample
+      namespace: kcp-system
+    spec:
+      logging:
+        operator:
+          level: info
+      resources:
+        metricServer:
+          limits:
+            cpu: 500m
+            memory: 500Mi
+          requests:
+            cpu: 500m
+            memory: 500Mi
+        operator:
+          limits:
+            cpu: 500m
+            memory: 500Mi
+          requests:
+            cpu: 500m
+            memory: 500Mi
+    EOF
+    ```
+
+5. **SKR:** Enable the module in Kyma, this will pick up the CR that was created in the previous step and use it as the configuration for the module. This will install the module operator in the cluster which should pick up the resources that Reconciler managed previously.
+    ```shell
+    kyma alpha enable module keda -n kcp-system -k kyma-sample -c beta
+    ```
+
+6. **KCP:** Reenable the Module Catalog sync for Kyma.
+    ```shell
+    kubectl patch kyma -n {KYMA_NAMESPACE} {KYMA_NAME} -p '{"spec":{"sync":{"moduleCatalog":true}}}' --type="merge"
+    ```
+
+After the last step everything should be back to the previous state with the exception that the migrated module will be reconciled by the module operator and not the Reconciler.
