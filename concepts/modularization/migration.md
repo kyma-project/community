@@ -1,32 +1,50 @@
 # Migration plan
 
-Migration plan will be executed several times until all modules are moved from reconciler to lifecycle-manager. Is it possible to migrate several modules at once but it is not recommended. The migration plan uses `serverless` module as an example.
+Migration plan will be executed several times until all modules are moved from reconciler to Lifecycle Manager. Is it possible to migrate several modules at once but it is not recommended. The migration plan uses `serverless` module as an example.
 
-The prerequisite for migration is that lifecycle-manager is already activated in KCP for all the clusters (Kyma CRs are created in the KCP and SKR). Migration is split into 2 phases: enabling module for the new clusters and update existing clusters.
+The prerequisite for migration is that Lifecycle Manager is already activated in KCP for all the clusters (Kyma CRs are created in the KCP and SKR).
 
-![migration](assets/migration.drawio.svg)
+## Enabling module for all clusters at once
 
-## Enable module for new clusters (first)
+In contradiction to previous plans it is unnecessary to separate migration process into new and old clusters. The flow will be identical regardless whether the cluster was created before, during or after the migration phase.
 
-First step is to enable module installation with lifecycle manager for new clusters. Existing clusters are still managed by reconciler.
-- Disable module template replication for existing clusters (moduleCatalog=false). This prevents users to add serverless module before it is disabled in the reconciler.
-- New Kyma version is enabled in KEB (without serverless module). New clusters do not have serverless until customer enabled it in Kyma resource.
-- Serverless operator(manager) is ready and module template is available in the fast/regular channel. 
+The Reconciler is already prepared with the [code](https://github.com/tobiscr/control-plane/blob/d43ad59ec47b9815efa1683c1f3b467b2ae3a5a1/resources/kcp/charts/mothership-reconciler/values.yaml#L153) that will disable synchronisation when a specific CRD is present in the cluster. This allows for a migration without worrying about specific timing and sequences.
 
-## Update existing clusters
+With the tooling and functionalities we have recently implemented the whole migration process got quite simple. In the end it narrows down to few simple steps:
+- Apply the Module Template to the KCP cluster
+- Migrate the cluster (create CR and enable the Module)
+- Release a new Kyma version without the Module
 
-Migration can be stopped at any moment if any problem occurs. Not migrated clusters will still use serverless reconciler (old Kyma version with serverless)
+This covers both existing and new cluster cases. The last step is required to permanently disable the old Reconciler sync, if this step is skipped Reconciler would step in as soon as the Module is disabled (and CRD is removed with it).
 
-- Upgrade the clusters to the new Kyma version (without serverless) - from this point reconciler doesn't touch serverless resources.
-- Add module to Kyma CR in SKR with option to not copy default CR. Lifecycle manager will install serverless manager without starting module installation. Default CR creation is omitted for the case when we need different setting for different clusters (eg. trial / production). If default CR can be applied for all the clusters then module copy can stay enabled and the next step is not required.
-- Create CRD  and default CR for serverless manager in the SKR. CRD creation is optional - it can be skipped, but then migration script has to wait until liefecycle-manager installs it. Entire step can be skipped if the default module CR can be applied for all the clusters.
+## Validation scenarios
 
-# Validation scenarios
+The migration process should be resilient and validated against possible user actions that could cause problems, thus we need to consider several scenarios in which user manually enables the module:
+- in the new clusters - OK, clusters will be created without the Module, users can enable it via Kyma CR
+- in the old (not migrated) cluster before migration script is executed - OK, default CR will be applied, the Module will no longer be reconciled by the Reconciler and Lifecycle Manager will step in
+- in the old cluster during migration - OK, Reconciler will pass over the reconciliation to the Lifecycle Manager, default CR will be applied
+- in the old cluster after migration - OK, Reconciler will pass over the reconciliation to the Lifecycle Manager
 
-The migration process should be resilient and validated against possible user actions that could cause problems. It is mainly about turning on and off the module that is being migrated:
-- in the new cluster - OK (reconciler is already disabled for serverless)
-- in the old (not migrated) cluster before migration script is executed - almost OK (if user adds serverless module manually it will work in parallel with reconciler)
-- in the old cluster during migration - OK (reconciler is already disabled for serverless)
-- in the old cluster after migration - OK (reconciler is already disabled for serverless)
+There is only one small concern - if the user somehow enables the module before or after the migration they will get the default configuration that could possibly override their existing config, there will be no disruption in the module availability though.
 
-Migration validation discovers only one challenge: it can become unstable if the user will add and remove module using Kyma CR in SKR before reconciler is disabled for that cluster. It is mitigated by disabling module template propagation for old clusters until migration is over.
+# Migration example
+
+> **NOTE:** As we want to replicate the default, "managed" behaviour of the environment, this example bases on the dual-cluster setup for Lifecycle Manager, in order to set up your own testing grounds please refer to the Lifecycle Manager documentation available in the [KLM repository](https://github.com/kyma-project/lifecycle-manager).
+
+Prerequisites:
+- The new ModuleTemplate should be applied in the KCP cluster and synced to the SKRs
+- Reconciler is prepared to [ignore your Module if the CRD is detected](https://github.com/tobiscr/control-plane/blob/d43ad59ec47b9815efa1683c1f3b467b2ae3a5a1/resources/kcp/charts/mothership-reconciler/values.yaml#L153)
+
+Steps:
+1. Enable the Module in Kyma CR:
+    - If the default Module CR applies to all scenarios and there is no need to make a configuration based on existing in-cluster setup:
+      ```
+      kyma alpha enable module {MODULE NAME} -n {KYMA_NAMESPACE} -k {KYMA_NAME} -c {MODULE_CHANNEL}
+      ```
+    - If script needs to be run in order to adjust a configuration before the operator picks the module up:
+      ```
+      kyma alpha enable module {MODULE NAME} -n {KYMA_NAMESPACE} -k {KYMA_NAME} -c {MODULE_CHANNEL} -p Ignore
+      ```
+      **This will not create a Module CR and it should be handled by your automation script** (read the config, prepare Module CR based on the existing setup, apply the CR).
+
+2. Update Kyma to a version without your Module.
