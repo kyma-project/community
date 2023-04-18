@@ -13,7 +13,7 @@ Use kubectl to check which modules are available on your cluster. Run:
    kubectl get ModuleTemplates – A
    ```
 
-Use Kyma CLI to enable a module on your cluster in the Release Channel of your choice. Run: 
+Use Kyma CLI to enable a module on your cluster in the release channel of your choice. Run: 
 
    ```bash
    kyma alpha enable module {MODULE_NAME} --channel {CHANNEL_NAME} --wait
