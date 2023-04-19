@@ -8,6 +8,12 @@ Your cluster comes with the Kyma custom resource (CR) already installed. It coll
 
 ## Procedure
 
+<div tabs name="steps" group="enable-module">
+  <details>
+  <summary label="cli">
+  Kyma CLI
+  </summary>
+
 Use kubectl to check which modules are available on your cluster. Run: 
    ```bash
    kubectl get ModuleTemplates -A
@@ -24,5 +30,22 @@ Similarly, to disable a module, run:
    ```bash
    kyma alpha disable module {MODULE_NAME}
    ``` 
+
+</details>
+<details>
+<summary label= Kyma Dashboard>
+Kyma Dashboard
+</summary>
+
+1. Go to the `kyma-system` Namespace.
+2. Choose the **Kyma** resource from the **Kyma** section.
+3. Click on the name of your Kyma instance (`default-kyma`) and click **Edit**.
+4. Click **Add** in the **Modules** section.
+5. Choose the name of your module from the dropdown menu.
+6. Choose the available channel.
+7. Click **Update** and then **Force update**.
+The operation was successful if the module Status changed to `READY`.
+</details>
+</div>
 
 To configure your module, use the module CR. For the configuration options, check the module configuration page {LINK}. 
