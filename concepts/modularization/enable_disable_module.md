@@ -38,13 +38,13 @@ Kyma Dashboard
 </summary>
 
 1. Go to the `kyma-system` Namespace.
-2. Choose the **Kyma** resource from the **Kyma** section.
+2. In the **Kyma** section, choose the **Kyma** resource.
 3. Click on the name of your Kyma instance (`default-kyma`) and click **Edit**.
-4. Click **Add** in the **Modules** section.
-5. Choose the name of your module from the dropdown menu.
+4. In the **Modules** section, click **Add**.
+5. Choose the name of your module.
 6. Choose the available channel.
 7. Click **Update** and then **Force update**.
-The operation was successful if the module Status changed to `READY`.
+The operation was successful if the module status changed to `READY`.
 </details>
 </div>
 
