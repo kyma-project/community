@@ -2,7 +2,9 @@
 
 ## Architecture Overview
 
-![b](./assets/monitoring-future.drawio.svg)
+![arch](./assets/monitoring-future.drawio.svg)
+
+![components](./assets/monitoring-future-components.drawio.svg)
 
 ### Prometheus Pull Support
 
@@ -30,3 +32,4 @@ Telemetry Operator configures pipelines of the gateway, using sane defaults with
 ### In-Cluster backend
 
 The monitoring component brings config to push metrics using remote write to managed Prometheus instances. Kyma will provide a blueprint to deploy your own kube-prometheus-stack.
+
