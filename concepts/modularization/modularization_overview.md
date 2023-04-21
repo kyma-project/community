@@ -4,7 +4,7 @@ title: Modularization in Kyma
 
 ## Overview
 
-The monolith out-of-the-box Kyma offered a fixed set of components whose development rhythm was synchronized and determined by the release schedule. Modularization of SAP BTP, Kyma Runtime is the process of decomposing the complex structure. Kyma components become modules, each providing one functionality developed independently of the other ones. The modular approach also boosts Kyma’s extensibility and scalability. You can install exactly the Kyma modules you want, making the installation very lightweight and adjusted to your business needs.  
+The out-of-the-box Kyma offered a fixed set of mandatory preconfigured components whose development rhythm was synchronized and determined by the release schedule. With the modular approach, Kyma components become modules, each providing one functionality developed independently of the other ones. This approach also boosts Kyma’s extensibility and scalability. You can install and configure exactly the modules you want, making the installation very lightweight and adjusted to your business needs.  
 Kyma uses three system components to support the modular approach: Module Manager, Lifecycle Manager, and Runtime Watcher.
 
 ## Kyma’s Modular Approach
