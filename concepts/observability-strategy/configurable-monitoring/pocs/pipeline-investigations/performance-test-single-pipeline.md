@@ -2,7 +2,7 @@
 
 ## Setup
 
-The metric performance test uses the [metric-gen](../tools/metric-gen) app to **generate metrics**. The application is deployed as a deployment with multiple replicas to simulate increasing replicas.
+The metric performance test uses the [metric-gen](../tools/metric-gen/main.go) app to **generate metrics**. The application is deployed as a deployment with multiple replicas to simulate increasing replicas.
 
 A kyma cluster installed from the main branch ([6bce47168452](https://github.com/kyma-project/kyma/tree/6bce47168452a87c78c636b4cfc65f3dc9592735)) is the **test environment**. The cluster is installed from the main branch as at the time of performing the performance test, the MetricPipeline is not released yet. The following steps are performed to set up the cluster:
 
@@ -66,11 +66,11 @@ OTEL Configuration:
 - `processor.memory_limiter.limit_percentage`
 - `processor.memory_limiter.spike_limit_percentage`
 
-The test uses the image built by [metric-gen](../tools/metric-gen) which produces around 5.3k metrics per second with a total of 7 attributes per metric.
+The test uses the image built by [metric-gen](../tools/metric-gen/main.go) which produces around 5.3k metrics per second with a total of 7 attributes per metric.
 
 ## Execution
 
-1. Port-forward grafana and load dedicated dashboard [assets/metric-gateway-grafana-dashboard.json](assets/metric-gateway-grafana-dashboard.json)
+1. Port-forward grafana and load dedicated dashboard [assets/metric-gateway-grafana-dashboard.json](../assets/metric-gateway-grafana-dashboard.json)
 2. Pause reconciliations for metric pipelines
 3. Set values for OTEL configuration in the metric gateway ConfigMap
 4. Restart the metric gateway Deployment
