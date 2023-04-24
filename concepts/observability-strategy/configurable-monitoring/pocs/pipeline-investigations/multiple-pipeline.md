@@ -2,7 +2,7 @@
 We want to test and understand the behavior of the metrics gateway with multiple pipelines.
 
 ## Setup
-The setup was performed as described for [single pipeline performance test](./performance-test-single-pipeline.md#setup). Because the Telemetry operator does not support multiple pipelines out of the box, the config map `telemetry-metric-gateway` was updated manually. Additionally, to prevent the operator from reverting the changes, the reconciliations were paused. For the setup, we had the following:
+The setup was performed as described for [single pipeline performance test](../performance-test-single-pipeline/performance-test-single-pipeline.md#setup). Because the Telemetry operator does not support multiple pipelines out of the box, the config map `telemetry-metric-gateway` was updated manually. Additionally, to prevent the operator from reverting the changes, the reconciliations were paused. For the setup, we had the following:
 - [Metric receiver](../assets/mock-metrics-receiver.yaml) was defined in two Namespaces: `metric-receiver` and `metric-receiver-1`
 - [Metric gen ](../assets/metric-gen.yaml) was used to generate the metrics.
 - [Pipeline](../assets/metric-pipeline.yaml) was deployed.

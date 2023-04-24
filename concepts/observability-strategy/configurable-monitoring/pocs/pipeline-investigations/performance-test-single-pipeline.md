@@ -2,7 +2,7 @@
 
 ## Setup
 
-The metric performance test uses the [metric-gen](tools/metric-gen/) app to **generate metrics**. The application is deployed as a deployment with multiple replicas to simulate increasing replicas.
+The metric performance test uses the [metric-gen](../tools/metric-gen) app to **generate metrics**. The application is deployed as a deployment with multiple replicas to simulate increasing replicas.
 
 A kyma cluster installed from the main branch ([6bce47168452](https://github.com/kyma-project/kyma/tree/6bce47168452a87c78c636b4cfc65f3dc9592735)) is the **test environment**. The cluster is installed from the main branch as at the time of performing the performance test, the MetricPipeline is not released yet. The following steps are performed to set up the cluster:
 
@@ -66,7 +66,7 @@ OTEL Configuration:
 - `processor.memory_limiter.limit_percentage`
 - `processor.memory_limiter.spike_limit_percentage`
 
-The test uses the `skhalashatsap/metrics-gen:6` image which produces around 5.3k metrics per second with a total of 7 attributes per metric.
+The test uses the image built by [metric-gen](../tools/metric-gen) which produces around 5.3k metrics per second with a total of 7 attributes per metric.
 
 ## Execution
 
@@ -77,7 +77,7 @@ The test uses the `skhalashatsap/metrics-gen:6` image which produces around 5.3k
 5. Start the metric-gen tool with the desired number of replicas:
 
     ```bash
-    kubectl create deployment metric-gen --image=skhalashatsap/metrics-gen:6 --replicas=num_replicas
+    kubectl create deployment metric-gen --image=<image-name> --replicas=num_replicas
     ```
 
 ## Tests with a healthy sink
