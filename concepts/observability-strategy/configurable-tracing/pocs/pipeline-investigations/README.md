@@ -147,11 +147,290 @@ The OpenTelemetry Collector version used in this test has some limitations with 
 The purpose of this test is to understand the behavior of the trace pipeline gateway with multiple pipelines.
 
 ### Test Environment
-- Same configuration as described as single pipeline test above
+- Telemetry tracing gateway used the following config
+```yaml
+apiVersion: v1
+data:
+  relay.conf: |
+    receivers:
+        opencensus:
+            endpoint: ${MY_POD_IP}:55678
+        otlp:
+            protocols:
+                http:
+                    endpoint: ${MY_POD_IP}:4318
+                grpc:
+                    endpoint: ${MY_POD_IP}:4317
+    exporters:
+        otlp:
+            endpoint: mock-trace-receiver.trace-receiver:4317
+            tls:
+              insecure: true
+            sending_queue:
+                enabled: true
+                queue_size: 512
+            retry_on_failure:
+                enabled: true
+                initial_interval: 5s
+                max_interval: 30s
+                max_elapsed_time: 300s
+        otlp/2:
+            endpoint: mock-trace-receiver.trace-receiver-2:4317
+            tls:
+              insecure: true
+            sending_queue:
+                enabled: true
+                queue_size: 512
+            retry_on_failure:
+                enabled: true
+                initial_interval: 5s
+                max_interval: 30s
+                max_elapsed_time: 300s
+        logging:
+            verbosity: basic
+    processors:
+        batch:
+            send_batch_size: 512
+            timeout: 10s
+            send_batch_max_size: 512
+        memory_limiter:
+            check_interval: 0.5s
+            limit_percentage: 75
+            spike_limit_percentage: 10
+        k8sattributes:
+            auth_type: serviceAccount
+            passthrough: false
+            extract:
+                metadata:
+                    - k8s.pod.name
+                    - k8s.node.name
+                    - k8s.namespace.name
+                    - k8s.deployment.name
+                    - k8s.statefulset.name
+                    - k8s.daemonset.name
+                    - k8s.cronjob.name
+                    - k8s.job.name
+            pod_association:
+                - sources:
+                    - from: resource_attribute
+                      name: k8s.pod.ip
+                - sources:
+                    - from: resource_attribute
+                      name: k8s.pod.uid
+                - sources:
+                    - from: connection
+        resource:
+            attributes:
+                - action: insert
+                  key: k8s.cluster.name
+                  value: ${KUBERNETES_SERVICE_HOST}
+        filter:
+            traces:
+                span:
+                    - (attributes["http.method"] == "POST") and (attributes["component"] == "proxy") and (attributes["OperationName"] == "Ingress") and (resource.attributes["service.name"] == "jaeger.kyma-system")
+                    - (attributes["http.method"] == "GET") and (attributes["component"] == "proxy") and (attributes["OperationName"] == "Egress") and (resource.attributes["service.name"] == "grafana.kyma-system")
+                    - (attributes["http.method"] == "GET") and (attributes["component"] == "proxy") and (attributes["OperationName"] == "Ingress") and (resource.attributes["service.name"] == "jaeger.kyma-system")
+                    - (attributes["http.method"] == "GET") and (attributes["component"] == "proxy") and (attributes["OperationName"] == "Ingress") and (resource.attributes["service.name"] == "grafana.kyma-system")
+                    - (attributes["http.method"] == "GET") and (attributes["component"] == "proxy") and (attributes["OperationName"] == "Ingress") and (resource.attributes["service.name"] == "loki.kyma-system")
+                    - (attributes["http.method"] == "GET") and (attributes["component"] == "proxy") and (attributes["OperationName"] == "Ingress") and (IsMatch(attributes["http.url"], ".+/metrics") == true) and (resource.attributes["k8s.namespace.name"] == "kyma-system")
+                    - (attributes["http.method"] == "GET") and (attributes["component"] == "proxy") and (attributes["OperationName"] == "Ingress") and (IsMatch(attributes["http.url"], ".+/healthz(/.*)?") == true) and (resource.attributes["k8s.namespace.name"] == "kyma-system")
+                    - (attributes["http.method"] == "GET") and (attributes["component"] == "proxy") and (attributes["OperationName"] == "Ingress") and (attributes["user_agent"] == "vm_promscrape")
+                    - (attributes["http.method"] == "POST") and (attributes["component"] == "proxy") and (attributes["OperationName"] == "Egress") and (IsMatch(attributes["http.url"], "http(s)?:\\/\\/telemetry-otlp-traces\\.kyma-system(\\..*)?:(4318|4317).*") == true)
+                    - (attributes["http.method"] == "POST") and (attributes["component"] == "proxy") and (attributes["OperationName"] == "Egress") and (IsMatch(attributes["http.url"], "http(s)?:\\/\\/telemetry-trace-collector-internal\\.kyma-system(\\..*)?:(55678).*") == true)
+                    - (attributes["http.method"] == "POST") and (attributes["component"] == "proxy") and (attributes["OperationName"] == "Ingress") and (resource.attributes["service.name"] == "loki.kyma-system")
+                    - (attributes["http.method"] == "POST") and (attributes["component"] == "proxy") and (attributes["OperationName"] == "Egress") and (resource.attributes["service.name"] == "telemetry-fluent-bit.kyma-system")
+    extensions:
+        health_check:
+            endpoint: ${MY_POD_IP}:13133
+    service:
+        pipelines:
+            traces:
+                receivers:
+                    - opencensus
+                    - otlp
+                processors:
+                    - memory_limiter
+                    - k8sattributes
+                    - filter
+                    - resource
+                    - batch
+                exporters:
+                    - otlp
+                    - logging
+            traces/2:
+                receivers:
+                    - opencensus
+                    - otlp
+                processors:
+                    - memory_limiter
+                    - k8sattributes
+                    - filter
+                    - resource
+                    - batch
+                exporters:
+                    - otlp/2
+                    - logging
+        telemetry:
+            metrics:
+                address: ${MY_POD_IP}:8888
+            logs:
+                level: info
+        extensions:
+            - health_check
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/name: telemetry-trace-collector
+  name: telemetry-trace-collector
+  namespace: kyma-system
+```
 - A Kyma cluster deployed with Kyma version 2.11.x
 - Custom Kyma OpenTelemetry Collector image based on version 0.74.0 
-- Backend [mock-trace-backend](https://github.tools.sap/huskies/knowledge-hub/tree/master/docs/observability/mock-trace-backend-poc), and two instances deployed for each configured pipeline on different Namespaces
-- Same load generator as single pipeline test above 
+- Backend [mock-trace-backend](https://github.tools.sap/huskies/knowledge-hub/tree/master/docs/observability/mock-trace-backend-poc), and two instances deployed for each configured pipeline on different Namespaces. Deployment used for both backend deployment
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: trace-receiver
+spec: {}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mock-trace-receiver
+  namespace: trace-receiver
+  labels:
+    app: mock-trace-receiver
+data:
+  config.yaml: |
+    receivers:
+      otlp:
+        protocols:
+          grpc: {}
+          http: {}
+    exporters:
+      file:
+        path: /traces/spans.jsonl
+      logging:
+        loglevel: debug
+    service:
+      pipelines:
+        traces:
+          receivers:
+          - otlp
+          exporters:
+          - file
+          - logging
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mock-trace-receiver
+  name: mock-trace-receiver
+  namespace: trace-receiver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mock-trace-receiver
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: mock-trace-receiver
+    spec:
+      volumes:
+        - name: collector-config
+          configMap:
+            name: mock-trace-receiver
+        - name: data
+          emptyDir: {}
+      securityContext:
+        fsGroup: 101
+      containers:
+      - image: otel/opentelemetry-collector-contrib:0.70.0
+        name: otel-collector
+        securityContext:
+          runAsUser: 101
+        volumeMounts:
+        - name: collector-config
+          mountPath: /etc/collector
+        - name: data
+          mountPath: /traces
+        args:
+        - --config=/etc/collector/config.yaml
+      - image: nginx
+        name: web
+        volumeMounts:
+        - name: data
+          mountPath: /usr/share/nginx/html
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: mock-trace-receiver
+  name: mock-trace-receiver
+  namespace: trace-receiver
+spec:
+  ports:
+  - name: http-otlp
+    port: 4317
+    protocol: TCP
+    targetPort: 4317
+  - name: grpc-otlp
+    port: 4318
+    protocol: TCP
+    targetPort: 4318
+  - name: export-http
+    port: 8080
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: mock-trace-receiver
+  type: LoadBalancer
+```
+- Load generator used pipeline for tests
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otel-load-generator
+  labels:
+    app: otel-load-generator
+  annotations:
+    sidecar.istio.io/inject: "false"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: otel-load-generator
+  template:
+    metadata:
+      labels:
+        app: otel-load-generator
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+        - name: otel-load-generator
+          image: hbalik/load-generator:latest
+          command:
+            - /loadgenerator
+          args:
+          - -t
+          - telemetry-otlp-traces.kyma-system:4317
+          - -c
+          - "1"
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "64Mi"
+            limits:
+              memory: "128Mi"
+```
 
 
 ## Pipeline setup
