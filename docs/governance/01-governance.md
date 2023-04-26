@@ -37,6 +37,7 @@ Every code owner is expected to:
 * Perform maintenance tasks for their projects
 * As an assignee, treat issues assigned to a current release with priority
 * In general, continue to be willing to spend at least 50% of their time working on Kyma (~2.5 business days per week)
+* monitor and maintain the periodic jobs, ensure these jobs are up and running.
 
 ### Become a code owner
 
