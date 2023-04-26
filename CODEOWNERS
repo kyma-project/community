@@ -1,17 +1,19 @@
 # Default owners of the repository
-* @mmitoraj @NHingerl @grego952 @IwonaLanger @nataliasitko 
+* @kyma-project/technical-writers
 
 # Owners of the sigs-and-wgs folder
-/sigs-and-wgs/ @PK85
+/sigs-and-wgs/ @kyma-project/kyma-steering-committee
 
 # Owners of all .md files in the repository
-*.md @mmitoraj @NHingerl @grego952 @IwonaLanger @nataliasitko
+*.md @kyma-project/technical-writers
 
 # Owners of the .kyma-project-io folder
-/.kyma-project-io/ @valentinvieriu @akucharska @dariadomagala @qbalukom @Wawrzyn321 @Sawthis @mrCherry97 @Lyczeq
+/.kyma-project-io/ @kyma-project/Hasselhoff
 
 # Owners of config file for MILV - milv.config.yaml
-milv.config.yaml @m00g3n @pPrecel @dbadura @kwiatekus @moelsayed @cortey
+milv.config.yaml @kyma-project/Otters
 
 # Concepts (features, architecture)
-/concepts/ @pbochynski @a-thaler @PK85 @k15r @janmedrek @kwiatekus @tobiscr
+/concepts/ @kyma-project/kyma-steering-committee @k15r @janmedrek @kwiatekus @tobiscr
+
+/concepts/observability-strategy @kyma-project/observability

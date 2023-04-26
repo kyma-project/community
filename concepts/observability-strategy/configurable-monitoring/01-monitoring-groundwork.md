@@ -13,13 +13,14 @@ This concept proposes how to open up to those new scenarios by supporting conven
 ## Requirements
 
 ### General
-- Users need a way to outstream metrics into multiple external systems. There will be no production-ready solution provided by Kyma, so user need to integrate with something.
+- Users need a way to outstream metrics into multiple external systems. There will be no production-ready backend provided by Kyma, so users must integrate with something.
 - Users need a way to add custom metrics from users' workload to that outstreams. Support for custom metrics is a major requirement for a monitoring solution.
 - Users need a way to influence what metrics are outstreamed. External systems will have a price dependent on load. Not relevant metrics must be droppable.
+- Users can opt out of the topic at any time by bringing there own agent technology.
 
 ### Basic backend configuration
-- Have a vendor-neutral layer of collectors that collects and ships metrics, but does not permanently store it (as a backend).
-- The collector must run stably at any time when using the typical settings. Bad configuration must be prevalidated and rejected. Fast feedback is welcome.
+- Have a vendor-neutral layer of agents/gateways that collects and ships metrics, but does not permanently store them.
+- The agents/gateways must run stably at any time when using the typical settings. Bad configuration must be prevalidated and rejected. Fast feedback is welcome.
 - Outputs
   - Support configuration of backends and outputs at runtime (no need to run a Kyma upgrade process) in a scenario-focused approach.
   - Support multiple configurations at the same time (in individual Kubernetes resources) to support easy activation of dedicated scenarios.
@@ -37,7 +38,7 @@ This concept proposes how to open up to those new scenarios by supporting conven
   - Filtering of data (like dropping metrics of kyma-system components) must be possible.
 
 ### Pre-integration
-- Kyma system components are pre-integrated, so the predefined input in the collector serves them by default.
+- Kyma system components are pre-integrated, so the predefined input to the gateway serves them by default.
 - Typical Kubernetes metrics are pre-integrated, including basic node and kube-state-metrics. Users might need this data for their own troubleshooting.
 - Istio metrics are pre-integrated and can be easily filtered and de-selected.
 
@@ -51,7 +52,7 @@ This concept proposes how to open up to those new scenarios by supporting conven
 
 ## Proposed Solution
 
-The proposal introduces a new preconfigured collector layer that's responsible for collecting metric data only. Users can configure those collectors dynamically at runtime with different configuration scenarios, so that the collectors start shipping the data to the configured backends. The dynamic configuration and management of the collector is handled by a new operator, which is configured using Kubernetes APIs. The collector and the new operator are bundled in a new core package called `telemetry`. The existing Kyma backends and UIs will be just one possible solution to integrate with. They can be installed manually by the user following a blueprint.
+The proposal introduces a new preconfigured agents/gateway layer that's responsible for collecting and dispatching metric data only. Users can configure those agents/gateways dynamically at runtime with different configuration scenarios, so that the agents/gateways start shipping the data to the configured backends. The dynamic configuration and management of the new components is handled by a new operator, which is configured using Kubernetes APIs. The new operator is bundled in a new core package called `telemetry`. The existing Kyma backends and UIs will be just one possible solution to integrate with. They can be installed manually by the user following a blueprint.
 
 ![b](./assets/monitoring-future.drawio.svg)
 

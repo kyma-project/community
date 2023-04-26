@@ -45,3 +45,8 @@ Afterwards, switch to a daemonset approach by swithcing the values.yaml to otel-
 That will deploy the collector as daemonset having the scrape config already enriched by sharding based on nodes.
 
 Run the test again. Can that scalability be good enough?
+
+## Summary
+
+The DaemonSet approach based on sharding by Node assignment is a very simple approach of solving the problem. It allows to scale out in a limited way as there can be situations were particular instances can reach limits dependent on the Node size.
+A better approach will be to use a StatefulSet where the scrape pool is sharded in a deterministic way using the instance ID as selector. Then a scale-out can happen dynamically. However, that approach is much more complex to realize, because StatefulSets are harder to manage and probably need a config per instance. For now, the DaemonSet approach should be sufficient. We can switch to the StatefulSet approach if we see that it is actually needed.
