@@ -158,7 +158,7 @@ We have following assumptions:
  - Current rate of metrics (prometheus_tsdb_head_samples_appended_total): 1.450k metrics/sec 
 
 
-With a healthy sink we see the following results:
+With a healthy sink, we see the following results:
 - A throughput of [9.3k metrics/s](#with-healthy-sink) was reached (Queue: 5000, Batch size: 8192 and Memory: 1Gb)
 - A throughput of [8k metrics/s](#tests-with-a-healthy-sink) was reached (Queue: 1024, Batch Size: 1024 and memory 1GB)
 
