@@ -43,6 +43,7 @@ kubectl edit clusterrole telemetry-operator-manager-role # add metricpipeline to
   - update
 ```
 
+3. Apply the pipeline:
 ```bash
 kubectl apply -f ./config/samples/telemetry_v1alpha1_metricpipeline.yaml # within telemetry-manager repo
 ```
