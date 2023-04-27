@@ -14,9 +14,9 @@ Your cluster comes with the Kyma custom resource (CR) already installed. It coll
   Kyma CLI
   </summary>
 
-Use kubectl to check which modules are available on your cluster. Run: 
+Use Kyma CLI to check which modules are available on your cluster. Run: 
    ```bash
-   kubectl get ModuleTemplates -A
+   kyma alpha list module
    ```
 
 Use Kyma CLI to enable a module on your cluster in the release channel of your choice. Run: 
