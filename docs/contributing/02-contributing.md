@@ -76,7 +76,7 @@ To contribute code or content to a given Kyma repository, follow these steps:
 
 12. When the maintainers approve your change, merge the PR or wait until the Kyma Bot merges it for you.
 
-13. The PR owner is responsible for ensuring the success of the submission process, including pre- and post-jobs. Only after the initial analysis is done can the PR owner ask for more help from the Prow jobs owner.
+13. As a PR owner, you are responsible for ensuring the success of the submission process, including pre- and postsubmit Prow jobs. You can ask for more help from the Prow jobs owner only after the initial analysis.
 
 > **NOTE:** For more information on code owners' responsibilities, see the [Kyma working model](../governance/01-governance.md) document.
 
