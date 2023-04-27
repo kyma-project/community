@@ -5,7 +5,7 @@
 The metric performance test uses the [metric-gen](../tools/metric-gen/main.go) app to generate metrics. The application is deployed as a deployment with multiple replicas to simulate increasing replicas.
 
 As test environment, a Kyma cluster installed from the main branch ([6bce47168452](https://github.com/kyma-project/kyma/tree/6bce47168452a87c78c636b4cfc65f3dc9592735)). This was done because at the time of performing the performance test, the MetricPipeline is not released yet. The following steps are performed to set up the cluster:
-
+1. Deploy Kyma from branch 6bce47168452:
 ```bash
 kyma deploy -s 6bce47168452 --value telemetry.operator.controllers.metrics.enabled=true
 make install # within telemetry-manager repo
