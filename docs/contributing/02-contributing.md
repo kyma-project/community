@@ -76,6 +76,10 @@ To contribute code or content to a given Kyma repository, follow these steps:
 
 12. When the maintainers approve your change, merge the PR or wait until the Kyma Bot merges it for you.
 
+13. As a PR owner, you are responsible for ensuring the success of the submission process, including pre- and postsubmit Prow jobs. You can ask for more help from the Prow jobs owner only after the initial analysis.
+
+> **NOTE:** For more information on code owners' responsibilities, see the [Kyma working model](../governance/01-governance.md) document.
+
 ### Report an issue
 
 If you find a bug to report or you want to propose a new feature, go to the GitHub issue tracker of a given repository and create an issue. If you are not certain which repository your bug or feature relates to, raise it on the `Kyma` repository.
