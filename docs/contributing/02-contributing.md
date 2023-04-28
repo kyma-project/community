@@ -69,16 +69,13 @@ To contribute code or content to a given Kyma repository, follow these steps:
 10. After you create a PR, relevant CI tests need to complete successfully.
 - If you are a Kyma organization member, all related CI tests run automatically after you create a PR. If a test fails, check the reason by clicking the **Details** button next to the given job on your PR. Make the required changes and the tests rerun. If you want to run a specific test, add the `/test {test-name}` or `/retest {test-name}` comment to your PR. To rerun all failed tests, add the `/retest` comment.
 - If you are an external contributor, contact the repository maintainers specified in the [`CODEOWNERS`](https://github.com/kyma-project/community/blob/main/CODEOWNERS) file to review your PR and add the `/test all` comment to your PR to trigger all tests. A Kyma organization member needs to rerun the tests manually each time you commit new changes to the PR.
+11. As a PR owner, you are responsible for ensuring the success of the submission process, including pre- and postsubmit Prow jobs. You can ask for more help from the Prow jobs owner only after the initial analysis.
+    > **NOTE:** For more information on code owners' responsibilities, see the [Kyma working model](../governance/01-governance.md) document.
 
-11. Wait for the Kyma maintainers to review and approve your PR. The maintainers can approve it, request enhancements to your change, or reject it.
+12. Wait for the Kyma maintainers to review and approve your PR. The maintainers can approve it, request enhancements to your change, or reject it.  
+    > **NOTE:** The reviewer must check if all related CI tests have completed successfully before approving the PR.
 
-> **NOTE:** The reviewer must check if all related CI tests have completed successfully before approving the PR.
-
-12. When the maintainers approve your change, merge the PR or wait until the Kyma Bot merges it for you.
-
-13. As a PR owner, you are responsible for ensuring the success of the submission process, including pre- and postsubmit Prow jobs. You can ask for more help from the Prow jobs owner only after the initial analysis.
-
-> **NOTE:** For more information on code owners' responsibilities, see the [Kyma working model](../governance/01-governance.md) document.
+13. When the maintainers approve your change, merge the PR or wait until the Kyma Bot merges it for you.
 
 ### Report an issue
 
