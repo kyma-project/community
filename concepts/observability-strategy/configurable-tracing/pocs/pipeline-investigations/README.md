@@ -1,19 +1,19 @@
 # Trace Performance Test
 
-The test covers 3 aspect of default base installation and configuration.
+The test covers three aspects of default base installation and configuration:
 
 - Test average throughput of current installation end-to-end.
 - Test queuing and retry capabilities of installation with simulated backend outages.
-- Test survivability of the current installation under high load. The collector should not run out of memory in any case. Instead, it should refuse incoming data until memory available again.
+- Test survivability of the current installation under high load. The collector should not run out of memory in any case. Instead, it should refuse incoming data until memory is available again.
 
 > **NOTE:**
 > The Opentelemetry Collector test environment is configured with OTLP format over the gRPC protocol. All KPIs found in this test will vary with other formats and protocols.
 
 ## Test Application
 
-The [Opentelemetry load generator](https://github.tools.sap/huskies/otel-load-generator) is developed by Huskies. The application written is in go and use the Opentelemetry SDK version v1.11.1.
-The load generator produces for each generated trace `11 spans` (one root and 10 child spans) and each spans has `40` attributes each `64 Byte` (except root span) long random data, this will simulate maximum size of expected span data,
-generated data send in batches over `gRPC` and each batch will contain `512` spans, the test data can be generated concurrently to increase load on targeted collector, this can can be configured with start parameter `-c`.
+The [Opentelemetry load generator](https://github.tools.sap/huskies/otel-load-generator) is developed by Kyma's Telemetry team. The application written is in Go and uses the Opentelemetry SDK version v1.11.1.
+For each generated trace, the load generator produces 11 spans (one root and 10 child spans); and each span, except the root span, has 40 attributes each 64 Byte long random data. This simulates the maximum size of expected span data.
+Generated data is sent in batches over gRPC and each batch will contain 512 spans. The test data can be generated concurrently to increase load on the targeted collector, which can can be configured with start parameter **-c**.
 
 ## Test Environment
 
@@ -21,15 +21,15 @@ generated data send in batches over `gRPC` and each batch will contain `512` spa
 - Opentelemetry Collector version 0.60.0 deployed by the Kyma Telemetry Controller with following configuration:
   - 1GiB Memory
   - 1 CPU
-  - Memory hard limit configured 75% of total memory, memory spike limit configured to the 10% of total available memory.
-  - Retry backoff limit 30 seconds and maximum retry time to 300 seconds.
-  - Bath size 512 spans per batch, maximum batch queue size 512 batches.
+  - Memory hard limit configured to 75% of total memory and memory spike limit configured to the 10% of total available memory
+  - Retry backoff limit 30 seconds and maximum retry time to 300 seconds
+  - Batch size 512 spans per batch and maximum batch queue size 512 batches
 
 ## Observations
 
 ### Resource Usage
 
-Purpose of this test is observing collector behaviour under high load, resource consumption, and out of memory situation. Test was running over 12 hours with constant load generation.
+The purpose of this test is observing collector behaviour under high load, resource consumption, and out-of-memory (OOM) situation. The test was running over 12 hours with constant load generation.
 
 | ![CPU Utilization](assets/cpu_usage_long.png) |
 | :--: |
@@ -39,35 +39,35 @@ Purpose of this test is observing collector behaviour under high load, resource 
 | :--: |
 | Fig. 2 Memory utilization |
 
-- As `Fig. 1` shown, CPU utilization stay moderate during whole test execution time.
+- `Fig. 1` shows that CPU utilization stays moderate during the whole test execution time.
 - `Fig. 2` shown memory consumption over 12 hours, the collector never run OOM situation.
 
 | ![Refused Spans](assets/refused_spans_long.png) |
 | :--: |
 | Fig. 3 Refused spans |
 
-- `Fig. 3` show the behaviour of memory limiter in case of high load and high memory utilization. Memory limiter kick in when the memory utilization get above defined `hard limit` and start refuse incoming data to avoid OOM situation.
+- `Fig. 3` shows the behaviour of memory limiter in case of high load and high memory utilization. Memory limiter kicks in when the memory utilization increases above the defined hard limit and starts refusing incoming data to avoid an OOM situation.
 
 ### Retry and Queuing Test
 
-This scenario tests an outage of the backend. In case of a backend outage data should be queued for max `300 seconds` and retried to export before data is dropped from queue.
+This scenario tests an outage of the backend. In case of a backend outage, data should be queued for a maximum of 300 seconds and retried to export before data is dropped from the queue.
 
 | ![Batch Queue](assets/queue_test_long.png) |
 | :--: |
 | Fig. 4 Batch queue |
 
-The `Fig. 4` shows the queue size is going up in time and going down approximately every 5 minutes. This is because queued data will be dropped when could not be exported successfully after 300 second (5 Minutes).
+`Fig. 4` shows the queue size is going up in time and going down approximately every 5 minutes. This is because queued data is dropped when it could not be exported successfully after 300 second (5 Minutes).
 
 | ![Failed Exports](assets/failed_send_spans_long.png) |
 | :--: |
 | Fig. 5 Failed exports |
 
-The `Fig. 5` show unsuccessful export attempts during test execution.
+`Fig. 5` shows unsuccessful export attempts during test execution.
 
 ### Test with CLS Backend
 
-The throughput test runs over one hour to measure average throughput of span ingestion. In the peak times, no span should be dropped or refused by the pipeline and overall resource consumption should stay moderate.
-The test uses a CLS instance without any configuration changes as backend. The test load generator is started with 2 concurrent producers, which produce on average `1550 spans/sec`.
+The throughput test runs over one hour to measure the average throughput of span ingestion. In the peak times, no span should be dropped or refused by the pipeline, and overall resource consumption should stay moderate.
+As backend, the test uses a CLS instance without any configuration changes. The test load generator is started with 2 concurrent producers, which produce on average 1550 spans/sec.
 
 | ![Accepted Spans](assets/accepted_spans_cls.png) |
 | :--: |
@@ -89,8 +89,8 @@ The test uses a CLS instance without any configuration changes as backend. The t
 | :--: |
 | Fig. 10 Memory Utilization |
 
-The CLS instance became approximately after 4 minutes unavailable, which can be observed from `Fig. 8`. After 4 minutes of load test, the queue size starts to grow because spans can't be successfully exported.
-In the `Fig. 6` we can observe `~375000` spans without any problem being ingested and exported to the CLS instance, which results in a peak value of `~1550 spans/sec`. From this time, spans will be queued and dropped after few unsuccessfully retries.
+The CLS instance became unavailable after approximately 4 minutes, which can be observed from `Fig. 8`. After 4 minutes of load test, the queue size starts to grow because spans can't be successfully exported.
+`Fig. 6` shows ~375000 spans are ingested without any problem and exported to the CLS instance, which results in a peak value of ~1550 spans/sec. From this time, spans are queued and dropped after few unsuccessful retries.
 
 ```bash
 2022-11-28T17:36:27.969Z info exporterhelper/queued_retry.go:427 Exporting failed. Will retry the request after interval. {"kind": "exporter", "data_type": "traces", "name": "otlp", "error": "rpc error: code = Unavailable desc = unexpected HTTP status code received from server: 503 (Service Unavailable); transport: received unexpected content-type \"text/html\"", "interval": "8.412634113s"}
@@ -109,8 +109,8 @@ go.opentelemetry.io/collector/exporter/exporterhelper/internal.(*boundedMemoryQu
 
 ### Throughput Test
 
-The throughput test ran over one hour to measure average throughput of span ingestion, in the peak times no span should be dropped or refused by the pipeline and overall resource consumption should stay moderate.
-As a backend, Kyma's integrated Jaeger instance is used. To avoid Jaeger getting a bottleneck in the end-to-end pipeline, the Jaeger instance is configured to use `1.5GiB` memory. The in-memory trace storage of Jaeger instance is reduced to the maximum of `500` traces.
+The throughput test ran over one hour to measure average throughput of span ingestion. In the peak times, no span should be dropped or refused by the pipeline, and overall resource consumption should stay moderate.
+As a backend, Kyma's integrated Jaeger instance is used. To avoid Jaeger becoming a bottleneck in the end-to-end pipeline, the Jaeger instance is configured to use 1.5GiB memory. The in-memory trace storage of Jaeger instance is reduced to the maximum of 500 traces.
 
 To disclose the impact of the backend on the KPIs, a second OpenTelemetry Collector is deployed and used as OTLP gRPC backend. The same test is repeated on this setup.
 The KPIs are the same as the setup with Jaeger backend.
@@ -131,10 +131,12 @@ The KPIs are the same as the setup with Jaeger backend.
 | :--: |
 | Fig. 14 Memory Utilization |
 
-The `Fig. 12` shows the amount of spans successfully ingested and the `Fig. 11` shown the amount of spans successfully exported to the configured backend. Both charts `Fig. 12` and `Fig. 11` show the same value of `~16000000` spans, which indicate that all ingested data successfully exported.
-This measurement result in an average of `4300` span per seconds.
+`Fig. 12` shows the amount of spans successfully ingested. 
+`Fig. 11` shows the amount of spans successfully exported to the configured backend.
+Both charts, `Fig. 12` and `Fig. 11`, show the same value of ~16000000 spans, which indicate that all ingested data has been successfully exported.
+This measurement results in an average of 4300 spans per seconds.
 
-The `Fig. 14` show the memory utilization of the OpenTelemetry Collector instance. The measured value stay around 90% of total available memory.
+`Fig. 14` shows the memory utilization of the OpenTelemetry Collector instance. The measured value stays around 90% of total available memory.
 `Fig. 13` shows the CPU utilization of OpenTelemetry Collector instance. The measurement shows that the available CPU shares are fully utilized.
 
 The OpenTelemetry Collector version used in this test has some limitations with the gRPC client. The used gRPC client has a default message size of 4194304 bytes, which prevents exporting bigger batch sizes to the backend. 
@@ -147,7 +149,7 @@ The OpenTelemetry Collector version used in this test has some limitations with 
 The purpose of this test is to understand the behavior of the trace pipeline gateway with multiple pipelines.
 
 ### Test Environment
-- Telemetry tracing gateway used the following config
+- Telemetry tracing gateway with the following config:
 ```yaml
 apiVersion: v1
 data:
