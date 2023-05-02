@@ -122,7 +122,7 @@ To simulate an outage, we configured the metric pipeline to send the metrics to 
 | `processor.memory_limiter.limit_percentage`       | 75    |
 | `processor.memory_limiter.spike_limit_percentage` | 10    |
 
-The following table shows the test results with some configuration.
+The following table shows the test results with some configuration:
 
 | Test # | Replicas | Request/s | Memory Max/Limit | CPU Max/Limit | Receiver Accepted/Refused | Processor Batch Size | Exporter Queue Size/Capacity |
 | ------ | -------- | --------- | ---------------- | ------------- | ------------------------- | -------------------- | ---------------------------- |

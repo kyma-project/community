@@ -40,7 +40,7 @@ The purpose of this test is observing collector behaviour under high load, resou
 | Fig. 2 Memory utilization |
 
 - `Fig. 1` shows that CPU utilization stays moderate during the whole test execution time.
-- `Fig. 2` shown memory consumption over 12 hours, the collector never run OOM situation.
+- `Fig. 2` shows memory consumption over 12 hours: The collector never runs in an OOM situation.
 
 | ![Refused Spans](assets/refused_spans_long.png) |
 | :--: |
@@ -131,13 +131,14 @@ The KPIs are the same as the setup with Jaeger backend.
 | :--: |
 | Fig. 14 Memory Utilization |
 
-`Fig. 12` shows the amount of spans successfully ingested. 
 `Fig. 11` shows the amount of spans successfully exported to the configured backend.
+`Fig. 12` shows the amount of spans successfully ingested. 
 Both charts, `Fig. 12` and `Fig. 11`, show the same value of ~16000000 spans, which indicate that all ingested data has been successfully exported.
 This measurement results in an average of 4300 spans per seconds.
 
-`Fig. 14` shows the memory utilization of the OpenTelemetry Collector instance. The measured value stays around 90% of total available memory.
 `Fig. 13` shows the CPU utilization of OpenTelemetry Collector instance. The measurement shows that the available CPU shares are fully utilized.
+`Fig. 14` shows the memory utilization of the OpenTelemetry Collector instance. The measured value stays around 90% of total available memory.
+
 
 The OpenTelemetry Collector version used in this test has some limitations with the gRPC client. The used gRPC client has a default message size of 4194304 bytes, which prevents exporting bigger batch sizes to the backend. 
 
@@ -288,15 +289,8 @@ metadata:
 ```
 - A Kyma cluster deployed with Kyma version 2.11.x
 - Custom Kyma OpenTelemetry Collector image based on version 0.74.0 
-- Backend [mock-trace-backend](https://github.tools.sap/huskies/knowledge-hub/tree/master/docs/observability/mock-trace-backend-poc), and two instances deployed for each configured pipeline on different Namespaces. Deployment used for both backend deployment
+- `mock-trace-backend` had two instances deployed for each configured pipeline in different namespaces.
 ```yaml
-apiVersion: v1
-kind: Namespace
-metadata:
-  creationTimestamp: null
-  name: trace-receiver
-spec: {}
----
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -394,7 +388,7 @@ spec:
     app: mock-trace-receiver
   type: LoadBalancer
 ```
-- Load generator used pipeline for tests
+- Load generator used to generate trace data for the tests
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
