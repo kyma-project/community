@@ -289,7 +289,7 @@ metadata:
 ```
 - A Kyma cluster deployed with Kyma version 2.11.x
 - Custom Kyma OpenTelemetry Collector image based on version 0.74.0 
-- `mock-trace-backend` had two instances deployed for each configured pipeline in different namespaces.
+- `mock-trace-backend` had two instances deployed for each configured pipeline in different Namespaces.
 ```yaml
 apiVersion: v1
 kind: ConfigMap
