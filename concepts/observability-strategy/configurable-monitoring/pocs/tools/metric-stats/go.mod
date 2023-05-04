@@ -1,3 +1,3 @@
-module github.tools.sap/huskies/knowledge-hub/tree/master/tests/otel-collector-perf-test/tools/metric-gen
+module github.com/kyma-project/community/concepts/observability-strategy/configurable-monitoring/pocs/tools/metric-stats
 
 go 1.20

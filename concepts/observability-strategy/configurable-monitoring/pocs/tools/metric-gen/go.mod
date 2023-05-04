@@ -1,8 +1,11 @@
-module github.tools.sap/huskies/knowledge-hub/tree/master/tests/otel-collector-perf-test/tools/metric-gen
+module github.com/kyma-project/community/concepts/observability-strategy/configurable-monitoring/pocs/tools/metric-gen
 
 go 1.20
 
-require github.com/open-telemetry/opentelemetry-collector-contrib/testbed v0.74.0
+require (
+	github.com/open-telemetry/opentelemetry-collector-contrib/testbed v0.74.0
+	go.opentelemetry.io/collector/pdata v1.0.0-rc8
+)
 
 require (
 	contrib.go.opencensus.io/exporter/prometheus v0.4.2 // indirect
@@ -83,7 +86,6 @@ require (
 	go.opentelemetry.io/collector/extension/ballastextension v0.74.0 // indirect
 	go.opentelemetry.io/collector/extension/zpagesextension v0.74.0 // indirect
 	go.opentelemetry.io/collector/featuregate v0.74.0 // indirect
-	go.opentelemetry.io/collector/pdata v1.0.0-rc8 // indirect
 	go.opentelemetry.io/collector/processor/batchprocessor v0.74.0 // indirect
 	go.opentelemetry.io/collector/processor/memorylimiterprocessor v0.74.0 // indirect
 	go.opentelemetry.io/collector/receiver v0.74.0 // indirect
