@@ -25,11 +25,19 @@ Use Kyma CLI to enable a module on your cluster in the release channel of your c
    kyma alpha enable module {MODULE_NAME} --channel {CHANNEL_NAME} --wait
    ```
 
+You should see the following message:
+
+```bash
+   - Successfully connected to cluster
+   - Modules patched!
+   ```
+
 Similarly, to disable a module, run: 
 
    ```bash
    kyma alpha disable module {MODULE_NAME}
    ``` 
+You should see the same message as the one displayed when you enable a module.
 
 </details>
 <details>
@@ -47,7 +55,7 @@ Follow these steps to enable a Kyma module in Kyma Dashboard:
 7. Click **Update** and then **Force update**.
 The operation was successful if the module Status changed to `READY`.
 
-To disable a module, edit your Kyma instance and click on the thrash icon next to your module.
+To disable a module, edit your Kyma instance and click on the trash icon next to your module, then force update the changes. Your module should disappear from the Module list.
 </details>
 </div>
 
