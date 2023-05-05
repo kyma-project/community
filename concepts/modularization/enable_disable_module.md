@@ -1,5 +1,5 @@
 ---
-title: How to enable and disable a Kyma module
+title: Enable and disable a Kyma module
 ---
 
 ## Overview
