@@ -28,7 +28,7 @@ The Kyma community collaborates through Special Interest Groups and Working Grou
 
 ## Social media
 
-We're on Twitter and LinkedIn. Stay tuned for the news and spread the good word about Kyma among your followers.
+We're on Twitter (@kymaproject) and LinkedIn (Kyma Project). Stay tuned for the news and spread the good word about Kyma among your followers.
 
 ## YouTube
 
