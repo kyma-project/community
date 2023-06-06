@@ -10,13 +10,17 @@ Still warm, as the June sun at noon, comes Kyma 2.15. The hot season has already
 
 ### Logging
 - Updated Fluent Bit to 2.1.2 (https://github.com/kyma-project/kyma/pull/17485).
-- Improved security setup of Fluent Bit (https://github.com/kyma-project/kyma/pull/17574)
+- Improved security setup of Fluent Bit (https://github.com/kyma-project/kyma/pull/17574).
 
 ## Security
-As a part of security hardening and following Kyma security team recommendations, ECDHE-RSA-AES256-SHA and ECDHE-RSA-AES128-SHA cipher suites used in the default Kyma gateway become deprecated starting from the 2.15 Kyma version. With Kyma version 2.18, the configurations will be removed and clients dependent on the cipher suites won’t be accepted.
+As a part of security hardening and following Kyma security team recommendations, `ECDHE-RSA-AES256-SHA` and `ECDHE-RSA-AES128-SHA` cipher suites used in the default Kyma gateway become deprecated starting from the 2.15 Kyma version. With Kyma version 2.18, the configurations will be removed and clients dependent on the cipher suites won’t be accepted.
 
 ## API Gateway
-This Kyma release brings unified timeout for workloads exposed with APIRules. The default timeout for HTTP requests is 180s and it’s defined on the Istio VirtualService level.
+### Default timeout for HTTP requests
+This Kyma release brings unified timeout for workloads exposed with APIRules. The default timeout for HTTP requests is now 180s and it’s defined on the Istio VirtualService level.
+
+### Ory Hydra Oauth2Client migration 
+The Ory stack has been deprecated since Kyma version 2.2. The recently published [blog post](https://blogs.sap.com/2023/06/06/sap-btp-kyma-runtime-ory-hydra-oauth2-client-migration/) explains how to migrate from the Ory Hydra client to the application created in SAP Cloud Identity Services. Start the migration process as soon as possible. 
 
 ## Serverless
 ### Simplified internal Docker registry setup
