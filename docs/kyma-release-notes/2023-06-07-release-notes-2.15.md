@@ -13,7 +13,7 @@ Still warm, as the June sun at noon, comes Kyma 2.15. The hot season has already
 - Improved security setup of Fluent Bit (https://github.com/kyma-project/kyma/pull/17574).
 
 ## Security
-As a part of security hardening and following Kyma security team recommendations, `ECDHE-RSA-AES256-SHA` and `ECDHE-RSA-AES128-SHA` cipher suites used in the default Kyma gateway become deprecated starting from the 2.15 Kyma version. With Kyma version 2.18, the configurations will be removed and clients dependent on the cipher suites won’t be accepted.
+With the 2.15 Kyma version, `ECDHE-RSA-AES256-SHA` and `ECDHE-RSA-AES128-SHA` cipher suites used in the default Kyma gateway become deprecated as part of security hardening and following Kyma security team recommendations. The configurations will be removed with Kyma version 2.18 and clients dependent on the cipher suites won’t be accepted.
 
 ## API Gateway
 ### Default timeout for HTTP requests
@@ -29,4 +29,4 @@ With Kyma 2.15 we simplified Serverless configuration for the internal Docker re
 With this change, we improve security as the internal Docker registry is no longer exposed outside of the Kubernetes cluster. Additionally, it makes Serverless fully independent from the Istio module in all installation modes.
 
 ### Deployment profiles removed
-In preparation for an independent installation model, we removed the predefined deployment profiles, namely evaluation, and production, for Serverless. We are shifting from profiled overrides used during module installation towards runtime-configurable resources.
+In preparation for an independent installation model, we removed the predefined deployment profiles, namely evaluation, and production for Serverless. We are shifting from profiled overrides used during module installation towards runtime-configurable resources.
