@@ -2,7 +2,7 @@ Still warm, as the June sun at noon, comes Kyma 2.15. The hot season has already
 
 ## Telemetry
 ### Manager
-- In [preparation for turning the telemetry component into a module](https://github.com/kyma-project/telemetry-manager/issues/150), resources got consolidated. As a result, you need to run a cleanup script when you upgrade to Kyma version 2.15. For more details, read the [2.14-2.15 Migration Guide](https://github.com/kyma-project/kyma/blob/main/docs/migration-guide-2.14-2.15.md).
+- In [preparation for turning the telemetry component into a module](https://github.com/kyma-project/telemetry-manager/issues/150), resources have been consolidated. As a result, you must run a cleanup script when you upgrade to Kyma version 2.15. For more details, read the [2.14-2.15 Migration Guide](https://github.com/kyma-project/kyma/blob/main/docs/migration-guide-2.14-2.15.md).
 - Handling of webhook certificates (https://github.com/kyma-project/kyma/issues/16626) has been improved.
 
 ### Tracing
