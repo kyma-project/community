@@ -1,8 +1,8 @@
-Still warm, as the June sun at noon, comes Kyma 2.15. The hot season has already started, so juicy improvements are here to refresh your experience with our product. Sip the strawberry-Telementry, watermelon-Security, raspberry-API Gateway, and peach-Serverless cool punch news as if you were on a Hawaiian beach. Read on to see what we prepared for you!
+Still warm, as the June sun at noon, comes Kyma 2.15. The hot season has already started, so juicy improvements are here to refresh your experience with our product. Sip the strawberry-Telemetry, watermelon-Security, raspberry-API Gateway, and peach-Serverless cool punch news as if you were on a Hawaiian beach. Read on to see what we prepared for you!
 
 ## Telemetry
 ### Manager
-- In [preparation for turning the telemetry component into a module](https://github.com/kyma-project/telemetry-manager/issues/150), resources have been consolidated. As a result, you must run a cleanup script when you upgrade to Kyma version 2.15. For more details, read the [2.14-2.15 Migration Guide](https://github.com/kyma-project/kyma/blob/main/docs/migration-guide-2.14-2.15.md).
+- In [preparation for turning the Telemetry component into a module](https://github.com/kyma-project/telemetry-manager/issues/150), resources have been consolidated. As a result, you must run a cleanup script when you upgrade to Kyma version 2.15. For more details, read the [2.14-2.15 Migration Guide](https://github.com/kyma-project/kyma/blob/main/docs/migration-guide-2.14-2.15.md).
 - Handling of webhook certificates (https://github.com/kyma-project/kyma/issues/16626) has been improved.
 
 ### Tracing
@@ -24,7 +24,7 @@ The Ory stack has been deprecated since Kyma version 2.2. The recently published
 
 ## Serverless
 ### Simplified internal Docker registry setup
-With Kyma 2.15 we simplified Serverless configuration for the internal Docker registry. From now on, the images for Function runtime Pods are pulled from the internal Docker registry via NodePort.
+With Kyma 2.15 we simplified Serverless configuration for the internal Docker registry. From now on, the images for Function runtime Pods are pulled from the internal Docker registry with NodePort.
 
 With this change, we improve security as the internal Docker registry is no longer exposed outside of the Kubernetes cluster. Additionally, it makes Serverless fully independent from the Istio module in all installation modes.
 
