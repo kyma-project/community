@@ -5,35 +5,30 @@
 - [Release flow](#release-flow)
 - [Component packaging and versioning](#component-packaging-and-versioning)
   - [Example module structure](#example-module-structure)
-- [Module manager](#module-manager)
 - [Component descriptor](#component-descriptor)
   - [OCM](#ocm)
   - [Operator bundle from Operator Lifecycle Manager (OLM)](#operator-bundle-from-operator-lifecycle-manager-olm)
   - [Own solution](#own-solution)
-- [Module submission process](#module-submission-process)
 - [Operator-based module management](#operator-based-module-management)
-  - [Central vs local operator](#central-vs-local-operator)
-  - [Regular (local) module operators](#regular-local-module-operators)
-  - [Central component operators](#central-component-operators)
+- [Central components](#central-components)
   - [Example module operators](#example-module-operators)
 - [FAQ](#faq)
   - [Do we still release Kyma? What is a Kyma release?](#do-we-still-release-kyma-what-is-a-kyma-release)
   - [Can I still use the `kyma deploy` command to install Kyma in my cluster?](#can-i-still-use-the-kyma-deploy-command-to-install-kyma-in-my-cluster)
   - [I have a simple component with a Helm chart. Why do I need an operator?](#i-have-a-simple-component-with-a-helm-chart-why-do-i-need-an-operator)
   - [I don't know how to write the operator. Can I use some generic operator for installing my chart?](#i-dont-know-how-to-write-the-operator-can-i-use-some-generic-operator-for-installing-my-chart)
-  - [Why should I provide a central operator / controller?](#why-should-i-provide-a-central-operator--controller)
   - [How to roll out a new module version in phases?](#how-to-roll-out-a-new-module-version-in-phases)
   - [How do we migrate all the modules to the new concept?](#how-do-we-migrate-all-the-modules-to-the-new-concept)
 
 
 
 # Motivation
-Kyma provides Kubernetes building blocks. It should be easy to pick only those that are needed for the job, and it should be easy to add new blocks to extend Kyma features. With the growing number of components, it is impossible to always install them all anymore. 
+Kyma provides Kubernetes building blocks. It should be easy to pick only those that are needed for the job, and it should be easy to add new blocks to extend Kyma features. 
 
-With the growing number of components, it is hard to deliver features and fixes quickly and efficiently. Changes in manifests require a new release of Kyma. Operators (reconcilers) are tightly coupled and must be released together. In most cases, new component releases don't involve any API changes and could be delivered in a few minutes. 
+With the growing number of components, it is hard to deliver features and fixes quickly and efficiently due to the long and resource-intensive installation process. Changes in manifests require a new release of Kyma. Operators (reconcilers) are tightly coupled and must be released together. In most cases, new component releases don't involve any API changes and could be delivered in a few minutes. 
 
 # Dependencies between components
-Components can depend only on core Kubernetes API or on API extensions introduced by other components. Component operators must check whether the required APIs are available and react properly to the missing dependencies by reducing functionality or even reporting errors. Component owners are responsible for integration tests with their dependencies (with all versions supported in official release channels).
+Components can depend only on core Kubernetes API or on API extensions introduced by other components. Component operators must check whether the required APIs are available and react properly to the missing dependencies by reducing functionality or even reporting errors. Component owners are responsible for integration tests with their dependencies (the test matrix with all versions supported in official release channels is recommended approach). Module providers should not test dependent modules (those that have a dependency on the provider). The API contract should be tested instead, and all the cases where contract violations were discovered by the dependent module should result in extending contract tests (regression test).
 
 **Example:**
 
@@ -47,9 +42,11 @@ If the API you need (like a core Kubernetes API or Istio virtual service) is not
 - error or success is not a final state (your dependencies can come and go) - reconcile, update status, bring it to the desired state eventually
 
 # Release channels
-Release channels let customers try new features early do discover potential issues related to upgrades before they affect their critical components. For that reason we introduce __fast__ channel that gets updated with new module versions as soon the version passes all quality gates (automated tests). The __regular__ channel gets that version usually few days later, unless some serious issue was discovered in the meantime. 
+Release channels let customers try new features early and discover potential issues related to upgrades, before they affect their critical components. For that reason, we introduce the __fast__ channel that gets updated with new module versions, as soon the version passes all quality gates (automated tests). The __regular__ channel gets that version usually a few days later unless some serious issue was discovered in the meantime. 
 
-Moving module versions between channels can be done with a simple pull request (bump version). Later on, it can be automated using a promotion strategy suitable for the particular version change (major/minor/patch defined by [semver.org](https://semver.org/)) or priority (regular/hot-fix), but it is not the highest priority for the first iteration.
+Release channels are relevant only to the Kyma Control Plane use case. Kyma Control Plane is a central component that can manage many (thousands) Kyma clusters. For that purpose, the [lifecycle-manager](https://github.com/kyma-project/lifecycle-manager) can apply selected versions of components to all clusters connected to the release channels automatically. To run a module in your standalone cluster (not managed by Kyma Control Plane) you should just directly apply the module operator manifest. See more details here: [New installation procedure for open source Kyma](https://github.com/kyma-project/community/issues/792)
+
+Only released versions of modules can be submitted to the release channel. The submission is realized as a pull request to the internal git repository. The PR contains a module template or all the information required to build the module template (Kubernetes manifest to deploy module operator, default custom resource with module configuration, and required metadata). Moving module versions between channels can be done with a simple pull request (bump version). Later on, it can be automated using a promotion strategy suitable for the particular version change (major/minor/patch defined by [semver.org](https://semver.org/)) or priority (regular/hot-fix), but it is not the highest priority for the first iteration.
 
 
 # Release flow
@@ -66,7 +63,7 @@ Introducing operators and release channels can look complex from Kyma Module Pro
     - create module template - and deploy it in the integration environment 
     - test with lifecycle-manager (integration flow: `kyma deploy` installs lifecycle-manager) - optional it is also tested in the second
   - merge the PR
-- PR to kyma-modules internal repository with module template (one file per channel) - this is new file or changed version in the existing module template. This step can be the last one in the pipeline before (continuous delivery option or explicit for manual releases)
+- PR to kyma-modules internal repository with module template (one file per channel) - this is a new file or changed version in the existing module template. This step can be the last one in the pipeline before (continuous delivery option or explicit for manual releases)
 - Submission pipeline executed on PR to kyma-modules - checking mainly syntax correctness no functional correctness, it is common for all modules
   - smoke tests for module template (we don't run any module specific tests here)
   - smoke upgrade test (upgrade from version currently available in the channel)
@@ -74,11 +71,11 @@ Introducing operators and release channels can look complex from Kyma Module Pro
 - After merge automation (argo CD) that pushes new channel versions to KCP dev/stage/prod environment
   
 # Component packaging and versioning
-Kyma ecosystem produces several artefacts that can be deployed in the central control plane (KEB + operators) and in the target Kubernetes cluster. Versioning strategy should address pushing changes for all these artefacts in an unambiguous way with full traceability. 
+Kyma ecosystem produces several artifacts that can be deployed in the central control plane (KEB + operators) and in the target Kubernetes cluster. Versioning strategy should address pushing changes for all these artifacts in an unambiguous way with full traceability. 
 
-For each component, we identified the following artefacts:
+For each component, we identified the following artifacts:
 - Operator CRD (contains mainly overrides that can be set by customer or SRE for component installation)
-- Operator deployment (YAML or Helm to deploy component operator)
+- Operator deployment (YAML to deploy component operator)
 - Operator image (Docker image in GCR)
 - Component CRDs ([installation/resources/crds](https://github.com/kyma-project/kyma/tree/main/installation/resources/crds))
 - Component deployment ([resources](https://github.com/kyma-project/kyma/tree/main/resources))
@@ -102,16 +99,12 @@ If we migrate the Eventing component to the proposed structure, it would look li
 New images of our own components (`eventing-controller`, `event-publisher-proxy`) would require changes in charts inside Eventing operator. Also, changes in `nats/jetstream` would require chart updates.
 
 
-# Module manager
-Some components do not need any custom operator to install or upgrade (for example, API Gateway, Logging, Monitoring) and use a base reconciler. With the operator approach, this task could be completed by a generic `module-manager`. Custom resource for the `module-manager` would contain information about chart location and overlay values. A single operator for multiple components can have some benefits in the in-cluster mode (better resource utilization), but would introduce challenges related to independent releases of charts and the `module-manager` itself. Therefore a recommendation is that **all components will always provide the operator**. The `module-manager` can be used as a template with a placeholder for your charts and default implementation (using the module-manager library).
-
 # Component descriptor
-## OCM
 
+## OCM
 [OCM/CNUDIE](https://github.com/gardener/component-spec) stands for Open Component Descriptor and is used by Gardener. OCM intends to solve the problem of addressing, identifying, and accessing artefacts for software components, relative to an arbitrary component repository. By that, it also enables the transport of software components between component repositories. 
 
 ## Operator bundle from Operator Lifecycle Manager (OLM)
-
 [Operator bundle](https://olm.operatorframework.io/docs/tasks/creating-operator-bundle/#operator-bundle) is a container image that stores Kubernetes manifests and metadata associated with an operator. A bundle is meant to represent a specific version of an operator on cluster.
 Operator bundle contains the ClusterServiceVersion resource that describes the operator version and installation descriptor:
 `https://olm.operatorframework.io/docs/tasks/creating-operator-manifests/#writing-your-operator-manifests`
@@ -126,36 +119,20 @@ We need the representation of the component in the control plane cluster. The id
 - deployment of the operator (Kubernetes manifests or Helm chart)
 
 
-# Module submission process
-When you submit a new module to Kyma as Kyma Module Provider, you must prepare a component descriptor with all related resources. 
-
-Module validation should be automated by governance jobs that check different aspects like:
-- operator CRD validation (for example, status format)
-- exposing metrics
-- proper logging format
-- ...
-
-Governance jobs should be owned by Kyma Module Providers (no shared responsibility).
-
-Apart from technical quality, Kyma modules must fulfill other standards, such as 24/7 support or documenting micro-deliveries.
-
 # Operator-based module management
 
-`lifecycle-manager` is a meta operator responsible for installing and updating module operators. It is similar to [Operator Lifecycle Manger](https://olm.operatorframework.io/), but it can work in two modes: 
-- central mode (managing thousands of clusters) 
-- single cluster mode (local installation)
+With Kyma 2.0, we moved the component installation (`kyma-installer`) from the cluster to a central place (reconciler). Each component was installed by the dedicated reconciler from the Kyma control plane. With the new approach, we get rid of some problems like managing helm releases (reconciler uses helm only for templating) and better control of the module lifecycle (smooth upgrades). But having one central operator introduced scalability and maintainability problems (e.g. noticeable latency to reconcile components).
 
-## Central vs local operator
+The modular Kyma takes the learnings from the past and introduces a scalable solution based on the operator pattern. We split the module components reconciliation from the lifecycle management:
+- Module providers can now focus on their domain and provide the operator (manager) that can be configured by a dedicated custom resource. The operator and its custom resource can be applied in any Kubernetes cluster (locally) and can work independently of Kyma Control Plane. This way modules are easier to test and develop.
+- The central lifecycle management is done by another operator (meta operator) -  [lifecycle-manager](https://github.com/kyma-project/lifecycle-manager). Lifecycle-manager runs in the Kyma Control Plane, monitors managed runtimes configurations (list of enabled modules and selected release channels) and takes care of installing and updating desired versions of module operators. As the deployment of the operator is not a complex task (operator deployments are simple and stateless: custom resource definition, deployment, service account, role, role binding) the probability of failure is low.
 
-With Kyma 2.0, we moved the component installation (`kyma-installer`) from the cluster to a central place (reconciler). Each component was installed by the dedicated reconciler from the Kyma control plane. For some components, it perfectly makes sense because they interact mainly with other central systems to enable some integrations. But for some components that interact only with internal cluster resources, such a setup is suboptimal. The local Kubernetes operator designed and implemented according to the best practices should have minimal resource requirements (few MB of memory and few mCPU). Therefore, for the cases where you don't need access to central services or external resources, it is better to use a regular operator than a central one. A regular operator is much easier to develop and maintain for the component team, because the operator lifecycle management is still handled centrally by `lifecycle-manager` (together with `module-manager`). 
+This way module providers can avoid the complexity of managing installation in many clusters and supporting multiple versions of components. But they have to produce for each new version of their module a new version of the operator. That new version must handle resources (configuration) created with the previous version properly. 
 
-## Regular (local) module operators
-Each Kyma component must provide the operator that manages the component lifecycle (installing, updating, configuring, deleting). The component provider (team) must prepare one custom resource (ComponentDescriptor) that specifies how to install the operator (`deployment.yaml`) and how to configure it (operator CRD, default values). 
-The complexity of managing installation in many clusters or using configured release channels is handled by `lifecycle-manager`. Component providers can ship regular Kubernetes operators. Such regular operators are installed in the target cluster where components should be installed. 
 
-## Central component operators
+# Central components
 
-Some modules can require additional actions executed in the central control plane to configure or connect modules to the central systems. In that case, additional operators (controllers) can be installed in the Kyma control plane. These controllers can watch Kyma resources in the control plane or even remote cluster resources (providing Watcher custom resource). `lifecycle-manager` does not install central controllers and does not watch their resources. 
+Some modules can require additional actions executed in the central control plane to configure or connect modules to the central systems. In that case, additional operators (controllers) can be installed in the Kyma control plane. These controllers can watch Kyma resources in the control plane or even remote cluster resources (providing Watcher custom resource). `lifecycle-manager` does not install central controllers and does not watch their resources and such central components are not considered as modules. 
 
 ## Example module operators
 In the following example, three modules are defined:
@@ -169,11 +146,11 @@ In the following example, three modules are defined:
 
 ## Do we still release Kyma? What is a Kyma release?
  
-Every Kyma release contains the `lifecycle-manager` in the given version and component descriptors for release channels. As we can continuously release components and upgrade their versions in the release channels, the Kyma release is not that important anymore, but it can be useful for the open source community.
+We will have Kyma releases only until the last component is modularized. After that we will stop Kyma releases and Kyma becomes just the umbrella project that contains an index of modules. Each module will have its list of versions (github releases) with release artifacts (Kubernetes manifest for deploying the module operator, and default configuration custom resource). Users can install directly selected module versions (or latest) in their own clusters. Users of managed Kyma will get new module versions from release channels (module version is visible for the end user).
 
 ## Can I still use the `kyma deploy` command to install Kyma in my cluster?
 
-Yes, but under the hood, `lifecycle-manager` will be used to install component operators. It is not decided yet whether Kyma CLI will install `lifecycle-manager` in the cluster or will contain `lifecycle-manager` code and run it locally.
+Kyma deploy command in its current shape will be deprecated as installing all the modules won't make sense. Similar command to install individual modules can be provided. See the proposal: https://github.com/kyma-project/community/issues/792
 
 ## I have a simple component with a Helm chart. Why do I need an operator?
 
@@ -183,14 +160,10 @@ With the operator, you can fully control your component lifecycle and ensure tha
 
 Yes. You can use [Operator SDK - Helm](https://sdk.operatorframework.io/docs/building-operators/helm/) to generate it from your charts. You can create a Helm-based operator in a few minutes. If you want more control over the operator logic, use [Operator SDK - Go](https://sdk.operatorframework.io/docs/building-operators/golang/) or [Kubebuilder](https://book.kubebuilder.io/)
 
-## Why should I provide a central operator / controller?
-
-You should go with the regular operator in most cases. Consider providing the central operator only if you mainly deal with resources outside of the Kyma cluster, or need access to external systems or resources with powerful credentials that cannot be stored in the Kyma cluster.
-
-
 ## How to roll out a new module version in phases?
 
-Use release channels to push the new version in the fast channel first. After some time, you can push that version to the regular channel. Release channels are flexible; and if you need to test the new version only on one cluster, you can create a new release channel and assign only one cluster to that channel. 
+You can develop and test your module operator independently of Kyma ecosystem. You don't even need a Kyma runtime cluster (use k3s for Kubernetes compliance tests). Ensure that the new version of your module operator can work with the configuration and components installed by the previous version. Consider applying the new version of the operator on real Kyma Runtime created from BTP cockpit. You can do it before you submit the new version to the release channel. Lifecycle-manager supports installation of module templates created directly in the managed cluster.
+When you are ready you can submit a new version to the fast channel and all the customers that use this channel will get it automatically. 
 
 ## How do we migrate all the modules to the new concept?
 
