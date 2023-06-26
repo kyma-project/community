@@ -1,5 +1,5 @@
 ## Telemetry
-- A bug got fixed which prevents a log explosion problem with fluenbit (https://github.com/kyma-project/kyma/issues/17611).
+We made the necessary changes to [prevent the log explosion problem with Fluen Bit](https://github.com/kyma-project/kyma/issues/17611).
 
 ## Service Mesh
 
