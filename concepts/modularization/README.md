@@ -102,7 +102,7 @@ New images of our own components (`eventing-controller`, `event-publisher-proxy`
 # Component descriptor
 
 ## OCM
-[OCM/CNUDIE](https://github.com/gardener/component-spec) stands for Open Component Descriptor and is used by Gardener. OCM intends to solve the problem of addressing, identifying, and accessing artefacts for software components, relative to an arbitrary component repository. By that, it also enables the transport of software components between component repositories. 
+[OCM](https://ocm.software) stands for Open Component Descriptor and is used by Gardener. OCM intends to solve the problem of addressing, identifying, and accessing artifacts for software components, relative to an arbitrary component repository. By that, it also enables the transport of software components between component repositories. 
 
 ## Operator bundle from Operator Lifecycle Manager (OLM)
 [Operator bundle](https://olm.operatorframework.io/docs/tasks/creating-operator-bundle/#operator-bundle) is a container image that stores Kubernetes manifests and metadata associated with an operator. A bundle is meant to represent a specific version of an operator on cluster.
