@@ -1,4 +1,5 @@
- 
+Listen up, my fellow travelers! Your schedules may already be jam-packed with exciting plans for this vacation season, but let us tell you about one more adventure that's too good to miss. Embark on a journey to enchanting Two Sixteen Island, nestled in the very heart of the Kyma archipelago. Once there, get ready to discover the latest and greatest versions of Istio, OTel-collector, Fluent Bit, and NATS server, along with multiple Telemetry enhancements. Read on to uncover the wonders of Kyma 2.16!
+
 ## Telemetry
 - We have moved the Loki LogPipeline out of the Logging component into the Telemetry module. Thus, it is installed if the Logging component is available, but the component does not fail if the Telemetry module is absent. For more information, see the [PR](https://github.com/kyma-project/kyma/issues/17549).
 - The following components have been updated:
@@ -9,16 +10,15 @@
 - To improve availability, we have added a second replica of `telemetry-trace-collector`.
 
 ## Service Mesh
-### Istio upgraded to 1.18.0
+### Istio upgraded to version 1.18.0
 With this release, we have upgraded Istio from version 1.17.3 to 1.18.0. To learn more about the new version, read the official [Istio 1.18.0 release notes](https://istio.io/latest/news/releases/1.18.x/announcing-1.18/upgrade-notes/). 
 
 ## API Gateway
-### APIRule v1alpha1end of life
-APIRule in version v1alpa1 has been deprecated since Kyma 2.5, and its end of life is planned for Kyma 2.19. Migrate your APIRules to v1beta1.
+### Removal of APIRule in version `v1alpha1`
+APIRule in version `v1alpa1` has been deprecated since Kyma 2.5, and its end of life is planned for Kyma 2.19. Migrate your APIRules to `v1beta1`.
 
 ## Eventing
 The NATS server has been updated to version 2.9.18.
-
 
 ## Serverless
 ### Deprecation of Node.js 16 Serverless runtime
