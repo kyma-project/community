@@ -1,6 +1,6 @@
  
 ## Telemetry
-- We have moved Loki LogPipeline of the logging component to the telemetry module so that it gets installed if the logging component is available, but the component will not fail in the absence of the telemetry module. For more information, see the [PR](https://github.com/kyma-project/kyma/issues/17549).
+- We have moved the Loki LogPipeline out of the Logging component into the Telemetry module. Thus, it is installed if the Logging component is available, but the component does not fail if the Telemetry module is absent. For more information, see the [PR](https://github.com/kyma-project/kyma/issues/17549).
 - The following components have been updated:
   - [OTel-collector to version 0.79.0](https://github.com/kyma-project/kyma/pull/17629)
   - [Fluent Bit to version 2.1.4](https://github.com/kyma-project/kyma/pull/17658)
