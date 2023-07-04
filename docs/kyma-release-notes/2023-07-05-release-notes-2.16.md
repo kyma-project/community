@@ -31,6 +31,6 @@ To learn how to update existing Functions, read the blog post [Changing the func
 ### Node.js 14 runtime removed
 Node.js 14 has reached the end of its life. Therefore, followed by the depreciation of Node.js 14 Serverless runtime, we decided to finally remove it from the list of the available Function runtimes.
 
-Your Node.js 14 Functions' workloads will continue to run, but you will not be able to edit them without changing the `runtime` field. Sooner or later, you must change the **spec** of your existing Node.js 14-based Functions and change the `runtime` field to either `nodejs16` or `nodejs18`.
+Your Node.js 14 Functions' workloads will continue to run, but you will not be able to edit them without changing the `runtime` field. Sooner or later, you must modify the specification of your existing Node.js 14-based Functions and change the **runtime** field to either `nodejs16` or `nodejs18`.
 
 For more information about the Node.js 14 deprecation, see the [Kyma 2.12 release notes](https://github.com/kyma-project/kyma/releases/tag/2.12.0).
