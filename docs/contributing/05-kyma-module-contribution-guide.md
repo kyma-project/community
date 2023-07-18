@@ -118,20 +118,6 @@ kubectl get kymas -Aw
 kubectl get dummies -Aw
 ```
 
-### Enable you module template on control-plane on DEV landscape.
-
-For the following  you need Kyma Developer CAM profile as you need access to the control plane kubernetes.
-
-Connect to the control plane kubernetes on DEV
-```
-gcloud container clusters get-credentials kyma-mps-dev --region europe-west1 --project sap-ti-dx-kyma-mps-dev
-```
-Apply module template 
-```
-kubeclt apply -f dummy-fast.yaml
-```
-
-From now on it is possible to enable your module at any kyma instance on DEV
 
 ### Submit Module Template to the fast release channel
 
