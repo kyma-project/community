@@ -2,9 +2,9 @@
 
 ## Context
 
-So far, the open-source project Kyma has been using https://kyma-project.io as its documentation webiste. The content has been pulled from the [`kyma` repository `/docs` folder](https://github.com/kyma-project/kyma/docs). The webiste's source is located in the [`website` repository](https://github.com/kyma-project/website/).
+So far, the open-source project Kyma has been using https://kyma-project.io as its documentation website. The content has been pulled from the [`kyma` repository `/docs` folder](https://github.com/kyma-project/kyma/docs). The website's source is located in the [`website` repository](https://github.com/kyma-project/website/).
 
-As the ownership and responsibility for the `/webiste` have got lost over time, the project has become hard to maintain. Also, the main focus of the UI Kyma develpment team is on developing and maintaining Kyma Dashboard and not the documentation portal. The team's size and capacity is limited so the choice of tooling needs to be adjusted to these conditions.
+As the ownership and responsibility for the `/website` have got lost over time, the project has become hard to maintain. Also, the main focus of the UI Kyma development team is on developing and maintaining Kyma Dashboard and not the documentation portal. The team's size and capacity are limited so the choice of tooling needs to be adjusted to these conditions.
 
 Additionally, [Kyma modularization](../modularization/) initiated changes to hosting all Kyma documentation in a central repository. The modular approach assumes that each module repository includes module documentation. As a result, the content needs to be pulled from different repositories which is not an easy [`website`] feature to implement.
 
@@ -14,11 +14,11 @@ The decision on the tooling choice may be influenced by the fact that the Kyma p
 
 To address the challenge, we should find and choose tooling to publish open-source Kyma documentation. Considering different options, take into account the following requirements:
 
-- user experience
+- user experience both for readers and contributors/writers
 - concise and user-friendly domain
 - intuitive linking
 - search feature
-- right-side navigation displaying the document's headers (to avoid a really, really long left-side navigation node)
+- right-side navigation displaying the document's headers (to avoid a long left-side navigation node)
 - analytics feature
 
 ### SAP Help Portal
@@ -33,9 +33,9 @@ Potential setup:
 
 #### Advantages:
 
-- The Help Portal provides the possibility of having different versions of documentation depending on the user type by ading flags and using different containers.
-- Having all Kyma documentation in Help Portal would enusre a unified user experince and only one entry point for Kyma users.
-- Becoming an author requires license and training which gives more control over the product documentation.
+- The Help Portal provides the possibility of having different versions of documentation depending on the user type by adding flags and using different containers.
+- Having all Kyma documentation in Help Portal would ensure a unified user experience and only one entry point for Kyma users.
+- Becoming an author requires a license and training which gives more control over the product documentation.
 - Analytics and search options enabled.
 - Unified UI and URL.
 - Intuitive navigation.
@@ -44,13 +44,13 @@ Potential setup:
 
 #### Disadvantages:
 
-- DITA CCMS is slow and requires relatively big effort to add and publish content.
+- DITA CCMS is slow and requires a relatively big effort to add and publish content.
 - DITA CCMS is not a developer-native tool and adding content together with code is not possible. Only UA developers can add content which increases Kyma technical writers' workload.
 - The review process requires using comments in the Help Portal or in a GitHub issue.
 - Publishing documentation is not instant but needs to be triggered manually and requires waiting at least one day for the build.
 - Links to external sources are not verified.
 - Search results pointing to various sections of the Help Portal.
-- The amount of documentation on various SAP products prevenst open-source users from easily finidng relevant pieces of information
+- The amount of documentation on various SAP products prevents open-source users from easily finding relevant pieces of information
 
 ### Docsify
 
@@ -58,15 +58,16 @@ Potential setup:
 
 #### Advantages:
 
-- Micro-webistes with generated content pulled from every single module repository
+- Micro-websites with generated content pulled from every single module repository
 - No build process - simplicity
-- Module repositories need to include only one additional file with a list of documents representing the order of the module documents displayed on the webiste.
-- UI settings maintaned in one central repository
+- Module repositories need to include only one additional file with a list of documents representing the order of the module documents displayed on the website.
+- UI settings maintained in one central repository
 - General Kyma documentation located in the central repository
 
 #### Disadvantages:
 
 - Long and relatively ugly URL
+- No links back to the central page
 
 ### GitHub Pages
 
@@ -76,7 +77,7 @@ Potential setup:
 
 #### Disadvantages:
 
-- UI settings maintated in an `index.html` file in every single module repository
+- UI settings are maintated in an `index.html` file in every single module repository
 
 ### Jekyll
 
