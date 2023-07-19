@@ -6,7 +6,7 @@ So far, the open-source project Kyma has been using https://kyma-project.io as i
 
 As the ownership and responsibility for the `/webiste` have got lost over time, the project has become hard to maintain. Also, the main focus of the UI Kyma develpment team is on developing and maintaining Kyma Dashboard and not the documentation portal. The team's size and capacity is limited so the choice of tooling needs to be adjusted to these conditions.
 
-Additionally, [Kyma modularization](../modularization/) initiated changes to hosting all Kyma documentation in a central repository. The modular approach assumes that each module repository includes module documentation. As a result the content needs to be pulled from different repositories which is not an easy [`webiste`] feature to implement.
+Additionally, [Kyma modularization](../modularization/) initiated changes to hosting all Kyma documentation in a central repository. The modular approach assumes that each module repository includes module documentation. As a result, the content needs to be pulled from different repositories which is not an easy [`website`] feature to implement.
 
 The decision on the tooling choice may be influenced by the fact that the Kyma project is also a foundation of SAP BTP, Kyma runtime which is a part of SAP Business Technology Platform (BTP). The SAP BTP, Kyma runtime documentation is hosted on the SAP [Help Portal](https://help.sap.com/docs/btp/sap-business-technology-platform/kyma-environment?version=Cloud).
 
@@ -35,8 +35,8 @@ Potential setup:
 
 - The Help Portal provides the possibility of having different versions of documentation depending on the user type by ading flags and using different containers.
 - Having all Kyma documentation in Help Portal would enusre a unified user experince and only one entry point for Kyma users.
-- Becoming an author requires license and training which gives more controle over the product documentation.
-- Analytics and serach options enabled.
+- Becoming an author requires license and training which gives more control over the product documentation.
+- Analytics and search options enabled.
 - Unified UI and URL.
 - Intuitive navigation.
 - Blog feature enabled.
