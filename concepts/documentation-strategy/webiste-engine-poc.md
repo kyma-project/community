@@ -2,7 +2,7 @@
 
 ## Context
 
-So far, the open-source project Kyma has been using https://kyma-project.io as its documentation webiste. The content has been pulled from the [`kyma` repository `/docs` folder](https://github.com/kyma-project/kyma/docs). The webiste's source is located in the [`webiste` repository](https://github.com/kyma-project/website/).
+So far, the open-source project Kyma has been using https://kyma-project.io as its documentation webiste. The content has been pulled from the [`kyma` repository `/docs` folder](https://github.com/kyma-project/kyma/docs). The webiste's source is located in the [`website` repository](https://github.com/kyma-project/website/).
 
 As the ownership and responsibility for the `/webiste` have got lost over time, the project has become hard to maintain. Also, the main focus of the UI Kyma develpment team is on developing and maintaining Kyma Dashboard and not the documentation portal. The team's size and capacity is limited so the choice of tooling needs to be adjusted to these conditions.
 
