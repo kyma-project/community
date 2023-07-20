@@ -33,9 +33,11 @@ Potential setup:
 
 #### Advantages:
 
-- The Help Portal provides the possibility of having different versions of documentation depending on the user type by adding flags and using different containers.
+- The Help Portal provides the possibility of having different versions of documentation depending on the user type by adding flags and using different containers and defining different projects and outputs.
 - Having all Kyma documentation in Help Portal would ensure a unified user experience and only one entry point for Kyma users.
+- DITA CCMS output could be re-used in other publishing channels, for exmaple, GitHub.
 - Becoming an author requires a license and training which gives more control over the product documentation.
+- We might be able have outputs that aren't part of the BTP Core deliverable, but instead maintained and published by a Kyma Doc Lead.
 - Analytics and search options enabled.
 - Unified UI and URL.
 - Intuitive navigation.
@@ -77,7 +79,8 @@ Potential setup:
 
 #### Disadvantages:
 
-- UI settings are maintated in an `index.html` file in every single module repository
+- UI settings are maintated in an `index.html` file in every single module repository.
+- Starting on August 1st, 2023, new GitHub Enterprise Licenses will need to be acquired through Ariba Guided Buying. In other words, a license won’t be automatically assigned anymore when you login to https://github.tools.sap/ for the first time. If you already are a GitHub Enterprise user (either https://github.tools.sap/ or https://github.wdf.sap.corp/) – nothing. Existing licenses won’t be affected. But new hires, employees returning from a long leave, very sporadic users, etc., will need to (re)acquire the license through Ariba Guided Buying to be able to access https://github.tools.sap/.
 
 ### Jekyll
 
@@ -91,6 +94,15 @@ https://github.com/jekyll/jekyll
 ### Hugo 
 
 https://github.com/gohugoio/hugo
+
+#### Advantages:
+
+
+#### Disadvantages:
+
+### VitePress
+
+https://vitepress.dev/guide/getting-started
 
 #### Advantages:
 
