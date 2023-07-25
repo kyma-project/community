@@ -4,11 +4,11 @@
 
 So far, the open-source project Kyma has been using https://kyma-project.io as its documentation website. The content has been pulled from the [`kyma` repository `/docs` folder](https://github.com/kyma-project/kyma/docs). The website's source is located in the [`website` repository](https://github.com/kyma-project/website/).
 
-As the ownership and responsibility for the `/website` have got lost over time, the project has become hard to maintain. Also, the main focus of the UI Kyma development team is on developing and maintaining Kyma Dashboard and not the documentation portal. The team's size and capacity are limited so the choice of tooling needs to be adjusted to these conditions.
+As the ownership and responsibility for the `/website` have got lost over time, the project has become hard to maintain. The source code is now outdates and relatively messy. Also, the main focus of the UI Kyma development team is on developing and maintaining Kyma Dashboard and not the documentation portal. The team's size and capacity are limited so the choice of tooling needs to be adjusted to these conditions.
 
 Additionally, [Kyma modularization](../modularization/) initiated changes to hosting all Kyma documentation in a central repository. The modular approach assumes that each module repository includes module documentation. As a result, the content needs to be pulled from different repositories which is not an easy [`website`] feature to implement.
 
-The decision on the tooling choice may be influenced by the fact that the Kyma project is also a foundation of SAP BTP, Kyma runtime which is a part of SAP Business Technology Platform (BTP). The SAP BTP, Kyma runtime documentation is hosted on the SAP [Help Portal](https://help.sap.com/docs/btp/sap-business-technology-platform/kyma-environment?version=Cloud).
+The decision on the tooling choice may be influenced by the fact that the Kyma project is also a foundation of SAP BTP, Kyma runtime which is a part of SAP Business Technology Platform (BTP). The SAP BTP, Kyma runtime is a servie and its documentation must be hosted on the SAP [Help Portal](https://help.sap.com/docs/btp/sap-business-technology-platform/kyma-environment?version=Cloud).
 
 ## Potential solutions
 
@@ -23,13 +23,7 @@ To address the challenge, we should find and choose tooling to publish open-sour
 
 ### SAP Help Portal
 
-The SAP BTP, Kyma runtime documentation is hosted on the SAP [Help Portal](https://help.sap.com/docs/btp/sap-business-technology-platform/kyma-environment?version=Cloud). One of the potential solutions is hosting open-source documentation using the same engine. Documentation on the Help Portal is created using the DITA CCMS.
-
-Potential setup:
-
-- open-source documentation generally available on the `Cloud Production` level ??
-- ??
-- internal documentation available on the `Internal draft` level ??
+The SAP BTP, Kyma runtime documentation is hosted on the SAP [Help Portal](https://help.sap.com/docs/btp/sap-business-technology-platform/kyma-environment?version=Cloud). One of the potential solutions is hosting open-source documentation using the same engine. Documentation on the Help Portal is created using the IXIASoft DITA CCMS.
 
 #### Advantages:
 
@@ -65,46 +59,21 @@ Potential setup:
 - Module repositories need to include only one additional file with a list of documents representing the order of the module documents displayed on the website.
 - UI settings maintained in one central repository
 - General Kyma documentation located in the central repository
+- Low maintenance effort
 
 #### Disadvantages:
 
 - Long and relatively ugly URL
 - No links back to the central page
+- Faulty search feature
 
-### GitHub Pages
-
-
-#### Advantages:
-
-
-#### Disadvantages:
-
-- UI settings are maintated in an `index.html` file in every single module repository.
-- Starting on August 1st, 2023, new GitHub Enterprise Licenses will need to be acquired through Ariba Guided Buying. In other words, a license won’t be automatically assigned anymore when you login to https://github.tools.sap/ for the first time. If you already are a GitHub Enterprise user (either https://github.tools.sap/ or https://github.wdf.sap.corp/) – nothing. Existing licenses won’t be affected. But new hires, employees returning from a long leave, very sporadic users, etc., will need to (re)acquire the license through Ariba Guided Buying to be able to access https://github.tools.sap/.
-
-### Jekyll
-
-https://github.com/jekyll/jekyll
+### GitHub Pages, Jekyll, Hugo, VitePress
 
 #### Advantages:
 
+- nice UI and user experience
 
 #### Disadvantages:
 
-### Hugo 
-
-https://github.com/gohugoio/hugo
-
-#### Advantages:
-
-
-#### Disadvantages:
-
-### VitePress
-
-https://vitepress.dev/guide/getting-started
-
-#### Advantages:
-
-
-#### Disadvantages:
+- UI settings are maintated in an `index.html` file in every single module repository
+- build pipeline
