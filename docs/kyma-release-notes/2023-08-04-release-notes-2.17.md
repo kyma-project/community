@@ -1,4 +1,4 @@
-[Hooray! Hooray! It’s a Kyma release day!](https://www.youtube.com/watch?v=ModISbNyQ8I&t=36s) If you’re on your vacation, enjoying your leisure time, cold drinks, and sunny water, you should ask yourself a few very important questions. Am I familiar with the latest 2.17 version of Kyma? What changes does it bring for Observability and Telemetry? Is the Istio component upgraded? Read on to find answers to all those burning questions!
+[Hooray! Hooray! It’s a Kyma release day!](https://www.youtube.com/watch?v=ModISbNyQ8I&t=36s) If you’re on your vacation, enjoying your leisure time, cold drinks, and sunny weather, you should ask yourself a few very important questions. Am I familiar with the latest 2.17 version of Kyma? What changes does it bring for Observability and Telemetry? Is the Istio component upgraded? Read on to find answers to all those burning questions!
 
 ## Observability
 
