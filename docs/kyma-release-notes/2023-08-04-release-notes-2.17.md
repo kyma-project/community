@@ -14,7 +14,7 @@ The [Logging component](https://github.com/kyma-project/kyma/issues/15827), incl
 
 ## Telemetry
 The Telemetry stack has been upgraded:
-- [Otel-collector to version 0.81.0](https://github.com/kyma-project/kyma/pull/17807)
+- [OTel Collector to version 0.81.0](https://github.com/kyma-project/kyma/pull/17807)
 - [Fluent Bit to version 2.1.7](https://github.com/kyma-project/kyma/pull/17878)
 
 We have implemented bug fixes for: 
@@ -25,7 +25,7 @@ We have implemented bug fixes for:
 We have fixed a bug where the Istio sidecars tried to send spans to an unknown cluster-local address, causing [unneeded stress on CodeDNS](https://github.com/kyma-project/kyma/pull/17811).
 
 ### Istio upgraded to 1.18.2
-In this release, we have upgraded Istio from 1.18.1 to 1.18.2. For more details on the changes, read the official [Istio 1.18.2 release notes](https://istio.io/latest/news/releases/1.18.x/announcing-1.18/upgrade-notes/).
+In this release, we have upgraded Istio from 1.18.1 to 1.18.2. For more details on the changes, read the official [Istio 1.18.2 release notes](https://istio.io/latest/news/releases/1.18.x/announcing-1.18.2/).
 
 ## API Gateway
 The Ory Hydra component has been deprecated since Kyma 2.2 and is planned to be removed with Kyma 2.19. Follow the procedure outlined in this [blog post](https://blogs.sap.com/2023/06/06/sap-btp-kyma-runtime-ory-hydra-oauth2-client-migration/) to migrate from ORY Hydra to other providers. For more information on the ongoing changes, read about [SAP BTP, Kyma Runtime API Gateway future architecture based on Istio](https://blogs.sap.com/2023/02/10/sap-btp-kyma-runtime-api-gateway-future-architecture-based-on-istio/).
