@@ -10,7 +10,7 @@
   - Prometheus-operator to version 0.66.0
 
 ### Removal of the Logging component
-The [Logging component](https://github.com/kyma-project/kyma/issues/15827), including the in-cluster Loki stack, has been removed, as announced in detail in this [blog post](https://blogs.sap.com/2023/06/02/removal-of-loki-based-application-logs-in-sap-btp-kyma-runtime/). Follow the [cleanup instructions](https://github.com/kyma-project/kyma/blob/main/docs/migration-guide-2.16-2.17.md) because updates to the component will no longer be shipped.
+The [Logging component](https://github.com/kyma-project/kyma/issues/15827), including the in-cluster Loki stack, has been removed, as announced in detail in this [blog post](https://blogs.sap.com/2023/06/02/removal-of-loki-based-application-logs-in-sap-btp-kyma-runtime/). Follow the [cleanup instructions](https://github.com/kyma-project/kyma/blob/release-2.17/docs/migration-guide-2.16-2.17.md) because updates to the component will no longer be shipped.
 
 ## Telemetry
 The Telemetry stack has been upgraded:
