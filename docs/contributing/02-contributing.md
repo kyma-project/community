@@ -14,21 +14,12 @@ Read about [template types](../guidelines/templates/templates-type.md) used in s
 
 Extend the list whenever you define a new template for other document types. Make sure to update one of the tables in the [**Document types templates**](../guidelines/templates/templates-type.md) document after you add new templates to the `templates/resources` subfolder.
 
-## Agreements and licenses
+## Developer Certificate of Origin (DCO)
 
-Read the subsections to learn the details of the agreements to submit and licences to comply with as a Kyma contributor.
+Due to legal reasons, contributors will be asked to accept a DCO before they submit the first pull request to this project. SAP uses the [standard DCO text of the Linux Foundation](https://developercertificate.org/).  
+This happens in an automated fashion during the submission process: the CLA assistant tool will add a comment to the pull request. Click it to check the DCO, then accept it on the following screen. CLA assistant will save this decision for upcoming contributions.
 
-### Individual contributor license agreement
-
-As a Kyma contributor, you must accept the Kyma project's licenses and submit the
-[Individual Contributor License Agreement](https://gist.github.com/CLAassistant/bd1ea8ec8aa0357414e8) before you contribute code or content to any Kyma repository. Kyma maintainers will not accept contributions made without such consent. This applies to all contributors, including those contributing on behalf of a company. If you agree to the content of the Agreement, click the link posted by the CLA assistant as a comment to the pull request (PR). The CLA assistant saves your decision for future contributions and notifies you if there is any change to the CLA in the meantime.
-
-### Corporate contributor license agreement
-
-Employees of a company who contribute code need to submit one company agreement in addition to the individual agreement above. This is mainly for the protection of the contributing employees.
-
-An authorized company representative needs to download, fill in, and print
-the [Corporate Contributor License Agreement](./assets/SAP%20Corporate%20Contributor%20License%20Agreement%20(5-26-15).pdf) form. Scan it and send it to [info@kyma-project.io](mailto:info@kyma-project.io). The form contains a list of employees who are authorized to contribute on behalf of your company. To report any changes on the list, contact [info@kyma-project.io](mailto:info@kyma-project.io).
+This DCO replaces the previously used CLA ("Contributor License Agreement") as well as the "Corporate Contributor License Agreement" with new terms which are well-known standards and hence easier to approve by legal departments. Contributors who had already accepted the CLA in the past may be asked once to accept the new DCO.
 
 ## Contribution rules
 
@@ -63,18 +54,16 @@ To contribute code or content to a given Kyma repository, follow these steps:
 7. Read and accept the Contributor Licence Agreement (CLA).
 8. If there are merge conflicts on your PR, squash your commits and rebase the `main` branch.
 9. In your PR:
-- Provide a reference to any related GitHub issue.
-- Make sure that the [**Allow edits from maintainers**](https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) option is selected to allow upstream repository maintainers, and those with the push access to the upstream repository, to commit to your forked branch.
-- Choose at least one `area/{capability}` label from the available list and add it to your PR to categorize changes you made. Labels are required to include your PR in the `CHANGELOG.md` file and classify it accordingly.
+   * Provide a reference to any related GitHub issue.
+   * Make sure that the [**Allow edits from maintainers**](https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) option is selected to allow upstream repository maintainers, and those with the push access to the upstream repository, to commit to your forked branch.
+   * Choose at least one `area/{capability}` label from the available list and add it to your PR to categorize changes you made. Labels are required to include your PR in the `CHANGELOG.md` file and classify it accordingly.
 10. After you create a PR, relevant CI tests need to complete successfully.
-- If you are a Kyma organization member, all related CI tests run automatically after you create a PR. If a test fails, check the reason by clicking the **Details** button next to the given job on your PR. Make the required changes and the tests rerun. If you want to run a specific test, add the `/test {test-name}` or `/retest {test-name}` comment to your PR. To rerun all failed tests, add the `/retest` comment.
-- If you are an external contributor, contact the repository maintainers specified in the [`CODEOWNERS`](https://github.com/kyma-project/community/blob/main/CODEOWNERS) file to review your PR and add the `/test all` comment to your PR to trigger all tests. A Kyma organization member needs to rerun the tests manually each time you commit new changes to the PR.
-11. As a PR owner, you are responsible for ensuring the success of the submission process, including pre- and postsubmit Prow jobs. You can ask for more help from the Prow jobs owner only after the initial analysis.
+    * If you are a Kyma organization member, all related CI tests run automatically after you create a PR. If a test fails, check the reason by clicking the **Details** button next to the given job on your PR. Make the required changes and the tests rerun. If you want to run a specific test, add the `/test {test-name}` or `/retest {test-name}` comment to your PR. To rerun all failed tests, add the `/retest` comment.
+    * If you are an external contributor, contact the repository maintainers specified in the [`CODEOWNERS`](https://github.com/kyma-project/community/blob/main/CODEOWNERS) file to review your PR and add the `/test all` comment to your PR to trigger all tests. A Kyma organization member needs to rerun the tests manually each time you commit new changes to the PR.
+11. As a PR owner, you are responsible for ensuring the success of the submission process, including pre- and postsubmit Prow jobs.  You can ask for more help from the Prow jobs owner only after the initial analysis.
     > **NOTE:** For more information on code owners' responsibilities, see the [Kyma working model](../governance/01-governance.md) document.
-
 12. Wait for the Kyma maintainers to review and approve your PR. The maintainers can approve it, request enhancements to your change, or reject it.  
     > **NOTE:** The reviewer must check if all related CI tests have completed successfully before approving the PR.
-
 13. When the maintainers approve your change, merge the PR or wait until the Kyma Bot merges it for you.
 
 ### Report an issue
