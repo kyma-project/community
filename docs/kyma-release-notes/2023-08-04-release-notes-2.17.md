@@ -5,7 +5,7 @@
 ### Monitoring
 - We have introduced new [production profile settings](https://github.com/kyma-project/kyma/pull/17652). 
 - We have updated the [dashboard/datasource reloader](https://github.com/kyma-project/kyma/pull/17812). The logs to `stdout` are now reduced to a minimum.
-- We have updated the [Monitoring stack]((https://github.com/kyma-project/kyma/pull/17877)):
+- We have updated the [Monitoring stack](https://github.com/kyma-project/kyma/pull/17877):
   - Prometheus to version 2.45.0 LTS
   - Prometheus-operator to version 0.66.0
 
