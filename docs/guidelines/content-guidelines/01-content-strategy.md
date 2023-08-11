@@ -4,7 +4,7 @@ title: Content Strategy
 
 ## Purpose and audience
 
-This content strategy focuses on the publicly available documentation for the open-source [Kyma project](https://kyma-project.io/docs/). The source of the documentation displayed on the website is stored in [GitHub](https://github.com/kyma-project/kyma) and it's written in [Markdown](https://daringfireball.net/projects/markdown/).
+This content strategy focuses on the publicly available documentation for the open-source [Kyma project](https://kyma-project.io). The source of the documentation displayed on the website is stored in [GitHub](https://github.com/kyma-project/kyma) and it's written in [Markdown](https://daringfireball.net/projects/markdown/).
 
 The assumed readers of this guide and contributors to the documentation have some basic knowledge of technical writing.
 

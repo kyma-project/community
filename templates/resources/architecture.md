@@ -7,11 +7,11 @@ title: Architecture
 * For the filename, follow the `{COMPONENT/AREA}-{NUMBER}-{TITLE}.md` convention.
 * For the title metadata, follow the `{Component name} architecture` convention.
 
-For reference, see the existing [**Architecture** documents](https://kyma-project.io/docs/05-technical-reference/03-architecture).-->
+For reference, see the existing [**Architecture** documents](https://kyma-project.io/#/05-technical-reference/00-architecture/README).-->
 
 ## Architecture diagram
 
-<!--  Provide a [diagram](https://kyma-project.io/community/guidelines/content-guidelines/02-diagrams/) which illustrates the workflow of a given component. The diagram is a **mandatory** element of this document. -->
+<!--  Provide a [diagram](https://github.com/kyma-project/community/blob/main/docs/guidelines/content-guidelines/09-diagrams.md) which illustrates the workflow of a given component. The diagram is a **mandatory** element of this document. -->
 
 ## {Architecture/workflow description}
 

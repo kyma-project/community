@@ -8,7 +8,7 @@ That is possible thanks to the **preview feature** supported by [Netlify](https:
 
 This feature is enabled on these Kyma repositories:
 
-- [`kyma`](https://github.com/kyma-project/kyma) for changes in the `/docs` folder that contains sources of the official Kyma documentation rendered in the [**Docs**](https://kyma-project.io/docs/) view.
+- [`kyma`](https://github.com/kyma-project/kyma) for changes in the `/docs` folder that contains sources of the official Kyma documentation rendered in [kyma-project.io](https://kyma-project.io).
 
 - [`community`](https://github.com/kyma-project/community) for changes rendered in the [**Community**](https://kyma-project.io/community/) view.
 
