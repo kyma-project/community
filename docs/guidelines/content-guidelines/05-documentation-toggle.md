@@ -103,7 +103,7 @@ This section contains exemplary uses of the toggle in Markdown documents.
 
   The default installation flow uses a Kyma release.
   All components available in a given release are listed in the  `kyma-installer-cluster.yaml`, which is one of the release artifacts.
-  Any required overrides are described in the [cluster installation guide](https://kyma-project.io/docs/kyma/latest/04-operation-guides/operations/02-install-kyma/).
+  Any required overrides are described in the [cluster installation guide](https://kyma-project.io/#/04-operation-guides/operations/02-install-kyma).
   Other settings are defined directly in the configuration of the components released with the given Kyma version.
   </details>
 </div>
@@ -125,7 +125,7 @@ The code renders on `kyma-project.io` as follows:
       From release
       </summary>
 
-      When you install Kyma locally from a release, follow the [guide](https://kyma-project.io/docs/kyma/latest/04-operation-guides/operations/02-install-kyma/).
+      When you install Kyma locally from a release, follow the [guide](https://kyma-project.io/#/04-operation-guides/operations/02-install-kyma).
       Ensure that you created the local Kubernetes cluster with `10240Mb` memory and `30Gb` disk size.
 
       ```bash

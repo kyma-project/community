@@ -6,7 +6,7 @@ title: {CRD kind}
 
 For the filename, follow the `{COMPONENT/AREA}-{NUMBER}-{TITLE}.md` convention.
 
-For reference, see the existing [CR documents](https://kyma-project.io/docs/kyma/latest/05-technical-reference/00-custom-resources).-->
+For reference, see the existing [CR documents](https://kyma-project.io/#/05-technical-reference/00-custom-resources/README).-->
 
 The `{CRD name}` CustomResourceDefinition (CRD) is a detailed description of the kind of data and the format used to {provide the CRD description}. To get the up-to-date CRD and show the output in the `yaml` format, run this command:
 
