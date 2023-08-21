@@ -1,3 +1,5 @@
+[![REUSE status](https://api.reuse.software/badge/github.com/kyma-project/community)](https://api.reuse.software/info/github.com/kyma-project/community)
+
 # Kyma Community
 
 Welcome to the Kyma community page!
