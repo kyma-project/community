@@ -1,0 +1,261 @@
+{
+    "date": "2023-08-15T13:01:02Z",
+    "repo": {
+        "name": "github.com/suzuki-shunsuke/github-comment",
+        "commit": "522b9cd4d4430d10e13d0a0a088e0670baf6c0fc"
+    },
+    "scorecard": {
+        "version": "v4.12.0",
+        "commit": "7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39"
+    },
+    "score": 7.0,
+    "checks": [
+        {
+            "details": null,
+            "score": 10,
+            "reason": "no binaries found in the repo",
+            "name": "Binary-Artifacts",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#binary-artifacts",
+                "short": "Determines if the project has generated executable (binary) artifacts in the source repository."
+            }
+        },
+        {
+            "details": [
+                "Info: 'force pushes' disabled on branch 'main'",
+                "Info: 'allow deletion' disabled on branch 'main'",
+                "Info: status check found to merge onto on branch 'main'",
+                "Warn: number of required reviewers is only 0 on branch 'main'",
+                "Warn: codeowner review is not required on branch 'main'"
+            ],
+            "score": 3,
+            "reason": "branch protection is not maximal on development and all release branches",
+            "name": "Branch-Protection",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#branch-protection",
+                "short": "Determines if the default and release branches are protected with GitHub's branch protection settings."
+            }
+        },
+        {
+            "details": null,
+            "score": 10,
+            "reason": "30 out of 30 merged PRs checked by a CI test -- score normalized to 10",
+            "name": "CI-Tests",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#ci-tests",
+                "short": "Determines if the project runs tests before pull requests are merged."
+            }
+        },
+        {
+            "details": null,
+            "score": 0,
+            "reason": "no effort to earn an OpenSSF best practices badge detected",
+            "name": "CII-Best-Practices",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#cii-best-practices",
+                "short": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge."
+            }
+        },
+        {
+            "details": null,
+            "score": 2,
+            "reason": "found 3 unreviewed changesets out of 4 -- score normalized to 2",
+            "name": "Code-Review",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#code-review",
+                "short": "Determines if the project requires human code review before pull requests (aka merge requests) are merged."
+            }
+        },
+        {
+            "details": [
+                "Info: contributors work for aquaproj,gha-trigger,mend,mercari,terraform-provider-graylog,tfmigrator"
+            ],
+            "score": 10,
+            "reason": "6 different organizations found -- score normalized to 10",
+            "name": "Contributors",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#contributors",
+                "short": "Determines if the project has a set of contributors from multiple organizations (e.g., companies)."
+            }
+        },
+        {
+            "details": null,
+            "score": 10,
+            "reason": "no dangerous workflow patterns detected",
+            "name": "Dangerous-Workflow",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#dangerous-workflow",
+                "short": "Determines if the project's GitHub Action workflows avoid dangerous patterns."
+            }
+        },
+        {
+            "details": [
+                "Info: tool 'RenovateBot' is used: renovate.json5:1",
+                "Warn: tool 'Dependabot' is not used: Follow the instructions from https://docs.github.com/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates. (Low effort)",
+                "Warn: tool 'PyUp' is not used: Follow the instructions from https://docs.pyup.io/docs. (Low effort)",
+                "Warn: tool 'Sonatype Lift' is not used: Follow the instructions from https://help.sonatype.com/lift/getting-started. (Low effort)"
+            ],
+            "score": 10,
+            "reason": "update tool detected",
+            "name": "Dependency-Update-Tool",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#dependency-update-tool",
+                "short": "Determines if the project uses a dependency update tool."
+            }
+        },
+        {
+            "details": null,
+            "score": 0,
+            "reason": "project is not fuzzed",
+            "name": "Fuzzing",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#fuzzing",
+                "short": "Determines if the project uses fuzzing."
+            }
+        },
+        {
+            "details": [
+                "Info: License file found in expected location: LICENSE:1",
+                "Info: FSF or OSI recognized license: LICENSE:1"
+            ],
+            "score": 10,
+            "reason": "license file detected",
+            "name": "License",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#license",
+                "short": "Determines if the project has defined a license."
+            }
+        },
+        {
+            "details": null,
+            "score": 10,
+            "reason": "30 commit(s) out of 30 and 0 issue activity out of 30 found in the last 90 days -- score normalized to 10",
+            "name": "Maintained",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#maintained",
+                "short": "Determines if the project is \"actively maintained\"."
+            }
+        },
+        {
+            "details": [
+                "Warn: no GitHub/GitLab publishing workflow detected"
+            ],
+            "score": -1,
+            "reason": "no published package detected",
+            "name": "Packaging",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#packaging",
+                "short": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall."
+            }
+        },
+        {
+            "details": [
+                "Info: GitHub-owned GitHubActions are pinned",
+                "Info: Third-party GitHubActions are pinned",
+                "Info: Dockerfile dependencies are pinned",
+                "Info: no insecure (not pinned by hash) dependency downloads found in Dockerfiles",
+                "Info: no insecure (not pinned by hash) dependency downloads found in shell scripts",
+                "Info: Pip installs are pinned",
+                "Info: npm installs are pinned"
+            ],
+            "score": 10,
+            "reason": "all dependencies are pinned",
+            "name": "Pinned-Dependencies",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#pinned-dependencies",
+                "short": "Determines if the project has declared and pinned the dependencies of its build process."
+            }
+        },
+        {
+            "details": [
+                "Warn: 0 commits out of 30 are checked with a SAST tool",
+                "Warn: CodeQL tool not detected"
+            ],
+            "score": 0,
+            "reason": "SAST tool is not run on all commits -- score normalized to 0",
+            "name": "SAST",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#sast",
+                "short": "Determines if the project uses static code analysis."
+            }
+        },
+        {
+            "details": [
+                "Warn: no security policy file detected: On GitHub:\nEnable private vulnerability disclosure in your repository settings https://docs.github.com/en/code-security/security-advisories/repository-security-advisories/configuring-private-vulnerability-reporting-for-a-repository\nAdd a section in your SECURITY.md indicating you have enabled private reporting, and tell them to follow the steps in https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability to report vulnerabilities.\nOn GitLab:\nAdd a section in your SECURITY.md indicating the process to disclose vulnerabilities for your project.\nExamples: https://github.com/ossf/scorecard/blob/main/SECURITY.md, https://github.com/slsa-framework/slsa-github-generator/blob/main/SECURITY.md, https://github.com/sigstore/.github/blob/main/SECURITY.md.\nFor additional information on vulnerability disclosure, see https://github.com/ossf/oss-vulnerability-guide/blob/main/maintainer-guide.md. (Medium effort)",
+                "Warn: no security file to analyze: On GitHub:\nEnable private vulnerability disclosure in your repository settings https://docs.github.com/en/code-security/security-advisories/repository-security-advisories/configuring-private-vulnerability-reporting-for-a-repository\nAdd a section in your SECURITY.md indicating you have enabled private reporting, and tell them to follow the steps in https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability to report vulnerabilities.\nOn GitLab:\nProvide a point of contact in your SECURITY.md.\nExamples: https://github.com/ossf/scorecard/blob/main/SECURITY.md, https://github.com/slsa-framework/slsa-github-generator/blob/main/SECURITY.md, https://github.com/sigstore/.github/blob/main/SECURITY.md. (Low effort)",
+                "Warn: no security file to analyze: On GitHub:\nEnable private vulnerability disclosure in your repository settings https://docs.github.com/en/code-security/security-advisories/repository-security-advisories/configuring-private-vulnerability-reporting-for-a-repository\nAdd a section in your SECURITY.md indicating you have enabled private reporting, and tell them to follow the steps in https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability to report vulnerabilities.\nOn GitLab:\nAdd a section in your SECURITY.md indicating the process to disclose vulnerabilities for your project.\nExamples: https://github.com/ossf/scorecard/blob/main/SECURITY.md, https://github.com/slsa-framework/slsa-github-generator/blob/main/SECURITY.md, https://github.com/sigstore/.github/blob/main/SECURITY.md. (Low effort)",
+                "Warn: no security file to analyze: On GitHub:\nEnable private vulnerability disclosure in your repository settings https://docs.github.com/en/code-security/security-advisories/repository-security-advisories/configuring-private-vulnerability-reporting-for-a-repository\nAdd a section in your SECURITY.md indicating you have enabled private reporting, and tell them to follow the steps in https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability to report vulnerabilities.\nOn GitLab:\nAdd a section in your SECURITY.md indicating the process to disclose vulnerabilities for your project.\nExamples: https://github.com/ossf/scorecard/blob/main/SECURITY.md, https://github.com/slsa-framework/slsa-github-generator/blob/main/SECURITY.md, https://github.com/sigstore/.github/blob/main/SECURITY.md. (Low effort)"
+            ],
+            "score": 0,
+            "reason": "security policy file not detected",
+            "name": "Security-Policy",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#security-policy",
+                "short": "Determines if the project has published a security policy."
+            }
+        },
+        {
+            "details": [
+                "Info: provenance for release artifact: multiple.intoto.jsonl: https://api.github.com/repos/suzuki-shunsuke/github-comment/releases/assets/118900793",
+                "Info: provenance for release artifact: multiple.intoto.jsonl: https://api.github.com/repos/suzuki-shunsuke/github-comment/releases/assets/104750378",
+                "Info: provenance for release artifact: multiple.intoto.jsonl: https://api.github.com/repos/suzuki-shunsuke/github-comment/releases/assets/104750113",
+                "Info: provenance for release artifact: multiple.intoto.jsonl: https://api.github.com/repos/suzuki-shunsuke/github-comment/releases/assets/104360835",
+                "Info: provenance for release artifact: multiple.intoto.jsonl: https://api.github.com/repos/suzuki-shunsuke/github-comment/releases/assets/104162746",
+                "Info: provenance for release artifact: multiple.intoto.jsonl: https://api.github.com/repos/suzuki-shunsuke/github-comment/releases/assets/104142626",
+                "Info: provenance for release artifact: multiple.intoto.jsonl: https://api.github.com/repos/suzuki-shunsuke/github-comment/releases/assets/103316228",
+                "Info: provenance for release artifact: multiple.intoto.jsonl: https://api.github.com/repos/suzuki-shunsuke/github-comment/releases/assets/102814185",
+                "Info: provenance for release artifact: multiple.intoto.jsonl: https://api.github.com/repos/suzuki-shunsuke/github-comment/releases/assets/102813559",
+                "Info: provenance for release artifact: multiple.intoto.jsonl: https://api.github.com/repos/suzuki-shunsuke/github-comment/releases/assets/95538213",
+                "Info: provenance for release artifact: multiple.intoto.jsonl: https://api.github.com/repos/suzuki-shunsuke/github-comment/releases/assets/90803677",
+                "Info: provenance for release artifact: multiple.intoto.jsonl: https://api.github.com/repos/suzuki-shunsuke/github-comment/releases/assets/90794873",
+                "Warn: release artifact v5.0.2-0 does not have provenance: https://api.github.com/repos/suzuki-shunsuke/github-comment/releases/88195038",
+                "Info: signed release artifact: github-comment_5.0.2-0_checksums.txt.sig: https://api.github.com/repos/suzuki-shunsuke/github-comment/releases/assets/90793664"
+            ],
+            "score": 9,
+            "reason": "13 out of 13 artifacts are signed or have provenance",
+            "name": "Signed-Releases",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#signed-releases",
+                "short": "Determines if the project cryptographically signs release artifacts."
+            }
+        },
+        {
+            "details": [
+                "Warn: no topLevel permission defined: .github/workflows/actionlint.yaml:1: Visit https://app.stepsecurity.io/secureworkflow/suzuki-shunsuke/github-comment/actionlint.yaml/main?enable=permissions\nTick the 'Restrict permissions for GITHUB_TOKEN'\nUntick other options\nNOTE: If you want to resolve multiple issues at once, you can visit https://app.stepsecurity.io/securerepo instead. (Low effort)",
+                "Info: jobLevel 'contents' permission set to 'read': .github/workflows/actionlint.yaml:17",
+                "Warn: no topLevel permission defined: .github/workflows/close-issue.yaml:1: Visit https://app.stepsecurity.io/secureworkflow/suzuki-shunsuke/github-comment/close-issue.yaml/main?enable=permissions\nTick the 'Restrict permissions for GITHUB_TOKEN'\nUntick other options\nNOTE: If you want to resolve multiple issues at once, you can visit https://app.stepsecurity.io/securerepo instead. (Low effort)",
+                "Info: topLevel permissions set to 'none': .github/workflows/release.yaml:1",
+                "Warn: jobLevel 'contents' permission set to 'write': .github/workflows/release.yaml:18: Verify which permissions are needed and consider whether you can reduce them. (High effort)",
+                "Info: jobLevel 'actions' permission set to 'read': .github/workflows/release.yaml:20",
+                "Info: topLevel permissions set to 'none': .github/workflows/test-main.yaml:1",
+                "Info: jobLevel permissions set to 'none': .github/workflows/test-main.yaml:1",
+                "Info: topLevel permissions set to 'none': .github/workflows/test.yaml:1",
+                "Info: jobLevel permissions set to 'none': .github/workflows/test.yaml:1",
+                "Info: jobLevel 'contents' permission set to 'read': .github/workflows/test.yaml:77",
+                "Info: jobLevel permissions set to 'none': .github/workflows/test.yaml:1",
+                "Info: jobLevel permissions set to 'none': .github/workflows/test.yaml:1",
+                "Info: jobLevel permissions set to 'none': .github/workflows/test.yaml:1",
+                "Info: jobLevel 'contents' permission set to 'read': .github/workflows/test.yaml:37",
+                "Info: jobLevel 'contents' permission set to 'read': .github/workflows/test.yaml:53"
+            ],
+            "score": 9,
+            "reason": "detected GitHub workflow tokens with excessive permissions",
+            "name": "Token-Permissions",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#token-permissions",
+                "short": "Determines if the project's workflows follow the principle of least privilege."
+            }
+        },
+        {
+            "details": null,
+            "score": 10,
+            "reason": "no vulnerabilities detected",
+            "name": "Vulnerabilities",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#vulnerabilities",
+                "short": "Determines if the project has open, known unfixed vulnerabilities."
+            }
+        }
+    ],
+    "metadata": null
+}
