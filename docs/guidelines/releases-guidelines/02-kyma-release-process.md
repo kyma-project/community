@@ -51,39 +51,9 @@ Create a release branch in the `kyma` repository. The name of this branch should
     git push -u upstream release-{RELEASE}
     ```
 
-### kyma-project/test-infra
-
-#### Update the jobs on the main branch
-
-1. Create a PR to `main` containing the following changes to create the new job definitions:
-
-    1. Open `templates/config.yaml`
-    2. Add the new release to `global.releases`. Remove the oldest release on the list.
-    3. Set `global.nextRelease` to the future release version.
-    4. Run `make` in the root of the repository to generate jobs and run tests. If any of the tests is marked red, fix it using these guidelines:
-      * For release tests using `GetKymaReleasesSince` or `jobsuite.Since` with a release that is no longer supported, change the method to `GetAllKymaReleases` or `jobsuite.AllReleases` respectively.
-      * For release tests using `GetKymaReleasesUntil` or `jobsuite.Until` with a release that is no longer supported, remove the part of the test which includes the method.
-    5. If tests are green, commit all jobs.
-
-2. Once the PR is merged to `main`, you can proceed.
-
-#### Create a release branch
-
->**NOTE:** a release branch needs to be created per new major / minor version. Patch releases and release candidates do not have a dedicated release branch. If this branch already exists this step will be skipped.
-
-Create a release branch in the `test-infra` repository
-
-    ```bash
-    git fetch upstream
-    git checkout --no-track -b release-{RELEASE} upstream/main
-    git push -u upstream release-{RELEASE}
-    ```
-
 ## Steps
 
 Follow these steps to release another Kyma version. Execute these steps for every patch release or release candidate.
-
-### kyma-project/kyma
 
 #### Create a PR to the release branch
 
