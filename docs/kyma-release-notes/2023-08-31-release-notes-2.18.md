@@ -12,6 +12,9 @@ Kyma 2.18 brings the following improvements:
     - OTel Collector 0.83.0  
     - Fluent Bit 2.1.8
 
+## Service Mesh
+As a significant step in our journey towards the Istio module’s release, we have introduced a new, stable, and reliable method of installing Istio - Kyma Istio Operator. This release also includes improvements to the installation and upgrade processes of Istio, as well as a new version of the Istio custom resource that provides additional configuration options. To learn more about it, visit the [Kyma Istio Operator repository](https://github.com/kyma-project/istio/blob/main/docs/user/README.md).
+
 ## Security 
 The Cluster Users component [has been deprecated since Kyma 2.7](https://github.com/kyma-project/website/blob/main/content/blog-posts/2022-09-22-release-notes-2.7/index.md#cluster-users-component-deprecated) and will be removed with Kyma 2.19. 
 The component includes predefined Kubernetes ClusterRoles such as `kyma-admin`, `kyma-namespace-admin`, `kyma-edit`, `kyma-developer`, `kyma-view`, and `kyma-essentials`. These Roles specify permissions for accessing Kyma resources that you can assign to users. For example, if you bind a user to the `kyma-admin` ClusterRole, it grants them full admin access to the entire cluster, and if you bind a user to the `kyma-view` ClusterRole, they are only allowed to view and list the resources within the cluster. 
