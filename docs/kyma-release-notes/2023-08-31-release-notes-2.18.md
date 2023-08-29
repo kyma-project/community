@@ -12,6 +12,11 @@ Kyma 2.18 brings the following improvements:
     - OTel Collector 0.83.0  
     - Fluent Bit 2.1.8
 
+## Security 
+The Cluster Users component [has been deprecated since Kyma 2.7](https://github.com/kyma-project/website/blob/main/content/blog-posts/2022-09-22-release-notes-2.7/index.md#cluster-users-component-deprecated) and will be removed with Kyma 2.19. 
+The component includes predefined Kubernetes ClusterRoles such as `kyma-admin`, `kyma-namespace-admin`, `kyma-edit`, `kyma-developer`, `kyma-view`, and `kyma-essentials`. These Roles specify permissions for accessing Kyma resources that you can assign to users. For example, if you bind a user to the `kyma-admin` ClusterRole, it grants them full admin access to the entire cluster, and if you bind a user to the `kyma-view` ClusterRole, they are only allowed to view and list the resources within the cluster. 
+Once the component is removed, these Roles will no longer be available for newly created clusters. This means that you won’t be able to use these predefined sets of rights and will be required to specify yourself which users or groups should have access to which of your resources. However, for clusters created before the release of Kyma 2.19, the already-defined Roles will not be deleted.
+
 ## Eventing
 ### NATS
 The following NATS Images have been updated:
@@ -24,3 +29,6 @@ They are now exposing a metrics endpoint containing the following auto-instrumen
 - histogram for Function execution duration: function_duration_seconds
 - number of calls in total: function_calls_total
 - number of exceptions in total: function_failures_total
+
+## User Interface
+You now have the opportunity to give feedback about our product directly in Kyma Dashboard. You can do that using the shiny new button in the top right corner of the shell bar. Read the [UX Scorecard in Kyma Dashboard](https://blogs.sap.com/2023/08/18/ux-scorecard-in-kyma-dashboard/) blog post for more details.
