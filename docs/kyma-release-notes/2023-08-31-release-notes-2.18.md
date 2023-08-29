@@ -9,13 +9,11 @@ Kyma 2.18 brings the following improvements:
 - We’ve [fixed the bug that caused problems scraping the metrics of the Fluent Bit component](https://github.com/kyma-project/kyma/issues/17976)  to third-party vendors.  
 - We‘ve added [mTLS support for TracePipeline OTLP outputs](https://github.com/kyma-project/kyma/issues/17995)  
 - We‘ve [updated the following components](https://github.com/kyma-project/kyma/pull/18021):  
-   - Otel-collector 0.83.0  
-   - Fluent Bit 2.1.8
-
-
+    - Otel-collector 0.83.0  
+    - Fluent Bit 2.1.8
+    - 
 ## Eventing
- 
-### NATS:
+### NATS
 The following NATS Images have been updated:  
 - [prometheus-nats-exporter `v0.12.0`](https://github.com/nats-io/prometheus-nats-exporter/releases/tag/v0.12.0)  
 - [nats-config-reloader `v0.12.0`](https://github.com/nats-io/prometheus-nats-exporter/releases/tag/v0.12.0)
