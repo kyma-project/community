@@ -5,7 +5,6 @@ With this release, all 5XX codes passing through Central Application Gateway are
 
 ## Telemetry
 Kyma 2.18 brings the following improvements:
-
 - We’ve [fixed the bug that caused problems scraping the metrics of the Fluent Bit component](https://github.com/kyma-project/kyma/issues/17976) to third-party vendors.
 - We‘ve added [mTLS support for TracePipeline OTLP outputs](https://github.com/kyma-project/kyma/issues/17995).
 - We‘ve [updated the following software stack](https://github.com/kyma-project/kyma/pull/18021):
@@ -34,4 +33,4 @@ They are now exposing a metrics endpoint containing the following auto-instrumen
 - number of exceptions in total: function_failures_total
 
 ## User Interface
-You now have the opportunity to give feedback about our product directly in Kyma Dashboard. You can do that using the shiny new button in the top right corner of the shell bar. Read the [UX Scorecard in Kyma Dashboard](https://blogs.sap.com/2023/08/18/ux-scorecard-in-kyma-dashboard/) blog post for more details.
+From now on, you have the opportunity to give feedback about our product directly in Kyma Dashboard. To do that, use the shiny new button in the top right corner of the shell bar. Read the [UX Scorecard in Kyma Dashboard](https://blogs.sap.com/2023/08/18/ux-scorecard-in-kyma-dashboard/) blog post for more details.
