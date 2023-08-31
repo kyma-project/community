@@ -7,7 +7,7 @@ With this release, all 5XX codes passing through Central Application Gateway are
 ## Telemetry
 
 Kyma 2.18 brings the following improvements:
-- We’ve [fixed the bug that caused problems scraping the metrics of the Fluent Bit component](https://github.com/kyma-project/kyma/issues/17976) to third-party vendors.
+- We’ve [fixed the bug that caused problems scraping the metrics of the Fluent Bit component](https://github.com/kyma-project/kyma/issues/17976) by third-party vendors.
 - We‘ve added [mTLS support for TracePipeline OTLP outputs](https://github.com/kyma-project/kyma/issues/17995).
 - We‘ve [updated the following software stack](https://github.com/kyma-project/kyma/pull/18021):
     - OTel Collector 0.83.0  
