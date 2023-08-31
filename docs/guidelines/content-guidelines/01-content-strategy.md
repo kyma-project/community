@@ -87,7 +87,7 @@ Deals with installation, upgrades, system troubleshooting. Wants to support the 
 
 On the Kyma website, we have five main tabs containing multiple documents each, plus a glossary.
 
-### Overview
+### Kyma Components
 
 **Target Group**: Decision Makers (Tech Leads) and newbies.
 
@@ -116,6 +116,10 @@ Contains installation and configuration instructions, backup info, security docu
 **Target Group**: Users who want to look up specific detailed information.
 
 Contains detailed information, such as architecture diagrams, configuration charts, etc.; note that the CLI command documents are generated automatically.
+
+### Modules
+
+Contains detailed information on the available Kyma modules. Content of that section is pulled from the `docs/user` folders in module repositories.
 
 ### Glossary
 
