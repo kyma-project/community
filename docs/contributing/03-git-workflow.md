@@ -15,6 +15,7 @@ Each contributor and maintainer in Kyma must follow this workflow:
 ### Benefits
 
 The unified workflow has the following benefits:
+
 * It encourages external contribution.
 * The history of commits and merges is clean and readable.
 * There are fewer merge conflicts and, when they appear, they are easier to solve.

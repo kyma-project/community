@@ -214,3 +214,19 @@ The code renders on `kyma-project.io` as follows:
 The code renders on `kyma-project.io` as follows:
 
 ![](./assets/toggle-groups.png)
+
+<!-- tabs:start -->
+
+#### **English**
+
+Hello!
+
+#### **French**
+
+Bonjour!
+
+#### **Italian**
+
+Ciao!
+
+<!-- tabs:end -->
