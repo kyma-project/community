@@ -4,21 +4,22 @@ title: Tabs & toggles
 
 Tabs and toggles allow you to render several versions of a given section in one document or have several versions of one document on `http://kyma-project.io`.
 
-You can use tabs and/or documentation toggle to include instructions for different operating systems (OS) in one guide or to describe installation guides that differ only in a few steps.
+For example, you can use tabs and/or documentation toggle to include instructions for different operating systems (OS) in one guide, or to describe installation guides that differ only in a few steps.
+
+As described in the document, tabs are docsify-specific form of presenting content versions in Markdown. Toggles use HTML within a Markdown document.
 
 ## Docsify tabs
 
 To display tabbed content from Markdown, kyma-project.io uses [docsify-tabs plugin](https://jhildenbiddle.github.io/docsify-tabs/#/) from [docsify.js](https://docsify.js.org/#/).
 
-You define a tab set using `tabs:start` and `tabs:end` HTML comments. For detailed usage guidelines see the [Usage section in the plugin official documentation](https://jhildenbiddle.github.io/docsify-tabs/#/?id=usage).
+You define a tab set using `tabs:start` and `tabs:end` HTML comments. For detailed guidelines, see the [Usage section in the plugin official documentation](https://jhildenbiddle.github.io/docsify-tabs/#/?id=usage).
 
-> **CAUTION:** The use of HTML comments prevents tab-related markup from being displayed when Markdown is rendered as HTML outside of `http://kyma-project.io`, for example, in GitHub. As a result in GitHub the content displays in sections under headers defined in the tab set.
+> **CAUTION:** The use of HTML comments prevents tab-related markup from being displayed when Markdown is rendered as HTML outside of `http://kyma-project.io`, for example, in GitHub. As a result, in GitHub, the content displays in sections under headers defined in the tab set.
 
 ## Documentation toggle
 
-The toggle renders the text in Github documents in the form of expandable sections and shows it as tabs on the `http://kyma-project.io` website.
-
-Content from documentation toggles is displayed as tabs on `http://kyma-project.io` using a dedicated script.
+In Github documents, the toggle renders the text in the form of expandable sections.
+On the `http://kyma-project.io` website, it's displayed as tabs; using a dedicated script.
 
 ### Writing rules
 
@@ -28,36 +29,36 @@ Follow these rules when inserting toggles in documents:
 
 See the example:
 
-```markdown
-<div tabs name="installation">
-{toggle content}
-</div>
-```
+  ```html
+  <div tabs name="installation">
+  {toggle content}
+  </div>
+  ```
 
 * A single toggle must start with the `<details>` tag and end with the `</details>` tag.
-* Insert the title of the toggle between `<summary>` and `</summary>` tags. Every part of the title must start from a new line.
+* Insert the title of the toggle between the `<summary>` and `</summary>` tags. Every part of the title must start from a new line.
 
 See the example:
 
-``` markdown
-<summary>
-From release
-</summary>
-```
+  ```html
+  <summary>
+  From release
+  </summary>
+  ```
 
-* Leave a blank line after the `</summary>` tag. Only this way the content can render.
+* Leave a blank line after the `</summary>` tag. Only this way, the content can render.
 * Add content using Markdown syntax.
-* Use this indentation when you add the toggle as a regular document section:
+* Use the following indentation when you add the toggle as a regular document section:
 
   - No spaces for the div element
   - Two spaces for other elements
 
-* Use this indentation when you add a toggle under a list:
+* Use the following indentation when you add a toggle under a list:
 
   - Four spaces for the div element
   - Six spaces for other elements
 
-* When you add two or more toggle sets that belong to the same group, you must classify them properly. This way each time you switch to one of the toggles in the set, it opens automatically in all other sets from the same group within one document and across all documents that use the group. To create a toggle group:
+* When you add two or more toggle sets that belong to the same group, you must classify them properly. This way each, time you switch to one of the toggles in the set, it opens automatically in all other sets from the same group within one document and across all documents that use the group. To create a toggle group:
 
   - All sets of toggles from the given group must contain the `group` attribute with a distinctive ID of this group. For example, add the `cluster-installation` group to categorize all toggle sets that refer to Kyma installation on a cluster.
   - Every `<summary>` tag in the set must also contain the `label` attribute. For example, add the `GKE` label to all toggles that describe steps for Kyma installation on a GKE cluster in the `cluster-installation` group.
@@ -66,7 +67,7 @@ From release
 
   See the example:
 
-  ``` markdown
+  ```html
   <div tabs name="prerequisites" group="cluster-installation">
     <details>
     <summary label="gke">
@@ -95,7 +96,7 @@ This section contains exemplary uses of the toggle in Markdown documents.
 
 * See the example of the toggle added as a regular document section:
 
-```markdown
+```html
 <div tabs name="Create a Subscription" group="create-subscription">
   <details open>
   <summary label="Kyma Dashboard">
@@ -155,7 +156,7 @@ The code renders on `kyma-project.io` as follows:
 
 * See the example of the toggle added under a list:
 
-```markdown
+```html
 2. Deploy an instance of the HttpBin service or a sample Function.
    
   <div tabs name="create">
