@@ -34,10 +34,6 @@ We're on Twitter (@kymaproject) and LinkedIn (Kyma Project). Stay tuned for the 
 
 Subscribe to our [YouTube channel](https://www.youtube.com/channel/UC8Q8bBtYe9gQN-dQ-_L8JvQ) to see all recordings from  SIGs and WGs meetings. You will also find there some other interesting videos, such as Kyma in non-English, Kyma Capabilities Demos, and many more.
 
-## Blog
-
-Go to the [Kyma blog](https://kyma-project.io/blog/) to read the latest news on our project, events, and teams. If you want to share your experience with Kyma, feel free to [write a blog post](https://github.com/kyma-project/website/blob/main/docs/write-blog-posts.md) on your own.
-
 # <img src="assets/community-support-icon.svg" width="120"> Community Support
 
 ## Slack
