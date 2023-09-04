@@ -18,8 +18,8 @@ You define a tab set using `tabs:start` and `tabs:end` HTML comments. For detail
 
 ## Documentation toggle
 
-In Github documents, the toggle renders the text in the form of expandable sections.
-On the `http://kyma-project.io` website, it's displayed as tabs; using a dedicated script.
+In GitHub documents, the toggle renders the text in the form of expandable sections.
+On the `http://kyma-project.io` website, it's displayed as tabs using a dedicated script.
 
 ### Writing rules
 
@@ -122,37 +122,37 @@ This section contains exemplary uses of the toggle in Markdown documents.
     kubectl
     </summary>
 
-  Run:
-  ```bash
-  cat <<EOF | kubectl apply -f -
-     apiVersion: eventing.kyma-project.io/v1alpha2
-     kind: Subscription
-     metadata:
-       name: lastorder-sub
-       namespace: default
-     spec:
-       config:
-         maxInFlightMessages: "5"
-       sink: 'http://lastorder.default.svc.cluster.local'
-       source: myapp
-       types:
-         - order.received.v1
-  EOF
-  ```
+    Run:
+    ```bash
+    cat <<EOF | kubectl apply -f -
+       apiVersion: eventing.kyma-project.io/v1alpha2
+       kind: Subscription
+       metadata:
+         name: lastorder-sub
+         namespace: default
+       spec:
+         config:
+           maxInFlightMessages: "5"
+         sink: 'http://lastorder.default.svc.cluster.local'
+         source: myapp
+         types:
+           - order.received.v1
+    EOF
+    ```
 
-  To check that the Subscription was created and is ready, run:
-  ```bash
-  kubectl get subscriptions lastorder-sub -o=jsonpath="{.status.ready}"
-  ```
+    To check that the Subscription was created and is ready, run:
+    ```bash
+    kubectl get subscriptions lastorder-sub -o=jsonpath="{.status.ready}"
+    ```
 
-  The operation was successful if the returned status says `true`.
+    The operation was successful if the returned status says `true`.
     </details>
   </div>
   ```
 
   The code renders on `kyma-project.io` as follows:
 
-![](./assets/toggle-flat-structure.png)
+  ![](./assets/toggle-flat-structure.png)
 
 * See the example of the toggle added under a list:
 
@@ -235,4 +235,4 @@ This section contains exemplary uses of the toggle in Markdown documents.
 
   The code renders on `kyma-project.io` as follows:
 
-![](./assets/toggle_in_list.png)
+  ![](./assets/toggle_in_list.png)
