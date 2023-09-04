@@ -22,9 +22,30 @@ To publish a document located in the `/kyma` repository, follow these steps:
 
 ## Publish a document from an existing module repositiory
 
-To publish a document located in an existing module repositiory, follow these steps:
+To publish a document located in an existing module repositiory, follow these steps.
 
 1. Create a pull request adding your content to a Markdown file located in the `/docs/user` folder in your module repository.
-2. Add a new `_sidebar.md` file including a link to your document, or update an existing `_siderbar.md` to include it.
+2. In the `docs/user` folder, add a new `_sidebar.md` file including a link to your document, or update the existing `_siderbar.md` to include it.
+
+## Publish a document from a new module repostory
+
+To publish a document located in a new module repositiory, follow the steps from [Publish a document from an existing module](#publish-a-document-from-an-existing-module-repositiory). Once completed do the following:
+
+1. In the `/kyma` repository, add a link to your module documentation main page under **Modules** in the [`/kyma/docs/_sidebar.md`](https://github.com/kyma-project/kyma/blob/main/docs/_sidebar.md) file.
+2. Update [`index.html`](https://github.com/kyma-project/kyma/blob/main/docs/index.html) by adding a new **alias** entry in the **<body>** part. Use the following pattern:
+
+    ```html
+    alias: {
+    '/{MODULE_REPOSITORY_NAME}/(.*)': 'https://raw.githubusercontent.com/{GITHUB_PROJECT_NAME}/{MODULE_REPOSITORY_NAME}/main/docs/$1',
+    }, 
+    ```
+
+    For example:
+
+    ```html
+    alias: {
+    '/serverless-manager/(.*)': 'https://raw.githubusercontent.com/kyma-project/serverless-manager/main/docs/$1',
+    }, 
+    ```
 
 > **CAUTION** When you update navigation paths in documentaion, make sure you check all `_sidebar.md` files that may be affected.
