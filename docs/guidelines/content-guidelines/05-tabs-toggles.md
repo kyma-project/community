@@ -116,36 +116,32 @@ This section contains exemplary uses of the toggle in Markdown documents.
   5. Click **Create**.
   6. Wait a few seconds for the Subscription to have status `READY`.
 
-    </details>
-    <details>
-    <summary label="kubectl">
-    kubectl
-    </summary>
+  </details>
+  <details>
+  <summary label="kubectl">
+  kubectl
+  </summary>
 
-    Run:
-    ```bash
-    cat <<EOF | kubectl apply -f -
-       apiVersion: eventing.kyma-project.io/v1alpha2
-       kind: Subscription
-       metadata:
-         name: lastorder-sub
-         namespace: default
-       spec:
-         config:
-           maxInFlightMessages: "5"
-         sink: 'http://lastorder.default.svc.cluster.local'
-         source: myapp
-         types:
-           - order.received.v1
-    EOF
-    ```
+  Run:
 
-    To check that the Subscription was created and is ready, run:
-    ```bash
-    kubectl get subscriptions lastorder-sub -o=jsonpath="{.status.ready}"
-    ```
+  cat <<EOF | kubectl apply -f -
+      apiVersion: eventing.kyma-project.io/v1alpha2
+      kind: Subscription
+      metadata:
+        name: lastorder-sub
+        namespace: default
+      spec:
+        sink: 'http://lastorder.default.svc.cluster.local'
+        source: myapp
+        types:
+         - order.received.v1
+         - order.changed.v1
+  EOF
 
-    The operation was successful if the returned status says `true`.
+  To check that the Subscription was created and is ready, run: `kubectl get subscriptions lastorder-sub -o=jsonpath="{.status.ready}"
+
+  The operation was successful if the returned status says `true`.
+
     </details>
   </div>
   ```
