@@ -6,7 +6,7 @@ That is possible thanks to the [**docsify preview feature**](https://docsify.js.
 
 ## Prerequisites
 
-Docsify preview, requires docsify-cli.
+You have installed docsify-cli.
 
 To install docsify-cli, run `npm i docsify-cli -g`.
 
