@@ -29,9 +29,9 @@ To publish a document located in an existing module repositiory, follow these st
 
 ## Publish a document from a new module repostory
 
-To publish a document located in a new module repositiory, follow the steps from [Publish a document from an existing module](#publish-a-document-from-an-existing-module-repositiory). Once completed do the following:
+To publish a document located in a new module repositiory, follow the steps from [Publish a document from an existing module](#publish-a-document-from-an-existing-module-repositiory). Once completed, do the following:
 
-1. In the `/kyma` repository, add a link to your module documentation main page under **Modules** in the [`/kyma/docs/_sidebar.md`](https://github.com/kyma-project/kyma/blob/main/docs/_sidebar.md) file.
+1. In the `/kyma` repository, open the [`/kyma/docs/_sidebar.md`](https://github.com/kyma-project/kyma/blob/main/docs/_sidebar.md) file and under **Modules**, add a link to your module documentation main page.
 2. Update [`index.html`](https://github.com/kyma-project/kyma/blob/main/docs/index.html) by adding a new **alias** entry in the **<body>** part. Use the following pattern:
 
     ```html
@@ -48,4 +48,4 @@ To publish a document located in a new module repositiory, follow the steps from
     }, 
     ```
 
-> **CAUTION** When you update navigation paths in documentaion, make sure you check all `_sidebar.md` files that may be affected.
+> **CAUTION** When you update navigation paths in documentation, make sure you check all `_sidebar.md` files that may be affected.

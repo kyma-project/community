@@ -12,7 +12,7 @@ As described in the document, tabs are a docsify-specific form of presenting con
 
 To display tabbed content from Markdown, `kyma-project.io` uses the [docsify-tabs plugin](https://jhildenbiddle.github.io/docsify-tabs/#/) from [docsify.js](https://docsify.js.org/#/).
 
-You define a tab set using `tabs:start` and `tabs:end` HTML comments. For detailed guidelines, see the [Usage section in the plugin official documentation](https://jhildenbiddle.github.io/docsify-tabs/#/?id=usage).
+You define a tab set using `tabs:start` and `tabs:end` HTML comments. For detailed guidelines, see [docsify-tabs: Usage](https://jhildenbiddle.github.io/docsify-tabs/#/?id=usage).
 
 > **CAUTION:** The use of HTML comments prevents tab-related markup from being displayed when Markdown is rendered as HTML outside of `http://kyma-project.io`, for example, in GitHub. As a result, in GitHub, the content displays in sections under headers defined in the tab set.
 
