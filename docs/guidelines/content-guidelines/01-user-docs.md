@@ -11,7 +11,7 @@ After initialization, to run, docsify uses the following files located in the `/
 - `.nojekyll` preventing GitHub Pages from ignoring files that begin with an underscore
 - `_sidebar.md` listing all Markdown documents to be displayed and ruling navigation between those documents on the website
 
-> **NOTE:** If you have a flat directory structure, with all Markdown files on the same level, you need only a single `sidebar.md` file listing the Markdown documents to be displayed. However, if there are subfolders, you need one `sidebar.md` per folder, for the navigation between the documents to work properly.
+> **NOTE:** If you have a flat directory structure, with all Markdown files on the same level, you need only a single `_sidebar.md` file listing the Markdown documents to be displayed. However, if there are subfolders, you need one `_sidebar.md` per folder, for the navigation between the documents to work properly.
 
 ## Publish a document from the `/kyma` repository
 

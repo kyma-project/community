@@ -20,7 +20,22 @@ To preview content on the Kyma website, save your changes and run the local serv
 ## Preview module documentation
 
 1. In your module repository, create a pull request with documentation changes.
-2. In the `/kyma` repository, go to the [`docs/index.html`](https://github.com/kyma-project/kyma/blob/main/docs/index.html) file and change the value of the **alias** parameter for your module. By default the value points to the raw version of the `/docs/user` folder on the main branch of your module repository. Change the value to point to the raw version of the respective folder in your pull request or on your branch.
+2. In the `/kyma` repository, go to the [`docs/index.html`](https://github.com/kyma-project/kyma/blob/main/docs/index.html) file and change the value of the **alias** parameter for your module. By default, the value points to the raw version of the `/docs` folder on the main branch of your module repository. Change the value to point to the raw version of the respective folder on your branch. Use the following pattern:
+
+  ```html
+  alias: {
+  '/{MODULE_REPOSITORY_NAME}/(.*)': 'https://raw.githubusercontent.com/{YOUR_GITHUB_USERNAME}/{FORKED_MODULE_REPOSITORY_NAME}/{BRANCH_TO_PREVIEW}/docs/$1',
+  }, 
+  ```
+
+  For example:
+  
+  ```html
+  alias: {
+  '/istio/(.*)': 'https://raw.githubusercontent.com/kymauser/istio/docu-update/docs/$1',
+  },
+  ``` 
+
 3. Save your changes.
 4. Run `docsify serve docs`.
 5. Preview `https://kyma-project.io` in your browser on http://localhost:3000.
