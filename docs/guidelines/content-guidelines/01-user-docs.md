@@ -2,9 +2,9 @@
 
 Open-source Kyma and Kyma module user documentation is displayed on `https://kyma-project.io`. The website uses [docsify](https://docsify.js.org/#/) as a documentation site generator.
 
-The overaching Kyma content is pulled from the `/docs` folder in the `/kyma` repository. Module documentation is pulled from the `/docs/user` folder in respective module repositories.
+The overarching Kyma content is pulled from the `/docs` folder in the `/kyma` repository. Module documentation is pulled from the `/docs/user` folder in respective module repositories.
 
-After initialization, to run, docsify uses the follwing files located in the `/docs` folder in the `/kyma` repository:
+After initialization, to run, docsify uses the following files located in the `/docs` folder in the `/kyma` repository:
 
 - `index.html` for configuration
 - `README.md` as the home page
