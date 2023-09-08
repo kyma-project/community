@@ -3,3 +3,6 @@
 .DS_Store
 !.kyma-project-io/
 !templates/repository-template/.github
+!.mlc.config.json
+!.github/workflows/pr-markdown-link-check.yaml
+!.github/workflows/daily-markdown-link-check.yaml
