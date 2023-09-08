@@ -1,10 +1,10 @@
-# Github Actions
+# GitHub Actions
 
-- [Github Actions](#github-actions)
+- [GitHub Actions](#github-actions)
   - [Introduction](#introduction)
   - [Restrictions of use](#restrictions-of-use)
-  - [Github Actions Security Best Practices](#github-actions-security-best-practices)
-  - [Appendix A: Approved Github Actions](#appendix-a-approved-github-actions)
+  - [GitHub Actions Security Best Practices](#github-actions-security-best-practices)
+  - [Appendix A: Approved GitHub Actions](#appendix-a-approved-github-actions)
     - [golangci/golangci-lint-action](#golangcigolangci-lint-action)
     - [AbsaOSS/k3d-action](#absaossk3d-action)
     - [zgosalvez/github-actions-ensure-sha-pinned-actions](#zgosalvezgithub-actions-ensure-sha-pinned-actions)
@@ -12,41 +12,41 @@
     - [autotelic/action-wait-for-status-check](#autotelicaction-wait-for-status-check)
     - [gaurav-nelson/github-action-markdown-link-check](#gaurav-nelsongithub-action-markdown-link-check)
     - [slackapi/slack-github-action](#slackapislack-github-action)
-  - [Not allowed GH Actions](#not-allowed-gh-actions)
+  - [Not allowed GitHub Actions](#not-allowed-gh-actions)
     - [shmokmt/actions-setup-github-comment](#shmokmtactions-setup-github-comment)
     - [shmokmt/actions-setup-tfcmt](#shmokmtactions-setup-tfcmt)
     - [CondeNast/conventional-pull-request-action](#condenastconventional-pull-request-action)
 
 ## Introduction
 
-Github Actions are a powerful tool to automate almost every task of the development cycle. The ecosystem of Github Actions is growing very fast and one can find a prepared Action for a lot of activities. But like all other usages of Open Source Software, Github Actions have to be handled carefully because an action is running external code on our code in our Github repositories.
+GitHub Actions are a powerful tool to automate almost every task of the development cycle. The ecosystem of GitHub Actions is growing very fast and one can find a prepared Action for a lot of activities. But like all other usages of Open Source Software, GitHub Actions must be handled carefully because an action is running external code on our code in our GitHub repositories.
 
 ## Restrictions of use
 
-The usage of external Github Actions is restricted centrally on Github.com organization level. Only Actions in the kyma-project org or approved external Actions are allowed. Actions created by Github or [verified creators](https://github.com/marketplace?type=actions&verification=verified_creator) are also allowed. The list of approved Github Actions can be found in the [Appendix A: Approved Github Actions](#appendix-a-approved-github-actions). Approved Actions are added by using the hash sign of the version commit to ensure that really the approved version of the Action is used.
+The usage of external GitHub Actions is restricted centrally on the `github.com` organization level. Only Actions in the kyma-project org or approved external Actions are allowed. Actions created by GitHub or [verified creators](https://github.com/marketplace?type=actions&verification=verified_creator) are also allowed. You can find the list of approved GitHub Actions in [Appendix A: Approved Github Actions](#appendix-a-approved-github-actions). Approved Actions are added by using the hash sign of the version commit to ensure that the really approved version of the Action is used.
 
 ![Github Actions policy](./assets/gh-actions-policies.png)
 
-Github Actions have read and write permissions on repositories but they are not allowed to create and merge pull requests.
+GitHub Actions have `read` and `write` permissions on repositories but they are not allowed to create and merge pull requests.
 
 ![Github Actions permissions](./assets/gh-actions-peermissions.png)
 
-## Github Actions Security Best Practices
+## GitHub Actions Security Best Practices
 
-Even the usage of Github Actions is restricted there are some threats left. The responsibility to target this threats is on the developer using Github Actions. GitGuardian ([blog article on how to secure Github Actions](https://blog.gitguardian.com/github-actions-security-cheat-sheet/)) as well as Github itself ([Security hardening for Github Actions](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-third-party-actions)) are providing information on how to securely use Github Actions. Developers using Github Actions should make themselves aware about the security best practices in order to keep our code secure.
+Even though the usage of GitHub Actions is restricted, some threats remain. The responsibility to target these threats is on the developer using GitHub Actions. GitGuardian ([a blog article on how to secure GitHub Actions](https://blog.gitguardian.com/github-actions-security-cheat-sheet/)), as well as GitHub itself ([Security hardening for GitHub Actions](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-third-party-actions)), provide information on how to use GitHub Actions securely. Developers using GitHub Actions should make themselves aware of the security best practices to keep our code secure.
 
-**Github Actions Security Best Practices - Cheat Sheet from GitGuardian**
+**GitHub Actions Security Best Practices - Cheat Sheet from GitGuardian**
 ![Github Actions Security Best Practices - Cheat Sheet](assets/GitHub-Actions-Security-Best-Practices_cheatsheet-1.png)
 
-## Appendix A: Approved Github Actions
+## Appendix A: Approved GitHub Actions
 
 ### golangci/golangci-lint-action
 
 This action runs the [golangci-lint](https://golangci-lint.run/) tool from GolangCI.
 
-- Repo: <https://github.com/golangci/golangci-lint-action>
+- Repository: <https://github.com/golangci/golangci-lint-action>
 - Marketplace: <https://github.com/marketplace/actions/run-golangci-lint>
-- Repo `golangci-lint` tool: <https://github.com/golangci/golangci-lint>
+- `golangci-lint` repository: <https://github.com/golangci/golangci-lint>
 
 #### Rating
 
@@ -54,7 +54,7 @@ This action runs the [golangci-lint](https://golangci-lint.run/) tool from Golan
   - [golangci-lint-action](./scorecard-ratings/golangci_golangci-lint-action.json): 7.2/10
   - [golangci-lint](./scorecard-ratings/golangci_golangci-lint.json): 6.3/10
 
-The tools (the action as well as the tool itself) are very popular and a large community is maintaining both.
+The tools (the action and the tool itself) are very popular, and a large community maintains both.
 
 #### Versions
 
@@ -63,10 +63,10 @@ The tools (the action as well as the tool itself) are very popular and a large c
 
 ### AbsaOSS/k3d-action
 
-- Repo: <https://github.com/AbsaOSS/k3d-action>
+- Repository: <https://github.com/AbsaOSS/k3d-action>
 - Marketplace: <https://github.com/marketplace/actions/absaoss-k3d-action>
 
-The action contains a shell scripts which installs a K3D cluster on the runner. The [URL of the installation script of K3D](https://github.com/AbsaOSS/k3d-action/blob/4e8b3239042be1dc0aed6c5eb80c13b18200fc79/run.sh#L27) is hardcoded in the script.
+The action contains a shell script which installs a K3D cluster on the runner. The [URL of the installation script of K3D](https://github.com/AbsaOSS/k3d-action/blob/4e8b3239042be1dc0aed6c5eb80c13b18200fc79/run.sh#L27) is hardcoded in the script.
 
 #### Rating
 
@@ -79,7 +79,7 @@ The action contains a shell scripts which installs a K3D cluster on the runner. 
 
 ### zgosalvez/github-actions-ensure-sha-pinned-actions
 
-- Repo: <https://github.com/zgosalvez/github-actions-ensure-sha-pinned-actions>
+- Repository: <https://github.com/zgosalvez/github-actions-ensure-sha-pinned-actions>
 - Marketplace: <https://github.com/marketplace/actions/ensure-sha-pinned-actions>
 
 #### Rating
@@ -100,7 +100,7 @@ Einschätzung von Johannes Vogt:
 
 ### ahmadnassri/action-workflow-queue
 
-- Repo: <https://github.com/ahmadnassri/action-workflow-queue>
+- Repository: <https://github.com/ahmadnassri/action-workflow-queue>
 - Marketplace: <https://github.com/marketplace/actions/workflow-queue>
 
 #### Rating
@@ -115,7 +115,7 @@ Einschätzung von Johannes Vogt:
 
 ### autotelic/action-wait-for-status-check
 
-- Repo: <https://github.com/autotelic/action-wait-for-status-check>
+- Repository: <https://github.com/autotelic/action-wait-for-status-check>
 - Marketplace: <https://github.com/marketplace/actions/wait-for-github-status-check>
 
 #### Rating
@@ -130,11 +130,11 @@ Einschätzung von Johannes Vogt:
 
 ### gaurav-nelson/github-action-markdown-link-check
 
-- Repo: <https://github.com/gaurav-nelson/github-action-markdown-link-check>
+- Repository: <https://github.com/gaurav-nelson/github-action-markdown-link-check>
 - Marketplace: <https://github.com/marketplace/actions/markdown-link-check>
-- Repo markdown-link-check: <https://github.com/tcort/markdown-link-check>
+- `markdown-link-check` repository: <https://github.com/tcort/markdown-link-check>
 
-The action is running a shell script which installs and runs a NodeJS module called markdown-link-check. The [version of the NodeJS module is tagged](https://github.com/gaurav-nelson/github-action-markdown-link-check/blob/46e442156b8161bfd0913357c7a411e0e610d2ad/entrypoint.sh#L11)
+The action runs a shell script which installs and runs a Node.js module called markdown-link-check. The [version of the Node.js module is tagged](https://github.com/gaurav-nelson/github-action-markdown-link-check/blob/46e442156b8161bfd0913357c7a411e0e610d2ad/entrypoint.sh#L11).
 
 #### Rating
 
@@ -149,7 +149,7 @@ The action is running a shell script which installs and runs a NodeJS module cal
 
 ### slackapi/slack-github-action
 
-- Repo: <https://github.com/slackapi/slack-github-action>
+- Repository: <https://github.com/slackapi/slack-github-action>
 - Marketplace: <https://github.com/marketplace/actions/slack-send>
 
 #### Ratings
@@ -161,15 +161,15 @@ The action is running a shell script which installs and runs a NodeJS module cal
 
 - slackapi/slack-github-action@e28cf165c92ffef168d23c5c9000cffc8a25e117 # v1.24.0,
 
-## Not allowed GH Actions
+## Not allowed GitHub Actions
 
 ### shmokmt/actions-setup-github-comment
 
-The GH Action is only a wrapper to run a go tool called [github-comment](https://github.com/suzuki-shunsuke/github-comment) which is downloaded during runtime by the Action.
+The GitHub Action is only a wrapper to run a go tool called [github-comment](https://github.com/suzuki-shunsuke/github-comment). It is downloaded during runtime by the Action.
 
-- Repo: <https://github.com/shmokmt/actions-setup-github-comment>
+- Repository: <https://github.com/shmokmt/actions-setup-github-comment>
 - Marketplace: <https://github.com/marketplace/actions/setup-github-comment>
-- Repo `github-comment` tool: <https://github.com/suzuki-shunsuke/github-comment>
+- `github-comment` repository: <https://github.com/suzuki-shunsuke/github-comment>
 
 #### Rating
 
@@ -183,11 +183,11 @@ The GH Action is only a wrapper to run a go tool called [github-comment](https:/
 
 ### shmokmt/actions-setup-tfcmt
 
-Wrapper to run the go tool [tfcmt](https://github.com/suzuki-shunsuke/tfcmt) which is downloaded during the runtime of the action.
+This is a wrapper to run the go tool [tfcmt](https://github.com/suzuki-shunsuke/tfcmt), which is downloaded during the runtime of the action.
 
-- Repo: <https://github.com/shmokmt/actions-setup-tfcmt>
+- Repository: <https://github.com/shmokmt/actions-setup-tfcmt>
 - Marketplace: <https://github.com/marketplace/actions/setup-tfcmt>
-- Repo `tfcmt` tool: <https://github.com/suzuki-shunsuke/tfcmt>
+- `tfcmt` repository: <https://github.com/suzuki-shunsuke/tfcmt>
 
 #### Rating
 
@@ -197,7 +197,7 @@ Wrapper to run the go tool [tfcmt](https://github.com/suzuki-shunsuke/tfcmt) whi
 
 ### CondeNast/conventional-pull-request-action
 
-- Repo: <https://github.com/CondeNast/conventional-pull-request-action>
+- Repository: <https://github.com/CondeNast/conventional-pull-request-action>
 - Marketplace: <https://github.com/marketplace/actions/conventional-pull-request>
 
 #### Rating
