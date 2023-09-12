@@ -43,4 +43,4 @@ Although some of the Kyma team's pull requests were rejected, the team contribut
 After some discussion, the team managed to introduce [this](https://github.com/coreos/dex/issues/1087) change.
 
 Finally, Dex is designed to work with Kubernetes and is also one of the authentication solutions
-recommended in the [Kubernetes documentation](https://kubernetes.io/docs/admin/authentication/#configuring-the-api-server).
+recommended in the [Kubernetes documentation](https://kubernetes.io/docs).

@@ -66,7 +66,7 @@ should request a change of their status to emeritus.
 
 ### How to suggest a change in a maintainers list?
 
-To suggest a change in the ownership of a given repository part, create a PR with the required changes in the `CODEOWNERS` file in the project's repository. The required number of codeowners needs to approve the PR for the changes to take place. Read the [CODEOWNERS  file template](https://github.com/kyma-project/community/blob/main/templates/repository-template/CODEOWNERS) to learn how to set up and modify owners of the given repository folders and files.
+To suggest a change in the ownership of a given repository part, create a PR with the required changes in the `CODEOWNERS` file in the project's repository. The required number of codeowners needs to approve the PR for the changes to take place. Read the [CODEOWNERS  file template](https://github.com/kyma-project/template-repository/blob/main/CODEOWNERS) to learn how to set up and modify owners of the given repository folders and files.
 
 The name of the removed maintainer is added to the [emeritus](https://github.com/kyma-project/community/blob/main/emeritus.md) file with a short message about what areas the person worked on.
 

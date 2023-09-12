@@ -53,7 +53,7 @@ The proposed solution is to provide a flexible and modular installation of fine 
 - Dynamic UI (micro frontends) + back-end - adding new components extends views and also the backed functionalities, such as the supported GraphQL queries.
 - No custom logic in the installation process (shell scripts) - it should be replaced by the operator pattern.
 - The minimal set of mandatory components that form the real Kyma "core". The dependency for the core can be mandatory, other dependencies should be optional.
-- Kyma core as Gardener add-on. For reference, see [Knative with Gardener](https://github.com/knative/docs/blob/master/docs/install/Knative-with-Gardener.md) and [Gardener Bouquet](https://github.com/gardener/bouquet) documentation.
+- Kyma core as Gardener add-on. For reference, see [Knative with Gardener](https://github.com/knative/docs/blob/main/docs/install/knative-offerings.md) and [Gardener Bouquet](https://github.com/gardener/bouquet) documentation.
 - Split Kyma core chart into more fine grained components, and provide a tooling to install all of them in the same convenient way as before (convention).
 - Kyma add-ons, brokers, and showcases as Kyma bundles. For reference, see the [Kyma bundles](#kyma-bundles-for-the-service-catalog).
 - Check dependency tree of components. Flag components as mandatory or optional.

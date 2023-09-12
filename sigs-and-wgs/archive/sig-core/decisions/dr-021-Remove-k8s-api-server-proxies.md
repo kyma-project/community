@@ -10,7 +10,7 @@ Created on 2021-07-12 by Piotr Bochyński (@pbochynski).
 | Due date | 2021-07-19 |
 | Status | Proposed on 2021-07-12, Accepted on 2021-08-04|
 | Decision type | Binary |
-| Affected decisions | [DR 007: GraphQL as API facade for UI](https://github.com/kyma-project/community/blob/main/sigs-and-wgs/sig-core/decisions/dr-007-GraphQL_as_API_facade_for_UI.md), [DR 015: Authorization for GraphQL](https://github.com/kyma-project/community/blob/main/sigs-and-wgs/sig-core/decisions/dr-015-Authorization_for_GraphQL.md), [DR 008: DEX as an OIDC authenticator](https://github.com/kyma-project/community/blob/main/sigs-and-wgs/sig-core/decisions/dr-008-Dex_as_an_OIDC_authenticator.md) |
+| Affected decisions | [DR 007: GraphQL as API facade for UI](https://github.com/kyma-project/community/blob/main/sigs-and-wgs/archive/sig-core/decisions/dr-007-GraphQL_as_API_facade_for_UI.md), [DR 015: Authorization for GraphQL](https://github.com/kyma-project/community/blob/main/sigs-and-wgs/archive/sig-core/decisions/dr-015-Authorization_for_GraphQL.md), [DR 008: DEX as an OIDC authenticator](https://github.com/kyma-project/community/blob/main/sigs-and-wgs/archive/sig-core/decisions/dr-008-Dex_as_an_OIDC_authenticator.md) |
 
 ## Context
 
@@ -42,6 +42,6 @@ The benefits:
 - faster development and easier maintenance of the Console UI.
 
 As a result of this decision, the following decisions are invalid:
-- [DR 007: GraphQL as API facade for UI](https://github.com/kyma-project/community/blob/main/sigs-and-wgs/sig-core/decisions/dr-007-GraphQL_as_API_facade_for_UI.md)
-- [DR 015: Authorization for GraphQL](https://github.com/kyma-project/community/blob/main/sigs-and-wgs/sig-core/decisions/dr-015-Authorization_for_GraphQL.md)
-- [DR 008: DEX as an OIDC authenticator](https://github.com/kyma-project/community/blob/main/sigs-and-wgs/sig-core/decisions/dr-008-Dex_as_an_OIDC_authenticator.md)
+- [DR 007: GraphQL as API facade for UI](https://github.com/kyma-project/community/blob/main/sigs-and-wgs/archive/sig-core/decisions/dr-007-GraphQL_as_API_facade_for_UI.md)
+- [DR 015: Authorization for GraphQL](https://github.com/kyma-project/community/blob/main/sigs-and-wgs/archive/sig-core/decisions/dr-015-Authorization_for_GraphQL.md)
+- [DR 008: DEX as an OIDC authenticator](https://github.com/kyma-project/community/blob/main/sigs-and-wgs/archive/sig-core/decisions/dr-008-Dex_as_an_OIDC_authenticator.md)

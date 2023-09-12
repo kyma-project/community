@@ -93,15 +93,16 @@ Follow these steps to release another Kyma version. Execute these steps for ever
 
 1. Once the preparation for the release is finished, trigger the [Release Kyma](https://github.com/kyma-project/kyma/actions/workflows/github-release.yaml) GitHub action. 
    Choose the branch that corresponds to the release that you want to trigger. The exact release version is taken from the `VERSION` file.
-   When you click the **Run workflow** button, the release process waits for the approval from reviewers. 
-   The reviewers list is defined in the ["release" Github Environment](https://github.com/kyma-project/kyma/settings/environments). 
+   When you click the **Run workflow** button, the release process waits for the approval from reviewers.
+   <!-- markdown-link-check-disable-next-line -->
+   The reviewers list is defined in the ["release" Github Environment](https://github.com/kyma-project/kyma/settings/environments).
    After it is approved, the following will happen:
    * GitHub release is triggered.
    * Documentation update on the official Kyma website is triggered.
    * New release cluster is created for the given Kyma `RELEASE_VERSION`.
      If you don't have access to the GCP project, post a request in the Slack team channel.
      > **CAUTION**: The cluster is automatically generated for you, and it is automatically removed after 7 days.
-
+<!-- markdown-link-check-disable-next-line -->
 2. The Github release post-submit job creates a release in the `kyma-project/kyma` repository, which triggers the [`post-rel{RELEASE_VERSION_SHORT}-kyma-release-upgrade`](https://github.com/kyma-project/test-infra/blob/main/prow/jobs/kyma/kyma-release-upgrade.yaml) pipeline. The purpose of this job is to test upgradability between the latest Kyma release that is not a release candidate and the brand new release published by the release post-submit job.
     For example, if `1.7.0-rc2` is released, the pipeline will try to upgrade `1.6.0` to `1.7.0-rc2`.
 
