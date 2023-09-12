@@ -1,0 +1,317 @@
+{
+    "date": "2023-08-15T13:09:06Z",
+    "repo": {
+        "name": "github.com/golangci/golangci-lint",
+        "commit": "ed8eb4ea7b773993f0b1a78dec1dc0179146ddf4"
+    },
+    "scorecard": {
+        "version": "v4.12.0",
+        "commit": "7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39"
+    },
+    "score": 6.3,
+    "checks": [
+        {
+            "details": null,
+            "score": 10,
+            "reason": "no binaries found in the repo",
+            "name": "Binary-Artifacts",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#binary-artifacts",
+                "short": "Determines if the project has generated executable (binary) artifacts in the source repository."
+            }
+        },
+        {
+            "details": [
+                "Info: 'force pushes' disabled on branch 'master'",
+                "Info: 'allow deletion' disabled on branch 'master'",
+                "Info: status check found to merge onto on branch 'master'",
+                "Info: number of required reviewers is 2 on branch 'master'",
+                "Warn: codeowner review is not required on branch 'master'"
+            ],
+            "score": 9,
+            "reason": "branch protection is not maximal on development and all release branches",
+            "name": "Branch-Protection",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#branch-protection",
+                "short": "Determines if the default and release branches are protected with GitHub's branch protection settings."
+            }
+        },
+        {
+            "details": null,
+            "score": 10,
+            "reason": "30 out of 30 merged PRs checked by a CI test -- score normalized to 10",
+            "name": "CI-Tests",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#ci-tests",
+                "short": "Determines if the project runs tests before pull requests are merged."
+            }
+        },
+        {
+            "details": null,
+            "score": 0,
+            "reason": "no effort to earn an OpenSSF best practices badge detected",
+            "name": "CII-Best-Practices",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#cii-best-practices",
+                "short": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge."
+            }
+        },
+        {
+            "details": null,
+            "score": 9,
+            "reason": "found 1 unreviewed changesets out of 16 -- score normalized to 9",
+            "name": "Code-Review",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#code-review",
+                "short": "Determines if the project requires human code review before pull requests (aka merge requests) are merged."
+            }
+        },
+        {
+            "details": [
+                "Info: contributors work for 0x4b53,EpicGames,RedHat-Israel,UpCloudLtd,asciidoctor,camphor-,cilium,codewell,cyberagent,dapr,datahax,dzielne-misie,envoyproxy,epam,github-beta,go-acme,go-faster,golangci,gotd,gtforge,home-assistant,hspsh,intel,istio,kubeedge,kubernetes,kubernetes-i18n-ukrainian,kubernetes-sigs,kvtools,libwww-perl,littleroot,lona-web-org,mercari,msmvps,networkservicemesh,nrdcg,ogen-go,personnummer,pion,pipe-cd,plz hire me,red hat,rpm-software-management,shenv,subshell,swcraftlyon,thanos-io,traefik,upcloudltd,validio-io,vulcand,yandex"
+            ],
+            "score": 10,
+            "reason": "52 different organizations found -- score normalized to 10",
+            "name": "Contributors",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#contributors",
+                "short": "Determines if the project has a set of contributors from multiple organizations (e.g., companies)."
+            }
+        },
+        {
+            "details": null,
+            "score": 10,
+            "reason": "no dangerous workflow patterns detected",
+            "name": "Dangerous-Workflow",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#dangerous-workflow",
+                "short": "Determines if the project's GitHub Action workflows avoid dangerous patterns."
+            }
+        },
+        {
+            "details": [
+                "Warn: tool 'RenovateBot' is not used: Follow the instructions from https://docs.renovatebot.com/configuration-options/. (Low effort)",
+                "Info: tool 'Dependabot' is used: .github/dependabot.yml:1",
+                "Warn: tool 'PyUp' is not used: Follow the instructions from https://docs.pyup.io/docs. (Low effort)",
+                "Warn: tool 'Sonatype Lift' is not used: Follow the instructions from https://help.sonatype.com/lift/getting-started. (Low effort)"
+            ],
+            "score": 10,
+            "reason": "update tool detected",
+            "name": "Dependency-Update-Tool",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#dependency-update-tool",
+                "short": "Determines if the project uses a dependency update tool."
+            }
+        },
+        {
+            "details": null,
+            "score": 0,
+            "reason": "project is not fuzzed",
+            "name": "Fuzzing",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#fuzzing",
+                "short": "Determines if the project uses fuzzing."
+            }
+        },
+        {
+            "details": [
+                "Info: License file found in expected location: LICENSE:1",
+                "Info: FSF or OSI recognized license: LICENSE:1"
+            ],
+            "score": 10,
+            "reason": "license file detected",
+            "name": "License",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#license",
+                "short": "Determines if the project has defined a license."
+            }
+        },
+        {
+            "details": null,
+            "score": 10,
+            "reason": "30 commit(s) out of 30 and 18 issue activity out of 30 found in the last 90 days -- score normalized to 10",
+            "name": "Maintained",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#maintained",
+                "short": "Determines if the project is \"actively maintained\"."
+            }
+        },
+        {
+            "details": [
+                "Info: GitHub/GitLab publishing workflow used in run https://api.github.com/repos/golangci/golangci-lint/actions/runs/5832755655: .github/workflows/tag.yml:8"
+            ],
+            "score": 10,
+            "reason": "publishing workflow detected",
+            "name": "Packaging",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#packaging",
+                "short": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall."
+            }
+        },
+        {
+            "details": [
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/codeql.yaml:36: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/codeql.yaml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/codeql.yaml:40: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/codeql.yaml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/codeql.yaml:49: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/codeql.yaml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/documentation.yml:20: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/documentation.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/documentation.yml:25: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/documentation.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/documentation.yml:30: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/documentation.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/documentation.yml:45: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/documentation.yml/master?enable=pin",
+                "Warn: third-party GitHubAction not pinned by hash: .github/workflows/documentation.yml:59: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/documentation.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/post-release.yml:13: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/post-release.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/post-release.yml:15: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/post-release.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/post-release.yml:26: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/post-release.yml/master?enable=pin",
+                "Warn: third-party GitHubAction not pinned by hash: .github/workflows/post-release.yml:40: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/post-release.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-extra.yml:13: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/pr-extra.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-extra.yml:14: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/pr-extra.yml/master?enable=pin",
+                "Warn: third-party GitHubAction not pinned by hash: .github/workflows/pr-extra.yml:24: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/pr-extra.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:17: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/pr.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:25: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/pr.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:36: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/pr.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:38: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/pr.yml/master?enable=pin",
+                "Warn: third-party GitHubAction not pinned by hash: .github/workflows/pr.yml:48: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/pr.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:59: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/pr.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:61: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/pr.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:75: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/pr.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:77: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/pr.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:96: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/pr.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:98: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/pr.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:105: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/pr.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:118: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/pr.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:122: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/pr.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/tag.yml:11: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/tag.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/tag.yml:13: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/tag.yml/master?enable=pin",
+                "Warn: third-party GitHubAction not pinned by hash: .github/workflows/tag.yml:24: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/tag.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/tag.yml:40: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/tag.yml/master?enable=pin",
+                "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/tag.yml:43: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/tag.yml/master?enable=pin",
+                "Warn: third-party GitHubAction not pinned by hash: .github/workflows/tag.yml:76: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/tag.yml/master?enable=pin",
+                "Warn: third-party GitHubAction not pinned by hash: .github/workflows/tag.yml:79: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/tag.yml/master?enable=pin",
+                "Warn: third-party GitHubAction not pinned by hash: .github/workflows/tag.yml:85: update your workflow using https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/tag.yml/master?enable=pin",
+                "Warn: containerImage not pinned by hash: build/Dockerfile:2",
+                "Warn: containerImage not pinned by hash: build/Dockerfile:13: pin your Docker image by updating golang:1.21 to golang:1.21@sha256:ec457a2fcd235259273428a24e09900c496d0c52207266f96a330062a01e3622",
+                "Warn: containerImage not pinned by hash: build/alpine.Dockerfile:2",
+                "Warn: containerImage not pinned by hash: build/alpine.Dockerfile:18: pin your Docker image by updating golang:1.21-alpine to golang:1.21-alpine@sha256:445f34008a77b0b98bf1821bf7ef5e37bb63cc42d22ee7c21cc17041070d134f",
+                "Warn: npmCommand not pinned by hash: .github/workflows/documentation.yml:52",
+                "Warn: npmCommand not pinned by hash: .github/workflows/post-release.yml:33",
+                "Info: no insecure (not pinned by hash) dependency downloads found in Dockerfiles",
+                "Info: no insecure (not pinned by hash) dependency downloads found in shell scripts",
+                "Info: Pip installs are pinned"
+            ],
+            "score": 5,
+            "reason": "dependency not pinned by hash detected -- score normalized to 5",
+            "name": "Pinned-Dependencies",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#pinned-dependencies",
+                "short": "Determines if the project has declared and pinned the dependencies of its build process."
+            }
+        },
+        {
+            "details": [
+                "Info: all commits (30) are checked with a SAST tool",
+                "Info: SAST tool detected: CodeQL"
+            ],
+            "score": 10,
+            "reason": "SAST tool is run on all commits",
+            "name": "SAST",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#sast",
+                "short": "Determines if the project uses static code analysis."
+            }
+        },
+        {
+            "details": [
+                "Warn: no security policy file detected: On GitHub:\nEnable private vulnerability disclosure in your repository settings https://docs.github.com/en/code-security/security-advisories/repository-security-advisories/configuring-private-vulnerability-reporting-for-a-repository\nAdd a section in your SECURITY.md indicating you have enabled private reporting, and tell them to follow the steps in https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability to report vulnerabilities.\nOn GitLab:\nAdd a section in your SECURITY.md indicating the process to disclose vulnerabilities for your project.\nExamples: https://github.com/ossf/scorecard/blob/main/SECURITY.md, https://github.com/slsa-framework/slsa-github-generator/blob/main/SECURITY.md, https://github.com/sigstore/.github/blob/main/SECURITY.md.\nFor additional information on vulnerability disclosure, see https://github.com/ossf/oss-vulnerability-guide/blob/main/maintainer-guide.md. (Medium effort)",
+                "Warn: no security file to analyze: On GitHub:\nEnable private vulnerability disclosure in your repository settings https://docs.github.com/en/code-security/security-advisories/repository-security-advisories/configuring-private-vulnerability-reporting-for-a-repository\nAdd a section in your SECURITY.md indicating you have enabled private reporting, and tell them to follow the steps in https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability to report vulnerabilities.\nOn GitLab:\nProvide a point of contact in your SECURITY.md.\nExamples: https://github.com/ossf/scorecard/blob/main/SECURITY.md, https://github.com/slsa-framework/slsa-github-generator/blob/main/SECURITY.md, https://github.com/sigstore/.github/blob/main/SECURITY.md. (Low effort)",
+                "Warn: no security file to analyze: On GitHub:\nEnable private vulnerability disclosure in your repository settings https://docs.github.com/en/code-security/security-advisories/repository-security-advisories/configuring-private-vulnerability-reporting-for-a-repository\nAdd a section in your SECURITY.md indicating you have enabled private reporting, and tell them to follow the steps in https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability to report vulnerabilities.\nOn GitLab:\nAdd a section in your SECURITY.md indicating the process to disclose vulnerabilities for your project.\nExamples: https://github.com/ossf/scorecard/blob/main/SECURITY.md, https://github.com/slsa-framework/slsa-github-generator/blob/main/SECURITY.md, https://github.com/sigstore/.github/blob/main/SECURITY.md. (Low effort)",
+                "Warn: no security file to analyze: On GitHub:\nEnable private vulnerability disclosure in your repository settings https://docs.github.com/en/code-security/security-advisories/repository-security-advisories/configuring-private-vulnerability-reporting-for-a-repository\nAdd a section in your SECURITY.md indicating you have enabled private reporting, and tell them to follow the steps in https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability to report vulnerabilities.\nOn GitLab:\nAdd a section in your SECURITY.md indicating the process to disclose vulnerabilities for your project.\nExamples: https://github.com/ossf/scorecard/blob/main/SECURITY.md, https://github.com/slsa-framework/slsa-github-generator/blob/main/SECURITY.md, https://github.com/sigstore/.github/blob/main/SECURITY.md. (Low effort)"
+            ],
+            "score": 0,
+            "reason": "security policy file not detected",
+            "name": "Security-Policy",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#security-policy",
+                "short": "Determines if the project has published a security policy."
+            }
+        },
+        {
+            "details": [
+                "Warn: release artifact v1.54.1 does not have provenance: https://api.github.com/repos/golangci/golangci-lint/releases/116067671",
+                "Warn: release artifact v1.54.1 not signed: https://api.github.com/repos/golangci/golangci-lint/releases/116067671",
+                "Warn: release artifact v1.54.0 does not have provenance: https://api.github.com/repos/golangci/golangci-lint/releases/115751975",
+                "Warn: release artifact v1.54.0 not signed: https://api.github.com/repos/golangci/golangci-lint/releases/115751975",
+                "Warn: release artifact v1.53.3 does not have provenance: https://api.github.com/repos/golangci/golangci-lint/releases/108711254",
+                "Warn: release artifact v1.53.3 not signed: https://api.github.com/repos/golangci/golangci-lint/releases/108711254",
+                "Warn: release artifact v1.53.2 does not have provenance: https://api.github.com/repos/golangci/golangci-lint/releases/106479958",
+                "Warn: release artifact v1.53.2 not signed: https://api.github.com/repos/golangci/golangci-lint/releases/106479958",
+                "Warn: release artifact v1.53.1 does not have provenance: https://api.github.com/repos/golangci/golangci-lint/releases/105809324",
+                "Warn: release artifact v1.53.1 not signed: https://api.github.com/repos/golangci/golangci-lint/releases/105809324"
+            ],
+            "score": 0,
+            "reason": "0 out of 5 artifacts are signed or have provenance",
+            "name": "Signed-Releases",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#signed-releases",
+                "short": "Determines if the project cryptographically signs release artifacts."
+            }
+        },
+        {
+            "details": [
+                "Warn: no topLevel permission defined: .github/workflows/codeql.yaml:1: Visit https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/codeql.yaml/master?enable=permissions\nTick the 'Restrict permissions for GITHUB_TOKEN'\nUntick other options\nNOTE: If you want to resolve multiple issues at once, you can visit https://app.stepsecurity.io/securerepo instead. (Low effort)",
+                "Warn: no topLevel permission defined: .github/workflows/documentation.yml:1: Visit https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/documentation.yml/master?enable=permissions\nTick the 'Restrict permissions for GITHUB_TOKEN'\nUntick other options\nNOTE: If you want to resolve multiple issues at once, you can visit https://app.stepsecurity.io/securerepo instead. (Low effort)",
+                "Warn: no topLevel permission defined: .github/workflows/post-release.yml:1: Visit https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/post-release.yml/master?enable=permissions\nTick the 'Restrict permissions for GITHUB_TOKEN'\nUntick other options\nNOTE: If you want to resolve multiple issues at once, you can visit https://app.stepsecurity.io/securerepo instead. (Low effort)",
+                "Warn: no topLevel permission defined: .github/workflows/pr-extra.yml:1: Visit https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/pr-extra.yml/master?enable=permissions\nTick the 'Restrict permissions for GITHUB_TOKEN'\nUntick other options\nNOTE: If you want to resolve multiple issues at once, you can visit https://app.stepsecurity.io/securerepo instead. (Low effort)",
+                "Warn: no topLevel permission defined: .github/workflows/pr.yml:1: Visit https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/pr.yml/master?enable=permissions\nTick the 'Restrict permissions for GITHUB_TOKEN'\nUntick other options\nNOTE: If you want to resolve multiple issues at once, you can visit https://app.stepsecurity.io/securerepo instead. (Low effort)",
+                "Warn: no topLevel permission defined: .github/workflows/tag.yml:1: Visit https://app.stepsecurity.io/secureworkflow/golangci/golangci-lint/tag.yml/master?enable=permissions\nTick the 'Restrict permissions for GITHUB_TOKEN'\nUntick other options\nNOTE: If you want to resolve multiple issues at once, you can visit https://app.stepsecurity.io/securerepo instead. (Low effort)",
+                "Info: no jobLevel write permissions found"
+            ],
+            "score": 0,
+            "reason": "detected GitHub workflow tokens with excessive permissions",
+            "name": "Token-Permissions",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#token-permissions",
+                "short": "Determines if the project's workflows follow the principle of least privilege."
+            }
+        },
+        {
+            "details": [
+                "Warn: Project is vulnerable to: GHSA-43f8-2h32-f4cj",
+                "Warn: Project is vulnerable to: GHSA-r96c-57pf-9jjm",
+                "Warn: Project is vulnerable to: GHSA-hj48-42vr-x3v9",
+                "Warn: Project is vulnerable to: GHSA-7p7h-4mm5-852v",
+                "Warn: Project is vulnerable to: GHSA-hqq7-2q2v-82xq",
+                "Warn: Project is vulnerable to: GHSA-q8gg-vj6m-hgmj",
+                "Warn: Project is vulnerable to: GHSA-whgm-jr23-g3j9",
+                "Warn: Project is vulnerable to: GHSA-36jr-mh4h-2g58",
+                "Warn: Project is vulnerable to: GHSA-q9mw-68c2-j6m5",
+                "Warn: Project is vulnerable to: GHSA-pfrx-2q88-qq97",
+                "Warn: Project is vulnerable to: GHSA-9c47-m6qq-7p4h",
+                "Warn: Project is vulnerable to: GHSA-76p3-8jx3-jpfq",
+                "Warn: Project is vulnerable to: GHSA-3rfm-jhwj-7488",
+                "Warn: Project is vulnerable to: GHSA-hhq3-ff78-jv3g",
+                "Warn: Project is vulnerable to: GHSA-x3vm-38hw-55wf",
+                "Warn: Project is vulnerable to: GHSA-rp65-9cf3-cjxr",
+                "Warn: Project is vulnerable to: GHSA-rjqq-98f6-6j3r",
+                "Warn: Project is vulnerable to: GHSA-mjxr-4v3x-q3m4",
+                "Warn: Project is vulnerable to: GHSA-c2qf-rxjj-qqgw",
+                "Warn: Project is vulnerable to: GHSA-w5p7-h5w8-2hfq",
+                "Warn: Project is vulnerable to: GHSA-776f-qx25-q3cc",
+                "Warn: Project is vulnerable to: GO-2023-1988",
+                "Warn: Project is vulnerable to: GO-2022-0646",
+                "Warn: Project is vulnerable to: GHSA-w7rc-rwvf-8q5r",
+                "Warn: Project is vulnerable to: GHSA-r683-j2x4-v87g",
+                "Warn: Project is vulnerable to: GHSA-4cpg-3vgw-4877",
+                "Warn: Project is vulnerable to: GHSA-h6q6-9hqw-rwfv",
+                "Warn: Project is vulnerable to: GHSA-5fg8-2547-mr8q",
+                "Warn: Project is vulnerable to: GHSA-crh6-fp67-6883"
+            ],
+            "score": 0,
+            "reason": "29 existing vulnerabilities detected",
+            "name": "Vulnerabilities",
+            "documentation": {
+                "url": "https://github.com/ossf/scorecard/blob/7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39/docs/checks.md#vulnerabilities",
+                "short": "Determines if the project has open, known unfixed vulnerabilities."
+            }
+        }
+    ],
+    "metadata": null
+}
