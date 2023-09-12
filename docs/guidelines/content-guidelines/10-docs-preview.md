@@ -39,4 +39,5 @@ To preview content on the Kyma website, save your changes and run the local serv
 
 3. Save your changes.
 4. Run `docsify serve docs`.
+<!-- markdown-link-check-disable-next-line -->
 5. Preview `https://kyma-project.io` in your browser on http://localhost:3000.

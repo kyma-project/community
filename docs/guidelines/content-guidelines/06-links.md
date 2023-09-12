@@ -28,4 +28,4 @@ To add a reference to a YAML, JSON, SVG, PNG, or JPG file located in the `assets
 
 ## Links in documentation toggles
 
-To link to a document in a documentation toggle, the toggle must start with the `<div tabs name="{toggle-name}">` tag and end with the `</div>` tag, where **name** is a distinctive ID used for linking. For more information, read a separate [Tabs & toggles](./05-tabs.md) document.
+To link to a document in a documentation toggle, the toggle must start with the `<div tabs name="{toggle-name}">` tag and end with the `</div>` tag, where **name** is a distinctive ID used for linking. For more information, read a separate [Tabs & toggles](./05-tabs-toggles.md) document.
