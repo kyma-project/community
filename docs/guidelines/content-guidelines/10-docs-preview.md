@@ -15,6 +15,7 @@ To install docsify-cli, run `npm i docsify-cli -g`.
 To preview content on the Kyma website, save your changes and run the local server.
 
 1. Run `docsify serve docs` in the `/kyma` repository.
+<!-- markdown-link-check-disable-next-line -->
 2. Preview `https://kyma-project.io` in your browser on http://localhost:3000.
 
 ## Preview module documentation
@@ -38,4 +39,5 @@ To preview content on the Kyma website, save your changes and run the local serv
 
 3. Save your changes.
 4. Run `docsify serve docs`.
+<!-- markdown-link-check-disable-next-line -->
 5. Preview `https://kyma-project.io` in your browser on http://localhost:3000.

@@ -123,7 +123,7 @@ kubectl get secret --namespace logging grafana -o jsonpath="{.data.admin-passwor
 ```bash
 kubectl -n logging port-forward svc/grafana 3000:80
 ```
-
+<!-- markdown-link-check-disable-next-line -->
 4. Open the Grafana Dashboard: http://localhost:3000 and log in. Select Menu > Explore, select Data source > Loki, then select Log labels > namespace > logging. A list of logs should appear.
 
 # Feature comparison matrix

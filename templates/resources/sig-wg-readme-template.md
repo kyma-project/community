@@ -1,4 +1,5 @@
-> **NOTE:** Copy this template to your groups's folder and rename it to `README.md`.
+<!-- markdown-link-check-disable -->
+**NOTE:** Copy this template to your groups's folder and rename it to `README.md`.
 
 # {SIG Name} Special Interest Group | {WG Name} Working Group
 
@@ -39,3 +40,4 @@ The purpose of this group is to:
 ## Reference
 
 Read the main [`README.md`](../README.md) document to learn about the structure of Kyma SIGs and WGs.
+<!-- markdown-link-check-enable -->

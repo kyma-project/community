@@ -8,4 +8,4 @@ The group achieved its goal. Several improvements and design changes were discus
 - Better handling of Custom Resource Definitions (CRDs) — not managed by Helm
 - Default local setup based on k3s (much faster than Minikube)
 
-The decisions are now in the implementation phase, but some of the ideas are already applied and bring visible benefits. The best example is the new [integration pipeline](https://status.build.kyma-project.io/job-history/kyma-prow-logs/logs/kyma-integration-k3s) that installs Kyma and executes integration tests in about 7 minutes.
+The decisions are now in the implementation phase, but some of the ideas are already applied and bring visible benefits. The best example is the new integration pipeline that installs Kyma and executes integration tests in about 7 minutes.
