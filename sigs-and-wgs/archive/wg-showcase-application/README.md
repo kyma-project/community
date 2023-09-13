@@ -22,7 +22,7 @@ The purpose of this Working Group (WG) is to build a Unified Demo Project with a
 
 ## Meetings
 
-* Thursday at 16:00 CEST]
+* Thursday at 16:00 CEST
 * [Slack](https://kyma-community.slack.com/archives/C01C40T8CKD)
 * Frequency: weekly
 * [Meeting notes and agenda](https://docs.google.com/document/d/1XO7_lWlcJiJLA7ZX_vQv9_0jyIrWNafWdJRwgQwC_y4/edit)
