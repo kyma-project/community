@@ -54,7 +54,7 @@ The `/kyma-project` repositories in GitHub use [Markdown link check](https://git
 
 To configure the Markdown link check, follow these steps:
 
-1. Add or update the `.mlc.config.json` file with the following parameters to the root directory of your repository:
+1. Add or update the `.mlc.config.json` file with the following parameters in the root directory of your repository:
 
   ```bash
   {
@@ -73,7 +73,7 @@ To configure the Markdown link check, follow these steps:
   - [`/community/.mlc.config.json`](https://github.com/kyma-project/community/blob/main/.mlc.config.json)
   - [`/telemetry-manager/.mlc.config.json`](https://github.com/kyma-project/telemetry-manager/blob/main/.mlc.config.json)
 
-2. Choose your CICD pipeline for the check and set up its workflow. For example, choose GitHub Action and add or update the configuration YAML file(s) to the `/.github/workflows` directory. See the [official GitHub Action - Markdown link check documentation](https://github.com/marketplace/actions/markdown-link-check) for details.
+2. Choose your CI/CD pipeline for the check and set up its workflow. For example, choose GitHub Action and add or update the configuration YAML file(s) to the `/.github/workflows` directory. See the [official GitHub Action - Markdown link check documentation](https://github.com/marketplace/actions/markdown-link-check) for details.
 
   See the following examples of the GitHub Action configuration for the `/telemetry-manager` and `/kyma` repositories:
 
