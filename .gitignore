@@ -4,5 +4,6 @@
 !.kyma-project-io/
 !templates/repository-template/.github
 !.mlc.config.json
-!.github/workflows/pr-markdown-link-check.yaml
-!.github/workflows/daily-markdown-link-check.yaml
+!.github/workflows/lint-markdown-links-daily.yml
+!.github/workflows/lint-markdown-links-pr.yml
+

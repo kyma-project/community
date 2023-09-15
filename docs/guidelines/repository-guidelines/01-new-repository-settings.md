@@ -15,7 +15,6 @@ Whenever you create a new repository, use the template from the [`template-repos
 
 ![Template](./assets/template.png)
 
-
 ## Adjust repository options
 
 Under the repository name, choose the **Settings** tab. The **Options** view opens as the default one in the left menu.
@@ -46,6 +45,43 @@ If you add a new repository in:
 Ask a [kyma-project owner](https://github.com/orgs/kyma-project/people) to:
 - Add the newly created repository to the [Contributor License Agreement](https://cla-assistant.io/) (CLA).
 - Add the `kyma-bot` username to be exempt from signing the CLA.
+
+## Enable Markdown link check
+
+The `/kyma-project` repositories in GitHub use [Markdown link check](https://github.com/tcort/markdown-link-check) to check their Markdown files for broken links. Configuration and maintenance of the Markdown link check tool is the responsibility of a repository owner.
+
+### Configuration
+
+To configure the Markdown link check, follow these steps:
+
+1. Add or update the `.mlc.config.json` file with the following parameters in the root directory of your repository:
+
+  ```bash
+  {
+    "replacementPatterns": [
+      {
+        "_comment": "a replacement rule for all the in-repository references",
+        "pattern": "^/",
+        "replacement": "{{BASEURL}}/"
+      }
+    ]
+  }
+  ```
+
+  See the following examples:
+  
+  - [`/community/.mlc.config.json`](https://github.com/kyma-project/community/blob/main/.mlc.config.json)
+  - [`/telemetry-manager/.mlc.config.json`](https://github.com/kyma-project/telemetry-manager/blob/main/.mlc.config.json)
+
+2. Choose your CI/CD pipeline for the check and set up its workflow. For example, choose GitHub Action and add or update the configuration YAML file(s) to the `/.github/workflows` directory. See the [official GitHub Action - Markdown link check documentation](https://github.com/marketplace/actions/markdown-link-check) for details.
+
+  See the following examples of the GitHub Action configuration for the `/telemetry-manager` and `/kyma` repositories:
+
+  -  `/telemetry-manager`
+    - [markdown-link-check.yml](https://github.com/kyma-project/telemetry-manager/blob/main/.github/workflows/markdown-link-check.yml) - checks links in all Markdown files the repository on every pull request
+  - `/kyma`
+     - [`pr-markdown-link-check.yaml`](https://github.com/kyma-project/kyma/blob/main/.github/workflows/pr-markdown-link-check.yaml) - checks links in Markdown files being part of a created pull request
+     - [`daily-markdown-link-check.yaml`](https://github.com/kyma-project/kyma/blob/main/.github/workflows/daily-markdown-link-check.yaml) - checks links in all Markdown files in the repository. This is a periodic, daily check scheduled on the main branch at 5 AM.
 
 ## Custom settings
 
