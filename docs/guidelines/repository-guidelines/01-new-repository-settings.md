@@ -73,12 +73,12 @@ To configure the Markdown link check, follow these steps:
   - [`/community/.mlc.config.json`](https://github.com/kyma-project/community/blob/main/.mlc.config.json)
   - [`/telemetry-manager/.mlc.config.json`](https://github.com/kyma-project/telemetry-manager/blob/main/.mlc.config.json)
 
-2. Choose your CICD pipeline for the check and set up its workflow. For example, choose GitHub Action and add the configuration YAML file(s) to the `/.github/workflows` directory. See the [official GitHub Action - Markdown link check documentation](https://github.com/marketplace/actions/markdown-link-check) for details.
+2. Choose your CICD pipeline for the check and set up its workflow. For example, choose GitHub Action and add or update the configuration YAML file(s) to the `/.github/workflows` directory. See the [official GitHub Action - Markdown link check documentation](https://github.com/marketplace/actions/markdown-link-check) for details.
 
   See the following examples of the GitHub Action configuration for the `/telemetry-manager` and `/kyma` repositories:
 
   -  `/telemetry-manager`
-    - [markdown-link-check.yml](https://github.com/kyma-project/telemetry-manager/blob/main/.github/workflows/markdown-link-check.yml) - checks all links in the repository on every pull request
+    - [markdown-link-check.yml](https://github.com/kyma-project/telemetry-manager/blob/main/.github/workflows/markdown-link-check.yml) - checks links in all Markdown files the repository on every pull request
   - `/kyma`
      - [`pr-markdown-link-check.yaml`](https://github.com/kyma-project/kyma/blob/main/.github/workflows/pr-markdown-link-check.yaml) - checks links in Markdown files being part of a created pull request
      - [`daily-markdown-link-check.yaml`](https://github.com/kyma-project/kyma/blob/main/.github/workflows/daily-markdown-link-check.yaml) - checks links in all Markdown files in the repository. This is a periodic, daily check scheduled on the main branch at 5 AM.
