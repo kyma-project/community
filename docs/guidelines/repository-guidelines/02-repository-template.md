@@ -13,9 +13,11 @@ The `template-repository` consists of:
 
 * [`.github`](https://github.com/kyma-project/template-repository/tree/main/.github) - This folder contains the pull request template, issue templates, and the Stale Bot that monitors inactive issues, marks them as `stale`, and closes them after the specified period of time. The `.github` folder may include the `/workflows` subfolder with GitHub Actions workflows, such as [Markdown link check](01-new-repository-settings.md#enable-markdown-link-check), configuration details.
 
-* .mlc.config.json - This file includes the Markdown link check configuration for the repository. The configuration is necessary to set up a CICD pipeline for the check. For example, use Markdown link check as a GitHub Action from the GitHub Marketplace.
+* [.reuse](https://github.com/kyma-project/template-repository/tree/main/.reuse) - 
 
 * [`docs`](https://github.com/kyma-project/template-repository/tree/main/docs) - In this folder, put the repository-specific documentation only. Store any architectural decisions or documents applicable to all Kyma repositories in the `community` repository.
+
+* .mlc.config.json - This file includes the Markdown link check configuration for the repository. The configuration is necessary to set up a CICD pipeline for the check. For example, use Markdown link check as a GitHub Action from the GitHub Marketplace.
 
 * [CODE_OF_CONDUCT.md](https://github.com/kyma-project/template-repository/blob/main/CODE_OF_CONDUCT.md) - This document is a ready-to-use template which provides a link to the general `CODE_OF_CONDUCT.md` document from the `community` repository.
 
@@ -28,3 +30,5 @@ The `template-repository` consists of:
 * [NOTICE.md](https://github.com/kyma-project/template-repository/blob/main/NOTICE.md) - The document defines the ownership of the copyright in the repository. Copy the template into your repository.
 
 * [README.md](https://github.com/kyma-project/template-repository/blob/main/README.md) - This is a template with sections that you fill in according to the provided suggestions. Add any information specific for a development guide in this document. Describe how your project works, how to use it, and how to develop it. Because all sections are optional, remove those that do not apply to your project.  
+
+* [SECURITY.md](https://github.com/kyma-project/template-repository/blob/main/SECURITY.md) - 
