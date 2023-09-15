@@ -70,7 +70,7 @@ To configure the Markdown link check, follow these steps:
 
   See the following examples:
   
-  - [`/community/.mlc.config.json`](https://github.com/kyma-project/community/blob/main/.mlc.config.)
+  - [`/community/.mlc.config.json`](https://github.com/kyma-project/community/blob/main/.mlc.config.json)
   - [`/telemetry-manager/.mlc.config.json`](https://github.com/kyma-project/telemetry-manager/blob/main/.mlc.config.json)
 
 2. Choose your CICD pipeline for the check and set up its workflow. For example, choose GitHub Action and add the configuration YAML file(s) to the `/.github/workflows` directory. See the [official GitHub Action - Markdown link check documentation](https://github.com/marketplace/actions/markdown-link-check) for details.

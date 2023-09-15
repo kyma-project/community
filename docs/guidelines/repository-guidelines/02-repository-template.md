@@ -11,7 +11,7 @@ The `template-repository` contains all elements required for a skeleton reposito
 
 The `template-repository` consists of:
 
-* [`.github`](https://github.com/kyma-project/template-repository/tree/main/.github) - This folder contains the pull request template, issue templates, and the Stale Bot that monitors inactive issues, marks them as `stale`, and closes them after the specified period of time. The `.github` folder may include the `/workflows` subfolder with GitHub Actions workflows, such as [Markdown link check](./01-new-repository-settings.md#enable-markdown-link-check), configuration details.
+* [`.github`](https://github.com/kyma-project/template-repository/tree/main/.github) - This folder contains the pull request template, issue templates, and the Stale Bot that monitors inactive issues, marks them as `stale`, and closes them after the specified period of time. The `.github` folder may include the `/workflows` subfolder with GitHub Actions workflows, such as [Markdown link check](01-new-repository-settings.md#enable-markdown-link-check), configuration details.
 
 * .mlc.config.json - This file includes the Markdown link check configuration for the repository. The configuration is necessary to set up a CICD pipeline for the check. For example, use Markdown link check as a GitHub Action from the GitHub Marketplace.
 
