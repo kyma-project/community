@@ -13,7 +13,7 @@ The `template-repository` consists of:
 
 * [`.github`](https://github.com/kyma-project/template-repository/tree/main/.github) - This folder contains the pull request template, issue templates, and the Stale Bot that monitors inactive issues, marks them as `stale`, and closes them after the specified period of time. The `.github` folder may include the `/workflows` subfolder with GitHub Actions workflows, such as [Markdown link check](01-new-repository-settings.md#enable-markdown-link-check), configuration details.
 
-* [.reuse](https://github.com/kyma-project/template-repository/tree/main/.reuse) - This folder includes a file with the copyright and licensing disclaimer about SAP or third-party products or services developed outside the project.
+* [`.reuse`](https://github.com/kyma-project/template-repository/tree/main/.reuse) - This folder includes a file with the copyright and licensing disclaimer about SAP or third-party products or services developed outside the project.
 
 * [`docs`](https://github.com/kyma-project/template-repository/tree/main/docs) - In this folder, put the repository-specific documentation only. Store any architectural decisions or documents applicable to all Kyma repositories in the `community` repository.
 
