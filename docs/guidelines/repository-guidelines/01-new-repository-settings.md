@@ -78,10 +78,10 @@ To configure the Markdown link check, follow these steps:
   See the following examples of the GitHub Action configuration for the `/telemetry-manager` and `/kyma` repositories:
 
   -  `/telemetry-manager`
-    - [markdown-link-check.yml](https://github.com/kyma-project/telemetry-manager/blob/main/.github/workflows/markdown-link-check.yml) - checks links in all Markdown files the repository on every pull request
+     - [markdown-link-check.yml](https://github.com/kyma-project/telemetry-manager/blob/main/.github/workflows/markdown-link-check.yml) - checks links in all Markdown files the repository on every pull request
   - `/kyma`
-     - [`pr-markdown-link-check.yaml`](https://github.com/kyma-project/kyma/blob/main/.github/workflows/pr-markdown-link-check.yaml) - checks links in Markdown files being part of a created pull request
-     - [`daily-markdown-link-check.yaml`](https://github.com/kyma-project/kyma/blob/main/.github/workflows/daily-markdown-link-check.yaml) - checks links in all Markdown files in the repository. This is a periodic, daily check scheduled on the main branch at 5 AM.
+     - [`lint-markdown-links-pr.yml`](https://github.com/kyma-project/kyma/blob/main/.github/workflows/lint-markdown-links-pr.yml) - checks links in Markdown files being part of a created pull request
+     - [`lint-markdown-links-daily.yml`](https://github.com/kyma-project/kyma/blob/main/.github/workflows/lint-markdown-links-daily.yml) - checks links in all Markdown files in the repository. This is a periodic, daily check scheduled on the main branch at 5 AM.
 
 ## Custom settings
 

@@ -17,7 +17,7 @@ The `template-repository` consists of:
 
 * [`docs`](https://github.com/kyma-project/template-repository/tree/main/docs) - In this folder, put the repository-specific documentation only. Store any architectural decisions or documents applicable to all Kyma repositories in the `community` repository.
 
-* [.mlc.config.json](https://github.com/kyma-project/template-repository/blob/main/.mlc.config.json) - This file includes the Markdown link check configuration for the repository. The configuration is necessary to set up a CICD pipeline for the check. For example, use Markdown link check as a GitHub Action from the GitHub Marketplace.
+* [`.mlc.config.json`](https://github.com/kyma-project/template-repository/blob/main/.mlc.config.json) - This file includes the Markdown link check configuration for the repository. The configuration is necessary to set up a CICD pipeline for the check. For example, use Markdown link check as a GitHub Action from the GitHub Marketplace.
 
 * [`CODE_OF_CONDUCT.md`](https://github.com/kyma-project/template-repository/blob/main/CODE_OF_CONDUCT.md) - This document is a ready-to-use template which provides a link to the general `CODE_OF_CONDUCT.md` document from the `community` repository.
 
