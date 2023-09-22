@@ -102,6 +102,6 @@ Follow these steps to release another Kyma version. Execute these steps for ever
      If you don't have access to the GCP project, post a request in the Slack team channel.
      > **CAUTION**: The cluster is automatically generated for you, and it is automatically removed after 7 days.
 
-2. Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
+2. Validate the YAML and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
 
 > **NOTE:** After the Kyma release is complete, proceed with [releasing Kyma CLI](./03-kyma-cli-release-process.md).
