@@ -1,0 +1,36 @@
+
+## Application Connectivity
+
+Additional logging options has been added to Central Application Gateway.
+https://github.com/kyma-project/kyma/#debugging
+
+## Observability
+
+Pre-note: the monitoring gets removed with Kyma 2.20 as announced in this [blog post](https://blogs.sap.com/2023/09/07/removal-of-prometheus-grafana-based-monitoring-in-sap-btp-kyma-runtime/)
+
+Update of components:
+ - kube-state-metrics 2.10.0 (https://github.com/kyma-project/kyma/pull/18135)
+ - oauth2-proxy 7.5.1 (https://github.com/kyma-project/kyma/pull/18222)
+
+## Telemetry
+
+The telemetry component got replaced by a module https://github.com/kyma-project/kyma/issues/16301 and will not be part of the Kyma release notes anymore. For upcoming releases of the telemetry module please follow: https://github.com/kyma-project/telemetry-manager/releases
+	
+## Service Mesh
+
+With Kyma 2.19 we have updated the Istio component to version 1.1.0. It contains the following changes:
+ - Istio updated to version 1.19.0
+ - Enabled Horizontal Pod Autoscaling capability for a smaller cluster installation
+ - Additional Kyma resources and configuration, such as PeerAuthentication configuring service-mesh traffic to only allow mTLS
+ - Installed Istio Grafana dashboards
+
+## Security
+
+As announced in Kyma 2.18 release notes, we have removed the following components:
+ - Cluster Users
+ - ECDHE-RSA-AES256-SHA and ECDHE-RSA-AES128-SHA cipher suites
+
+## API Gateway
+
+ - We have removed the Ory Hydra component as announced in Kyma 2.17 release notes.
+ - We have removed APIRule in version v1alpha1 as announced in Kyma 2.16 release notes.  
