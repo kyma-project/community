@@ -23,7 +23,7 @@ The purpose of this working group is to:
 
 ## Meetings
 
-* [Tuesday at 16:00 CEST](https://calendar.google.com/calendar/ical/3abtp9lh0mn3iiov5772jftccc%40group.calendar.google.com/public/basic.ics)
+* Tuesday at 16:00 CEST
 * [Slack](https://kyma-community.slack.com/messages/CD2HJ0E78)
 * Frequency: weekly
 * [Meeting notes and agenda](https://docs.google.com/document/d/19lM_wDLXRV-8rQQ7ZxFtasr6kgGRCwUm0kJaAK3NNik)

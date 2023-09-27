@@ -15,7 +15,6 @@ Whenever you create a new repository, use the template from the [`template-repos
 
 ![Template](./assets/template.png)
 
-
 ## Adjust repository options
 
 Under the repository name, choose the **Settings** tab. The **Options** view opens as the default one in the left menu.
@@ -35,11 +34,11 @@ To see these settings, go to **Branches** in the left menu, under repository **S
 
 ![Branch protection rules](./assets/branch-protection-rules.png)
 
-In Kyma, the protection rules are defined in the Prow [`config.yaml`](https://github.com/kyma-project/test-infra/blob/main/prow/config.yaml) file generated from rules defined in the [`prow-config.yaml`](https://github.com/kyma-project/test-infra/blob/main/templates/templates/prow-config.yaml) file and handled by a Prow component called [Branch Protector](https://github.com/kyma-project/test-infra/blob/main/docs/prow/prow-architecture.md#branch-protector).
+In Kyma, the protection rules are defined in the Prow [`config.yaml`](https://github.com/kyma-project/test-infra/blob/main/prow/config.yaml) file handled by a Prow component called [Branch Protector](https://github.com/kyma-project/test-infra/blob/main/docs/prow/prow-architecture.md#branch-protector).
 
 If you add a new repository in:
 - `kyma-project`, you do not need to add a new entry to the Prow `config.yaml` file as the branch protection is already defined for [all repositories](https://github.com/kyma-project/test-infra/blob/main/prow/config.yaml#L380) within this organization. The only exception is if you want to specify additional rules that are not handled by Prow.
-- `kyma-incubator`, add a new repository entry to the Prow `config.yaml` file, under **branch-protection.orgs.kyma-incubator.repos**. See [an example](https://github.com/kyma-project/test-infra/blob/main/templates/templates/prow-config.yaml)  of such an entry for the `marketplaces` repository.
+- `kyma-incubator`, add a new repository entry to the Prow `config.yaml` file, under **branch-protection.orgs.kyma-incubator.repos**.
 
 ## Update CLA assistant configuration
 
@@ -47,9 +46,42 @@ Ask a [kyma-project owner](https://github.com/orgs/kyma-project/people) to:
 - Add the newly created repository to the [Contributor License Agreement](https://cla-assistant.io/) (CLA).
 - Add the `kyma-bot` username to be exempt from signing the CLA.
 
-## Add a milv file
+## Enable Markdown link check
 
-If you define any governance-related [Prow job](https://github.com/kyma-project/test-infra/blob/main/prow/jobs/) for the new repository to validate documentation links, you must add a `milv.config.yaml` file at the root of the repository. [See](https://github.com/kyma-project/test-infra/blob/main/milv.config.yaml) an example of the milv file.
+The `/kyma-project` repositories in GitHub use [Markdown link check](https://github.com/tcort/markdown-link-check) to check their Markdown files for broken links. Configuration and maintenance of the Markdown link check tool is the responsibility of a repository owner.
+
+### Configuration
+
+To configure the Markdown link check, follow these steps:
+
+1. Add or update the `.mlc.config.json` file with the following parameters in the root directory of your repository:
+
+  ```bash
+  {
+    "replacementPatterns": [
+      {
+        "_comment": "a replacement rule for all the in-repository references",
+        "pattern": "^/",
+        "replacement": "{{BASEURL}}/"
+      }
+    ]
+  }
+  ```
+
+  See the following examples:
+  
+  - [`/community/.mlc.config.json`](https://github.com/kyma-project/community/blob/main/.mlc.config.json)
+  - [`/telemetry-manager/.mlc.config.json`](https://github.com/kyma-project/telemetry-manager/blob/main/.mlc.config.json)
+
+2. Choose your CI/CD pipeline for the check and set up its workflow. For example, choose GitHub Action and add or update the configuration YAML file(s) to the `/.github/workflows` directory. See the [official GitHub Action - Markdown link check documentation](https://github.com/marketplace/actions/markdown-link-check) for details.
+
+  See the following examples of the GitHub Action configuration for the `/telemetry-manager` and `/kyma` repositories:
+
+  -  `/telemetry-manager`
+     - [`markdown-link-check.yml`](https://github.com/kyma-project/telemetry-manager/blob/main/.github/workflows/markdown-link-check.yml) - checks links in all Markdown files the repository on every pull request
+  - `/kyma`
+     - [`lint-markdown-links-pr.yml`](https://github.com/kyma-project/kyma/blob/main/.github/workflows/lint-markdown-links-pr.yml) - checks links in Markdown files being part of a created pull request
+     - [`lint-markdown-links-daily.yml`](https://github.com/kyma-project/kyma/blob/main/.github/workflows/lint-markdown-links-daily.yml) - checks links in all Markdown files in the repository. This is a periodic, daily check scheduled on the main branch at 5 AM.
 
 ## Custom settings
 

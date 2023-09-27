@@ -10,7 +10,7 @@ If you are looking for information on how to join us, you are in the right place
 
 ## Contribution rules
 
-Before you start contributing, read our [Code of Conduct](./contributing/01-code-of-conduct.md) and learn about our [working model](./governance/01-governance.md) to understand the way the Kyma community works. Get familiar with the [contributing rules](./contributing/02-contributing.md), recommended [Git workflow](./contributing/03-git-workflow.md), [Prow workflow](./contributing/04-prow-workflow.md), and [issues workflow](./governance/03-issues-workflow.md) we use in Kyma so you can apply them later in practice as an active contributor.
+Before you start contributing, read our [Code of Conduct](./contributing/01-code-of-conduct.md) and learn about our [working model](./governance/01-governance.md) to understand the way the Kyma community works. Get familiar with the [contributing rules](./contributing/02-contributing.md), recommended [Git workflow](./contributing/03-git-workflow.md), and [issues workflow](./governance/03-issues-workflow.md) we use in Kyma so you can apply them later in practice as an active contributor.
 
 ## Guidelines
 
@@ -33,10 +33,6 @@ We're on Twitter (@kymaproject) and LinkedIn (Kyma Project). Stay tuned for the 
 ## YouTube
 
 Subscribe to our [YouTube channel](https://www.youtube.com/channel/UC8Q8bBtYe9gQN-dQ-_L8JvQ) to see all recordings from  SIGs and WGs meetings. You will also find there some other interesting videos, such as Kyma in non-English, Kyma Capabilities Demos, and many more.
-
-## Blog
-
-Go to the [Kyma blog](https://kyma-project.io/blog/) to read the latest news on our project, events, and teams. If you want to share your experience with Kyma, feel free to [write a blog post](https://github.com/kyma-project/website/blob/main/docs/write-blog-posts.md) on your own.
 
 # <img src="assets/community-support-icon.svg" width="120"> Community Support
 

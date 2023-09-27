@@ -35,7 +35,7 @@ The OOTB Kyma installation will have NATS Streaming set as the default messaging
 
 * The operator deploys the cluster channel provisioner and injects the secrets.
 
-* Use [Knative semantics](https://github.com/knative/docs/blob/master/docs/eventing/channels/default-channels.md#setting-the-default-channel-configuration) to specify the default ClusterChannelProvisioner.
+* Use Knative semantics to specify the default ClusterChannelProvisioner.
 
 ```yaml
 apiVersion: v1
@@ -74,7 +74,7 @@ data:
 
 **Yes, default can be changed**.
 
-* The existing channels/subscriptions still stay the same with the previous PubSub. [Same approach](https://github.com/knative/docs/blob/master/docs/eventing/channels/default-channels.md) as followed by Knative.
+* The existing channels/subscriptions still stay the same with the previous PubSub. Same approach as followed by Knative.
 
 ## How to support the operator
 

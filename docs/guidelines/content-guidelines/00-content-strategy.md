@@ -4,7 +4,7 @@ title: Content Strategy
 
 ## Purpose and audience
 
-This content strategy focuses on the publicly available documentation for the open-source [Kyma project](https://kyma-project.io/docs/). The source of the documentation displayed on the website is stored in [GitHub](https://github.com/kyma-project/kyma) and it's written in [Markdown](https://daringfireball.net/projects/markdown/).
+This content strategy focuses on the publicly available documentation for the open-source [Kyma project](https://kyma-project.io). The source of the documentation displayed on the website is stored in [GitHub](https://github.com/kyma-project/kyma) and it's written in [Markdown](https://daringfireball.net/projects/markdown/).
 
 The assumed readers of this guide and contributors to the documentation have some basic knowledge of technical writing.
 
@@ -87,7 +87,7 @@ Deals with installation, upgrades, system troubleshooting. Wants to support the 
 
 On the Kyma website, we have five main tabs containing multiple documents each, plus a glossary.
 
-### Overview
+### Kyma Components
 
 **Target Group**: Decision Makers (Tech Leads) and newbies.
 
@@ -116,6 +116,10 @@ Contains installation and configuration instructions, backup info, security docu
 **Target Group**: Users who want to look up specific detailed information.
 
 Contains detailed information, such as architecture diagrams, configuration charts, etc.; note that the CLI command documents are generated automatically.
+
+### Modules
+
+Contains detailed information on the available Kyma modules. Content of that section is pulled from the `docs/user` folders in module repositories.
 
 ### Glossary
 

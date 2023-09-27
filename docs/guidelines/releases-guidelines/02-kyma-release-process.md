@@ -51,39 +51,9 @@ Create a release branch in the `kyma` repository. The name of this branch should
     git push -u upstream release-{RELEASE}
     ```
 
-### kyma-project/test-infra
-
-#### Update the jobs on the main branch
-
-1. Create a PR to `main` containing the following changes to create the new job definitions:
-
-    1. Open `templates/config.yaml`
-    2. Add the new release to `global.releases`. Remove the oldest release on the list.
-    3. Set `global.nextRelease` to the future release version.
-    4. Run `make` in the root of the repository to generate jobs and run tests. If any of the tests is marked red, fix it using these guidelines:
-      * For release tests using `GetKymaReleasesSince` or `jobsuite.Since` with a release that is no longer supported, change the method to `GetAllKymaReleases` or `jobsuite.AllReleases` respectively.
-      * For release tests using `GetKymaReleasesUntil` or `jobsuite.Until` with a release that is no longer supported, remove the part of the test which includes the method.
-    5. If tests are green, commit all jobs.
-
-2. Once the PR is merged to `main`, you can proceed.
-
-#### Create a release branch
-
->**NOTE:** a release branch needs to be created per new major / minor version. Patch releases and release candidates do not have a dedicated release branch. If this branch already exists this step will be skipped.
-
-Create a release branch in the `test-infra` repository
-
-    ```bash
-    git fetch upstream
-    git checkout --no-track -b release-{RELEASE} upstream/main
-    git push -u upstream release-{RELEASE}
-    ```
-
 ## Steps
 
 Follow these steps to release another Kyma version. Execute these steps for every patch release or release candidate.
-
-### kyma-project/kyma
 
 #### Create a PR to the release branch
 
@@ -114,7 +84,6 @@ Follow these steps to release another Kyma version. Execute these steps for ever
 3. If you detect any problems with your PR, fix the issues until your checks pass.
 
 4. After all checks pass, merge your PR to the release branch. Merging the PR triggers the post-submit integration tests automatically.
-   The jobs' status will be visible on the Kyma [TestGrid](https://testgrid.k8s.io/kyma_integration) in the corresponding dashboard tab.
 
 5. If there's a need for additional changes in the release branch during the development process, open a new PR to the release branch.
    Repeat steps 1-4 for this PR.
@@ -123,8 +92,9 @@ Follow these steps to release another Kyma version. Execute these steps for ever
 
 1. Once the preparation for the release is finished, trigger the [Release Kyma](https://github.com/kyma-project/kyma/actions/workflows/github-release.yaml) GitHub action. 
    Choose the branch that corresponds to the release that you want to trigger. The exact release version is taken from the `VERSION` file.
-   When you click the **Run workflow** button, the release process waits for the approval from reviewers. 
-   The reviewers list is defined in the ["release" Github Environment](https://github.com/kyma-project/kyma/settings/environments). 
+   When you click the **Run workflow** button, the release process waits for the approval from reviewers.
+   <!-- markdown-link-check-disable-next-line -->
+   The reviewers list is defined in the ["release" GitHub Environment](https://github.com/kyma-project/kyma/settings/environments).
    After it is approved, the following will happen:
    * GitHub release is triggered.
    * Documentation update on the official Kyma website is triggered.
@@ -132,21 +102,6 @@ Follow these steps to release another Kyma version. Execute these steps for ever
      If you don't have access to the GCP project, post a request in the Slack team channel.
      > **CAUTION**: The cluster is automatically generated for you, and it is automatically removed after 7 days.
 
-2. The Github release post-submit job creates a release in the `kyma-project/kyma` repository, which triggers the [`post-rel{RELEASE_VERSION_SHORT}-kyma-release-upgrade`](https://github.com/kyma-project/test-infra/blob/main/prow/jobs/kyma/kyma-release-upgrade.yaml) pipeline. The purpose of this job is to test upgradability between the latest Kyma release that is not a release candidate and the brand new release published by the release post-submit job.
-    For example, if `1.7.0-rc2` is released, the pipeline will try to upgrade `1.6.0` to `1.7.0-rc2`.
-
-    If you detect any problems with the upgrade, contact the teams responsible for failing components.
-
-    > **CAUTION:** The job assumes no manual migration is involved. If the upgrade process requires any additional actions, the pipeline is likely to fail. In such case, the owners of the components concerned are responsible for running manual tests or modifying the pipeline.
-
-3. Validate the `yaml` and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
-
-4. Update the release content manually with links to:
-
-   * Instructions on local Kyma installation
-   * Instructions on cluster Kyma installation
-   * Release notes
-
-   For installation instructions, use the links from the previous release and update the version number in URLs. If contributors want you to change something in the instructions, they would address you directly. Contact technical writers for the link to release notes.
+2. Validate the YAML and changelog files generated under [releases](https://github.com/kyma-project/kyma/releases).
 
 > **NOTE:** After the Kyma release is complete, proceed with [releasing Kyma CLI](./03-kyma-cli-release-process.md).
