@@ -6,7 +6,7 @@ https://github.com/kyma-project/kyma/#debugging
 
 ## Observability
 
-Pre-note: the monitoring gets removed with Kyma 2.20 as announced in this [blog post](https://blogs.sap.com/2023/09/07/removal-of-prometheus-grafana-based-monitoring-in-sap-btp-kyma-runtime/)
+Early warning: The Monitoring component will be removed with Kyma 2.20, as announced in this [blog post](https://blogs.sap.com/2023/09/07/removal-of-prometheus-grafana-based-monitoring-in-sap-btp-kyma-runtime/)
 
 Update of components:
  - kube-state-metrics 2.10.0 (https://github.com/kyma-project/kyma/pull/18135)
