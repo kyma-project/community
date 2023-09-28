@@ -18,7 +18,7 @@ The telemetry component got replaced by a module https://github.com/kyma-project
 	
 ## Service Mesh
 
-With Kyma 2.19 we have updated the Istio component to version 1.1.0. It contains the following changes:
+With Kyma 2.19, we have updated the Istio component to version 1.1.0. It contains the following changes:
  - Istio updated to version 1.19.0
  - Enabled Horizontal Pod Autoscaling capability for a smaller cluster installation
  - Additional Kyma resources and configuration, such as PeerAuthentication configuring service-mesh traffic to only allow mTLS
