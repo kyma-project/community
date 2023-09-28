@@ -22,7 +22,6 @@ With Kyma 2.19, we have updated the Istio component to version 1.1.0. It contain
  - [Istio updated to version 1.19.0](https://github.com/kyma-project/istio/pull/373)
  - [Enabled Horizontal Pod Autoscaling capability](https://github.com/kyma-project/istio/pull/371) for a smaller cluster installation
  - [Additional Kyma resources and configuration](https://github.com/kyma-project/istio/issues/334), such as Istio Grafane dashboards or PeerAuthentication configuring service-mesh traffic to only allow mTLS
- - Installed Istio Grafana dashboards
 
 ## Security
 
