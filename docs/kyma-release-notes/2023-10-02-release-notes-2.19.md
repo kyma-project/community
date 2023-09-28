@@ -32,5 +32,5 @@ As announced in Kyma 2.18 release notes, we have removed the following component
 
 ## API Gateway
 
-We have removed the Ory Hydra component, as announced in Kyma 2.17 release notes.
+We have removed the Ory Hydra component, as announced in the [Kyma 2.17 release notes](https://github.com/kyma-project/kyma/releases/tag/2.17.0).
 Also, we have removed APIRule in version v1alpha1, as announced in the [Kyma 2.16 release notes](https://github.com/kyma-project/kyma/releases/tag/2.16.0).  
