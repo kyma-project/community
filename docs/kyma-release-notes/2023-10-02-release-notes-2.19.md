@@ -26,7 +26,7 @@ With Kyma 2.19, we have updated the Istio component to version 1.1.0. It contain
 
 ## Security
 
-As announced in Kyma 2.18 release notes, we have removed the following components:
+As announced in the [Kyma 2.18 release notes](https://github.com/kyma-project/kyma/releases/tag/2.18.0), we have removed the following components:
  - Cluster Users
  - ECDHE-RSA-AES256-SHA and ECDHE-RSA-AES128-SHA cipher suites
 
