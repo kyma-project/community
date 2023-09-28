@@ -9,8 +9,8 @@ https://github.com/kyma-project/kyma/#debugging
 Early warning: The Monitoring component will be removed with Kyma 2.20, as announced in this [blog post](https://blogs.sap.com/2023/09/07/removal-of-prometheus-grafana-based-monitoring-in-sap-btp-kyma-runtime/).
 
 Update of the software stack:
- - kube-state-metrics 2.10.0 (https://github.com/kyma-project/kyma/pull/18135)
- - oauth2-proxy 7.5.1 (https://github.com/kyma-project/kyma/pull/18222)
+ - [kube-state-metrics 2.10.0](https://github.com/kyma-project/kyma/pull/18135)
+ - [oauth2-proxy 7.5.1](https://github.com/kyma-project/kyma/pull/18222)
 
 ## Telemetry
 
