@@ -1,8 +1,8 @@
 
 ## Application Connectivity
 
-Additional logging options have been added to Central Application Gateway.
-https://github.com/kyma-project/kyma/#debugging
+[Additional logging options have been added](https://github.com/kyma-project/kyma/#debugging) to Central Application Gateway.
+
 
 ## Observability
 
