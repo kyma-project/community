@@ -14,7 +14,7 @@ Update of the software stack:
 
 ## Telemetry
 
-The Telemetry component has been [replaced by the module](https://github.com/kyma-project/kyma/issues/16301) and won't be part of the Kyma release notes anymore. Instead, learn about upcoming releases of the Telemetry module on https://github.com/kyma-project/telemetry-manager/releases.
+The Telemetry component has been [replaced ](https://github.com/kyma-project/kyma/issues/16301) by the [Telemetry module](https://github.com/kyma-project/telemetry-manager) and won't be part of Kyma releases anymore. Instead, learn about upcoming releases of the Telemetry module on the dedicated [release page](https://github.com/kyma-project/telemetry-manager/releases).
 	
 ## Service Mesh
 
