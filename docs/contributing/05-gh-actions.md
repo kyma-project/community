@@ -36,7 +36,7 @@ To add a Github Action to the list of allowed Actions one has to perform a [secu
 ```json
 {
     "name": "full name including Github organization",
-    "version": "hash digest of the release",
+    "versions": ["hash digest of the release"],
     "repository": "full link to the repository",
     "marketplace": "full link to the Github Marketplace entry",
     "security_review_performed": true or false,
