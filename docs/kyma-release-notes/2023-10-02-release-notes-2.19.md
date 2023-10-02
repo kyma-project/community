@@ -1,3 +1,5 @@
+Sailing across [the midnight train going anywhere](https://youtu.be/VcjzHMhBtf0?si=woNdDUXHw0xjPL5b&t=26) we have embarked upon fixes of bugs and insightful updates, all to ensure a strikingly better and smoother user experience.
+So, hold on to the rhythm of coding, believe in the power of what this new release can do, and read on to learn more about the new release!
 
 ## Application Connectivity
 
