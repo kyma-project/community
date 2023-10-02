@@ -1,7 +1,7 @@
 
 ## Application Connectivity
 
-[Additional logging options have been added](https://github.com/kyma-project/kyma/#debugging) to Central Application Gateway.
+[Additional logging options have been added](https://github.com/kyma-project/kyma/tree/main/components/central-application-gateway#debugging) to Central Application Gateway.
 
 
 ## Observability
@@ -21,7 +21,7 @@ The Telemetry component has been [replaced ](https://github.com/kyma-project/kym
 With Kyma 2.19, we have updated the Istio component to version 1.1.0. It contains the following changes:
  - [Istio updated to version 1.19.0](https://github.com/kyma-project/istio/pull/373)
  - [Enabled Horizontal Pod Autoscaling capability](https://github.com/kyma-project/istio/pull/371) for a smaller cluster installation
- - [Additional Kyma resources and configuration](https://github.com/kyma-project/istio/issues/334), such as Istio Grafane dashboards or PeerAuthentication configuring service-mesh traffic to only allow mTLS
+ - [Additional Kyma resources and configuration](https://github.com/kyma-project/istio/issues/334), such as Istio Grafana dashboards or PeerAuthentication configuring service-mesh traffic to only allow mTLS
 
 ## Security
 
