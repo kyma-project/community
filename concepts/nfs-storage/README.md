@@ -83,6 +83,7 @@ Dynamic provisioning allows users to create persistent volume (PV) automatically
 ## Create storage service in shoot VPC vs use dedicated VPC and peer it with shoot VPC
 
 **Using shoot VPC**
+
 ![](nfs-shoot-vpc.drawio.svg)
 
 **Pros:**
@@ -93,6 +94,7 @@ Dynamic provisioning allows users to create persistent volume (PV) automatically
 - storage instance can block cluster deprovisioning (not a big deal as storage controller in the KCP should clean it up anyway)
 
 **Using dedicated VPC**
+
 ![](nfs-own-vpc.drawio.svg)
 
 **Pros:**
