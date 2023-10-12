@@ -5,26 +5,27 @@ In Kubernetes, the need for ReadWriteMany (RWX) storage solutions arises from a 
 Some requirements collected from our customers:
 
 1. High-Performance of writing small files: Rapidly write numerous small files (e.g., 3,000 files, 20KB each) within 30 seconds.
-2. High-Availability: maintain file access during full availability zone outages.
-3. Scalability: Scale storage capacity to accommodate over 1TB of data. Storage should expand automatically if needed.
-4. Backup and restore: automatic backup and possibility to restore entire volume (disaster recovery) or certain folder
-5. Encryption at rest.
-6. Secure connection to the cluster
+1. High-Availability: maintain file access during full availability zone outages.
+1. Scalability: Scale storage capacity to accommodate over 1TB of data. Storage should expand automatically if needed.
+1. Backup and restore: automatic backup and possibility to restore entire volume (disaster recovery) or certain folder
+1. Encryption at rest.
+1. Secure connection to the cluster
 
 Development and operations related requirements:
 1. Easy maintenance and should not require manual intervention for entire lifecycle. 
-2. Mature and stable as it involves customer data durability.
-3. Easy to protect from accidental (or intentional) damages caused by customer
+1. Mature and stable as it involves customer data durability.
+1. Easy to protect from accidental (or intentional) damages caused by customer
 
 # Implementation and commercialization options for NFS storage
 
 We evaluated different possibilities how to shape the storage feature in Kyma Runtime. 
 This is a list of evaluated options:
 1. In-cluster component vs external service 
-2. Own storage service vs using services offered by cloud providers
-3. Dynamic provisioning vs static provisioning of volumes
-4. Use shoot cluster VPC vs service VPC peered with cluster VPC
-5. Storage as separate product (BTP service) vs Kyma module
+1. Own storage service vs using services offered by cloud providers
+1. Dynamic provisioning vs static provisioning of volumes
+1. Use shoot cluster VPC vs service VPC peered with cluster VPC
+1. Manage the VPC for Kyma clusters explicitly instead of letting Gardener manage the IP ranges
+1. Storage as separate product (BTP service) vs Kyma module
 
 
 
@@ -47,6 +48,7 @@ The first impressions were very positive. Installation in the HA mode was smooth
 - lifecycle management can become a burden (upgrades, security patches, etc)
 - requires up-skilling the team to effectively maintain the solution
 - some instability reported for writing larger files
+- failure to recover from Gardener cluster hybernation
 
 **Decision: NO for in-cluster storage component due too many risks related to operations and possible data loss**
 
@@ -56,7 +58,8 @@ With the decision that we want to keep storage service outside of the cluster we
 
 **Pros:**
 - one implementation for all cloud providers
-- consistent with already supported azure files 
+- consistent with already supported azure files
+- not affected by issues on the customer cluster
 
 **Cons:**
 - time and cost to build a complete solution
@@ -67,7 +70,7 @@ With the decision that we want to keep storage service outside of the cluster we
 
 ## Dynamic provisioning vs static provisioning of volumes
 
-Dynamic provisioning allows users to create persistent volume (PV) automatically when the new claim (PVC) is created. CSI driver for Google Firestore supports dynamic provisioning, but CSI driver for EFS doesn't. Dynamic provisioning looks more convenient for end-users and would be the good choice when the volume provisioning is handled by the Gardener control plane (like for Azure file storage). If the cloud storage is not natively supported by Gardener the code responsible for volume provisioning runs in the customer's cluster (CSI driver), and requires suitable credentials that allow to manage storage service instances. Kyma security model does not allow to share those credentials with customer as it introduces too many vulnerabilities we cannot mitigate. 
+Dynamic provisioning allows users to create persistent volume (PV) automatically when the new claim (PVC) is created. CSI driver for Google Filestore supports dynamic provisioning, but CSI driver for EFS doesn't. Dynamic provisioning looks more convenient for end-users and would be the good choice when the volume provisioning is handled by the Gardener control plane (like for Azure file storage). If the cloud storage is not natively supported by Gardener the code responsible for volume provisioning runs in the customer's cluster (CSI driver), and requires suitable credentials that allow to manage storage service instances. Kyma security model does not allow to share those credentials with customer as it introduces too many vulnerabilities we cannot mitigate. 
 
 **Pros:**
 - simple implementation: just install and configure CSI driver
@@ -77,6 +80,8 @@ Dynamic provisioning allows users to create persistent volume (PV) automatically
 - creating storage instances requires cloud provider credentials present in the cluster. Customers can get access to those credentials (they are cluster admins) and misuse them or even share them without any control. 
 - different implementation for AWS and GCP
 - [issues](https://cloud.google.com/filestore/docs/create-instance-issues#system_limit_for_internal_resources_has_been_reached_error_when_creating_an_instance) with private network quota for Filestore
+- cleanup of backing NFS stores not guaranteed when in-cluster provisioning is used (CSI driver)
+- more difficult to create clear backup and restore objects, as the provisioning is dynamic and it is not as clear on how to deal with backups and how to "target" them, e.g. based on name or UUID?
 
 **Decision: NO for dynamic provisioning due to security issues with sharing cloud subscription credentials with customers**
 
@@ -102,6 +107,26 @@ Dynamic provisioning allows users to create persistent volume (PV) automatically
 
 **Cons:**
 - dependency to VPC peering feature
+- impossible in GCP, as transitive peering is not available. IPs from Google Filestore will be exposed to the target VPC, but not to any VPC peered to that target VPC.
+
+**Decision: NO for using separate VPC for storage**
+
+
+
+## Manage the VPC for Kyma clusters explicitly instead of letting Gardener manage the IP ranges
+
+**Using single or persistent VPC for Kyma clusters**
+
+**Pros:**
+- Full control over the IP landscape
+- Multiple clusters in a single VPC with full overview and associated control over addresses & firewall configurations
+- Peering to Google managed service is easier and less likely to run into limitations, like Filestore peering limits
+- Same VPC across regions. May have use-cases for inter-cluster communications.
+
+**Cons:**
+- Requires Kyma to take ownership of the VPC and manage things like CIDR allocations and firewall rules
+- Requires Kyma to manage subnets
+- Less isolation when multiple clusters are in the same VPC
 
 **Decision: PENDING**
 
