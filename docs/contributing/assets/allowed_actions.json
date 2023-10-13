@@ -1,0 +1,103 @@
+{
+  "github_actions": [
+    {
+      "name": "golangci/golangci-lint-action",
+      "versions": [
+        "639cd343e1d3b897ff35927a75193d57cfcba299",
+        "v3"
+      ],
+      "repository": "https://github.com/golangci/golangci-lint-action",
+      "marketplace": "https://github.com/marketplace/actions/run-golangci-lint",
+      "security_review_performed": true,
+      "3rd_party_tool": {
+        "tool": "golangci-lint",
+        "pinned_version": "???",
+        "repository": "https://github.com/golangci/golangci-lint"
+      },
+      "comment": ""
+    },
+    {
+      "name": "AbsaOSS/k3d-action",
+      "versions": [
+        "4e8b3239042be1dc0aed6c5eb80c13b18200fc79"
+      ],
+      "repository": "https://github.com/AbsaOSS/k3d-action",
+      "marketplace": "https://github.com/marketplace/actions/absaoss-k3d-action",
+      "security_review_performed": true,
+      "3rd_party_tool": {},
+      "comment": ""
+    },
+    {
+      "name": "zgosalvez/github-actions-ensure-sha-pinned-actions",
+      "versions": [
+        "f32435541e24cd6a4700a7f52bb2ec59e80603b1"
+      ],
+      "repository": "https://github.com/zgosalvez/github-actions-ensure-sha-pinned-actions",
+      "marketplace": "https://github.com/marketplace/actions/ensure-sha-pinned-actions",
+      "security_review_performed": true,
+      "3rd_party_tool": {},
+      "comment": ""
+    },
+    {
+      "name": "ahmadnassri/action-workflow-queue",
+      "versions": [
+        "0144da6a252d1986d817826d963ad3a9af1e7fdf"
+      ],
+      "repository": "https://github.com/ahmadnassri/action-workflow-queue",
+      "marketplace": "https://github.com/marketplace/actions/workflow-queue",
+      "security_review_performed": true,
+      "3rd_party_tool": {},
+      "comment": ""
+    },
+    {
+      "name": "autotelic/action-wait-for-status-check",
+      "versions": [
+        "6556cf50c8fb6608412945382eae73581f56cbb4",
+        "v1"
+      ],
+      "repository": "https://github.com/autotelic/action-wait-for-status-check",
+      "marketplace": "https://github.com/marketplace/actions/wait-for-github-status-check",
+      "security_review_performed": true,
+      "3rd_party_tool": {},
+      "comment": ""
+    },
+    {
+      "name": "gaurav-nelson/github-action-markdown-link-check",
+      "versions": [
+        "d53a906aa6b22b8979d33bc86170567e619495ec",
+        "v1"
+      ],
+      "repository": "https://github.com/gaurav-nelson/github-action-markdown-link-check",
+      "marketplace": "https://github.com/marketplace/actions/markdown-link-check",
+      "security_review_performed": true,
+      "3rd_party_tool": {
+        "tool": "markdown-link-check",
+        "pinned_version": "???",
+        "repository": "https://github.com/tcort/markdown-link-check"
+      },
+      "comment": ""
+    },
+    {
+      "name": "slackapi/slack-github-action",
+      "versions": [
+        "e28cf165c92ffef168d23c5c9000cffc8a25e117"
+      ],
+      "repository": "https://github.com/slackapi/slack-github-action",
+      "marketplace": "https://github.com/marketplace/actions/slack-send",
+      "security_review_performed": true,
+      "3rd_party_tool": {},
+      "comment": ""
+    },
+    {
+      "name": "amannn/action-semantic-pull-request",
+      "versions": [
+        "7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39"
+      ],
+      "repository": "https://github.com/amannn/action-semantic-pull-request",
+      "marketplace": "https://github.com/marketplace/actions/semantic-pull-request",
+      "security_review_performed": true,
+      "3rd_party_tool": {},
+      "comment": ""
+    }
+  ]
+}
