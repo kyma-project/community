@@ -21,24 +21,24 @@ GitHub Actions is a powerful tool for automating almost every task of the develo
 
 The usage of external GitHub Actions is restricted centrally on the `github.com` organization level. Only Actions in the `kyma-project` organization or approved external Actions are allowed. Actions created by GitHub or [verified creators](https://github.com/marketplace?type=actions&verification=verified_creator) are also allowed.
 
-![Github Actions policy](./assets/gh-actions-policies.png)
+![GitHub Actions policy](./assets/gh-actions-policies.png)
 
 GitHub Actions, in particular the GITHUB_TOKEN, has `read` and `write` permissions on repositories but is not allowed to create and merge pull requests.
 
-![Github Actions permissions](./assets/gh-actions-permissions.png)
+![GitHub Actions permissions](./assets/gh-actions-permissions.png)
 
 ## Allowed GitHub Actions
 
-To learn which GitHub Actions are allowed, check this [list](./assets/allowed_actions.json)
+To learn which GitHub Actions are allowed, check this [list](./assets/allowed_actions.json).
 
 To add a GitHub Action to the list of allowed Actions, you must perform a [security review](#security-review) of the GitHub Action. After the review, you must create a pull request on the list of allowed GitHub Actions. Use the template of the JSON object below to add the relevant information to the `github_actions` array in the [allowed_actions.json](./assets/allowed_actions.json) file. The comment entry can be used to add information, which can be useful for others who want to use the same Action.
 
 ```json
 {
-    "name": "full name including Github organization",
+    "name": "full name including GitHub organization",
     "versions": ["hash digest of the release"],
     "repository": "full link to the repository",
-    "marketplace": "full link to the Github Marketplace entry",
+    "marketplace": "full link to the GitHub Marketplace entry",
     "security_review_performed": true or false,
     "3rd_party_tool": {
         "tool" : "name",
@@ -48,7 +48,7 @@ To add a GitHub Action to the list of allowed Actions, you must perform a [secur
 }
 ```
 
-By adding the Github Action to the list and using the added Action, one gives an implicit commitment to the best practices listed below.
+By adding the GitHub Action to the list and using the added Action, you give an implicit commitment to the best practices listed below.
 
 ## GitHub Actions Security Best Practices
 
@@ -56,13 +56,13 @@ Even though the usage of GitHub Actions is restricted, some threats remain. The 
 
 ### Perform security review
 
-The code of the action has to be reviewed to identify suspicious parts of the code. Pay special attention to whether the Action is processing secrets besides the expected usage and what kind of modification the Action does on Github resources.
+The code of the action must be reviewed to identify suspicious parts of the code. Pay special attention to whether the Action is processing secrets besides the expected usage and what kind of modification the Action does on GitHub resources.
 
 ### Set the minimal scope for credentials
 
-By default `read` and `write` permissions are granted to the `GITHUB_TOKEN`. The `GITHUB_TOKEN` is an automatically generated secret that lets you make authenticated calls to the GitHub API in your workflow runs. You have to [limit the permissions of the `GITHUB_TOKEN`](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token) to the least minimum the `GITHUB_TOKEN` needs in your workflow.
+By default `read` and `write` permissions are granted to the `GITHUB_TOKEN`. The `GITHUB_TOKEN` is an automatically generated secret that lets you make authenticated calls to the GitHub API in your workflow runs. You must [limit the permissions of the `GITHUB_TOKEN`](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token) to the least minimum the `GITHUB_TOKEN` needs in your workflow.
 
-You also have to ensure, that all secrets used during the workflow are following the so called least minimum principle. This means that this credentials may only have the permissions they need to carry out their task.
+You must also ensure, that all secrets used during the workflow follow the so-called least minimum principle. This means that these credentials may only have the permissions they need to carry out their task.
 
 ### Do NOT use `pull_request_target` event
 
@@ -76,8 +76,7 @@ You also have to ensure, that all secrets used during the workflow are following
 ### Treat event context data as untrusted input
 
 - Every workflow trigger is provided with a [GitHub context](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context) that contains information about the triggering event. You must treat this context data as untrusted data.
-- If your Action needs some input data
-  - Set the untrusted input value of the expression to an intermediate environment variable
+- If your Action needs some input data, set the untrusted input value of the expression to an intermediate environment variable.
 
 ```yaml
 - name: print title
@@ -92,7 +91,7 @@ Use Dependabot to regularly update the GitHub Action as described on the help pa
 
 ### Review changes on workflows
 
-Only a small group of people, usually the repository administrators, should be able to review and approve Github Actions. Add the list of users/teams allowed to review and approve PRs regarding GitHub Actions to the CODEOWNERS file of your repository.
+Only a small group of people, usually the repository administrators, should be able to review and approve GitHub Actions. Add the list of users/teams allowed to review and approve PRs regarding GitHub Actions to the CODEOWNERS file of your repository.
 
 ```text
 .github/workflows    @user-1 @user-2 @user-x
@@ -108,7 +107,7 @@ This entry can be omitted as long as the CODEOWNERS file contains a default owne
 
 ## Additional information
 
-The information on this page was collected from other resources to give comprehensive guidelines to work with Github Actions. Further information on Github Actions Security can be found on the following pages:
+The information on this page was collected from other resources to give comprehensive guidelines to work with GitHub Actions. Further information on GitHub Actions Security can be found on the following pages:
 
 - [GitGuardian: A blog article on how to secure GitHub Actions](https://blog.gitguardian.com/github-actions-security-cheat-sheet/)
 - [Security hardening for GitHub Actions](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-third-party-actions)
