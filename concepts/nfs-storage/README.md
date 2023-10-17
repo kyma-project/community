@@ -111,8 +111,6 @@ Dynamic provisioning allows users to create persistent volume (PV) automatically
 
 **Decision: NO for using separate VPC for storage**
 
-
-
 ## Manage the VPC for Kyma clusters explicitly instead of letting Gardener manage the IP ranges
 
 **Using single or persistent VPC for Kyma clusters**
@@ -147,7 +145,7 @@ Going with static provisioning we discussed options to implement it a separate B
 
 # Summary
 
-As of now (3.10.2023) the recommended solution would work as follows:
+As of now (17.10.2023) the recommended solution would work as follows:
 - user has to enable a Kyma module for NFS storage
 - user configures storage type/size in the module CR
 - in-cluster module operator installs proper CSI driver (native or generic NFS driver) and creates storage class
