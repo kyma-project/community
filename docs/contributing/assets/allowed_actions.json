@@ -98,6 +98,47 @@
       "security_review_performed": true,
       "3rd_party_tool": {},
       "comment": ""
+    },
+    {
+      "name": "ahmadnassri/action-workflow-queue",
+      "versions": [
+        "f547ac848c16a9bb1b2ed4a850e0cc5098af2cf8"
+      ],
+      "repository": "https://github.com/ahmadnassri/action-workflow-queue",
+      "marketplace": "https://github.com/marketplace/actions/semantic-pull-request",
+      "security_review_performed": true,
+      "3rd_party_tool": {},
+      "comment": ""
+    },
+    {
+      "name": "shmokmt/actions-setup-github-comment",
+      "versions": [
+        "93d9e7c3ea11e473e3061a8dbed8231faea13dea"
+      ],
+      "repository": "https://github.com/shmokmt/actions-setup-github-comment",
+      "marketplace": "https://github.com/marketplace/actions/semantic-pull-request",
+      "security_review_performed": true,
+      "3rd_party_tool": {
+        "tool": "suzuki-shunsuke/github-comment",
+        "pinned_version": "v6.0.2",
+        "repository": "https://github.com/golangci/golangci-lint"
+      },
+      "comment": ""
+    },
+    {
+      "name": "shmokmt/actions-setup-tfcmt",
+      "versions": [
+        "0d2b0c4cc4b5edc9c2dfdf7eb0c33ee7b23a7c85"
+      ],
+      "repository": "https://github.com/shmokmt/actions-setup-tfcmt",
+      "marketplace": "https://github.com/marketplace/actions/semantic-pull-request",
+      "security_review_performed": true,
+      "3rd_party_tool": {
+        "tool": "suzuki-shunsuke/tfcmt",
+        "pinned_version": "v4.7.1",
+        "repository": "https://github.com/golangci/golangci-lint"
+      },
+      "comment": ""
     }
   ]
 }
