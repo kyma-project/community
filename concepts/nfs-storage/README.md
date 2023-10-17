@@ -96,7 +96,7 @@ Dynamic provisioning allows users to create persistent volume (PV) automatically
 
 **Cons:**
 - if clusters are deleted and created with different shoot name we can face [issues](https://cloud.google.com/filestore/docs/create-instance-issues#system_limit_for_internal_resources_has_been_reached_error_when_creating_an_instance) with private network quota for Filestore (it is not a common usage pattern)
-- storage instance can block cluster deprovisioning (not a big deal as storage controller in the KCP should clean it up anyway)
+- storage instances and private endpoints in the shoot subnet can block cluster de-provisioning (not a big deal as storage controller in the KCP should clean them up anyway)
 
 **Using dedicated VPC**
 
