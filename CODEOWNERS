@@ -14,6 +14,6 @@
 milv.config.yaml @kyma-project/Otters
 
 # Concepts (features, architecture)
-/concepts/ @kyma-project/kyma-steering-committee @k15r @janmedrek @kwiatekus @tobiscr
+/concepts/ @kyma-project/kyma-steering-committee @k15r @janmedrek @kwiatekus @tobiscr @anishj0shi
 
 /concepts/observability-strategy @kyma-project/observability
