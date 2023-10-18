@@ -17,3 +17,5 @@ milv.config.yaml @kyma-project/Otters
 /concepts/ @kyma-project/kyma-steering-committee @k15r @janmedrek @kwiatekus @tobiscr @anishj0shi
 
 /concepts/observability-strategy @kyma-project/observability
+
+/docs/contributing/assets/allowed_actions.json @TorstenD-SAP
