@@ -121,7 +121,7 @@
       "3rd_party_tool": {
         "tool": "suzuki-shunsuke/github-comment",
         "pinned_version": "v6.0.2",
-        "repository": "https://github.com/golangci/golangci-lint"
+        "repository": "https://github.com/suzuki-shunsuke/github-comment"
       },
       "comment": ""
     },
@@ -136,7 +136,7 @@
       "3rd_party_tool": {
         "tool": "suzuki-shunsuke/tfcmt",
         "pinned_version": "v4.7.1",
-        "repository": "https://github.com/golangci/golangci-lint"
+        "repository": "https://github.com/suzuki-shunsuke/tfcmt"
       },
       "comment": ""
     }
