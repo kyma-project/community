@@ -10,7 +10,7 @@ https://github.com/kyma-project/application-connector-manager/blob/main/docs/con
 ## Observability
 
 ### Removal of the Monitoring component
-The monitoring component including the in-cluster Prometheus/Grafana stack has been removed (https://github.com/kyma-project/kyma/issues/16306) as announced with blog post (https://blogs.sap.com/2023/09/07/removal-of-prometheus-grafana-based-monitoring-in-sap-btp-kyma-runtime). You must follow the cleanup instructions because no updates to the component will be shipped anymore.
+The Monitoring component, including the in-cluster Prometheus/Grafana stack, has been removed (https://github.com/kyma-project/kyma/issues/16306) as announced in the [Removal of Prometheus/Grafana-based monitoring in SAP BTP, Kyma runtime](https://blogs.sap.com/2023/09/07/removal-of-prometheus-grafana-based-monitoring-in-sap-btp-kyma-runtime) blog post. You must follow the cleanup instructions because no updates to the component will be shipped anymore.
 
 ## Serverless
 
