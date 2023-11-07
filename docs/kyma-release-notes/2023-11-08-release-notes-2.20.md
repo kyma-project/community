@@ -1,4 +1,4 @@
-Colorful leaves dropping on the ground signify high autumn. With Kyma 2.20, we say goodbye to some of our components that fall down the Kyma tree. However, it is a natural process as they will be reborn in their modular versions, and we will watch them in full bloom again. Read on to learn more about changes in the new Kyma release.
+Colorful leaves dropping on the ground signify high autumn. With Kyma 2.20, we say goodbye to one of our components that falls down the Kyma tree. However, it is a natural process. See two other components getting reborn in their modular versions, and watch them in full bloom again. Read on to learn more about changes in the new Kyma release.
 
 ## Application Connector
 
