@@ -4,7 +4,7 @@
 
 ### Removal of the Application Connector component
 With the introduction of the Application Connector module, the AC component is no longer installed by default with Kyma.
-To enable Application Connector on new clusters, follow the installation instructions:
+To enable Application Connector on new clusters, follow the [installation instructions](https://github.com/kyma-project/application-connector-manager/blob/main/docs/contributor/01-10-installation.md).
 https://github.com/kyma-project/application-connector-manager/blob/main/docs/contributor/01-10-installation.md
  
 ## Observability
