@@ -2,7 +2,7 @@ Colorful leaves dropping on the ground signify high autumn. With Kyma 2.20, we s
 
 ## Application Connector
 
-### Removal of the Application Connector component
+### Removal of the Application Connector (AC) component
 With the introduction of the Application Connector module, the AC component is no longer installed by default with Kyma.
 To enable Application Connector on new clusters, follow the [installation instructions](https://github.com/kyma-project/application-connector-manager/blob/main/docs/contributor/01-10-installation.md).
  
