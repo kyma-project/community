@@ -14,6 +14,6 @@ The Monitoring component, including the in-cluster Prometheus/Grafana stack, [ha
 ## Serverless
 
 ### Migration of the Serverless component
-As of Kyma 2.20, Serverless is no longer installed by default as a Kyma component.
+As of Kyma 2.20, Serverless is no longer installed by default as a Kyma component. It is now developed and released as an independent module. Adding the module to your Kyma runtime, you extend the runtime with the same Serverless capabilities, that you have already known so well from the previous Kyma versions.
 To enable Serverless on new Kyma runtime instances, you must install Serverless Operator. Serverless Operator will install and continue reconciling Serverless installation based on the Serverless custom resource.
 For more details, follow the [installation instructions](https://github.com/kyma-project/serverless-manager/tree/main#install).
