@@ -89,7 +89,7 @@ https://banzaicloud.com/docs/one-eye/logging-operator/configuration/plugins/outp
 Secrets can be used in Logging Operator Output definitions.
 
 ### Demo
-https://banzaicloud.com/docs/one-eye/logging-operator/quickstarts/loki-nginx
+https://kube-logging.dev/docs/examples/loki-nginx/
 
 1. Run the following commands:
 ```bash
