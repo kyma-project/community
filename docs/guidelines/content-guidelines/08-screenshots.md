@@ -26,7 +26,7 @@ Always add an alternative (alt) text that concisely describes the content or fun
 
 ## Tool
 
-Adjust or capture your screenshots using any tool that outputs high quality images, such as [Snagit](https://www.techsmith.com/screen-capture.html), [Lightshot](https://app.prntscr.com), or [Monosnap](https://www.monosnap.com/welcome). The desired image format is SVG, but PNG and JPG formats are also acceptable.
+Adjust or capture your screenshots using any tool that outputs high quality images, such as [Snagit](https://www.techsmith.com/screen-capture.html), [Lightshot](https://app.prntscr.com), or [Monosnap](https://monosnap.com/). The desired image format is SVG, but PNG and JPG formats are also acceptable.
 Use an online tool such as [TinyPNG](https://tinypng.com/) to compress images and limit the size of each image to 1MB, or smaller.
 If you want to control the size of the image relative to the screen size, use one of these standard percentages: 100%, 75%, 50%, or 25%.
 
