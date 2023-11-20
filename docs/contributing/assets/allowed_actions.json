@@ -140,6 +140,17 @@
         "repository": "https://github.com/suzuki-shunsuke/tfcmt"
       },
       "comment": ""
+    },
+    {
+      "name": "addnab/docker-run-action",
+      "versions": [
+        "3b7e5e2681a0bda95ee4ce0645c28ca1e78ce9ee"
+      ],
+      "repository": "https://github.com/addnab/docker-run-action",
+      "marketplace": "https://github.com/marketplace/actions/docker-run-action",
+      "security_review_performed": true,
+      "3rd_party_tool": {},
+      "comment": "can be used to perform a docker command without switching the job image"
     }
   ]
 }
