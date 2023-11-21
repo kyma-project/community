@@ -142,5 +142,5 @@ Follow these resources for further reference:
 - [Tooltip Guidelines](https://www.nngroup.com/articles/tooltip-guidelines/)
 - [Tooltips: How to Craft Effective Guiding Text](https://www.wix.com/wordsmatter/blog/2020/06/tooltips/)
 - [Placeholders in Form Fields Are Harmful](https://www.nngroup.com/articles/form-design-placeholders/)
-- [Alternatives to Placeholder Text](https://medium.com/nextux/alternatives-to-placeholder-text-13f430abc56f)
+- [Alternatives to Placeholder Text](https://coyleandrew.medium.com/alternatives-to-placeholder-text-13f430abc56f)
 - [How to Write and Design User-Friendly Error Messages](https://xd.adobe.com/ideas/process/information-architecture/error-message-design-ux/)
