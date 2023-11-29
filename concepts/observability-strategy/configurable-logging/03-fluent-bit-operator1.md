@@ -142,7 +142,7 @@ Underlying technology | Fluent Bit | Fluent Bit for log collection and Fluentd f
 Dynamic configuration | CRDs are directly translatable to Fluent Bit config sections in the most straightforward way. | CRDs provide a level of abstraction translatable to Fluent Bit/FluentD configurations (label matching, namespace matching vs cluster scope, secret injection).
 Validation | CRD schema validation | CRD schema validation and Fluentd configuration checking
 Config reloading | Custom Fluent Bit image with a bootstrapper that starts a child Fluent Bit process and restarts it if the config changes | Fluentd config reloading sidecar
-Passing sensitive info as Secrets | Not implemented | Secrets can be used in `Output` definitions: https://banzaicloud.com/docs/one-eye/logging-operator/configuration/plugins/outputs/secret/
+Passing sensitive info as Secrets | Not implemented | Secrets can be used in `Output` definitions
 Debugging | Fluent Bit logs | Fluent Bit/Fluentd logs (for some reason Fluentd stores logs to a file)
 Rollback | Not implemented | A config is applied if the checker run succeeds
 Customization | Custom Fluent Bit parser plugins supported. Inputs, filters, and outputs are planned to be supported | No custom Fluentd plugins supported
