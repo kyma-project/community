@@ -86,7 +86,7 @@ You can configure the Logging operator using the following Custom Resource Descr
 When Fluentd aggregates logs, it shares the configurations of different log flows. To prevent a bad configuration from failing the Fluentd process, a configuration check validates these first. The new settings only go live after a successful check.
 
 ### Secret definition
-https://banzaicloud.com/docs/one-eye/logging-operator/configuration/plugins/outputs/secret/
+
 Secrets can be used in Logging Operator Output definitions.
 
 ### Demo
