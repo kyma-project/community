@@ -56,7 +56,7 @@ The Module Synchronization design aims to meet the following key requirements an
 
 - Efficient Synchronization: A primary objective is to ensure the efficient synchronization of module resources between the KCP cluster and the SKR cluster. This involves timely and accurate updates to maintain the desired state of module resources across clusters.
 - Responsibility Separation: LM takes charge of managing the synchronization of module resources, while Module Manager, owned by individual module teams, is responsible for providing the necessary resources.
-- Minimized Central Components access SKR cluster: To optimize efficiency and security, this design avoids introducing additional central components with direct connections to remote clusters. By reducing the number of connections and limiting components with cluster-admin access to the SKR cluster, the system mitigates security risks associated with privileged access.
+- Minimized access of central components  to SKR cluster: To optimize efficiency and security, this design avoids introducing additional central components with direct connections to remote clusters. By reducing the number of connections and limiting components with cluster-admin access to the SKR cluster, the system mitigates security risks associated with privileged access.
 - Real-time Reflection of Changes: A critical aspect of the design is to ensure that any changes to client resources, including Module CR and Kyma CR, are reflected in module resources instantaneously. Real-time synchronization is essential to maintain system integrity and responsiveness.
 
 ### Context
