@@ -30,7 +30,8 @@
     {
       "name": "zgosalvez/github-actions-ensure-sha-pinned-actions",
       "versions": [
-        "f32435541e24cd6a4700a7f52bb2ec59e80603b1"
+        "f32435541e24cd6a4700a7f52bb2ec59e80603b1",
+        "b1b635d24259e8a047a6ce7d6501ea432aa7a830"
       ],
       "repository": "https://github.com/zgosalvez/github-actions-ensure-sha-pinned-actions",
       "marketplace": "https://github.com/marketplace/actions/ensure-sha-pinned-actions",
