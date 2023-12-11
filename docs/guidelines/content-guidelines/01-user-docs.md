@@ -1,4 +1,4 @@
-# User documentation
+# User Documentation
 
 Open-source Kyma and Kyma module user documentation is displayed at [`https://kyma-project.io`](https://kyma-project.io/#/). The website uses [docsify](https://docsify.js.org/#/) as a documentation site generator.
 
@@ -11,23 +11,21 @@ After initialization, to run, docsify uses the following files located in the `/
 - `.nojekyll` preventing GitHub Pages from ignoring files that begin with an underscore
 - `_sidebar.md` listing all Markdown documents to be displayed and ruling navigation between those documents on the website
 
-> **NOTE:** If you have a flat directory structure, with all Markdown files on the same level, you need only a single `_sidebar.md` file listing the Markdown documents to be displayed. However, if there are subfolders, you need one `_sidebar.md` per folder for the navigation between the documents to work properly.
-
-## Publish a document from the `/kyma` repository
+## Publish a Document from the `/kyma` Repository
 
 To publish a document located in the `/kyma` repository, follow these steps:
 
 1. Create a pull request adding your content to a Markdown file located in the `/docs` folder.
 2. Add a new `_sidebar.md` file including a link to your document, or update an existing `_sidebar.md` to include it.
 
-## Publish a document from an existing module repository
+## Publish a Document from an Existing Module Repository
 
 To publish a document located in an existing module repository, follow these steps.
 
 1. Create a pull request adding your content to a Markdown file located in the `/docs/user` folder in your module repository.
 2. In the `docs/user` folder, add a new `_sidebar.md` file including a link to your document, or update the existing `_sidebar.md` to include it.
 
-## Publish a document from a new module repository
+## Publish a Document from a New Module Repository
 
 To publish a document located in a new module repository, follow the steps from [Publish a document from an existing module](#publish-a-document-from-an-existing-module-repositiory). Once completed, do the following:
 

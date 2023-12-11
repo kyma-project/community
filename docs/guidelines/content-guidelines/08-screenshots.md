@@ -1,6 +1,4 @@
----
-title: Screenshots
----
+# Screenshots
 
 As someone once said, a picture is worth a thousand words. Therefore, whenever you need to illustrate operations performed on the UI, use a screenshot to convey the information visually.
 
@@ -13,7 +11,7 @@ Follow these basic principles when you place screenshots in your content:
 
 For details on how to format screenshots and their elements in Kyma documents, see the particular document sections.
 
-## Alternative text
+## Alternative Text
 
 Always add an alternative (alt) text that concisely describes the content or function of the image you are referring to. The alt text:
 

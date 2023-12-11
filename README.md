@@ -8,7 +8,7 @@ If you are looking for information on how to join us, you are in the right place
 
 # <img src="assets/contribution-collaboration-icon.svg" width="120"> Contribution & Collaboration
 
-## Contribution rules
+## Contribution Rules
 
 Before you start contributing, read our [Code of Conduct](docs/contributing/01-code-of-conduct.md) and learn about our [working model](docs/governance/01-governance.md) to understand the way Kyma community works. Get familiar with the [contributing rules](docs/contributing/02-contributing.md), recommended [Git workflow](docs/contributing/03-git-workflow.md), and [issues workflow](docs/governance/03-issues-workflow.md) we use in Kyma so you can apply them later in practice as an active contributor.
 
@@ -26,7 +26,7 @@ The Kyma community collaborates through Special Interest Groups and Working Grou
 
 # <img src="assets/stay-informed-icon.svg" width="120"> Stay Informed
 
-## Social media
+## Social Media
 
 We're on Twitter (@kymaproject) and LinkedIn (Kyma Project). Stay tuned for the news and spread the good word about Kyma among your followers.
 

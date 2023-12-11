@@ -1,5 +1,5 @@
 ---
-title: Release notes
+title: Release Notes
 label: internal
 ---
 
@@ -17,13 +17,13 @@ Because the release notes contain critical information and act as an important c
 ## Headlines
 A headline is short, interesting, and summarizes your release notes. Write headlines in sentence case.
 
-## Write about new features
+## Write about New Features
 When writing about new features, write an enticing paragraph instead of a short, bulleted list. This is an opportunity to market the new feature to customers from a business perspective.
 
-## Write about known and resolved issues
+## Write about Known and Resolved Issues
 When writing about known and resolved issues, don't call them bugs. Use the terms **known issue** and **resolved issues** because it has a more positive tone. A bulleted list of known and resolved issues is okay, but ensure that the descriptions make sense.
 
-## Bulleted lists
+## Bulleted Lists
 For ease of reading, use the same sentence structure throughout a bulleted list. For example, the following items match in sentence structure:
 - Feature xyz - This one is really cool.
 - Feature abc - This one is really, really, cool.
@@ -31,7 +31,7 @@ For ease of reading, use the same sentence structure throughout a bulleted list.
 Don't add an entry that doesn't match, such as:
 - Feature JKL: it's not so cool
 
-## Include a migration guide
+## Include a Migration Guide
 Whenever a user must perform some manual steps in order to use the newly released version of the software, always provide a migration guide. This document must clearly list all necessary steps the user must perform to successfully upgrade from one version of the software to another. Do **not** describe new features in the migration guide. For this purpose, use the release notes.
 
 ## Templates

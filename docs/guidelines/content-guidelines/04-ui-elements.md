@@ -1,6 +1,4 @@
----
-title: UI elements
----
+# UI Elements
 
 Contrary to the regular technical documentation, UI elements follow different guidelines and best practices. Due to the limited space you can use to convey a message, your UI text must be as precise and concise as possible. Use the following general guidelines to design and write content for UI elements:
 
@@ -109,7 +107,7 @@ There are many different types of messages appearing in every UI. The most commo
 - Use punctuation in case of messages that are full sentences. In case of clauses (fragments of a sentence), omit punctuation.
 - Use title case for the title of your pop-up message. Keep it as simple as possible and omit punctuation. For more information, see [Labels](#labels).
 
-### Error messages
+### Error Messages
 
 An error message informs about unsuccessful outcome of an action or conveys any other negative information, so you must choose your words wisely not to upset the user. Here are some tips that will help you design your error message:  
 
@@ -124,7 +122,7 @@ An error message informs about unsuccessful outcome of an action or conveys any 
 - Avoid title case. It can give users a feeling they are being looking down on.
 
 
-## Placeholder texts
+## Placeholder Texts
 
 A placeholder is a tricky UI element. It tends to disappear when the user clicks a given form field, so it requires them to use their memory, which increases memory load and hurts usability. For this reason:
 
@@ -138,7 +136,7 @@ A placeholder is a tricky UI element. It tends to disappear when the user clicks
 
 Follow these resources for further reference:
 - [UI Text Guidelines for SAP Fiori Apps](https://experience.sap.com/internal/fiori-design-web/ui-text-guidelines-for-sap-fiori/)
-- [5 rules for choosing button labels](https://uxmovement.medium.com/5-rules-for-choosing-the-right-words-on-button-labels-dc3f74c2c2a3)
+- [5 Rules for Choosing the Right Words on Button Labels](https://uxmovement.medium.com/5-rules-for-choosing-the-right-words-on-button-labels-dc3f74c2c2a3)
 - [Tooltip Guidelines](https://www.nngroup.com/articles/tooltip-guidelines/)
 - [Tooltips: How to Craft Effective Guiding Text](https://www.wix.com/wordsmatter/blog/2020/06/tooltips/)
 - [Placeholders in Form Fields Are Harmful](https://www.nngroup.com/articles/form-design-placeholders/)
