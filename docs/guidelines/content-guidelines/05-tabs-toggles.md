@@ -1,6 +1,4 @@
----
-title: Tabs & toggles
----
+# Tabs and Toggles
 
 Tabs and toggles allow you to render several versions of a given section in one document or have several versions of one document on `http://kyma-project.io`.
 
@@ -8,7 +6,7 @@ For example, you can use tabs and/or documentation toggle to include instruction
 
 As described in the document, tabs are a docsify-specific form of presenting content versions in Markdown. Toggles use HTML within a Markdown document.
 
-## Docsify tabs
+## Docsify Tabs
 
 To display tabbed content from Markdown, `kyma-project.io` uses the [docsify-tabs plugin](https://jhildenbiddle.github.io/docsify-tabs/#/) from [docsify.js](https://docsify.js.org/#/).
 
@@ -16,12 +14,12 @@ You define a tab set using the `tabs:start` and `tabs:end` HTML comments. For de
 
 > **CAUTION:** The use of HTML comments prevents tab-related markup from being displayed when Markdown is rendered as HTML outside of `http://kyma-project.io`, for example, in GitHub. As a result, in GitHub, the content displays in sections under headers defined in the tab set.
 
-## Documentation toggle
+## Documentation Toggle
 
 In GitHub documents, the toggle renders the text in the form of expandable sections.
 On the `http://kyma-project.io` website, it's displayed as tabs using a dedicated script.
 
-### Writing rules
+### Writing Rules
 
 Follow these rules when inserting toggles in documents:
 

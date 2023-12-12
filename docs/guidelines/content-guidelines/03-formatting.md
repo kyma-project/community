@@ -1,14 +1,12 @@
----
-title: Formatting
----
+# Formatting
 
 Format the content in an attention-grabbing way. In general, content is easier to read when it is in chunks. Consider breaking up endless paragraphs by using a list or a table. Use action verbs and present tense for headings to engage the reader, and also follow the guidelines for the best way to include links and images. When you include lists, tables, code samples, or images, precede them with a brief explanation of what they describe.
 
-## Code font and bold font
+## Code Font and Bold Font
 
 It is important to consistently format items such as code or filenames to quickly distinguish them while reading technical documentation. The following tables outline when to use **bold** font and when to use `code` font:
 
-### Use bold font for these items:
+### Use Bold Font for These Items:
 
 Items       | Examples
 ----------- | ----------------------------------------------------------------------
@@ -19,7 +17,7 @@ Roles        | Only the users with the **kyma_admin** role can list Pods in the 
 UI elements  | Click **Subscribe**.
 Variables and placeholders | Click **Project** > **{YOUR_PROJECT_NAME}**.
 
-### Use code font for these items:
+### Use Code Font for These Items:
 
 Items                     | Examples
 ------------------------- | -----------------------------------------------------------------------------------------------
@@ -42,7 +40,7 @@ Custom resources (if you want to refer to the code specifically) | Define the **
 > `To adjust the number of Pods in your Deployment, edit the [deployment](./deployment.yaml) file.`
 
 
-### Omission in code
+### Omission in Code
 
 Often when you quote snippets of code, it is not necessary to include them in full. For example, when you quote an HTTP response, it is enough to quote only the relevant part instead of enclosing the whole response. In such a case, replace the omitted parts with `...` to signalize that something has been removed.
 
@@ -88,7 +86,7 @@ See an example:
 
 >**NOTE:** Provision a Public IP for Ingress and a DNS record before you start the installation.
 
-## Ordered and unordered lists
+## Ordered and Unordered Lists
 
 As you write about your topic, use lists to create visual clarity within your content. List items in a category or in a sequence. Use an ordered list for sequential, instructional steps. Unordered lists are appropriate for items that have no sequential order, such as a list of valid file types. Follow these guidelines:
 
@@ -122,8 +120,8 @@ When creating a table, centralize the columns that have choice-type values, such
 ## Headings
 Ideally, headings fit into one line in the generated output. Be concise, but also make sure to adequately describe the main point of the document or a section. Follow these guidelines when writing headings:
 
-* Write headings in sentence case. For example, **Expose a service**.
-* Use action verbs and present tense verbs in headings when possible, especially in tutorials. For example, **Add a document type**.
-* While gerunds are acceptable in body-level content, DO NOT use gerunds in headings. Use **Create a storefront** instead of **Creating a storefront**.
+* Write headings in title case. For example, **Expose a Service**.
+* Use action verbs and present tense verbs in headings when possible, especially in tutorials. For example, **Add a Document Type**.
+* While gerunds are acceptable in body-level content, DO NOT use gerunds in headings. Use **Create a Storefront** instead of **Creating a Storefront**.
 * Avoid stacked headings, which are headings without body-level content in between. For example, DO NOT use a Heading 2 (H2) to introduce one or more Heading 3s. Instead, add a paragraph after the H2 that describes the main idea of the content in the headings that follow.
 * Do not use small headings, such as Heading 4 (H4) and smaller. Use Heading 1 (H1) for the document title, and Heading 2s (H2) and Heading 3s (H3) to organize the content of the document.

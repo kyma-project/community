@@ -1,20 +1,18 @@
----
-title: Content Strategy
----
+# Content Strategy
 
-## Purpose and audience
+## Purpose and Audience
 
 This content strategy focuses on the publicly available documentation for the open-source [Kyma project](https://kyma-project.io). The source of the documentation displayed on the website is stored in [GitHub](https://github.com/kyma-project/kyma) and it's written in [Markdown](https://daringfireball.net/projects/markdown/).
 
 The assumed readers of this guide and contributors to the documentation have some basic knowledge of technical writing.
 
-## Information types
+## Information Types
 
 We follow a topic-based documentation approach, with one file per topic. Every documentation file has a clearly defined purpose, which is reflected in the title. The content must be able to stand on its own, but you link to other documents as needed.
 
 Here are the content types that we use in Kyma documentation:
 
-### Concept topics
+### Concept Topics
 
 Concept topics answer "what-is" questions and provide essential background information that users must know.
 You'll find most concept topics in the Overview section, but they can be useful elsewhere too.
@@ -23,7 +21,7 @@ Use nominal style for the title, for example, "Security" or "Security Concept".
 
 For all concept topics, use the [concept topic template](https://github.com/kyma-project/community/blob/main/templates/resources/concept.md).
 
-### Task topics
+### Task Topics
 
 Task topics provide "how-to" instructions that enable users to accomplish a task. Each task topic should tell how to perform a single, specific procedure.
 
@@ -34,7 +32,7 @@ It's good practice to have 5-9 steps; anything longer can probably be split.
 
 For all step instructions, use the [tutorial  template](https://github.com/kyma-project/community/blob/main/templates/resources/tutorial.md).
 
-### Reference topics
+### Reference Topics
 
 Reference topics are typically organized into one or more sections containing a list or table with data that is usually looked up rather than memorized.
 
@@ -42,9 +40,9 @@ Reference topics provide quick access to fact-based information. In technical in
 
 Use nominal style for the title, for example, "Configuration Parameters".
 
-Use the templates for [architecture documents](https://github.com/kyma-project/community/blob/main/templates/resources/architecture.md), [configuration parameter charts](https://github.com/kyma-project/community/blob/main/templates/resources/configuration.md), and [Custom Resources](https://github.com/kyma-project/community/blob/main/templates/resources/custom-resource.md).
+Use the templates for [architecture documents](https://github.com/kyma-project/community/blob/main/templates/resources/architecture.md), [configuration parameter charts](https://github.com/kyma-project/community/blob/main/templates/resources/configuration.md), and [custom resources](https://github.com/kyma-project/community/blob/main/templates/resources/custom-resource.md).
 
-### Troubleshooting topics
+### Troubleshooting Topics
 
 Troubleshooting topics provide a condition that the reader may want to correct, followed by one or more descriptions of its cause and suggested remedies.
 
@@ -54,7 +52,7 @@ It's good practice to use three standard headlines (like “Condition”, “Cau
 
 For all troubleshooting topics, use the [troubleshooting topic template](https://github.com/kyma-project/community/blob/main/templates/resources/troubleshooting.md).
 
-### Release notes
+### Release Notes
 
 Release notes announce what's new in Kyma.
 
@@ -62,7 +60,7 @@ After an introductory paragraph, a list briefly presents the new and changed fea
 
 For release notes, use the [release notes template](https://github.com/kyma-project/community/blob/main/templates/resources/release-notes.md).
 
-## Target groups
+## Target Groups
 
 The general assumption is that the readers of the documentation is familiar with the following terms and does not need the explanation of technical concepts behind them:
 
@@ -71,11 +69,11 @@ The general assumption is that the readers of the documentation is familiar with
 
 These are the assumed target groups for Kyma documentation:
 
-### Decision maker
+### Decision Maker
 
 Assesses the software to make sure that it meets the company's needs. Requires the facts – not just marketing spin – before signing on the dotted line. Wants to choose the right solution for the company, and ensure stakeholders back this decision.
 
-### Software developer
+### Software Developer
 
 Interested in technical topics. Solid knowledge of programming languages. Experienced in programming and development projects. Expert in the technical or business area. Uses and contributes to community content. Wants to develop, maintain, and enhance software.
 
@@ -83,7 +81,7 @@ Interested in technical topics. Solid knowledge of programming languages. Experi
 
 Deals with installation, upgrades, system troubleshooting. Wants to support the ongoing operations and evolution of the Kyma implementation.
 
-## Documentation structure
+## Documentation Structure
 
 On the Kyma website, we have five main tabs containing multiple documents each, plus a glossary.
 
@@ -105,13 +103,13 @@ Contains a guide/tutorial that covers typical steps you need to perform to get s
 
 Under this tab, there are subtabs according to main areas (except UI – user interfaces are mentioned as needed within the instructions of the respective main area). Documents in the subtabs contain "how-to" instructions that enable users to accomplish a task.
 
-### Operation guides
+### Operation Guides
 
 **Target Group**: Admins/Operators who make sure the Kyma cluster is configured as needed and keeps running in a healthy and secure way.
 
 Contains installation and configuration instructions, backup info, security documentation, and troubleshooting guides.
 
-### Technical references
+### Technical References
 
 **Target Group**: Users who want to look up specific detailed information.
 

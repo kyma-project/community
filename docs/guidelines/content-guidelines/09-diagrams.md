@@ -1,6 +1,4 @@
----
-title: Diagrams
----
+# Diagrams
 
 Same as with the screenshots, diagrams are worth a thousand words. Therefore, rather than pile up a block of text to describe a given concept, use a diagram to visualize it instead.
 
@@ -12,7 +10,7 @@ To convey the intended message effectively in a diagram, follow these basic prin
 
 For details on how to format diagrams and their elements in Kyma documents, see the particular document sections.
 
-## Alternative text
+## Alternative Text
 
 Always add an alternative (alt) text that concisely describes the content or function of the diagram you are referring to. The alt text:
 
@@ -39,7 +37,7 @@ Keep the background of the diagram **white** as it renders well in both GitHub a
 
 Always add **rounded** secondary backgrounds to indicate the environment in which the workflow takes place. Use **mild blue** (HEX: `#F0F6FF`) to indicate the main environment, such as a cluster, and **mint green** (HEX: `#DEF2DD`) to indicate subsidiary environments, such as Namespaces.
 
-## Shapes and fills
+## Shapes and Fills
 
 Use **rounded rectangles** as default box shapes. 
 
@@ -69,7 +67,7 @@ Mark multiple areas or steps on the diagram using **blue** (HEX: `#0A6EC7`) roun
 
 Use 1pt, **rounded**, **grey** (HEX: `#666666`) lines to connect shapes.
 
-## Reference key
+## Reference Key
 
 Whenever you introduce an element that is different from other objects located in the diagram, include a reference key below the diagram to briefly explain the difference between the objects.
 

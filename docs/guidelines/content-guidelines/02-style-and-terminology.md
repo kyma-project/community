@@ -1,6 +1,4 @@
----
-title: Style and terminology
----
+# Style and Terminology
 
 When writing Kyma documentation, refer to the following guidelines for grammar, capitalization, and preferred word choices. These guidelines help ensure that all contributors write in the same way to ensure a uniform flow throughout the whole Kyma documentation.
 
@@ -10,14 +8,14 @@ When writing Kyma documentation, refer to the following guidelines for grammar, 
 
 These are the generally accepted grammar rules for writing Kyma documentation.
 
-### Active voice
+### Active Voice
 
 Use active voice whenever possible. Active voice is clear, concise, and it avoids misinterpretation. It is also easier for non-native speakers to understand. Passive voice is indirect, uses more words, and can be misleading because it reverses the logical order of events.
 
 ✅ The endpoint path includes your service name.  
 ⛔️ Your service name is to be included in the endpoint path.
 
-### Voice and tone
+### Voice and Tone
 
 There are different tones for different types of technical documentation, which can range from instructional to somewhat conversational. The goal is always to support people using the product and, in blogs and release notes, also to help business users understand changes.
 
@@ -91,18 +89,18 @@ Whenever you point to the outside sources, research whether the name of the sour
   ⛔️ kubernetes  
   ⛔️ k8s
 
-### Sentence case
+### Sentence Case
 
 Use [Sentence case](https://dictionary.cambridge.org/dictionary/english/sentence-case) for:
 - Standard sentences
-- Headings
-
-> **NOTE:** For more details about [headings](03-formatting.md#headings), see the Formatting guidelines.
 
 ### Title Case
 
 Use [Title Case](https://dictionary.cambridge.org/dictionary/english/title-case) for:
 - The names of Kyma components, such as Application Connector or API Gateway Controller
+- Headings
+
+> **NOTE:** For more details about [headings](03-formatting.md#headings), see the Formatting guidelines.
 
 ### CamelCase
 
@@ -137,7 +135,6 @@ See the following examples of Kubernetes resources:
 * Deployment
 * Function
 * Ingress
-* Namespace
 * Node
 * PodPreset
 * Pod
@@ -147,6 +144,8 @@ See the following examples of Kubernetes resources:
 * ServiceBinding
 * ServiceClass
 * ServiceInstance
+
+> **NOTE:** Do not capitalize the word "namespace".
 
 ## Terminology
 
