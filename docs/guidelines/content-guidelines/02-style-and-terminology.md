@@ -160,7 +160,6 @@ Here is the preferred terminology to use in the Kyma documentation:
 
 | ✅ Use                     | ⛔️ Don't use                              | Comment                           |
 | ------------------------ | ------------------------------- | --------------------------------- |
-| **API Micro Gateway**        | **API Gateway**                     |                                   |
 | **ID**                       | **id**                              |                                   |
 | **and**                      | **+** (plus), **&** (ampersand)         |                                   |
 | **backend**                  | **back end**, **back-end**              |                                   |
