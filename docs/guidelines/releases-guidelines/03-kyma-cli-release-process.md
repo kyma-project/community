@@ -1,11 +1,11 @@
 ---
-title: Kyma CLI release process
+title: Kyma CLI Release Process
 label: internal
 ---
 
 This document describes how to create a Kyma CLI release.
 
-## Release content
+## Release Content
 
 A Kyma CLI release consists of:
 

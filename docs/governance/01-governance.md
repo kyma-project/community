@@ -1,6 +1,4 @@
----
-title: Kyma working model
----
+# Kyma Working Model
 
 ## Scope
 
@@ -8,17 +6,17 @@ All repositories in the Kyma organization must follow the official guidelines, c
 
 The Kyma project also includes the [Kyma Incubator](https://github.com/kyma-incubator) organization. It is a place where all new projects start in a more relaxed environment that facilitates their rapid growth. At that stage, they do not have to comply with all rules that govern the Kyma organization. Once the incubating project is ready to become a part of the main Kyma organization, adjust it to all standards.
 
-### Add a new repository to Kyma's organizations
+### Add a New Repository to Kyma's Organizations
 
 Create a GitHub issue in the [community](https://github.com/kyma-project/community) repository and describe the purpose of the new repository, proposed name, and explanation which organization it should go to, **kyma-project** or **kyma-incubator**.
 
-## Ownership policy
+## Ownership Policy
 
 Kyma repositories are owned by code owners who are a group of people with special privileges in the repositories of the [Kyma](https://github.com/kyma-project) organization. Each repository has a separate `CODEOWNERS` file located at its root. The file specifies persons who have the ability to approve contribution to the part of the repository they own, after a detailed review of the related pull requests (PRs). Although the name suggests only the code ownership, the `CODEOWNERS` file is not only about the code but the content in general. Apart from the developers, you can define any relevant parties as code owners. For example, technical writers are set up as the owners of all `.md` documents in the Kyma repositories and SIG/WG members are the owners of their SIG/WG's folders' content.
 
 >**NOTE:** Within this document, the terms "code owner" and "maintainer" are used interchangeably.
 
-### Code owners' responsibilities
+### Code Owners' Responsibilities
 
 With great power comes great responsibility. Maintainers do not only review and approve PRs but also truly care about their projects.
 
@@ -39,7 +37,7 @@ Every code owner is expected to:
 * In general, continue to be willing to spend at least 50% of their time working on Kyma (~2.5 business days per week)
 * Monitor and maintain the periodic jobs; ensure these jobs are up and running.
 
-### Become a code owner
+### Become a Code Owner
 
 * Inform the existing maintainers that you or your organization are interested in becoming a
   maintainer. Depending on whether you are an individual or a corporate contributor/maintainer, a different contributor license agreement applies.
@@ -57,20 +55,20 @@ Every code owner is expected to:
 
 >**NOTE:** To be accepted as a maintainer and be added to Kyma GitHub organizations, you need to have [two-factor authentication](https://help.github.com/en/articles/about-two-factor-authentication) enabled on your GitHub account.
 
-### When does a maintainer lose the maintainer status?
+### When Does a Maintainer Lose the Maintainer Status?
 
 - If a maintainer is no longer interested or cannot perform the maintainer duties listed above, they
 should request a change of their status to emeritus.
 - If a maintainer is unresponsive, the existing code owners can decide to remove them from the maintainers list in absentia.
 - In extreme cases, a maintainer can be removed by [voting of the maintainers](#conflict-resolution-and-voting-among-maintainers). 
 
-### How to suggest a change in a maintainers list?
+### How to Suggest a Change in a Maintainers List?
 
 To suggest a change in the ownership of a given repository part, create a PR with the required changes in the `CODEOWNERS` file in the project's repository. The required number of codeowners needs to approve the PR for the changes to take place. Read the [CODEOWNERS  file template](https://github.com/kyma-project/template-repository/blob/main/CODEOWNERS) to learn how to set up and modify owners of the given repository folders and files.
 
 The name of the removed maintainer is added to the [emeritus](https://github.com/kyma-project/community/blob/main/emeritus.md) file with a short message about what areas the person worked on.
 
-### Conflict resolution and voting of the maintainers
+### Conflict Resolution and Voting of the Maintainers
 
 In general, we prefer technical issues and the maintainer membership to be amicably worked out
 between the persons involved. If a dispute cannot be resolved independently, the maintainers can be
@@ -78,7 +76,7 @@ called in to decide an issue. If the maintainers themselves cannot decide an iss
 
 For complex cases when there is a situation that we need a decision that affects more than just one group of maintainers, the decision making process applies.
 
-## Decision making
+## Decision Making
 
 In general, the Special Interest Groups (SIGs) and Working Groups (WGs) make decisions that affect the project, including its structure, functionalities, components, or work of the project teams. However, the organizational decisions and those that relate to the product strategy are made by the [Kyma Steering Committee](02-steering-committee.md).
 
@@ -94,13 +92,13 @@ The SIG/WG decison-making process is as follows:
 
 ![Decision-making process](./assets/decision-making-process.svg)
 
-### Create a decision record
+### Create a Decision Record
 
 [Create an issue](https://github.com/kyma-project/community/issues/new/choose) and choose the **Decision record** template. Provide the information as requested in the template and set the issue label to `decision`. The issue can contain all necessary information, reference a document, or an open pull request with a more detailed proposal. Additionally, set the corresponding WG or SIG label such as `sig/core`.
 
 > **NOTE:** In some cases, the `decision` label is set for an existing issue during the [triage](#issues-workflow-issues-workflow-issues-triage), which indicates the need for a decision. In this case, use the [**Decision record** template](https://github.com/kyma-project/community/blob/main/.github/ISSUE_TEMPLATE/decision-record.md) and copy it to the issue description accordingly.
 
-### Reach a consensus
+### Reach a Consensus
 
 Take all necessary actions to reach a consensus no later than the decision due date:
 
@@ -115,7 +113,7 @@ Take all necessary actions to reach a consensus no later than the decision due d
 > **NOTE:** Discussions  lead to changes in the decision record or the proposal, or end up with no changes required. If someone suggests a substantially different approach, ask its supporters to write a counter proposal and to submit it in a separate pull request.
 
 
-### Close the decision
+### Close the Decision
 
 Once you reach the consensus:
 
@@ -124,11 +122,11 @@ Once you reach the consensus:
 
 > **NOTE:** If there are any pull requests with counter proposals to the decision record, close the related pull requests with rejected proposals without merging. State the reasons for the rejection in the closing comments.
 
-### Lack of consensus
+### Lack of Consensus
 
 Engage the Kyma Steering Committee if necessary to reach the final decision as soon as possible and close the issue.
 
-### Revisit a decision
+### Revisit a Decision
 
 Raise an explicit request to revisit a decision or to review it. To request a revision:
 

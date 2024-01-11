@@ -32,7 +32,7 @@ The purpose of this group is to:
 
 * [Team {GitHub team name}](https://github.com/orgs/kyma-project/teams/{team-name}/members)
 
-## Owned repositories
+## Owned Repositories
 
 * [{repository name}](https://github.com/kyma-project/{repository name})
 * [{repository name}](https://github.com/kyma-project/{repository name})

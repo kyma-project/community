@@ -1,5 +1,5 @@
 ---
-title: Repository guidelines
+title: Repository Guidelines
 label: internal
 ---
 

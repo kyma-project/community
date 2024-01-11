@@ -16,7 +16,7 @@ To configure the {Component name} {sub-}chart, override the default values of it
 >**TIP:** To learn how to override configuration values in Kyma, see [Change Kyma settings
 ](https://kyma-project.io/#/04-operation-guides/operations/03-change-kyma-config-values)
 
-## Configurable parameters
+## Configurable Parameters
 
 This table lists the {most common} configurable parameters, their descriptions, and default values:
 

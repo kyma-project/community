@@ -1,6 +1,4 @@
----
-title: Contributing rules
----
+# Contributing Rules
 
 As a Kyma contributor, you must follow certain guidelines and rules.
 
@@ -8,7 +6,7 @@ As a Kyma contributor, you must follow certain guidelines and rules.
 
 Go to the **Guidelines** section to read about rules and tips for providing [content](../guidelines/content-guidelines) and [code](../guidelines/technical-guidelines) to the Kyma repositories. Also, learn how to create a new [repository](../guidelines/repository-guidelines), and how the [release process](../guidelines/releases-guidelines) looks in Kyma. Make your life easier using various document types [templates](https://github.com/kyma-project/community/tree/main/templates) prepared for those who would like to contribute.
 
-## Documentation types
+## Documentation Types
 
 Read about [template types](../guidelines/templates/templates-type.md) used in specific Kyma repositories. The templates themselves are collected in the [`templates/resources`](https://github.com/kyma-project/community/tree/main/templates/resources) subfolder in the `community` repository.
 
@@ -21,7 +19,7 @@ This happens automatically during the submission process: The CLA assistant tool
 
 This DCO replaces the previously used CLA ("Contributor License Agreement") as well as the "Corporate Contributor License Agreement" with new terms that are well-known standards and hence easier to approve by legal departments. Contributors who had already accepted the CLA in the past may be asked to accept the new DCO.
 
-## Contribution rules
+## Contribution Rules
 
 If you are a contributor, follow these basic rules:
 
@@ -66,7 +64,7 @@ To contribute code or content to a given Kyma repository, follow these steps:
     > **NOTE:** The reviewer must check if all related CI tests have completed successfully before approving the PR.
 13. When the maintainers approve your change, merge the PR or wait until the Kyma Bot merges it for you.
 
-### Report an issue
+### Report an Issue
 
 If you find a bug to report or you want to propose a new feature, go to the GitHub issue tracker of a given repository and create an issue. If you are not certain which repository your bug or feature relates to, raise it on the `Kyma` repository.
 
@@ -76,7 +74,7 @@ See the [**Issues workflow**](../governance/03-issues-workflow.md) document for 
 
 > **NOTE:** The community is relentless about Kyma security. To report a sensitive security issue, send an email with details directly to [kyma-security@googlegroups.com](mailto:kyma-security@googlegroups.com) instead of using a public issue tracker.
 
-## Maintenance rules
+## Maintenance Rules
 
 Every maintainer reviews each contribution according to the rules listed in this document.
 

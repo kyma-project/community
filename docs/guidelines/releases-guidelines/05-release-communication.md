@@ -1,5 +1,5 @@
 ---
-title: Release communication
+title: Release Communication
 label: internal
 ---
 
@@ -17,11 +17,11 @@ At the beginning of the release process, the team responsible for the release pi
 
 - Notify Kyma teams about failing tests to fix them as quickly as possible. Kyma teams responsible for failing tests should communicate with a Release Master about the fixing progress.
 
-## Communication channels
+## Communication Channels
 
 The Release Manager must notify the Kyma team about the planned dates of creating both release candidates, as well as the date of the final release. Apart from that, the Release Master must inform about the progress of the release process. After the release is out, the Release Master sends notification about the new release on the public **release** [Slack](http://slack.kyma-project.io/) channel.
 
-## Communication persons
+## Communication Persons
 
 The following are contact persons responsible for the whole release process in Kyma:
 

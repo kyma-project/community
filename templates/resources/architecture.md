@@ -9,7 +9,7 @@ title: Architecture
 
 For reference, see the existing [**Architecture** documents](https://kyma-project.io/#/05-technical-reference/00-architecture/README).-->
 
-## Architecture diagram
+## Architecture Diagram
 
 <!--  Provide a [diagram](https://github.com/kyma-project/community/blob/main/docs/guidelines/content-guidelines/09-diagrams.md) which illustrates the workflow of a given component. The diagram is a **mandatory** element of this document. -->
 

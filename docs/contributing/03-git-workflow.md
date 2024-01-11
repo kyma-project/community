@@ -1,10 +1,8 @@
----
-title: Git workflow
----
+# Git Workflow
 
 This document is the best practice guide that contains the rules to follow when working with Kyma repositories.
 
-### Basic rules
+### Basic Rules
 
 Each contributor and maintainer in Kyma must follow this workflow:
 
@@ -19,7 +17,7 @@ The unified workflow has the following benefits:
 * The history of commits and merges is clean and readable.
 * There are fewer merge conflicts and, when they appear, they are easier to solve.
 
-## Prepare the fork
+## Prepare the Fork
 
 A fork is a copy of the repository from which you raise pull requests to propose changes to the original repository.
 The unified Kyma contribution workflow that bases on forks allows both the members of the Kyma organization and the external contributors to contribute code and content through the same process. This keeps the main repositories clean as contributors create branches only on the forked repositories.
@@ -197,7 +195,7 @@ Use GitHub to merge the pull request. If you are an external contributor, contac
 
 >**NOTE:** If there are at least two contributors who add commits to the pull request, contact the repository administrators to enable the **Rebase and merge** option temporarily. It allows you to merge the pull request with the number of commits that corresponds to the number of its contributors.
 
-## Keep your branch up to date
+## Keep your Branch Up to Date
 
 Perform these actions if you work on a branch for a long period of time and you want to update it locally with changes from the upstream repository.
 

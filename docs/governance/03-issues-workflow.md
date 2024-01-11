@@ -1,6 +1,4 @@
----
-title: Issues workflow
----
+# Issues Workflow
 
 In the Kyma project, we use [GitHub Issues](https://github.com/features/issues/) for both tracking the development process and managing the issues on a team and sprint level.
 
@@ -10,19 +8,19 @@ This document explains:
 - How issues triage is organized
 - Which tools are used on every stage of the workflow
 
-## Used labels
+## Used Labels
 
 Our statement is to:
 * Use default labels provided by GitHub
 * Introduce new labels only if necessary
 
-### Default labels
+### Default Labels
 
 The default labels provided by GitHub are as follows:
 
 ![](./assets/default_labels.png)
 
-### Custom labels
+### Custom Labels
 
 Here are the custom labels introduced by the Kyma team. The labels colors are provided in brackets in Hex code:
 
@@ -36,7 +34,7 @@ Here are the custom labels introduced by the Kyma team. The labels colors are pr
 * `sig/{SIG_NAME}` (#E99694) indicates which [Special interest group (SIG)](../contributing/04-sig-and-wg.md#sig-special-interest-group) identified the issue and is responsible for further follow-up on the issue.
 * `wg/{WG_NAME}` (#E99694) indicates which [Working group (WG)](../contributing/04-sig-and-wg.md#wg-working-group) identified the issue and is responsible for further follow-up on the issue.
 
-## Issues triage
+## Issues Triage
 
 Here is the flow diagram explaining how issues triage is performed:
 

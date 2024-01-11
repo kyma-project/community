@@ -1,6 +1,4 @@
----
-title: Kyma Steering Committee
----
+# Kyma Steering Committee
 
 The purpose of the Kyma Steering Committee is to:
 * Maintain the mission, vision, values, and scope of the project
@@ -8,11 +6,11 @@ The purpose of the Kyma Steering Committee is to:
 * With the help of the community, refine the governance model as needed
 * Agree to the new SIG or WG proposals or raise concerns about them
 
-## The size of the committee
+## The Size of the Committee
 
 To make sure the committee can always make a majority decision, we have three members. The ultimate goal is to have five members (at least two individual ones) and never four.
 
-## Decision-making
+## Decision-Making
 
 Whenever the committee is involved and needs to make a decision, the decision is always made by a majority of vote. In the case of three members, it is 2/3, and in the case of five it is 3/5.
 
@@ -26,7 +24,7 @@ See the list of all current members of the Kyma Steering Committee:
 
 We are aware that at the moment Kyma is steered by a single company, SAP. Our goal is to see on the list of members only one SAP representative and four representatives from outside of SAP. We commit that once there are five members on the list and we have another 2 candidates ready to step in, two SAP representatives will step down to achieve truly open governance of the project with five representatives form different parties.
 
-## How to become a member of the committee?
+## How to Become a Member of the Committee?
 
 The committee is open for any contributors, individual or corporate. These are the rules we apply:
 
