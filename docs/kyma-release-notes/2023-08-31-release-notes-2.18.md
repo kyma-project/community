@@ -47,4 +47,4 @@ They are now exposing a metrics endpoint containing the following auto-instrumen
 
 ## User Interface
 
-From now on, you have the opportunity to give feedback about our product directly in Kyma Dashboard. To do that, use the shiny new button in the top right corner of the shell bar. Read the [UX Scorecard in Kyma Dashboard](https://blogs.sap.com/2023/08/18/ux-scorecard-in-kyma-dashboard/) blog post for more details.
+From now on, you have the opportunity to give feedback about our product directly in Kyma dashboard. To do that, use the shiny new button in the top right corner of the shell bar. Read the [UX Scorecard in Kyma Dashboard](https://blogs.sap.com/2023/08/18/ux-scorecard-in-kyma-dashboard/) blog post for more details.

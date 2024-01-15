@@ -1,5 +1,5 @@
 ---
-title: Subscription to releases
+title: Subscription to Releases
 label: internal
 ---
 

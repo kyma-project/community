@@ -1,5 +1,5 @@
 ---
-title: Repository template
+title: Repository Template
 label: internal
 ---
 

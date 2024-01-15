@@ -1,10 +1,8 @@
----
-title: Docker images
----
+# Docker Images
 
 This document provides guidelines for the Docker image provided in the context of Kyma.
 
-## Naming and structure guidelines
+## Naming and Structure Guidelines
 
 Place images in the Kyma Docker registry located at `eu.gcr.io/kyma-project`. For development and proof of concepts, use the following location: `eu.gcr.io/kyma-project/snapshot`.
 
@@ -19,14 +17,14 @@ Assume an initializer image for the Helm Broker extension. This is the example o
 eu.gcr.io/kyma-project/helm-broker-initializer:0.1.0
 ```
 
-## Base images
+## Base Images
 
 Base all images on an image that is as small as possible in size and dependency. A base image must have a specified version. Do not use the `latest` tag.
 
 An application based on Go should originate from a `scratch` image. If a `scratch` image does not have the specific tooling available, you can use an `alpine` base image having the package catalog updated.
 A JavaScript-based application should originate from an `nginx-alpine` base image with an updated package catalog.
 
-## Label images
+## Label Images
 
 All images use the `source` label with a link to the GitHub repository containing the sources.
 
@@ -36,19 +34,19 @@ Define labels as in the following example:
 source = git@github.com:kyma-project/examples.git
 ```
 
-## Third-party images
+## Third-Party Images
 
 Kyma uses some Docker images that originally were not built (and hosted) by us.
 For security and reliability reasons, we need to copy all external images to our own Docker registry.
 We have two solutions to this problem: the third-party-images repository and the image-syncer tool.
 
-### Third-party repository
+### Third-Party Repository
 
 If you want to rebuild the image from scratch, use the [third-party-images](https://github.com/kyma-incubator/third-party-images) repository.
 For every component, create a separate directory. You need to provide a Dockerfile, a Makefile, and create a ProwJob for building your images.
 See the repository content for more information.
 
-### Image syncer
+### Image Syncer
 
 If you want to "cache" an image from an external registry, use the [image-syncer
 ](https://github.com/kyma-project/test-infra/tree/main/cmd/image-syncer)

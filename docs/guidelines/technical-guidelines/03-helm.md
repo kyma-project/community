@@ -1,10 +1,8 @@
----
-title: Helm
----
+# Helm
 
 This guide covers the best practices for creating Helm charts every Kyma team should employ.
 
-## Do not use the crd-install hook
+## Do Not Use the `crd-install` Hook
 
 Helm doesn't trigger the `crd-install` hook in the upgrade process. Because of that, new Custom Resource Definitions (CRDs) aren't installed. See the alternatives to using the `crd-install` hook:
 
@@ -43,7 +41,7 @@ Helm doesn't trigger the `crd-install` hook in the upgrade process. Because of t
     - Jobs are troublesome to debug.
     - The CRD is not listed as a part of Helm release.
 
-## Moving resources between charts
+## Moving Resources Between Charts
 
 Moving resources, such as ConfigMaps, Deployments, CRDs, and others from one chart to another is problematic as it causes Kyma to lose backward compatibility. The deployment in which the CRD is moved cannot be upgraded to a newer version.  
 
@@ -60,7 +58,7 @@ When a CRD is deleted, all of the associated implementations are removed, which 
 3. Run the upgrade.
 4. Restore all CRD implementations.
 
-## Defining metadata schema for Kyma charts
+## Defining Metadata Schema for Kyma Charts
 
 This section covers the minimal requirements and conventions of metadata schema definition for Kyma charts.
 

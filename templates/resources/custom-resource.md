@@ -14,7 +14,7 @@ The `{CRD name}` CustomResourceDefinition (CRD) is a detailed description of the
 kubectl get crd {CRD name} -o yaml
 ```
 
-## Sample custom resource
+## Sample Custom Resource
 
 <!-- In this section, provide an example custom resource created based on the CRD described in the introductory section. Describe the functionality of the CR and highlight all of the optional elements and the way they are utilized.
 Provide the custom resource code sample in a ready-to-use format. -->
@@ -29,7 +29,7 @@ metadata:
 {another_field}:
 ```
 
-## Custom resource parameters
+## Custom Resource Parameters
 
 This table lists all the possible parameters of a given resource together with their descriptions:
 
@@ -38,7 +38,7 @@ This table lists all the possible parameters of a given resource together with t
 | **metadata.name** | Yes | Specifies the name of the CR. |
 | **{another_parameter}** | {Yes/No} | {Parameter description} |
 
-## Related resources and components
+## Related Resources and Components
 
 These are the resources related to this CR:
 

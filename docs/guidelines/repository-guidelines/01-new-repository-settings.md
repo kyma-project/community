@@ -1,5 +1,5 @@
 ---
-title: New repository settings
+title: New Repository Settings
 label: internal
 ---
 
@@ -7,7 +7,7 @@ All repositories in `kyma-project` and `kyma-incubator` organizations should be 
 
 > **NOTE:** You have to be an owner of the given organization to create a new repository in it.
 
-## Use the repository template
+## Use the Repository Template
 
 Whenever you create a new repository, use the template from the [`template-repository`](https://github.com/kyma-project/template-repository). This template contains all necessary configuration files for CODEOWNERS, Kyma stale bot, issue and pull request templates, license, and Code of Conduct.
 
@@ -15,7 +15,7 @@ Whenever you create a new repository, use the template from the [`template-repos
 
 ![Template](./assets/template.png)
 
-## Adjust repository options
+## Adjust Repository Options
 
 Under the repository name, choose the **Settings** tab. The **Options** view opens as the default one in the left menu.
 
@@ -26,7 +26,7 @@ Under the repository name, choose the **Settings** tab. The **Options** view ope
 
 ![Features](./assets/features.png)
 
-## Set branch protection rules
+## Set Branch Protection Rules
 
 Define branch protection rules that include enforcing obligatory review and approval of pull requests (PRs), and define which Prow jobs need to pass successfully before merging PR changes into the `main` branch.
 
@@ -40,13 +40,13 @@ If you add a new repository in:
 - `kyma-project`, you do not need to add a new entry to the Prow `config.yaml` file as the branch protection is already defined for [all repositories](https://github.com/kyma-project/test-infra/blob/main/prow/config.yaml#L380) within this organization. The only exception is if you want to specify additional rules that are not handled by Prow.
 - `kyma-incubator`, add a new repository entry to the Prow `config.yaml` file, under **branch-protection.orgs.kyma-incubator.repos**.
 
-## Update CLA assistant configuration
+## Update CLA Assistant Configuration
 
 Ask a [kyma-project owner](https://github.com/orgs/kyma-project/people) to:
 - Add the newly created repository to the [Contributor License Agreement](https://cla-assistant.io/) (CLA).
 - Add the `kyma-bot` username to be exempt from signing the CLA.
 
-## Enable Markdown link check
+## Enable Markdown Link Check
 
 The `/kyma-project` repositories in GitHub use [Markdown link check](https://github.com/tcort/markdown-link-check) to check their Markdown files for broken links. Configuration and maintenance of the Markdown link check tool is the responsibility of a repository owner.
 
@@ -83,6 +83,6 @@ To configure the Markdown link check, follow these steps:
      - [`lint-markdown-links-pr.yml`](https://github.com/kyma-project/kyma/blob/main/.github/workflows/lint-markdown-links-pr.yml) - checks links in Markdown files being part of a created pull request.
      - [`lint-markdown-links-daily.yml`](https://github.com/kyma-project/kyma/blob/main/.github/workflows/lint-markdown-links-daily.yml) - checks links in all Markdown files in the repository. This is a periodic, daily check scheduled on the main branch at 5 AM.
 
-## Custom settings
+## Custom Settings
 
 Track all repository changes that deviate from configuration standard described in the guidelines with an [issue](https://github.tools.sap/kyma/test-infra/issues/new?assignees=&labels=config-change&template=bug_report.md&title=).

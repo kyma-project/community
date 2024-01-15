@@ -1,16 +1,14 @@
----
-title: HTTP API design
----
+# HTTP API Design
 
 The file contains official guidelines for defining APIs in Kyma. This is an evolving set of guidelines which includes various aspects of API definition.
 
-## Target audience
+## Target Audience
 
 The target audience includes these groups:
 * Internal developers who build various features of Kyma.
 * Customer developers who use Kyma to customize external solutions.
 
-## Name the HTTP headers
+## Name the HTTP Headers
 
 If possible, use a standard HTTP header rather than a custom one so that the semantics match.
 

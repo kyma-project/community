@@ -1,5 +1,5 @@
 ---
-title: Release strategy
+title: Release Strategy
 label: internal
 ---
 
@@ -7,7 +7,7 @@ Read about the release strategy in Kyma.
 
 ## Terminology
 
-### Release types
+### Release Types
 
 For release versioning, Kyma uses the approach similar to [Semantic Versioning](https://semver.org/). However, while Semantic Versioning focuses on APIs, the release process for Kyma refers to the complete Kyma deliverable. Despite this difference, Kyma follows the same release types:
 
@@ -17,7 +17,7 @@ For release versioning, Kyma uses the approach similar to [Semantic Versioning](
 | **MINOR** | Introduces a new functionality in a planned schedule |
 | **PATCH** **hot.fix** | Introduces a backward-compatible bug fix as an unscheduled release |
 
-### Function freeze
+### Function Freeze
 
 The **function freeze** refers to the point in time when a new release branch is created from the `main` branch. After the function freeze, no new features are included in the release. This is typically on Monday at 9:00 AM CET/CEST every 4 weeks.
 
@@ -43,9 +43,9 @@ These persons actively participate in release preparation and execution:
 
 - **Release Publisher** prepares and publishes the social media content based on the release notes.
 
-## Release requirements and acceptance criteria
+## Release Requirements and Acceptance Criteria
 
-### Epics and user stories
+### Epics and User Stories
 
 The functional implementations that are included in the release are documented as GitHub issues. A contributor completes an issue bound by the license agreement and contributing guidelines. All proposed changes must pass the obligatory Continuous Integration checks and require the maintainers' review and approval.
 
@@ -54,7 +54,7 @@ You can close an epic or an issue if the new functionality meets the contributin
 - Automated unit, integration and end-to-end tests verify this functionality.
 - This functionality is documented.
 
-### Test coverage
+### Test Coverage
 
 In Kyma, we follow the test strategy according to which you can verify all functionalities through automated testing that you execute either through the CI or the release pipeline.
 
@@ -62,7 +62,7 @@ The Kyma community must provide the highest possible test coverage to minimize a
 
 Consider implementing tests that go beyond verifying the functionality of the system. This includes integration, performance, and end-to-end tests.
 
-### Compliance rules
+### Compliance Rules
 
 All Kyma organization members involved in the release process comply with contribution rules defined for Kyma and ensure that all checks built into the continuous integration process pass. These requirements represent the absolute minimal acceptance criteria needed for a release from the compliance perspective.
 
@@ -77,7 +77,7 @@ Open-source projects, like any other, must ensure secure development. You can pr
 
 The Release Manager in Kyma takes care of formal security validation activities performed before major releases. The results of these activities influence the release decision. Lack of attention to security topics can result in release delay.
 
-### Critical issues
+### Critical Issues
 
 Any issues affecting the expected functionality of Kyma should be documented on GitHub for review and planning. If any of these issues is defined as critical according to the criteria specified in this section, it should be brought to the immediate attention of the Release Manager.
 
@@ -105,7 +105,7 @@ In each and every case, the following criteria must be met before the fix can be
 - Adequate tests have been implemented to prevent the issue from occurring again.
 - A fix is readily available and complies with the Definition of Done.
 
-## Release schedule
+## Release Schedule
 
 A scheduled release follows the planning cycles for the Kyma development that typically take four weeks. At the beginning of each planning cycle, the Product Lead communicates the specific timeframe for a release. After reaching the end of the development cycle, the Release Master creates a release candidate.
 
@@ -113,13 +113,13 @@ All planned releases happen at the end of a planned development cycle. Only the 
 
 We do not schedule patches but rather provide them on demand if there is a need to address high priority issues before the next planned release. In this context, we explicitly define high priority issues as those which either affect multiple Kyma installations or result in the financial loss for the users. The Release Manager is involved in the decision to execute a patch release.
 
-### Nightly and weekly builds
+### Nightly and Weekly Builds
 
 It is our goal to have fully automated builds generated on a daily or nightly basis. Such builds can be made available to the community to validate the newest functionality and corrections implemented in development or testing environments, but are not intended for production use.
 
 Once per week, we should update the installation with the newest, weekly build. During the following week, automated tests must run on the cluster to validate the stability and performance of the environment, and ensure that the results remain unchanged for a longer period of time. This also supports the whole release strategy by improving the quality of the product and increasing the public confidence in it.
 
-### Release candidates
+### Release Candidates
 
 After reaching the end of the development cycle, the Kyma developers create a release candidate, published just like any other release in GitHub. Anyone can test it and provide feedback. Depending on whether this is a minor or major release, the period of time for this validation varies:
 
@@ -138,31 +138,31 @@ If any issue is still blocking the release by the time it should be made availab
 
 The Release Manager communicates such a decision to the community on the public **release** Slack channel.
 
-### Planning start
+### Planning Start
 
 The Product Lead coordinates the product planning, following the planning cycles for the Kyma development.
 
-### Planning end
+### Planning End
 
 After completing the planning process, the theme and expected scope of the release is clear. All maintainers know what they have to work on for the release.
 
 At this time, the Release Manager publicly communicates the planned release schedule for Kyma. This communication should include key features or fixes expected to fall within the scope of the release. Possible communication channels include blog posts, social media, and Slack channels.
 
-### Development start
+### Development Start
 
 After completing the planning, the Product Lead explicitly hands over the release to the engineering teams during the handover meeting. At this point, the development phase of the new release officially starts.
 
 During the development phase, the Release Manager keeps track of the development and takes early actions required to keep the release on track. When closer to the release date, the Release Manager and the Product Lead discuss the status of the release and decide if there are any additional checkpoints or actions to address.
 
-### Development end
+### Development End
 
 This is the last day of the period planned for the release development.
 
-### Release decision
+### Release Decision
 
 The Release Manager and the Product Leadership decide to publish a release, based on its status, readiness and compliance of the developed functionality. If any issue blocks the release, the Release Manager actively discusses the issue, implications and risks with the relevant developer(s), Product Owner and Release Engineer to make a decision to release or not.
 
-### Release execution
+### Release Execution
 
 The release execution is a manual process and is not part of an automated nightly or weekly build. It begins when the Release Engineer creates a release branch with all release artifacts. The process finishes after publishing both the artifacts and the related documentation as a release candidate that can be promoted to a final release.
 
@@ -172,7 +172,7 @@ The Release Manager notifies the Kyma community on the public **release** Slack 
 
  >**TIP:** See the [Critical issues](#critical-issues) section for details.
 
-### Release publishing
+### Release Publishing
 
 The final release is available in the GitHub releases, including the installation instructions. It also includes the complete changelog that lists all pull requests merged into this release.
 
@@ -180,16 +180,16 @@ A Technical Writer publishes the blog post on the public Kyma website to announc
 
 You can learn about the new release from additional notifications published on social media and Slack channels. Alternatively, you can [subscribe](./07-release-subscription.md) to GitHub notifications and receive updates each time a new release is available.
 
-## Release scope
+## Release Scope
 
 For each of the planning periods described in the release schedule, GitHub epics and issues define and document the release scope with regards to functionality, corrections, and even non-functional requirements. The collection of all documented issues within a release represents the expected scope of that release that the whole organization and all teams define and commit to. The corresponding release in ZenHub identifies all issues and epics that fall within the final release scope.
 
 When planning the release scope, all persons involved in the release must take the GDPR requirements into consideration when processing or storing personal data.
 
-### Version maintenance
+### Version Maintenance
 
 There is no guaranteed support for the bug fixes in the previous Kyma versions. The default strategy is to upgrade to the latest version. The Kyma team encourages the community to always upgrade to the latest release.
 
-### Deprecation and backward-compatibility
+### Deprecation and Backward-Compatibility
 
 There are clear expectations regarding the depreciation and backward-compatibility of Kyma versions to ensure some level of stability for the users. This can mean a period of time in which you should not change the provided functionality. This is the practice that other open-source projects also follow.

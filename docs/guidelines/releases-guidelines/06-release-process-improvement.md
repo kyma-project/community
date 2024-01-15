@@ -1,5 +1,5 @@
 ---
-title: Release process improvement
+title: Release Process Improvement
 label: internal
 ---
 

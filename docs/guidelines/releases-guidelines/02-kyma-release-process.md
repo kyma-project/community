@@ -1,5 +1,5 @@
 ---
-title: Kyma release process
+title: Kyma Release Process
 label: internal
 ---
 
@@ -29,7 +29,7 @@ The table below includes placeholders used throughout this document. When execut
 
 ### kyma-project/kyma
 
-#### Perform initial checks
+#### Perform Initial Checks
 
 Check if the `main` branch contains any PR-images:
 
@@ -39,7 +39,7 @@ Check if the `main` branch contains any PR-images:
 
    Ask the teams for fixes if this command returns any output.
 
-#### Create a release branch
+#### Create a Release Branch
 
 >**NOTE:** a release branch needs to be created per new major / minor version. Patch releases and release candidates do not have a dedicated release branch.
 
@@ -55,7 +55,7 @@ Create a release branch in the `kyma` repository. The name of this branch should
 
 Follow these steps to release another Kyma version. Execute these steps for every patch release or release candidate.
 
-#### Create a PR to the release branch
+#### Create a PR to the Release Branch
 
 1. Change the `RELEASE_VERSION`. Make sure the `VERSION` file includes just a single line, **without the newline character at the end**:  
 
@@ -70,7 +70,7 @@ Follow these steps to release another Kyma version. Execute these steps for ever
 3. If `pre-release-pr-image-guard` fails, ask the owners to change PR-XXX images of the components to the `main` version.
 4. If the checks are green, merge the PR and proceed to the next step.
 
-#### Development process towards the release
+#### Development Process Towards the Release
    > **NOTE:** Every developer who is introducing changes to the specific version can perform steps 1-4.
 
 1. Create a feature-branch based on the given `release-{RELEASE}` branch you want to extend. Add your changes and create a Pull Request.
@@ -88,7 +88,7 @@ Follow these steps to release another Kyma version. Execute these steps for ever
 5. If there's a need for additional changes in the release branch during the development process, open a new PR to the release branch.
    Repeat steps 1-4 for this PR.
 
-#### Create a release
+#### Create a Release
 
 1. Once the preparation for the release is finished, trigger the [Release Kyma](https://github.com/kyma-project/kyma/actions/workflows/github-release.yaml) GitHub action. 
    Choose the branch that corresponds to the release that you want to trigger. The exact release version is taken from the `VERSION` file.
