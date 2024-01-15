@@ -13,7 +13,7 @@ Items       | Examples
 Parameters   | The **env** attribute is optional.
 HTTP headers | The Authorization Proxy validates the JWT token passed in the **Authorization Bearer** request header.
 Events       | The service publishes an **order.created** event.
-Roles        | Only the users with the **kyma_admin** role can list Pods in the Kyma system Namespaces.
+Roles        | Only the users with the **kyma_admin** role can list Pods in the Kyma system namespaces.
 UI elements  | Click **Subscribe**.
 Variables and placeholders | Click **Project** > **{YOUR_PROJECT_NAME}**.
 
@@ -21,7 +21,7 @@ Variables and placeholders | Click **Project** > **{YOUR_PROJECT_NAME}**.
 
 Items                     | Examples
 ------------------------- | -----------------------------------------------------------------------------------------------
-Code examples             | Get the list of all Pods in a Namespace using the `kubectl get pods -n {NAMESPACE}` command.
+Code examples             | Get the list of all Pods in a namespace using the `kubectl get pods -n {NAMESPACE}` command.
 Values                    | Set the partial attribute to `true` to perform a partial replacement.
 Endpoints                 | Send a POST request to the `/{tenant}/categories/{categoryId}/media/{mediaId}/commit` endpoint.
 File names                | Open the `deployment.yaml` file.
@@ -29,7 +29,7 @@ File extensions           | Modify all `.yaml` and `.json` files.
 Path names                | Save the file in the `\services\repository` folder.
 Repository names          | The file is located in the `kyma` repository.
 Status and error codes    | A successful response includes a status code of `200 OK`.
-Parameter and value pairs | The controller adds the `env=true` label to all newly created Namespaces.
+Parameter and value pairs | The controller adds the `env=true` label to all newly created namespaces.
 Metadata names            | When you create a Markdown document, define its `title` and `type`.
 Flags                     | Add the `--tls` flag to every Helm command you run.
 GraphQL queries and mutations   | The `requestOneTimeTokenForApplication` mutation calls the internal GraphQL API to get a one-time token. |

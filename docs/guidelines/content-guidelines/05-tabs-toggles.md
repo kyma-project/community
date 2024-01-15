@@ -101,7 +101,7 @@ This section contains exemplary uses of the toggle in Markdown documents.
     Kyma Dashboard
     </summary>
 
-  1. Go to **Namespaces** and select the default Namespace.
+  1. Go to **Namespaces** and select the default namespace.
   2. Go to **Configuration** > **Subscriptions** and click **Create Subscription+**.
   3. Switch to the **Advanced** tab, and provide the following parameters:
      - **Subscription name**: `lastorder-sub`
@@ -160,7 +160,7 @@ This section contains exemplary uses of the toggle in Markdown documents.
       HttpBin
       </summary>
 
-      To deploy an instance of the HttpBin service in your Namespace using the [sample code](https://raw.githubusercontent.com/istio/istio/master/samples/httpbin/httpbin.yaml), run:
+      To deploy an instance of the HttpBin service in your namespace using the [sample code](https://raw.githubusercontent.com/istio/istio/master/samples/httpbin/httpbin.yaml), run:
 
       ```shell
       kubectl -n $NAMESPACE create -f https://raw.githubusercontent.com/istio/istio/master/samples/httpbin/httpbin.yaml
@@ -173,7 +173,7 @@ This section contains exemplary uses of the toggle in Markdown documents.
       Function
       </summary>
 
-      To create a Function in your Namespace using the [sample code](https://raw.githubusercontent.com/kyma-project/kyma/main/docs/03-tutorials/00-api-exposure/assets/function.yaml), run:
+      To create a Function in your namespace using the [sample code](https://raw.githubusercontent.com/kyma-project/kyma/main/docs/03-tutorials/00-api-exposure/assets/function.yaml), run:
 
       ```shell
       kubectl -n $NAMESPACE apply -f https://raw.githubusercontent.com/kyma-project/kyma/main/docs/03-tutorials/00-api-exposure/assets/function.yaml
