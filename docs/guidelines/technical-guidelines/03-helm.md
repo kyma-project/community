@@ -2,7 +2,7 @@
 
 This guide covers the best practices for creating Helm charts every Kyma team should employ.
 
-## Do not uUe the `crd-install` Hook
+## Do Not Use the `crd-install` Hook
 
 Helm doesn't trigger the `crd-install` hook in the upgrade process. Because of that, new Custom Resource Definitions (CRDs) aren't installed. See the alternatives to using the `crd-install` hook:
 
