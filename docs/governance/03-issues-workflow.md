@@ -46,7 +46,7 @@ There are eight different stages of the triage:
 |--------- |----------|---------|
 | Validity | Assess the validity of the issue (whether it is taken for the further triage and proper classification). | invalid, duplicate, wontfix, question |
 | Kind | Differentiate whether the related issue is a new feature or a bug. | enhancement, bug, test-failing, test-missing |
-| Decision | Check if the issue is related to a [decision](#kyma-working-model-kyma-working-model-decision-making). | decision |
+| Decision | Check if the issue is related to a [decision](01-governance.md#decision-making). | decision |
 | Help | Identify issues that do not have high priority and can be taken by the community. | help wanted, good first issue|
 | Security | Specify the [CVSSv3](https://www.first.org/cvss/calculator/3.0) severity with the support of the security team. | security/{SEVERITY} |
 | SIG/WG | Clarify which SIG or WG is involved in this issue and is responsible for the further follow-up on the issue. | sig/{SIG_NAME}, wg/{WG_NAME}|

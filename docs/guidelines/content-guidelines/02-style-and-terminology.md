@@ -182,7 +182,7 @@ Here is the preferred terminology to use in the Kyma documentation:
 | **use**                      | **utilize**                         |                                   |
 | **using**, **with**              | **via**                             |                                   |
 | **YAML** (file format)       | **yaml**                            | If it's a file extension or file name, use `.yaml` (see [formatting](03-formatting.md)) |
-| **Prow Job** (process)       | **Prowjob**, **prowjob**                | If it's a resource, use [camel case](#camel-case): "ProwJob" |
+| **Prow Job** (process)       | **Prowjob**, **prowjob**                | If it's a resource, use [CamelCase](#camelcase): "ProwJob" |
 | **must**, **can**                | **should**                          | If mandatory, use “must”, if optional, use “can”. |
 | (you) **can**                | **it is possible to**, **allows you to**, **there is the possibility to**, **you have the option to**, … | If there’s no other option, drop the “can”, simply use [imperative](#voice-and-tone). |
 | **that is**                  | **i.e.**                            | If you must explain a statement with "i.e." or "that is,…", often the first statement adds little value and can be dropped completely, keeping just the part after "i.e.". |
