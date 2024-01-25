@@ -31,7 +31,7 @@ GitHub Actions, in particular the GITHUB_TOKEN, has `read` and `write` permissio
 
 To learn which GitHub Actions are allowed, check this [list](./assets/allowed_actions.json).
 
-To add a GitHub Action to the list of allowed Actions, you must perform a [security review](#security-review) of the GitHub Action. After the review, you must create a pull request on the list of allowed GitHub Actions. Use the template of the JSON object below to add the relevant information to the `github_actions` array in the [allowed_actions.json](./assets/allowed_actions.json) file. The comment entry can be used to add information, which can be useful for others who want to use the same Action.
+To add a GitHub Action to the list of allowed Actions, you must [perform a security review](#perform-security-review) of the GitHub Action. After the review, you must create a pull request on the list of allowed GitHub Actions. Use the template of the JSON object below to add the relevant information to the `github_actions` array in the [allowed_actions.json](./assets/allowed_actions.json) file. The comment entry can be used to add information, which can be useful for others who want to use the same Action.
 
 ```json
 {
