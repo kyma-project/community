@@ -31,7 +31,7 @@ To publish a document located in a new module repository, follow the steps from 
 
 1. In the `/kyma` repository, open the<!-- markdown-link-check-disable-line --> [`/kyma/docs/_sidebar.md`](https://github.com/kyma-project/kyma/blob/main/docs/_sidebar.md) file and under **Modules**, add a link to your module documentation main page.
 2. Update [`index.html`](https://github.com/kyma-project/kyma/blob/main/docs/index.html) by adding a new **alias** entry in the **<body>** part. Use the following pattern:
-
+<!-- markdown-link-check-disable -->
     ```html
     alias: {
     '/{MODULE_REPOSITORY_NAME}/(.*)': 'https://raw.githubusercontent.com/{GITHUB_PROJECT_NAME}/{MODULE_REPOSITORY_NAME}/main/docs/$1',
@@ -45,5 +45,5 @@ To publish a document located in a new module repository, follow the steps from 
     '/serverless-manager/(.*)': 'https://raw.githubusercontent.com/kyma-project/serverless-manager/main/docs/$1',
     }, 
     ```
-
+<!-- markdown-link-check-enable -->
 > **CAUTION:** When you update navigation paths in documentation, make sure you check all `_sidebar.md` files that may be affected.
