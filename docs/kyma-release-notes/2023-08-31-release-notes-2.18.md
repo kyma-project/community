@@ -1,4 +1,4 @@
-With some of its offspring having left the parent ship as fully-grown, [independent modules](https://kyma-project.io/#/?id=kyma-modules) and more getting ready to follow suit, [Kyma’s sailing, Kyma’s sailing…](https://www.youtube.com/watch?v=FOt3oQ_k008) and still evolving. To understand its journey towards enhanced functionality, look at the latest updates and fixes.
+With some of its offspring having left the parent ship as fully-grown, [independent modules](https://kyma-project.io/#/06-modules/README) and more getting ready to follow suit, [Kyma’s sailing, Kyma’s sailing…](https://www.youtube.com/watch?v=FOt3oQ_k008) and still evolving. To understand its journey towards enhanced functionality, look at the latest updates and fixes.
 
 ## Application Connectivity
 
