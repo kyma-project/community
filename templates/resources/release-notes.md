@@ -21,7 +21,7 @@ redirectFrom:
 > Add a **CAUTION** at the beginning of the release notes whenever there are any important migration and/or update steps required for users to perform before migrating to the new Kyma version. Link to a separate migration guide under `kyma/docs/migration-guides` in which you provide these steps, describe the changes and reasons behind them, and list potential benefits for the users.  
 
 > After the introductory paragraph, list the highlights of the release as bullet points and provide relative links to their corresponding sections.
-
+  <!-- markdown-link-check-disable -->
 - [API Exposure](#api-exposure) - {List of other features and fixes}
 - [Application Connectivity](#application-connectivity) - {List of other features and fixes}
 - [CLI](#CLI) - {List of other features and fixes}
@@ -39,7 +39,7 @@ redirectFrom:
 > [Application Connectivity](#application-connectivity) - Extended tests, client certificate verification
 
 > Introduce other component features or fixes that are included in the release notes. They should reflect the names of subsections under each component. Add relative links to component sections.
-
+  <!-- markdown-link-check-enable -->
 
 ## {Area name}
 

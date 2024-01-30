@@ -28,7 +28,7 @@ We are aware that at the moment Kyma is steered by a single company, SAP. Our go
 
 The committee is open for any contributors, individual or corporate. These are the rules we apply:
 
-* In case of individual contributors, you need to be an active [Kyma maintainer](01-governance.md#process-for-becoming-a-codeowner) for at least 2 major components.
+* In case of individual contributors, you need to be an active [Kyma maintainer](01-governance.md#become-a-code-owner) for at least 2 major components.
 * A single company can have only one employee in the committee. It is up to the company to suggest a candidate that will acts as a representative of active maintainers for the given company. The representative, however, does not have to be an active maintainer himself/herself.
 * In the case one company has one representative in the committee already, and another member starts working for this company, one of the members must resign once there are other candidates to replace him/her.
 
