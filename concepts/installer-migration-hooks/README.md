@@ -58,7 +58,7 @@ Active:
 - Go-Build-Tags cannot be used for this use case.
 - Add `deprecation` function to job-interface, which returns at which Kyma version the job should be deprecated. Before the job is executed, the deprecation function is called to check whether it is already deprecated. If deprecated, an Error should be thrown to block the CI.
 
-<img src="./migration-logic-diagram.png?raw=true">
+![Migration Logic](./migration-logic-diagram.png)
 
 ## Draft for Golang Implementation
 
