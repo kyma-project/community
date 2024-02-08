@@ -77,14 +77,17 @@ Suppose that it is only the part containing the certificate information that is 
 
 ## Panels
 
-Panels are colorful containers that call out important or additional information within a topic. To call attention to a specific note, a word of caution or a tip, use the  **NOTE**, **TIP**, and **CAUTION** panels. Use:
-- The blue **NOTE** panel to point to something specific, usually relating to the topic.
-- The red **CAUTION** panel to call attention to something critical that can cause inoperable behavior.
-- The green **TIP** panel to share helpful advice, such as a shortcut to save time.
+>**NOTE** The following panels are not rendered correctly when indented. Use them only in the docs that are displayed on the website.
+
+Panels are colorful containers that call out important or additional information within a topic. The Kyma documentation uses the [Flexible Alerts](https://github.com/fzankl/docsify-plugin-flexible-alerts) docsify plugin for the panels' formatting. To call attention to a specific note, a word of caution or a tip, use the  [!NOTE], [!TIP], and [!WARNING] panels. Use:
+- The blue [!NOTE] panel to point to something specific, usually relating to the topic.
+- The orange [!WARNING] panel to call attention to something critical that can cause inoperable behavior.
+- The green [!TIP] panel to share helpful advice, such as a shortcut to save time.
 
 See an example:
 
->**NOTE:** Provision a Public IP for Ingress and a DNS record before you start the installation.
+> [!NOTE] 
+> Provision a Public IP for Ingress and a DNS record before you start the installation.
 
 ## Ordered and Unordered Lists
 
