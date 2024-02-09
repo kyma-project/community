@@ -152,6 +152,17 @@
       "security_review_performed": true,
       "3rd_party_tool": {},
       "comment": "can be used to perform a docker command without switching the job image"
+    },
+    {
+      "name": "tj-actions/changed-files",
+      "versions": [
+        "90a06d6ba9543371ab4df8eeca0be07ca6054959"
+      ],
+      "repository": "https://github.com/tj-actions/changed-files",
+      "marketplace": "https://github.com/marketplace/actions/changed-files",
+      "security_review_performed": true,
+      "3rd_party_tool": {},
+      "comment": "track all changed files and directories relative to a target branch, the current branch, multiple branches, or custom commits"
     }
   ]
 }
