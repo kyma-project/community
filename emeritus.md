@@ -45,3 +45,5 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Karol Szwaj (**[@cnvergence](https://github.com/cnvergence)**) involved in `area/api-gateway`, `area/service-mesh`.
 * Jakub Łukomski (**[@qbalukom](https://github.com/qbalukom)**) involved in `area/console`, `area/busola`.
 * Dariusz Tutaj (**[@dariusztutaj](https://github.com/dariusztutaj)**) involved in `area/api-gateway`, `area/service-mesh`.
+* Jan Woźniak (**[@wozniakjan](https://github.com/wozniakjan)**) involved in `area/control-plane`,`area/tests`, `area/charts`, `area/ci`, `area/security`, `area/dependency`, `area/service-management`.
+* Till Knuesting (**[@tillknuesting](https://github.com/tillknuesting)**) involved in `area/control-plane`,`area/tests`, `area/charts`, `area/ci`, `area/security`, `area/dependency`, `area/service-management`.
