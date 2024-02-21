@@ -117,7 +117,7 @@ We do not schedule patches but rather provide them on demand if there is a need 
 
 It is our goal to have fully automated builds generated on a daily or nightly basis. Such builds can be made available to the community to validate the newest functionality and corrections implemented in development or testing environments, but are not intended for production use.
 
-Once per week, we should update the installation with the newest, weekly build. During the following week, automated tests must run on the cluster to validate the stability and performance of the environment, and ensure that the results remain unchanged for a longer period of time. This also supports the whole release strategy by improving the quality of the product and increasing the public confidence in it.
+Once per week, we should update the installation with the newest, weekly build. During the following week, automated tests must run in the cluster to validate the stability and performance of the environment, and ensure that the results remain unchanged for a longer period of time. This also supports the whole release strategy by improving the quality of the product and increasing the public confidence in it.
 
 ### Release Candidates
 
