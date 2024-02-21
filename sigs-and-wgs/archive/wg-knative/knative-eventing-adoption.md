@@ -77,7 +77,7 @@ The table includes sample channel names created according to the naming pattern:
   ![](assets/mapping-refer.svg)
 * Some reference implementations such as Kafka are mapping one `Topic` to a `Knative Channel`.
 * **This enables us to build a thin abstraction layer on top of Knative**.
-  * Kyma does not want to run heavy workloads on the cluster when the customer is using `Cloud PubSub`.
+  * Kyma does not want to run heavy workloads in the cluster when the customer is using `Cloud PubSub`.
 * The Knative subscription object is mapped to channel where a single channel can have many subscriptions.
   * Following this approach we can keep the subscription model simple.
 
