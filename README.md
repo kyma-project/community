@@ -47,7 +47,7 @@ If you prefer even more direct contact, use one of the available [Slack channels
 # <img src="assets/technical-support-icon.svg" width="120"> Technical Support
 
 ## Stack Overflow
-
+<!-- markdown-link-check-disable-next-line -->
 If you have a code-level question and need some expert advice, contact us on [Stack Overflow](https://stackoverflow.com/questions/tagged/kyma). Read through the existing questions tagged with `kyma` or ask your own if you don't find the answer you were looking for.
 
 ## Security
