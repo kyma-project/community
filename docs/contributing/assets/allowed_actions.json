@@ -20,7 +20,7 @@
       "name": "golangci/golangci-lint-action",
       "versions": [
         "3cfe3a4abbb849e10058ce4af15d205b6da42804",
-        "v4"
+        "v4.0.0"
       ],
       "repository": "https://github.com/golangci/golangci-lint-action",
       "marketplace": "https://github.com/marketplace/actions/run-golangci-lint",
