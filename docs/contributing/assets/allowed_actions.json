@@ -27,7 +27,7 @@
       "security_review_performed": true,
       "3rd_party_tool": {
         "tool": "golangci-lint",
-        "pinned_version": "???",
+        "pinned_version": "v1.56.2",
         "repository": "https://github.com/golangci/golangci-lint"
       },
       "comment": ""
