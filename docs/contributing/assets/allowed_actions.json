@@ -17,6 +17,22 @@
       "comment": ""
     },
     {
+      "name": "golangci/golangci-lint-action",
+      "versions": [
+        "3cfe3a4abbb849e10058ce4af15d205b6da42804",
+        "v4.0.0"
+      ],
+      "repository": "https://github.com/golangci/golangci-lint-action",
+      "marketplace": "https://github.com/marketplace/actions/run-golangci-lint",
+      "security_review_performed": true,
+      "3rd_party_tool": {
+        "tool": "golangci-lint",
+        "pinned_version": "v1.56.2",
+        "repository": "https://github.com/golangci/golangci-lint"
+      },
+      "comment": ""
+    },
+    {
       "name": "AbsaOSS/k3d-action",
       "versions": [
         "4e8b3239042be1dc0aed6c5eb80c13b18200fc79"
