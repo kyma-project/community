@@ -38,7 +38,7 @@ Subscribe to our [YouTube channel](https://www.youtube.com/channel/UC8Q8bBtYe9gQ
 
 ## Slack
 
-If you prefer even more direct contact, use one of the available [Slack channels](http://slack.kyma-project.io/). Feel free to write to us with any questions, concerns, or ideas for improvement. Any constructive feedback or criticism is welcome.
+If you prefer even more direct contact, use one of the available [Slack channels](https://kyma-community.slack.com/). Feel free to write to us with any questions, concerns, or ideas for improvement. Any constructive feedback or criticism is welcome.
 
 # <img src="assets/technical-support-icon.svg" width="120"> Technical Support
 
