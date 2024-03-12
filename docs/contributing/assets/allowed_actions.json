@@ -179,6 +179,21 @@
       "security_review_performed": true,
       "3rd_party_tool": {},
       "comment": "track all changed files and directories relative to a target branch, the current branch, multiple branches, or custom commits"
+    },
+    {
+      "name": "gitleaks/gitleaks-action",
+      "versions": [
+        "e6dab246340401bf53eec993b8f05aebe80ac636"
+      ],
+      "repository": "https://github.com/gitleaks/gitleaks-action",
+      "marketplace": "https://github.com/marketplace/actions/gitleaks",
+      "security_review_performed": true,
+      "3rd_party_tool": {
+        "tool": "gitleaks/gitleaks",
+        "pinned_version": "v8.16.1",
+        "repository": "https://github.com/gitleaks/gitleaks"
+      },
+      "comment": "Detects leaks of secrets using gitleaks, pinned to 8.16.1 by default but can be changed via environment variable"
     }
   ]
 }
