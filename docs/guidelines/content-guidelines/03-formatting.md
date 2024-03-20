@@ -47,7 +47,7 @@ For example, you might have an HTTP response as such:
 
    ```json
    {
-     "csrUrl":"https://connector-service.name.cluster.extend.cx.cloud.sap/v1/applications/certificates?token={YOUR_TOKEN}",
+     "csrUrl":"{CSR_URL_WITH TOKEN}",
      "api":{
        "eventsUrl":"https://gateway.name.cluster.extend.cx.cloud.sap/app/v1/events",
        "metadataUrl":"https://gateway.name.cluster.extend.cx.cloud.sap/app/v1/metadata/services",
