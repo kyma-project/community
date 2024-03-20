@@ -1,6 +1,7 @@
 # Kyma Steering Committee
 
 The purpose of the Kyma Steering Committee is to:
+
 * Maintain the mission, vision, values, and scope of the project
 * Engage in the resolution of conflicts that cannot be solved by other governance rules
 * With the help of the community, refine the governance model as needed
@@ -33,6 +34,7 @@ The committee is open for any contributors, individual or corporate. These are t
 * In the case one company has one representative in the committee already, and another member starts working for this company, one of the members must resign once there are other candidates to replace him/her.
 
 Once you fulfill one of the requirements, create a GitHub issue in the [community](https://github.com/kyma-project/community) repository and describe:
+
 * Why you want to join the committee
 * Who you represent
 * What your current contribution to Kyma was

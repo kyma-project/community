@@ -5,6 +5,7 @@ The file contains official guidelines for defining APIs in Kyma. This is an evol
 ## Target Audience
 
 The target audience includes these groups:
+
 * Internal developers who build various features of Kyma.
 * Customer developers who use Kyma to customize external solutions.
 

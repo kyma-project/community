@@ -16,7 +16,7 @@ To preview content on the Kyma website, save your changes and run the local serv
 
 1. Run `docsify serve docs` in the `/kyma` repository.
 <!-- markdown-link-check-disable-next-line -->
-2. Preview `https://kyma-project.io` in your browser on http://localhost:3000.
+2. Preview `https://kyma-project.io` in your browser on `http://localhost:3000`.
 
 ## Preview Module Documentation
 
@@ -35,9 +35,9 @@ To preview content on the Kyma website, save your changes and run the local serv
   alias: {
   '/istio/(.*)': 'https://raw.githubusercontent.com/kymauser/istio/docu-update/docs/$1',
   },
-  ``` 
+  ```
 
 3. Save your changes.
 4. Run `docsify serve docs`.
 <!-- markdown-link-check-disable-next-line -->
-5. Preview `https://kyma-project.io` in your browser on http://localhost:3000.
+5. Preview `https://kyma-project.io` in your browser on `http://localhost:3000`.

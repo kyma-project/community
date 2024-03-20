@@ -3,6 +3,7 @@
 Same as with the screenshots, diagrams are worth a thousand words. Therefore, rather than pile up a block of text to describe a given concept, use a diagram to visualize it instead.
 
 To convey the intended message effectively in a diagram, follow these basic principles:
+
 - Everything that means the same should look the same.
 - Limit visual noise.
 - Keep it simple but descriptive.
@@ -39,7 +40,7 @@ Always add **rounded** secondary backgrounds to indicate the environment in whic
 
 ## Shapes and Fills
 
-Use **rounded rectangles** as default box shapes. 
+Use **rounded rectangles** as default box shapes.
 
 Use **white** fill for main shapes, such as boxes. For actors, apply **blue** (HEX: `#0A6EC7`) fill.
 
@@ -53,6 +54,7 @@ Use **grey** (HEX: `#666666`) for outlines. Set the outlines of the shapes to 1p
 
 Use **black** for both the primary and secondary texts.
 Use the following **Helvetica** font sizes:
+
 - 15pt **bold** for headings
 - 13pt for primary texts, such as shape names
 - 12pt for secondary texts, such as connector descriptions

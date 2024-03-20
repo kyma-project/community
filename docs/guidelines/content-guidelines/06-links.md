@@ -12,13 +12,13 @@ Linking is a great tool to use to incorporate a lot of content into your documen
 - Choose the link text carefully. Use descriptive text for the search engines to understand your content. Do not link entire phrases which become overemphatic. Avoid certain [vague words](https://web.dev/link-text/#how-the-lighthouse-link-text-audit-fails) like `this`, `that`, or `here`.
 
     Example:  
-     ⛔️ "For more information, see **this** guide." or "Read more **here**."   
+     ⛔️ "For more information, see **this** guide." or "Read more **here**."  
      ✅ "For more information, see the **installation guide**."  
 
 ## Links to Headings
 
 Within a relative link, it's possible to link to the heading of a document. To do so, add `#{name-of-the-heading}` after the document's filepath. See the example:<br>
-```Read the guidelines about [headings formatting](./03-formatting.md#headings).```      
+```Read the guidelines about [headings formatting](./03-formatting.md#headings).```
 
 ## Links to the Assets Folder
 

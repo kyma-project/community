@@ -35,11 +35,11 @@ Every contributor commits to the following agreement:
 * Follow the accepted documentation rules and use appropriate templates.
 * As the creator of the PR, you are responsible for ensuring that the PR follows the correct review and approval flow.
 
-## Contribution process
+## Contribution Process
 
 This section explains how you can contribute code or content to any Kyma repository, propose an improvement, or report a bug. The contributing process applies both to the members of the Kyma organization and the external contributors.
 
-### Contribute code or content
+### Contribute Code or Content
 
 To contribute code or content to a given Kyma repository, follow these steps:
 

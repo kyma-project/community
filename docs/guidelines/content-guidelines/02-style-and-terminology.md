@@ -92,11 +92,13 @@ Whenever you point to the outside sources, research whether the name of the sour
 ### Sentence Case
 
 Use [Sentence case](https://dictionary.cambridge.org/dictionary/english/sentence-case) for:
+
 - Standard sentences
 
 ### Title Case
 
 Use [Title Case](https://dictionary.cambridge.org/dictionary/english/title-case) for:
+
 - The names of Kyma components, such as Application Connector or API Gateway Controller
 - Headings
 
@@ -104,7 +106,8 @@ Use [Title Case](https://dictionary.cambridge.org/dictionary/english/title-case)
 
 ### CamelCase
 
-Use [**CamelCase**](https://dictionary.cambridge.org/dictionary/english/camel-case) for 
+Use [**CamelCase**](https://dictionary.cambridge.org/dictionary/english/camel-case) for
+
 - Kubernetes resources
 - custom resources
 
@@ -119,9 +122,9 @@ For titles and navigation, add blank spaces, so that it is natural language inst
 ⛔️ configmap  
 ⛔️ config map
   
-If you refer to the code specifically, format it as code 
+If you refer to the code specifically, format it as code.
 
-> **NOTE:** For more details about [code font](03-formatting.md#code-font-and-bold-font), see the Formatting guidelines).
+> **NOTE:** For more details about [code font](03-formatting.md#code-font-and-bold-font), see the Formatting guidelines.
 
 ✅ `APIRule`
   
@@ -192,7 +195,7 @@ Here is the preferred terminology to use in the Kyma documentation:
 | **the following**         | **below**, **this**, **the described**, ...    | or "as shown in the example"      |
 | **the previous**, **earlier** | **above**, **this**, **the described**, ...    | or "as shown in the example"      |
 
-### Command line arguments
+### Command Line Arguments
 
 Use short command line arguments whenever possible.
 
