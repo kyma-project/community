@@ -195,7 +195,7 @@ Here is the preferred terminology to use in the Kyma documentation:
 | **the following**         | **below**, **this**, **the described**, ...    | or "as shown in the example"      |
 | **the previous**, **earlier** | **above**, **this**, **the described**, ...    | or "as shown in the example"      |
 
-### Command line Arguments
+### Command Line Arguments
 
 Use short command line arguments whenever possible.
 

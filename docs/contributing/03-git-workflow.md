@@ -172,7 +172,7 @@ Press `q` to exit the log.
    ```bash
    git rebase HEAD~{number} -i # Enter the interactive mode to squash the number of commits. For example, to enter interactive mode and squash the last three commits:
    git rebase HEAD~3 -i
-    ```
+   ```
 
 Leave the top commit, and squash the remaining ones by changing the `pick` command to `squash`. To change the command, type `cw` and then enter `s` in place of `pick`. Press `esc` to exit the insert mode, move to the line with the next commit, and enter `.` to make the same change there. Repeat the same action with all the remaining commits. When you finish, save the changes and exit the editor by pressing `:wq`.
 
