@@ -48,18 +48,18 @@ Follow these rules when inserting toggles in documents:
 * Add content using Markdown syntax.
 * Use the following indentation when you add the toggle as a regular document section:
 
-  - No spaces for the div element
-  - Two spaces for other elements
+  * No spaces for the div element
+  * Two spaces for other elements
 
 * Use the following indentation when you add a toggle under a list:
 
-  - Four spaces for the div element
-  - Six spaces for other elements
+  * Four spaces for the div element
+  * Six spaces for other elements
 
 * When you add two or more toggle sets that belong to the same group, you must classify them properly. This way, each time you switch to one of the toggles in the set, it opens automatically in all other sets from the same group within one document and across all documents that use the group. To create a toggle group:
 
-  - All sets of toggles from the given group must contain the `group` attribute with a distinctive ID of this group. For example, add the `cluster-installation` group to categorize all toggle sets that refer to Kyma installation in a cluster.
-  - Every `<summary>` tag in the set must also contain the `label` attribute. For example, add the `GKE` label to all toggles that describe steps for Kyma installation on a GKE cluster in the `cluster-installation` group.
+  * All sets of toggles from the given group must contain the `group` attribute with a distinctive ID of this group. For example, add the `cluster-installation` group to categorize all toggle sets that refer to Kyma installation in a cluster.
+  * Every `<summary>` tag in the set must also contain the `label` attribute. For example, add the `GKE` label to all toggles that describe steps for Kyma installation on a GKE cluster in the `cluster-installation` group.
 
     > **NOTE:** The label does not have to be the same as the summary. If the label is a combination of two or more words, separate them with the dash (`-`). For example, write `<summary label="install-on-gke">`.
 
@@ -146,7 +146,7 @@ This section contains exemplary uses of the toggle in Markdown documents.
 
   The code renders on `kyma-project.io` as follows:
 
-  ![](./assets/toggle-flat-structure.png)
+  ![toggle flat structure](./assets/toggle-flat-structure.png)
 
 * See the example of the toggle added under a list:
 
@@ -229,4 +229,4 @@ This section contains exemplary uses of the toggle in Markdown documents.
 
   The code renders on `kyma-project.io` as follows:
 
-  ![](./assets/toggle_in_list.png)
+  ![toggle in list](./assets/toggle_in_list.png)

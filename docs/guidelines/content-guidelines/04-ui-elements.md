@@ -52,7 +52,6 @@ Contrary to the regular technical documentation, UI elements follow different gu
 
   ⛔️ Save & exit
 
-
 ## Labels
 
 Labels are one-line texts that appear in various types of UI elements, such as buttons, titles and headings, forms, and drop-down menus. When designing labels for the UI elements in the Kyma project, make sure to:
@@ -86,7 +85,6 @@ When designing a button label, you must be as straightforward and concise as pos
 
 - Be careful when using words of similar meaning, such as `Delete` and `Remove`.
 
-
 ## Tooltips
 
 Tooltips are messages that provide additional information about a certain UI element. Still, the text within a tooltip must contain information that brings value to the user, so avoid adding content that may be irrelevant. Tooltips cannot contain information that is necessary to complete a given task. Such information should be visible at first glimpse. Otherwise, users will have to remember the content of a tooltip and refer back to it after the tooltip is deactivated. Here are some general guidelines on creating tooltip texts:
@@ -98,7 +96,6 @@ Tooltips are messages that provide additional information about a certain UI ele
   ✅ The example of a domain name is `yourdomain.example.com`.
 
 - Omit punctuation in case of one-line label tooltips. For more information, see [Labels](#labels).
-
 
 ## Messages
 
@@ -121,7 +118,6 @@ An error message informs about unsuccessful outcome of an action or conveys any 
 
 - Avoid title case. It can give users a feeling they are being looking down on.
 
-
 ## Placeholder Texts
 
 A placeholder is a tricky UI element. It tends to disappear when the user clicks a given form field, so it requires them to use their memory, which increases memory load and hurts usability. For this reason:
@@ -131,10 +127,10 @@ A placeholder is a tricky UI element. It tends to disappear when the user clicks
 - Use sentence case for your placeholder.
 - Omit full stop at the end of the placeholder text.
 
-
 ## Reference
 
 Follow these resources for further reference:
+
 - [UI Text Guidelines for SAP Fiori Apps](https://experience.sap.com/internal/fiori-design-web/ui-text-guidelines-for-sap-fiori/)
 - [5 Rules for Choosing the Right Words on Button Labels](https://uxmovement.medium.com/5-rules-for-choosing-the-right-words-on-button-labels-dc3f74c2c2a3)
 - [Tooltip Guidelines](https://www.nngroup.com/articles/tooltip-guidelines/)

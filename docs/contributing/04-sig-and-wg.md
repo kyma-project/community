@@ -29,6 +29,7 @@ To propose a new SIG or WG, go to the [issue tracker](https://github.com/kyma-pr
 >**NOTE:** You must have at least five candidates for the new SIG or WG to submit the proposal.
 
 The proposal revision process is as follows:
+
 * The Kyma Steering Committee discusses the SIG or WG proposal with the authors.
 * All involved parties decide whether the topic requires a SIG or a WG collaboration or if you can address the topic by creating one or more issues in GitHub and pairing the sprints of several teams for several iterations.
 * The whole discussion over the new SIG or WG takes place transparently in the proposed issue. The community has three working days to provide their feedback and leave comments in the proposal, before it is discussed by the Kyma Steering Committee.
@@ -37,12 +38,13 @@ The proposal revision process is as follows:
 * The Kyma Steering Committee agrees during the weekly meeting to the creation of the new SIG or WG, suggests the revision of the group's topics, or objects to the group creation stating the reason for the objection.
 
 Once the SIG or the WG receives an approval for the group creation, the authors of the proposal arrange the appropriate communication channels. The process is as follows:
- * Create a new folder in this directory following the `[sig|wg]-{shortname}` naming pattern.
- * Use the [template](https://github.com/kyma-project/community/blob/main/templates/resources/sig-wg-readme-template.md) to create a given group's main `README.md` document.
- * Add a new [label](https://github.com/kyma-project/community/labels) that follows the `[sig|wg]-{shortname}` naming pattern.
- * Use the [template](https://github.com/kyma-project/community/blob/main/templates/resources/sig-wg-meeting-notes-template.md) to create a `meeting-notes.md` document in a given group's folder.
- * Create a Slack channel that follows the `[sig|wg]-{shortname}` naming pattern.
- * Create a new team in the GitHub organization that follows the `[sig|wg]-{shortname}` naming pattern. Add all SIG participants as members of this team.
+
+* Create a new folder in this directory following the `[sig|wg]-{shortname}` naming pattern.
+* Use the [template](https://github.com/kyma-project/community/blob/main/templates/resources/sig-wg-readme-template.md) to create a given group's main `README.md` document.
+* Add a new [label](https://github.com/kyma-project/community/labels) that follows the `[sig|wg]-{shortname}` naming pattern.
+* Use the [template](https://github.com/kyma-project/community/blob/main/templates/resources/sig-wg-meeting-notes-template.md) to create a `meeting-notes.md` document in a given group's folder.
+* Create a Slack channel that follows the `[sig|wg]-{shortname}` naming pattern.
+* Create a new team in the GitHub organization that follows the `[sig|wg]-{shortname}` naming pattern. Add all SIG participants as members of this team.
 
 >**NOTE:** Use the dedicated Slack channel for online video meetings. If Slack fails to scale due to a large number of participants, choose a different tool that is accessible to all of them.
 
@@ -51,6 +53,7 @@ To standardize the Special Interest Group and Working Group efforts, create maxi
 ## General Guidelines
 
 All Kyma SIG and WG members agree to these rules:
+
 * Follow the official project guidelines defined in the [**Contributing rules**](../contributing/02-contributing.md).
 * Meet regularly in the agreed frequency, for at least 30 minutes.
 * Keep up-to-date meeting notes in a given SIG's folder.

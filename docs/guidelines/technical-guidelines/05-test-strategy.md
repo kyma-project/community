@@ -1,6 +1,7 @@
 # Test Strategy
 
 This document is a general guide to how tests are performed in Kyma. It aims to clearly describe technical requirements for all Kyma test suites. It also explains the rationale behind them so they can be challenged when the need arises. In particular, this document is about:
+
 * Types of tests to be implemented
 * Tools that are used for testing
 * Responsibilities of different persons in the quality assurance process
@@ -10,14 +11,17 @@ This document is a general guide to how tests are performed in Kyma. It aims to 
 Every contribution to Kyma must be compliant with this strategy.
 
 ## Test Types
+
  We define several kinds of tests in Kyma. This section aims to describe all of them in detail. By the end of it you should be able to answer these questions:
+
 * What are those tests and what is their purpose?
 * Who defines test cases and what should they focus on?
 * How are tests implemented and where is the code located?
 * How are the tests integrated into continuous integration (CI) pipeline?
 
 ### Code Quality Checks
-The validation of syntactic and semantic structure of the code contributes to better readability and maintainability and helps to avoid some programming errors.   
+
+The validation of syntactic and semantic structure of the code contributes to better readability and maintainability and helps to avoid some programming errors.
 
 In general, it is a maintainer’s decision which checks are applied to a particular component, but we defined a minimal required set of checks that must be applied to all components.
 
@@ -35,6 +39,7 @@ For JavaScript and TypeScript code, this validation will be done using:
 Code quality checks are required to pass before any contribution can be merged into the `main` branch. All quality checks for a component should be put in its build script. Thanks to that, code analysis is executed automatically on CI. Anyone can also execute these tools manually in a local development environment.
 
 ### Component Tests
+
 By component tests, we understand all tests that do not cross the component boundary. This may include tests with a different granularity of scope, e.g. tests for a single module (unit tests) or tests checking a component as a whole. The purpose of component testing is to provide fast feedback to a contributor that implements a given functionality. Test code must be placed in the same location in the repository as the tested code.
 
 Every change in the code should be verified by a set of component tests, but strict test coverage is not required. The contributor is responsible for writing scenarios that are most beneficial and give confidence that the new software is working as expected. Maintainers decide if the implemented test suite covers the functionality sufficiently.
@@ -42,6 +47,7 @@ Every change in the code should be verified by a set of component tests, but str
 Component tests are required to pass before any contribution can be merged into the `main` branch. A command to run unit tests must be a part of the component build script. Thanks to that, unit tests are executed automatically on the CI server. Anyone can also execute component tests in the local environment.
 
 ### Integration Tests
+
 Integration tests are applications run within a Kyma cluster and verify Kyma behavior. Their purpose is to check if Kyma components work as expected in a production-like environment. Their focus is on a single component and its interactions.
 
 Integration tests should verify if a component communicates properly with its dependencies and clients. Test cases are not formalized and it is up to contributors to write them in the way they find it beneficial. The maintenance cost of integration tests is much higher than the cost of component tests so the latter should be preferred if possible. Any internal logic should be tested by component tests.
@@ -51,6 +57,7 @@ Integration tests are built as Docker containers and deployed to a Kyma cluster 
 Integration tests are required to pass before any change can be merged into the `main` branch. As the results may change when running on different Kubernetes implementations, they must finish successfully on Minikube and cloud Kubernetes cluster.
 
 ### End-to-End Tests
+
 End-to-end tests are applications meant to verify complete user interactions with Kyma. They mimic user behavior in a set of predefined scenarios to check if Kyma meets the business requirements. Because of their overarching nature, they must use only entry points meant to be used by end users.
 
 Test scenarios are provided by the Product Owner. Scenario descriptions should be written down in a user-facing document. It is meant to provide users with an easy-to-grasp introduction to a given Kyma functionality.
@@ -60,6 +67,7 @@ The implementation of E2E tests may vary. If possible, they should be Docker app
 E2E scenarios are executed as periodic jobs on the CI server. They may be resource- and time-consuming so they are not required to pass before merging to the `main` branch. There can be exceptions to this rule such as an E2E test which is required to pass before merging is allowed.
 
 ### Contract Tests
+
 Contract tests are Docker applications, just like integration tests. The difference is that they test if an external solution that Kyma relies on works as expected. Their main goal is to be able to safely upgrade 3rd parties and know where the API contract was broken.
 
 Test cases are defined by a contributor who integrates the external solution with Kyma. They shouldn't test 3rd party code extensively, but rather check if the contract defined by the provider is being kept. Ideally, every API used by Kyma should be covered.
@@ -69,23 +77,29 @@ Contract tests are Docker applications run by [Octopus](https://github.com/kyma-
 Contract tests are required to pass before merging a change into the `main` branch. As they should rely only on the solution that is being tested, they may be skipped by the CI server if the change is not related to the solution.
 
 ## Development
+
 Because tests are developed as code, some of the rules outlined above apply to them too. Every test must be covered at least by code quality checks. Tests run as applications can also be unit tested if applicable. Also, tests must pass a code review by one of Kyma maintainers. The code review process is documented in the [contributing guidelines](../../contributing/02-contributing.md) in the `community` repository.
 
 The reviewer should not only for the quality of the code implementing functionality but also for the code validating it. Reviewer should pay attention to the implemented test cases. Test coverage should give confidence that the software is working as expected. There are currently no requirements in terms of measuring test coverage.
 
 ## Continuous Integration
+
 Contributors should write tests at the same time then they make changes in production code according to test-driven development (TDD) practices. Such tests are automatically executed as a part of the CI process. Thanks to that approach, the newly created functionality is thoroughly tested before it is merged to the `main` branch.
 
 ### Presubmit
+
 Some tests described in this document are required to pass before a change can be merged into the `main` branch. No new code change can be merged if tests are not passing on the CI server. Tests shouldn’t be skipped or made less strict to make them pass if requirements were not changed.
 
 ### Postsubmit
+
 Besides checks on pull requests, all tests are also run on the `main` branch to verify if new submissions haven’t broken Kyma. If the test execution fails, the corresponding team is responsible to evaluate the failure and determine the root cause. Problems found this way should be reported as GitHub issues and labeled `test-failing`.  
 
 ### Nightly and Weekly Builds
+
 In addition to required and periodic checks, there are also nightly and weekly clusters that are meant to check Kyma stability. They are created every night or once a week respectively from the `main` branch at the time of the cluster creation. Only integration and contract tests are run on them. The tests are run in fixed intervals. Failures on those clusters should be treated the same way as postsubmit failures.
 
 ## Manual Testing
+
 Kyma test coverage is not complete yet, and probably will never be due to the nature of software development. We cannot predict all the test cases and discover all bugs. If a bug is discovered later, we need to add an automated test to cover that scenario. Thanks to that, we will avoid making the same mistakes in the future.
 
 Because of the facts outlined above, some manual tests are always required before Kyma is released. Release candidates have to be verified manually following this process:

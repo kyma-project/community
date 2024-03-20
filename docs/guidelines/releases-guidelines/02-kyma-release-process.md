@@ -45,17 +45,17 @@ Check if the `main` branch contains any PR-images:
 
 Create a release branch in the `kyma` repository. The name of this branch should follow the `release-{major}.{minor}` pattern, such as `release-1.4`.
 
-    ```bash
-    git fetch upstream
-    git checkout --no-track -b release-{RELEASE} upstream/main
-    git push -u upstream release-{RELEASE}
-    ```
+   ```bash
+   git fetch upstream
+   git checkout --no-track -b release-{RELEASE} upstream/main
+   git push -u upstream release-{RELEASE}
+   ```
 
 ## Steps
 
 Follow these steps to release another Kyma version. Execute these steps for every patch release or release candidate.
 
-#### Create a PR to the Release Branch
+### Create a PR to the Release Branch
 
 1. Change the `RELEASE_VERSION`. Make sure the `VERSION` file includes just a single line, **without the newline character at the end**:  
 
@@ -70,7 +70,8 @@ Follow these steps to release another Kyma version. Execute these steps for ever
 3. If `pre-release-pr-image-guard` fails, ask the owners to change PR-XXX images of the components to the `main` version.
 4. If the checks are green, merge the PR and proceed to the next step.
 
-#### Development Process Towards the Release
+### Development Process Towards the Release
+
    > **NOTE:** Every developer who is introducing changes to the specific version can perform steps 1-4.
 
 1. Create a feature-branch based on the given `release-{RELEASE}` branch you want to extend. Add your changes and create a Pull Request.
@@ -90,7 +91,7 @@ Follow these steps to release another Kyma version. Execute these steps for ever
 
 #### Create a Release
 
-1. Once the preparation for the release is finished, trigger the [Release Kyma](https://github.com/kyma-project/kyma/actions/workflows/github-release.yaml) GitHub action. 
+1. Once the preparation for the release is finished, trigger the [Release Kyma](https://github.com/kyma-project/kyma/actions/workflows/github-release.yaml) GitHub action.
    Choose the branch that corresponds to the release that you want to trigger. The exact release version is taken from the `VERSION` file.
    When you click the **Run workflow** button, the release process waits for the approval from reviewers.
    <!-- markdown-link-check-disable-next-line -->

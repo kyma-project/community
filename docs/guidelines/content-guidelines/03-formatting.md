@@ -6,7 +6,7 @@ Format the content in an attention-grabbing way. In general, content is easier t
 
 It is important to consistently format items such as code or filenames to quickly distinguish them while reading technical documentation. The following tables outline when to use **bold** font and when to use `code` font:
 
-### Use Bold Font for These Items:
+### Items Written in Bold Font
 
 Items       | Examples
 ----------- | ----------------------------------------------------------------------
@@ -17,7 +17,7 @@ Roles        | Only the users with the **kyma_admin** role can list Pods in the 
 UI elements  | Click **Subscribe**.
 Variables and placeholders | Click **Project** > **{YOUR_PROJECT_NAME}**.
 
-### Use Code Font for These Items:
+### Items Written in Code Font
 
 Items                     | Examples
 ------------------------- | -----------------------------------------------------------------------------------------------
@@ -32,13 +32,12 @@ Status and error codes    | A successful response includes a status code of `200
 Parameter and value pairs | The controller adds the `env=true` label to all newly created namespaces.
 Metadata names            | When you create a Markdown document, define its `title` and `type`.
 Flags                     | Add the `--tls` flag to every Helm command you run.
-GraphQL queries and mutations   | The `requestOneTimeTokenForApplication` mutation calls the internal GraphQL API to get a one-time token. |
+GraphQL queries and mutations   | The `requestOneTimeTokenForApplication` mutation calls the internal GraphQL API to get a one-time token.
 Rights                    | The preset gives multiple resource cleaners the `list` and `delete` rights in GCP.
 Custom resources (if you want to refer to the code specifically) | Define the **namespace** parameter in the `APIRule` **metadata**.
 
 >**NOTE:** When you mention specific configuration files in your documents, consider linking to them instead of just mentioning their names. When you link to a file, use its name without the format extension. See the following example:
 > `To adjust the number of Pods in your Deployment, edit the [deployment](./deployment.yaml) file.`
-
 
 ### Omission in Code
 
@@ -46,34 +45,35 @@ Often when you quote snippets of code, it is not necessary to include them in fu
 
 For example, you might have an HTTP response as such:
 
-```json
-{
-  "csrUrl":"https://connector-service.name.cluster.extend.cx.cloud.sap/v1/applications/certificates?token=5o7ucwjz9vcpFlBsHJcwnnuL-rU8af1MsfQ6OlWTgauw7aB-xtSkXUn_ts0RtMMKhvlZVPridqmAPbf2mKC8YA==",
-  "api":{
-    "eventsUrl":"https://gateway.name.cluster.extend.cx.cloud.sap/app/v1/events",
-    "metadataUrl":"https://gateway.name.cluster.extend.cx.cloud.sap/app/v1/metadata/services",
-    "infoUrl":"https://gateway.name.cluster.extend.cx.cloud.sap/v1/applications/management/info",
-    "certificatesUrl":"https://connector-service.name.cluster.extend.cx.cloud.sap/v1/applications/certificates"
-  },
-  "certificate":{
-    "subject":"O=Organization,OU=OrgUnit,L=Waldorf,ST=Waldorf,C=DE,CN=CNAME",
-    "extensions":"",
-    "key-algorithm":"rsa2048"
-  }
-}
-```
+   ```json
+   {
+     "csrUrl":"https://connector-service.name.cluster.extend.cx.cloud.sap/v1/applications/certificates?token=5o7ucwjz9vcpFlBsHJcwnnuL-rU8af1MsfQ6OlWTgauw7aB-xtSkXUn_ts0RtMMKhvlZVPridqmAPbf2mKC8YA==",
+     "api":{
+       "eventsUrl":"https://gateway.name.cluster.extend.cx.cloud.sap/app/v1/events",
+       "metadataUrl":"https://gateway.name.cluster.extend.cx.cloud.sap/app/v1/metadata/services",
+       "infoUrl":"https://gateway.name.cluster.extend.cx.cloud.sap/v1/applications/management/info",
+       "certificatesUrl":"https://connector-service.name.cluster.extend.cx.cloud.sap/v1/applications/certificates"
+     },
+     "certificate":{
+       "subject":"O=Organization,OU=OrgUnit,L=Waldorf,ST=Waldorf,C=DE,CN=CNAME",
+       "extensions":"",
+       "key-algorithm":"rsa2048"
+     }
+   }
+   ```
 
 Suppose that it is only the part containing the certificate information that is of interest to the user. In that case, instead of quoting the whole response, quote it like this:
-```json
-{
-  ...
-  "certificate":{
-    "subject":"O=Organization,OU=OrgUnit,L=Waldorf,ST=Waldorf,C=DE,CN=CNAME",
-    "extensions":"",
-    "key-algorithm":"rsa2048"
-  }
-}
-```
+
+   ```json
+   {
+     ...
+     "certificate":{
+       "subject":"O=Organization,OU=OrgUnit,L=Waldorf,ST=Waldorf,C=DE,CN=CNAME",
+       "extensions":"",
+       "key-algorithm":"rsa2048"
+     }
+   }
+   ```
 
 ## Panels
 
@@ -81,13 +81,14 @@ Suppose that it is only the part containing the certificate information that is 
 For the docs not rendered on the website, use **NOTE**, **TIP**, and **CAUTION**.
 
 Panels are colorful containers that call out important or additional information within a topic. The Kyma documentation uses the [Flexible Alerts](https://github.com/fzankl/docsify-plugin-flexible-alerts) docsify plugin for the panels' formatting. To call attention to a specific note, a word of caution or a tip, use the  [!NOTE], [!TIP], and [!WARNING] panels. Use:
+
 - The blue [!NOTE] panel to point to something specific, usually relating to the topic.
 - The orange [!WARNING] panel to call attention to something critical that can cause inoperable behavior.
 - The green [!TIP] panel to share helpful advice, such as a shortcut to save time.
 
 See an example:
 
-> [!NOTE] 
+> [!NOTE]
 > Provision a Public IP for Ingress and a DNS record before you start the installation.
 
 ## Ordered and Unordered Lists
@@ -115,13 +116,15 @@ As you write about your topic, use lists to create visual clarity within your co
 Another effective way to chunk content is to use tables. Use tables when content needs comparison, or as a way to provide information mapping. Think of a table as a list with optional columns useful to provide and organize more information than belongs in a list. Make sure tables are not too long or hard to read, causing the reader to scroll a lot. If possible, break up a long table into multiple tables.
 
 When creating a table, centralize the columns that have choice-type values, such as `Yes/No` or `true/false`. If you include the **Default** column in your table, write `None` for parameters that have no default values. See the example:
-```
-|     Parameter      |      Required      |  Description  | Default |
-|--------------------|:------------------:|---------------|---------|
-| {Parameter's name} |      {Yes/No}      | {Description} |   None  |
-```
+
+   ```bash
+   |     Parameter      |      Required      |  Description  | Default |
+   |--------------------|:------------------:|---------------|---------|
+   | {Parameter's name} |      {Yes/No}      | {Description} |   None  |
+   ```
 
 ## Headings
+
 Ideally, headings fit into one line in the generated output. Be concise, but also make sure to adequately describe the main point of the document or a section. Follow these guidelines when writing headings:
 
 * Write headings in title case. For example, **Expose a Service**.
