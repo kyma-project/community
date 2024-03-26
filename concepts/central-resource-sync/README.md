@@ -15,8 +15,9 @@
       - [Module Manager](#module-manager)
       - [SKR Watcher](#skr-watcher)
     - [Interfaces and Communication Handling](#interfaces-and-communication-handling)
-      - [Kyma CR](#kyma-cr)
+      - [ModuleConfig CR](#moduleconfig-cr)
       - [SyncResource CR](#syncresource-cr)
+      - [Communication Flow](#communication-flow)
     - [Upgrade, Migration, Compatibility](#upgrade-migration-compatibility)
     - [Compliance to Standards and Guidelines](#compliance-to-standards-and-guidelines)
       - [Applied Architecture and Design Guidelines](#applied-architecture-and-design-guidelines)
@@ -68,24 +69,30 @@ This architecture design offers a unified solution for synchronization of module
 
 ![](assets/sync-resource-block.svg)
 
-#### Lifecycle Manager 
+#### Lifecycle Manager
+
 The existing Lifecycle Manager plays a central role in managing the synchronization of module resources. It orchestrates the deployment and synchronization of module resources into the remote SKR Cluster, acting as the sole gateway to access this cluster within the specified setup.
 
-#### Module Manager 
+#### Module Manager
+
 Module Managers are components created and maintained by individual module teams. Their purpose is to offer SyncResource CRs based on configuration data received from the SKR Cluster.
 
 #### SKR Watcher
+
 SKR Watcher serves as an established admission webhook service deployed by LM in the SKR Cluster. Its primary function is to receive [AdmissionReview](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response) requests originating from the API Server. These requests are based on the rules defined in the [ValidatingWebhookConfiguration](https://github.com/kyma-project/lifecycle-manager/blob/23262218a84bc27515b427ccaec43da7f3c90e56/pkg/watcher/skr_webhook_resources.go#L71). SKR Watcher is designed to monitor any modifications made to Module CRs and Kyma CRs within the SKR Cluster.
 
 Upon detecting modifications, SKR Watcher generates corresponding requests and forwards them to the LM. This mechanism allows LM to promptly enqueue and reconcile related Kyma CRs, ensuring immediate responsiveness without waiting for scheduled time intervals. This real-time interaction between SKR Watcher and LM enhances the agility of the synchronization process for Kyma CRs in the SKR Cluster.
 
 ### Interfaces and Communication Handling
+
 ![](assets/sync-resource-sequence.svg)
 
 #### ModuleConfig CR
+
 ModuleConfig CR serves as a shared resource between LM and MM, functioning as a representative entity to persist Module CR specs. It fulfills two essential purposes: first, it enables LM to retrieve and store module configuration data in ModuleConfig CR, serving as an input source for MM to generate related resource content. Second, it allows MM to fetch configuration information without direct contact with the remote SKR cluster.
 
 #### SyncResource CR
+
 Module Manager generates SyncResource CRs based on configuration data derived from Module CR specs. These CRs encompass all the necessary resources to be deployed in the SKR cluster as YAML content. LM actively watches SyncResource CRs, ensuring that any emergence of new SyncResources or updates to existing ones triggers immediate enqueuing and synchronization to the relevant SKR cluster.
 
 #### Communication Flow
