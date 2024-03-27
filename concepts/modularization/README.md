@@ -77,7 +77,7 @@ For each component, we identified the following artifacts:
 - Operator CRD (contains mainly overrides that can be set by customer or SRE for component installation)
 - Operator deployment (YAML to deploy component operator)
 - Operator image (Docker image in GCR)
-- Component CRDs ([installation/resources/crds](https://github.com/kyma-project/kyma/tree/main/installation/resources/crds))
+- Component CRDs
 - Component deployment ([resources](https://github.com/kyma-project/kyma/tree/main/resources))
 - Component images (docker images in GCR)
 
