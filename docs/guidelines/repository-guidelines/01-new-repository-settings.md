@@ -84,7 +84,7 @@ jobs:
           md-check-link -q -n 8 -c https://raw.githubusercontent.com/kyma-project/md-check-link/main/.mlc.config.json ./
 ```
 
-With that configuration, the md-check-link will verify all `.md` files in your repository on every PR.
+With that configuration, the md-check-link verifies all `.md` files in your repository on every PR.
 
 ## Custom Settings
 
