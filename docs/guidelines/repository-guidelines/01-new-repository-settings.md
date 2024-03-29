@@ -51,40 +51,40 @@ Ask a [kyma-project owner](https://github.com/orgs/kyma-project/people) to:
 
 ## Enable Markdown Link Check
 
-The `/kyma-project` repositories in GitHub use [Markdown link check](https://github.com/tcort/markdown-link-check) to check their Markdown files for broken links. Configuration and maintenance of the Markdown link check tool is the responsibility of a repository owner.
+The `/kyma-project` repositories in GitHub use [md-check-link](https://github.com/kyma-project/md-check-link) to check their Markdown files for broken links. Configuration and maintenance of the Markdown link check tool in particular repositories is the responsibility of a repository owner.
 
 ### Configuration
 
-To configure the Markdown link check, follow these steps:
+To configure the md-check-link in your repository, choose your CI/CD pipeline for the check and set up its workflow. For example, choose GitHub Action and add a configuration YAML file to the `/.github/workflows` directory. Paste the following content:
 
-1. Add or update the `.mlc.config.json` file with the following parameters in the root directory of your repository:
+```yaml
+name: Verify markdown links
 
-  ```bash
-  {
-    "replacementPatterns": [
-      {
-        "_comment": "a replacement rule for all the in-repository references",
-        "pattern": "^/",
-        "replacement": "{{BASEURL}}/"
-      }
-    ]
-  }
-  ```
+on:
+  pull_request:
+    branches:
+      - "main"
+      - "release-*"
+  workflow_dispatch:
 
-  See the following examples:
-  
-  - [`/community/.mlc.config.json`](https://github.com/kyma-project/community/blob/main/.mlc.config.json)
-  - [`/telemetry-manager/.mlc.config.json`](https://github.com/kyma-project/telemetry-manager/blob/main/.mlc.config.json)
+jobs:
+  verify-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Install node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      - name: Install md-check-link
+        run: npm install -g md-check-link
+      - name: Verify links
+        run: |
+          md-check-link -q -n 8 -c https://raw.githubusercontent.com/kyma-project/md-check-link/main/.mlc.config.json ./
+```
 
-2. Choose your CI/CD pipeline for the check and set up its workflow. For example, choose GitHub Action and add or update the configuration YAML file(s) to the `/.github/workflows` directory. See the [official GitHub Action - Markdown link check documentation](https://github.com/marketplace/actions/markdown-link-check) for details.
-
-  See the following examples of the GitHub Action configuration for the `/telemetry-manager` and `/kyma` repositories:
-
-  -  `/telemetry-manager`
-     - [`markdown-link-check.yml`](https://github.com/kyma-project/telemetry-manager/blob/main/.github/workflows/pr-docu-checks.yml#L23) - checks links in all Markdown files in the repository on every pull request.
-  - `/kyma`
-     - [`pr-docu-checks.yml`](https://github.com/kyma-project/community/blob/main/.github/workflows/pr-docu-checks.yml) - checks links in Markdown files being part of a created pull request.
-     - [`check-kyma-links.yml`](https://github.com/kyma-project/md-check-link/blob/main/.github/workflows/check-kyma-links.yml) - checks links in all Markdown files in modules' repositories. This is a periodic, daily check scheduled on the main branch at 12 AM.
+With that configuration, the md-check-link will verify all `.md` files in your repository on every PR.
 
 ## Custom Settings
 
