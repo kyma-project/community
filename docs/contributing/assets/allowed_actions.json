@@ -19,6 +19,7 @@
     {
       "name": "golangci/golangci-lint-action",
       "versions": [
+        "9d1e0624a798bb64f6c3cea93db47765312263dc",
         "3cfe3a4abbb849e10058ce4af15d205b6da42804",
         "v4.0.0"
       ],
