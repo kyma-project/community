@@ -19,6 +19,7 @@
     {
       "name": "golangci/golangci-lint-action",
       "versions": [
+        "a4f60bb28d35aeee14e6880718e0c85ff1882e64",
         "9d1e0624a798bb64f6c3cea93db47765312263dc",
         "3cfe3a4abbb849e10058ce4af15d205b6da42804",
         "v4.0.0"
@@ -47,6 +48,7 @@
     {
       "name": "zgosalvez/github-actions-ensure-sha-pinned-actions",
       "versions": [
+        "76d1d8e0b075d7190b5d59b86da91c7bdbcc99b2",
         "f32435541e24cd6a4700a7f52bb2ec59e80603b1",
         "b1b635d24259e8a047a6ce7d6501ea432aa7a830"
       ],
@@ -173,6 +175,7 @@
     {
       "name": "tj-actions/changed-files",
       "versions": [
+        "d6babd6899969df1a11d14c368283ea4436bca78",
         "90a06d6ba9543371ab4df8eeca0be07ca6054959"
       ],
       "repository": "https://github.com/tj-actions/changed-files",
