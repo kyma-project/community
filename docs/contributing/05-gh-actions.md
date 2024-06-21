@@ -18,7 +18,7 @@
 GitHub Actions is a powerful tool for automating almost every task of the development cycle. The ecosystem of GitHub Actions is growing very fast, and one can find a prepared Action for many activities. But like all other usages of open source software, GitHub Actions must be handled carefully because an action runs external code on our code in our GitHub repositories.
 
 ## Restrictions
-
+<!-- markdown-link-check-disable-next-line -->
 The usage of external GitHub Actions is restricted centrally on the `github.com` organization level. Only Actions in the `kyma-project` organization or approved external Actions are allowed. Actions created by GitHub or [verified creators](https://github.com/marketplace?type=actions&verification=verified_creator) are also allowed.
 
 ![GitHub Actions policy](./assets/gh-actions-policies.png)
