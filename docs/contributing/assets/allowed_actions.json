@@ -113,13 +113,14 @@
       "versions": [
         "7ed886f1bd917d19cb9d6ce6c10e80e81fa31c39",
         "47b15d52c5c30e94a17ec87eb8dd51ff5221fed9",
-        "cfb60706e18bc85e8aec535e3c577abe8f70378e"
+        "cfb60706e18bc85e8aec535e3c577abe8f70378e",
+        "0723387faaf9b38adef4775cd42cfd5155ed6017"
       ],
       "repository": "https://github.com/amannn/action-semantic-pull-request",
       "marketplace": "https://github.com/marketplace/actions/semantic-pull-request",
       "security_review_performed": true,
       "3rd_party_tool": {},
-      "comment": "currently allowed versions: [v5.3.0,v5.5.2]"
+      "comment": "currently allowed versions: [v5.3.0,v5.5.2,v5.5.3]"
     },
     {
       "name": "ahmadnassri/action-workflow-queue",
