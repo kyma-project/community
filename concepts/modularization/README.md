@@ -78,7 +78,7 @@ For each component, we identified the following artifacts:
 - Operator deployment (YAML to deploy component operator)
 - Operator image (Docker image in GCR)
 - Component CRDs
-- Component deployment ([resources](https://github.com/kyma-project/kyma/tree/main/resources))
+- Component deployment
 - Component images (docker images in GCR)
 
 Versioning of component resources could be achieved by packaging component CRDs and charts into the component operator binary (or container image). This way, the released operator would contain the CRDs and charts of its components in the local filesystem. 

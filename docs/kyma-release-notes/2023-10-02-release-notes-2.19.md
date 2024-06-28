@@ -3,7 +3,7 @@ So, hold on to the rhythm of coding, believe in the power of what this new relea
 
 ## Application Connectivity
 
-[Additional logging options have been added](https://github.com/kyma-project/kyma/tree/main/components/central-application-gateway#debugging) to Central Application Gateway.
+[Additional logging options have been added](https://github.com/kyma-project/application-connector-manager/tree/main/components/central-application-gateway#debugging) to Central Application Gateway.
 
 
 ## Observability

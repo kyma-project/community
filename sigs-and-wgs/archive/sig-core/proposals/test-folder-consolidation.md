@@ -1,7 +1,7 @@
 # Test folder consolidation
 
 ## Introduction
-The [tests](https://github.com/kyma-project/kyma/tree/main/tests) folder of the kyma-project contains tests executed against a running Kyma cluster to assure integrity and functional correctness of the cluster with all modules installed.
+The `tests` folder in the module repositories contains tests executed against a running Kyma cluster to assure integrity and functional correctness of the cluster with all modules installed.
 These are acceptance tests.
 All subfolders in the `tests` directory define one test suite, usually focusing on one component.
 
