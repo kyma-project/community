@@ -201,6 +201,17 @@
         "repository": "https://github.com/gitleaks/gitleaks"
       },
       "comment": "Detects leaks of secrets using gitleaks, pinned to 8.16.1 by default but can be changed via environment variable"
+    },
+    {
+      "name": "jenseng/dynamic-uses",
+      "versions": [
+        "5175289a9a87978dcfcb9cf512b821d23b2a53eb"
+      ],
+      "repository": "https://github.com/jenseng/dynamic-uses",
+      "marketplace": "https://github.com/marketplace/actions/dynamic-uses",
+      "security_review_performed": true,
+      "3rd_party_tool": {},
+      "comment": "Allows you to dynamically resolve and use other GitHub actions"
     }
   ]
 }
