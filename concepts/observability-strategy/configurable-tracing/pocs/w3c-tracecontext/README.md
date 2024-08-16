@@ -26,7 +26,7 @@ So the PoC used the traditional approach with the meshConfig and a hardcoded pro
 7. Call `GET demo.<yourClusterDomain>`.
 8. Check Jaeger `kubectl port-forward -n kyma-system svc/tracing-jaeger-query 16686:16686`.
 
-The activation of the openCensusAgent as tracer with the [extensionProvider](https://istio.io/latest/docs/tasks/observability/distributed-tracing/opencensusagent/) concept was tried as well. It required to use Istio 1.15 and worked out very well by changing the Istio config to use the following settings:
+The activation of the openCensusAgent as tracer with the [extensionProvider](https://github.com/istio/istio.io/blob/release-1.22/content/en/docs/tasks/observability/distributed-tracing/opencensusagent/index.md) concept was tried as well. It required to use Istio 1.15 and worked out very well by changing the Istio config to use the following settings:
 ```yaml
   defaultProviders:
     tracing: ["opencensus"]
