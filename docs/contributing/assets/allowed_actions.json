@@ -24,7 +24,8 @@
         "3cfe3a4abbb849e10058ce4af15d205b6da42804",
         "v4.0.0",
         "v6.0.1",
-        "v6.1.0"
+        "v6.1.0",
+        "aaa42aa0628b4ae2578232a66b541047968fac86"
       ],
       "repository": "https://github.com/golangci/golangci-lint-action",
       "marketplace": "https://github.com/marketplace/actions/run-golangci-lint",
@@ -52,7 +53,8 @@
       "versions": [
         "76d1d8e0b075d7190b5d59b86da91c7bdbcc99b2",
         "f32435541e24cd6a4700a7f52bb2ec59e80603b1",
-        "b1b635d24259e8a047a6ce7d6501ea432aa7a830"
+        "b1b635d24259e8a047a6ce7d6501ea432aa7a830",
+        "3c16e895bb662b4d7e284f032cbe8835a57773cc"
       ],
       "repository": "https://github.com/zgosalvez/github-actions-ensure-sha-pinned-actions",
       "marketplace": "https://github.com/marketplace/actions/ensure-sha-pinned-actions",
@@ -181,7 +183,8 @@
       "versions": [
         "d6babd6899969df1a11d14c368283ea4436bca78",
         "90a06d6ba9543371ab4df8eeca0be07ca6054959",
-        "6b2903bdce6310cfbddd87c418f253cf29b2dec9"
+        "6b2903bdce6310cfbddd87c418f253cf29b2dec9",
+        "e9772d140489982e0e3704fea5ee93d536f1e275"
       ],
       "repository": "https://github.com/tj-actions/changed-files",
       "marketplace": "https://github.com/marketplace/actions/changed-files",
