@@ -206,6 +206,17 @@
         "repository": "https://github.com/gitleaks/gitleaks"
       },
       "comment": "Detects leaks of secrets using gitleaks, pinned to 8.16.1 by default but can be changed via environment variable"
+    },
+    {
+      "name": "wechuli/allcheckspassed",
+      "versions": [
+        "2e5e8bbc775f5680ed5d02e3a22e2fc7219792ac"
+      ],
+      "repository": "https://github.com/wechuli/allcheckspassed",
+      "marketplace": "https://github.com/marketplace/actions/allcheckspassed",
+      "security_review_performed": true,
+      "3rd_party_tool": {},
+      "comment": "This action will check that all checks have passed on a given pull request"
     }
   ]
 }
