@@ -217,6 +217,17 @@
       "security_review_performed": true,
       "3rd_party_tool": {},
       "comment": "This action will check that all checks have passed on a given pull request"
+    },
+    {
+      "name": "docker://kyma-project/prod/test-infra/ko/image-syncer",
+      "versions": [
+        "v20240822-9b523f40"
+      ],
+      "repository": "https://github.com/kyma-project/test-infra",
+      "marketplace": "",
+      "security_review_performed": true,
+      "3rd_party_tool": {},
+      "comment": "This action will sync images from the external repository to the internal one"
     }
   ]
 }
