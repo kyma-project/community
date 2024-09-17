@@ -2,7 +2,7 @@
 
 ## Purpose and Audience
 
-This content strategy focuses on the publicly available documentation for the open-source [Kyma project](https://kyma-project.io). The source of the documentation displayed on the website is stored in [GitHub](https://github.com/kyma-project/kyma) and it's written in [Markdown](https://daringfireball.net/projects/markdown/).
+This content strategy focuses on the publicly available documentation for the open-source [Kyma project](https://kyma-project.io). The source of the documentation displayed on the website is stored in [GitHub](https://github.com/kyma-project/kyma) and [Kyma modules](https://kyma-project.io/#/06-modules/README)' repositories. The content is written in [Markdown](https://daringfireball.net/projects/markdown/).
 
 The assumed readers of this guide and contributors to the documentation have some basic knowledge of technical writing.
 
@@ -25,12 +25,12 @@ For all concept topics, use the [concept topic template](https://github.com/kyma
 
 Task topics provide "how-to" instructions that enable users to accomplish a task. Each task topic should tell how to perform a single, specific procedure.
 
-Select a title that describes the task that's accomplished, not the documented software feature. For example, use "Define resource consumption", not "Select a profile". Use the imperative "Select...", rather than gerund form "Selecting..." or "How to select...".
+Select a title that describes the task that's accomplished, not the documented software feature. For example, use "Define resource consumption", not "Select a profile". Use the imperative "Select...", rather than the gerund form "Selecting..." or "How to select...".
 
 With regards to structure, it’s nice to have an **introductory paragraph** ("why would I want to do this task?"), **prerequisites** if needed, then the **steps** in a numbered list, and finally the expected **result** that shows the operation was successful.
 It's good practice to have 5-9 steps; anything longer can probably be split.
 
-For all step instructions, use the [tutorial  template](https://github.com/kyma-project/community/blob/main/templates/resources/tutorial.md).
+For all step instructions, use the [task template](../../../templates/resources/task.md).
 
 ### Reference Topics
 
@@ -46,7 +46,7 @@ Use the templates for [architecture documents](https://github.com/kyma-project/c
 
 Troubleshooting topics provide a condition that the reader may want to correct, followed by one or more descriptions of its cause and suggested remedies.
 
-In the title, mention the symptom that needs fixing ("Cannot access...") or the error message. To quote an error message, start and end with `'` to escape `"` (because quotation marks `"` themselves do not display correctly on the website), for example, `title: '"FAILED" status for created ServiceInstances'`. Do not use the cause as title ("Incompatible version"), because we also want to help users who have no idea about the cause and only know something's not working as expected.
+In the title, mention the symptom that needs fixing ("Cannot access...") or the error message. To quote an error message, start and end with `'` to escape `"` (because quotation marks `"` themselves do not display correctly on the website), for example, `title: '"FAILED" status for created ServiceInstances'`. Do not use the cause as the title ("Incompatible version"), because we also want to help users who have no idea about the cause and only know something's not working as expected.
 
 It's good practice to use three standard headlines (like “Condition”, “Cause”, “Remedy”), each might have just one sentence or more as needed. For remedy, use a numbered list if there are multiple steps to follow, and a bullet list or sub-headlines if there are several equally valid solutions.
 
@@ -54,15 +54,13 @@ For all troubleshooting topics, use the [troubleshooting topic template](https:/
 
 ### Release Notes
 
-Release notes announce what's new in Kyma.
+Release notes announce what's new in Kyma or in a Kyma module. Module teams generate their release notes automatically in GitHub. See [Automatically generated release notes](https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes).
 
-After an introductory paragraph, a list briefly presents the new and changed features. Links lead to longer paragraphs that describe the changes in more detail.
-
-For release notes, use the [release notes template](https://github.com/kyma-project/community/blob/main/templates/resources/release-notes.md).
+For guidelines on how to add release notes content, see the [release notes template](../../guidelines/content-guidelines/07-release-notes.md).
 
 ## Target Groups
 
-The general assumption is that the readers of the documentation is familiar with the following terms and does not need the explanation of technical concepts behind them:
+The general assumption is that the readers of the documentation are familiar with the following terms and do not need an explanation of the technical concepts behind them:
 
 - Kubernetes
 - Docker and containers
@@ -85,39 +83,32 @@ Deals with installation, upgrades, system troubleshooting. Wants to support the 
 
 On the Kyma website, we have five main tabs containing multiple documents each, plus a glossary.
 
-### Kyma Components
+### What Is Kyma
 
 **Target Group**: Decision Makers (Tech Leads) and newbies.
 
-Contains a quick overview of the idea behind Kyma, presents the main areas with a brief explanation, and, as needed, longer documents going into the details of each main area.
+Contains a quick overview of the idea behind Kyma, presents Kyma's strengths, and explains the connection between Kyma and SAP BTP, Kyma runtime.
 
-### Get Started
+### Quick Install
 
 **Target Group**: Software Developers who quickly want to see what they can do with Kyma.
 
-Contains a guide/tutorial that covers typical steps you need to perform to get started.
+Contains a guide that covers typical steps you need to perform to get started.
 
-### Developer Tutorials
+### Modules
 
-**Target Group**: Software Developers leveraging all the Kyma functionalities.
+**Target Group**:
+  
+- Software Developers leveraging all the Kyma modules' functionalities.
+- Admins/Operators who make sure their Kyma modules are configured as needed.
 
-Under this tab, there are subtabs according to main areas (except UI – user interfaces are mentioned as needed within the instructions of the respective main area). Documents in the subtabs contain "how-to" instructions that enable users to accomplish a task.
+Under this tab, there are subtabs dedicated to all Kyma modules. Content of the subtabs is pulled from the `docs/user` folders in module repositories. Module documentation covers: general module description, feature scope, "how-to" instructions that enable users to accomplish a task, installation and configuration instructions, backup info, security documentation, troubleshooting guides, and detailed information, such as architecture diagrams, or configuration charts.
 
 ### Operation Guides
 
 **Target Group**: Admins/Operators who make sure the Kyma cluster is configured as needed and keeps running in a healthy and secure way.
 
-Contains installation and configuration instructions, backup info, security documentation, and troubleshooting guides.
-
-### Technical References
-
-**Target Group**: Users who want to look up specific detailed information.
-
-Contains detailed information, such as architecture diagrams, configuration charts, etc.; note that the CLI command documents are generated automatically.
-
-### Modules
-
-Contains detailed information on the available Kyma modules. Content of that section is pulled from the `docs/user` folders in module repositories.
+Includes installation and configuration instructions, backup info, "how-to" instructions that enable users to uninstall or upgrade a module, and troubleshooting guides.
 
 ### Glossary
 
