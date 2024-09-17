@@ -30,7 +30,7 @@ Select a title that describes the task that's accomplished, not the documented s
 With regards to structure, it’s nice to have an **introductory paragraph** ("why would I want to do this task?"), **prerequisites** if needed, then the **steps** in a numbered list, and finally the expected **result** that shows the operation was successful.
 It's good practice to have 5-9 steps; anything longer can probably be split.
 
-For all step instructions, use the [task template](https://github.com/kyma-project/community/blob/main/templates/resources/task.md).
+For all step instructions, use the [task template](../../../templates/resources/task.md).
 
 ### Reference Topics
 
@@ -56,7 +56,7 @@ For all troubleshooting topics, use the [troubleshooting topic template](https:/
 
 Release notes announce what's new in Kyma or in a Kyma module. Module teams generate their release notes automatically in GitHub. See [Automatically generated release notes](https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes).
 
-For guidelines on how to add release notes content, see the [release notes template](https://github.com/kyma-project/community/blob/main/templates/resources/release-notes.md).
+For guidelines on how to add release notes content, see the [release notes template](../../guidelines/content-guidelines/07-release-notes.md).
 
 ## Target Groups
 
