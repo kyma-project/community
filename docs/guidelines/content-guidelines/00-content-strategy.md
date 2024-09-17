@@ -55,17 +55,16 @@ For all troubleshooting topics, use the [troubleshooting topic template](https:/
 ### Release Notes
 
 Release notes announce what's new in Kyma.
-
-After an introductory paragraph, a list briefly presents the new and changed features. Links lead to longer paragraphs that describe the changes in more detail.
-
-For release notes, use the [release notes template](https://github.com/kyma-project/community/blob/main/templates/resources/release-notes.md).
+For details, see [Release Notes](07-release-notes.md).
 
 ## Target Groups
 
-The general assumption is that the readers of the documentation is familiar with the following terms and does not need the explanation of technical concepts behind them:
+The general assumption is that the readers of the (OS) documentation is familiar with the following terms and does not need the explanation of technical concepts behind them:
 
 - Kubernetes
 - Docker and containers
+
+> **CAUTION:** If your docs are relevant for SKR, you cannot assume that users have background knowledge of Kubernetes etc.!
 
 These are the assumed target groups for Kyma documentation:
 
@@ -83,41 +82,37 @@ Deals with installation, upgrades, system troubleshooting. Wants to support the 
 
 ## Documentation Structure
 
-On the Kyma website, we have five main tabs containing multiple documents each, plus a glossary.
+On the [Kyma website](https://kyma-project.io/#/), we have five main tabs containing multiple documents each, plus a glossary.
 
-### Kyma Components
+### Kyma Home
 
 **Target Group**: Decision Makers (Tech Leads) and newbies.
 
-Contains a quick overview of the idea behind Kyma, presents the main areas with a brief explanation, and, as needed, longer documents going into the details of each main area.
+Contains a quick overview of the idea behind Kyma and the relationship between (OS) Kyma and SAP BTP, Kyma runtime.
 
-### Get Started
+### Quick Install
 
 **Target Group**: Software Developers who quickly want to see what they can do with Kyma.
 
-Contains a guide/tutorial that covers typical steps you need to perform to get started.
+Contains instructions to install (OS) Kyma, add modules, and open Kyma dashboard.
 
-### Developer Tutorials
+### Modules
 
-**Target Group**: Software Developers leveraging all the Kyma functionalities.
+**Target Group**: Software Developers and Admins/Operators
 
-Under this tab, there are subtabs according to main areas (except UI – user interfaces are mentioned as needed within the instructions of the respective main area). Documents in the subtabs contain "how-to" instructions that enable users to accomplish a task.
+Presents the modules created by Kyma teams, with their respective overview, instructions, and troubleshooting documents. Content of that section is pulled from the `docs/user` folders in module repositories.
+
+### User Interfaces
+
+**Target Group**: Software Developers and Admins/Operators.
+
+Documents Kyma dashboard and Kyma CLI
 
 ### Operation Guides
 
 **Target Group**: Admins/Operators who make sure the Kyma cluster is configured as needed and keeps running in a healthy and secure way.
 
-Contains installation and configuration instructions, backup info, security documentation, and troubleshooting guides.
-
-### Technical References
-
-**Target Group**: Users who want to look up specific detailed information.
-
-Contains detailed information, such as architecture diagrams, configuration charts, etc.; note that the CLI command documents are generated automatically.
-
-### Modules
-
-Contains detailed information on the available Kyma modules. Content of that section is pulled from the `docs/user` folders in module repositories.
+Contains backup info and links to troubleshooting guides.
 
 ### Glossary
 
