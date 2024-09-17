@@ -37,10 +37,3 @@ Don't add an entry that doesn't match, such as:
 ## Include a Migration Guide
 
 Whenever a user must perform some manual steps in order to use the newly released version of the software, always provide a migration guide. This document must clearly list all necessary steps the user must perform to successfully upgrade from one version of the software to another. Do **not** describe new features in the migration guide. For this purpose, use the release notes.
-
-## Templates
-
-Here are all the release notes-related templates you may find useful:
-
-* [Release notes template](../../../templates/resources/release-notes.md)
-* [Release notes input](https://github.com/kyma-project/community/blob/main/templates/resources/release-notes-input.md)
