@@ -22,7 +22,7 @@ This table lists all document types used to fully describe a Kyma area and/or co
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/main/docs) | [`architecture.md`](https://github.com/kyma-project/community/blob/main/templates/resources/architecture.md) | Use the template to describe the architecture of a Kyma component. | All contributors |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/main/docs) | [`configuration.md`](https://github.com/kyma-project/community/blob/main/templates/resources/configuration.md) | Use the template to describe configuration options for a Kyma chart or sub-chart. | All contributors |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/main/docs) | [`custom-resource.md`](https://github.com/kyma-project/community/blob/main/templates/resources/custom-resource.md) | Use the template to describe a custom resource (CR) and its elements. | All contributors |
-| [`kyma/docs`](https://github.com/kyma-project/kyma/tree/main/docs) | [`tutorials.md`](https://github.com/kyma-project/community/blob/main/templates/resources/tutorial.md) | Use the template to provide a clear step-by-step instruction that helps the user to understand a given concept better. | All contributors |
+| [`kyma/docs`](https://github.com/kyma-project/kyma/tree/main/docs) | [`task.md`](https://github.com/kyma-project/community/blob/main/templates/resources/task.md) | Use the template to provide a clear step-by-step instruction. | All contributors |
 | [`kyma/docs`](https://github.com/kyma-project/kyma/tree/main/docs) | [`troubleshooting.md`](https://github.com/kyma-project/community/blob/main/templates/resources/troubleshooting.md) | Use the template to explain all details needed for Kyma and its components' troubleshooting. | All contributors |
 
 ## Official Kyma Graphics and Logo
@@ -32,15 +32,6 @@ See the following table to find a template of Kyma graphics and logo.
 | Repository | Template | Usage | Author |
 |---|---|---|---|
 | No specific repository | [`Official Kyma graphics and logo`](https://github.com/kyma-project/community/tree/main/templates/resources/assets) | Use these graphics for any Kyma-related communication. | All contributors |
-
-## Release Notes
-
-See the templates for providing input and writing release notes.
-
-| Repository | Template | Usage | Author |
-|---|---|---|---|
-| [`website/content/blog-posts`](https://github.com/kyma-project/website/tree/main/content/blog-posts) | [`release-notes.md`](https://github.com/kyma-project/community/blob/main/templates/resources/release-notes.md) | Use the template to write release notes. | Technical Writers |
-| Internal use | [`release-notes-input.md`](https://github.com/kyma-project/community/blob/main/templates/resources/release-notes-input.md) | Use the template to provide input for the release notes. | Product Owners |
 
 ## Repository Templates
 
