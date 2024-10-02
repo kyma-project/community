@@ -128,7 +128,7 @@ For each Module Manager designed by module teams, the reconciliation of ModuleCo
 
 ### Guide to the Implementation
 
-- [Kyma CR API document](https://github.com/kyma-project/lifecycle-manager/blob/main/docs/technical-reference/api/kyma-cr.md)
+- [Kyma CR API document](https://github.com/kyma-project/lifecycle-manager/blob/main/docs/contributor/resources/01-kyma.md)
 - [SyncResource ARD](https://github.com/kyma-project/lifecycle-manager/issues/991)
 - [ModuleConfig ARD](https://github.com/kyma-project/lifecycle-manager/issues/1104)
 - [Lifecycle Manager Repo](https://github.com/kyma-project/lifecycle-manager)
