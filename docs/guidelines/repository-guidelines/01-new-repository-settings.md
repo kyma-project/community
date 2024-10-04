@@ -90,7 +90,7 @@ With that configuration, the md-check-link verifies all `.md` files in your repo
 
 #### Central Config
 
-All Kyma modules' repositories that store user-facing documentation are included in the central configuration of [md-check-link](https://github.com/kyma-project/md-check-link). It allows Technical Writers to use a nightly GitHub Actions workflow, called [Verify markdown links in Kyma project](https://github.com/kyma-project/md-check-link/actions/workflows/check-kyma-links.yml), that detects broken links in all `.md` files of the listed repositories.
+All Kyma modules' repositories that store user-facing documentation must be included in the central configuration of [md-check-link](https://github.com/kyma-project/md-check-link). It allows Technical Writers to use a nightly GitHub Actions workflow, called [Verify markdown links in Kyma project](https://github.com/kyma-project/md-check-link/actions/workflows/check-kyma-links.yml), that detects broken links in all `.md` files of the listed repositories.
 
 If you create a new module repository, you must add it to the following files:
 
