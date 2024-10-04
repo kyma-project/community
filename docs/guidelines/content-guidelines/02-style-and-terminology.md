@@ -194,6 +194,7 @@ Here is the preferred terminology to use in the Kyma documentation:
 | **application**              | **app**                             | Use "Application" to describe an external solution connected to Kyma through Application Connector, "application" to describe a microservice deployed on Kyma or other kind of software. |
 | **the following**         | **below**, **this**, **the described**, ...    | or "as shown in the example"      |
 | **the previous**, **earlier** | **above**, **this**, **the described**, ...    | or "as shown in the example"      |
+| **Infrastructure Provider** **IaaS Provider** | **hyperscaler**, **Cloud Provider** |       |
 
 ### Command Line Arguments
 
