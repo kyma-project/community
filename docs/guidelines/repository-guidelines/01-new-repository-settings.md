@@ -55,6 +55,8 @@ The `/kyma-project` repositories in GitHub use [md-check-link](https://github.co
 
 ### Configuration
 
+#### Repository Config
+
 To configure the md-check-link in your repository, choose your CI/CD pipeline for the check and set up its workflow. For example, choose GitHub Action and add a configuration YAML file to the `/.github/workflows` directory. Paste the following content:
 
 ```yaml
@@ -85,6 +87,15 @@ jobs:
 ```
 
 With that configuration, the md-check-link verifies all `.md` files in your repository on every PR.
+
+#### Central Config
+
+All Kyma modules' repositories that store user-facing documentation must be included in the central configuration of [md-check-link](https://github.com/kyma-project/md-check-link). It allows Technical Writers to use a nightly GitHub Actions workflow, called [Verify markdown links in Kyma project](https://github.com/kyma-project/md-check-link/actions/workflows/check-kyma-links.yml), that detects broken links in all `.md` files of the listed repositories.
+
+If you create a new module repository, you must add it to the following files:
+
+* [`md-check-link/.github/workflows/check-kyma-links.yml`](https://github.com/kyma-project/md-check-link/blob/main/.github/workflows/check-kyma-links.yml)
+* [`md-check-link/.mlc.config.json`](https://github.com/kyma-project/md-check-link/blob/main/.mlc.config.json)
 
 ## Custom Settings
 

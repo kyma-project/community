@@ -15,13 +15,15 @@ The `template-repository` consists of:
 
 * [`.reuse`](https://github.com/kyma-project/template-repository/tree/main/.reuse) - This folder includes a file with the copyright and licensing disclaimer about SAP or third-party products or services developed outside the project.
 
+* [`LICENSES`](https://github.com/kyma-project/template-repository/blob/main/LICENSE) - It is an obligatory element of every open-source repository. Copy the template into your repository.
+
 * [`docs`](https://github.com/kyma-project/template-repository/tree/main/docs) - In this folder, put the repository-specific documentation only. Store any architectural decisions or documents applicable to all Kyma repositories in the `community` repository.
 
 * [`.mlc.config.json`](https://github.com/kyma-project/template-repository/blob/main/.mlc.config.json) - This file includes the Markdown link check configuration for the repository. The configuration is necessary to set up a CICD pipeline for the check. For example, use Markdown link check as a GitHub Action from the GitHub Marketplace.
 
-* [`CODE_OF_CONDUCT.md`](https://github.com/kyma-project/template-repository/blob/main/CODE_OF_CONDUCT.md) - This document is a ready-to-use template which provides a link to the general `CODE_OF_CONDUCT.md` document from the `community` repository.
-
 * [`CODEOWNERS`](https://github.com/kyma-project/template-repository/blob/main/CODEOWNERS) - In this document, specify the owners of particular parts of your repository. The owners are automatically added as reviewers when you open a pull request that modifies the code and content they own.
+
+* [`CODE_OF_CONDUCT.md`](https://github.com/kyma-project/template-repository/blob/main/CODE_OF_CONDUCT.md) - This document is a ready-to-use template which provides a link to the general `CODE_OF_CONDUCT.md` document from the `community` repository.
 
 * [`CONTRIBUTING.md`](https://github.com/kyma-project/template-repository/blob/main/CONTRIBUTING.md) - This template makes a reference to the [contributing rules](../../contributing/02-contributing.md) that contain the general guidance from the `community` repository and describes the rules for contributing to all Kyma repositories. If there is any additional, project-specific information that you want to add to your project's `CONTRIBUTING.md` document, add them under the same sections as in the general contributing guide.
 
