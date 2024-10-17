@@ -24,9 +24,7 @@
     },
     {
       "name": "AbsaOSS/k3d-action",
-      "versions": [
-        "4e8b3239042be1dc0aed6c5eb80c13b18200fc79"
-      ],
+      "versions": ["4e8b3239042be1dc0aed6c5eb80c13b18200fc79"],
       "repository": "https://github.com/AbsaOSS/k3d-action",
       "marketplace": "https://github.com/marketplace/actions/absaoss-k3d-action",
       "security_review_performed": true,
@@ -49,9 +47,7 @@
     },
     {
       "name": "ahmadnassri/action-workflow-queue",
-      "versions": [
-        "0144da6a252d1986d817826d963ad3a9af1e7fdf"
-      ],
+      "versions": ["0144da6a252d1986d817826d963ad3a9af1e7fdf"],
       "repository": "https://github.com/ahmadnassri/action-workflow-queue",
       "marketplace": "https://github.com/marketplace/actions/workflow-queue",
       "security_review_performed": true,
@@ -60,9 +56,7 @@
     },
     {
       "name": "autotelic/action-wait-for-status-check",
-      "versions": [
-        "6556cf50c8fb6608412945382eae73581f56cbb4"
-      ],
+      "versions": ["6556cf50c8fb6608412945382eae73581f56cbb4"],
       "repository": "https://github.com/autotelic/action-wait-for-status-check",
       "marketplace": "https://github.com/marketplace/actions/wait-for-github-status-check",
       "security_review_performed": true,
@@ -71,9 +65,7 @@
     },
     {
       "name": "gaurav-nelson/github-action-markdown-link-check",
-      "versions": [
-        "d53a906aa6b22b8979d33bc86170567e619495ec"
-      ],
+      "versions": ["d53a906aa6b22b8979d33bc86170567e619495ec"],
       "repository": "https://github.com/gaurav-nelson/github-action-markdown-link-check",
       "marketplace": "https://github.com/marketplace/actions/markdown-link-check",
       "security_review_performed": true,
@@ -86,9 +78,7 @@
     },
     {
       "name": "slackapi/slack-github-action",
-      "versions": [
-        "e28cf165c92ffef168d23c5c9000cffc8a25e117"
-      ],
+      "versions": ["e28cf165c92ffef168d23c5c9000cffc8a25e117"],
       "repository": "https://github.com/slackapi/slack-github-action",
       "marketplace": "https://github.com/marketplace/actions/slack-send",
       "security_review_performed": true,
@@ -111,9 +101,7 @@
     },
     {
       "name": "ahmadnassri/action-workflow-queue",
-      "versions": [
-        "f547ac848c16a9bb1b2ed4a850e0cc5098af2cf8"
-      ],
+      "versions": ["f547ac848c16a9bb1b2ed4a850e0cc5098af2cf8"],
       "repository": "https://github.com/ahmadnassri/action-workflow-queue",
       "marketplace": "https://github.com/marketplace/actions/workflow-queue",
       "security_review_performed": true,
@@ -122,9 +110,7 @@
     },
     {
       "name": "shmokmt/actions-setup-github-comment",
-      "versions": [
-        "93d9e7c3ea11e473e3061a8dbed8231faea13dea"
-      ],
+      "versions": ["93d9e7c3ea11e473e3061a8dbed8231faea13dea"],
       "repository": "https://github.com/shmokmt/actions-setup-github-comment",
       "marketplace": "https://github.com/marketplace/actions/setup-github-comment",
       "security_review_performed": true,
@@ -137,9 +123,7 @@
     },
     {
       "name": "shmokmt/actions-setup-tfcmt",
-      "versions": [
-        "0d2b0c4cc4b5edc9c2dfdf7eb0c33ee7b23a7c85"
-      ],
+      "versions": ["0d2b0c4cc4b5edc9c2dfdf7eb0c33ee7b23a7c85"],
       "repository": "https://github.com/shmokmt/actions-setup-tfcmt",
       "marketplace": "https://github.com/marketplace/actions/setup-tfcmt",
       "security_review_performed": true,
@@ -152,9 +136,7 @@
     },
     {
       "name": "addnab/docker-run-action",
-      "versions": [
-        "3b7e5e2681a0bda95ee4ce0645c28ca1e78ce9ee"
-      ],
+      "versions": ["3b7e5e2681a0bda95ee4ce0645c28ca1e78ce9ee"],
       "repository": "https://github.com/addnab/docker-run-action",
       "marketplace": "https://github.com/marketplace/actions/docker-run-action",
       "security_review_performed": true,
@@ -177,9 +159,7 @@
     },
     {
       "name": "gitleaks/gitleaks-action",
-      "versions": [
-        "e6dab246340401bf53eec993b8f05aebe80ac636"
-      ],
+      "versions": ["e6dab246340401bf53eec993b8f05aebe80ac636"],
       "repository": "https://github.com/gitleaks/gitleaks-action",
       "marketplace": "https://github.com/marketplace/actions/gitleaks",
       "security_review_performed": true,
@@ -192,14 +172,21 @@
     },
     {
       "name": "wechuli/allcheckspassed",
-      "versions": [
-        "2e5e8bbc775f5680ed5d02e3a22e2fc7219792ac"
-      ],
+      "versions": ["2e5e8bbc775f5680ed5d02e3a22e2fc7219792ac"],
       "repository": "https://github.com/wechuli/allcheckspassed",
       "marketplace": "https://github.com/marketplace/actions/allcheckspassed",
       "security_review_performed": true,
       "3rd_party_tool": {},
       "comment": "This action will check that all checks have passed on a given pull request"
+    },
+    {
+      "name": "browser-actions/setup-chrome",
+      "versions": ["facf10a55b9caf92e0cc749b4f82bf8220989148"],
+      "repository": "https://github.com/browser-actions/setup-chrome",
+      "marketplace": "https://github.com/marketplace/actions/setup-chrome",
+      "security_review_performed": true,
+      "3rd_party_tool": {},
+      "comment": "This action sets-up Google Chrome/Chromium for GitHub Actions"
     }
   ]
 }
