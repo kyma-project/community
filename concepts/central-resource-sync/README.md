@@ -2,29 +2,28 @@
 
 **Table of Contents**
 
-- [Software Design Description - Synchronization of Module Resources](#software-design-description---synchronization-of-module-resources)
-  - [Project Information and Document Status](#project-information-and-document-status)
-    - [Document Revision History](#document-revision-history)
-  - [General Information](#general-information)
-    - [Stakeholders and Roles](#stakeholders-and-roles)
-  - [Design](#design)
-    - [Key Requirements and Design Goals](#key-requirements-and-design-goals)
-    - [Context](#context)
-    - [Major Building Blocks](#major-building-blocks)
-      - [Lifecycle Manager](#lifecycle-manager)
-      - [Module Manager](#module-manager)
-      - [SKR Watcher](#skr-watcher)
-    - [Interfaces and Communication Handling](#interfaces-and-communication-handling)
-      - [ModuleConfig CR](#moduleconfig-cr)
-      - [SyncResource CR](#syncresource-cr)
-      - [Communication Flow](#communication-flow)
-    - [Upgrade, Migration, Compatibility](#upgrade-migration-compatibility)
-    - [Compliance to Standards and Guidelines](#compliance-to-standards-and-guidelines)
-      - [Applied Architecture and Design Guidelines](#applied-architecture-and-design-guidelines)
-  - [Design Details Documentation](#design-details-documentation)
-    - [Guide to the Implementation](#guide-to-the-implementation)
-  - [Appendix](#appendix)
-    - [Glossary](#glossary)
+- [Project Information and Document Status](#project-information-and-document-status)
+  - [Document Revision History](#document-revision-history)
+- [General Information](#general-information)
+  - [Stakeholders and Roles](#stakeholders-and-roles)
+- [Design](#design)
+  - [Key Requirements and Design Goals](#key-requirements-and-design-goals)
+  - [Context](#context)
+  - [Major Building Blocks](#major-building-blocks)
+    - [Lifecycle Manager](#lifecycle-manager)
+    - [Module Manager](#module-manager)
+    - [SKR Watcher](#skr-watcher)
+  - [Interfaces and Communication Handling](#interfaces-and-communication-handling)
+    - [ModuleConfig CR](#moduleconfig-cr)
+    - [SyncResource CR](#syncresource-cr)
+    - [Communication Flow](#communication-flow)
+  - [Upgrade, Migration, Compatibility](#upgrade-migration-compatibility)
+  - [Compliance to Standards and Guidelines](#compliance-to-standards-and-guidelines)
+    - [Applied Architecture and Design Guidelines](#applied-architecture-and-design-guidelines)
+- [Design Details Documentation](#design-details-documentation)
+  - [Guide to the Implementation](#guide-to-the-implementation)
+- [Appendix](#appendix)
+  - [Glossary](#glossary)
 
 ## Project Information and Document Status
 
@@ -119,12 +118,12 @@ The Module Manager should be developed as a Kubernetes operator using the Kubebu
 |---------------------------------------|---------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
 | Kubebuilder SDK                       | [v3.13.0](https://github.com/kubernetes-sigs/kubebuilder/releases/tag/v3.13.0)        | https://github.com/kubernetes-sigs/kubebuilder                            |
 | Kubebuilder Book                      | v2                                                                                    | https://book-v2.book.kubebuilder.io                                       |
-| Watching Externally Managed Resources |                                                                                       | https://kubebuilder.io/reference/watching-resources/externally-managed    |
+| Watching Externally Managed Resources |                                                                                       | https://kubebuilder.io/reference/watching-resources.html?highlight=watching#which-are-not-owned-by-the-controller    |
 | controller runtime Predicate          | [v0.16.3](https://github.com/kubernetes-sigs/controller-runtime/releases/tag/v0.16.3) | https://pkg.go.dev/sigs.k8s.io/controller-runtime/pkg/predicate#Predicate |
 
 ## Design Details Documentation
 
-For each Module Manager designed by module teams, the reconciliation of ModuleConfig CR should not solely rely on normal reconciliation time intervals. It must implement a [watching mechanism](https://kubebuilder.io/reference/watching-resources/externally-managed) supported by Kubebuilder to monitor changes occurring in the relevant ModuleConfig CR status field. This implementation ensures the capability to trigger immediate requeue operations when LM updates the ModuleConfig CR.
+For each Module Manager designed by module teams, the reconciliation of ModuleConfig CR should not solely rely on normal reconciliation time intervals. It must implement a [watching mechanism](https://kubebuilder.io/reference/watching-resources.html?highlight=watching#which-are-not-owned-by-the-controller) supported by Kubebuilder to monitor changes occurring in the relevant ModuleConfig CR status field. This implementation ensures the capability to trigger immediate requeue operations when LM updates the ModuleConfig CR.
 
 ### Guide to the Implementation
 
