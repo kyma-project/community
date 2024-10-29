@@ -119,12 +119,12 @@ The Module Manager should be developed as a Kubernetes operator using the Kubebu
 |---------------------------------------|---------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
 | Kubebuilder SDK                       | [v3.13.0](https://github.com/kubernetes-sigs/kubebuilder/releases/tag/v3.13.0)        | https://github.com/kubernetes-sigs/kubebuilder                            |
 | Kubebuilder Book                      | v2                                                                                    | https://book-v2.book.kubebuilder.io                                       |
-| Watching Resources |                                                                                       | https://kubebuilder.io/reference/watching-resources.html?highlight=watching#watching-resources    |
+| Watching Resources                    |                                                                                       | https://kubebuilder.io/reference/watching-resources                       |
 | controller runtime Predicate          | [v0.16.3](https://github.com/kubernetes-sigs/controller-runtime/releases/tag/v0.16.3) | https://pkg.go.dev/sigs.k8s.io/controller-runtime/pkg/predicate#Predicate |
 
 ## Design Details Documentation
 
-For each Module Manager designed by module teams, the reconciliation of ModuleConfig CR should not solely rely on normal reconciliation time intervals. It must implement a [watching mechanism](https://kubebuilder.io/reference/watching-resources.html?highlight=watching#watching-resources) supported by Kubebuilder to monitor changes occurring in the relevant ModuleConfig CR status field. This implementation ensures the capability to trigger immediate requeue operations when LM updates the ModuleConfig CR.
+For each Module Manager designed by module teams, the reconciliation of ModuleConfig CR should not solely rely on normal reconciliation time intervals. It must implement a [watching mechanism](https://kubebuilder.io/reference/watching-resources) supported by Kubebuilder to monitor changes occurring in the relevant ModuleConfig CR status field. This implementation ensures the capability to trigger immediate requeue operations when LM updates the ModuleConfig CR.
 
 ### Guide to the Implementation
 
