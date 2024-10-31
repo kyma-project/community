@@ -52,7 +52,7 @@ If you want to "cache" an image from an external registry, use the [image-syncer
 ](https://github.com/kyma-project/test-infra/tree/main/cmd/image-syncer)
 tool.
 
-To copy the image to our registry, modify the external-images.yaml file in your repository.
+To copy the image to our registry, modify the `external-images.yaml` file in your repository.
 
 For example, the source image `grafana/grafana:7.0.6` will be transformed to `eu.gcr.io/kyma-project/external/grafana/grafana:7.0.6"`.
 This URL can then be used in your Helm charts.
