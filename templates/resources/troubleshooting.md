@@ -28,7 +28,7 @@ Cause and remedy might occur in combinations other than pairs. It is possible to
 - A cause with no known remedy
  -->
 
-## Remedy
+## Solution
 
 <!-- Provide a solution for the condition. 
 If the user needs to execute more than one step, use a numbered list.
