@@ -16,16 +16,16 @@ The main goal of custom UI modules is to provide a way to extend Busola with cus
 
 # Module UI hosting (centralized vs in-cluster)
 
-Centralized hosting pros and cons:
-- :+1: UI can be loaded from a single source (e.g. a CDN) and cached by the browser
-- :+1: UI can be updated without updating the module itself (e.g. to fix a bug - no need to update the module operator)
-- :-1: UI can be blocked by the browser due to Content Security Policy (CSP) restrictions
-- :-1: UI can be blocked by the network in the restricted markets (e.g. if the CDN is blocked)
+## Centralized hosting
+- ✅ UI can be loaded from a single source (e.g. a CDN) and cached by the browser
+- ✅ UI can be updated without updating the module itself (e.g. to fix a bug - no need to update the module operator)
+- ❌ UI can be blocked by the browser due to Content Security Policy (CSP) restrictions
+- ❌ UI can be blocked by the network in the restricted markets (e.g. if the CDN is blocked)
 
-In-cluster hosting pros and cons:
-- :+1: UI is part of the module release and is deployed together with the module operator. We can reuse existing mechanisms for deploying and updating the module.
-- :+1: Users can introduce custom modules without the need to host them externally
-- :-1: UI is not cached by the browser and is loaded every time the user opens the module 
+## In-cluster hosting
+- ✅ UI is part of the module release and is deployed together with the module operator. We can reuse existing mechanisms for deploying and updating the module.
+- ✅ Users can introduce custom modules without the need to host them externally
+- ❌ UI is not cached by the browser and is loaded every time the user opens the module 
 
 
 # Security considerations
