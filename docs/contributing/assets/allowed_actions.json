@@ -13,14 +13,28 @@
         "639cd343e1d3b897ff35927a75193d57cfcba299"
       ],
       "repository": "https://github.com/golangci/golangci-lint-action",
-      "marketplace": "https://github.com/marketplace/actions/run-golangci-lint",
+      "marketplace": "https://github.com/marketplace/actions/golangci-lint",
       "security_review_performed": true,
       "3rd_party_tool": {
         "tool": "golangci-lint",
         "pinned_version": "v1.56.2",
         "repository": "https://github.com/golangci/golangci-lint"
       },
-      "comment": ""
+      "comment": "This action uses golangci-lint to lint go files"
+    },
+    {
+      "name": "ibiqlik/action-yamllint",
+      "versions": [
+        "b74a2626a991d676b6ec243a6458ff86cccf2d2d"
+      ],
+      "repository": "https://github.com/ibiqlik/action-yamllint",
+      "security_review_performed": true,
+      "3rd_party_tool": {
+        "tool": "yamllint",
+        "repository": "https://github.com/adrienverge/yamllint",
+        "docs": "https://yamllint.readthedocs.io/en/stable/"
+      },
+      "comment": "This action uses yamllint to lint yaml files"
     },
     {
       "name": "AbsaOSS/k3d-action",
