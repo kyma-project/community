@@ -103,7 +103,8 @@
     {
       "name": "slackapi/slack-github-action",
       "versions": [
-        "e28cf165c92ffef168d23c5c9000cffc8a25e117"
+        "e28cf165c92ffef168d23c5c9000cffc8a25e117",
+        "485a9d42d3a73031f12ec201c457e2162c45d02d"
       ],
       "repository": "https://github.com/slackapi/slack-github-action",
       "marketplace": "https://github.com/marketplace/actions/slack-send",
