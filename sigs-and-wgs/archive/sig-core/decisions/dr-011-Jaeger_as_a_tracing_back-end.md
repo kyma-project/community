@@ -24,4 +24,4 @@ The traces can be lost, but it should be acceptable for the Beta release. The tr
 
 The possible future actions are as follows:
 * Contribute to the open-source community on the [Jaeger GitHub issue](https://github.com/jaegertracing/jaeger/issues/551).
-* Introduce the [sampling strategy](https://www.jaegertracing.io/docs/client-libraries/#sampling) in Kyma.
+* Introduce the sampling strategy in Kyma.
