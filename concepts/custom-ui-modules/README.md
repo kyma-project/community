@@ -38,17 +38,23 @@ There are two options for in-cluster hosting:
 
 1. **Module Operator Hosting**: The module operator or controller hosts the UI.  
    ![](./embedded-ui.drawio.svg)
+   - **Advantages**:
+     - ✅ UI is deployed with the module operator, ensuring tight integration.
+     - ✅ Module UI is available even if the cluster is isolated from external networks.
    - **Problems**:
-     - Requires exposing the operator to the internet or accessing it via the Kubernetes API server proxy.
-     - Adds complexity, as it requires additional user privileges and does not guarantee the use of Busola’s authentication/authorization mechanisms.
+     - ❌ Requires exposing the operator to the internet or accessing it via the Kubernetes API server proxy or port forwarding.
+     - ❌ Adds complexity, as it requires additional user privileges and does not guarantee the use of Busola’s authentication/authorization mechanisms.
+     - ❌ Each module operator must implement its own CORS proxy to access external APIs.
+     - ❌ It is not easy to share common web assets (e.g., web components, styles) between modules - each module must bundle its own assets.
+     
    
 2. **ConfigMap-Based Hosting**: Store the UI in a Kubernetes ConfigMap and dynamically load it via the Kubernetes API.  
    ![](./configmap-ui.drawio.svg)
    - **Advantages**:
      - ✅ UI is tied to the module release and is deployed with the module operator.
      - ✅ Users can deploy custom modules without external hosting.
-     - ✅ Uses the same authentication/authorization mechanisms as Busola.  
-   - **Disadvantages**:
+     - ✅ Module can leverage Busola’s assets (web components, styles) and authentication/authorization mechanisms.
+     **Disadvantages**:
      - ❌ The UI is not cached by the browser and must be loaded each time the module is accessed.
 
 ### **Preferred Hosting Solution**
@@ -83,10 +89,7 @@ Loading and executing custom code inherently introduces security risks. To mitig
 
 3. **Privilege Isolation**:
    - Modules operate within the user’s privilege scope, preventing privilege escalation.
-   - Backend proxies are secured to whitelist allowed external APIs, minimizing misuse risks.
 
-4. **Code Execution Scope**:
-   - Module code runs in the user’s browser, ensuring that any action aligns with the user’s privileges.
 
 
 ## **Summary**
@@ -97,4 +100,5 @@ Key benefits include:
 - Decoupled module lifecycle from Busola updates.
 - Secure handling of external API communication.
 - Dynamic, cluster-specific module loading.
+- Reuse of Busola's assets (web components, styles) - reducing duplication and improving consistency.
 - Strong alignment with Kubernetes’ RBAC and OIDC models.
