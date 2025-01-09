@@ -47,4 +47,4 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Dariusz Tutaj (**[@dariusztutaj](https://github.com/dariusztutaj)**) involved in `area/api-gateway`, `area/service-mesh`.
 * Jan Woźniak (**[@wozniakjan](https://github.com/wozniakjan)**) involved in `area/control-plane`,`area/tests`, `area/charts`, `area/ci`, `area/security`, `area/dependency`, `area/service-management`.
 * Till Knuesting (**[@tillknuesting](https://github.com/tillknuesting)**) involved in `area/control-plane`,`area/tests`, `area/charts`, `area/ci`, `area/security`, `area/dependency`, `area/service-management`.
-* Jeremy Harish (**[@jeremyharisch](https://github.com/jeremyharisch)**) involved in `area/lifecycle-manager`, `area/eventing` (on-site :dancer:)
+* Jeremy Harisch (**[@jeremyharisch](https://github.com/jeremyharisch)**) involved in `area/lifecycle-manager`, `area/eventing` (on-site :dancer:)
