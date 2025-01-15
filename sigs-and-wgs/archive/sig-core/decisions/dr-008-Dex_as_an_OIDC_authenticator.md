@@ -40,7 +40,7 @@ When you register multiple connectors in Dex, it is not possible to automaticall
 An improvement has been proposed to allow Dex choosing a default connector but the pull request to the Dex project was rejected.
 
 Although some of the Kyma team's pull requests were rejected, the team contributed to the Dex project.
-After some discussion, the team managed to introduce [this](https://github.com/coreos/dex/issues/1087) change.
+After some discussion, the team managed to introduce [this](https://github.com/dexidp/dex/issues/1087) change.
 
 Finally, Dex is designed to work with Kubernetes and is also one of the authentication solutions
 recommended in the [Kubernetes documentation](https://kubernetes.io/docs).
