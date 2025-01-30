@@ -89,7 +89,8 @@
     {
       "name": "gaurav-nelson/github-action-markdown-link-check",
       "versions": [
-        "d53a906aa6b22b8979d33bc86170567e619495ec"
+        "d53a906aa6b22b8979d33bc86170567e619495ec",
+        "1b916f2cf6c36510a6059943104e3c42ce6c16bc"
       ],
       "repository": "https://github.com/gaurav-nelson/github-action-markdown-link-check",
       "marketplace": "https://github.com/marketplace/actions/markdown-link-check",
