@@ -212,7 +212,8 @@
     {
       "name": "wechuli/allcheckspassed",
       "versions": [
-        "2e5e8bbc775f5680ed5d02e3a22e2fc7219792ac"
+        "2e5e8bbc775f5680ed5d02e3a22e2fc7219792ac",
+        "f4669eca31dbad8fea1a0eb91c419d02c5b42200"
       ],
       "repository": "https://github.com/wechuli/allcheckspassed",
       "marketplace": "https://github.com/marketplace/actions/allcheckspassed",
