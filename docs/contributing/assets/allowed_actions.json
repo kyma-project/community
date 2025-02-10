@@ -14,7 +14,7 @@
         "aaa42aa0628b4ae2578232a66b541047968fac86",
         "639cd343e1d3b897ff35927a75193d57cfcba299",
         "ec5d18412c0aeab7936cb16880d708ba2a64e1ae",
-        "697ae3d9654e3d30be27fc044dfa443589a45faa"
+        "2e788936b09dd82dc280e845628a40d2ba6b204c"
       ],
       "repository": "https://github.com/golangci/golangci-lint-action",
       "marketplace": "https://github.com/marketplace/actions/golangci-lint",
