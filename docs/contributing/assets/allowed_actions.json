@@ -187,7 +187,8 @@
         "d6babd6899969df1a11d14c368283ea4436bca78",
         "90a06d6ba9543371ab4df8eeca0be07ca6054959",
         "6b2903bdce6310cfbddd87c418f253cf29b2dec9",
-        "e9772d140489982e0e3704fea5ee93d536f1e275"
+        "e9772d140489982e0e3704fea5ee93d536f1e275",
+        "dcc7a0cba800f454d79fff4b993e8c3555bcc0a8"
       ],
       "repository": "https://github.com/tj-actions/changed-files",
       "marketplace": "https://github.com/marketplace/actions/changed-files",
