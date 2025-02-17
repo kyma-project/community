@@ -107,7 +107,8 @@
       "name": "slackapi/slack-github-action",
       "versions": [
         "e28cf165c92ffef168d23c5c9000cffc8a25e117",
-        "485a9d42d3a73031f12ec201c457e2162c45d02d"
+        "485a9d42d3a73031f12ec201c457e2162c45d02d",
+        "aef66158a0aa6f218e8762d953e4b92ab4a9286f"
       ],
       "repository": "https://github.com/slackapi/slack-github-action",
       "marketplace": "https://github.com/marketplace/actions/slack-send",
@@ -187,7 +188,8 @@
         "d6babd6899969df1a11d14c368283ea4436bca78",
         "90a06d6ba9543371ab4df8eeca0be07ca6054959",
         "6b2903bdce6310cfbddd87c418f253cf29b2dec9",
-        "e9772d140489982e0e3704fea5ee93d536f1e275"
+        "e9772d140489982e0e3704fea5ee93d536f1e275",
+        "251f07ed5250f0c01a1745b77a54289a678b3928"
       ],
       "repository": "https://github.com/tj-actions/changed-files",
       "marketplace": "https://github.com/marketplace/actions/changed-files",
