@@ -18,14 +18,14 @@ As document title, mention the symptom that needs fixing ("Cannot access...") or
 
 <!-- Briefly describe a possible cause for the condition. 
 
-For some conditions, there could be more than one cause-remedy pair. Typically, a cause is immediately followed by its remedy. Multiple cause-remedy pairs can provide a series of successive fall-backs for resolving a condition.
+For some conditions, there could be more than one cause-solution pair. Typically, a cause is immediately followed by its solution. Multiple cause-solution pairs can provide a series of successive fall-backs for resolving a condition.
 
-Cause and remedy might occur in combinations other than pairs. It is possible to have:
+Cause and solution might occur in combinations other than pairs. It is possible to have:
 
-- Multiple causes with the same remedy
-- A single cause with more than one remedy
-- A remedy with no known cause
-- A cause with no known remedy
+- Multiple causes with the same solution
+- A single cause with more than one solution
+- A solution with no known cause
+- A cause with no known solution
  -->
 
 ## Solution
@@ -33,7 +33,7 @@ Cause and remedy might occur in combinations other than pairs. It is possible to
 <!-- Provide a solution for the condition. 
 If the user needs to execute more than one step, use a numbered list.
 
-If there is more than one remedy for a cause, begin with the simplest one.
+If there is more than one solution for a cause, begin with the simplest one.
 -->
 
 1. 
