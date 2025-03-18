@@ -91,7 +91,7 @@
       "name": "gaurav-nelson/github-action-markdown-link-check",
       "versions": [
         "d53a906aa6b22b8979d33bc86170567e619495ec",
-        "1b916f2cf6c36510a6059943104e3c42ce6c16bc"
+        "1b916f2cf6c36510a6059943104e3c42ce6c16bc",
       ],
       "repository": "https://github.com/gaurav-nelson/github-action-markdown-link-check",
       "marketplace": "https://github.com/marketplace/actions/markdown-link-check",
@@ -214,7 +214,8 @@
       "name": "wechuli/allcheckspassed",
       "versions": [
         "2e5e8bbc775f5680ed5d02e3a22e2fc7219792ac",
-        "f4669eca31dbad8fea1a0eb91c419d02c5b42200"
+        "f4669eca31dbad8fea1a0eb91c419d02c5b42200",
+        "3c3c97b4f5dbe6c7652fc7c66bd1bed7886800d8"
       ],
       "repository": "https://github.com/wechuli/allcheckspassed",
       "marketplace": "https://github.com/marketplace/actions/allcheckspassed",
