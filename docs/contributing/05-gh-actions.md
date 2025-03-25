@@ -16,7 +16,7 @@
 
 ## Introduction
 
-GitHub Actions is a powerful tool for automating almost every task of the development cycle. The ecosystem of GitHub Actions is growing very fast, and one can find a prepared Action for many activities. But like all other usages of open source software, GitHub Actions must be handled carefully because an action runs external code on our code in our GitHub repositories. The following guidelines are intended to help you use GitHub Actions securely.
+GitHub Actions is a powerful tool for automating almost every task of the development cycle. The ecosystem of GitHub Actions is growing very fast, and you can find a prepared Action for many activities. However, like all other usages of open source software, GitHub Actions must be handled carefully because an action runs external code on our code in the `kyma-project` GitHub repositories. To use GitHub Actions securely, follow the guidelines.
 
 ## GitHub Actions Security Best Practices
 
@@ -26,7 +26,7 @@ The code of the action must be reviewed to identify suspicious parts of the code
 
 ### Set the Minimal Scope for Credentials
 
-By default only `read` permissions are granted to the `GITHUB_TOKEN`. The `GITHUB_TOKEN` is an automatically generated secret that lets you make authenticated calls to the GitHub API in your workflow runs. The permissions of the `GITHUB_TOKEN` have to be [limited to the least minimum the `GITHUB_TOKEN` needs in your workflow](<https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token>).
+By default, only the `read` permission is granted to the `GITHUB_TOKEN`. The `GITHUB_TOKEN` is an automatically generated secret that lets you make authenticated calls to the GitHub API in your workflow runs. The permissions of the `GITHUB_TOKEN` must be limited to the least minimum the `GITHUB_TOKEN` needs in your workflow. See [Modifying the permissions for the GITHUB_TOKEN](<https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token>).
 
 You must also ensure, that all secrets used during the workflow follow the so-called least minimum principle. This means that these credentials may only have the permissions they need to carry out their task.
 
@@ -51,7 +51,7 @@ You must also ensure, that all secrets used during the workflow follow the so-ca
   run: echo "$TITLE"
 ```
 
-### Regularly update the Github Actions
+### Regularly Update the GitHub Actions
 
 Use [Dependabot](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/keeping-your-actions-up-to-date-with-dependabot) or [Renovate](https://docs.renovatebot.com/) to regularly update the GitHub Actions in use.
 
