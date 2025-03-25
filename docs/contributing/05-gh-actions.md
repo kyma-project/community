@@ -1,58 +1,24 @@
 # GitHub Actions
 
-- [GitHub Actions](#github-actions)
-  - [Introduction](#introduction)
-  - [Restrictions](#restrictions)
-  - [Allowed GitHub Actions](#allowed-github-actions)
-  - [GitHub Actions Security Best Practices](#github-actions-security-best-practices)
-    - [Perform security review](#perform-security-review)
-    - [Set the minimal scope for credentials](#set-the-minimal-scope-for-credentials)
-    - [Do NOT use `pull_request_target` event](#do-not-use-pull_request_target-event)
-    - [Treat event context data as untrusted input](#treat-event-context-data-as-untrusted-input)
-    - [Use Dependabot](#use-dependabot)
-    - [Review changes on workflows](#review-changes-on-workflows)
-  - [Additional information](#additional-information)
+<!-- TOC tocDepth:2..3 chapterDepth:2..6 -->
+
+- [Introduction](#introduction)
+- [GitHub Actions Security Best Practices](#github-actions-security-best-practices)
+  - [Perform Security Review](#perform-security-review)
+  - [Set the Minimal Scope for Credentials](#set-the-minimal-scope-for-credentials)
+  - [Do NOT Use `pull_request_target` Event](#do-not-use-pull_request_target-event)
+  - [Treat Event Context Data as Untrusted Input](#treat-event-context-data-as-untrusted-input)
+  - [Regularly update the Github Actions](#regularly-update-the-github-actions)
+  - [Review Changes on Workflows](#review-changes-on-workflows)
+- [Additional Information](#additional-information)
+
+<!-- /TOC -->
 
 ## Introduction
 
-GitHub Actions is a powerful tool for automating almost every task of the development cycle. The ecosystem of GitHub Actions is growing very fast, and one can find a prepared Action for many activities. But like all other usages of open source software, GitHub Actions must be handled carefully because an action runs external code on our code in our GitHub repositories.
-
-## Restrictions
-<!-- markdown-link-check-disable-next-line -->
-The usage of external GitHub Actions is restricted centrally on the `github.com` organization level. Only Actions in the `kyma-project` organization or approved external Actions are allowed. Actions created by GitHub or [verified creators](https://github.com/marketplace?type=actions&verification=verified_creator) are also allowed.
-
-![GitHub Actions policy](./assets/gh-actions-policies.png)
-
-GitHub Actions, in particular the GITHUB_TOKEN, has `read` and `write` permissions on repositories but is not allowed to create and merge pull requests.
-
-![GitHub Actions permissions](./assets/gh-actions-permissions.png)
-
-## Allowed GitHub Actions
-
-To learn which GitHub Actions are allowed, check this [list](./assets/allowed_actions.json).
-
-To add a GitHub Action to the list of allowed Actions, you must [perform a security review](#perform-security-review) of the GitHub Action. After the review, you must create a pull request on the list of allowed GitHub Actions. Use the template of the JSON object below to add the relevant information to the `github_actions` array in the [allowed_actions.json](./assets/allowed_actions.json) file. The comment entry can be used to add information, which can be useful for others who want to use the same Action.
-
-```json
-{
-    "name": "full name including GitHub organization",
-    "versions": ["hash digest of the release"],
-    "repository": "full link to the repository",
-    "marketplace": "full link to the GitHub Marketplace entry",
-    "security_review_performed": true or false,
-    "3rd_party_tool": {
-        "tool" : "name",
-        "pinned_version" : "version tag / hash",
-        "repository" : "full link to the repository"},
-    "comment" : ""
-}
-```
-
-By adding the GitHub Action to the list and using the added Action, you give an implicit commitment to the best practices listed below.
+GitHub Actions is a powerful tool for automating almost every task of the development cycle. The ecosystem of GitHub Actions is growing very fast, and one can find a prepared Action for many activities. But like all other usages of open source software, GitHub Actions must be handled carefully because an action runs external code on our code in our GitHub repositories. The following guidelines are intended to help you use GitHub Actions securely.
 
 ## GitHub Actions Security Best Practices
-
-Even though the usage of GitHub Actions is restricted, some threats remain. The responsibility to target these threats is on the developer using GitHub Actions.
 
 ### Perform Security Review
 
@@ -60,7 +26,7 @@ The code of the action must be reviewed to identify suspicious parts of the code
 
 ### Set the Minimal Scope for Credentials
 
-By default `read` and `write` permissions are granted to the `GITHUB_TOKEN`. The `GITHUB_TOKEN` is an automatically generated secret that lets you make authenticated calls to the GitHub API in your workflow runs. You must [limit the permissions of the `GITHUB_TOKEN`](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token) to the least minimum the `GITHUB_TOKEN` needs in your workflow.
+By default only `read` permissions are granted to the `GITHUB_TOKEN`. The `GITHUB_TOKEN` is an automatically generated secret that lets you make authenticated calls to the GitHub API in your workflow runs. The permissions of the `GITHUB_TOKEN` have to be [limited to the least minimum the `GITHUB_TOKEN` needs in your workflow](<https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token>).
 
 You must also ensure, that all secrets used during the workflow follow the so-called least minimum principle. This means that these credentials may only have the permissions they need to carry out their task.
 
@@ -85,9 +51,9 @@ You must also ensure, that all secrets used during the workflow follow the so-ca
   run: echo "$TITLE"
 ```
 
-### Use Dependabot
+### Regularly update the Github Actions
 
-Use Dependabot to regularly update the GitHub Action as described on the help page [Keeping your actions up to date with Dependabot](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/keeping-your-actions-up-to-date-with-dependabot).
+Use [Dependabot](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/keeping-your-actions-up-to-date-with-dependabot) or [Renovate](https://docs.renovatebot.com/) to regularly update the GitHub Actions in use.
 
 ### Review Changes on Workflows
 
