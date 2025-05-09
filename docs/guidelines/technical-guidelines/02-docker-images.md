@@ -57,6 +57,17 @@ To copy the image to our registry, modify the `external-images.yaml` file in you
 For example, the source image `grafana/grafana:7.0.6` will be transformed to `eu.gcr.io/kyma-project/external/grafana/grafana:7.0.6"`.
 This URL can then be used in your Helm charts.
 
+## Image Builder Documentation
+
+For building Docker images within Kyma, refer to the [image-builder documentation](https://github.com/kyma-project/test-infra/blob/main/cmd/image-builder/README.md).
+Image Builder is designed to streamline the process of creating and publishing Docker images for Kyma components.
+
+### Dockerfile Recommendations
+
+The [Dockerfile recommendations](https://github.com/kyma-project/test-infra/blob/main/cmd/image-builder/README.md#L206)
+provide guidance on cross-compiling and caching strategies for non-native architecture builds, ensuring better performance and compatibility.
+When preparing Dockerfiles for Kyma projects, ensure that you incorporate these practices to optimize build processes.
+
 ## Examples
 
 Go from scratch:
