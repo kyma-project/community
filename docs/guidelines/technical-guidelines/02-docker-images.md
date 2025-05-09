@@ -60,7 +60,7 @@ This URL can then be used in your Helm charts.
 ## Image Builder Documentation
 
 For building Docker images within Kyma, refer to the [image-builder documentation](https://github.com/kyma-project/test-infra/blob/main/cmd/image-builder/README.md).
-The image builder is designed to streamline the process of creating and publishing Docker images for Kyma components.
+Image Builder is designed to streamline the process of creating and publishing Docker images for Kyma components.
 
 ### Dockerfile Recommendations
 
