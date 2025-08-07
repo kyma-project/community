@@ -29,18 +29,11 @@ Under the repository name, choose the **Settings** tab. The **Options** view ope
 
 ## Set Branch Protection Rules
 
-Define branch protection rules that include enforcing obligatory review and approval of pull requests (PRs), and define which Prow jobs need to pass successfully before merging PR changes into the `main` branch.
+Define branch protection rules that include enforcing obligatory review and approval of pull requests (PRs), and define which GitHub workflows need to pass successfully before merging PR changes into the `main` branch.
 
 To see these settings, go to **Branches** in the left menu, under repository **Settings**:
 
 ![Branch protection rules](./assets/branch-protection-rules.png)
-
-In Kyma, the protection rules are defined in the Prow [`config.yaml`](https://github.com/kyma-project/test-infra/blob/main/prow/config.yaml) file handled by a Prow component called [Branch Protector](https://github.com/kyma-project/test-infra/blob/main/docs/prow/prow-architecture.md#branch-protector).
-
-If you add a new repository in:
-
-- `kyma-project`, you do not need to add a new entry to the Prow `config.yaml` file as the branch protection is already defined for [all repositories](https://github.com/kyma-project/test-infra/blob/main/prow/config.yaml#L380) within this organization. The only exception is if you want to specify additional rules that are not handled by Prow.
-- `kyma-incubator`, add a new repository entry to the Prow `config.yaml` file, under **branch-protection.orgs.kyma-incubator.repos**.
 
 ## Update CLA Assistant Configuration
 
