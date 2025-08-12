@@ -17,6 +17,6 @@ To configure the {Component name} {sub-}chart, override the default values of it
 
 This table lists the {most common} configurable parameters, their descriptions, and default values:
 
-| Parameter | Description | Default value |
-|-----------|-------------|---------------|
-| **{parameter}** | {Parameter description} | `{parameter value}` |
+| Parameter | Type | Description | Default value |
+|-----------|-------------|---------------|-------------|
+| **{parameter}** | {Parameter type} | {Parameter description} | `{parameter value}` |
