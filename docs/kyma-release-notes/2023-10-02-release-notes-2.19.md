@@ -8,7 +8,7 @@ So, hold on to the rhythm of coding, believe in the power of what this new relea
 
 ## Observability
 
-> **Early warning:** The Monitoring component will be removed with Kyma 2.20, as announced in this [blog post](https://blogs.sap.com/2023/09/07/removal-of-prometheus-grafana-based-monitoring-in-sap-btp-kyma-runtime/).
+> **Early warning:** The Monitoring component will be removed with Kyma 2.20, as announced in this [blog post](https://community.sap.com/t5/technology-blog-posts-by-sap/removal-of-prometheus-grafana-based-monitoring-in-sap-btp-kyma-runtime/ba-p/13577401).
 
 Update of the software stack:
  - [kube-state-metrics 2.10.0](https://github.com/kyma-project/kyma/pull/18135)
