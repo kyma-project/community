@@ -138,7 +138,7 @@ See the following examples of Kubernetes resources:
 * Deployment
 * Function
 * Ingress
-* Node
+* Node (however, if you talk about nodes used as unit in billing, it's lower case!)
 * PodPreset
 * Pod
 * ProwJob
