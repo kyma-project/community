@@ -52,7 +52,7 @@ To publish a document located in a new module repository, follow the steps from 
      with:
        name: external-docs-btp-manager
        path: docs/external-content/btp-manager
-    ```
+   ```
 
 <!-- markdown-link-check-enable -->
 > **CAUTION:** When you update navigation paths in documentation, make sure you check all `_sidebar.ts` files that may be affected.
