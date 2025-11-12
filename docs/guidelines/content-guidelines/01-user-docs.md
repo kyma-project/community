@@ -44,14 +44,18 @@ To publish a document located in a new module repository, follow the steps from 
    },
    ```
 
-   If you want to add documentation for a new module, you must also add the module repository name do the `deploy.yml` file, under `jobs.copy-docs.strategy.matrix.repository`, and provide the following information under `build-and-deploy.steps`:
+   If you want to add documentation for a new module, you must also add the module repository name do the `deploy.yml` file, under `jobs.copy-docs.strategy.matrix.repository`. For example:
 
-   ```yml
-   - name: 📥 Download copied docs
-     uses: actions/download-artifact@v4
-     with:
-       name: external-docs-btp-manager
-       path: docs/external-content/btp-manager
+   ```yaml
+   jobs:
+     copy-docs:
+       strategy:
+         matrix:
+           repository:
+             - btp-manager
+             - istio
+             - serverless
+             - {YOUR_MODULE_REPO}
    ```
 
 <!-- markdown-link-check-enable -->
