@@ -21,7 +21,7 @@ To preview content on the Kyma website, save your changes and run the local serv
 ## Preview Module Documentation
 
 1. In your module repository, create a pull request with documentation changes.
-2. In the `/kyma` repository, go to the [`docs/index.html`](https://github.com/kyma-project/kyma/blob/main/docs/index.html) file and change the value of the **alias** parameter for your module. By default, the value points to the raw version of the `/docs` folder on the main branch of your module repository. Change the value to point to the raw version of the respective folder on your branch. Use the following pattern:
+2. In the `/kyma` repository, go to the `docs/index.html` file and change the value of the **alias** parameter for your module. By default, the value points to the raw version of the `/docs` folder on the main branch of your module repository. Change the value to point to the raw version of the respective folder on your branch. Use the following pattern:
 
   ```html
   alias: {
