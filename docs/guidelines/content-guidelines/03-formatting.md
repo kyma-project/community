@@ -85,7 +85,6 @@ Panels are colorful containers that call out important or additional information
 - The blue [!NOTE] panel to point to something specific, usually relating to the topic.
 - The orange [!WARNING] panel to call attention to something critical that can cause inoperable behavior.
 - The green [!TIP] panel to share helpful advice, such as a shortcut to save time.
-- The purple [!IMPORTANT] panel to mention something a user must be aware of.
 
 See an example:
 
