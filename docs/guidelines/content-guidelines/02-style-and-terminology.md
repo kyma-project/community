@@ -138,7 +138,7 @@ See the following examples of Kubernetes resources:
 * Deployment
 * Function
 * Ingress
-* Node (however, if you talk about nodes used as unit in billing, it's lower case!)
+* Node **only** if you refer to the Kubernetes resource. Otherwise (nodes as virtual machines, or as unit in billing) it's lower case!
 * PodPreset
 * Pod
 * ProwJob
