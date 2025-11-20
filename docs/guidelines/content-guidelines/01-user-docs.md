@@ -8,6 +8,7 @@ After initialization, to run, VitePress uses the following files in the `/kyma` 
 
 - `config.mjs` for configuration, including configuration of all sidebars 
 - `index.md` as the home page
+- `deploy.yml` to deploy documentation to the website
 - `.nojekyll` preventing GitHub Pages from ignoring files that begin with an underscore
 
 ## Publish a Document from the `/kyma` Repository
@@ -16,6 +17,8 @@ To publish a document located in the `/kyma` repository, follow these steps:
 
 1. Create a pull request adding your content to a Markdown file located in the `/docs` folder.
 2. Add a new `_sidebar.ts` file including a link to your document, or update an existing `_sidebar.ts` to include it.
+3. Run the [Deploy VitePress site to GitHub Pages](https://github.com/kyma-project/kyma/actions/workflows/deploy.yml) or wait for the CronJob to start it (every day at midnight).
+4. Make sure that the `public` folder is deleted after the build. If not, delete it manually to clean up the environment.
 
 ## Publish a Document from an Existing Module Repository
 
@@ -23,6 +26,8 @@ To publish a document located in an existing module repository, follow these ste
 
 1. Create a pull request adding your content to a Markdown file located in the `/docs/user` folder in your module repository.
 2. In the `docs/user` folder, add a new `_sidebar.ts` file including a link to your document, or update the existing `_sidebar.ts` to include it.
+3. Run the [Deploy VitePress site to GitHub Pages](https://github.com/kyma-project/kyma/actions/workflows/deploy.yml) or wait for the CronJob to start it (every day at midnight).
+4. Make sure that the `public` folder is deleted after the build. If not, delete it manually to clean up the environment.
 
 ## Publish a Document from a New Module Repository
 
@@ -57,9 +62,11 @@ To publish a document located in a new module repository, follow the steps from 
              - serverless
              - {YOUR_MODULE_REPO}
    ```
-
 <!-- markdown-link-check-enable -->
 > **CAUTION:** When you update navigation paths in documentation, make sure you check all `_sidebar.ts` files that may be affected.
+
+4. Run the [Deploy VitePress site to GitHub Pages](https://github.com/kyma-project/kyma/actions/workflows/deploy.yml) or wait for the CronJob to start it (every day at midnight).
+5. Make sure that the `public` folder is deleted after the build. If not, delete it manually to clean up the environment.
 
 ## Execute Prettier
 
