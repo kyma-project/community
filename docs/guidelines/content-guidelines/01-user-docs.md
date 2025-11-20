@@ -60,3 +60,11 @@ To publish a document located in a new module repository, follow the steps from 
 
 <!-- markdown-link-check-enable -->
 > **CAUTION:** When you update navigation paths in documentation, make sure you check all `_sidebar.ts` files that may be affected.
+
+## Execute Prettier
+
+Prettier will help to maintain proper formatting. The project is already configured to use this formatter automatically in case you are using Visual Studio Code (leveraging the VSCode Prettier plugin). Unfortunately, it's running prettier at commit time on git; if you are not using git integrated in VSCode to do commits, you will need to execute it manually by running:
+
+```bash
+npx prettier --config ./.prettierrc --ignore-path ./.prettierignore --write '**/*.{ts,tsx,mjs,js,jsx,json,html,css,yaml,md}'
+```
