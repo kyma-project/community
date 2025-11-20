@@ -80,7 +80,7 @@ Suppose that it is only the part containing the certificate information that is 
 >**NOTE** The following panels are not rendered correctly when indented. Use them only in the docs that are displayed on the website.
 For the docs not rendered on the website, use **NOTE**, **TIP**, and **CAUTION**.
 
-Panels are colorful containers that call out important or additional information within a topic. The Kyma documentation uses the VitePress customized alerts. To call attention to a specific note, a word of caution or a tip, use the  [!NOTE], [!TIP], [!WARNING], and [!IMPORTANT] panels. Use:
+Panels are colorful containers that call out important or additional information within a topic. The Kyma documentation uses the VitePress customized alerts. To call attention to a specific note, a word of caution or a tip, use the  [!NOTE], [!TIP], and [!WARNING]. Use:
 
 - The blue [!NOTE] panel to point to something specific, usually relating to the topic.
 - The orange [!WARNING] panel to call attention to something critical that can cause inoperable behavior.
