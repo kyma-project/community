@@ -63,7 +63,7 @@ To publish a document located in a new module repository, follow the steps from 
 
 ## Execute Prettier
 
-Prettier will help to maintain proper formatting. The project is already configured to use this formatter automatically in case you are using Visual Studio Code (leveraging the VSCode Prettier plugin). Unfortunately, it's running prettier at commit time on git; if you are not using git integrated in VSCode to do commits, you will need to execute it manually by running:
+Prettier helps maintain proper formatting. The project is already configured to use this formatter automatically, provided you are using Visual Studio Code (it leverages the VSCode Prettier plugin). Unfortunately, it runs prettier at commit time on Git; if you are not using Git integrated in VSCode for commits, you must execute it manually by running the following command:
 
 ```bash
 npx prettier --config ./.prettierrc --ignore-path ./.prettierignore --write '**/*.{ts,tsx,mjs,js,jsx,json,html,css,yaml,md}'
