@@ -4,11 +4,11 @@ Tabs and toggles allow you to render several versions of a given section in one 
 
 For example, you can use tabs and/or documentation toggle to include instructions for different operating systems (OS) in one guide, or to describe installation guides that differ only in a few steps.
 
-As described in the document, VitePress is configured to use a docsify-specific form of presenting content versions in Markdown. Toggles use HTML within a Markdown document.
+As described in the document, VitePress uses a docsify-specific form of presenting content versions in Markdown. Toggles use HTML within a Markdown document.
 
 ## Customized Tabs
 
-To display tabbed content from Markdown, kyma-project.io uses the VitePress customized tabs.
+To display tabbed content from Markdown, kyma-project.io uses the VitePress-customized tabs.
 
 You define a tab set using the `tabs:start` and `tabs:end` HTML comments. For detailed guidelines, see [docsify-tabs: Usage](https://jhildenbiddle.github.io/docsify-tabs/#/?id=usage).
 
