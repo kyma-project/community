@@ -74,8 +74,8 @@ To publish a document located in an existing module repository, follow these ste
 
 > **CAUTION:** When you update navigation paths in documentation, make sure you check all `_sidebar.ts` files that may be affected.
 
-1. Run the [Deploy VitePress site to GitHub Pages](https://github.com/kyma-project/kyma/actions/workflows/deploy.yml) or wait for the CronJob to start it (every day at midnight).
-2. Make sure that the `public` folder in the root of the `/kyma` repository is deleted after the build. If not, delete it manually to clean up the environment.
+7. Run the [Deploy VitePress site to GitHub Pages](https://github.com/kyma-project/kyma/actions/workflows/deploy.yml) or wait for the CronJob to start it (every day at midnight).
+8. Make sure that the `public` folder in the root of the `/kyma` repository is deleted after the build. If not, delete it manually to clean up the environment.
 
 ## Execute Prettier
 
