@@ -18,16 +18,16 @@ To publish a document located in the `/kyma` repository, follow these steps:
 1. Create a pull request adding your content to a Markdown file located in the `/docs` folder.
 2. Add a new `_sidebar.ts` file including a link to your document, or update an existing `_sidebar.ts` to include it.
 3. Run the [Deploy VitePress site to GitHub Pages](https://github.com/kyma-project/kyma/actions/workflows/deploy.yml) or wait for the CronJob to start it (every day at midnight).
-4. Make sure that the `public` folder is deleted after the build. If not, delete it manually to clean up the environment.
+4. Make sure that the `public` folder in the root of the `/kyma` repository is deleted after the build. If not, delete it manually to clean up the environment.
 
 ## Publish a Document from an Existing Module Repository
 
 To publish a document located in an existing module repository, follow these steps.
 
 1. Create a pull request adding your content to a Markdown file located in the `/docs/user` folder in your module repository.
-2. In the `docs/user` folder, add a new `_sidebar.ts` file including a link to your document, or update the existing `_sidebar.ts` to include it.
-3. Run the [Deploy VitePress site to GitHub Pages](https://github.com/kyma-project/kyma/actions/workflows/deploy.yml) or wait for the CronJob to start it (every day at midnight).
-4. Make sure that the `public` folder is deleted after the build. If not, delete it manually to clean up the environment.
+2. Update the `_sidebar.ts` file located in the `/docs/user` folder in the module repository, including a link to your document.
+3. In the `/kyma` repository, run the [Deploy VitePress site to GitHub Pages](https://github.com/kyma-project/kyma/actions/workflows/deploy.yml) or wait for the CronJob to start it (every day at midnight).
+4. Make sure that the `public` folder in the root of the `/kyma` repository is deleted after the build. If not, delete it manually to clean up the environment.
 
 ## Publish a Document from a New Module Repository
 
@@ -35,7 +35,7 @@ To publish a document located in a new module repository, follow the steps from 
 
 1. In the `/kyma` repository, open the<!-- markdown-link-check-disable-line --> [`/kyma/vitepress/config.mjs`](https://github.com/kyma-project/kyma/blob/main/.vitepress/config.mjs).
 2. Add `import {YOUR_MODULE_NAME}Sidebar from '../docs/external-content/{YOUR_MODULE_NAME}/docs/user/_sidebar';` as the next import line.
-3. Provide your module details in the `sidebar` section, under `themeConfig`. Use the following pattern:
+3. Provide your module details in the **sidebar** element, under **themeConfig**. Use the following pattern:
 <!-- markdown-link-check-disable -->
    ```mjs
    {
