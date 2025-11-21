@@ -1,43 +1,33 @@
 # Documentation Preview
 
-Before you publish new documentation on the Kyma website, you can preview your changes to see if the formatting of the text is correct, images fit well, and links work as expected.
+Before you publish new documentation on the Kyma website, you can preview your changes to see if the formatting of the text is correct, images fit well, and links work as expected. To use the preview, follow these steps:
 
-That is possible thanks to the [**docsify preview feature**](https://docsify.js.org/#/quickstart?id=preview-your-site) supported by [docsify](https://docsify.js.org/#/).
+1. Go to the [`kyma/hack`](https://github.com/kyma-project/kyma/tree/main/hack), and execute the `copy_external_content.sh` script:
+   
+   ```bash
+   ./copy_external_content.sh
+   ```
 
-## Prerequisites
+   This process copies the `docs/user` folder and `docs/assets` folder from the repositories specified in the `sh` file. Everything is copied to the `external-content` folder, and all existing files are overwritten.
 
-You have installed docsify-cli.
+> [!NOTE]
+> If you want to preview a new module that you added, you must add it to the `REPOS` section in `copy_external_content.sh`.
 
-To install docsify-cli, run `npm i docsify-cli -g`.
+2. You can run your preview in Development or Production-Like mode.
 
-## Steps
+   - To check if your documentation works locally, use Development mode by executing the following commands:
 
-To preview content on the Kyma website, save your changes and run the local server.
+      ```bash
+      npm install
+      npm run docs:dev
+      ```
 
-1. Run `docsify serve docs` in the `/kyma` repository.
-<!-- markdown-link-check-disable-next-line -->
-2. Preview `https://kyma-project.io` in your browser on `http://localhost:3000`.
+   - To check if the build is executed properly and the documentation is displayed correctly on the website, run Production-Like mode by executing the following commands:
 
-## Preview Module Documentation
+      ```bash
+      npm run docs:build
+      npm run docs:preview
+      ```
 
-1. In your module repository, create a pull request with documentation changes.
-2. In the `/kyma` repository, go to the `docs/index.html` file and change the value of the **alias** parameter for your module. By default, the value points to the raw version of the `/docs` folder on the main branch of your module repository. Change the value to point to the raw version of the respective folder on your branch. Use the following pattern:
-
-  ```html
-  alias: {
-  '/{MODULE_REPOSITORY_NAME}/(.*)': 'https://raw.githubusercontent.com/{YOUR_GITHUB_USERNAME}/{FORKED_MODULE_REPOSITORY_NAME}/{BRANCH_TO_PREVIEW}/docs/$1',
-  }, 
-  ```
-
-  For example:
-  
-  ```html
-  alias: {
-  '/istio/(.*)': 'https://raw.githubusercontent.com/kymauser/istio/docu-update/docs/$1',
-  },
-  ```
-
-3. Save your changes.
-4. Run `docsify serve docs`.
-<!-- markdown-link-check-disable-next-line -->
-5. Preview `https://kyma-project.io` in your browser on `http://localhost:3000`.
+> [!NOTE]
+> The `npm run docs:build` command copies all the unreferenced assets and non-graphical files (like scripts, documents, etc.) to the `docs/public` directory to include them in the `dist` folder of the project.
