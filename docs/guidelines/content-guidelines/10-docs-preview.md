@@ -17,17 +17,17 @@ Before you publish new documentation on the Kyma website, you can preview your c
 
    - To check if your documentation works locally, use Development mode by executing the following commands:
 
-   ```bash
-   npm install
-   npm run docs:dev
-   ```
+      ```bash
+      npm install
+      npm run docs:dev
+      ```
 
    - To check if the build is executed properly and the documentation is displayed correctly on the website, run Production-Like mode by executing the following commands:
 
-   ```bash
-   npm run docs:build
-   npm run docs:preview
-   ```
+      ```bash
+      npm run docs:build
+      npm run docs:preview
+      ```
 
 > [!NOTE]
 > The `npm run docs:build` command copies all the unreferenced assets and non-graphical files (like scripts, documents, etc.) to the `docs/public` directory to include them in the `dist` folder of the project.

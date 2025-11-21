@@ -46,31 +46,31 @@ To publish a document located in an existing module repository, follow these ste
 4. Add `import {YOUR_MODULE_NAME}Sidebar from '../docs/external-content/{YOUR_MODULE_NAME}/docs/user/_sidebar';` as the next import line.
 5. Provide your module details in the **sidebar** element, under **themeConfig**. Use the following pattern:
 <!-- markdown-link-check-disable -->
-   ```mjs
-   {
-      text: 'My Module',
-      link: '/external-content/my-module/docs/user/README.md',
-      collapsed: true,
-      items: makeSidebarAbsolutePath(
-        myModuleSidebar,
-        'my-module',
-      ),
-   },
-   ```
+      ```mjs
+      {
+         text: 'My Module',
+         link: '/external-content/my-module/docs/user/README.md',
+         collapsed: true,
+         items: makeSidebarAbsolutePath(
+           myModuleSidebar,
+           'my-module',
+         ),
+      },
+      ```
 
-6 . In the `/kyma` repository, add the module repository name to the [`deploy.yml`](https://github.com/kyma-project/kyma/blob/main/.github/workflows/deploy.yml) file under the **jobs.copy-docs.strategy.matrix.repository** element. For example:
+6. In the `/kyma` repository, add the module repository name to the [`deploy.yml`](https://github.com/kyma-project/kyma/blob/main/.github/workflows/deploy.yml) file under the **jobs.copy-docs.strategy.matrix.repository** element. For example:
 
-   ```yaml
-   jobs:
-     copy-docs:
-       strategy:
-         matrix:
-           repository:
-             - btp-manager
-             - istio
-             - serverless
-             - {YOUR_MODULE_REPO}
-   ```
+      ```yaml
+      jobs:
+        copy-docs:
+          strategy:
+            matrix:
+              repository:
+                - btp-manager
+                - istio
+                - serverless
+                - {YOUR_MODULE_REPO}
+      ```
 <!-- markdown-link-check-enable -->
 > **CAUTION:** When you update navigation paths in documentation, make sure you check all `_sidebar.ts` files that may be affected.
 
