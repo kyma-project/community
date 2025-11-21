@@ -131,7 +131,7 @@ This approach has a few downsides:
 
 ### <a name="init-container"></a>Init container
 
-https://medium.com/trendyol-tech/5-ways-of-managing-tls-certificates-for-your-kubernetes-admission-webhooks-b2ca971c065#5b7b
+https://medium.com/trendyol-tech/5-ways-of-managing-tls-certificates-for-your-kubernetes-admission-webhooks-b2ca971c065#5b7b <!-- markdown-link-check-disable-line -->
 
 Instead of implementing the logic in the webhook server code, it's packaged as a Docker image and run as an init container.
 
