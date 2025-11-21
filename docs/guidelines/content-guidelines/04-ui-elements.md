@@ -132,10 +132,8 @@ A placeholder is a tricky UI element. It tends to disappear when the user clicks
 Follow these resources for further reference:
 
 - [UI Text Guidelines for SAP Fiori Apps](https://experience.sap.com/internal/fiori-design-web/ui-text-guidelines-for-sap-fiori/)
-<!-- markdown-link-check-disable -->
-- [5 Rules for Choosing the Right Words on Button Labels](https://uxmovement.medium.com/5-rules-for-choosing-the-right-words-on-button-labels-dc3f74c2c2a3)
+- <!-- markdown-link-check-disable --> [5 Rules for Choosing the Right Words on Button Labels](https://uxmovement.medium.com/5-rules-for-choosing-the-right-words-on-button-labels-dc3f74c2c2a3)
 - [Tooltip Guidelines](https://www.nngroup.com/articles/tooltip-guidelines/)
 - [Placeholders in Form Fields Are Harmful](https://www.nngroup.com/articles/form-design-placeholders/)
-- [Alternatives to Placeholder Text](https://coyleandrew.medium.com/alternatives-to-placeholder-text-13f430abc56f)
-<!-- markdown-link-check-enable -->
+- [Alternatives to Placeholder Text](https://coyleandrew.medium.com/alternatives-to-placeholder-text-13f430abc56f) <!-- markdown-link-check-enable -->
 - [How to Write and Design User-Friendly Error Messages](https://xd.adobe.com/ideas/process/information-architecture/error-message-design-ux/)
