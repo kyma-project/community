@@ -39,11 +39,12 @@ To publish a document located in an existing module repository, follow these ste
 
 ## Publish a Document from a New Module Repository
 
-To publish a document located in a new module repository, follow the steps from [Publish a document from an existing module](#publish-a-document-from-an-existing-module-repository). Once completed, do the following:
+1. Create a pull request adding your content to a Markdown file(s) located in the `/docs/user` folder in your module repository.
+2. Add a `_sidebar.ts` file in the `/docs/user` folder in the module repository, and create a navigation structure for your module documentation. See the following example of the SAP BTP Operator module [`_sidebar.ts`](https://github.com/kyma-project/btp-manager/blob/main/docs/user/_sidebar.ts). 
 
-1. In the `/kyma` repository, open the<!-- markdown-link-check-disable-line --> [`/kyma/vitepress/config.mjs`](https://github.com/kyma-project/kyma/blob/main/.vitepress/config.mjs).
-2. Add `import {YOUR_MODULE_NAME}Sidebar from '../docs/external-content/{YOUR_MODULE_NAME}/docs/user/_sidebar';` as the next import line.
-3. Provide your module details in the **sidebar** element, under **themeConfig**. Use the following pattern:
+3. In the `/kyma` repository, open the<!-- markdown-link-check-disable-line --> [`/kyma/vitepress/config.mjs`](https://github.com/kyma-project/kyma/blob/main/.vitepress/config.mjs).
+4. Add `import {YOUR_MODULE_NAME}Sidebar from '../docs/external-content/{YOUR_MODULE_NAME}/docs/user/_sidebar';` as the next import line.
+5. Provide your module details in the **sidebar** element, under **themeConfig**. Use the following pattern:
 <!-- markdown-link-check-disable -->
    ```mjs
    {
@@ -57,7 +58,7 @@ To publish a document located in a new module repository, follow the steps from 
    },
    ```
 
-   4. In the `/kyma` repository, add the module repository name to the [`deploy.yml`](https://github.com/kyma-project/kyma/blob/main/.github/workflows/deploy.yml) file under the **jobs.copy-docs.strategy.matrix.repository** element. For example:
+6 . In the `/kyma` repository, add the module repository name to the [`deploy.yml`](https://github.com/kyma-project/kyma/blob/main/.github/workflows/deploy.yml) file under the **jobs.copy-docs.strategy.matrix.repository** element. For example:
 
    ```yaml
    jobs:
@@ -73,8 +74,8 @@ To publish a document located in a new module repository, follow the steps from 
 <!-- markdown-link-check-enable -->
 > **CAUTION:** When you update navigation paths in documentation, make sure you check all `_sidebar.ts` files that may be affected.
 
-5. Run the [Deploy VitePress site to GitHub Pages](https://github.com/kyma-project/kyma/actions/workflows/deploy.yml) or wait for the CronJob to start it (every day at midnight).
-6. Make sure that the `public` folder in the root of the `/kyma` repository is deleted after the build. If not, delete it manually to clean up the environment.
+7. Run the [Deploy VitePress site to GitHub Pages](https://github.com/kyma-project/kyma/actions/workflows/deploy.yml) or wait for the CronJob to start it (every day at midnight).
+8. Make sure that the `public` folder in the root of the `/kyma` repository is deleted after the build. If not, delete it manually to clean up the environment.
 
 ## Execute Prettier
 

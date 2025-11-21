@@ -1,16 +1,17 @@
 # Documentation Preview
 
-Before you publish new documentation on the Kyma website, you can preview your changes to see if the formatting of the text is correct, images fit well, and links work as expected. To do that, see the following steps:
+Before you publish new documentation on the Kyma website, you can preview your changes to see if the formatting of the text is correct, images fit well, and links work as expected. To use the preview, follow these steps:
 
 1. Go to the [`kyma/hack`](https://github.com/kyma-project/kyma/tree/main/hack), and execute the `copy_external_content.sh` script:
    
    ```bash
    ./copy_external_content.sh
    ```
+
    This process copies the `docs/user` folder and `docs/assets` folder from the repositories specified in the `sh` file. Everything is copied to the `external-content` folder, and all existing files are overwritten.
 
-   > [!NOTE]
-   > If you want to preview a new module that you added, you must add it to the `REPOS` section in `copy_external_content.sh`.
+> [!NOTE]
+> If you want to preview a new module that you added, you must add it to the `REPOS` section in `copy_external_content.sh`.
 
 2. You can run your preview in Development or Production-Like mode.
 
