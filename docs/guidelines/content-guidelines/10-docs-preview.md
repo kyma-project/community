@@ -9,6 +9,9 @@ Before you publish new documentation on the Kyma website, you can preview your c
    ```
    This process copies the `docs/user` folder and `docs/assets` folder from the repositories specified in the `sh` file. Everything is copied to the `external-content` folder, and all existing files are overwritten.
 
+   > [!NOTE]
+   > If you want to preview a new module that you added, you must add it to the `REPOS` section in `copy_external_content.sh`.
+
 2. You can run your preview in Development or Production-Like mode.
 
    - To check if your documentation works locally, use Development mode by executing the following commands:

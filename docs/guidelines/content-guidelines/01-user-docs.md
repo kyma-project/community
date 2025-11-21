@@ -16,7 +16,15 @@ After initialization, to run, VitePress uses the following files in the `/kyma` 
 To publish a document located in the `/kyma` repository, follow these steps:
 
 1. Create a pull request adding your content to a Markdown file located in the `/docs` folder.
-2. Add a new `_sidebar.ts` file including a link to your document, or update an existing `_sidebar.ts` to include it.
+2. Go to [`/kyma/.vitepress/config.mjs`](https://github.com/kyma-project/kyma/blob/main/.vitepress/config.mjs#L138) and provide your document details in the **sidebar** element, under **themeConfig**. Use the following pattern:
+
+   ```bash
+    {
+       text: 'Troubleshooting',
+       link: '/04-operation-guides/troubleshooting/README',
+    },
+    ```
+
 3. Run the [Deploy VitePress site to GitHub Pages](https://github.com/kyma-project/kyma/actions/workflows/deploy.yml) or wait for the CronJob to start it (every day at midnight).
 4. Make sure that the `public` folder in the root of the `/kyma` repository is deleted after the build. If not, delete it manually to clean up the environment.
 
@@ -49,7 +57,7 @@ To publish a document located in a new module repository, follow the steps from 
    },
    ```
 
-   If you want to add documentation for a new module, you must also add the module repository name do the `deploy.yml` file, under `jobs.copy-docs.strategy.matrix.repository`. For example:
+   4. In the `/kyma` repository, add the module repository name to the [`deploy.yml`](https://github.com/kyma-project/kyma/blob/main/.github/workflows/deploy.yml) file under the **jobs.copy-docs.strategy.matrix.repository** element. For example:
 
    ```yaml
    jobs:
@@ -65,12 +73,12 @@ To publish a document located in a new module repository, follow the steps from 
 <!-- markdown-link-check-enable -->
 > **CAUTION:** When you update navigation paths in documentation, make sure you check all `_sidebar.ts` files that may be affected.
 
-4. Run the [Deploy VitePress site to GitHub Pages](https://github.com/kyma-project/kyma/actions/workflows/deploy.yml) or wait for the CronJob to start it (every day at midnight).
-5. Make sure that the `public` folder is deleted after the build. If not, delete it manually to clean up the environment.
+5. Run the [Deploy VitePress site to GitHub Pages](https://github.com/kyma-project/kyma/actions/workflows/deploy.yml) or wait for the CronJob to start it (every day at midnight).
+6. Make sure that the `public` folder in the root of the `/kyma` repository is deleted after the build. If not, delete it manually to clean up the environment.
 
 ## Execute Prettier
 
-Prettier helps maintain proper formatting. The project is already configured to use this formatter automatically, provided you are using Visual Studio Code (it leverages the VSCode Prettier plugin). Unfortunately, it runs prettier at commit time on Git; if you are not using Git integrated in VSCode for commits, you must execute it manually by running the following command:
+Prettier helps keep your code nicely formatted. The project is set up to use it automatically, as long as you're using Visual Studio Code with the Prettier plugin. However, it's configured to run during Git commits. So, if you're not using the integrated Git in VSCode for commits, you'll need to run it manually with this command:
 
 ```bash
 npx prettier --config ./.prettierrc --ignore-path ./.prettierignore --write '**/*.{ts,tsx,mjs,js,jsx,json,html,css,yaml,md}'
