@@ -1,7 +1,8 @@
 # Streams
+<!-- markdown-link-check-disable -->
 In Unix systems, we have 2 output streams: `stderr` and `stdout`. According to [GNU libc documentation](https://www.gnu.org/software/libc/manual/2.36/html_node/Standard-Streams.html)
-and [Posix](https://pubs.opengroup.org/onlinepubs/9699919799/functions/stderr.html), the purpose of those streams is as follows: <!-- markdown-link-check-disable-line -->
-
+and [Posix](https://pubs.opengroup.org/onlinepubs/9699919799/functions/stderr.html), the purpose of those streams is as follows:
+<!-- markdown-link-check-enable -->
 - `stdout` is the one to which conventional output should be printed (for example, something that can be processed by other tools using piping).
 - `stderr` is the one to which diagnostic output should be printed.
 
