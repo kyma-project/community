@@ -46,7 +46,7 @@ To publish a document located in an existing module repository, follow these ste
 4. Add `import {YOUR_MODULE_NAME}Sidebar from '../docs/external-content/{YOUR_MODULE_NAME}/docs/user/_sidebar';` as the next import line.
 5. Provide your module details in the **sidebar** element, under **themeConfig**. Use the following pattern:
 <!-- markdown-link-check-disable -->
-      ```mjs
+      ```bash
       {
          text: 'My Module',
          link: '/external-content/my-module/docs/user/README.md',
