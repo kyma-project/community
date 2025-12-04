@@ -15,14 +15,14 @@ Before you publish new documentation on the Kyma website, you can preview your c
 
 2. You can run your preview in Development or Production-Like mode.
 
-   - To check if your documentation works locally, use Development mode by executing the following commands:
+   - To check if your documentation works locally, use Development mode by executing the following commands from the root folder:
 
       ```bash
       npm install
       npm run docs:dev
       ```
 
-   - To check if the build is executed properly and the documentation is displayed correctly on the website, run Production-Like mode by executing the following commands:
+   - To check if the build is executed properly and the documentation is displayed correctly on the website, run Production-Like mode by executing the following commands from the root folder:
 
       ```bash
       npm run docs:build
