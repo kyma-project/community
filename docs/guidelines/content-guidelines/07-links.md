@@ -22,8 +22,8 @@ Within a relative link, it's possible to link to the heading of a document. To d
 
 ## Links to the Assets Folder
 
-To add a reference to a YAML, JSON, SVG, PNG, or JPG file located in the `assets` folder in the same topic, use GitHub relative links. For example, write `[Here](./assets/mf-namespaced.yaml) you can find a sample micro frontend entity.` When you click such a link on the `kyma-project.io` website, it opens the file content in the same tab.
+To add a reference to a YAML, JSON, SVG, PNG, or JPG file located in the `assets` folder in the same topic, use GitHub relative links. For example, write `See the [sample micro frontend entity](./assets/mf-namespaced.yaml) for reference.` When you click such a link on the `kyma-project.io` website, it opens the file content in the same tab.
 
 ## Links in Documentation Toggles
 
-To link to a document in a documentation toggle, the toggle must start with the `<div tabs name="{toggle-name}">` tag and end with the `</div>` tag, where **name** is a distinctive ID used for linking. For more information, read a separate [Tabs and toggles](./05-tabs-toggles.md) document.
+To link to a document in a documentation toggle, the toggle must start with the `<div tabs name="{toggle-name}">` tag and end with the `</div>` tag, where **name** is a distinctive ID used for linking. For more information, see [Tabs and toggles](./05-tabs-toggles.md).

@@ -8,9 +8,7 @@ Go to the **Guidelines** section to read about rules and tips for providing [con
 
 ## Documentation Types
 
-Read about [template types](../guidelines/templates/templates-type.md) used in specific Kyma repositories. The templates themselves are collected in the [`templates/resources`](https://github.com/kyma-project/community/tree/main/templates/resources) subfolder in the `community` repository.
-
-Extend the list whenever you define a new template for other document types. Make sure to update one of the tables in the [**Document types templates**](../guidelines/templates/templates-type.md) document after you add new templates to the `templates/resources` subfolder.
+Read about [template types](../guidelines/content-guidelines/01-docu-templates.md) used in specific Kyma repositories. The templates themselves are collected in the [`templates/resources`](TBD).
 
 ## Developer Certificate of Origin (DCO)
 

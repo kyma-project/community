@@ -10,7 +10,23 @@ As described in the document, VitePress uses a docsify-specific form of presenti
 
 To display tabbed content from Markdown, kyma-project.io uses the VitePress-customized tabs.
 
-You define a tab set using the `tabs:start` and `tabs:end` HTML comments. For detailed guidelines, see [docsify-tabs: Usage](https://jhildenbiddle.github.io/docsify-tabs/#/?id=usage).
+```html
+<!-- tabs:start -->
+
+#### **Kyma Dashboard**
+
+...
+
+#### **Kyma CLI**
+
+...
+
+#### **kubectl**
+
+...
+
+<!-- tabs:end -->
+```
 
 > **CAUTION:** The use of HTML comments prevents tab-related markup from being displayed when Markdown is rendered as HTML outside of `http://kyma-project.io`, for example, in GitHub. As a result, in GitHub, the content displays in sections under headers defined in the tab set.
 
@@ -63,9 +79,9 @@ Follow these rules when inserting toggles in documents:
 
     > **NOTE:** The label does not have to be the same as the summary. If the label is a combination of two or more words, separate them with the dash (`-`). For example, write `<summary label="install-on-gke">`.
 
-  See the example:
+    See the example:
 
-  ```html
+    ```html
     <div tabs name="prerequisites" group="cluster-installation">
       <details>
       <summary label="gke">

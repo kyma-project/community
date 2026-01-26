@@ -2,61 +2,9 @@
 
 ## Purpose and Audience
 
-This content strategy focuses on the publicly available documentation for the open-source [Kyma project](https://kyma-project.io). The source of the documentation displayed on the website is stored in [GitHub](https://github.com/kyma-project/kyma) and [Kyma modules](https://kyma-project.io/#/06-modules/README)' repositories. The content is written in [Markdown](https://daringfireball.net/projects/markdown/).
+This content strategy focuses on the publicly available documentation for the open-source [Kyma project](https://kyma-project.io). The source of the documentation displayed on the website is stored in [GitHub](https://github.com/kyma-project/kyma) and the content is written in [Markdown](https://daringfireball.net/projects/markdown/).
 
 The assumed readers of this guide and contributors to the documentation have some basic knowledge of technical writing.
-
-## Information Types
-
-We follow a topic-based documentation approach, with one file per topic. Every documentation file has a clearly defined purpose, which is reflected in the title. The content must be able to stand on its own, but you link to other documents as needed.
-
-Here are the content types that we use in Kyma documentation:
-
-### Concept Topics
-
-Concept topics answer "what-is" questions and provide essential background information that users must know.
-You'll find most concept topics in the Overview section, but they can be useful elsewhere too.
-
-Use nominal style for the title, for example, "Security" or "Security Concept".
-
-For all concept topics, use the [concept topic template](https://github.com/kyma-project/community/blob/main/templates/resources/concept.md).
-
-### Task Topics
-
-Task topics provide "how-to" instructions that enable users to accomplish a task. Each task topic should tell how to perform a single, specific procedure.
-
-Select a title that describes the task that's accomplished, not the documented software feature. For example, use "Define resource consumption", not "Select a profile". Use the imperative "Select...", rather than the gerund form "Selecting..." or "How to select...".
-
-With regards to structure, it’s nice to have an **introductory paragraph** ("why would I want to do this task?"), **prerequisites** if needed, then the **steps** in a numbered list, and finally the expected **result** that shows the operation was successful.
-It's good practice to have 5-9 steps; anything longer can probably be split.
-
-For all step instructions, use the [task template](../../../templates/resources/task.md).
-
-### Reference Topics
-
-Reference topics are typically organized into one or more sections containing a list or table with data that is usually looked up rather than memorized.
-
-Reference topics provide quick access to fact-based information. In technical information, reference topics are used to list product specifications and parameters, provide essential data, and provide detailed information on subjects such as the commands in a programming language.
-
-Use nominal style for the title, for example, "Configuration Parameters".
-
-Use the templates for [architecture documents](https://github.com/kyma-project/community/blob/main/templates/resources/architecture.md), [configuration parameter charts](https://github.com/kyma-project/community/blob/main/templates/resources/configuration.md), and [custom resources](https://github.com/kyma-project/community/blob/main/templates/resources/custom-resource.md).
-
-### Troubleshooting Topics
-
-Troubleshooting topics provide a condition that the reader may want to correct, followed by one or more descriptions of its cause and suggested remedies.
-
-In the title, mention the symptom that needs fixing ("Cannot access...") or the error message. To quote an error message, start and end with `'` to escape `"` (because quotation marks `"` themselves do not display correctly on the website), for example, `title: '"FAILED" status for created ServiceInstances'`. Do not use the cause as the title ("Incompatible version"), because we also want to help users who have no idea about the cause and only know something's not working as expected.
-
-It's good practice to use three standard headlines (like “Condition”, “Cause”, "Solution"), each might have just one sentence or more as needed. For solution, use a numbered list if there are multiple steps to follow, and a bullet list or sub-headlines if there are several equally valid solutions.
-
-For all troubleshooting topics, use the [troubleshooting topic template](https://github.com/kyma-project/community/blob/main/templates/resources/troubleshooting.md).
-
-### Release Notes
-
-Release notes announce what's new in Kyma or in a Kyma module. Module teams generate their release notes automatically in GitHub. See [Automatically generated release notes](https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes).
-
-For guidelines on how to add release notes content, see the [release notes template](../../guidelines/content-guidelines/07-release-notes.md).
 
 ## Target Groups
 
@@ -91,7 +39,7 @@ Contains a quick overview of the idea behind Kyma, presents Kyma's strengths, an
 
 ### Quick Install
 
-**Target Group**: Software Developers who quickly want to see what they can do with Kyma.
+**Target Group**: Software Developers who quickly want to install Kyma modules on k3d.
 
 Contains a guide that covers typical steps you need to perform to get started.
 
@@ -103,6 +51,27 @@ Contains a guide that covers typical steps you need to perform to get started.
 - Admins/Operators who make sure their Kyma modules are configured as needed.
 
 Under this tab, there are subtabs dedicated to all Kyma modules. Content of the subtabs is pulled from the `docs/user` folders in module repositories. Module documentation covers: general module description, feature scope, "how-to" instructions that enable users to accomplish a task, installation and configuration instructions, backup info, security documentation, troubleshooting guides, and detailed information, such as architecture diagrams, or configuration charts.
+
+### Community Modules
+
+**Target Group**:
+- Software Developers who want to extend Kyma's capabilities by installing modules developed by the Kyma community.
+- Contributors who develop and maintain community-driven modules.
+- Operators who manage community module deployments in production environments.
+
+Contains comprehensive documentation on community-contributed modules, including:
+- Step-by-step installation guides for community modules
+- Update and upgrade procedures for existing community modules
+- Dedicated subtabs for each available community module with detailed usage instructions, API references, and examples
+
+### User Interfaces
+
+**Target Group**:
+- Software Developers who want to learn more about interfaces provided by Kyma.
+
+Contains comprehensive documentation on Kyma's user interfaces, including:
+- **Kyma Dashboard**: Web-based graphical interface for managing Kyma clusters, including cluster overview, module management, resource visualization, and configuration options
+- **Kyma CLI**: Command-line interface documentation covering installation, available commands, configuration options, and automation scripts
 
 ### Operation Guides
 

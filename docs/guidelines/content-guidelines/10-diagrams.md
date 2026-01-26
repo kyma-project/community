@@ -1,9 +1,11 @@
 # Diagrams
 
-Same as with the screenshots, diagrams are worth a thousand words. Therefore, rather than pile up a block of text to describe a given concept, use a diagram to visualize it instead.
+Diagrams can effectively visualize complex concepts, workflows, and system architectures that are difficult to explain through text alone. However, use them purposefully, not as decorative elements.
+
+## Best Practices
 
 To convey the intended message effectively in a diagram, follow these basic principles:
-
+- Don't simply drop a diagram into the text without context. The purpose of the diagram and what it depicts must be clear from the surrounding content.
 - Everything that means the same should look the same.
 - Limit visual noise.
 - Keep it simple but descriptive.
@@ -13,18 +15,27 @@ For details on how to format diagrams and their elements in Kyma documents, see 
 
 ## Alternative Text
 
-Always add an alternative (alt) text that concisely describes the content or function of the diagram you are referring to. The alt text:
+Always add alternative (alt) text that helps users understand the diagram's purpose and content. The alt text:
 
-- Helps to maintain accessibility for every visitor, including people with vision impairments.
-- Appears in place of a diagram if it fails to load.
-- Improves the SEO of the website by enabling crawlers to index the diagram contents better.
+- Helps maintain accessibility for all visitors, including people with vision impairments who use screen readers
+- Indicates that the element is a diagram, not broken text or a loading error
+- Appears in place of a diagram if it fails to load
+- Improves SEO by enabling crawlers to index the diagram contents better
 
-    ⛔️ `![](./assets/create-bucket.svg)`  
-    ✅ `![Create a bucket](./assets/create-bucket.svg)`  
+**How to write effective alt text:**
+
+If you've explained the diagram thoroughly in the body text, keep the alt text brief. You can write something like:
+- `![Diagram explained in the accompanying text](./assets/authentication-flow.svg)`
+- `![Authentication flow between client and server](./assets/authentication-flow.svg)`
+
+If specific details are important but would be awkward to include in body text, add them to the alt text for screen reader users.
+
+    ⛔️ `![](./assets/create-bucket.svg)` (no alt text)  
+    ✅ `![Create a bucket workflow](./assets/create-bucket.svg)` (descriptive alt text)  
 
 ## Tool
 
-Use [diagrams.net](https://www.diagrams.net/index.html) as a recommended tool. Export the diagram as an SVG and save it under the corresponding `assets` directory.
+Use [drawio](https://www.drawio.com/) as a recommended tool. Export the diagram as an SVG and save it under the corresponding `assets` directory.
 
 ## Size
 

@@ -1,6 +1,4 @@
----
-title: Get Started
----
+# Get Started
 
 Welcome to the Kyma community page!
 

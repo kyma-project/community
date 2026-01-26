@@ -1,13 +1,21 @@
 # Screenshots
 
-As someone once said, a picture is worth a thousand words. Therefore, whenever you need to illustrate operations performed on the UI, use a screenshot to convey the information visually.
+Screenshots can effectively illustrate UI operations and convey information visually. However, they are costly to maintain and have significant limitations. Use them only when they provide clear value that text alone cannot deliver.
 
-Follow these basic principles when you place screenshots in your content:
+Before adding a screenshot, consider the following drawbacks:
+- Screenshots become outdated quickly when the UI changes, requiring frequent updates.
+- Screenshots do not meet accessibility criteria and do not work with screen readers.
+- Screenshots cannot be translated into other languages, which is problematic as Kyma documentation is also available on Help Portal that supports multiple languages.
 
-- Do not overuse screenshots and limit visual noise.
+## Best Practices
+
+If you decide a screenshot adds value to your documentation, follow these principles:
+
+- Use screenshots to complement the text, not to replace instructions.
+- Avoid overusing screenshots to limit visual noise.
 - Do not use directional indicators such as "above" and "below" to refer to screenshots. Instead, include a brief introduction before each screenshot that describes its purpose and any necessary details.
-- Do not include the mouse pointer in your screenshots, unless it shows a function related to the content.
-- Do not include unnecessary elements, such as the browser toolbar. Include only elements that are relevant for the given content.
+- Do not include the mouse pointer unless it shows a function related to the content.
+- Include only relevant elements. Exclude unnecessary items such as the browser toolbar.
 
 For details on how to format screenshots and their elements in Kyma documents, see the particular document sections.
 
@@ -24,7 +32,7 @@ Always add an alternative (alt) text that concisely describes the content or fun
 
 ## Tool
 
-Adjust or capture your screenshots using any tool that outputs high quality images, such as [Snagit](https://www.techsmith.com/screen-capture.html), [Lightshot](https://app.prntscr.com), or [Monosnap](https://monosnap.com/). The desired image format is SVG, but PNG and JPG formats are also acceptable.
+Adjust or capture your screenshots using any tool that outputs high quality images, such as [draw.io](https://www.drawio.com/), [Snagit](https://www.techsmith.com/screen-capture.html), [Lightshot](https://app.prntscr.com), or [Monosnap](https://monosnap.com/). The desired image format is SVG, but PNG and JPG formats are also acceptable.
 Use an online tool such as [TinyPNG](https://tinypng.com/) to compress images and limit the size of each image to 1MB, or smaller.
 If you want to control the size of the image relative to the screen size, use one of these standard percentages: 100%, 75%, 50%, or 25%.
 
@@ -49,7 +57,7 @@ To highlight a certain area of your screenshot, use **red** (HEX: #EF2727) 10pt 
 
 ## Simplified User Interfaces (SUI)
 
-Wherever possible, present screenshots as simplified user interfaces ([SUI](https://www.techsmith.com/blog/simplified-user-interface/)). Basically, this means blurring or covering all UI elements that aren't essential for the task at hand. [Snagit](https://www.techsmith.com/screen-capture.html) supports SUI with some specialized tools.
+Wherever possible, present screenshots as simplified user interfaces ([SUI](https://www.techsmith.com/blog/simplified-user-interface/)). Basically, this means blurring or covering all UI elements that aren't essential for the task at hand. Most image editors provide basic shapes that you can use to create these simplified interfaces.
 
 Use circles to cover icons, and rectangles with pointed corners to cover texts.
 

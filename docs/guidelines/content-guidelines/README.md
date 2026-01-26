@@ -2,9 +2,9 @@
 
 These guidelines provide rules and tips to all who contribute content to the Kyma repositories.
 
-[Content Strategy](00-content-strategy.md): Understand our target audience and document templates.
+[Content Strategy](00-content-strategy.md): Understand our target audience and documentation structure.
 
-[User Documentation](01-user-docs.md): Publish documentation on kyma-project.io.
+[Documentation Templates](01-docu-templates.md): Choose standardized templates for writing documentation topics.
 
 [Style and Terminology](02-style-and-terminology.md): Use active voice and present tense. Look up correct capitalization and vocabulary.
 
@@ -22,4 +22,6 @@ These guidelines provide rules and tips to all who contribute content to the Kym
 
 [Diagrams](09-diagrams.md): Learn about the diagram style we use in Kyma.
 
-[Documentation Preview](10-docs-preview.md): Before publishing on kyma-project.io, check how your docs will look like.
+[Preview Documentation](10-docs-preview.md): Before publishing on kyma-project.io, check how your docs will look like.
+
+[Publish Documentation](01-user-docs.md): Publish documentation on kyma-project.io.
