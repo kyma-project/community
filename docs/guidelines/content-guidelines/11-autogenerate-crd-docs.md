@@ -1,4 +1,4 @@
-# Autogenerate CRD Documentation
+# Templated documentation
 
 Autogenerate CRD documentation directly from code rather than maintaining it manually. This approach reduces maintenance effort and ensures documentation stays in sync with code changes.
 
@@ -10,40 +10,8 @@ The table generator is the solution developed by the Kyma team. It allows you to
 
 For example, see [Telemetry](https://github.com/kyma-project/telemetry-manager/blob/main/docs/user/resources/01-telemetry.md?plain=1).
 
-### Generate Documentation Tables
-
-Each table consists of three columns:
-
-- **Parameter** - with the paramater name
-- **Type** - with the parameter type
-- **Description** - with the parameter description
-
-Generate the table automatically from the CRD specification file using the following steps:
-
-1. Prepare the parameters' descriptions in the CR's specification file. For example, for the APIRule CR, prepare the description in [`apirules.gateway.crd.yaml`](https://github.com/kyma-project/kyma/blob/main/installation/resources/crds/api-gateway/apirules.gateway.crd.yaml).
-
-2. Add the following mappings to [this Makefile](https://github.com/kyma-project/kyma/blob/main/hack/table-gen/Makefile):
-
-- `--crd-filename` - full or relative path to the `.yaml` file with the CRD
-- `--md-filename` - full or relative path to the `.md` file in which you want to generate the table
-
-   See the existing examples for further details.
-
-3. Set up the table generator in the `.md` file in which you want to generate the table. Add the `TABLE-START` and `TABLE-END` tags in the exact place in the document where you want to generate the table.
-
-```
-   <!-- TABLE-START -->
-
-   <!-- TABLE-END -->
-```
-
-4. In the terminal, go to the [`hack/table-gen`](https://github.com/kyma-project/kyma/tree/main/hack/table-gen) directory and run the following command:
-
-   ```bash
-   make generate
-   ```
-
-For more details on the table generator, read the [`table-gen` documentation](https://github.com/kyma-project/kyma/blob/main/hack/table-gen/README.md) in the `kyma` repository.
+### Generate Documentation Tables 
+For instructions on how to set up the tool and use it, see [The Table Generator](https://github.com/kyma-project/kyma/blob/main/hack/table-gen/README.md).
 
 ## CRD Reference Documentation Generator
 
@@ -51,7 +19,98 @@ Some Kyma teams use the [crd-ref-docs](https://github.com/elastic/crd-ref-docs/t
 
 For example usage, see [Istio](https://github.com/kyma-project/istio/blob/main/docs/user/04-00-istio-custom-resource.md).
 
+To update the CRD documentation, run `make generate-crd-docs`. The tool generates documentation based on Go struct field comments in the API types located in the `apis` folder.
 
 ### Generate Documentation Tables
 
+1. Copy the `crd-ref-docs` folder from [istio/crd-ref-docs/](https://github.com/kyma-project/istio/tree/main/crd-ref-docs) to your module repository.
 
+2. Add the following commands to the module's Makefile. 
+    - `{FILE_PATH}` is the absolute path to the file in which the CRD documentation should be generated, for example, `docs/user/04-00-istio-custom-resource.md`.
+    - `{OUTPUT_PATH}` is the absolute path to the API go file from which CRD documentation should be generated, for example, `apis/v2alpha1` or `apis/gateway/v2`.
+
+    ```
+    ########## Docs generation ###########
+    bin/crd-ref-docs:
+        mkdir -p bin
+        wget "https://github.com/elastic/crd-ref-docs/releases/download/v0.2.0/crd-ref-docs_0.2.0_${OS_TYPE}_${OS_ARCH}.tar.gz" -O bin/crd-ref-docs.tar.gz 
+        mkdir -p bin/crd-ref-docs-x
+        tar -xzf bin/crd-ref-docs.tar.gz -C bin/crd-ref-docs-x
+        rm bin/crd-ref-docs.tar.gz
+        mv bin/crd-ref-docs-x/crd-ref-docs bin/crd-ref-docs
+        rm -r bin/crd-ref-docs-x
+
+    CRD_REF_DOCS_FLAGS = --max-depth=15 --renderer=markdown --config=crd-ref-docs/config.yaml --templates-dir=crd-ref-docs/templates
+
+    .PHONY: generate-crd-docs
+    generate-crd-docs: bin/crd-ref-docs
+        ./bin/crd-ref-docs $(CRD_REF_DOCS_FLAGS) --output-path={OUTPUT_PATH} --source-path={SOURCE_PATH}
+        sed -i'' -e 's/Optional: \\{\\}/Optional/g' {OUTPUT_PATH}
+        sed -i'' -e 's/Required: \\{\\}/Required/g' {OUTPUT_PATH}
+        sed -i'' -e 's/XIntOrString: \\{\\}/XIntOrString/g' {OUTPUT_PATH}
+        rm {OUTPUT_PATH}-e
+    ```
+
+    To generate documentation from multiple CRDs located in different directories, repeat the generate-crd-docs section for each resource and add different source and output paths. See the [API Gateway Makefile](https://github.com/kyma-project/api-gateway/blob/main/Makefile#L278) for reference.
+
+3. Open the `crd-ref-docs/templates/gv_list.tpl`, which contains overall structure of the custom resource document, including introductory text and sample custom resource. Adjust the text for your resource.
+
+    To generate documentation from multiple CRDs located in different directories, use the following template insted. It contains an additional "else if" tag that you can repeat for each additional CRD. Remember to replace resource kinds. See the [API Gateway gv_list.tpl](https://github.com/kyma-project/api-gateway/blob/main/crd-ref-docs/templates/gv_list.tpl) for reference.
+
+    ```yaml
+    {{- define "gvList" -}}
+    {{- $groupVersions := . -}}
+
+    {{- range $groupVersions }}
+    {{- if has "APIGateway" .Kinds }}
+
+    # APIGateway Custom Resource
+    ...
+
+    ## Sample Custom Resource
+    ...
+
+    ## Custom Resource Parameters
+    ...
+
+    ### APIVersions
+    {{- range $groupVersions }}
+    - {{ .GroupVersionString }}
+    {{- end -}}
+
+    {{ range $groupVersions }}
+    {{ template "gvDetails" . }}
+    {{ end }}
+
+    //Copy the following section for each additional CRD in your module
+
+    {{- else if has "RateLimit" .Kinds }}
+
+    # RateLimit Custom Resource
+    ...
+
+    ## Sample Custom Resource
+    ...
+
+    ## Custom Resource Parameters
+    ...
+
+    ### APIVersions
+    {{- range $groupVersions }}
+    - {{ .GroupVersionString }}
+    {{- end -}}
+
+    {{ range $groupVersions }}
+    {{ template "gvDetails" . }}
+    {{ end }}
+    
+    // End of repeatable section - add more {{- else if has "YourKind" .Kinds }} blocks as needed
+
+    {{- end -}}
+    {{- end -}}
+    {{- end -}}
+    ```
+
+4. Add a workflow that checks if the autogenerated CRD file is up to date. For reference, see [check_manifests_generate.sh](https://github.com/kyma-project/api-gateway/blob/main/hack/check_manifests_generate.sh).
+
+4. Run `make generate-crd-docs`.
