@@ -1,4 +1,4 @@
-# Templated documentation
+# Autogenerate CRD Documentation
 
 Autogenerate CRD documentation directly from code rather than maintaining it manually. This approach reduces maintenance effort and ensures documentation stays in sync with code changes.
 
