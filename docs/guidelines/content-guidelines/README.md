@@ -4,24 +4,28 @@ These guidelines provide rules and tips to all who contribute content to the Kym
 
 [Content Strategy](00-content-strategy.md): Understand our target audience and documentation structure.
 
-[Documentation Templates](01-docu-templates.md): Choose standardized templates for writing documentation topics.
+[User Documentation](01-user-docs.md): Define the structure of user documentation and publish it on kyma-project.io.
 
-[Style and Terminology](02-style-and-terminology.md): Use active voice and present tense. Look up correct capitalization and vocabulary.
+[Documentation Templates](02-docu-templates.md): Use standardized templates for concept topics, task topics, custom resources, troubleshooting guides, and release notes.
 
 [Formatting](03-formatting.md): Learn about code font and bold font, how to create "Note" boxes, and correct headings.
 
-[UI Elements](04-ui-elements.md): Create concise buttons, tooltips, and (error) messages.
+[Style and Terminology](04-style-and-terminology.md): Use active voice and present tense. Look up correct capitalization and vocabulary.
 
-[Tabs and Toggles](05-tabs-toggles.md): Create tabs or expandable sections, for example, for code blocks.
+[UI Elements](05-ui-elements.md): Create concise buttons, tooltips, and (error) messages.
 
-[Links](06-links.md): Create meaningful links.
+[Tabs and Toggles](06-tabs-toggles.md): Create tabs or expandable sections, for example, for code blocks.
 
-[Release Notes](07-release-notes.md): <!-- pretty outdated! --> Write release notes for (pre-modular) Kyma.
+[Links](07-links.md): Create meaningful links.
 
-[Screenshots](08-screenshots.md): Create useful screenshots.
+[Release Notes](08-release-notes.md): Write release notes for (pre-modular) Kyma.
 
-[Diagrams](09-diagrams.md): Learn about the diagram style we use in Kyma.
+[Screenshots](09-screenshots.md): Create useful screenshots.
 
-[Preview Documentation](10-docs-preview.md): Before publishing on kyma-project.io, check how your docs will look like.
+[Diagrams](10-diagrams.md): Learn about the diagram style we use in Kyma.
 
-[Publish Documentation](01-user-docs.md): Publish documentation on kyma-project.io.
+[Autogenerate CRD Documentation](11-autogenerate-crd-docs.md): Use tools to automatically generate custom resource documentation from code.
+
+[Templated Documentation](12-templated-documentation.md): Generate documentation from JSON schemas using templates.
+
+[Preview Documentation](13-docs-preview.md): Before publishing on kyma-project.io, check how your docs will look like.
