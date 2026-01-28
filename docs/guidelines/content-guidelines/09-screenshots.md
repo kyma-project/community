@@ -2,7 +2,7 @@
 
 Screenshots can effectively illustrate UI operations and convey information visually. However, they are costly to maintain and have significant limitations. Use them only when they provide clear value that text alone cannot deliver.
 
-Before adding a screenshot, consider the following drawbacks:
+Before adding a screenshot, consider the following aspects:
 - Screenshots become outdated quickly when the UI changes, requiring frequent updates.
 - Screenshots do not meet accessibility criteria and do not work with screen readers.
 - Screenshots cannot be translated into other languages, which is problematic as Kyma documentation is also available on Help Portal that supports multiple languages.
