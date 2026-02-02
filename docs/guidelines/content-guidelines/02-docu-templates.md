@@ -13,7 +13,7 @@ Concept topics do not give instructions or include reference information in tabl
 
 Use nominal style for the title, for example, "Security" or "Security Concept".
 
-For all concept topics, use the [concept topic template](https://github.com/kyma-project/community/blob/main/templates/resources/concept.md).
+See the [concept topic template](https://github.com/kyma-project/template-repository/tree/main/user/assets/templates/concept.md).
 
 ### Task Topics
 
@@ -24,7 +24,7 @@ Select a title that describes the task that's accomplished, not the documented s
 With regards to structure, it’s nice to have an **introductory paragraph** ("why would I want to do this task?"), **prerequisites** if needed, then the **steps** in a numbered list, and finally the expected **result** that shows the operation was successful.
 It's good practice to have 5-9 steps; anything longer can probably be split.
 
-For all step instructions, use the [task template](../../../templates/resources/task.md).
+See the [task template](https://github.com/kyma-project/template-repository/tree/main/docs/user/assets/templates/task.md).
 
 ### Custom Resource Topics
 
@@ -38,7 +38,7 @@ Reference topics are typically organized into one or more sections containing a 
 
 You can adjust this tamplate and use it to list other product specifications and parameters, provide essential data, and provide detailed information on subjects such as the commands in a programming language.
 
-For all step instructions, use the [custom resource template](../../../templates/resources/task.md).
+See the [custom resource template](https://github.com/kyma-project/template-repository/tree/main/docs/user/assets/templates/custom-resource.md).
 
 ### Troubleshooting Topics
 
@@ -48,7 +48,7 @@ In the document's title, mention the symptom that needs fixing ("Cannot access..
 
 It's good practice to use three standard headlines (like “Condition”, “Cause”, "Solution"), each might have just one sentence or more as needed. For solution, use a numbered list if there are multiple steps to follow, and a bullet list or sub-headlines if there are several equally valid solutions.
 
-For all troubleshooting topics, use the [troubleshooting topic template](https://github.com/kyma-project/community/blob/main/templates/resources/troubleshooting.md).
+For all troubleshooting topics, use the [troubleshooting topic template](https://github.com/kyma-project/template-repository/tree/main/docs/user/assets/templates/troubleshooting.md).
 
 ### Release Notes
 
