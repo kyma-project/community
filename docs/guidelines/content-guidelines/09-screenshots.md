@@ -15,7 +15,7 @@ If you decide a screenshot adds value to your documentation, follow these princi
 - Avoid overusing screenshots to limit visual noise.
 - Do not use directional indicators such as "above" and "below" to refer to screenshots. Instead, include a brief introduction before each screenshot that describes its purpose and any necessary details.
 - Do not include the mouse pointer unless it shows a function related to the content.
-- Include only relevant elements. Exclude unnecessary items such as the browser toolbar.
+- Include only relevant elements. Exclude unnecessary items such as the browser toolbar. See [Simplified User Interfaces (SUI)](#simplified-user-interfaces-sui).
 
 For details on how to format screenshots and their elements in Kyma documents, see the particular document sections.
 
