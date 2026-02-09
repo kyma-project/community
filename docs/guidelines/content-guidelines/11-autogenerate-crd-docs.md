@@ -1,6 +1,6 @@
 # Autogenerate CRD Documentation
 
-Autogenerate CRD documentation directly from code rather than maintaining it manually. This approach reduces maintenance effort and ensures documentation stays in sync with code changes.
+Autogenerate CRD documentation directly from code rather than maintain it manually. This approach reduces maintenance effort and ensures documentation stays in sync with code changes.
 
 While you can choose any generator that suits your needs, prioritize solutions already tested and used across Kyma teams. Regardless of the tool you select, ensure the generated documentation adheres to the [Custom Resource Topic template](./01-docu-templates.md#custom-resource-topics) to maintain consistency across Kyma documentation.
 
