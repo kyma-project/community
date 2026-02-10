@@ -12,7 +12,7 @@ Before you start contributing, read our [Code of Conduct](./contributing/01-code
 
 ## Guidelines
 
-Follow the guidelines for writing [content](./guidelines/content-guidelines) and [code](./guidelines/technical-guidelines). See how to create a [new repository](./guidelines/repository-guidelines) or a [new release](./guidelines/releases-guidelines), and use the [templates](./guidelines/templates/templates-type.md) for various document types.
+Follow the guidelines for writing [content](./guidelines/content-guidelines) and [code](./guidelines/technical-guidelines). See how to create a [new repository](./guidelines/repository-guidelines) and use the [templates](./guidelines/content-guidelines/02-docu-templates.md) for various document types.
 
 ## Issues
 

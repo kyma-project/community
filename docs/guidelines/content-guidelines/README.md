@@ -26,6 +26,4 @@ These guidelines provide rules and tips to all who contribute content to the Kym
 
 [Autogenerate CRD Documentation](11-autogenerate-crd-docs.md): Use tools to automatically generate custom resource documentation from code.
 
-[Templated Documentation](12-templated-documentation.md): Generate documentation from JSON schemas using templates.
-
-[Preview Documentation](13-docs-preview.md): Before publishing on kyma-project.io, check how your docs will look like.
+[Preview Documentation](./12-docs-preview.md): Before publishing on kyma-project.io, check how your docs will look like.

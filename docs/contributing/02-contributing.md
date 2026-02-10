@@ -4,11 +4,11 @@ As a Kyma contributor, you must follow certain guidelines and rules.
 
 ## Guidelines
 
-Go to the **Guidelines** section to read about rules and tips for providing [content](../guidelines/content-guidelines) and [code](../guidelines/technical-guidelines) to the Kyma repositories. Also, learn how to create a new [repository](../guidelines/repository-guidelines), and how the [release process](../guidelines/releases-guidelines) looks in Kyma. Make your life easier using various document types [templates](https://github.com/kyma-project/community/tree/main/templates) prepared for those who would like to contribute.
+Go to the **Guidelines** section to read about rules and tips for providing [content](../guidelines/content-guidelines) and [code](../guidelines/technical-guidelines) to the Kyma repositories. Also, learn how to create a new [repository](../guidelines/repository-guidelines) and make your life easier using various [document templates](https://github.com/kyma-project/community/tree/main/templates) prepared for those who would contribute.
 
 ## Documentation Types
 
-Read about [template types](../guidelines/content-guidelines/01-docu-templates.md) used in specific Kyma repositories. The templates themselves are collected in the [`templates/resources`](TBD).
+Read about [template types](../guidelines/content-guidelines/02-docu-templates.md) used in specific Kyma repositories. The templates themselves are collected in the [`template-repository`](https://github.com/kyma-project/template-repository/tree/main/docs/user/assets/templates).
 
 ## Developer Certificate of Origin (DCO)
 
