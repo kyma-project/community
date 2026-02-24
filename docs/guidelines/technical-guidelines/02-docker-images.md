@@ -48,9 +48,7 @@ See the repository content for more information.
 
 ### Image Syncer
 
-If you want to "cache" an image from an external registry, use the [image-syncer
-](https://github.com/kyma-project/test-infra/tree/main/cmd/image-syncer)
-tool.
+If you want to "cache" an image from an external registry, use the image-syncer tool.
 
 To copy the image to our registry, modify the `external-images.yaml` file in your repository.
 
