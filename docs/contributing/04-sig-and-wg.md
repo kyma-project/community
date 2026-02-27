@@ -40,9 +40,9 @@ The proposal revision process is as follows:
 Once the SIG or the WG receives an approval for the group creation, the authors of the proposal arrange the appropriate communication channels. The process is as follows:
 
 * Create a new folder in this directory following the `[sig|wg]-{shortname}` naming pattern.
-* Use the [template](https://github.com/kyma-project/community/blob/main/templates/resources/sig-wg-readme-template.md) to create a given group's main `README.md` document.
+* Use the [template](../../sigs-and-wgs/sig-wg-readme-template.md) to create a given group's main `README.md` document.
 * Add a new [label](https://github.com/kyma-project/community/labels) that follows the `[sig|wg]-{shortname}` naming pattern.
-* Use the [template](https://github.com/kyma-project/community/blob/main/templates/resources/sig-wg-meeting-notes-template.md) to create a `meeting-notes.md` document in a given group's folder.
+* Use the [template](../../sigs-and-wgs/sig-wg-meeting-notes-template.md) to create a `meeting-notes.md` document in a given group's folder.
 * Create a Slack channel that follows the `[sig|wg]-{shortname}` naming pattern.
 * Create a new team in the GitHub organization that follows the `[sig|wg]-{shortname}` naming pattern. Add all SIG participants as members of this team.
 
