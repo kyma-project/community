@@ -1,10 +1,10 @@
-## Documentation Templates
+# Documentation Templates
 
 We follow a topic-based documentation approach, with one file per topic. Every documentation file has a clearly defined purpose, which is reflected in the title. The content must be able to stand on its own, but you link to other documents as needed.
 
 Here are the content types that we use in Kyma documentation:
 
-### Concept Topics
+## Concept Topics
 
 Concept topics answer "what-is" questions and provide essential background information that users must know.
 Conceptual information might explain the nature and components of a product and describe how it fits within a product category. Conceptual information helps readers map their knowledge and understanding to the tasks they need to perform and provides other essential information about a product, process, or system.
@@ -15,7 +15,7 @@ Use nominal style for the title, for example, "Security" or "Security Concept".
 
 See the [concept topic template](https://github.com/kyma-project/template-repository/blob/main/docs/user/assets/templates/concept.md?plain=1).
 
-### Task Topics
+## Task Topics
 
 Task topics provide "how-to" instructions that enable users to accomplish a task. Each task topic should tell how to perform a single, specific procedure.
 
@@ -26,7 +26,7 @@ It's good practice to have 5-9 steps; anything longer can probably be split.
 
 See the [task template](https://github.com/kyma-project/template-repository/blob/main/docs/user/assets/templates/task.md?plain=1).
 
-### Custom Resource Topics
+## Custom Resource Topics
 
 Use this template for a custom resource (CR) document that provides a sample custom resource and describes its fields. Additionally, the document points to the CustomResourceDefinition (CRD) used to create CRs of the given kind.
 
@@ -40,7 +40,7 @@ You can adjust this tamplate and use it to list other product specifications and
 
 See the [custom resource template](https://github.com/kyma-project/template-repository/blob/main/docs/user/assets/templates/custom-resource.md?plain=1).
 
-### Troubleshooting Topics
+## Troubleshooting Topics
 
 Troubleshooting topics provide a condition that the reader may want to correct, followed by one or more descriptions of its cause and suggested remedies.
 
@@ -50,7 +50,7 @@ It's good practice to use three standard headlines (like “Condition”, “Cau
 
 For all troubleshooting topics, use the [troubleshooting topic template](https://github.com/kyma-project/template-repository/blob/main/docs/user/assets/templates/troubleshooting.md?plain=1).
 
-### Release Notes
+## Release Notes
 
 Release notes announce what's new in Kyma or in a Kyma module. Module teams generate their release notes automatically in GitHub. See [Automatically generated release notes](https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes).
 
