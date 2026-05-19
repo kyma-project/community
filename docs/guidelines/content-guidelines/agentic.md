@@ -8,7 +8,7 @@ Review documentation in sequential passes. Each pass focuses on one concern — 
 
 ### Capitalization
 
-**Title case** for: document titles, topic titles, section headings, table captions, column headings, product names, software object titles, UI element labels/titles.
+**Title case** for: document titles, topic titles, section headings, table captions, column titles, product names, software object titles, UI element labels/titles.
 
 Title case rules:
 - Always capitalize: first and last word, nouns, gerunds, verbs (including "be" forms), participles, adjectives, adverbs (including "than", "not"), determiners/pronouns ("This", "That", "All", "Any", "Which", "You"), prepositions of 5+ letters ("About", "Between", "Through"), all subordinating conjunctions ("Because", "If", "When"), prepositions used as adverbs in verb phrases ("In" in "Signing In", "Up" in "Setting Up").
@@ -23,6 +23,7 @@ Title case rules:
 
 - **Procedural topics**: gerund formulation in title case. Example: "Setting Up Authorizations".
 - **Conceptual topics**: nominal formulation in title case. Example: "Authorization Concept".
+- A heading with exactly one sub-heading creates unnecessary hierarchy. If there is no other sub-heading, fold the content into the parent section.
 - Do not use "How to..." formulations — they are redundant.
 - Avoid abbreviations in headings; use full forms.
 - No additional formatting (bold, italic) in headings. No ending periods.
@@ -32,7 +33,7 @@ Title case rules:
 
 ### Lists
 
-- Introduce every list with a complete sentence ending in a colon.
+- If the purpose is not obvious from context, introduce lists with a complete sentence ending in a colon. Omit the intro sentence when it would merely restate the heading or state the obvious.
 - Ordered lists for sequential steps; unordered for non-sequential items.
 - All items must use parallel grammatical structure.
 - Capitalize the first word of every item.
@@ -48,7 +49,7 @@ Title case rules:
 
 ### Tables
 
-- Introduce every table with a complete sentence ending in a colon.
+- If the purpose is not obvious from context, introduce tables with a complete sentence ending in a colon. Omit the intro sentence when it would merely restate the heading or state the obvious.
 - Maximum 5 columns. Always include a header row with meaningful titles.
 - Use proportional column widths.
 - Parallel grammatical structure within each column.
@@ -196,7 +197,7 @@ Always capitalize "Kubernetes". Never use "k8s".
 
 **Concept topics**: answer "what-is" questions, provide background. Must not contain instructions or reference tables/lists. Link to related task or reference topics.
 
-**Troubleshooting topics**: title is the symptom or error message, not the cause. Three sections: **Condition**, **Cause**, **Solution**. Numbered list for multi-step solutions; bullet list or sub-headings for alternatives.
+**Troubleshooting topics**: title is the symptom or error message, not the cause. Three sections: **Symptom**, **Cause**, **Solution**. Numbered list for multi-step solutions; bullet list or sub-headings for alternatives.
 
 **Custom resource topics**: CamelCase resource name as title. Use `{RESOURCE_NAME}.md` filename convention.
 
@@ -256,13 +257,20 @@ Always capitalize "Kubernetes". Never use "k8s".
 
 ### Voice and Mood
 
-**Active voice** at least 80% of the time. Address the user with "you" or use imperatives. Name the agent in active-voice sentences involving third parties ("the system", "the vendor").
+**Prefer active voice**. Flag passive constructions for review - the author decides exceptions.
 
-Passive voice acceptable when:
+Passive voice may be acceptable when:
 - The agent is unknown, unimportant, or omitted for politeness.
 - Context makes the agent clear and passive improves flow.
 
+Address the reader with "you" or use imperatives. In active-voice sentences involving third parties ("the system", "the vendor"), name the agent.
+
 **Imperative mood** for mandatory instructions ("Save your changes."). Do not use imperatives for advisory/recommendation content — see Recommendation Language below.
+
+**Flag every instance of "should"** and resolve the ambiguity explicitly with the appropriate substitution:
+- Mandatory action → must
+- Optional action → can
+- Advice/recommendation → use an approved recommendation pattern (see [Recommendation Language](#recommendation-language))
 
 ### Recommendation Language
 
@@ -292,6 +300,7 @@ The imperative mood rule and the "should → must/can" terminology rule do not a
 
 ### Positive and Concise Formulations
 
+- Flag sequences of three or more nouns used as a compound modifier. Split with prepositions or restructure. Example: "user authentication token validation" → "validation of user authentication tokens".
 - Rephrase double negatives into positive statements.
 - Use positive formulations in error messages: tell users what to do, not what is invalid.
 - Eliminate wordy formulations: "perform an upgrade" → "upgrade", "be able to" → "can".
