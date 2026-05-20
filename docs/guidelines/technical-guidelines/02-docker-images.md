@@ -57,12 +57,12 @@ This URL can then be used in your Helm charts.
 
 ## Image Builder Documentation
 
-For building Docker images within Kyma, refer to the [image-builder documentation](https://github.com/kyma-project/test-infra/tree/main/cmd/image-builder).
+For building Docker images within Kyma, refer to the [image-builder documentation](https://pages.github.tools.sap/kyma/documentation/kyma-internal/how-to-guides/090-build-oci-images-with-image-builder.html).
 Image Builder is designed to streamline the process of creating and publishing Docker images for Kyma components.
 
 ### Dockerfile Recommendations
 
-The [Dockerfile recommendations](https://github.com/kyma-project/test-infra/blob/main/cmd/image-builder/README.md#L206)
+The [Dockerfile recommendations](https://pages.github.tools.sap/kyma/documentation/kyma-internal/how-to-guides/090-build-oci-images-with-image-builder.html#key-recommendations)
 provide guidance on cross-compiling and caching strategies for non-native architecture builds, ensuring better performance and compatibility.
 When preparing Dockerfiles for Kyma projects, ensure that you incorporate these practices to optimize build processes.
 
