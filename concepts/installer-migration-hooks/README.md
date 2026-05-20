@@ -27,7 +27,7 @@ To achieve a valid solution for the PoC we need to come up with a design for the
 
 - This mechanism supports jobs for two different use cases: The __component-based__ jobs and the __global/component-independent__ jobs
   - __Component-based__:
-    - Check whether the component is installed on the cluster or must be newly installed; and only trigger if it must be installed.
+    - Check whether the component is installed in the cluster or must be newly installed; and only trigger if it must be installed.
     - It should be possible to trigger jobs before and after a deployment of a component.
   - __Global / Component-independent__:
     - Always trigger the job when installing or upgrading Kyma.
@@ -58,7 +58,7 @@ Active:
 - Go-Build-Tags cannot be used for this use case.
 - Add `deprecation` function to job-interface, which returns at which Kyma version the job should be deprecated. Before the job is executed, the deprecation function is called to check whether it is already deprecated. If deprecated, an Error should be thrown to block the CI.
 
-<img src="./migration-logic-diagram.png?raw=true">
+![Migration Logic](./migration-logic-diagram.png)
 
 ## Draft for Golang Implementation
 
@@ -233,7 +233,7 @@ hydroform
 - To have a consistent output, we will use the Unified Logging library. The logs should be sent back to the caller (aka CLI).
 
 ## Results after implementing Draft-PoC
-The pre-described PoC was implemented on [this branch](https://github.com/JeremyHarisch/hydroform/tree/jobManager), and tested using [this](https://github.com/kyma-project/kyma/pull/11132) as an [example pre-job](https://github.com/JeremyHarisch/hydroform/blob/jobManager/parallel-install/pkg/jobmanager/sampleJob.go) for the `logging` component.
+The pre-described PoC was implemented on [this branch](https://github.com/JeremyHarisch/hydroform/tree/jobManager), and tested using [this](https://github.com/kyma-project/kyma/pull/11132) as an example pre-job for the `logging` component.
 In the draft implementation, the Unified Logging Library was not used, but can be used in the final implementation.
 
 In general, it works in the way we want to, but with some tradeoffs. The mechanism was tested using a local k3d cluster, as well as on an Azure cluster provisioned by Gardener.

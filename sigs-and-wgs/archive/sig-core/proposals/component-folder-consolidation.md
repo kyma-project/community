@@ -1,7 +1,7 @@
 # Component folder consolidation
 
 ## Introduction
-The [`components`](https://github.com/kyma-project/kyma/tree/main/components) folder of the `kyma-project` contains all Kyma components which are not related to the Kyma Console. A Kyma component is a project based on source code or scripts, always resulting in docker images which are then referenced in Kyma modules/charts.
+The `components` folder in the module repositories contains all Kyma components which are not related to Kyma dashboard. A Kyma component is a project based on source code or scripts, always resulting in Docker images which are then referenced in Kyma modules/charts.
 Each subfolder in the `components` directory defines one component.
 
 ## Problem

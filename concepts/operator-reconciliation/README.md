@@ -35,7 +35,7 @@ From the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/extend-k
 We want to make use of this design pattern to optimize and enhance our current Reconciliation control loop. The core characterics are:
 
 - The new architecture should encompass one or many Operator(s) which can reconcile a Gardener Shoot Cluster from empty to working Kyma on their own without external influence
-- The architecture uses versioned configurations (ConfigMaps) to manage component custom resources, which should trigger component reconciliations on the cluster
+- The architecture uses versioned configurations (ConfigMaps) to manage component custom resources, which should trigger component reconciliations in the cluster
 - The architecture uses CRs to report State of the Reconciliation of a Cluster that can be externally viewed via Kubernetes API (e.g. through kubectl or a central provisioning component in the control plane)
 - The reconciliation infrastructure can be simply installed through provisioning of CRDs, component configurations and operators, maybe through its own Helm Chart
 - The reconciliation does not need explicit State Management outside of CRs managed by the Operator like we have currently with the Mothership
@@ -145,7 +145,7 @@ For testing, we define mainly 3 different pipelines:
 ![channel_based_versioning.png](assets/channel_based_versioning.png)
 
 
-In the end the component-operator will implicitly deploy and upgrade the components deployed on the cluster by checking the channel and using the compatibility matrix to resolve which chart version to deploy.
+In the end the component-operator will implicitly deploy and upgrade the components deployed in the cluster by checking the channel and using the compatibility matrix to resolve which chart version to deploy.
 
 One of the most important features will also be the inclusion of rollout labels. This will allow SREs and DevOps to deploy and maintain multiple operator versions at the same time in one cluster. A Component CR can then be tagged (similar to istio installations) for a canary or production rollout, allowing a smooth phased rollout in one cluster for operator and chart versions.
 

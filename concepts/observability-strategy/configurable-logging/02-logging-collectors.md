@@ -57,7 +57,7 @@ The `otel-collector` is the way to go because of the following reasons:
 - It's fully vendor-neutral. 
 - It's written in a resource-efficient and scalable way.
 The `otel-collector` covers all requirements and on top, it brings consistency.
-However, only in the trace dimension it is already classified as mature enough (see also recent [Jaeger announcement](https://www.jaegertracing.io/docs/1.21/opentelemetry/)). In the metrics and log dimension, it might be good to still stay on some alternative solution, being prepared to switch to `otel-collector` when it's mature.
+However, only in the trace dimension it is already classified as mature enough (see also recent [Jaeger announcement](https://github.com/jaegertracing/documentation/blob/release-1.22.0/content/docs/1.21/opentelemetry.md)). In the metrics and log dimension, it might be good to still stay on some alternative solution, being prepared to switch to `otel-collector` when it's mature.
 
 For logs, the only real vendor-neutral solution that supports Kubernetes natively is Fluent Bit (optionally combined with `FluentD`). Because Kyma has good experience with the project already, we should stay with it till the otel-collector is mature.
 

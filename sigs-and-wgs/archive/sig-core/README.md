@@ -39,7 +39,7 @@ The Core SIG owns all code repositories in the Kyma organization.
 
 ## Reference
 
-Read the [**Special Interest Group & Working Group**](#special-interest-group-working-group-special-interest-group-working-group) document to learn about the structure of Kyma SIGs and WGs.
+Read the [**Special Interest Group & Working Group**](/docs/contributing/04-sig-and-wg.md) document to learn about the structure of Kyma SIGs and WGs.
 # Core Special Interest Group
 
 This directory contains decisions made and proposal created in the scope of work of the Core SIG.

@@ -85,17 +85,17 @@ To sum it up, the goals of Kyma observability should be:
 
 ## Architecture
 
-The strategy shift will be backed by a new layer of collectors that are no longer bound to any backend. This layer is responsible for collecting and enriching all telemetry data, depending on the signal type (logs, traces, metrics). As long as the best practices for instrumentation are followed, the data is collected automatically.
+The strategy shift will be backed by a new layer of gateways and agents that are no longer bound to any backend. This layer is responsible for collecting and enriching all telemetry data, depending on the signal type (logs, traces, metrics). As long as the best practices for instrumentation are followed, the data is collected automatically.
 
-Users can configure the collectors at runtime with different signal pipelines using basic filtering (inclusion and exclusion of signals) and outputs, so that the collectors start shipping the signals through the pipelines to the configured backends. The dynamic configuration and management of the collector is handled by a new operator, which is configured using Kubernetes API. The collectors and the new operator are bundled in a new core component called `Telemetry`.
+Users can configure the gateways at runtime with different signal pipelines using basic filtering (inclusion and exclusion of signals) and outputs, so that the gateways start shipping the signals through the pipelines to the configured backends. The dynamic configuration and management of the gateways and agents is handled by a new operator, which is configured using Kubernetes API. The gateways and the new operator are bundled in a new core component called `Telemetry`.
 
-To guarantee enterprise-grade qualities, the configuration options for the collectors using the Kubernetes API will be limited. However, users can run their own collector setup for advanced customization options at any time.
+To guarantee enterprise-grade qualities, the configuration options for the gateways using the Kubernetes API will be limited. However, users can run their own collector setup for advanced customization options at any time.
 
 The existing Kyma backends and UIs will be just one possible solution to integrate with. Users will still be able to install them manually with a blueprint.
 
 ![New Architecture](./assets/strategy-future.drawio.svg)
 
-The technology stack for instrumentation and collection will be based on the [OpenTelemetry](https://opentelemetry.io/) project. The central data protocol will be [OTLP](https://opentelemetry.io/docs/reference/specification/protocol/); for trace propagation it will be [w3c-tracecontext](https://www.w3.org/TR/trace-context/). As exception to that, the technology stack for log collection will be based on the [Fluent Bit](https://fluentbit.io/) and [Fluentd](https://www.fluentd.org/) ecosystem and the specific protocols, with the goal to adopt to OpenTelemetry at a later time.
+The technology stack for instrumentation and collection will be based on the [OpenTelemetry](https://opentelemetry.io/) project. The central data protocol will be [OTLP](https://opentelemetry.io/docs/reference/specification/protocol/); for trace propagation it will be [w3c-tracecontext](https://www.w3.org/TR/trace-context/). As exception to that, the technology stack for log collection will be based on the [Fluent Bit](https://fluentbit.io/) and [Fluentd](https://www.fluentd.org/) ecosystem and the specific protocols, with the goal to adopt to OpenTelemetry at a later time. Also, a log gateway will not be in place in the beginning.
 
 As mentioned before, the collector setup and protocols for the signal collection are specific to the signal types: Logs are tailed from container log files, metrics usually are pulled using the Prometheus format, and traces are pushed with OTLP. With that, the pre-integration (so that typical signals are collected instantly) is different per type.
 That's why the concrete concepts for the different types are different, and are discussed in more detail in the following documents:

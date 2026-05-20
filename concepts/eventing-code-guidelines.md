@@ -826,22 +826,6 @@ func TestTwoDimensions(t *testing.T) {
 ```
 
 <details>
-  <summary>Reason for variable reassignment (tc := tc)</summary>
-
-The loop iteration variable in Go is a single variable. The closure for the second t.Run is executed inside a goroutine. 
-If there are multiple entries in the `cloudEvents` struct, `ce` references the last entry in `cloudEvents` in every iteration. The problem occurs because the closure referring to `tc` and `ce` is not executed in **sync** with the **for loop** (because of t.parallel).
-To prevent this problem, `ce` and `tc` must be copied (`ce := ce`).
-The linter [scopelint](https://github.com/golangci/golangci-lint/blob/master/pkg/golinters/scopelint.go) warns about the possible problem whenever `ce` or `tc` is used.
-
->**CAUTION:** If you add `// nolint:scopelint` to silence scopelint, you might not notice when `ce` or `tc` references the wrong entry in the test case list.
-
-**See Also**:
-- [Go Wiki - Common Mistakes](https://github.com/golang/go/wiki/CommonMistakes#using-goroutines-on-loop-iterator-variables)
-- [Example when using t.Parallel and for loops in table-driven tests](https://gist.github.com/posener/92a55c4cd441fc5e5e85f27bca008721) 
-
-</details>
-
-<details>
   <summary>Reason for using nested t.Run</summary>
 
 To understand why we use t.Run in a nested way, look at the output that both tests produce.

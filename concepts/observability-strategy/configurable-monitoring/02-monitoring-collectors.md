@@ -2,7 +2,7 @@
 
 ## Requirements
 
-The agent's responsibility is to collect all metrics in the cluster (Kubernetes, Kyma, envoy, custom) and ship them in a configurable way to targets. The agent is not meant to be used as backend system, so ideally it is even stateless.
+The collectors responsibility is to collect all metrics in the cluster (Kubernetes, Kyma, envoy, custom) and ship them in a configurable way to targets. The collector is not meant to be used as backend system, so ideally it is even stateless.
 
 - Collection
   - Support Prometheus format and pull approach, ideally with service discovery. A lot of apps are based on the pull approach and should not be rewritten or operated with a sidecar only for transforming that approach.
@@ -21,7 +21,7 @@ The agent's responsibility is to collect all metrics in the cluster (Kubernetes,
 ## Alternatives
 
 ### OpenTelemetry Collector
-The [otel-collector](https://opentelemetry.io/docs/collector/) is the agent of the OpenTelemetry project, which is the vendor-neutral approach of aligning all the telemetry aspects, not focussing on any backends. Besides an own protocol OTLP, APIs with backing SDKs, it also provides a collector.
+The [otel-collector](https://opentelemetry.io/docs/collector/) is the collector of the OpenTelemetry project, which is the vendor-neutral approach of aligning all the telemetry aspects, not focussing on any backends. Besides an own protocol OTLP, APIs with backing SDKs, it also provides a collector.
 
 Pros
 - Natively supports OTLP even as internal format

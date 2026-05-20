@@ -19,7 +19,30 @@ When introducing the configurable tracing, w3c-tracecontext should be used from 
 Unused plugins for the Otel Collector should not be installed in the used image to reduce the attack vector. With that, a custom bundling of the Otel Collector image will be used
 
 ## Operator manages the Otel Collector Deployment
+
 There should be no resource consumption if there is no pipeline defined. To achieve this, the Telemetry Operator will fully manage the Otel Collector; meaning the operator will deploy, configure, and potentially also delete the Deployment.
+
+### Ensuring a Single TracePipeline
+
+The initial release of configurable tracing is designed to support only a single pipeline. While this limitation keeps the Otel Collector setup simple, the restriction has to be enforced to ensure a correct Otel Collector configuration.
+
+We intend to utilize the optimistic concurrency control property of the Kubernetes API through creating an arbitrary API resource that acts as a lock. Even though, the user would be able to create multiple trace pipelines, only one of them must be reconciled and applied to the Otel Collector configuration. All other trace pipelines must wait in a `Pending` state until the active trace pipeline is deleted.
+
+The following steps have to be taken while reconciling to ensure only one active trace pipeline:
+
+* The controller's reconcile method creates the "lock" resource before performing any other reconciliation steps. This can be for instance a ConfigMap or a dedicated CRD that can hold additional state. The reconciled lock pipeline becomes owner of the "lock" resource ([owner reference](https://kubernetes.io/docs/concepts/overview/working-with-objects/owners-dependents/)).
+
+* If the creation of the "lock" fails, we already have an active trace pipeline. We compare the owner reference and continue to reconcile if the reconciled trace pipeline is the owner. If the "lock" has a different owner, the current trace pipeline stays in `Pending` state.
+
+* When then active trace pipeline is deleted, the "lock" resource is also deleted through the [cascading deletion](https://kubernetes.io/docs/concepts/architecture/garbage-collection/) property of the owner reference. Another trace pipeline can now take the "lock" and become the active one.
+
+We discussed the following alternatives to this approach, which are not suitable to guarantee a single active trace pipeline:
+
+* Rejecting the creation of a second trace pipeline with a validating webhook: Creating a second trace pipeline cannot be prevented for sure since the validation and creation are two different steps. The second pipeline could be successfully pass the validation before the first one has been created. A webhook can be used additionally to the described approach to give early feedback to the user on a best-effort base.
+
+* Observing the existence of other trace pipelines and reconciling the current pipeline only if no other one is active: Concurrent creation of multiple trace pipelines can again bypass this check. Depending on the implementation, situations might occur where either no pipeline or multiple pipelines may become active.
+
+* Utilizing Kubernetes' [Lease API](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/lease-v1/): Very similar to the approach that is described above. However, a lease requires regular renewal. This causes the risk to loose the state if the operator is (temporarily) not running.
 
 ## Action Items
 

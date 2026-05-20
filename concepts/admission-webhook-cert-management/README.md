@@ -52,7 +52,7 @@ You can come up with some workarounds: make reconciler deploy resources in a str
 
 ### <a name="server-code"></a>Generate the CA cert and the server cert, and update the webhook configuration in the webhook server code itself
 
-This approach is used by serverless and api-gateway. In this case, the certificates are generated upon the server startup. Here's an [example of this solution](https://github.com/kyma-project/api-gateway/blob/main/internal/webhook/certificates.go).
+This approach is used by serverless and api-gateway. In this case, the certificates are generated upon the server startup. Here's an [example of this solution](https://github.com/kyma-project/api-gateway/blob/release-1.8/internal/webhook/certificates.go).
 
 Issuing a certificate in the webhook server code doesn't have the aforementioned problem. However, in this case it must be implemented by every operator. In addition to that, the webhook server must be provided with extended permissions to change the corresponding `validatingwebhookconfiguration` (or the `mutatingwebhookconfiguration`). Furthermore, both the CA and the server certificate are recreated upon each Pod restart and are never rotated if the Pod is not restarted.
 
@@ -131,9 +131,9 @@ This approach has a few downsides:
 
 ### <a name="init-container"></a>Init container
 
-https://www.velotio.com/engineering-blog/managing-tls-certificate-for-kubernetes-admission-webhook
+https://medium.com/trendyol-tech/5-ways-of-managing-tls-certificates-for-your-kubernetes-admission-webhooks-b2ca971c065#5b7b <!-- markdown-link-check-disable-line -->
 
-This is slightly modified version of [one of the currently used approaches](#a-nameserver-codeagenerate-the-ca-cert-and-the-server-cert-and-update-the-webhook-configuration-in-the-webhook-server-code-itself). Instead of implementing the logic in the webhook server code, it's packaged as a Docker image and run as an init container.
+Instead of implementing the logic in the webhook server code, it's packaged as a Docker image and run as an init container.
 
 ### <a name="component-operator"></a>Component operator
 

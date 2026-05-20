@@ -12,7 +12,7 @@ Improve the provisioning of Knative Eventing Mesh-related components and impleme
 
 ## Current solution
 
-The [Application Broker](https://kyma-project.io/docs/components/application-connector/#architecture-application-connector-components-application-broker) is a broker which implements the [Open Service Broker API](https://www.openservicebrokerapi.org/) ⁰.
+The Application Broker is a broker which implements the [Open Service Broker API](https://www.openservicebrokerapi.org/) ⁰.
 It basically does two things:
 
 1. "The AB fetches all the applications' custom resources and exposes their APIs and Events as service classes to the Service Catalog" ⁴.
@@ -247,8 +247,6 @@ Disadvantage: Every provisioning/deprovisioning request is executed in a gorouti
 
 # Sources
 
-0: <https://kyma-project.io/docs/components/application-connector/#architecture-application-connector-components-application-broker>
-
 1: <https://www.openservicebrokerapi.org/>
 
 2: <https://tanzu.vmware.com/content/white-papers/an-inside-look-at-the-open-service-broker-api>
@@ -262,5 +260,3 @@ Disadvantage: Every provisioning/deprovisioning request is executed in a gorouti
 6: <https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#polling-last-operation-for-service-instances>
 
 7: <https://github.com/kyma-project/community/pull/386/files>
-
-8: <https://kyma-project.io/docs/components/event-bus/#details-knative-eventing-mesh-alpha>

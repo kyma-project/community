@@ -19,7 +19,7 @@ In a Kyma module, the following assets are bundled into a single container image
 * A default configuration for module chart resource installation
 * Optionally, further layers that can enhance, or be required by, the module operator.
 
-> **TIP:** Learn how to [build a module](https://github.com/kyma-project/lifecycle-manager/tree/main/samples/template-operator).
+> **TIP:** Learn how to [build a module](https://github.com/kyma-project/template-operator).
 
 ## 2. Module Manager
 

@@ -1,16 +1,14 @@
----
-title: Naming
----
+# Naming
 
 The file contains the official rules for naming objects in Kyma.
 
-## Naming and structure guidelines
+## Naming and Structure Guidelines
 
-### General names
+### General Names
 
 The product is called Kyma. Use `kyma` if uppercase letters are not available or not typical in a specific context.
 
-### Source code repositories
+### Source Code Repositories
 
 Place all repositories belonging to the product under the [Kyma](https://github.com/kyma-project) location on GitHub.
 Do not use Kyma-related prefixes, such as `kyma-`, in the repository names.

@@ -4,13 +4,13 @@ Created on 2017-12-11 by Piotr Kopczyński (@PK85).
 
 ## Context
 
-Testing is a vital part of any production-ready solution. Kyma components, both core elements and extensions, require a simple and intuitive mechanism to check if they work as expected. The flow for running tests must be the same both for APIs and UI. As per the [Kyma Manifesto](https://kyma-project.github.io/community/), native Kubernetes has priority.
+Testing is a vital part of any production-ready solution. Kyma components, both core elements and extensions, require a simple and intuitive mechanism to check if they work as expected. The flow for running tests must be the same both for APIs and UI. As per the Kyma Manifesto, native Kubernetes has priority.
 
 ## Decision
 
 One of the previous architecture decisions was to use Helm as the main installation tool for all Kyma components. Helm uses a packaging format called charts. Helm also provides a solution for testing charts, namely chart tests. For that reason, and also because the most intuitive solutions should be our natural choices, the decision is to use Helm to test Kyma components.
 
-Additionally, one of the principles of the [Kyma Manifesto](https://kyma-project.github.io/community/) is to build native Kubernetes functionalities, which confirms that it is the right decision to use Helm chart tests.
+Additionally, one of the principles of the Kyma Manifesto is to build native Kubernetes functionalities, which confirms that it is the right decision to use Helm chart tests.
 
 ## Status
 

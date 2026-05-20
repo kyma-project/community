@@ -14,7 +14,7 @@ The purpose of this group is to:
 Regular WG Meeting: Friday at 13:00 CEST, weekly. [Convert to your timezone](http://www.thetimezoneconverter.com/?t=13:00&tz=CEST%20%28Central%20European%20Summer%20Time%29).
 
 * [Zoom](https://zoom.us/j/4794339038)
-* [Meeting notes and agenda](https://docs.google.com/document/d/1ljEAoCBJXlxx_ATPyvKZ1KoyFOSIBzEAOkN-2H-HhUY)
+* Meeting notes and agenda
 * [Meeting recordings](https://www.youtube.com/playlist?list=PL7PGl--iaIH9SXFdB4DrraqI7oEer7S3Q)
 
 

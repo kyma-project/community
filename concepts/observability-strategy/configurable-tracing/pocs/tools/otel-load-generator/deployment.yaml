@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otel-load-generator
+  labels:
+    app: otel-load-generator
+  annotations:
+    sidecar.istio.io/inject: "false"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: otel-load-generator
+  template:
+    metadata:
+      labels:
+        app: otel-load-generator
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+        - name: otel-load-generator
+          image: <image-name>
+          command:
+            - /loadgenerator
+          args:
+          - -t
+          - telemetry-otlp-traces.kyma-system:4317
+          - -c
+          - "1"
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "64Mi"
+            limits:
+              memory: "128Mi"

@@ -3,3 +3,7 @@
 .DS_Store
 !.kyma-project-io/
 !templates/repository-template/.github
+!.mlc.config.json
+!.github/workflows/lint-markdown-links-daily.yml
+!.github/workflows/lint-markdown-links-pr.yml
+

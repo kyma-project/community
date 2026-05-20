@@ -22,7 +22,7 @@ Proposed on 2018-10-16.
 
 ## Solution
 
-Implement the below proposal on top of the new [Asset Store](https://github.com/kyma-project/community/blob/main/sig-and-wg/sig-core/proposals/asset-store-proposal.md).
+Implement the below proposal on top of the new [Asset Store](https://github.com/kyma-project/community/blob/main/sigs-and-wgs/archive/sig-core/proposals/asset-store-proposal.md).
 
 ![](assets/main-arch.svg)
 

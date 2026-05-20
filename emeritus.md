@@ -12,6 +12,7 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Mateusz Puczyński (**[@aerfio](https://github.com/aerfio)**) involved in `area/core-and-supporting`, `area/serverless`, `area/console`, and `area/quality`.
 * Karol Jaksik (**[@kjaksik](https://github.com/kjaksik)**) involved in `area/service-catalog`, `area/management-plane`, and `area/control-plane`.
 * Michał Kempski (**[@polskikiel](https://github.com/polskikiel)**) involved in `area/service-catalog` and `area/control-plane`.
+* Karol Furgoł (**[@kfurgol](https://github.com/kfurgol)**) involved in `area/core-and-supporting`, `area/serverless`. 
 * Justyna Sztyper (**[@superojla](https://github.com/superojla)**) involved in `area/documentation` and creating docs for `area/service-mesh`, `area/installation`, and `area/api-gateway`.
 * Karolina Zydek (**[@kazydek](https://github.com/kazydek)**) contributing as a Technical Writer to `area/serverless`, `area/core-and-supporting`, and the overall Kyma documentation.
 * Julia Iskierka (**[@colunira](https://github.com/colunira)**) involved in `area/installation`, `area/service-mesh`, `area/security`, and `area/api-gateway`.
@@ -25,13 +26,29 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Sayan Hazra (**[@sayanh](https://github.com/sayanh)**) involved in `area/eventing`, `area/serverless`.
 * Suleyman Akbas (**[@suleymanakbas91](https://github.com/suleymanakbas91)**) involved in `area/cli`, `area/logging`, `area/tracing`, `area/monitoring`, `area/performance`.
 * Adam Wałach (**[@adamwalach](https://github.com/adamwalach)**) involved in `area/ci` and `area/service-catalog`.
-* Jose Cortina (**[@jose-cortina](https://github.com/jose-cortina)**) involved in `area/community`.
+* Jose Cortina involved in `area/community`.
 * Kamil Sputo (**[@ksputo](https://github.com/ksputo)**) involved in `area/service-catalog` and  `area/control-plane`.
 * Mostafa Shorim (**[@shorim](https://github.com/shorim)**) involved in `area/cli`, `area/logging`, `area/tracing`, `area/monitoring`.
 * Pranav Shankar (**[@Pranav-SA](https://github.com/Pranav-SA)**) involved in `area/logging`, `area/tracing`, `area/monitoring`.
-* Radu Fantaziu (**[@radufa](https://github.com/radufa)**) involved in `area/eventing`.
+* Radu Fantaziu involved in `area/eventing`.
 * Pooya Salehi (**[@pxsalehi](https://github.com/pxsalehi)**) involved in `area/eventing`.
 * Klaudia Grzondziel (**[@klaudiagrz](https://github.com/klaudiagrz)**) creating docs for `area/documentation`, `area/service-management`, `area/control-plane`, `area/community`, and contributing to the overall Kyma documentation.
 * Mariusz Szymański (**[@Maladie](https://github.com/Maladie)**) involved in `area/application-connector`, `area/management-plane`.
 * Johannes Veicht (**[@veichtj](https://github.com/veichtj)**) involved in `area/service-mesh`,`area/api-gateway`.
-* Hanna Gościniak (**[@hanngos](https://github.com/hanngos)**) involved in `area/control-plane`,`area/tests`, `area/charts`, `area/ci`, `area/security`, `area/dependency`, `area/service-management.
+* Hanna Gościniak (**[@hanngos](https://github.com/hanngos)**) involved in `area/control-plane`,`area/tests`, `area/charts`, `area/ci`, `area/security`, `area/dependency`, `area/service-management`.
+* Wojciech Chrapka (**[@wchrapka](https://github.com/wchrapka)**) involved in `area/console`, `area/busola`.
+* Maja Szostok (**[@majakurcius](https://github.com/majakurcius)**) involved in `area/console`, `area/busola`, `area/application-connector`, `area/management-plane`, `area/community`.
+* Daria Domagała (**[@dariadomagala-sap](https://github.com/dariadomagala-sap)**) involved in `area/console`, `area/busola`.
+* Piotr Wawrzyńczyk (**[@Wawrzyn321](https://github.com/wawrzyn321)**) involved in `area/console`, `area/busola`.
+* Franciszek Pogodziński (**[@franpog859](https://github.com/franpog859)**) involved in `area/application-connector`, `area/management-plane`, and `area/control-plane`.
+* Jakub Łyczko (**[@Lyczeq](https://github.com/Lyczeq)**) involved in `area/console`, `area/busola`.
+* Karol Szwaj (**[@cnvergence](https://github.com/cnvergence)**) involved in `area/api-gateway`, `area/service-mesh`.
+* Jakub Łukomski (**[@qbalukom](https://github.com/qbalukom)**) involved in `area/console`, `area/busola`.
+* Dariusz Tutaj (**[@dariusztutaj](https://github.com/dariusztutaj)**) involved in `area/api-gateway`, `area/service-mesh`.
+* Jan Woźniak (**[@wozniakjan](https://github.com/wozniakjan)**) involved in `area/control-plane`,`area/tests`, `area/charts`, `area/ci`, `area/security`, `area/dependency`, `area/service-management`.
+* Till Knuesting (**[@tillknuesting](https://github.com/tillknuesting)**) involved in `area/control-plane`,`area/tests`, `area/charts`, `area/ci`, `area/security`, `area/dependency`, `area/service-management`.
+* Jeremy Harisch (**[@jeremyharisch](https://github.com/jeremyharisch)**) involved in `area/lifecycle-manager`, `area/eventing` (on-site :dancer:)
+* Tim Riffer (**[@triffer](https://github.com/triffer)**) involved in `area/service-mesh`, `area/api-gateway`.
+* Vladimir Videlov (**[@videlov](https://github.com/videlov)**) involved in `area/service-mesh`, `area/api-gateway`.
+* Łukasz Jeżak (**[@ukff](https://github.com/ukff)**) involved in `area/control-plane`, `area/service-management`.
+* Wojciech Wrzalik (**[@ralikio](https://github.com/ralikio)**) involved in `area/application-connector`, `area/management-plane`, `area/control-plane`, `area/service-management`.

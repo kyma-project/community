@@ -1,0 +1,17 @@
+
+apiVersion: telemetry.kyma-project.io/v1alpha1
+kind: MetricPipeline
+metadata:
+  labels:
+    app.kubernetes.io/created-by: telemetry-operator
+    app.kubernetes.io/instance: metricpipeline-sample
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: metricpipeline
+    app.kubernetes.io/part-of: telemetry-operator
+  name: metricpipeline-sample
+spec:
+  output:
+    otlp:
+      endpoint:
+        value: http://mock-metric-receiver.metric-receiver:4317
+      protocol: grpc

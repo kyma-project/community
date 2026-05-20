@@ -29,7 +29,7 @@ component-name
 
 > The `cmd` directory is not always required, but it is good practice to use it. If a component's source code can be used to create only a single binary, it is also ok to put its `main` function in a file called `main.go` on the root-level of the `components` folder.
 
-Tests are stored in the `test` folder following [this](https://github.com/kyma-project/community/blob/main/sigs-and-wgs/sig-core/proposals/test-folder-consolidation.md) proposal.
+Tests are stored in the `test` folder following [this](https://github.com/kyma-project/community/blob/main/sigs-and-wgs/archive/sig-core/proposals/test-folder-consolidation.md) proposal.
 
 ## Proposal
 
@@ -79,7 +79,7 @@ See the following examples:
 ### Components
 Currently, all images follow the proposed pattern and exclusions.
 
-The following table assumes all tests will be renamed according to the naming convention proposed [here](https://github.com/kyma-project/community/blob/main/sigs-and-wgs/sig-core/proposals/test-folder-consolidation.md)
+The following table assumes all tests will be renamed according to the naming convention proposed [here](https://github.com/kyma-project/community/blob/main/sigs-and-wgs/archive/sig-core/proposals/test-folder-consolidation.md).
 
 ### Tests
 | Path | Old image name | New image name |

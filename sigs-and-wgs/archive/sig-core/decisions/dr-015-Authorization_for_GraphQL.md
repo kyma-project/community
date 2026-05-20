@@ -19,7 +19,7 @@ Istio Ingress can then expose GraphQL and developers can define appropriate auth
 In the current release (0.7.x), **Istio RBAC engine** is implemented as a Mixer adapter.
 The **Request Context** sent to the **Istio RBAC engine** is provided as an instance of the **Authorization Template**.
 Information defined in the **Authorization Template** is fetched from [Istio Attributes](https://istio.io/docs/concepts/policy-and-control/attributes.html).
-A given Istio deployment has a [fixed vocabulary of attributes that it understands](https://istio.io/docs/reference/config/mixer/attribute-vocabulary.html).
+A given Istio deployment has a [fixed vocabulary of attributes that it understands](https://istio.io/v1.0/docs/concepts/policies-and-telemetry/#attribute-vocabulary).
 
 A set of **Service Roles** defines the authorization for a service in Istio.
 A **Service Role** specification includes a list of **Access Rules**.

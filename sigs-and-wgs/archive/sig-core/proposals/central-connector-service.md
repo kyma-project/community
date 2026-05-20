@@ -15,13 +15,13 @@ As the customers work with multiple Kyma clusters, they will benefit from extend
 
 ## Goal
 
-1. The Connector service can be deployed outside of Kyma cluster
-1. The Connector service handles client certificate provisioning for the connection with the Application Registry.
-1. The Connector service handles client certificate provisioning for the connection with the Event Service.
-1. The Connector service handles certificate provisioning for Kyma cluster.
-1. The Connector service handles certificate rotation.
-1. The Connector service handles certificate revocation.
-1. The Connector service returns information about the available cluster endpoints.
+- The Connector service can be deployed outside of Kyma cluster
+- The Connector service handles client certificate provisioning for the connection with the Application Registry.
+- The Connector service handles client certificate provisioning for the connection with the Event Service.
+- The Connector service handles certificate provisioning for Kyma cluster.
+- The Connector service handles certificate rotation.
+- The Connector service handles certificate revocation.
+- The Connector service returns information about the available cluster endpoints.
 
 ## Suggested solution
 

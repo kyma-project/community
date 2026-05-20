@@ -1,0 +1,16 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: kyma
+  namespace: kyma-system
+spec:
+  exporter:
+    endpoint: http://localhost:4317
+  env:
+    - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+      value: http://telemetry-otlp-traces.kyma-system:4317/v1/traces/
+  propagators:
+    - tracecontext
+    - baggage
+  sampler:
+    type: parentbased_always_on

@@ -123,7 +123,7 @@ spec:
 ```
 
 The optional information is:
-- A ConfigMap reference that points to the ConfigMap that introduces [a new file](https://github.com/kyma-project/kyma/blob/main/resources/service-catalog-addons/charts/instances-ui/templates/configmap.yaml) which is also sent to the bucket along with other files.
+- A ConfigMap reference that points to the ConfigMap that introduces a new file which is also sent to the bucket along with other files.
 - An Asset validation webhook reference to a service that performs the validation of fetched assets before they are uploaded to the bucket. It can be a list of several different validation webhooks and all of them should be processed even if one is failing. The use cases are:
   - Validation of a specific file against some specification.
   - Security validation
@@ -265,6 +265,6 @@ The Asset Store comes with one out-of-the-box mutating service that enables an e
 
 ## Minio local vs cluster modes
 
-Minio as a storage service supports Kyma's manifesto and the "batteries included" rule. It makes the development process easier. Apart from the production usage, Minio should be used in a [Gateway mode](https://github.com/minio/minio/tree/master/docs/gateway). The Gateway mode gives you the flexibility to use asset storage from any major cloud provider, such as Google, Amazon, and Microsoft. It does not require modifications in the Asset Controller as it talks to the Minio/Minio Gateway with the same S3 API.
+Minio as a storage service supports Kyma's manifesto and the "batteries included" rule. It makes the development process easier. Apart from the production usage, Minio should be used in a Gateway mode. The Gateway mode gives you the flexibility to use asset storage from any major cloud provider, such as Google, Amazon, and Microsoft. It does not require modifications in the Asset Controller as it talks to the Minio/Minio Gateway with the same S3 API.
 
 ![](assets/gateway.svg)

@@ -1,0 +1,96 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mock-metric-receiver
+  name: mock-metric-receiver
+  namespace: metric-receiver
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: mock-metric-receiver
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: mock-metric-receiver
+    spec:
+      containers:
+      - args:
+        - --config=/etc/collector/config.yaml
+        image: otel/opentelemetry-collector-contrib:0.70.0
+        imagePullPolicy: IfNotPresent
+        name: otel-collector
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /etc/collector
+          name: collector-config
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        fsGroup: 101
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: mock-metric-receiver
+        name: collector-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: mock-metric-receiver
+  name: mock-metric-receiver
+  namespace: metric-receiver
+spec:
+  ports:
+  - name: http-otlp
+    port: 4317
+    protocol: TCP
+    targetPort: 4317
+  - name: grpc-otlp
+    port: 4318
+    protocol: TCP
+    targetPort: 4318
+  selector:
+    app: mock-metric-receiver
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: v1
+data:
+  config.yaml: |
+    receivers:
+      otlp:
+        protocols:
+          grpc: {}
+          http: {}
+    exporters:
+      logging:
+        loglevel: debug
+    service:
+      pipelines:
+        metrics:
+          receivers:
+            - otlp
+          exporters:
+            - logging
+kind: ConfigMap
+metadata:
+  labels:
+    app: mock-metric-receiver
+  name: mock-metric-receiver
+  namespace: metric-receiver
+---
+
+
