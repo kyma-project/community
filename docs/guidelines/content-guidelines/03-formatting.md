@@ -77,12 +77,13 @@ Suppose that it is only the part containing the certificate information that is 
 
 ## Shell Commands
 
-When shell commands appear in the documentation, follow these guidelines:
+When you document shell commands, follow these guidelines:
 
-- Use environment variables instead of hardcoded values so that the command can be copy-pasted and executed without editing. You can omit the `export` statements unless there is something noteworthy about the variable — the target audience knows how to define environment variables.
-- Distinguish between two cases:
-    - **Runnable command** (a snippet meant to be copy-pasted and executed): show the command alone, with no prompt prefix and no other `PS1` elements (no `$`, `#`, path, hostname, etc.). The reader must be able to copy the block verbatim into a shell.
-    - **Command-plus-output transcript** (an example showing what the command prints): prefix only the command lines with `$ ` to mark them as input; leave output lines unprefixed. Still omit every other `PS1` element (path, hostname, etc.).
+- Use environment variables instead of hardcoded values so that readers can copy-paste and execute the command without editing. Omit the `export` statements unless the variable value itself is noteworthy — the target audience knows how to define environment variables.
+Reason
+- Distinguish between the following cases:
+  - **Runnable command** (a snippet for users to copy and execute): Show the command alone, with no prompt prefix and no other `PS1` elements (no `$`, `#`, path, hostname, and so on). The reader must be able to copy the block verbatim into a shell.
+    - **Command-plus-output transcript** (an example showing what the command prints): Prefix only the command lines with `$ ` to mark them as input; leave output lines unprefixed. Omit all other `PS1` elements, such as the path or hostname.
 
 **Runnable command — no prefix:**
 
