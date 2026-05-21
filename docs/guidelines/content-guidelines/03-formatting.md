@@ -75,6 +75,30 @@ Suppose that it is only the part containing the certificate information that is 
    }
    ```
 
+## Shell Commands
+
+When shell commands appear in the documentation, follow these guidelines:
+
+- Use environment variables instead of hardcoded values so that the command can be copy-pasted and executed without editing. You can omit the `export` statements unless there is something noteworthy about the variable — the target audience knows how to define environment variables.
+- Distinguish between two cases:
+    - **Runnable command** (a snippet meant to be copy-pasted and executed): show the command alone, with no prompt prefix and no other `PS1` elements (no `$`, `#`, path, hostname, etc.). The reader must be able to copy the block verbatim into a shell.
+    - **Command-plus-output transcript** (an example showing what the command prints): prefix only the command lines with `$ ` to mark them as input; leave output lines unprefixed. Still omit every other `PS1` element (path, hostname, etc.).
+
+**Runnable command — no prefix:**
+
+```
+kubectl -n $NAMESPACE get pods -l app=$APP_LABEL
+```
+
+**Command-plus-output transcript — `$ ` only on the input line:**
+
+```
+$ kubectl -n kyma-system get pods
+NAME                          READY   STATUS    RESTARTS   AGE
+istiod-7c8b9f4d4f-abcde       1/1     Running   0          12d
+kyma-operator-5d9f8b7c-xyz12  1/1     Running   0          5d
+```
+
 ## Panels
 
 >**NOTE** The following panels are not rendered correctly when indented. Use them only in the docs that are displayed on the website.
