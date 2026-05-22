@@ -60,7 +60,14 @@ This URL can then be used in your Helm charts.
 For building Docker images within Kyma, refer to the [image-builder documentation](https://pages.github.tools.sap/kyma/documentation/kyma-internal/how-to-guides/090-build-oci-images-with-image-builder.html).
 Image Builder is designed to streamline the process of creating and publishing Docker images for Kyma components.
 
-### Dockerfile Recommendations
+## Cross-Compiling and Caching for Non-Native Architecture Builds
+
+Image Builder uses builder agents with `linux/amd64` native architecture.
+When building images for multiple architectures or building an image for a non-native architecture,
+consider enabling cross-compilation to significantly reduce build times.
+Testing has shown that cross-compilation can speed up the build process by **10x**, reducing build times from 12 minutes to less than 2 minutes in our test scenario with a rather small golang codebase.
+
+### Key Recommendations
 
 - Cross-Compilation: If you are building non-native architecture images, implement cross-compilation in your Dockerfile, use
   the [Faster Multi-Platform Builds: Dockerfile Cross-Compilation Guide](https://www.docker.com/blog/faster-multi-platform-builds-dockerfile-cross-compilation-guide/)
