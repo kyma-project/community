@@ -46,27 +46,21 @@ Custom resources (if you want to refer to the code specifically) | Define the **
 
 Use environment variables instead of hardcoded values so that readers can copy-paste and execute the command without editing. Omit the `export` statements unless the variable value itself is noteworthy — the target audience knows how to define environment variables.
 Distinguish between the following cases:
-- **Runnable command** (a snippet for users to copy and execute): Show the command alone, with no prompt prefix and no other `PS1` elements (no `$`, `#`, path, hostname, and so on). The reader must be able to copy the block verbatim into a shell.
+
+- **Runnable command** (a snippet for users to copy and execute): Show the command alone, with no prompt prefix and no other `PS1` elements (no `$`, `#`, path, hostname, and so on). The reader must be able to copy the block verbatim into a shell. For example:
+
+   ```
+   kubectl -n $NAMESPACE get pods -l app=$APP_LABEL
+   ```
   
-  
-- **Command-plus-output transcript** (an example showing what the command prints): Prefix only the command lines with `$ ` to mark them as input; leave output lines unprefixed. Omit all other `PS1` elements, such as the path or hostname.
+- **Command-plus-output transcript** (an example showing what the command prints): Prefix only the command lines with `$ ` to mark them as input; leave output lines unprefixed. Omit all other `PS1` elements, such as the path or hostname. For example:
 
-  
-
-**Runnable command — no prefix:**
-
-```
-kubectl -n $NAMESPACE get pods -l app=$APP_LABEL
-```
-
-**Command-plus-output transcript — `$ ` only on the input line:**
-
-```
-$ kubectl -n kyma-system get pods
-NAME                          READY   STATUS    RESTARTS   AGE
-istiod-7c8b9f4d4f-abcde       1/1     Running   0          12d
-kyma-operator-5d9f8b7c-xyz12  1/1     Running   0          5d
-```
+   ```
+   $ kubectl -n kyma-system get pods
+   NAME                          READY   STATUS    RESTARTS   AGE
+   istiod-7c8b9f4d4f-abcde       1/1     Running   0          12d
+   kyma-operator-5d9f8b7c-xyz12  1/1     Running   0          5d
+   ```
 
 ### Omission in Code
 
