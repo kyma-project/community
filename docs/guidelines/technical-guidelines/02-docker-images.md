@@ -62,46 +62,46 @@ Image Builder is designed to streamline the process of creating and publishing D
 
 ### Dockerfile Recommendations
 
-The [Dockerfile recommendations](https://pages.github.tools.sap/kyma/documentation/kyma-internal/how-to-guides/090-build-oci-images-with-image-builder.html#key-recommendations)
-provide guidance on cross-compiling and caching strategies for non-native architecture builds, ensuring better performance and compatibility.
-When preparing Dockerfiles for Kyma projects, ensure that you incorporate these practices to optimize build processes.
+- Cross-Compilation: If you are building non-native architecture images, implement cross-compilation in your Dockerfile, use
+  the [Faster Multi-Platform Builds: Dockerfile Cross-Compilation Guide](https://www.docker.com/blog/faster-multi-platform-builds-dockerfile-cross-compilation-guide/)
+  as a reference.
+- Bind Mounts: To avoid copying source code for compilation, use bind mounts for the `RUN` command in Dockerfiles.
+  However, the speed gain was minimal in our tests: We achieved a speedup of less than ~5 seconds.
+- Cache Mounts for Go Compiler:
+  Rely on a cache backed by a remote repository, because a new agent is allocated for each pipeline execution, making mount-type caching
+  ineffective.
+  Use mounts a cache type for Go package downloads. The binary compilation cache did not increase speed during tests.
 
-## Examples
+### Example Dockerfile to Build Publicly Available Images
 
-Go from scratch:
+```dockerfile
+FROM --platform=$BUILDPLATFORM golang:1.24.2-alpine3.21 AS builder
 
-```Dockerfile
+WORKDIR /app
+
+COPY go.mod go.sum ./
+RUN go mod download -x
+
+ARG TARGETOS TARGETARCH
+RUN --mount=target=. cd /app/cmd/image-builder && CGO_ENABLED=0 GOOS=$TARGETOS GOARCH=$TARGETARCH go build -buildvcs=false -o /image-builder -a -ldflags '-extldflags "-static"' .
+
 FROM scratch
-LABEL source=git@github.com:kyma-project/examples.git
 
-ADD main /
-CMD ["/main"]
+COPY --from=builder /image-builder /image-builder
+
+ENTRYPOINT ["/image-builder"]
 ```
 
-Go from alpine:
+### Example Dockerfile to Build Restricted Images
 
-```Dockerfile
-FROM alpine:3.7
-RUN apk --no-cache upgrade && apk --no-cache add curl
+```dockerfile
+FROM europe-docker.pkg.dev/kyma-project/restricted-dev/sap.com/python-fips:latest
+WORKDIR /app
 
-LABEL source=git@github.com:kyma-project/examples.git
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-ADD main /
-CMD ["/main"]
-```
+COPY . .
 
-JavaScript from nginx:
-
-```Dockerfile
-FROM nginx:1.13-alpine
-RUN apk --no-cache upgrade
-
-LABEL source=git@github.com:kyma-project/examples.git
-
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY /build var/public
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["python", "-m", "your_module"]
 ```
