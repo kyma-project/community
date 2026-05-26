@@ -19,9 +19,9 @@ eu.gcr.io/kyma-project/helm-broker-initializer:0.1.0
 
 ## Base Images
 
-Base all images on an image that is as small as possible in size and dependency. A base image must have a specified version. Do not use the `latest` tag.
+Base all images on the smallest possible image in terms of size and dependencies. A base image must have a specified version. Do not use the `latest` tag.
 
-An application based on Go should originate from a `scratch` image. If a `scratch` image does not have the specific tooling available, you can use an `alpine` base image having the package catalog updated.
+An application based on Go should originate from a `scratch` image. If a `scratch` image does not have the specific tooling available, you can use an `alpine` base image with the package catalog updated.
 A JavaScript-based application should originate from an `nginx-alpine` base image with an updated package catalog.
 
 ## Label Images
@@ -36,15 +36,9 @@ source = git@github.com:kyma-project/examples.git
 
 ## Third-Party Images
 
-Kyma uses some Docker images that originally were not built (and hosted) by us.
+Kyma uses some Docker images that were originally not built (and hosted) by us.
 For security and reliability reasons, we need to copy all external images to our own Docker registry.
 We have two solutions to this problem: the third-party-images repository and the image-syncer tool.
-
-### Third-Party Repository
-
-If you want to rebuild the image from scratch, use the [third-party-images](https://github.com/kyma-incubator/third-party-images) repository.
-For every component, create a separate directory. You need to provide a Dockerfile, a Makefile, and create a ProwJob for building your images.
-See the repository content for more information.
 
 ### Image Syncer
 
@@ -55,53 +49,52 @@ To copy the image to our registry, modify the `external-images.yaml` file in you
 For example, the source image `grafana/grafana:7.0.6` will be transformed to `eu.gcr.io/kyma-project/external/grafana/grafana:7.0.6"`.
 This URL can then be used in your Helm charts.
 
-## Image Builder Documentation
+## Cross-Compiling and Caching for Non-Native Architecture Builds
 
-For building Docker images within Kyma, refer to the [image-builder documentation](https://github.com/kyma-project/test-infra/blob/main/cmd/image-builder/image-builder.md).
-Image Builder is designed to streamline the process of creating and publishing Docker images for Kyma components.
+Image Builder uses builder agents with `linux/amd64` native architecture.
+When building images for multiple architectures or building an image for a non-native architecture, consider enabling cross-compilation to significantly reduce build times.
+Testing has shown that cross-compilation can speed up the build process by **10x**, reducing build times from 12 minutes to less than 2 minutes in our test scenario with a rather small Golang codebase.
 
-### Dockerfile Recommendations
+### Key Recommendations
 
-The [Dockerfile recommendations](https://github.com/kyma-project/test-infra/blob/main/cmd/image-builder/image-builder.md)
-provide guidance on cross-compiling and caching strategies for non-native architecture builds, ensuring better performance and compatibility.
-When preparing Dockerfiles for Kyma projects, ensure that you incorporate these practices to optimize build processes.
+- Cross-Compilation: If you are building non-native architecture images, implement cross-compilation in your Dockerfile; use the [Faster Multi-Platform Builds: Dockerfile Cross-Compilation Guide](https://www.docker.com/blog/faster-multi-platform-builds-dockerfile-cross-compilation-guide/) as a reference.
+- Bind Mounts: To avoid copying source code for compilation, use bind mounts for the `RUN` command in Dockerfiles.
+  However, the speed gain was minimal in our tests: We achieved a speedup of less than ~5 seconds.
+- Cache Mounts for Go Compiler:
+  Rely on a cache backed by a remote repository, because a new agent is allocated for each pipeline execution, making mount-type caching
+  ineffective.
+  Use the cache mounts type for Go package downloads. The binary compilation cache did not increase speed during tests.
 
-## Examples
+### Example Dockerfile to Build Publicly Available Images
 
-Go from scratch:
+```dockerfile
+FROM --platform=$BUILDPLATFORM golang:1.24.2-alpine3.21 AS builder
 
-```Dockerfile
+WORKDIR /app
+
+COPY go.mod go.sum ./
+RUN go mod download -x
+
+ARG TARGETOS TARGETARCH
+RUN --mount=target=. cd /app/cmd/image-builder && CGO_ENABLED=0 GOOS=$TARGETOS GOARCH=$TARGETARCH go build -buildvcs=false -o /image-builder -a -ldflags '-extldflags "-static"' .
+
 FROM scratch
-LABEL source=git@github.com:kyma-project/examples.git
 
-ADD main /
-CMD ["/main"]
+COPY --from=builder /image-builder /image-builder
+
+ENTRYPOINT ["/image-builder"]
 ```
 
-Go from alpine:
+### Example Dockerfile to Build Restricted Images
 
-```Dockerfile
-FROM alpine:3.7
-RUN apk --no-cache upgrade && apk --no-cache add curl
+```dockerfile
+FROM europe-docker.pkg.dev/kyma-project/restricted-dev/sap.com/python-fips:latest
+WORKDIR /app
 
-LABEL source=git@github.com:kyma-project/examples.git
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-ADD main /
-CMD ["/main"]
-```
+COPY . .
 
-JavaScript from nginx:
-
-```Dockerfile
-FROM nginx:1.13-alpine
-RUN apk --no-cache upgrade
-
-LABEL source=git@github.com:kyma-project/examples.git
-
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY /build var/public
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["python", "-m", "your_module"]
 ```
