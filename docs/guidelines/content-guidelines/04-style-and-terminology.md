@@ -170,7 +170,7 @@ Here is the preferred terminology to use in the Kyma documentation:
 | **custom resource**          | **Custom Resource**, **CustomResource** |                                   |
 | **document**                 | **doc**                             |                                   |
 | **email**                    | **e-mail**                          |                                   |
-| **fill in**                  | **complete**                        |                                   |
+| **fill out**                  | **complete**                        |                                   |
 | **frontend**                 | **front end**, **front-end**            |                                   |
 | **key-value**                | **key/value**, **key:value**            |                                   |
 | **micro frontend**           | **microfrontend**, **micro front-end**  |                                   |
@@ -198,13 +198,6 @@ Here is the preferred terminology to use in the Kyma documentation:
 
 ### Command Line Arguments
 
-Use short command line arguments whenever possible.
+Prefer long-form command-line flags (`--namespace`, not `-n`) because they're self-explanatory and unambiguous.
 
-* `-n`, not `--namespace`
-
- Short command line arguments can differ between the tools as shown in the following example:
-
-* Kubernetes: `kubectl -n` equals `kubectl --namespace`
-* Helm: `helm -n` equals `helm --name`, not `helm --namespace`
-
-In such a case, explain the context in the document.
+Users read documentation to understand how it works, and they can copy and paste from the code sample, so speed of typing is no concern.

@@ -10,12 +10,11 @@ It is important to consistently format items such as code or filenames to quickl
 
 Items       | Examples
 ----------- | ----------------------------------------------------------------------
-Parameters   | The **env** attribute is optional.
+Parameters and variables   | The **env** attribute is optional.
 HTTP headers | The Authorization Proxy validates the JWT token passed in the **Authorization Bearer** request header.
 Events       | The service publishes an **order.created** event.
 Roles        | Only the users with the **kyma_admin** role can list Pods in the Kyma system namespaces.
 UI elements  | Click **Subscribe**.
-Variables and placeholders | Click **Project** > **{YOUR_PROJECT_NAME}**.
 
 ### Items Written in Code Font
 
@@ -36,13 +35,14 @@ GraphQL queries and mutations   | The `requestOneTimeTokenForApplication` mutati
 Rights                    | The preset gives multiple resource cleaners the `list` and `delete` rights in GCP.
 Custom resources (if you want to refer to the code specifically) | Define the **namespace** parameter in the `APIRule` **metadata**.
 
->**NOTE:** When you mention specific configuration files in your documents, consider linking to them instead of just mentioning their names. When you link to a file, use its name without the format extension. See the following example:
-> `To adjust the number of Pods in your Deployment, edit the [deployment](./deployment.yaml) file.`
+When you mention specific configuration files in your documents, consider linking to them instead of just mentioning their names. When you link to a file, use its name without the format extension. See the following example:
+`To adjust the number of Pods in your Deployment, edit the [deployment](./deployment.yaml) file.`
+
+Write placeholder names in SCREAMING_SNAKE_CASE enclosed in curly brackets: {PLACEHOLDER_NAME}. Use descriptive names that indicate what the reader should substitute. Examples: {YOUR_PROJECT_NAME}, {NAMESPACE}, {CSR_URL}
 
 ## Code Blocks
 
 ### Shell Commands
-
 
 Use environment variables instead of hardcoded values so that readers can copy-paste and execute the command without editing. Omit the `export` statements unless the variable value itself is noteworthy — the target audience knows how to define environment variables.
 Distinguish between the following cases:
@@ -118,13 +118,13 @@ See an example:
 
 As you write about your topic, use lists to create visual clarity within your content. List items in a category or in a sequence. Use an ordered list for sequential, instructional steps. Unordered lists are appropriate for items that have no sequential order, such as a list of valid file types. Follow these guidelines:
 
-* Make list content consistent in structure. For example, make all the bullet points sentences, questions, or sentence fragments, but do not mix types.
-* Punctuate bullet points consistently. If they are sentences, use periods. If they are sentence fragments, do not use periods.
-* Avoid ending bullet points with semicolons or commas.
-* Capitalize the first letter of each bullet point consistently. Capitalize the first letter unless the list items are always lowercased, as with parameters names.
-* Emphasize the beginning of the bullet point to capture the main idea.
-* If readers must perform list items in order, as in a step-by-step procedure, use an ordered list and maintain consistency in structure.
-* If you explain terms, bold them and provide their definitions either after a hyphen or in the sentence structure:  
+- Make list content consistent in structure. For example, make all the bullet points sentences, questions, or sentence fragments, but do not mix types.
+- Punctuate bullet points consistently. If they are sentences, use periods. If they are sentence fragments, do not use periods.
+- Avoid ending bullet points with semicolons or commas.
+- Capitalize the first letter of each bullet point consistently. Capitalize the first letter unless the list items are always lowercased, as with parameters names.
+- Emphasize the beginning of the bullet point to capture the main idea.
+- If readers must perform list items in order, as in a step-by-step procedure, use an ordered list and maintain consistency in structure.
+- If you explain terms, bold them and provide their definitions either after a hyphen or in the sentence structure:  
 
     ✅ **ClusterServiceBroker** - an endpoint for ...
 
@@ -150,8 +150,8 @@ When creating a table, centralize the columns that have choice-type values, such
 
 Ideally, headings fit into one line in the generated output. Be concise, but also make sure to adequately describe the main point of the document or a section. Follow these guidelines when writing headings:
 
-* Write headings in title case. For example, **Expose a Service**.
-* Use action verbs and present tense verbs in headings when possible, especially in tutorials. For example, **Add a Document Type**.
-* While gerunds are acceptable in body-level content, DO NOT use gerunds in headings. Use **Create a Storefront** instead of **Creating a Storefront**.
-* Avoid stacked headings, which are headings without body-level content in between. For example, DO NOT use a Heading 2 (H2) to introduce one or more Heading 3s. Instead, add a paragraph after the H2 that describes the main idea of the content in the headings that follow.
-* Do not use small headings, such as Heading 4 (H4) and smaller. Use Heading 1 (H1) for the document title, and Heading 2s (H2) and Heading 3s (H3) to organize the content of the document.
+- Write headings in title case. For example, **Expose a Service**.
+- Use action verbs and present tense verbs in headings when possible, especially in tutorials. For example, **Add a Document Type**.
+- While gerunds are acceptable in body-level content, DO NOT use gerunds in headings. Use **Create a Storefront** instead of **Creating a Storefront**.
+- Avoid stacked headings, which are headings without body-level content in between. For example, DO NOT use a Heading 2 (H2) to introduce one or more Heading 3s. Instead, add a paragraph after the H2 that describes the main idea of the content in the headings that follow.
+- Do not use small headings, such as Heading 4 (H4) and smaller. Use Heading 1 (H1) for the document title, and Heading 2s (H2) and Heading 3s (H3) to organize the content of the document.
