@@ -35,10 +35,12 @@ Avoid using unnecessary words such as "please" or "remember". If there's just on
 
 ### Tenses
 
-Use present tense. In technical writing, present tense is easier to read than past or future tense. Simple verbs are easier to read and understand than complex verbs, such as verbs in the progressive or perfect tense. The more concise and straightforward you are, the better.
+Use present tense. Do not use future tense ("will", "is going to") to describe system behavior or outcomes. In technical documentation, actions happen when the described conditions are met. They are not future events.
 
-✅ If the information does not match, an error message **appears**.  
+✅ If the information does not match, an error message **appears**.
 ⛔️ If the information does not match, an error message **will appear**.
+
+The only acceptable use of future tense is a forward reference within a procedure: "Note down the token. You will need it in a later step."
 
 ### Pronouns
 
