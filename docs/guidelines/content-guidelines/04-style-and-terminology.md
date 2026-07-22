@@ -65,6 +65,14 @@ Whenever you refer to the name of our product or one of our components, don't us
 ✅ Application Connector  
 ⛔️ the Application Connector
 
+### Prepositions
+
+Use "in" or "to" when referring to a cluster — never "on". This follows the Kubernetes upstream documentation convention.
+
+✅ The Pod runs **in** your cluster.
+✅ Deploy a Function **to** the cluster.
+⛔️ Deploy a Function **on** the cluster.
+
 ### Punctuation
 
 Use colons and semicolons sparingly. Use the colon ( : ) to introduce a list of things. The semicolon ( ; ) separates two distinct clauses within one sentence. The phrase after a semicolon is a complete sentence. However, the preferred method is without a colon or semicolon.
