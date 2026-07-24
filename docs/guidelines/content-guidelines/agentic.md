@@ -1,222 +1,237 @@
-# Kyma Technical Writing Style Guide
+# Kyma technical writer review — style ruleset
 
-Consolidated ruleset for writing and reviewing SAP/Kyma technical documentation for the SAP Help Portal. Review documentation in **four sequential passes**, then apply the document-structure rules. Each pass is self-contained; focus on one concern at a time.
+Rules for reviewing SAP/Kyma documentation. Assembled from the SAP Technical Writing Style Guide (primary) and the Kyma community content guidelines (secondary), with SAP/Kyma over-the-source requirements marked `(override — …)`. Pure rules: how documentation must be written.
 
-When documentation presents a situation no rule below covers, apply general technical-writing best practice and note that no specific rule matched.
+Review documentation in four sequential passes. The Document structure and conventions section defines the topic-type shapes your content must conform to — consult it from any pass when topic classification, required sections, or heading conventions are relevant.
 
----
+- **Pass 1 — Formatting and mechanics:** how text is formatted, punctuated, capitalized on the page.
+- **Pass 2 — Language and grammar:** word choice, grammar, voice, mood, tense, sentence quality.
+- **Pass 3 — Terminology and naming:** what to call things.
+- **Pass 4 — Reconciliation sweep:** re-read Passes 1–3, resolve cross-pass conflicts, verify topic-shape conformance.
 
 ## Pass 1 — Formatting and mechanics
 
-How text is formatted, punctuated, and capitalized on the page — including structural line-rules for headings, lists, tables, and panels.
-
-### Capitalization
-
-- **Body text:** sentence style — lowercase except the first word and proper nouns/names.
-- **Titles, headings, captions, column/row headings, product names, UI-element and software-object titles:** title case.
-- **Never all caps** (in topics or UI); do not capitalize for emphasis.
-- Do not title-case everyday words in body text even when they name a UI object, dropdown, or concept. Rule of thumb: if there can be more than one of it, it is not a proper noun. Do (body): `business process`, `situation handling`. Proper nouns keep caps: `World Wide Web Consortium`.
-
-**Title case mechanics:**
-- Capitalize first and last word regardless of part of speech.
-- Capitalize nouns, gerunds, verbs (incl. all forms of "be"), participles, adjectives, adverbs (incl. "Not", "Than").
-- Capitalize demonstratives (This/That/These/Those), quantifiers (All/Any/Some/Every), interrogatives/relatives (What/Which/Who/Whose/Where), pronouns (You/They/Its/Them). Articles the/a/an stay lowercase.
-- Prepositions: capitalize if 5+ letters (About, Between, Through, Without); lowercase if <5 letters — unless the preposition is a verb particle, which is always capitalized. Ex: `Signing In to the System` (In = particle), `Sold-to Party` (to ≠ particle).
-- Subordinating conjunctions (Because, If, That, When) capitalized; coordinating (and, but, or) lowercase.
-- Hyphenated words: apply part-of-speech rules to each element (`Self-Service`, `Add-In`). Words in parentheses and after a colon: capitalize as if not enclosed / as a first word.
-
-### Kubernetes resource-name formatting (override)
-
-- Kubernetes resource names (built-in and custom) in body text: **plain CamelCase — no bold, no code font.** Ex: `API Gateway operates on APIRule custom resources.`
-- Add "s" for plurals (`ConfigMaps`). In titles/navigation add spaces: `Config Map`, `Config Maps`.
-- Code font applies only when inside a fenced block or an inline code span you are writing anyway (e.g. a `kubectl` command, or referring to the resource *in the code* specifically: `APIRule`). Code font is not a Kubernetes-specific formatting rule.
-- Capitalize a resource word only in the Kubernetes sense. `Node` (K8s) vs. a VM node (lowercase). `CustomResourceDefinition (CRD)` capitalized; "custom resource" alone is lowercase.
-- Cross-ref: for *what to call* resources and the CamelCase reference list, see Pass 3.
-
-### Bold and code font (Kyma taxonomy)
-
-Use **bold** for: parameters, HTTP headers, events, roles, UI elements, variables/placeholders. Ex: `Click **Subscribe**.`, `the **kyma_admin** role`, `**{YOUR_PROJECT_NAME}**`.
-
-Use `code` font for: code examples, values, endpoints, file names, file extensions, path names, repository names, status/error codes, parameter/value pairs, metadata names, flags, GraphQL queries/mutations, rights, and custom resources when referring to the code specifically. Ex: `` `deployment.yaml` ``, `` `200 OK` ``, `` `--tls` ``, `` `env=true` ``.
-
-- Set off UI element labels/titles from body text so screen readers detect them. Ex: `In the **Delivery Date** field, enter a future date.`
-- Do not enclose trailing punctuation (period, colon, comma) inside formatting — translation tools segment on them. Do: `the following **options**:` Don't: `the following **options:**`. Exception: a stable label segment like `**Note:**`.
-- Do not format approved product names or Kubernetes resource names (see Pass 3 / K8s rule above).
-
-### Panels / admonitions (override — Help Portal blockquote syntax)
-
-Correct syntax:
-```markdown
-> ### Note:
-> Content here.
-```
-Valid types and when to use:
-- **Note** — important/unusual info to understand; no action.
-- **Tip** — optional action to solve/avoid a minor issue; no risk of harm.
-- **Recommendation** — advantageous or proven settings/procedures/methods.
-- **Caution** — avoid severe hazards (data loss/inconsistency, system failure); not easily repaired.
-- **Remember** — fundamental info the user needs later, or a summary of a complex thread.
-- **Restriction** — use with extreme caution and only when certain it does not describe a software limitation affecting revenue recognition.
-
-Flag as invalid: VitePress/GitHub syntax `[!NOTE]`, `[!WARNING]`, `[!TIP]` — not valid for the Help Portal. Do not indent panels.
-Cross-ref: advisory-info moderation (max ~2 per topic) is in Document structure.
-
-### Headings and titles (formulation)
-
-- H1 = document title; use H2/H3 to organize. No H4 or smaller.
-- Title case (see Capitalization). No periods in titles; use colons, parentheses, question marks sparingly; avoid exclamation points. No extra formatting in titles (they are already set off) except technical names where technically possible.
-- **Kyma heading formulation:** use action verbs and present tense; **do not use gerunds in headings** (gerunds are fine in body). Do: `Expose a Service`. Don't: `Exposing a Service`. (This is the Kyma convention and governs Kyma headings/task titles; it overrides the SAP gerund default.)
-- No stacked headings — put an introductory paragraph between a heading and the next heading.
-- Balance length: short as possible, informative as necessary; avoid opaque abbreviations and transaction/technical minutiae.
-- Cross-ref: topic-type title conventions (concept/task/troubleshooting/CR) are in Document structure and Pass 3.
+### Headings and titles
+- Write titles/headings in **title case** (uppercase first and last word; nouns, verbs, adjectives, adverbs, gerunds, participles, "Not", forms of "Be"; determiners/pronouns like This/Your; subordinating conjunctions; prepositions of 5+ letters like "About"). Lowercase: articles (the/a/an), coordinating conjunctions (and/but/or), prepositions under 5 letters (to/on/in/from). Capitalize hyphenated words as separate words (`Sold-to Party`); capitalize words in parentheses and after a colon as first words.
+- No periods in titles. Use colons, parentheses, question marks sparingly; avoid exclamation points. No extra formatting in titles (they are already set off) — exception: technical-name tags (for example, parameter names).
+- **Heading formulation depends on topic type** (see **Document structure and conventions**): task titles use the **imperative verb** (`Create a namespace`), not a gerund and not "How to…"; concept titles are **nominal** (`Authorization Concept`). Gerunds are fine in body content, not in Kyma task-topic headings. Use action verbs and present tense in headings.
+- Product/approved names in titles take title case even when their body-text form is lowercase (`SAP HANA Cloud Connector` in a title). No abbreviations in titles (rephrase; last resort: abbreviation in title + full form in body).
+- Heading levels: H1 = document title; use H2/H3 to organize. Do **not** use H4 or smaller (if you need one, restructure — see Pass 4). Keep headings concise (ideally one line) but descriptive.
+- **Stacked headings** (override — relaxed per techwriter review): prefer an introductory paragraph between a heading and the next heading. Do **not** flag a stacked heading when an intervening sentence would add no information beyond what the heading structure already conveys (self-evident from context).
 
 ### Lists
-
-- Introduce every list with a complete sentence ending in a colon; do not embed items in the sentence. Do not state the item count ("the following", "as follows").
-- Ordered list if sequence matters; unordered if not.
-- Parallel formulations; do not mix noun/verb phrases with complete sentences. Keep all items the same type.
-- Punctuation: periods if items are complete sentences; none if fragments. Never end items with semicolons or commas.
-- Capitalize the first word of each item (unless items are always-lowercase tokens like parameter names).
-- At least 2 items (exception: generated/fill-in lists). Restructure lists of 8+ items on one level. Max 2 nesting levels (3rd rare; 4+ → restructure).
-- Put the important information first in each item and set it off (e.g. bold), not buried after repeated "You can".
-- Term definitions in a list: bold the term, then define after a hyphen **or** within the sentence — pick one style per document. No comma-introduced appositive. Do: `**ClusterServiceBroker** - an endpoint for ...` or `**ClusterServiceBroker** is an endpoint for ...`. Don't: `**ClusterServiceBroker**, an endpoint for ...`.
-- Set off optional steps with `Optional:`; conditional steps with an if-clause or condition label.
+- Introduce a list with a complete sentence ending in a colon; do not embed list items in the introductory sentence. Do **not** state the number of items (it may change) — use "the following" or "as follows".
+  - (override — relaxed per techwriter review): do **not** flag a missing introductory sentence when the list's purpose is self-evident from the preceding heading or context. The bar on stating a numeric count is **not** relaxed; "the following"/"as follows" remain endorsed.
+- Choose list type by sequence: **numbered/ordered** for sequential steps; **bulleted/unordered** for unordered items.
+- Use **parallel formulations** across items (do not mix noun/verb phrases with complete sentences). Make items easy to scan; put the important information first (a bold lead phrase is fine — bold the term, not "You can …").
+- Use at least 2 items (exception: generated/fill-in lists). 8+ items on one level → consider restructuring. Prefer ≤2 levels.
+- Set off optional/conditional steps: `Optional:` for optional; an if-clause or stated condition for conditional.
+- **List-item punctuation:** complete sentences take a period; fragments take none (abbreviated questions may take `?`). Apply **one consistent punctuation approach across the whole list** — do not mix periods, commas, none; do not end items with `;` or `,`. If a mix of complete/incomplete sentences is unavoidable, still apply punctuation consistently (a fragment also gets a full stop when the chosen approach uses full stops).
+- **List-item capitalization (English):** capitalize the first word of each item, whether complete sentence or fragment (exception: items that are always lowercase, such as parameter names).
+- Defining a term in a list: bold the term, then a **colon**, then the definition (override — O11, pending source update). Apply one format consistently throughout the document. Colon guidance is separate from the semicolon guidance below.
+  - **Do:** `**Namespace**: an isolation boundary for Kubernetes resources.`
+  - **Don't:** `**Namespace** - an isolation boundary for Kubernetes resources.`
 
 ### Tables
+- Introduce a table with a complete sentence ending in a colon; do not state the number of rows/columns. Use a header row with meaningful titles; proportional column widths; parallel formulations down each column. Max ~5 columns — restructure if overloaded.
+- Keep cell text short and specific. Leave a cell empty when there is no information (or write "Not applicable" if absence would look like a mistake). Do **not** use X marks — use words ("Yes"/"Correct"). Keep punctuation consistent within a mixed column.
+- Capitalization: table caption and header cell → title case; table cell → sentence style. Captions (if used): use for all tables, nominal phrasing, above the table, unnumbered, without the word "table".
+- Center-align choice-type columns (`Yes/No`, `true/false`). A **Default** column uses `None` where a parameter has no default value.
+- Break a long or hard-to-read table into multiple tables. Prefer a table over a list when the key information is otherwise buried.
 
-- Introduce with a complete sentence ending in a colon. Don't state row/column counts.
-- Max ~5 columns; break up long tables. Header row with meaningful titles; proportional widths.
-- Parallel formulations within a column. Header cells/captions: title case, minimal punctuation. Cells: sentence style, standard punctuation.
-- Center-align choice-type columns (`Yes/No`, `true/false`).
-- If a **Default** column exists, write `None` for parameters with no default.
-- Leave cells empty when there is no info (or "Not applicable" if absence could look like a mistake). Do not use X marks — use words like "Yes".
-- Captions (if used): use for all tables, above the table, nominal, no word "table", no numbering.
+### Panels / admonitions (override — Help Portal blockquote syntax, O2)
+- The correct syntax is the blockquote panel:
+  ```markdown
+  > ### Note:
+  > Content here.
+  ```
+- Valid panel types (SAP): **Note, Tip, Recommendation, Caution, Remember**. **Restriction** only with extreme caution and only when certain it does not describe a software limitation affecting revenue recognition.
+- The community `[!NOTE]` / `[!WARNING]` / `[!TIP]` GitHub/VitePress alert syntax is **not valid** for the Help Portal — flag it.
+- Choose type by purpose: Note = important/non-obvious info, no action; Tip = optional advice to avoid minor issues; Recommendation = advantageous settings/methods; Caution = severe hazards (data loss, system failure); Remember = fundamental info needed later.
+- Use advisory info in moderation (≤2 per topic as a general rule; do not stack them). For recommendation phrasing, see Pass 2 (O4).
 
-### Numbers, dates, times, units, currency
+### Code and bold formatting
+- Use **bold** for: parameters/variables, HTTP headers, events, roles, and UI elements.
+  - **Do:** `Choose **Subscribe**.` (use the device-neutral verb `Choose`/`Select`, never `Click`/`Tap` — see Pass 2)
+- Use `code` font for: code examples, values, endpoints, file names, file extensions, path names, repository names, status/error codes, parameter-value pairs, metadata names, flags, GraphQL queries/mutations, rights, and custom resources **when referring to the code specifically**.
+- Placeholders: SCREAMING_SNAKE_CASE in curly brackets with a descriptive name — `{NAMESPACE}`, `{YOUR_PROJECT_NAME}`.
+- Do **not** enclose trailing punctuation (colon, comma, sentence-ending period) inside formatting — translation software segments on `.`/`:`. **Exception:** a panel-type label that forms one stable translation segment, for example `**Note:**` (limited to the panel-type labels — Note, Tip, Caution, …; see Pass 4).
 
-- Spell out one–nine; numerals for 10+. Use numerals below 10 for series of many numbers, or for figures/ages/times/dates/years/measurements/dimensions/currencies/pages/percentages/phone numbers, or in "N or more" / "up to N" patterns. Spell out in fixed phrases (`third party`, `first name`).
-- Number ranges: en dash, no spaces (`0–9`); use "from ... to ..." / "between ... and ..." for parallel forms; use "to" when a range start is ambiguous.
-- Decimal separator: English point, with leading zero for <1 (`0.5`). Thousand separator: English comma for 4+ digits (`25,500`); may omit for a lone low number with no unit (`1500 persons`). Prefer words for large numbers (`10 million`).
-- Metric units; language-neutral abbreviation; no plural "s" on unit abbreviations. Repeat the unit in ranges/combos (`10 mm × 17 mm`). Spell out a unit used without a quantity. Percent: no space in English (`5%`). Hyphenate numeral + spelled-out unit (`18-mile`), not abbreviated (`2 kg weight`).
-- Currency: ISO 3-letter code, code before amount in English (`EUR 100`), never symbols. Omit trailing `.00` when no fractional digits.
-- Dates: months as words, 4-digit years, `Month DD, YYYY` in English; never all-numeric (`08/05/2022`). Make times a.m./p.m. explicit; time zones abbreviated in parentheses. ISO 8601 `YYYY-MM-DD hh:mm:ss` is for machine data only, not body text/UI.
+### Kubernetes resource names (override — O1; primary statement, cross-ref Pass 3)
+Kubernetes resource names (built-in and custom) are written in **plain CamelCase in body text** — no bold, no code font. In an inline code span (a `kubectl` command, or referring to the resource *in the code* specifically), code font comes from the code span itself, not as a Kubernetes rule. The code-vs-conceptual boundary is subjective, so:
+- **Code (format as code):** "When you apply the `APIRule` manifest, set `spec.host`."
+- **Conceptual (plain CamelCase):** "API Gateway operates on APIRule custom resources."
+- Capitalize a resource word only in the Kubernetes sense: `Node` (K8s resource) vs. a VM node (lowercase); `CustomResourceDefinition (CRD)` capitalized, but "custom resource" alone is lowercase.
+- Genuinely ambiguous code-vs-conceptual cases: flag for human review (see Pass 4, Tier 2).
 
 ### Punctuation and characters
+- **Colon:** use to introduce information (lists, tables, definitions). Capitalize after a colon before a complete sentence; lowercase before a fragment (exception: titles/proper nouns). The colon is a normal, encouraged introducer.
+- **Semicolon:** use sparingly with main clauses — **prefer separate sentences** (shorter, easier to read). Use a semicolon only to separate long/complex series items that contain internal commas, or rephrase into a list. Do not end list items with a semicolon.
+- **Serial (Oxford) comma:** required before the conjunction in every series of 3+ items, **with no exception** (override — O12) — including series joined entirely by conjunctions.
+  - **Do:** `Paris, Rome, or Brussels`
+  - **Don't:** `Paris or Rome or Brussels`
+- Comma before a coordinating conjunction (and/but/or/so/yet) that introduces an independent clause; after an introductory adverbial clause, a 5+-word introductory prepositional phrase, or a sentence-referring adverb (therefore/however); with "that is" and "for example"; with "such as" only when nonrestrictive. No comma between subject and verb.
+- **Dashes (override — O9): use the plain hyphen (`-`) only; do not use en dashes (`–`) or em dashes (`—`)** in Kyma docs.
+  - **Number ranges:** plain hyphen, no spaces — `0-9`, `50-100`.
+  - Do not use en/em dashes for asides — rephrase, or use commas, parentheses, or a colon.
+  - When a range start is ambiguous, use the word `to` (`50 to 150,000`, not `50-150,000`).
+  - Flag any `–` or `—` in reviewed content and replace with a hyphen or a rephrase.
+- **Slash:** do **not** use a forward slash as shorthand for "or" — write "or", or "…, …, or both"; `and/or` only if that reads clumsy or under space limits. Exceptions: part of an approved name/proper noun (`SAP S/4HANA`); an established unit modifier (`plan/actual comparison`); and `countries/regions` (see Pass 3). No other slash-as-"or" is permitted. Use slashes as URL/path separators.
+- **Special-character reference pattern:** refer to a special character as *name* (*symbol*) — for example, `ampersand (&)`, `asterisk (*)`.
+- No apostrophe for plurals of nouns/acronyms (`BAdIs`, not `BAdI's`). Use the typographically correct apostrophe; never an accent as a surrogate.
+- Quotation marks: do not use them to refer to titles/headings/captions (use formatting), for irony, or as surrogate formatting except as a last resort. Enclose ending punctuation inside quotation marks only for a complete quoted sentence. Do not format approved names.
+- Avoid ampersands (&), technical/mathematical symbols, and symbols with multiple meanings in UI text; commonly used symbols (`%`) are acceptable.
+- One space between words and after punctuation; no space in period-abbreviations (`a.m.`); no space breaks inside URLs/paths/technical names; use nonbreaking spaces to keep closely related words together (`5 kg`). No Latin abbreviations in body text — use the full English form (see the Pass 2 plain-word table for `e.g.`/`i.e.`/`etc.`).
 
-- Serial (Oxford) comma before the final item in a series of 3+. Cross-ref: Pass 2 for clause/conjunction usage.
-- Colon introduces lists/tables/info; capitalize after a colon only if a complete sentence follows.
-- Semicolons: prefer separate sentences; use only to join closely related main clauses or to separate complex comma-containing series items.
-- En dashes (not em dashes), spaced, used sparingly (no spaces in number ranges). Never em dashes.
-- One space between words and after punctuation. No spaces in abbreviations with periods (`a.m.`). Do not insert line-break spaces into paths/URLs/technical names.
-- Quotation marks: language-specific; enclose ending punctuation only for a complete quoted sentence. Don't use quotes for titles/emphasis/irony; use formatting instead.
-- Slash: not shorthand for "or" (see also Pass 3 terminology); acceptable in unit modifiers (`plan/actual`) and approved names (`SAP S/4HANA`). Refer to a special character as `name (symbol)`, e.g. `ampersand (&)`.
-- No `(s)` or `/s` plural forms — rephrase (plural only, "one or more", "each", or disconnect the number from the noun).
-- Cross-ref: runnable shell-command and code-block formatting conventions are in Document structure.
-
----
+### Numbers, dates, units, currency
+- Spell out one–nine; numerals for 10+ (including ordinals). Use numerals to draw attention to a number or for figures/ages/times/dates/units/currencies/percentages/page numbers. Spelled-out number in fixed phrases (`third party`).
+- Thousand separator (English comma) for 4+ digits before the decimal (`7,654,321`), grouped in 3s; exception for an odd stand-alone low number with no unit (`1500 persons`). Decimal point in English; leading zero for fractions < 1 (`0.5`). Prefer words for millions/billions.
+- Metric units with standard symbols; no plural "s" on symbols; repeat the unit in ranges (`10 mm × 17 mm`). In English, no space before `%`. Hyphenate a numeral plus a spelled-out unit (`18-mile`), not an abbreviated unit (`2 kg`) — see Pass 2 hyphenation.
+- Dates: month as a word, year as 4 digits (`August 5, 2024`) — not `08/05/2024`. Times: mark a.m./p.m.; time zone abbreviated in parentheses. ISO 8601 (`YYYY-MM-DD`) only in technical texts (log files), with hyphen separators.
+- Currency: ISO 3-letter code before the amount in English (`EUR 100`). Omit trailing `.00` when a sum has no fractional digits — **exception:** keep aligned decimals when another sum in the same sentence/paragraph has fractional digits (`USD 70.00 net or USD 74.45 gross`). Separators for 4+ digits; minus sign immediately before a negative amount.
 
 ## Pass 2 — Language and grammar
 
-Word choice, grammar, voice, mood, tense, sentence quality, US English.
-
-### Voice, mood, tense
-
-- **Active voice** by default. Do: `The endpoint path includes your service name.` Don't: `Your service name is to be included in the endpoint path.` (Exception: apologies may use passive to avoid blame; and the advisory passive `It is recommended to ...` — see Recommendations.)
-- **Imperative mood** for instructional/procedural content; other moods can imply the action is optional. Do not frame required actions as optional ("if you want to ... you can"). Do: `Click **Upload** and select one or more documents.`
-- **Present tense** — easier than past/future; prefer simple over progressive/perfect. Do: `an error message appears`. Don't: `will appear`. Watch overuse of "will"/"you'll"/"won't".
-- If there is only one way to do something, drop "can" and use the imperative.
-
-### Addressing the reader
-
-- Second person: address the reader as "you"/"your". Use third person ("the user") only for a different role.
-- **No first person** ("we", "us", "let's"). Cross-ref: recommendation phrasing below and in Pass 3.
-- People-centric: describe what the reader can do, not what the feature is. Do: `Find people by searching for their name or email.` Don't: `The search tool can search by name and email.`
-- Positive phrasing; do not blame the user. Do: `Enter alphanumeric characters only.` / `Your password is incorrect.` Don't: `Don't enter special characters.` / `You entered an incorrect password.`
-
-### Recommendations (override — preserve advisory tone, no first person)
-
-When content is advisory (optional/best-practice), keep it advisory — do not convert to a bare imperative (that changes "suggested" to "required"). The should→must/can rule and the imperative-mood rule do **not** apply here.
-- Approved patterns: `It is recommended to {action}.` (accepted passive exception), `Consider {action}.`, `As a best practice, {action}.`, or a **Recommendation** panel.
-- Flag & rewrite: `We recommend ...` → use an approved pattern. `It is not recommended ...` → state positively what to do instead.
-
-### Grammar and clarity
-
-- Articles: "the" for a specific thing, "a"/"an" for non-specific; choose a/an by pronunciation (`an SAP solution`). Include articles to remove ambiguity.
-- Use "that" to introduce object clauses and in restrictive relative clauses even when omittable. Do: `Define the information that you require.`
-- Restrictive clauses: "that", no commas. Nonrestrictive: "which"/"who", with commas.
-- Keep phrasal verbs together (`Fill out the form.`). Prefer a relative clause over a post-noun participle (`the template that was used`, not `the template used`).
-- Don't use causative "have"/"get" ("get a page created") — name the actor. Avoid ambiguous "since" (because vs. from-the-time). Avoid dangling modifiers. Clarify what "and"/"or" join. Split infinitives only for contrast.
-- Collective nouns take a singular verb (`The data is saved`, `SAP is launching`).
-- Serial comma (see Pass 1). Use a colon to introduce a list, a semicolon between independent clauses — but prefer neither. Avoid parentheses; prefer a list or restructured sentence.
-- Contractions: acceptable in moderation; write out in full for serious warnings (`do not`, `cannot` — never `can not`); no unusual/compound contractions; watch its/it's.
-
 ### US English
+- Use American English spelling: `-ense` (defense, license), `-er` (center), `-ize/-yze` (organize, analyze), `-og` (catalog, dialog), `-or` (color); `canceled`/`modeling` (single `l`); `fulfill`, `program`, `toward`, `color` (not `colour`).
+- Use the American word/phrase: `fill out` (not `fill in`; see Pass 3, O8), `as of` (not `as at`), `for more information about` (not `on`), `parentheses`/`curly brackets`/`square brackets`, `period` (not `full stop`), `exclamation point`, `quotation marks`. Exception: keep country-specific terms in legal/financial/HR contexts (for example, `ZIP code` for the US).
 
-- American spelling: `color`, `behavior`, `organize`, `center`, `catalog`, `defense`, `license`, `fulfillment`, `program`. Not British (`colour`, `organise`, `centre`, `-ogue`, `-our`).
-- American terms over British: `fill out` (not fill in), `for more information about` (not on), `parentheses`/`curly brackets`/`square brackets`, `period`, `exclamation point`, `vacation`, `expiration date`.
-- Hyphenate American-style (less than British): hyphen mainly to prevent misreading. Hyphenate an adjective **before** a noun only (`well-known actor` vs. `is well known`); no hyphen when an adverb modifies it (`highly configurable`). Prefixes usually closed (`autogenerated`, `nonnegotiable`, `preassembled`) except all-/cross-/self-/high-/well-/ex-/full-.
+### Voice and mood
+- **Active voice is the strong default** — it names who does what, uses fewer words, and is clearer for non-native readers. Address the user directly with "you" or an imperative. Name the agent in the third person when not "you" (the user, the system, the service).
+- Passive voice is acceptable only when: the agent is unknown, unimportant, or omitted for politeness; for apologies/blame removal; or when the context already makes the agent clear and passive improves flow.
+- Imperative mood for instructions (procedures, steps) — it tells the reader directly to do something. Do **not** convert a recommendation to a bare imperative (see O4 below).
+- **Do:** "The endpoint path includes your service name." **Don't:** "Your service name is to be included in the endpoint path."
 
-### Global English — common words and clear structure
+### Recommendation language (override — first-person ban preserves advisory tone, O4)
+Do not use first-person pronouns (`we`, `us`, `let's`) — but preserve recommendation semantics. Do not turn advisory content into a mandatory imperative (that changes "suggested" to "required").
+- Rewrite `We recommend {X}` → `It is recommended to {X}.` (accepted passive), `Consider {X}.`, or `As a best practice, {X}.`; or use the **Recommendation** panel.
+- `It is not recommended…` → state positively what to do instead.
+- The imperative rule and the `should → must/can` rule do **not** apply in recommendation contexts.
 
-Prefer common, everyday words; avoid telegraphic style (keep conjunctions, articles, prepositions). Sentences must sound natural and be unambiguous.
+### Sentence quality
+- **Keep sentences at or under about 20 words** (override — O15). If a sentence runs longer, split it into shorter sentences, or into a list or a table. Split any sentence with two or more subordinate clauses.
+- Use simple syntax; keep syntactic cues (articles, "that" to introduce object clauses and restrictive relative clauses) — no telegraphic style. Keep phrasal verbs together (`Fill out this form`, not `Fill this form out`). Prefer a relative clause over a participle construction; do not use causative "have"/"get".
+- Use **positive formulations**; rephrase double negatives.
+- **What before how:** state the goal/consequence before the action. Describe chronological actions in sequence. In conditional sentences, put the condition ("if") before the statement; no "then".
+- Split a long series of nouns/prepositional phrases into smaller units to avoid ambiguity. Do not generalize ("generally", "usually", "sometimes") — list the actual cases. Make every word count; use intensifiers sparingly. Prefer precise verbs; avoid SAP jargon like `maintain` (use `edit`, `create`, `change`, `manage`).
+- Do **not** use "Note that…" (or "Please note that…") lead-ins (override — O16) — delete the lead-in and state the fact directly, or use a **Note** panel for a genuine advisory.
+  - **Do:** `The operator reconciles the resource every 30 seconds.`
+  - **Don't:** `Note that the operator reconciles the resource every 30 seconds.`
 
-**Plain-word substitutions (use → avoid):**
+### Tense (override — O13, pending source update)
+- Use **present tense** for documentation content. Reserve the future tense ("will") strictly for actions that genuinely occur in the future relative to the described step — not for what a system does, what a result is, or what happens as a consequence of a step (those are present tense). Flag future-tense constructions that describe present behavior and rewrite them in the present. The one acceptable forward reference is within a procedure ("Note down the token. You need it in a later step.").
+  - **Do:** `When you apply the manifest, the operator creates the resource.`
+  - **Don't:** `When you apply the manifest, the operator will create the resource.`
+
+### Contractions
+- **Use common contractions — they make writing sound natural and human; the spelled-out form sounds robotic by comparison.** Test by reading aloud: if you'd use a contraction when speaking, use it.
+  - **Do:** "you **don't** need to provide your account information." **Don't (robotic):** "you **do not** need to provide your account information."
+- **Exception (emphasis / serious warnings):** spell out for emphasis — a warning reads more seriously spelled out. Use `do not` / `cannot` (never `can not`), `is not`: "**Do not** manually edit the INI file."
+- Do **not** use unusual or compound contractions (`couldn't've`, `the user'll`). Watch `it's` (it is) vs `its` (possessive).
+
+### Politeness (override — O14)
+- Use "please" only when appropriate (an inconvenient request, or a troubling situation such as an error) — not for plain instructions or cross-references. Be polite only in rare cases.
+- Apologize without blaming the user or the software; use the passive voice to remove blame.
+
+### Grammar
+- Singular verb with collective nouns (`data`, `team`, `SAP`, `company`): "The data **is** saved."
+- Percentage verb agrees with the referent noun (singular/plural).
+- Relative clauses: restrictive = `that`, no commas; nonrestrictive = `which`, commas; `who` for persons. Avoid dangling modifiers. Keep `that` (don't omit) in restrictive clauses; a stranded preposition is fine when it sounds natural.
+- Be careful with singular `they`/`their` — rewrite if it could be unclear for translation or non-native readers.
+- Articles: verify `a`/`an`/`the`. Use `the` for a specific referent, `a` for something non-specific; do **not** use an article before a product name or one of its components (`Application Connector`, not `the Application Connector`). Use articles to avoid ambiguity.
+
+### Hyphenation and compound words
+- **Hyphenate per US conventions** — the purpose is to prevent misreading, and US hyphenates less than British. US prefixes are mostly closed (no hyphen): `autogenerated`, `preassembled`, `nonnegotiable`, `cooperate`, `multimedia`. Hyphenate only to prevent confusion or for fixed forms: `cross-application`, `self-service`, `well-known`, `high-level`.
+- Hyphenate a **phrasal (compound) adjective before a noun** (`well-known actor`, `copy-protected folders`), but **not** when it stands alone (`the actor is well known`) or is modified by an adverb (`highly configurable applications`, not `highly-configurable`).
+- **Suspended hyphen** only when the **second** element is omitted (`short- and long-term memory`) — never when the first is omitted.
+- Hyphenate a **numeral plus a spelled-out unit** (`18-mile highway`); no hyphen with an abbreviated unit (`2 kg weight`, `200 GB hard drive`).
+- Do not over-hyphenate noun compounds — hyphenate only to prevent misreading; a compound of 4+ nouns usually signals you should rephrase.
+
+### Tone and inclusive language
+- Positive, conversational-but-concise voice; not chatty, no exaggeration. Use excitement and exclamation points sparingly. No capitalization for emphasis. No emoticons/emojis. No jargon, colloquialisms, or dialect.
+- Present functionality from the target group's perspective — describe what they can do, not the feature. Address the user with "you".
+- Replace non-inclusive terms (prefer `blocklist`/`allowlist` over `blacklist`/`whitelist`; avoid `master`/`slave`) — prefer a clearer rephrase over a one-to-one swap. Gender-inclusive nouns (`chairperson`, `workforce`, not `chairman`, `manpower`). Prefer imperative/"you"/third-person-plural over gendered singular; never `he/she`.
+- Address users by their need, not their disability (`if you use a screen reader`, not `wheelchair-bound users`). Do not use `accessible` to state a system's accessibility status or to mean `available` — say `available`.
+- Describe bias-free examples; do not use real people's/companies' names, addresses, or confidential data in examples (use `example.com` for fake links).
+
+### Global English and clause usage
+- Use common, everyday words; make sentence structure explicit (don't drop conjunctions, articles, prepositions for brevity). Sentences must sound natural, even if that means rephrasing.
+- Use "that" to introduce an object clause ("verifies **that** the name matches") and in restrictive relative clauses. Clarify what "and"/"or" join. Avoid transitional-phase words (`currently`, `now`) that promise future functionality.
+
+### Plain, common words — use → avoid
+Prefer simple, common words. No Latin abbreviations in body text — use the English form; this covers the `e.g.`/`i.e.`/`etc.` rows below.
 
 | Use | Avoid |
 | --- | --- |
+| use | utilize |
+| use | leverage *(override — O10)* |
+| get | obtain |
+| happen | occur |
 | agree | concur |
 | although | albeit |
 | before | prior to |
+| harmful | deleterious |
 | start, begin | commence |
 | try | endeavor |
 | up to now | heretofore |
-| use | utilize |
-| get | obtain |
-| happen | occur |
-| harmful | deleterious |
-| can | be able to |
+| decide | take a decision |
 | upgrade | perform an upgrade |
 | explain | provide an explanation |
+| can | be able to, it is possible to |
 | is transparent | is characterized by transparency |
-| that is | i.e. |
+| outcome | final outcome |
 | for example, such as | e.g. |
+| that is | i.e. |
 | and so on | etc. |
-| note | n.b. |
 | and others | et al. |
-| versus | vs. |
+| note | n.b. |
+| opposed to, versus | vs. |
 | compare | cf. |
 
-- Do not use Latin abbreviations in body text (space-restricted UI may keep `e.g.`). Cross-ref: preferred Kyma terms are in Pass 3.
-
----
+(Kyma/domain-specific term pairs — `backend`, `frontend`, `YAML`, `repository`, `via`, and so on — are in the Pass 3 terminology table, not here.)
 
 ## Pass 3 — Terminology and naming
 
-What to call things — product names, Kyma terminology, resource naming, abbreviations.
+> No internal-SAP-systems lookups (override — O3): this ruleset is self-contained. Rules that in the source depend on SAPterm or the SAP Approved Names repository are inlined here with the relevant data; a reviewer must not be told to "look it up" in an internal system.
 
-### Product naming (SAP BTP, Kyma runtime)
+### Product naming (override — SAP Brand approved names, O6)
+- The full name is **`SAP BTP, Kyma runtime`**. Always include `runtime` after Kyma — **flag `SAP BTP Kyma` without `runtime`**. Lowercase `runtime` except where title case is required.
+- **First mention → short form.** Use the approved full name at first mention, then an approved short form afterward. Do not contort a sentence around the full name when a short form exists (backs Pass 4 Tier 2).
+  - Body-text natural language is fine: "the Kyma runtime for SAP BTP".
+  - Space-limited contexts (menus, tiles, web): `SAP BTP Kyma runtime` or `Kyma runtime` (comma and/or `SAP BTP` may drop). Cockpit/service-catalog tile short name: `Kyma Runtime`.
+- Do **not**: write `SAP BTP Kyma`; abbreviate (`SAP BTP, KR`); alter the name (`SAP Kyma`).
+- **`Kyma dashboard`**: refer to it as `Kyma dashboard`; on subsequent mention, `dashboard`. Lowercase `dashboard` except where title case is required. Do **not** precede with `SAP` or `SAP BTP` (`SAP Kyma dashboard` is wrong).
+- Spell out "Business Technology Platform" at an early point so the `BTP` abbreviation is clear.
 
-- Full name: **SAP BTP, Kyma runtime**. Always keep "runtime" after "Kyma"; lowercase "runtime" except where title case applies. Flag `SAP BTP Kyma` without "runtime".
-- Do **not** use: `SAP BTP Kyma`, `SAP Kyma`, `SAP BTP, KR`, or any invented abbreviation.
-- Space-limited web/menu/tile contexts only: `SAP BTP Kyma runtime` or `Kyma runtime` (comma/`SAP BTP` may drop when context is clear). Cockpit/service-catalog tiles use the short name `Kyma Runtime`.
-- Body text may use natural phrasing like `the Kyma runtime for SAP BTP`. Spell out "Business Technology Platform" early in a document to gloss the abbreviation.
-- Dashboard: **Kyma dashboard** (lowercase "dashboard" except in titles). Do not precede with `SAP`/`SAP BTP` (`SAP Kyma dashboard` is wrong). First mention may use `Kyma dashboard for SAP BTP, Kyma runtime`; later just `dashboard`.
-- General SAP offering names: use the approved name exactly — no plurals (rephrase: `SAP CRM systems`), no possessives (`SAP HANA benefits`), no trademark symbols, no italics/quotes, no invented abbreviations. Title case in titles even if the body form has lowercase words.
-- Descriptors/articles for SAP offerings: at first occurrence use the approved descriptor (`the SAP Business One solution`); afterward use the name stand-alone with no "the" and no descriptor, or a descriptor with "this".
+### General SAP naming
+- Use approved names exactly — correct spelling/wording, no plurals or possessives, no invented abbreviations. Do **not** add trademark symbols in user assistance. Do **not** set off approved names with italics/quotes, and do **not** translate them.
+- No article before a stand-alone approved name ("SAP Business One helps…", not "The SAP Business One helps…"). At first occurrence use the approved descriptor (solution, service, application, platform…); afterward use the name stand-alone (or a generic "software"/"offering").
+- Use the prefix `SAP` with care — do not create phrases misreadable as offerings. Avoid compounds with approved names (rephrase with a preposition). Use approved names for AI and specify the type using approved qualifiers; avoid pronouns where possible.
 
-### No article before Kyma product/component names
+### Abbreviations and acronyms
+- Prefer no abbreviation, especially in UI text. Introduce an unavoidable abbreviation with the full form + abbreviation in parentheses at first occurrence, then use the abbreviation; **exception:** use straightaway if more common than the full form (`ID`, `PC`, `ABAP` for developers). Do not coin new abbreviations or use CamelCase in abbreviations (CamelCase is fine only in non-translated technical names). No abbreviations in titles. Plurals of acronyms take no apostrophe. Use an indefinite article as in speech (`a BAPI`, `an SAP solution`).
 
-Do not use an article before the product or a component name. Do: `Kyma is awesome.`, `Application Connector`. Don't: `The Kyma`, `the Application Connector`. (Note: this Kyma rule coexists with the SAP first-occurrence-descriptor rule for SAP *offering* names above; for Kyma component names, no article.)
+### Software objects and entities
+- Determine what a term refers to before formatting it: an approved name, a real-life thing, a software object, or a software entity — each is handled differently.
+- **Real-life entity** (or when "this is software" is irrelevant): write like any other word — no formatting, no title case (`a strategic purchaser creates a purchasing contract`).
+- **Software object** (role, API, function module): at first occurrence set off *Title in Title Case* (`technical name`) *descriptor*; later use the title alone. Do not overuse title case.
+- **Software entity** (tool, engine): treat like a proper noun — title case, no formatting, use an article, do not prefix with `SAP` (`The BAdI Builder…`).
 
-### Kubernetes / resource naming reference
+### Kubernetes and Kyma capitalization
+- `Kubernetes` is always capitalized — never `kubernetes` or `k8s`.
+- Kyma component names and headings: title case (`Application Connector`, `API Gateway Controller`).
+- Kubernetes/custom resources: CamelCase (`ConfigMap`, `ConfigMaps`; in titles/navigation add spaces: `Config Map`). Format as code only when referring to the code specifically (see Pass 1 / O1). Capitalize these **only** when referring to the Kubernetes resource; otherwise lowercase:
+  `ConfigMap, CronJob, CustomResourceDefinition (CRD), Deployment, Function, Ingress, Node, PodPreset, Pod, ProwJob, Secret, Service, ServiceBinding, ServiceClass, ServiceInstance`.
+  - `Node` = K8s resource only; a VM or billing node is lowercase. "custom resource" alone is lowercase (not Kubernetes-specific).
+- Do **not** capitalize `namespace`. Use sentence case for standard sentences; do not over-capitalize words just because they seem special or important.
 
-- Always capitalize **Kubernetes**; never `kubernetes` or `k8s`.
-- CamelCase for Kubernetes and custom resources; "s" for plurals; spaces in titles/navigation. Format as code (`` `APIRule` ``) only when referring to the code specifically. Cross-ref: body-text formatting rule in Pass 1.
-- Do **not** capitalize `namespace`.
-- Kubernetes resource names (CamelCase): `ConfigMap`, `CronJob`, `CustomResourceDefinition (CRD)`, `Deployment`, `Function`, `Ingress`, `Node`, `Pod`, `PodPreset`, `ProwJob`, `Secret`, `Service`, `ServiceBinding`, `ServiceClass`, `ServiceInstance`.
-- Title case for Kyma component names: `Application Connector`, `API Gateway Controller`.
+### Country/region
+- Do **not** use `country` alone — use `country/region` or `country or region`, or rephrase (`Local Version`). Field labels use title case (`Country/Region`). This `/`-as-"or" is an **approved exception**; no other slash-as-"or" is allowed (see Pass 1).
 
-### Kyma preferred terminology (use → avoid)
+### Topic-type naming
+Titles follow the topic type (see **Document structure and conventions**): Task = imperative verb (`Create a namespace`); Concept = nominal (`Security Concept`); Troubleshooting = the symptom/error message (not the cause); Custom Resource = the CR name in CamelCase, file `{RESOURCE_NAME}.md`.
+
+### Kyma preferred terminology — use → avoid
 
 | Use | Avoid | Note |
 | --- | --- | --- |
@@ -226,109 +241,92 @@ Do not use an article before the product or a component name. Do: `Kyma is aweso
 | frontend | front end, front-end | |
 | micro frontend | microfrontend, micro front-end | |
 | connect, connection | integrate, integration | |
-| custom resource | Custom Resource, CustomResource | |
+| custom resource | Custom Resource, CustomResource | lowercase unless a K8s resource name |
 | document | doc | |
 | email | e-mail | |
-| fill in | complete | |
+| **fill out** | complete, fill in | *(override — O8; agrees with Pass 2 US-English)* |
 | key-value | key/value, key:value | |
 | must | have to, need to | |
 | need | require | |
-| or | / (slash) | |
+| or | / (slash) | except approved names, unit modifiers, `countries/regions` |
 | repository | repo | |
 | run | execute | |
 | single sign on (SSO) | single sign-on | |
-| the following, several | a specific number | |
 | typically | usually | |
-| use | utilize | |
 | using, with | via | |
-| YAML | yaml | file extension/name → `.yaml` |
-| Prow Job (process) | Prowjob, prowjob | resource → `ProwJob` |
-| must / can | should | mandatory → must; optional → can |
-| (you) can | it is possible to, allows you to, you have the option to | if no other option, drop "can", use imperative |
-| that is | i.e. | often the lead-in adds little; keep only the clause after |
-| for example, such as | e.g. | mid-sentence, prefer "such as" |
-| cloud-native (adj.) | cloud native | adjective compounds usually hyphenated |
-| application | app | "Application" = external solution via Application Connector; "application" = a microservice on Kyma |
-| the following | below, this, the described | |
-| the previous, earlier | above, this, the described | |
+| YAML | yaml | file extension/name: `.yaml` |
+| Prow Job (process) | Prowjob, prowjob | resource: CamelCase `ProwJob` |
+| must, can | should | mandatory → must; optional → can |
+| (you) can | it is possible to, allows you to, you have the option to | else drop "can" and use the imperative |
+| that is | i.e. | often the clause adds little — drop it |
+| for example, such as | e.g. | mid-sentence, "such as" beats "for example" |
+| cloud-native (adj.) | cloud native | noun compounds usually no hyphen; adjective compounds often do |
+| Application (external solution via Application Connector) | app | "application" = a microservice or software |
 | Infrastructure Provider, IaaS Provider | hyperscaler, Cloud Provider | |
 
-- Do not use transitional-phase words (`currently`, `now`) or make forward-looking promises; document only what already exists.
-- Short command-line arguments where possible (`-n`, not `--namespace`); explain context if ambiguous. Note: `kubectl -n` = `--namespace`, but `helm -n` = `--name`, not `--namespace`.
-
-### Abbreviations
-
-- Prefer no abbreviation; introduce one only if more common than the full form or an industry standard, and never coin on the fly. At first occurrence give `full form (ABBR)`, then use the abbreviation; don't alternate. No abbreviations in titles.
-- Plurals without apostrophe (`IDs`, `BAPIs`). No CamelCase in abbreviations of translatable words (CamelCase is reserved for technical names). Use "and", not `&`/`+`.
-
-### Country/region
-
-Do not use "country" alone — use `country/region` or `country or region`, or rephrase. Do: `Select the relevant countries/regions.`
-
-### Software objects and entities
-
-- Real-life entity or where "this is software" is irrelevant: write like any other word — no title case, no formatting. Do: `A strategic purchaser creates a contract.` Don't: `As a Strategic Purchaser ...`.
-- Software object (role, API, function module, etc.) at first occurrence: `*Title in Title Case* (\`technical name\`) descriptor`. Later, use the title alone or the technical name. Omit elements that don't apply.
-- Software entity behaving as a proper noun (tool/engine, one exists, no plural): title case, no formatting, use an article, do not prefix with `SAP`. Ex: `The BAdI Builder`.
-- AI: make it obvious users interact with AI; use the AI's name, avoid pronouns where possible.
-- Cross-ref: topic-type naming (concept/task/troubleshooting/CR titles) is in Document structure.
-
----
+- The count-avoidance rule ("do not state the item/row/column count — use 'the following'/'as follows'") lives in the Pass 1 list/table-introduction rule.
+- Use terms consistently (no synonyms); prefer the standard verb (`create`, not make/build/generate as synonyms).
 
 ## Pass 4 — Reconciliation sweep
 
-Re-read the changes from Passes 1–3 together and verify the document as a whole:
+Re-read the changes from Passes 1–3, confirm no pass introduced a new violation, check consistency across the whole document, and verify the document conforms to its topic-type shape (see **Document structure and conventions**). Signals to flag: a task over ~9 steps (consider splitting — a signal, not an automatic failure); any H4 (the document may need restructuring).
 
-- Verify no pass introduced a new violation of another pass (e.g. a terminology fix in Pass 3 that broke sentence flow, or a formatting change that de-capitalized a proper noun).
-- Check consistency across the full document: one term per meaning; consistent capitalization per text type; consistent list/table punctuation; consistent term-definition style; heading style uniform.
-- Verify the document conforms to its **topic type** (concept, task, troubleshooting, custom resource) per Document structure below — correct title style, required sections, and shape.
-- Confirm advisory panels are within moderation limits and use valid Help Portal syntax.
-- Where a situation matched no rule, confirm the best-practice judgment applied is consistent with the rest of the document.
+### Cross-pass conflict-resolution framework
+When fixing a rule from one pass would break a rule from another, resolve by these tiers — **the higher tier wins on the specific token; lower tiers rephrase around it:**
 
----
+1. **Topic-type constraints (binding).** Topic types are structural contracts, not suggestions — content that does not fit a type is reconceived, not squeezed in (see the non-negotiable topic-type framing in **Document structure and conventions**). Signals to flag: a task over ~9 steps (consider splitting); any H4 usage (the document may need restructuring).
+2. **Terminology and naming correctness.** Wrong names are factual errors; sentence flow is always fixable, so naming wins over flow. Use brand-approved names and approved **short forms** on subsequent mention (O6); no article before an approved product name; product names in headings may take title case; Kubernetes resources are plain CamelCase in body / code font in code context — **flag genuinely ambiguous code-vs-conceptual cases for human review**.
+3. **Semantic formatting intent over Markdown rendering.** Formatting follows the semantic role of a span, not typography; when a Pass 1 formatting rule conflicts with a span's semantic role, intent prevails. *(Light note: the target format is typically DITA, where code font maps to `<sap-technical-name>` and a UI label to `<ui-element>`; see the SAP `cms-tags-guide`. This ruleset stays Markdown-focused.)*
+4. **Natural-language flow.** Rephrase to accommodate tiers 1–3, but do **not** generate filler to satisfy a structural rule — if a list's purpose is obvious, omit the introductory sentence rather than emit a "the following items are:" placeholder (consistent with the O5 list-intro relaxation). Use common abbreviations only when introduced at first mention; do not coin new ones.
+5. **Author intent for instructions (needs human judgment).** The instruction's purpose sets the verb pattern: instruction → plain imperative; mandatory → "you must"; recommended → approved advisory pattern (O4); optional → "can" / "Optionally, …". When intent is genuinely ambiguous from the text, **flag for author decision** rather than guessing.
+
+### Specific tie-break resolutions
+- Full product name makes a sentence unwieldy → use the approved short form on subsequent mention; do not rephrase around the full name when a short form exists (O6).
+- List-item lead word is a product name → bold it for pattern consistency within the list.
+- Gerund in a heading → imperative prevails for task topics; if it describes an ongoing state, reclassify as a concept and use an unambiguous nominal phrase.
+- `countries/regions` slash-as-"or" → approved exception; **no other** slash-as-"or" is permitted.
+- Colon inside formatting (`**Note:**`) → exception limited to panel-type labels (Note, Tip, Caution, …); confirms the Pass 1 formatting exception.
+- `fill in` (Kyma table) vs `fill out` (SAP/US English) → **`fill out`** wins (confirms O8; see Pass 3 — do not emit a competing rule).
+
+### Edge-case fallback (override — O7)
+When the documentation under review presents a situation not covered by any rule here, apply general best-practice judgment and note that no specific rule matched.
 
 ## Document structure and conventions
 
-Whole-file / topic-shape rules. Not a numbered pass. Each rule is cross-referenced from its owning pass.
+Reference material for all passes — not a step performed after them. It defines the topic-type shapes and structural conventions the passes conform content to. Consult it from Pass 1 (heading/title formulation), Pass 3 (topic-type naming), and Pass 4 (topic-shape conformance).
 
-### Topic types (cross-ref: Pass 3 for titling, Pass 1 for heading formulation)
+### Topic types (non-negotiable)
+Kyma documentation is topic-based (one file per topic). **Topic types are non-negotiable, mandatory shapes** — hardcoded, DITA-bound patterns. Classify the content and make it **conform** to its topic-type shape; content that does not fit a type is reconceived, not squeezed in.
 
-Kyma is topic-based: one file per topic, self-contained, linking out as needed.
+- **Concept** — answers "what is it?", gives background. Nominal title (`Security`, `Security Concept`). Must **not** give instructions or hold reference tables/lists (link to task/reference topics instead).
+- **Task** — "how to" for one procedure. **Imperative-verb** title (`Define resource consumption`), not a gerund, not "How to…". Structure: intro paragraph ("why?"), prerequisites if needed, numbered steps, expected result. Roughly **5–9 steps**; longer probably splits.
+- **Troubleshooting** — a condition to correct, its cause(s), and remedies. Title names the **symptom or error message**, not the cause. Standard headings **Condition / Cause / Solution**; numbered list for sequential fixes, bullets/sub-headings for equally valid alternatives.
+- **Custom Resource** — file `{RESOURCE_NAME}.md`; title = the CR name in CamelCase (`LogPipeline`). Provides a sample CR, describes its fields, and points to the CRD; keep the structure whether written manually or autogenerated.
 
-- **Concept** (answers "what is"): nominal title (`Security`, `Security Concept`). Background only — no instructions, no reference tables/lists; may link to task/reference topics.
-- **Task** (a task the reader accomplishes): imperative-verb title naming the task, not the feature, not a gerund, not "How to...". Do: `Define resource consumption`. Don't: `Selecting a profile`, `How to select...`. Structure: intro paragraph ("why do this?") → prerequisites (if any) → numbered steps → expected result. Aim for 5–9 steps; split longer.
-- **Troubleshooting:** title names the symptom/error the reader sees, not the cause. Do: `Cannot access ...`. Don't: `Incompatible version`. Structure: three headings — **Condition**, **Cause**, **Solution** (numbered list for sequential steps; bullets or sub-headings for several equally valid solutions).
-- **Custom resource (CR):** file named `{RESOURCE_NAME}.md`; title is the CR name in CamelCase (`LogPipeline`, `Function`).
+### Shell commands (cross-ref Pass 1 formatting)
+- Use environment variables instead of hardcoded values so readers can copy-paste. Omit `export` statements unless the variable value itself is noteworthy.
+- **Runnable command** (meant to be copied): show the command alone — no prompt prefix, no `$`/`#`/path/hostname.
+- **Command-plus-output transcript:** prefix only the command lines with `$ ` to mark input; leave output unprefixed; no other `PS1` elements.
+- **Omission in code:** quote only the relevant part; replace omitted parts with `...`.
+- **Prefer long-form CLI flags** — `--namespace`, not `-n`. Long flags are self-explanatory and unambiguous, and readers copy-paste, so typing length is no concern.
+- Use `in` or `to` when referring to a cluster — never `on` (`the Pod runs in your cluster`; `deploy a Function to the cluster`).
 
-### Shell commands and code blocks (cross-ref: Pass 1 formatting)
+### Links
+- **Relative** links within the same repository; **absolute** links to other repositories and external sources. Link to a heading with `#{name-of-the-heading}` after the file path. Reference assets (YAML/JSON/SVG/PNG/JPG) in the topic's `assets` folder with GitHub relative links.
+- When mentioning a config file, consider linking to it; when linking to a file, use its name without the format extension.
+- Link only what adds value — every link can rot. Do not link what is well-known or trivially searchable. Keep no more than ~7 cross-references per topic; prefer a "More Information"/"Related Information" section at the end over inline links.
+- Descriptive link text; do not link whole phrases; avoid vague `this`/`that`/`here`.
+  - **Do:** "see the **installation guide**." **Don't:** "see **this** guide." / "Read more **here**."
 
-- **Runnable command** (meant to be copied): show the command alone — no prompt prefix, no `$`/`#`/path/hostname. Use environment variables instead of hardcoded values; omit `export` unless the value is noteworthy.
-  ```
-  kubectl -n $NAMESPACE get pods -l app=$APP_LABEL
-  ```
-- **Command-plus-output transcript:** prefix only command (input) lines with `$ `; leave output unprefixed; omit path/hostname.
-  ```
-  $ kubectl -n kyma-system get pods
-  NAME                          READY   STATUS    RESTARTS   AGE
-  istiod-7c8b9f4d4f-abcde       1/1     Running   0          12d
-  ```
-- Mark omitted parts of a snippet or response with `...`.
+### Release notes
+- Write from the user's perspective. Headlines in **sentence case**, short and summarizing. New features → an enticing paragraph (marketing the benefit), not a bare bullet list. Call issues **known issue** / **resolved issues**, never "bugs". Consistent sentence structure across a bulleted list. Provide a **migration guide** whenever a release requires manual upgrade steps (steps only — no new-feature descriptions).
 
-### Links (cross-ref: Pass 2 for link-text wording)
+### Screenshots
+- Complement text, don't replace instructions; use sparingly (they age fast, are inaccessible to screen readers, and can't be translated). No directional indicators ("above"/"below") — introduce each screenshot with a brief purpose. Exclude the mouse pointer (unless functionally relevant) and irrelevant chrome (browser toolbar).
+- **Alt text is required and descriptive:** `![Create a bucket](./assets/create-bucket.png)`, not `![](…)`.
+- Format SVG preferred (PNG/JPG acceptable), ≤1MB, sized at 100/75/50/25%, saved under `assets`. Grey (`#D2D5D9`) 1pt border. Mark steps with blue (`#0A6ED1`) round stamps + white numbers, explained in an ordered list below. Highlight with red (`#EF2727`) 10pt arrows/boxes, at most one indicator per screenshot. Prefer Simplified UIs (blur non-essential elements); do not cover logo, menu/search icons, expand/close buttons.
 
-- Relative links within the same repository; absolute links for other repos and external sources.
-- Descriptive link text; never vague ("this", "that", "here") and don't link whole phrases. Prefer the cross-reference pattern `For more information, see [target].` Keep links syntactically separate from descriptive sentences (in a cross-reference formulation, after an introductory colon, or in a closing "Related Information" section).
-- Don't over-link: skip content that is peripheral, well-known to the audience, or easily searched. Keep to a manageable number per topic.
-- Link to a heading with `#{name-of-the-heading}` appended to the filepath. Reference assets (YAML/JSON/SVG/PNG/JPG) in the topic's `assets` folder via a GitHub relative link.
-- When mentioning a configuration file, consider linking to it instead of naming it; use the name without the format extension.
-
-### Advisory information moderation (cross-ref: Pass 1 panel syntax/types)
-
-Use advisory panels in moderation — as a rule no more than ~2 per topic, and not directly one after another. Overuse dilutes them. A plain "Note that ..." sentence in body text is sometimes enough. Provide repeated advisory info centrally.
-
-### Examples and sample data
-
-- Bias-free examples reflecting diversity. Prefer existing product-area sample data.
-- Names/data must not match real people/companies or be humorous/branded; never include real users, passwords, or internal info.
-- Fake links use `https://www.example.com`.
-- Set off examples by size: page+ → a `Example: <Title>` topic; ~half page → an "Example" section; a few sentences → a block with an "Example" signal; word/sentence level → "for example" / "such as".
+### Diagrams
+- Give a diagram context (purpose clear from surrounding content); consistent look, minimal noise, simple but descriptive; left-to-right workflow direction.
+- **Alt text required:** `![Authentication flow between client and server](./assets/authentication-flow.svg)`, not `![](…)`. Brief if the body text explains it; add key details for screen readers otherwise.
+- Export SVG under `assets`; keep it legible but not dominating (max website width 860px). White background (no transparency). Secondary backgrounds: mild blue (`#F0F6FF`) main environment, mint green (`#DEF2DD`) subsidiary. Rounded rectangles; white fill for boxes, blue (`#0A6EC7`) for actors. Grey (`#666666`) 1pt outlines and connectors (no outlines on actors/steps/backgrounds). Black Helvetica text: 15pt bold headings, 13pt primary, 12pt secondary; horizontal. Blue (`#0A6EC7`) round step stamps + ordered list. Add a reference key when introducing a distinct element.
