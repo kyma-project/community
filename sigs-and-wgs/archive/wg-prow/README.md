@@ -5,7 +5,7 @@ The purpose of this group is to:
 
 ## Contact
 
-* [Slack](https://kyma-community.slack.com/messages/CD7GJ41QE/)
+* [Slack](https://kyma-community.slack.com/messages/CD7GJ41QE/) <!-- markdown-link-check-disable-line -->
 * [Google group](https://groups.google.com/forum/#!forum/kyma-wg-prow)
 * [Open community issues and pull requests](https://github.com/kyma-project/community/labels/wg%2Fprow)
 
