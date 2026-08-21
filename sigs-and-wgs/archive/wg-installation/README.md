@@ -17,14 +17,14 @@ The purpose of this working group is to:
 
 ## Contact
 
-* [Slack](https://kyma-community.slack.com/archives/CD2HJ0E78)
+* [Slack](https://kyma-community.slack.com/archives/CD2HJ0E78) <!-- markdown-link-check-disable-line -->
 * [Google group](https://groups.google.com/forum/#!forum/kyma-sig-core)
 * [Open community issues and pull requests](https://github.com/kyma-project/community/labels/area%2Finstallation) - a separate **wg-installation** label to be discussed.
 
 ## Meetings
 
 * Tuesday at 16:00 CEST
-* [Slack](https://kyma-community.slack.com/messages/CD2HJ0E78)
+* [Slack](https://kyma-community.slack.com/messages/CD2HJ0E78) <!-- markdown-link-check-disable-line -->
 * Frequency: weekly
 * [Meeting notes and agenda](https://docs.google.com/document/d/19lM_wDLXRV-8rQQ7ZxFtasr6kgGRCwUm0kJaAK3NNik)
 * [Meeting recordings]() - To be discussed
