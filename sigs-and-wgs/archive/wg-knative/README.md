@@ -6,7 +6,7 @@ The purpose of this group is to:
 
 ## Contact
 
-* [Slack](https://kyma-community.slack.com/messages/CEC6R4T6U)
+* [Slack](https://kyma-community.slack.com/messages/CEC6R4T6U) <!-- markdown-link-check-disable-line -->
 * [Open community issues and pull requests](https://github.com/kyma-project/community/labels/wg%2Fknative)
 
 ## Meetings
