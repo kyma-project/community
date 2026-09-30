@@ -54,3 +54,4 @@ This file lists all maintainers that are no longer actively contributing to the 
 * Wojciech Wrzalik (**[@ralikio](https://github.com/ralikio)**) involved in `area/application-connector`, `area/management-plane`, `area/control-plane`, `area/service-management`.
 * Mansur Uralov (**[@muralov](https://github.com/muralov)**) involved in `area/eventing`, `area/kyma-companion`
 * Asia Bodora (**[@joanbod](https://github.com/joanbod)**) involved in `area/service-mesh`, `area/api-gateway`.
+* Jan Bosenius (**[Jan](https://github.com/Jan0412)**) involved in `area/kyma-companion`.
