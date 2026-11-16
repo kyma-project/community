@@ -90,6 +90,3 @@ If you create a new module repository, you must add it to the following files:
 * [`md-check-link/.github/workflows/check-kyma-links.yml`](https://github.com/kyma-project/md-check-link/blob/main/.github/workflows/check-kyma-links.yml)
 * [`md-check-link/.mlc.config.json`](https://github.com/kyma-project/md-check-link/blob/main/.mlc.config.json)
 
-## Custom Settings
-
-Track all repository changes that deviate from configuration standard described in the guidelines with an [issue](https://github.tools.sap/kyma/test-infra/issues/new?assignees=&labels=config-change&template=bug_report.md&title=).
