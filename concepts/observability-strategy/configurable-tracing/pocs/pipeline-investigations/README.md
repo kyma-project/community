@@ -11,7 +11,7 @@ The test covers three aspects of default base installation and configuration:
 
 ## Test Application
 
-The [Opentelemetry load generator](https://github.tools.sap/huskies/otel-load-generator) is developed by Kyma's Telemetry team. The application written is in Go and uses the Opentelemetry SDK version v1.11.1.
+The Opentelemetry load generator is developed by Kyma's Telemetry team. The application written is in Go and uses the Opentelemetry SDK version v1.11.1.
 For each generated trace, the load generator produces 11 spans (one root and 10 child spans); and each span, except the root span, has 40 attributes each 64 Byte long random data. This simulates the maximum size of expected span data.
 Generated data is sent in batches over gRPC and each batch will contain 512 spans. The test data can be generated concurrently to increase load on the targeted collector, which can can be configured with start parameter **-c**.
 
